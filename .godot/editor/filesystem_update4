@@ -1,1 +1,9 @@
+res://scenes/player.tscn
+res://scripts/player.gd
+res://scripts/globals.gd
 res://scenes/game.tscn
+res://scenes/coin.tscn
+res://scenes/kill_zone.tscn
+res://scenes/platform.tscn
+res://scripts/coin.gd
+res://scenes/slime.tscn

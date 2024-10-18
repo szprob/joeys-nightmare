@@ -403,9 +403,16 @@ position = Vector2(326, -40)
 
 [node name="coin2" parent="coins" instance=ExtResource("4_wlwoh")]
 position = Vector2(40, -3)
+collision_mask = 128
 
 [node name="coin3" parent="coins" instance=ExtResource("4_wlwoh")]
 position = Vector2(380, -8)
+
+[node name="coin4" parent="coins" instance=ExtResource("4_wlwoh")]
+position = Vector2(46, -3)
+
+[node name="coint5" parent="coins" instance=ExtResource("4_wlwoh")]
+position = Vector2(52, -3)
 
 [node name="platform" type="Node" parent="."]
 
