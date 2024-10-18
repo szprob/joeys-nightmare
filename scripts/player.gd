@@ -9,7 +9,12 @@ var jump_hold_time: float = 0.0  # 记录跳跃键按住的时间
 var is_jumping: bool = false  # 标记是否正在跳跃
 var is_dropping: bool = false  # Track if the player is dropping through a platform
 var drop_timer: float = 0.0  # Timer for disabling platform collision
+# 保存原始的碰撞掩码
+var original_collision_mask: int
 
+func _ready():
+	# 在节点准备好时，保存原始的碰撞掩码
+	original_collision_mask = collision_mask
 
 # 开始跳跃的函数
 func start_jump() -> void:
@@ -18,17 +23,29 @@ func start_jump() -> void:
 	is_jumping = true  # 标记为跳跃状态
 
 # Start dropping through the platform
-func drop_through_platform() -> void:
-	pass 
+func remove_mask_temporarily(mask) -> void:
+	# 移除mask为1的部分，保持其他部分不变
+	collision_mask &= ~mask
+	# 使用协程等待0.3秒，然后恢复原始的碰撞掩码
+	await get_tree().create_timer(0.3).timeout
+	collision_mask = original_collision_mask
 
 # 检测玩家是否站在单向平台上
 func is_on_one_way_platform() -> bool:
-	# Check for collisions
-	for i in range(get_slide_collision_count()):
-		var collision = get_slide_collision(i)
-		if collision.collider.is_in_group("OneWayPlatform"):
-			return true 
-	return false 
+	if is_on_floor():
+		var collision = get_last_slide_collision()
+		if collision:
+			var collider = collision.get_collider()
+			# 检查 collider 是否具有 collision_layer 属性
+			if collider and collider.has_method("get_collision_layer"):
+				if collider.collision_layer & Globals.ONE_WAY_PLATFORM_LAYER != 0:
+					return true
+			# 如果是 TileMap，可能需要其他逻辑来判断
+			elif collider is TileMap:
+				# 在这里添加处理 TileMap 的逻辑
+				# 例如，根据 TileMap 的某些属性或自定义数据来判断
+				pass
+	return false
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -58,7 +75,8 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor():
 			# 如果按住下键并且在平台上，触发下落平台逻辑
 			if Input.is_action_pressed("down") and is_on_one_way_platform():
-				print(collision_mask)
+				print("Player is on a one-way platform")
+				remove_mask_temporarily(2)
 			else:
 				start_jump()  # 正常跳跃
 		else:
