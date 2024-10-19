@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxs320cj2nn71"]
+[gd_scene load_steps=11 format=3 uid="uid://bxs320cj2nn71"]
 
 [ext_resource type="Texture2D" uid="uid://eyr6js1ntbm8" path="res://assets/sprites/slime_green.png" id="1_2sok0"]
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1_vpqrl"]
@@ -41,9 +41,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s0s6t"]
-size = Vector2(12, 13)
+size = Vector2(12, 12)
 
-[node name="slime" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85pc5"]
+size = Vector2(12, 12)
+
+[node name="slime" type="CharacterBody2D"]
+collision_mask = 129
 script = ExtResource("1_vpqrl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -56,7 +60,7 @@ frame_progress = 0.272125
 position = Vector2(1, -12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
-position = Vector2(0, 5.5)
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_s0s6t")
 
 [node name="RayCast2D_right" type="RayCast2D" parent="."]
@@ -66,3 +70,7 @@ target_position = Vector2(9, 0)
 [node name="RayCast2D_left" type="RayCast2D" parent="."]
 position = Vector2(1, -6)
 target_position = Vector2(-8, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -6)
+shape = SubResource("RectangleShape2D_85pc5")
