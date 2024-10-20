@@ -20,6 +20,17 @@ config/icon="res://icon.svg"
 Music="*res://scenes/music.tscn"
 Globals="*res://scripts/singleton/globals.gd"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/resizable=false
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
+
 [input]
 
 jump={
