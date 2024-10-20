@@ -1,13 +1,14 @@
-[gd_scene load_steps=17 format=4 uid="uid://dhcoju0cv8u0y"]
+[gd_scene load_steps=18 format=4 uid="uid://dhcoju0cv8u0y"]
 
-[ext_resource type="Script" path="res://scripts/singleton/game_manager.gd" id="1_7i5oq"]
-[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/player/player.tscn" id="1_lcq6n"]
-[ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="2_5gyjw"]
-[ext_resource type="PackedScene" uid="uid://do8x2w6t8vgwy" path="res://scenes/platform.tscn" id="3_xmh87"]
-[ext_resource type="PackedScene" uid="uid://dlnwqw1a3g1m3" path="res://scenes/coin.tscn" id="4_wlwoh"]
-[ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/kill_zone.tscn" id="5_6b38e"]
-[ext_resource type="PackedScene" uid="uid://bxs320cj2nn71" path="res://scenes/enemy/slime.tscn" id="6_g04iq"]
-[ext_resource type="FontFile" uid="uid://dvlu6bavl0eg7" path="res://assets/fonts/PixelOperator8.ttf" id="7_ucpia"]
+[ext_resource type="Script" path="res://scripts/singleton/game_manager.gd" id="1_0a83n"]
+[ext_resource type="FontFile" uid="uid://dvlu6bavl0eg7" path="res://assets/fonts/PixelOperator8.ttf" id="2_2xu5y"]
+[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/player/player.tscn" id="3_jrcp6"]
+[ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/dreams/kill_zone.tscn" id="4_4xw42"]
+[ext_resource type="PackedScene" uid="uid://dlnwqw1a3g1m3" path="res://scenes/dreams/coin.tscn" id="5_sst5f"]
+[ext_resource type="PackedScene" uid="uid://do8x2w6t8vgwy" path="res://scenes/dreams/platform.tscn" id="6_1mumn"]
+[ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="7_ul3yv"]
+[ext_resource type="PackedScene" uid="uid://bxs320cj2nn71" path="res://scenes/enemy/slime.tscn" id="8_sak8q"]
+[ext_resource type="PackedScene" uid="uid://kfdbq76ixwrq" path="res://scenes/save_point.tscn" id="9_k25oc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8553"]
 distance = -68.0
@@ -51,7 +52,7 @@ _data = {
 }
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6174h"]
-texture = ExtResource("2_5gyjw")
+texture = ExtResource("7_ul3yv")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -184,7 +185,7 @@ texture = ExtResource("2_5gyjw")
 sources/0 = SubResource("TileSetAtlasSource_6174h")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wpmut"]
-texture = ExtResource("2_5gyjw")
+texture = ExtResource("7_ul3yv")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -364,7 +365,7 @@ sources/0 = SubResource("TileSetAtlasSource_wpmut")
 
 [node name="game_manager" type="Node" parent="."]
 unique_name_in_owner = true
-script = ExtResource("1_7i5oq")
+script = ExtResource("1_0a83n")
 
 [node name="score_label" type="Label" parent="game_manager"]
 offset_left = 425.0
@@ -372,10 +373,10 @@ offset_top = -83.0
 offset_right = 465.0
 offset_bottom = -60.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("7_ucpia")
+theme_override_fonts/font = ExtResource("2_2xu5y")
 theme_override_font_sizes/font_size = 0
 
-[node name="player" parent="." instance=ExtResource("1_lcq6n")]
+[node name="player" parent="." instance=ExtResource("3_jrcp6")]
 position = Vector2(-74, -39)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -391,34 +392,34 @@ position_smoothing_enabled = true
 [node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
 position = Vector2(114, -151)
 
-[node name="kill_zone" parent="." instance=ExtResource("5_6b38e")]
+[node name="kill_zone" parent="." instance=ExtResource("4_4xw42")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
 shape = SubResource("WorldBoundaryShape2D_w8553")
 
 [node name="coins" type="Node" parent="."]
 
-[node name="coin1" parent="coins" instance=ExtResource("4_wlwoh")]
+[node name="coin1" parent="coins" instance=ExtResource("5_sst5f")]
 position = Vector2(326, -40)
 
-[node name="coin2" parent="coins" instance=ExtResource("4_wlwoh")]
+[node name="coin2" parent="coins" instance=ExtResource("5_sst5f")]
 position = Vector2(40, -3)
 
-[node name="coin3" parent="coins" instance=ExtResource("4_wlwoh")]
+[node name="coin3" parent="coins" instance=ExtResource("5_sst5f")]
 position = Vector2(380, -8)
 
-[node name="coin4" parent="coins" instance=ExtResource("4_wlwoh")]
+[node name="coin4" parent="coins" instance=ExtResource("5_sst5f")]
 position = Vector2(46, -3)
 
-[node name="coint5" parent="coins" instance=ExtResource("4_wlwoh")]
+[node name="coint5" parent="coins" instance=ExtResource("5_sst5f")]
 position = Vector2(52, -3)
 
 [node name="platform" type="Node" parent="."]
 
-[node name="platform" parent="platform" instance=ExtResource("3_xmh87")]
+[node name="platform" parent="platform" instance=ExtResource("6_1mumn")]
 position = Vector2(40, -26)
 
-[node name="platform2" parent="platform" instance=ExtResource("3_xmh87")]
+[node name="platform2" parent="platform" instance=ExtResource("6_1mumn")]
 position = Vector2(445, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="platform/platform2"]
@@ -440,7 +441,7 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAD7/wAAAAAAAAEAAAD8/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD4/wAAAAAAAAAAAAD5/wAAAAAAAAAAAAD6/wAAAAAAAAEAAAD6//7/AAAAAAAAAAD7//7/AAAAAAAAAAD6////AAAAAAEAAAD7////AAAAAAEAAAD6/wEAAAAAAAEAAAD7/wEAAAAAAAEAAAD5/wEAAAAAAAEAAAD4/wEAAAAAAAEAAAD8/wEAAAAAAAEAAAD9/wEAAAAAAAEAAAD9/wIAAAAAAAEAAAD8/wIAAAAAAAEAAAD7/wIAAAAAAAEAAAD6/wIAAAAAAAEAAAD5/wIAAAAAAAEAAAD4/wIAAAAAAAEAAAD+/wAAAAAGAAAAAAD//wAAAAAGAAAAAAD+/wEAAAAGAAEAAAD//wEAAAAGAAEAAAD//wIAAAAGAAEAAAAAAAIAAAAGAAEAAAAAAAEAAAAGAAEAAAD+/wIAAAAGAAEAAAAEAAAAAAAGAAAAAAAEAAIAAAAGAAEAAAAEAAEAAAAGAAEAAAABAAAAAAAJAAAAAAACAAAAAAAKAAAAAAADAAAAAAALAAAAAAAAAAAAAAAGAAAAAAAFAAAAAAAGAAAAAAAFAAEAAAAGAAEAAAAFAAIAAAAGAAEAAAAGAAAAAAAJAAAAAAAHAAAAAAAKAAAAAAAIAAAAAAALAAAAAAAJAAAAAAAGAAAAAAAKAAAAAAAGAAAAAAAJAAEAAAAGAAEAAAAJAAIAAAAGAAEAAAAKAAIAAAAGAAEAAAAKAAEAAAAGAAEAAAANAPz/AAAAAAAAAAAOAPz/AAAAAAAAAAANAP3/AAAAAAEAAAANAP7/AAAAAAEAAAAOAP7/AAAAAAEAAAAOAP3/AAAAAAEAAAAOAP//AAAAAAEAAAANAP//AAAAAAEAAAAPAPv/AAAAAAEAAAAPAPr/AAAAAAAAAAAQAPr/AAAAAAAAAAAQAPv/AAAAAAEAAAAQAPz/AAAAAAEAAAAQAP3/AAAAAAEAAAAQAP7/AAABAAEAAAAQAP//AAAAAAEAAAAPAP//AAABAAEAAAAPAP7/AAABAAEAAAAPAPz/AAAAAAEAAAAPAP3/AAABAAEAAAARAP3/AAAAAAAAAAASAP3/AAAAAAAAAAARAP7/AAAAAAEAAAARAP//AAAAAAEAAAASAP//AAAAAAEAAAASAP7/AAAAAAEAAAATAP7/AAAEAAAAAAAUAP7/AAAEAAAAAAAVAP7/AAAEAAAAAAAWAP//AAAFAAAAAAAXAAAAAAAFAAAAAAAYAAAAAAAEAAAAAAAZAAAAAAAEAAAAAAATAP//AAAEAAEAAAAUAP//AAAEAAEAAAAVAP//AAAEAAEAAAAVAAAAAAAEAAEAAAAWAAAAAAAEAAEAAAAUAAAAAAAEAAEAAAATAAAAAAAFAAEAAAAWAAEAAAAFAAEAAAAVAAEAAAAFAAEAAAAUAAEAAAAFAAEAAAAXAAEAAAAFAAEAAAATAAEAAAAFAAEAAAAYAAEAAAAFAAEAAAAZAAEAAAAFAAEAAAAMAP3/AAAAAAAAAAAMAP7/AAAAAAEAAAAMAP//AAAAAAEAAAAQAPn/AAAAAAUAAAAQAPf/AAAAAAMAAAAQAPj/AAAAAAQAAAASAPz/AAAGAAUAAAASAPr/AAAGAAMAAAASAPv/AAAGAAQAAAALAP7/AAAAAAAAAAAiAAEAAAACAAEAAAAiAAIAAAACAAEAAAAiAAMAAAACAAEAAAAiAAAAAAACAAAAAAAjAAAAAAACAAAAAAAjAAEAAAACAAEAAAAjAAIAAAACAAEAAAAjAAMAAAACAAEAAAAkAAEAAAADAAAAAAAkAAIAAAADAAAAAAAkAAMAAAADAAAAAAAlAAEAAAACAAEAAAAlAAIAAAADAAAAAAAlAAMAAAADAAAAAAALAP//AAABAAEAAAA=")
 tile_set = SubResource("TileSet_rvt4p")
 
-[node name="slime" parent="." instance=ExtResource("6_g04iq")]
+[node name="slime" parent="." instance=ExtResource("8_sak8q")]
 position = Vector2(-17, -1)
 
 [node name="Label" type="Label" parent="."]
@@ -449,7 +450,10 @@ offset_top = -106.0
 offset_right = -30.0
 offset_bottom = -57.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("7_ucpia")
+theme_override_fonts/font = ExtResource("2_2xu5y")
 theme_override_font_sizes/font_size = 16
 text = "wasd控制方向
 space控制跳跃"
+
+[node name="save_point" parent="." instance=ExtResource("9_k25oc")]
+position = Vector2(40, -37)

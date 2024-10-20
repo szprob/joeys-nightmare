@@ -15,7 +15,13 @@ var drop_timer: float = 0.0  # Timer for disabling platform collision
 var original_collision_mask: int
 
 func _ready():
+	print(position)
 	original_collision_mask = collision_mask
+
+func respawn():
+	# 将角色位置设置为重生点
+	position = game_manager.game_state['current_respawn_point']
+	print("Character respawned at ", position)
 
 # 开始跳跃的函数
 func start_jump() -> void:
