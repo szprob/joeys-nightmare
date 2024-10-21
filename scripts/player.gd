@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var game_manager: Node = %game_manager
+#@onready var game_manager: Node = %game_manager
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -16,16 +16,18 @@ var original_collision_mask: int
 
 func _ready():
 	print(position)
+	GameManager.load_game_state()
+	position = GameManager.game_state['current_respawn_point']
 	original_collision_mask = collision_mask
 
 func respawn():
 	# 将角色位置设置为重生点
-	position = game_manager.game_state['current_respawn_point']
+	position = GameManager.game_state['current_respawn_point']
 	print("Character respawned at ", position)
 
 # 开始跳跃的函数
 func start_jump() -> void:
-	velocity.y = Globals.JUMP_VELOCITY  # 初始跳跃速度
+	velocity.y = Consts.JUMP_VELOCITY  # 初始跳跃速度
 	jump_hold_time = 0.0  # 重置跳跃键按住时间
 	is_jumping = true  # 标记为跳跃状态
 
@@ -45,7 +47,7 @@ func is_on_one_way_platform() -> bool:
 			var collider = collision.get_collider()
 			# 检查 collider 是否具有 collision_layer 属性
 			if collider and collider.has_method("get_collision_layer"):
-				if collider.collision_layer & Globals.ONE_WAY_PLATFORM_LAYER != 0:
+				if collider.collision_layer & Consts.ONE_WAY_PLATFORM_LAYER != 0:
 					return true
 			# 如果是 TileMap，可能需要其他逻辑来判断
 			elif collider is TileMap:
@@ -65,8 +67,8 @@ func _physics_process(delta: float) -> void:
 		if is_jumping and Input.is_action_pressed("jump"):
 			jump_hold_time += delta
 			# 增加跳跃速度，直到达到最大值或超过允许的按住时间
-			if jump_hold_time < Globals.MAX_JUMP_HOLD_TIME and velocity.y > Globals.MAX_JUMP_VELOCITY:
-				velocity.y = lerp(velocity.y, Globals.MAX_JUMP_VELOCITY, delta * 2)  # 平滑增加跳跃高度
+			if jump_hold_time < Consts.MAX_JUMP_HOLD_TIME and velocity.y > Consts.MAX_JUMP_VELOCITY:
+				velocity.y = lerp(velocity.y, Consts.MAX_JUMP_VELOCITY, delta * 2)  # 平滑增加跳跃高度
 		else:
 			is_jumping = false  # 玩家松开跳跃键，停止跳跃高度增加
 		
@@ -87,7 +89,7 @@ func _physics_process(delta: float) -> void:
 			else:
 				start_jump()  # 正常跳跃
 		else:
-			jump_buffer_timer = Globals.JUMP_BUFFER_TIME  # 记录跳跃键按下的时间以便缓冲
+			jump_buffer_timer = Consts.JUMP_BUFFER_TIME  # 记录跳跃键按下的时间以便缓冲
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -109,8 +111,8 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.play(('jump'))
 	# Handle movement
 	if direction:
-		velocity.x = direction * Globals.SPEED
+		velocity.x = direction * Consts.SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, Globals.SPEED)
+		velocity.x = move_toward(velocity.x, 0, Consts.SPEED)
 
 	move_and_slide()

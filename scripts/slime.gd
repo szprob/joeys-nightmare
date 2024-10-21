@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 	if ray_cast_2d_right.is_colliding():
 		direction = -1 
 		animated_sprite_2d.flip_h = true  
-	position.x += direction * Globals.SLIME_SPPED * delta 
+	position.x += direction * Consts.SLIME_SPPED * delta 
 	# Add the gravity.
 	if not is_on_floor():
 		#print(collision_shape_2d.collision_mask)

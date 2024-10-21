@@ -22,8 +22,9 @@ func load_game_state():
 		var save_text = file.get_as_text()
 		var json = JSON.new()
 		var result = json.parse(save_text)
-		if result.error == OK:
+		if result == OK:
 			var game_state = json.data
+			print(game_state['current_respawn_point'])
 		else:
 			print("JSON Parse Error at line ",json.get_error_line())
 		file.close()
