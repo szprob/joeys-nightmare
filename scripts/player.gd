@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
+@onready var game_manager: Node = %game_manager
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+
 
 var jump_buffer_timer: float = 0.0  # 记录跳跃键按下的时间
 var jump_hold_time: float = 0.0  # 记录跳跃键按住的时间
@@ -13,8 +15,13 @@ var drop_timer: float = 0.0  # Timer for disabling platform collision
 var original_collision_mask: int
 
 func _ready():
-	# 在节点准备好时，保存原始的碰撞掩码
+	print(position)
 	original_collision_mask = collision_mask
+
+func respawn():
+	# 将角色位置设置为重生点
+	position = game_manager.game_state['current_respawn_point']
+	print("Character respawned at ", position)
 
 # 开始跳跃的函数
 func start_jump() -> void:

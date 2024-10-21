@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxs320cj2nn71"]
+[gd_scene load_steps=11 format=3 uid="uid://bxs320cj2nn71"]
 
 [ext_resource type="Texture2D" uid="uid://eyr6js1ntbm8" path="res://assets/sprites/slime_green.png" id="1_2sok0"]
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1_vpqrl"]
-[ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/kill_zone.tscn" id="2_53w07"]
+[ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/dreams/kill_zone.tscn" id="2_53w07"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_olyu5"]
 atlas = ExtResource("1_2sok0")
@@ -40,29 +40,40 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0s6t"]
-size = Vector2(12, 13)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85pc5"]
+size = Vector2(11, 10)
 
-[node name="slime" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbcpn"]
+size = Vector2(14.9996, 14.0679)
+
+[node name="slime" type="CharacterBody2D"]
+collision_mask = 129
 script = ExtResource("1_vpqrl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -12)
+position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_1rxrh")
 autoplay = "default"
 frame_progress = 0.272125
 
-[node name="kill_zone" parent="." instance=ExtResource("2_53w07")]
-position = Vector2(1, -12)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
-position = Vector2(0, 5.5)
-shape = SubResource("RectangleShape2D_s0s6t")
-
 [node name="RayCast2D_right" type="RayCast2D" parent="."]
 position = Vector2(1, -6)
-target_position = Vector2(9, 0)
+target_position = Vector2(6, 0)
 
 [node name="RayCast2D_left" type="RayCast2D" parent="."]
 position = Vector2(1, -6)
-target_position = Vector2(-8, 0)
+target_position = Vector2(-7, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -6)
+shape = SubResource("RectangleShape2D_85pc5")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="kill_zone" parent="." instance=ExtResource("2_53w07")]
+position = Vector2(0, -2)
+rotation = -0.00758595
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
+position = Vector2(0.522744, -2.95819)
+shape = SubResource("RectangleShape2D_cbcpn")

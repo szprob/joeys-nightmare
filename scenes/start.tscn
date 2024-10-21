@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7l0cgfu3na7c"]
+
+[ext_resource type="Script" path="res://scripts/start.gd" id="1_u4l7m"]
+[ext_resource type="Texture2D" uid="uid://5pivut36llwa" path="res://assets/start.webp" id="2_ooocd"]
+
+[node name="start" type="Node2D"]
+script = ExtResource("1_u4l7m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(441.5, 343.5)
+scale = Vector2(0.856445, 0.668945)
+texture = ExtResource("2_ooocd")
+
+[node name="play" type="Button" parent="."]
+offset_left = 741.0
+offset_top = 318.0
+offset_right = 861.0
+offset_bottom = 393.0
+theme_override_font_sizes/font_size = 48
+text = "Play"
+
+[node name="load" type="Button" parent="."]
+offset_left = 741.0
+offset_top = 421.0
+offset_right = 862.0
+offset_bottom = 496.0
+theme_override_font_sizes/font_size = 48
+text = "Load"
+
+[node name="quit" type="Button" parent="."]
+offset_left = 746.0
+offset_top = 526.0
+offset_right = 866.0
+offset_bottom = 601.0
+theme_override_font_sizes/font_size = 48
+text = "Quit"
+
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="play" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

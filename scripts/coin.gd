@@ -8,10 +8,10 @@ var collected: bool = false  # 防止重复触发
 func _on_body_entered(body: Node2D) -> void:
 	if collected:
 		return  # 如果已经收集过，直接返回
-	print("+1")
+	print(game_manager.game_state['score'])
 	collected = true  # 标记为已经收集
 
-	game_manager.add_point()
+	game_manager.game_state['score'] += 1 
 
 	# 创建一个新的节点来播放音效
 	var temp_audio_player = AudioStreamPlayer2D.new()
