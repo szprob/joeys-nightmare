@@ -1,12 +1,12 @@
 [gd_scene load_steps=17 format=4 uid="uid://dhcoju0cv8u0y"]
 
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_7i5oq"]
-[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/player.tscn" id="1_lcq6n"]
+[ext_resource type="Script" path="res://scripts/singleton/game_manager.gd" id="1_7i5oq"]
+[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/player/player.tscn" id="1_lcq6n"]
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="2_5gyjw"]
 [ext_resource type="PackedScene" uid="uid://do8x2w6t8vgwy" path="res://scenes/platform.tscn" id="3_xmh87"]
 [ext_resource type="PackedScene" uid="uid://dlnwqw1a3g1m3" path="res://scenes/coin.tscn" id="4_wlwoh"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/kill_zone.tscn" id="5_6b38e"]
-[ext_resource type="PackedScene" uid="uid://bxs320cj2nn71" path="res://scenes/slime.tscn" id="6_g04iq"]
+[ext_resource type="PackedScene" uid="uid://bxs320cj2nn71" path="res://scenes/enemy/slime.tscn" id="6_g04iq"]
 [ext_resource type="FontFile" uid="uid://dvlu6bavl0eg7" path="res://assets/fonts/PixelOperator8.ttf" id="7_ucpia"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8553"]
@@ -403,7 +403,6 @@ position = Vector2(326, -40)
 
 [node name="coin2" parent="coins" instance=ExtResource("4_wlwoh")]
 position = Vector2(40, -3)
-collision_mask = 128
 
 [node name="coin3" parent="coins" instance=ExtResource("4_wlwoh")]
 position = Vector2(380, -8)
