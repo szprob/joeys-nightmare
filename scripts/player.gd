@@ -15,9 +15,9 @@ var drop_timer: float = 0.0  # Timer for disabling platform collision
 var original_collision_mask: int
 
 func _ready():
-	print(position)
-	GameManager.load_game_state()
+	print('player ready:',position)
 	position = GameManager.game_state['current_respawn_point']
+	print('set position ready,position:',position)
 	original_collision_mask = collision_mask
 
 func respawn():

@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=4 uid="uid://dhcoju0cv8u0y"]
+[gd_scene load_steps=19 format=4 uid="uid://dhcoju0cv8u0y"]
 
 [ext_resource type="Script" path="res://scripts/singleton/game_manager.gd" id="1_0a83n"]
+[ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_ceorj"]
 [ext_resource type="FontFile" uid="uid://dvlu6bavl0eg7" path="res://assets/fonts/PixelOperator8.ttf" id="2_2xu5y"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/player/player.tscn" id="3_jrcp6"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/dreams/kill_zone.tscn" id="4_4xw42"]
@@ -362,6 +363,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_wpmut")
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_ceorj")
 
 [node name="game_manager" type="Node" parent="."]
 unique_name_in_owner = true

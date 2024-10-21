@@ -47,6 +47,7 @@ size = Vector2(11, 10)
 size = Vector2(14.9996, 14.0679)
 
 [node name="slime" type="CharacterBody2D"]
+z_index = 4
 collision_mask = 129
 script = ExtResource("1_vpqrl")
 

@@ -1,6 +1,5 @@
 extends Node
 
-# game_state
 var game_state  = {
 	'score' = 0 , # 积分
 	'current_respawn_point' = Vector2(-74,-39),# 重生点位置
@@ -24,7 +23,6 @@ func load_game_state():
 		var result = json.parse(save_text)
 		if result == OK:
 			var game_state = json.data
-			print(game_state['current_respawn_point'])
 		else:
 			print("JSON Parse Error at line ",json.get_error_line())
 		file.close()
