@@ -16,14 +16,15 @@ var original_collision_mask: int
 
 func _ready():
 	print(position)
-	GameManager.load_game_state()
-	position = GameManager.game_state['current_respawn_point']
-	original_collision_mask = collision_mask
+	#GameManager.load_game_state()
+	#position = GameManager.game_state['current_respawn_point']
+	#original_collision_mask = collision_mask
 
 func respawn():
 	# 将角色位置设置为重生点
-	position = GameManager.game_state['current_respawn_point']
-	print("Character respawned at ", position)
+	#position = GameManager.game_state['current_respawn_point']
+	#print("Character respawned at ", position)
+	pass
 
 # 开始跳跃的函数
 func start_jump() -> void:
@@ -100,7 +101,7 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.flip_h = false
 	elif direction < 0 :
 		animated_sprite_2d.flip_h = true
-	
+
 	# paly animations
 	if is_on_floor():
 		if direction == 0 :
@@ -114,5 +115,12 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * Consts.SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, Consts.SPEED)
-
+		
+	# push boxes
+	var collision_box = move_and_collide(velocity*delta)
+	if collision_box:
+		var collider_box = collision_box.get_collider()
+		if collider_box is CharacterBody2D:
+			collider_box.push(Vector2(direction, 0))
+	#
 	move_and_slide()
