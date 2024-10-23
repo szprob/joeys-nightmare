@@ -1,17 +1,33 @@
 extends Node2D
 
+var buttons = []
+var current_index = 0
+@onready var new_button: Button = $new
+@onready var load_button: Button = $load
+@onready var quit_button: Button = $quit
 
-@onready var game_manager: Node = %game_manager
+func _ready():
+	buttons = [new_button, load_button, quit_button]  # Replace with your actual button paths
+	buttons[current_index].grab_focus()
 
+func _process(delta):
+	if Input.is_action_just_pressed("down"):
+		current_index = (current_index + 1) % buttons.size()
+		buttons[current_index].grab_focus()
+	elif Input.is_action_just_pressed("up"):
+		current_index = (current_index - 1 + buttons.size()) % buttons.size()
+		buttons[current_index].grab_focus()
+	elif Input.is_action_just_pressed("main_scene_select"):
+		buttons[current_index].emit_signal("pressed")
 
-func _on_play_pressed() -> void:
-	print(GameManager.game_state)
-	GameManager.load_game_state()
+func _on_new_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/dreams/level1/game.tscn")
+
 
 func _on_load_pressed() -> void:
 	GameManager.load_game_state()
-	
+	print('读取成功,复活点:',GameManager.game_state['current_respawn_point'])
+	get_tree().change_scene_to_file("res://scenes/dreams/level1/game.tscn")
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
