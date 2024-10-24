@@ -12,6 +12,7 @@ const DROP_DOWN_TIME = 0.3  # 掉落的禁用时间
 const ONE_WAY_PLATFORM_LAYER =2 
 # slime
 const SLIME_SPPED = 60
-# 其他常量...
+# modules
+const FALLING_TRAP_SPEED = 200
 
 # 如果需要，也可以定义全局变量或函数
