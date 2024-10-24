@@ -1,39 +1,39 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7l0cgfu3na7c"]
 
 [ext_resource type="Script" path="res://scripts/start.gd" id="1_u4l7m"]
-[ext_resource type="Texture2D" uid="uid://3mnnxnuiny8p" path="res://assets/start.webp" id="2_ooocd"]
+[ext_resource type="Texture2D" uid="uid://towjoisj1iyj" path="res://assets/start.png" id="2_8jtq0"]
 
 [node name="start" type="Node2D"]
 script = ExtResource("1_u4l7m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.418403, 0.418403)
-texture = ExtResource("2_ooocd")
+scale = Vector2(0.258, 0.258)
+texture = ExtResource("2_8jtq0")
 centered = false
 
 [node name="new" type="Button" parent="."]
-offset_left = 23.0
-offset_top = 134.0
-offset_right = 303.0
-offset_bottom = 209.0
+offset_left = 15.0
+offset_top = 152.0
+offset_right = 295.0
+offset_bottom = 227.0
 scale = Vector2(0.3, 0.3)
 theme_override_font_sizes/font_size = 48
 text = "NEW GAME"
 
 [node name="load" type="Button" parent="."]
-offset_left = 23.0
-offset_top = 162.0
-offset_right = 166.0
-offset_bottom = 237.0
+offset_left = 15.0
+offset_top = 180.0
+offset_right = 158.0
+offset_bottom = 255.0
 scale = Vector2(0.3, 0.3)
 theme_override_font_sizes/font_size = 48
 text = "LOAD"
 
 [node name="quit" type="Button" parent="."]
-offset_left = 23.0
-offset_top = 188.0
-offset_right = 146.0
-offset_bottom = 263.0
+offset_left = 15.0
+offset_top = 206.0
+offset_right = 138.0
+offset_bottom = 281.0
 scale = Vector2(0.3, 0.3)
 theme_override_font_sizes/font_size = 48
 text = "QUIT"
