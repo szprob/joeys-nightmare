@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7l0cgfu3na7c"]
 
 [ext_resource type="Script" path="res://scripts/start.gd" id="1_u4l7m"]
-[ext_resource type="Texture2D" uid="uid://3mnnxnuiny8p" path="res://assets/start.webp" id="2_ooocd"]
+[ext_resource type="Texture2D" uid="uid://towjoisj1iyj" path="res://assets/start.png" id="2_8jtq0"]
 
 [node name="start" type="Node2D"]
 script = ExtResource("1_u4l7m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.418403, 0.418403)
-texture = ExtResource("2_ooocd")
+scale = Vector2(0.258, 0.258)
+texture = ExtResource("2_8jtq0")
 centered = false
 
 [node name="new" type="Button" parent="."]
