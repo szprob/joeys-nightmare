@@ -9,6 +9,6 @@ script = ExtResource("1_cid4r")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(575, 329)
-scale = Vector2(1.14844, 1.17014)
+scale = Vector2(0.421875, 0.421875)
 texture = ExtResource("2_k6y7v")
+centered = false

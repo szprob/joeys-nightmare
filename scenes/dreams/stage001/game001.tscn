@@ -374,11 +374,6 @@ position = Vector2(0, -1)
 process_callback = 0
 limit_bottom = 150
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
-position = Vector2(114, -151)
-
 [node name="kill_zone" parent="." instance=ExtResource("3_trrvp")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
