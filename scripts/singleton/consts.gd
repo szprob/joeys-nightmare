@@ -14,5 +14,6 @@ const ONE_WAY_PLATFORM_LAYER =2
 const SLIME_SPPED = 60
 # modules
 const FALLING_TRAP_SPEED = 200
+const MOVE_PLATFORM_SPEED = 50
 
 # 如果需要，也可以定义全局变量或函数

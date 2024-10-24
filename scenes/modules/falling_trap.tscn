@@ -35,6 +35,8 @@ one_shot = true
 
 [node name="target" type="Area2D" parent="."]
 position = Vector2(0, 40)
+collision_layer = 0
+collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="target"]
 position = Vector2(-1, -1)

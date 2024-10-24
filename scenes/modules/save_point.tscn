@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://kfdbq76ixwrq"]
 
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="1_h3rku"]
-[ext_resource type="Script" path="res://scripts/save_point.gd" id="1_qeoh3"]
+[ext_resource type="Script" path="res://scripts/modules/save_point.gd" id="1_qeoh3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cergc"]
 size = Vector2(14.5, 15.5)

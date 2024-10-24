@@ -56,7 +56,7 @@ func is_on_one_way_platform() -> bool:
 				pass
 	return false
 
-func _physics_process(delta: float) -> void:
+func handle_move(delta,direction):
 	# Add the gravity.
 	if not is_on_floor():
 		#print(collision_shape_2d.collision_mask)
@@ -91,10 +91,14 @@ func _physics_process(delta: float) -> void:
 		else:
 			jump_buffer_timer = Consts.JUMP_BUFFER_TIME  # 记录跳跃键按下的时间以便缓冲
 	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("left", "right")
+	# Handle movement
+	if direction:
+		velocity.x = direction * Consts.SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, Consts.SPEED)
+	move_and_slide()
 	
+func handle_animation(delta,direction):
 	# Flip sprite based on movement direction 
 	if direction >0 :
 		animated_sprite_2d.flip_h = false
@@ -109,10 +113,16 @@ func _physics_process(delta: float) -> void:
 			animated_sprite_2d.play('move')
 	else:
 		animated_sprite_2d.play(('jump'))
-	# Handle movement
-	if direction:
-		velocity.x = direction * Consts.SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, Consts.SPEED)
+	
+func handle_command(delta):
+	if Input.is_action_pressed("reload"):
+		print("reload")
+		get_tree().reload_current_scene()
 
-	move_and_slide()
+func _physics_process(delta: float) -> void:
+	handle_command(delta)
+	var direction := Input.get_axis("left", "right")
+	handle_move(delta,direction)
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	handle_animation(delta,direction)
