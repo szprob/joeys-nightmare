@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=4 uid="uid://sfv4vhyx6m0a"]
+[gd_scene load_steps=21 format=4 uid="uid://sfv4vhyx6m0a"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_jwyd3"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/player/player.tscn" id="2_sitiw"]
+[ext_resource type="PackedScene" uid="uid://d0atgq0il2toh" path="res://scenes/shader/crt.tscn" id="3_0ugil"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_trrvp"]
 [ext_resource type="PackedScene" uid="uid://dlnwqw1a3g1m3" path="res://scenes/modules/coin.tscn" id="4_5ttrk"]
 [ext_resource type="PackedScene" uid="uid://do8x2w6t8vgwy" path="res://scenes/modules/platform.tscn" id="5_oajdu"]
@@ -373,6 +374,7 @@ position = Vector2(-74, -39)
 position = Vector2(0, -1)
 process_callback = 0
 limit_bottom = 150
+limit_smoothed = true
 
 [node name="kill_zone" parent="." instance=ExtResource("3_trrvp")]
 
@@ -445,3 +447,5 @@ position = Vector2(223, -78)
 
 [node name="FallingTrap" parent="." instance=ExtResource("11_rscsm")]
 position = Vector2(120, -120)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_0ugil")]
