@@ -21,6 +21,15 @@ Music="*res://scenes/music.tscn"
 Consts="*res://scripts/singleton/consts.gd"
 GameManager="*res://scripts/singleton/game_manager.gd"
 
+[display]
+
+window/size/viewport_width=417
+window/size/viewport_height=240
+window/size/mode=3
+window/size/resizable=false
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
