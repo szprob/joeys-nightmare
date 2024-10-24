@@ -26,6 +26,10 @@ GameManager="*res://scripts/singleton/game_manager.gd"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/ninetailsrabbit.character_generator_importer_tool/plugin.cfg")
+
 [global_group]
 
 Player=""
@@ -86,3 +90,4 @@ reload={
 
 textures/canvas_textures/default_texture_filter=0
 2d/snap/snap_2d_transforms_to_pixel=true
+config/ninetailsrabbit.character_generator_importer_tool/update_notification_enabled=true
