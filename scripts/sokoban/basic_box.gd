@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-var gravity = 98
+# var gravity = 98
 var push_strength = 200  # 推动的力度
 var mass = 10
 var friction = 0.5
