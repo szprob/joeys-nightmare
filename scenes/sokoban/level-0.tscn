@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dqy1bj4scr102"]
+[gd_scene load_steps=18 format=4 uid="uid://dqy1bj4scr102"]
 
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/player/player.tscn" id="1_adtox"]
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="2_mfowp"]
@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/sokoban/basic_button.gd" id="5_ily22"]
 [ext_resource type="Script" path="res://scripts/sokoban/door_1.gd" id="6_s6jql"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x6nu6"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lyhke"]
 texture = ExtResource("2_mfowp")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -138,9 +138,10 @@ texture = ExtResource("2_mfowp")
 2:15/0 = 0
 3:15/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_eifkh"]
+[sub_resource type="TileSet" id="TileSet_ud7ar"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_x6nu6")
+physics_layer_0/collision_mask = 129
+sources/0 = SubResource("TileSetAtlasSource_lyhke")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_knjgw"]
 radius = 5.0
@@ -175,12 +176,16 @@ image = SubResource("Image_6qmf8")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyx6v"]
 size = Vector2(49.5, 8)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3pmf"]
+size = Vector2(56, 51)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i8b7l"]
+font_size = 11
+
 [node name="Level-0" type="Node2D"]
 
 [node name="player" parent="." groups=["character"] instance=ExtResource("1_adtox")]
-position = Vector2(93, 44)
-collision_layer = 1
-collision_mask = 131
+position = Vector2(305, 33)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(1, -6)
@@ -189,10 +194,10 @@ position_smoothing_enabled = true
 
 [node name="tiles" type="Node" parent="."]
 
-[node name="static_level_blocks" type="TileMapLayer" parent="tiles"]
-position = Vector2(-33, -13)
-tile_map_data = PackedByteArray("AAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAAAAAAAAAAAPAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAARAAQAAAAAAAAAAAASAAQAAAAAAAAAAAATAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_eifkh")
+[node name="TileMapLayer" type="TileMapLayer" parent="tiles"]
+tile_map_data = PackedByteArray("AAAMAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAAMAAAAAAAAAAAAQAAMAAAAAAAAAAAARAAMAAAAAAAAAAAASAAMAAAAAAAAAAAATAAMAAAAAAAAAAAAUAAMAAAAAAAAAAAAVAAMAAAAAAAAAAAAWAAMAAAAAAAAAAAAXAAMAAAAAAAAAAAAYAAMAAAAAAAAAAAAZAAMAAAAAAAAAAAAaAAMAAAAAAAAAAAAbAAMAAAAAAAAAAAAcAAMAAAAAAAAAAAAdAAMAAAAAAAAAAAAeAAMAAAAAAAAAAAAfAAMAAAAAAAAAAAAgAAMAAAAAAAAAAAALAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAAOAP//AAAAAAAAAAAPAP//AAAAAAAAAAAQAP//AAAAAAAAAAARAP//AAAAAAAAAAASAP//AAAAAAAAAAATAP//AAAAAAAAAAAUAP//AAAAAAAAAAAVAP//AAAAAAAAAAAWAP//AAAAAAAAAAAXAP//AAAAAAAAAAAYAP//AAAAAAAAAAAZAP//AAAAAAAAAAAaAP//AAAAAAAAAAAbAP//AAAAAAAAAAAcAP//AAAAAAAAAAAdAP//AAAAAAAAAAAeAP//AAAAAAAAAAAfAP//AAAAAAAAAAAgAP//AAAAAAAAAAAhAAMAAAAAAAAAAAAiAAMAAAAAAAAAAAAjAAMAAAAAAAAAAAAkAAMAAAAAAAAAAAAlAAMAAAAAAAAAAAAmAAMAAAAAAAAAAAAnAAMAAAAAAAAAAAAoAAMAAAAAAAAAAAApAAMAAAAAAAAAAAAqAAMAAAAAAAAAAAArAAMAAAAAAAAAAAAsAAMAAAAAAAAAAAAtAAMAAAAAAAAAAAAuAAMAAAAAAAAAAAAvAAMAAAAAAAAAAAAwAAMAAAAAAAAAAAAxAAMAAAAAAAAAAAAyAAMAAAAAAAAAAAAzAAMAAAAAAAAAAAA0AAMAAAAAAAAAAAAhAP//AAAAAAAAAAAiAP//AAAAAAAAAAAjAP//AAAAAAAAAAAkAP//AAAAAAAAAAAlAP//AAAAAAAAAAAmAP//AAAAAAAAAAAnAP//AAAAAAAAAAAoAP//AAAAAAAAAAApAP//AAAAAAAAAAAqAP//AAAAAAAAAAArAP//AAAAAAAAAAAsAP//AAAAAAAAAAAtAP//AAAAAAAAAAAuAP//AAAAAAAAAAAvAP//AAAAAAAAAAAwAP//AAAAAAAAAAAxAP//AAAAAAAAAAAyAP//AAAAAAAAAAAzAP//AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_ud7ar")
+collision_visibility_mode = 1
 
 [node name="boxes" type="Node" parent="."]
 
@@ -215,6 +220,7 @@ region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Area2D" type="Area2D" parent="button"]
 position = Vector2(247, 45)
+collision_mask = 129
 script = ExtResource("5_ily22")
 
 [node name="Sprite2D" type="Sprite2D" parent="button/Area2D"]
@@ -229,6 +235,7 @@ shape = SubResource("RectangleShape2D_gcigk")
 
 [node name="door-1" type="StaticBody2D" parent="door"]
 position = Vector2(4, -2)
+collision_mask = 129
 script = ExtResource("6_s6jql")
 
 [node name="Sprite2D" type="Sprite2D" parent="door/door-1"]
@@ -243,3 +250,25 @@ region_rect = Rect2(16.3915, 48, 31.6085, 9)
 position = Vector2(284, 28.75)
 rotation = -1.57079
 shape = SubResource("RectangleShape2D_cyx6v")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="gravity" type="Area2D" parent="Node2D"]
+position = Vector2(380, 30)
+collision_mask = 129
+gravity_space_override = 3
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/gravity"]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_u3pmf")
+
+[node name="Label" type="Label" parent="Node2D/gravity"]
+offset_left = -27.0
+offset_top = -12.0
+offset_right = 27.0
+offset_bottom = 11.0
+text = "gravity up"
+label_settings = SubResource("LabelSettings_i8b7l")
+metadata/_edit_use_anchors_ = true
