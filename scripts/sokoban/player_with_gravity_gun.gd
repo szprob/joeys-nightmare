@@ -143,8 +143,10 @@ func _physics_process(delta: float) -> void:
 	# Flip sprite based on gravity dirction
 	if get_gravity().y>0:
 		animated_sprite_2d.flip_v = false
+		collision_shape_2d.scale.y = 1 
 	elif get_gravity().y<0:
 		animated_sprite_2d.flip_v = true
+		collision_shape_2d.scale.y = -1
 
 	# paly animations
 	if is_on_floor() or is_on_ceiling():
