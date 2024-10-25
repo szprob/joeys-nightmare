@@ -1,9 +1,11 @@
-[gd_scene load_steps=22 format=4 uid="uid://dhcoju0cv8u0y"]
+[gd_scene load_steps=24 format=4 uid="uid://dhcoju0cv8u0y"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_2ix8p"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/player/player.tscn" id="2_abuoa"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_45goe"]
+[ext_resource type="PackedScene" uid="uid://bt5a3og8w7u4e" path="res://scenes/modules/platforms/unvisible_platform.tscn" id="3_hcxfq"]
 [ext_resource type="PackedScene" uid="uid://dlnwqw1a3g1m3" path="res://scenes/modules/coin.tscn" id="4_jxddp"]
+[ext_resource type="PackedScene" uid="uid://b87rogf3b1s12" path="res://scenes/modules/platforms/disapper_platform.tscn" id="4_y74vq"]
 [ext_resource type="PackedScene" uid="uid://do8x2w6t8vgwy" path="res://scenes/modules/platforms/platform.tscn" id="5_3o21u"]
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="6_lkbmr"]
 [ext_resource type="PackedScene" uid="uid://dn6fopj5n8ldj" path="res://scenes/modules/platforms/move_platform.tscn" id="6_lnq0u"]
@@ -455,3 +457,9 @@ position = Vector2(120, -120)
 
 [node name="blink_platform" parent="." instance=ExtResource("13_ibtkj")]
 position = Vector2(-191, -25)
+
+[node name="disapper_platform" parent="." instance=ExtResource("4_y74vq")]
+position = Vector2(-17, -47)
+
+[node name="unvisible_platform" parent="." instance=ExtResource("3_hcxfq")]
+position = Vector2(-17, -27)
