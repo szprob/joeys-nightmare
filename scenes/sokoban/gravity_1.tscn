@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv3nrtrevxkyu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3pmf"]
+size = Vector2(56, 51)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i8b7l"]
+font_size = 11
+
+[node name="gravity-1" type="Area2D"]
+position = Vector2(380, 30)
+collision_mask = 129
+gravity_space_override = 3
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_u3pmf")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -27.0
+offset_top = -12.0
+offset_right = 27.0
+offset_bottom = 11.0
+text = "gravity up"
+label_settings = SubResource("LabelSettings_i8b7l")
+metadata/_edit_use_anchors_ = true
