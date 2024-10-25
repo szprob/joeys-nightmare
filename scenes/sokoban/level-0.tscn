@@ -1,0 +1,225 @@
+[gd_scene load_steps=12 format=4 uid="uid://dqy1bj4scr102"]
+
+[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="1_adtox"]
+[ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="2_mfowp"]
+[ext_resource type="Script" path="res://scripts/sokoban/basic_box.gd" id="3_en5yy"]
+[ext_resource type="Texture2D" uid="uid://kew5lerskks0" path="res://assets/sprites/fruit.png" id="5_c6u3y"]
+[ext_resource type="PackedScene" uid="uid://cpqr3oauheogh" path="res://scenes/sokoban/button-1.tscn" id="5_l4f35"]
+[ext_resource type="PackedScene" uid="uid://8gajxily3trj" path="res://scenes/sokoban/door_1.tscn" id="6_iowa6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lyhke"]
+resource_name = "<null>"
+texture = ExtResource("2_mfowp")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+3:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+6:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ud7ar"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 129
+sources/0 = SubResource("TileSetAtlasSource_lyhke")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_knjgw"]
+radius = 5.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3pmf"]
+size = Vector2(56, 51)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i8b7l"]
+font_size = 11
+
+[node name="Level-0" type="Node2D"]
+
+[node name="player" parent="." groups=["character"] instance=ExtResource("1_adtox")]
+position = Vector2(483, 36)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(1, -6)
+position_smoothing_enabled = true
+
+[node name="tiles" type="Node" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="tiles"]
+tile_map_data = PackedByteArray("AAAMAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAAMAAAAAAAAAAAAQAAMAAAAAAAAAAAARAAMAAAAAAAAAAAASAAMAAAAAAAAAAAATAAMAAAAAAAAAAAAUAAMAAAAAAAAAAAAVAAMAAAAAAAAAAAAWAAMAAAAAAAAAAAAXAAMAAAAAAAAAAAAYAAMAAAAAAAAAAAAZAAMAAAAAAAAAAAAaAAMAAAAAAAAAAAAbAAMAAAAAAAAAAAAcAAMAAAAAAAAAAAAdAAMAAAAAAAAAAAAeAAMAAAAAAAAAAAAfAAMAAAAAAAAAAAAgAAMAAAAAAAAAAAALAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAAOAP//AAAAAAAAAAAPAP//AAAAAAAAAAAQAP//AAAAAAAAAAARAP//AAAAAAAAAAASAP//AAAAAAAAAAATAP//AAAAAAAAAAAUAP//AAAAAAAAAAAVAP//AAAAAAAAAAAWAP//AAAAAAAAAAAXAP//AAAAAAAAAAAYAP//AAAAAAAAAAAZAP//AAAAAAAAAAAaAP//AAAAAAAAAAAbAP//AAAAAAAAAAAcAP//AAAAAAAAAAAdAP//AAAAAAAAAAAeAP//AAAAAAAAAAAfAP//AAAAAAAAAAAgAP//AAAAAAAAAAAhAAMAAAAAAAAAAAAiAAMAAAAAAAAAAAAjAAMAAAAAAAAAAAAkAAMAAAAAAAAAAAAlAAMAAAAAAAAAAAAmAAMAAAAAAAAAAAAnAAMAAAAAAAAAAAAoAAMAAAAAAAAAAAApAAMAAAAAAAAAAAAqAAMAAAAAAAAAAAArAAMAAAAAAAAAAAAsAAMAAAAAAAAAAAAtAAMAAAAAAAAAAAAuAAMAAAAAAAAAAAAvAAMAAAAAAAAAAAAwAAMAAAAAAAAAAAAxAAMAAAAAAAAAAAAyAAMAAAAAAAAAAAAzAAMAAAAAAAAAAAA0AAMAAAAAAAAAAAAhAP//AAAAAAAAAAAiAP//AAAAAAAAAAAjAP//AAAAAAAAAAAkAP//AAAAAAAAAAAlAP//AAAAAAAAAAAmAP//AAAAAAAAAAAnAP//AAAAAAAAAAAoAP//AAAAAAAAAAApAP//AAAAAAAAAAAqAP//AAAAAAAAAAArAP//AAAAAAAAAAAsAP//AAAAAAAAAAAtAP//AAAAAAAAAAAuAP//AAAAAAAAAAAvAP//AAAAAAAAAAAwAP//AAAAAAAAAAAxAP//AAAAAAAAAAAyAP//AAAAAAAAAAAzAP//AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_ud7ar")
+collision_visibility_mode = 1
+
+[node name="boxes" type="Node" parent="."]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="boxes"]
+disable_mode = 2
+collision_mask = 129
+script = ExtResource("3_en5yy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boxes/CharacterBody2D"]
+position = Vector2(216, 41)
+shape = SubResource("CircleShape2D_knjgw")
+
+[node name="Sprite2D" type="Sprite2D" parent="boxes/CharacterBody2D"]
+position = Vector2(216, 39)
+texture = ExtResource("5_c6u3y")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="button" type="Node" parent="."]
+
+[node name="button-1" parent="button" instance=ExtResource("5_l4f35")]
+
+[node name="button-2" parent="button" instance=ExtResource("5_l4f35")]
+position = Vector2(576, 2)
+
+[node name="door" type="Node" parent="."]
+
+[node name="door-1" parent="door" instance=ExtResource("6_iowa6")]
+
+[node name="door-2" parent="door" instance=ExtResource("6_iowa6")]
+position = Vector2(367, -5)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="gravity" type="Area2D" parent="Node2D"]
+position = Vector2(380, 30)
+collision_mask = 129
+gravity_space_override = 3
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/gravity"]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_u3pmf")
+
+[node name="Label" type="Label" parent="Node2D/gravity"]
+offset_left = -27.0
+offset_top = -12.0
+offset_right = 27.0
+offset_bottom = 11.0
+text = "gravity up"
+label_settings = SubResource("LabelSettings_i8b7l")
+metadata/_edit_use_anchors_ = true
+
+[node name="bullet" type="Node" parent="."]

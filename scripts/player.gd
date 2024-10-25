@@ -84,7 +84,6 @@ func handle_move(delta,direction):
 		if is_on_floor():
 			# 如果按住下键并且在平台上，触发下落平台逻辑
 			if Input.is_action_pressed("down") and is_on_one_way_platform():
-				print("Player is on a one-way platform")
 				remove_mask_temporarily(2)
 			else:
 				start_jump()  # 正常跳跃

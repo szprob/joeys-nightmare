@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt5a3og8w7u4e"]
+
+[ext_resource type="Texture2D" uid="uid://8nrryef8gpok" path="res://assets/sprites/platforms.png" id="1_ad16p"]
+[ext_resource type="Script" path="res://scripts/modules/platforms/unvisible_platform.gd" id="1_eytsf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rblat"]
+size = Vector2(46, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mx8s8"]
+size = Vector2(50, 11.5942)
+
+[node name="unvisible_platform" type="AnimatableBody2D"]
+collision_layer = 2
+script = ExtResource("1_eytsf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ad16p")
+region_enabled = true
+region_rect = Rect2(1.11919, 0, 46.2027, 9.25734)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_rblat")
+one_way_collision = true
+
+[node name="detection" type="Area2D" parent="."]
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+position = Vector2(0, 1.78814e-07)
+scale = Vector2(1, 1.035)
+shape = SubResource("RectangleShape2D_mx8s8")
+
+[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
