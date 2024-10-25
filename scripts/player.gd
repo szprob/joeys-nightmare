@@ -5,6 +5,11 @@ extends CharacterBody2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
+# shooting
+@export var cooldown = 0.25
+@export var bullet_scene : PackedScene
+var can_shoot = true
+var facing_direction = 1
 
 var jump_buffer_timer: float = 0.0  # 记录跳跃键按下的时间
 var jump_hold_time: float = 0.0  # 记录跳跃键按住的时间
@@ -20,7 +25,8 @@ func _ready():
 	#GameManager.load_game_state()
 	#position = GameManager.game_state['current_respawn_point']
 	#original_collision_mask = collision_mask
-
+	$GunCooldown.wait_time = cooldown
+	
 func respawn():
 	# 将角色位置设置为重生点
 	#position = GameManager.game_state['current_respawn_point']
@@ -35,6 +41,29 @@ func start_jump() -> void:
 		velocity.y = -1 * Consts.JUMP_VELOCITY
 	jump_hold_time = 0.0  # 重置跳跃键按住时间
 	is_jumping = true  # 标记为跳跃状态
+	
+func shoot(Input) -> void:
+	var shoot_direction = Vector2(facing_direction, 0)
+	if not can_shoot:
+		return
+	can_shoot = false
+	$GunCooldown.start()
+	var b = bullet_scene.instantiate()
+	get_tree().root.add_child(b)
+	if not (Input.is_action_pressed('up') or Input.is_action_pressed('down') or 
+			Input.is_action_pressed('left') or Input.is_action_pressed('right')):
+		b.start(position + Vector2(0, -8), shoot_direction)
+	else:
+		shoot_direction = Vector2(0,0)
+		if Input.is_action_pressed("ui_up"):
+			shoot_direction.y = -1
+		if Input.is_action_pressed("ui_down"):
+			shoot_direction.y = 1
+		if Input.is_action_pressed("ui_left"):
+			shoot_direction.x = -1
+		if Input.is_action_pressed("ui_right"):
+			shoot_direction.x = 1
+		b.start(position + Vector2(0, -8), shoot_direction)
 
 # Start dropping through the platform
 func remove_mask_temporarily(mask) -> void:
@@ -63,6 +92,7 @@ func is_on_one_way_platform() -> bool:
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
+	# TODO: change all is_on_floor to is_on_platform
 	if not (is_on_floor() and is_on_ceiling()):
 		#print(collision_shape_2d.collision_mask)
 		velocity += get_gravity() * delta
@@ -99,6 +129,10 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right")
+	
+	update_face_direction(direction)
+	if Input.is_action_pressed("shoot"):
+		shoot(Input)
 	
 	# Flip sprite based on movement direction 
 	if direction >0 :
@@ -137,4 +171,11 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-	
+func update_face_direction(direction):
+	if direction != 0:
+		facing_direction = direction	
+
+
+func _on_gun_cooldown_timeout() -> void:
+	can_shoot = true
+	pass # Replace with function body.
