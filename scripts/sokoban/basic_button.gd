@@ -1,7 +1,7 @@
 extends Area2D
 
 #@export door
-@export var door: NodePath = "../../door/door-1"
+@export var door: NodePath
 func _ready() -> void:
 	# 使用 Callable 连接信号
 	connect("body_entered", Callable(self, "_on_body_entered"))
