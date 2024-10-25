@@ -7,15 +7,15 @@ extends CharacterBody2D
 
 # shooting
 @export var cooldown = 0.25
-@export var bullet_scene : PackedScene
+@export var bullet_scene: PackedScene
 var can_shoot = true
 var facing_direction = 1
 
-var jump_buffer_timer: float = 0.0  # 记录跳跃键按下的时间
-var jump_hold_time: float = 0.0  # 记录跳跃键按住的时间
-var is_jumping: bool = false  # 标记是否正在跳跃
-var is_dropping: bool = false  # Track if the player is dropping through a platform
-var drop_timer: float = 0.0  # Timer for disabling platform collision
+var jump_buffer_timer: float = 0.0 # 记录跳跃键按下的时间
+var jump_hold_time: float = 0.0 # 记录跳跃键按住的时间
+var is_jumping: bool = false # 标记是否正在跳跃
+var is_dropping: bool = false # Track if the player is dropping through a platform
+var drop_timer: float = 0.0 # Timer for disabling platform collision
 # 保存原始的碰撞掩码
 var original_collision_mask: int
 
@@ -35,12 +35,13 @@ func respawn():
 
 # 开始跳跃的函数
 func start_jump() -> void:
-	if get_gravity().y > 0:
-		velocity.y = Consts.JUMP_VELOCITY # 重力向下，跳跃速度向上
-	else:
-		velocity.y = -1 * Consts.JUMP_VELOCITY
-	jump_hold_time = 0.0  # 重置跳跃键按住时间
-	is_jumping = true  # 标记为跳跃状态
+	print('start jump')
+	# 获取重力方向的单位向量
+	var gravity_dir = get_gravity().normalized()
+	# 跳跃方向与重力方向相反
+	velocity -= gravity_dir * Consts.JUMP_VELOCITY
+	jump_hold_time = 0.0 # 重置跳跃键按住时间
+	is_jumping = true # 标记为跳跃状态
 	
 func shoot(Input) -> void:
 	var shoot_direction = Vector2(facing_direction, 0)
@@ -50,11 +51,11 @@ func shoot(Input) -> void:
 	$GunCooldown.start()
 	var b = bullet_scene.instantiate()
 	get_tree().root.add_child(b)
-	if not (Input.is_action_pressed('up') or Input.is_action_pressed('down') or 
+	if not (Input.is_action_pressed('up') or Input.is_action_pressed('down') or
 			Input.is_action_pressed('left') or Input.is_action_pressed('right')):
 		b.start(position + Vector2(0, -8), shoot_direction)
 	else:
-		shoot_direction = Vector2(0,0)
+		shoot_direction = Vector2(0, 0)
 		if Input.is_action_pressed("ui_up"):
 			shoot_direction.y = -1
 		if Input.is_action_pressed("ui_down"):
@@ -75,7 +76,7 @@ func remove_mask_temporarily(mask) -> void:
 
 # 检测玩家是否站在单向平台上
 func is_on_one_way_platform() -> bool:
-	if is_on_floor():
+	if is_on_tilemap():
 		var collision = get_last_slide_collision()
 		if collision:
 			var collider = collision.get_collider()
@@ -92,67 +93,70 @@ func is_on_one_way_platform() -> bool:
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	# TODO: change all is_on_floor to is_on_platform
-	if not (is_on_floor() and is_on_ceiling()):
+
+	if not is_on_tilemap():
 		#print(collision_shape_2d.collision_mask)
 		velocity += get_gravity() * delta
-		jump_buffer_timer -= delta  # 在空中时，减少缓冲计时器
+		jump_buffer_timer -= delta # 在空中时，减少缓冲计时器
 		
 		# 如果玩家正在跳跃并且继续按住跳跃键，增加跳跃高度
 		if jump_hold_time < Consts.MAX_JUMP_HOLD_TIME and abs(velocity.y) > abs(Consts.MAX_JUMP_VELOCITY):
 			# 根据 velocity.y 的方向设置目标值
 			var target_velocity = Consts.MAX_JUMP_VELOCITY if velocity.y > 0 else -Consts.MAX_JUMP_VELOCITY
-			velocity.y = lerp(velocity.y, target_velocity, delta * 2)  # 平滑增加跳跃高度
+			velocity.y = lerp(velocity.y, target_velocity, delta * 2) # 平滑增加跳跃高度
 		else:
-			is_jumping = false  # 玩家松开跳跃键，停止跳跃高度增加
+			is_jumping = false # 玩家松开跳跃键，停止跳跃高度增加
 		
-	else :
+	else:
 		# 角色刚落地时，检查是否在缓冲时间内按下过跳跃键
 		if jump_buffer_timer > 0:
-			start_jump()  # 如果缓冲计时器大于0，则自动跳跃
-			jump_buffer_timer = 0  # 跳跃后重置计时器
+			start_jump() # 如果缓冲计时器大于0，则自动跳跃
+			jump_buffer_timer = 0 # 跳跃后重置计时器
 
 
 	# Handle jump input with buffering
 	if Input.is_action_just_pressed("jump"):
-		if is_on_floor() or is_on_ceiling():
+		if is_on_tilemap():
 			# 如果按住下键并且在平台上，触发下落平台逻辑
 			if Input.is_action_pressed("down") and is_on_one_way_platform():
 				print("Player is on a one-way platform")
 				remove_mask_temporarily(2)
 			else:
-				start_jump()  # 正常跳跃
+				start_jump() # 正常跳跃
 			start_jump()
 		else:
-			jump_buffer_timer = Consts.JUMP_BUFFER_TIME  # 记录跳跃键按下的时间以便缓冲
+			jump_buffer_timer = Consts.JUMP_BUFFER_TIME # 记录跳跃键按下的时间以便缓冲
 	#
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("left", "right")
+	var direction := Vector2(
+		Input.get_axis("left", "right"),
+		Input.get_axis("up", "down")
+	)
 	
-	update_face_direction(direction)
+	update_face_direction(direction.x)
 	if Input.is_action_pressed("shoot"):
 		shoot(Input)
 	
 	# Flip sprite based on movement direction 
-	if direction >0 :
+	if direction.x > 0:
 		animated_sprite_2d.flip_h = false
-	elif direction < 0 :
+	elif direction.x < 0:
 		animated_sprite_2d.flip_h = true
 		
 	# Flip sprite based on gravity dirction
-	if get_gravity().y>0:
+	if get_gravity().y > 0:
 		animated_sprite_2d.flip_v = false
-		collision_shape_2d.scale.y = 1 
-	elif get_gravity().y<0:
+		collision_shape_2d.scale.y = 1
+	elif get_gravity().y < 0:
 		animated_sprite_2d.flip_v = true
 		collision_shape_2d.scale.y = -1
 
 	# paly animations
-	if is_on_floor() or is_on_ceiling():
-		if direction == 0 :
+	if is_on_tilemap(): # TODO: fix, 检查是不是在平台上
+		if direction.x == 0 and direction.y == 0:
 			animated_sprite_2d.play('idle')
-		else :
+		else:
 			animated_sprite_2d.play('move')
 	else:
 		animated_sprite_2d.play(('jump'))
@@ -160,27 +164,49 @@ func _physics_process(delta: float) -> void:
 
 	# Handle movement
 	if direction:
-		velocity.x = direction * Consts.SPEED
+		# 根据重力方向调整移动
+		if abs(get_gravity().y) > abs(get_gravity().x):
+			# 垂直重力情况（向上或向下）
+			velocity.x = direction.x * Consts.SPEED
+		else:
+			# 水平重力情况（向左或向右）
+			velocity.y = direction.y * Consts.SPEED # 使用 direction.y 来控制上下移动
 	else:
-		velocity.x = move_toward(velocity.x, 0, Consts.SPEED)
+		if abs(get_gravity().y) > abs(get_gravity().x):
+			velocity.x = move_toward(velocity.x, 0, Consts.SPEED)
+		else:
+			velocity.y = move_toward(velocity.y, 0, Consts.SPEED)
 	
 	# push boxes
-	var collision_box = move_and_collide(velocity*delta)
+	var collision_box = move_and_collide(velocity * delta)
 	if collision_box:
 		var collider_box = collision_box.get_collider()
 		if collider_box is CharacterBody2D and collider_box.is_in_group('pushable'):
-			collider_box.push(Vector2(direction, 0))
+			collider_box.push(Vector2(direction))
 	
 	# print player status
-	#print(get_gravity())
+	print(get_gravity())
 	
 	move_and_slide()
 
 func update_face_direction(direction):
 	if direction != 0:
-		facing_direction = direction	
+		facing_direction = direction
 
 
 func _on_gun_cooldown_timeout() -> void:
 	can_shoot = true
 	pass # Replace with function body.
+
+
+func is_on_tilemap() -> bool:
+	# 根据重力方向设置射线方向
+	var gravity_dir = get_gravity().normalized()
+	ray_cast_2d.target_position = gravity_dir * 20
+
+	if ray_cast_2d.is_colliding():
+		var collider = ray_cast_2d.get_collider()
+
+		if collider is TileMapLayer:
+			return true
+	return false
