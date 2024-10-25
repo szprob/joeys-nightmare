@@ -4,6 +4,10 @@ var game_state  = {
 	'score' = 0 , # 积分
 	'current_respawn_point' = Vector2(-74,-39),# 重生点位置
 	'archive_index' = 1 ,# 存档索引
+	# settings
+	'fullscreen_option' = 0,#'WINDOWED',
+	'music_volume_slider' = 100,
+	'sfx_volume_slider' = 100,
 }
 
 func save_game_state():

@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Joeys Nightmare"
-run/main_scene="res://scenes/splash_screen.tscn"
+run/main_scene="res://scenes/main/splash_screen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout=""
 
 [autoload]
 
@@ -27,7 +31,7 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/resizable=false
 window/stretch/mode="canvas_items"
-window/stretch/scale=3.0
+window/stretch/scale=4.0
 window/stretch/scale_mode="integer"
 
 [editor]

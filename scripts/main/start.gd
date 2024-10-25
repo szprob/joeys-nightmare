@@ -4,10 +4,12 @@ var buttons = []
 var current_index = 0
 @onready var new_button: Button = $new
 @onready var load_button: Button = $load
+@onready var set_button: Button = $set
 @onready var quit_button: Button = $quit
 
+
 func _ready():
-	buttons = [new_button, load_button, quit_button]  # Replace with your actual button paths
+	buttons = [new_button, load_button,set_button, quit_button]  # Replace with your actual button paths
 	buttons[current_index].grab_focus()
 
 func _process(delta):
@@ -31,3 +33,7 @@ func _on_load_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_set_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main/settings.tscn")
