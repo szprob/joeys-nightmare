@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d0atgq0il2toh" path="res://scenes/shader/crt.tscn" id="3_0ugil"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_trrvp"]
 [ext_resource type="PackedScene" uid="uid://dlnwqw1a3g1m3" path="res://scenes/modules/coin.tscn" id="4_5ttrk"]
-[ext_resource type="PackedScene" uid="uid://do8x2w6t8vgwy" path="res://scenes/modules/platform.tscn" id="5_oajdu"]
+[ext_resource type="PackedScene" uid="uid://do8x2w6t8vgwy" path="res://scenes/modules/platforms/platform.tscn" id="5_oajdu"]
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="6_2sq1f"]
 [ext_resource type="PackedScene" uid="uid://bxs320cj2nn71" path="res://scenes/enemy/slime.tscn" id="7_dhv15"]
 [ext_resource type="FontFile" uid="uid://dvlu6bavl0eg7" path="res://assets/fonts/PixelOperator8.ttf" id="8_qr2vs"]

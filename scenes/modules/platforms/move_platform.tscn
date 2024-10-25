@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dn6fopj5n8ldj"]
 
-[ext_resource type="Script" path="res://scripts/modules/move_platform.gd" id="1_euj2w"]
+[ext_resource type="Script" path="res://scripts/modules/platforms/move_platform.gd" id="1_euj2w"]
 [ext_resource type="Texture2D" uid="uid://8nrryef8gpok" path="res://assets/sprites/platforms.png" id="2_3knhu"]
 [ext_resource type="Texture2D" uid="uid://78w4owvufdht" path="res://icon.svg" id="3_ihbd3"]
 
