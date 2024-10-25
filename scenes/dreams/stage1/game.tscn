@@ -1,7 +1,6 @@
 [gd_scene load_steps=24 format=4 uid="uid://dhcoju0cv8u0y"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_2ix8p"]
-[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/player/player.tscn" id="2_abuoa"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_45goe"]
 [ext_resource type="PackedScene" uid="uid://bt5a3og8w7u4e" path="res://scenes/modules/platforms/unvisible_platform.tscn" id="3_hcxfq"]
 [ext_resource type="PackedScene" uid="uid://dlnwqw1a3g1m3" path="res://scenes/modules/coin.tscn" id="4_jxddp"]
@@ -15,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b6pq8l7ym5nuh" path="res://scenes/modules/teleport.tscn" id="10_qycbb"]
 [ext_resource type="PackedScene" uid="uid://bdap03ne0xoh3" path="res://scenes/modules/falling_trap.tscn" id="11_7nlex"]
 [ext_resource type="PackedScene" uid="uid://gbcy7ojh6h3w" path="res://scenes/modules/platforms/blink_platform.tscn" id="13_ibtkj"]
+[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/player/player.tscn" id="15_rx0vs"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8553"]
 distance = -68.0
@@ -370,16 +370,6 @@ sources/0 = SubResource("TileSetAtlasSource_pwg2v")
 [node name="Game" type="Node2D"]
 script = ExtResource("1_2ix8p")
 
-[node name="player" parent="." instance=ExtResource("2_abuoa")]
-position = Vector2(-89, -57)
-
-[node name="Camera2D" type="Camera2D" parent="player"]
-position = Vector2(-1, -20)
-process_callback = 0
-limit_bottom = 150
-limit_smoothed = true
-position_smoothing_enabled = true
-
 [node name="kill_zone" parent="." instance=ExtResource("3_45goe")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
@@ -463,3 +453,13 @@ position = Vector2(-17, -47)
 
 [node name="unvisible_platform" parent="." instance=ExtResource("3_hcxfq")]
 position = Vector2(-17, -27)
+
+[node name="player" parent="." instance=ExtResource("15_rx0vs")]
+position = Vector2(-89, -55)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(0, -5)
+process_callback = 0
+limit_bottom = 150
+limit_smoothed = true
+position_smoothing_enabled = true
