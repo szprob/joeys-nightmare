@@ -168,8 +168,11 @@ func _physics_process(delta: float) -> void:
 	var collision_box = move_and_collide(velocity*delta)
 	if collision_box:
 		var collider_box = collision_box.get_collider()
-		if collider_box is CharacterBody2D:
+		if collider_box is CharacterBody2D and collider_box.is_in_group('pushable'):
 			collider_box.push(Vector2(direction, 0))
+	
+	# print player status
+	#print(get_gravity())
 	
 	move_and_slide()
 
