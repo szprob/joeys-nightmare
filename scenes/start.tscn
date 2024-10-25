@@ -1,41 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7l0cgfu3na7c"]
+[gd_scene load_steps=4 format=3 uid="uid://c7l0cgfu3na7c"]
 
 [ext_resource type="Script" path="res://scripts/start.gd" id="1_u4l7m"]
-[ext_resource type="Texture2D" uid="uid://5pivut36llwa" path="res://assets/start.webp" id="2_ooocd"]
+[ext_resource type="Texture2D" uid="uid://towjoisj1iyj" path="res://assets/start.png" id="2_8jtq0"]
+[ext_resource type="PackedScene" uid="uid://d0atgq0il2toh" path="res://scenes/shader/crt.tscn" id="3_t4uvm"]
 
 [node name="start" type="Node2D"]
+position = Vector2(0, -3)
 script = ExtResource("1_u4l7m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(441.5, 343.5)
-scale = Vector2(0.856445, 0.668945)
-texture = ExtResource("2_ooocd")
+position = Vector2(0, -9)
+scale = Vector2(0.293447, 0.293447)
+texture = ExtResource("2_8jtq0")
+centered = false
 
-[node name="play" type="Button" parent="."]
-offset_left = 741.0
-offset_top = 318.0
-offset_right = 861.0
-offset_bottom = 393.0
+[node name="new" type="Button" parent="."]
+offset_left = 15.0
+offset_top = 152.0
+offset_right = 295.0
+offset_bottom = 227.0
+scale = Vector2(0.3, 0.3)
 theme_override_font_sizes/font_size = 48
-text = "Play"
+text = "NEW GAME"
 
 [node name="load" type="Button" parent="."]
-offset_left = 741.0
-offset_top = 421.0
-offset_right = 862.0
-offset_bottom = 496.0
+offset_left = 15.0
+offset_top = 180.0
+offset_right = 158.0
+offset_bottom = 255.0
+scale = Vector2(0.3, 0.3)
 theme_override_font_sizes/font_size = 48
-text = "Load"
+text = "LOAD"
 
 [node name="quit" type="Button" parent="."]
-offset_left = 746.0
-offset_top = 526.0
-offset_right = 866.0
-offset_bottom = 601.0
+offset_left = 15.0
+offset_top = 206.0
+offset_right = 138.0
+offset_bottom = 281.0
+scale = Vector2(0.3, 0.3)
 theme_override_font_sizes/font_size = 48
-text = "Quit"
+text = "QUIT"
 
-[connection signal="pressed" from="play" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[node name="CRT" parent="." instance=ExtResource("3_t4uvm")]
+
+[connection signal="pressed" from="new" to="." method="_on_new_pressed"]
 [connection signal="pressed" from="load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv4qux6l7p60q"]
+
+[ext_resource type="Script" path="res://scripts/splash_screen.gd" id="1_cid4r"]
+[ext_resource type="Texture2D" uid="uid://calyp4j8mdjjb" path="res://assets/a_star.webp" id="2_k6y7v"]
+[ext_resource type="PackedScene" uid="uid://d0atgq0il2toh" path="res://scenes/shader/crt.tscn" id="3_garda"]
+
+[node name="splash_screen" type="Node2D"]
+scale = Vector2(1.01756, 1.00604)
+script = ExtResource("1_cid4r")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+scale = Vector2(0.469599, 0.469599)
+texture = ExtResource("2_k6y7v")
+centered = false
+
+[node name="CRT" parent="." instance=ExtResource("3_garda")]

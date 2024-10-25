@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://eyr6js1ntbm8" path="res://assets/sprites/slime_green.png" id="1_2sok0"]
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1_vpqrl"]
-[ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/dreams/kill_zone.tscn" id="2_53w07"]
+[ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="2_53w07"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_olyu5"]
 atlas = ExtResource("1_2sok0")
@@ -47,6 +47,7 @@ size = Vector2(11, 10)
 size = Vector2(14.9996, 14.0679)
 
 [node name="slime" type="CharacterBody2D"]
+z_index = 4
 collision_mask = 129
 script = ExtResource("1_vpqrl")
 

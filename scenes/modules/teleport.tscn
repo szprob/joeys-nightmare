@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6pq8l7ym5nuh"]
+
+[ext_resource type="Script" path="res://scripts/modules/teleport.gd" id="1_th2bk"]
+[ext_resource type="Texture2D" uid="uid://78w4owvufdht" path="res://icon.svg" id="2_ts3ne"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ylf3b"]
+size = Vector2(30, 27)
+
+[node name="teleport" type="Area2D"]
+collision_mask = 129
+script = ExtResource("1_th2bk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ylf3b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_ts3ne")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
