@@ -1,17 +1,18 @@
-[gd_scene load_steps=21 format=4 uid="uid://dhcoju0cv8u0y"]
+[gd_scene load_steps=22 format=4 uid="uid://dhcoju0cv8u0y"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_2ix8p"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/player/player.tscn" id="2_abuoa"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_45goe"]
 [ext_resource type="PackedScene" uid="uid://dlnwqw1a3g1m3" path="res://scenes/modules/coin.tscn" id="4_jxddp"]
-[ext_resource type="PackedScene" uid="uid://do8x2w6t8vgwy" path="res://scenes/modules/platform.tscn" id="5_3o21u"]
+[ext_resource type="PackedScene" uid="uid://do8x2w6t8vgwy" path="res://scenes/modules/platforms/platform.tscn" id="5_3o21u"]
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="6_lkbmr"]
-[ext_resource type="PackedScene" uid="uid://dn6fopj5n8ldj" path="res://scenes/modules/move_platform.tscn" id="6_lnq0u"]
+[ext_resource type="PackedScene" uid="uid://dn6fopj5n8ldj" path="res://scenes/modules/platforms/move_platform.tscn" id="6_lnq0u"]
 [ext_resource type="PackedScene" uid="uid://bxs320cj2nn71" path="res://scenes/enemy/slime.tscn" id="7_tn02o"]
 [ext_resource type="FontFile" uid="uid://dvlu6bavl0eg7" path="res://assets/fonts/PixelOperator8.ttf" id="8_6417c"]
 [ext_resource type="PackedScene" uid="uid://kfdbq76ixwrq" path="res://scenes/modules/save_point.tscn" id="9_s7j6s"]
 [ext_resource type="PackedScene" uid="uid://b6pq8l7ym5nuh" path="res://scenes/modules/teleport.tscn" id="10_qycbb"]
 [ext_resource type="PackedScene" uid="uid://bdap03ne0xoh3" path="res://scenes/modules/falling_trap.tscn" id="11_7nlex"]
+[ext_resource type="PackedScene" uid="uid://gbcy7ojh6h3w" path="res://scenes/modules/platforms/blink_platform.tscn" id="13_ibtkj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8553"]
 distance = -68.0
@@ -372,7 +373,6 @@ position = Vector2(-89, -57)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(-1, -20)
-zoom = Vector2(4, 4)
 process_callback = 0
 limit_bottom = 150
 limit_smoothed = true
@@ -452,3 +452,6 @@ position = Vector2(223, -78)
 
 [node name="FallingTrap" parent="." instance=ExtResource("11_7nlex")]
 position = Vector2(120, -120)
+
+[node name="blink_platform" parent="." instance=ExtResource("13_ibtkj")]
+position = Vector2(-191, -25)
