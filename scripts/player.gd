@@ -16,7 +16,7 @@ var original_collision_mask: int
 
 func _ready():
 	print('player ready:',position)
-	position = GameManager.game_state['current_respawn_point']
+	#position = GameManager.game_state['current_respawn_point']
 	print('set position ready,position:',position)
 	original_collision_mask = collision_mask
 
@@ -100,7 +100,7 @@ func handle_move(delta,direction):
 	
 func handle_animation(delta,direction):
 	# Flip sprite based on movement direction 
-	if direction >0 :
+	if direction > 0 :
 		animated_sprite_2d.flip_h = false
 	elif direction < 0 :
 		animated_sprite_2d.flip_h = true
