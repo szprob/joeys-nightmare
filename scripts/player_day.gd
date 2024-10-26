@@ -5,7 +5,7 @@ var face_direction: Vector2 = Vector2.ZERO
 var is_moving = false
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-
+	
 
 func handle_direction():
 	move_direction.x = Input.get_axis("left", "right")
@@ -58,8 +58,17 @@ func handle_animation():
 
 
 func _physics_process(delta: float) -> void:
+	if GameManager.game_state.get('day_phase') < 1 and GameManager.game_state['is_day_player_chatting'] == false:
+		GameManager.game_state['is_day_player_chatting'] = true
+		GameManager.show_dialogue(load("res://scenes/day/dialogues/openning.dialogue"), "title")
+		GameManager.game_state['day_phase'] = 1
 	handle_direction()
 	handle_move()
 	handle_animation()
-		
 	
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	print("found player!")
+	if Input.is_action_pressed("shoot"):
+		GameManager.game_state['is_day_player_chatting'] = true
+		GameManager.show_dialogue(load("res://scenes/day/dialogues/pick_up_gun.dialogue"), "title")
