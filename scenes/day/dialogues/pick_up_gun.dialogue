@@ -1,0 +1,9 @@
+~ title
+Joey: This is my gun! [wait=1][speed=0.2]Should I take it away?
+- Yes
+	Joey: [shake rate=20 level=10]Cool.[/shake]
+	set GameManager.game_state['day_phase'] = 2
+	=> END
+- No
+	Joey: [wave amp=25 freq=5]Fuck![/wave]
+=> END
