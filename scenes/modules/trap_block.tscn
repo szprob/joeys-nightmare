@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://duokhi3tbe3f3"]
+
+[ext_resource type="Texture2D" uid="uid://2aksqmjlutcn" path="res://assets/sprites/slime_purple.png" id="2_hi4od"]
+[ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_51pm2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w0qlj"]
+radius = 5.0
+
+[node name="BlockTrap" type="Area2D"]
+collision_mask = 128
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 5.72205e-06)
+texture = ExtResource("2_hi4od")
+region_enabled = true
+region_rect = Rect2(29, 35, 14, 13)
+
+[node name="kill_zone" parent="." instance=ExtResource("3_51pm2")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
+shape = SubResource("CircleShape2D_w0qlj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="ready" from="." to="." method="_on_ready"]
