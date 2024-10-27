@@ -187,11 +187,12 @@ position = Vector2(366, -35)
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="gravity-1" parent="Node2D" instance=ExtResource("7_u8er8")]
+position = Vector2(379, 17)
 
 [node name="bullet" type="Node" parent="."]
 
 [node name="player_with_gravity" parent="." instance=ExtResource("1_adtox")]
-position = Vector2(161, 27)
+position = Vector2(515, 14)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
 position_smoothing_enabled = true
@@ -200,3 +201,8 @@ position_smoothing_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
 shape = SubResource("WorldBoundaryShape2D_t8q86")
+
+[node name="gravity-1" parent="." instance=ExtResource("7_u8er8")]
+position = Vector2(749, 16)
+gravity_point_center = Vector2(0, 1)
+gravity_direction = Vector2(0, 1)

@@ -23,7 +23,7 @@ buses/default_bus_layout=""
 
 Music="*res://scenes/music.tscn"
 Consts="*res://scripts/singleton/consts.gd"
-GameManager="*res://scripts/singleton/game_manager.gd"
+GameManager="res://scripts/singleton/game_manager.gd"
 
 [display]
 
@@ -116,6 +116,7 @@ esc={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
 2d/snap/snap_2d_transforms_to_pixel=true
 
 [sz]
