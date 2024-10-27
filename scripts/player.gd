@@ -2,10 +2,8 @@ extends CharacterBody2D
 
 #@onready var game_manager: Node = %game_manager
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var init_flip_h : bool = animated_sprite_2d.flip_h
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-
 
 
 var jump_buffer_timer: float = 0.0  # 记录跳跃键按下的时间
@@ -102,9 +100,9 @@ func handle_move(delta,direction):
 func handle_animation(delta,direction):
 	# Flip sprite based on movement direction 
 	if direction > 0 :
-		animated_sprite_2d.flip_h = init_flip_h
+		animated_sprite_2d.flip_h = false
 	elif direction < 0 :
-		animated_sprite_2d.flip_h = !init_flip_h
+		animated_sprite_2d.flip_h = true
 	
 	# paly animations
 	if is_on_floor():

@@ -367,7 +367,7 @@ texture = ExtResource("6_lkbmr")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_pwg2v")
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" groups=["scan_lines"]]
 script = ExtResource("1_2ix8p")
 
 [node name="kill_zone" parent="." instance=ExtResource("3_45goe")]
