@@ -1605,7 +1605,8 @@ tile_set = SubResource("TileSet_rvt4p")
 position = Vector2(618, -199)
 
 [node name="block_trap2" parent="block_traps" instance=ExtResource("8_odjhm")]
-position = Vector2(763, -199)
+position = Vector2(759, -209)
+scale = Vector2(1, 2.475)
 
 [node name="falling_traps" type="Node" parent="."]
 
@@ -1613,10 +1614,19 @@ position = Vector2(763, -199)
 position = Vector2(508, -134)
 rotation = -1.5708
 
+[node name="FallingTrap2" parent="falling_traps" instance=ExtResource("9_sk006")]
+position = Vector2(961, -74)
+rotation = 1.56999
+
 [node name="CRT" parent="." instance=ExtResource("3_0ugil")]
 
-[node name="gravity-1" parent="." instance=ExtResource("10_1fij6")]
-position = Vector2(564, -216)
+[node name="gravity" type="Node" parent="."]
 
-[node name="gravity-2" parent="." instance=ExtResource("10_1fij6")]
-position = Vector2(620, -214)
+[node name="gravity-1" parent="gravity" instance=ExtResource("10_1fij6")]
+position = Vector2(764, -217)
+
+[node name="gravity-2" parent="gravity" instance=ExtResource("10_1fij6")]
+position = Vector2(765, -151)
+
+[node name="gravity-3" parent="gravity" instance=ExtResource("10_1fij6")]
+position = Vector2(672, -89)
