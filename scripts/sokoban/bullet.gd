@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 	var bullet_collision = move_and_collide(speed * direction * delta)
 	if bullet_collision: # 首先检查是否发生碰撞
 		var collider = bullet_collision.get_collider() # 获取碰撞对象
-		if collider is TileMapLayer: # 检查碰撞对象是否为 TileMaplayer
+		if collider is TileMapLayer or collider is StaticBody2D: # 检查碰撞对象是否为 TileMaplayer
 			print('碰撞到地图')
 			var collision_normal = bullet_collision.get_normal()
 			var gravity_scene = preload("res://scenes/sokoban/gravity_1.tscn")
