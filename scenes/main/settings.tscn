@@ -11,40 +11,27 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2koos")
 
-[node name="fullscreen_option" type="OptionButton" parent="."]
+[node name="scanlines" type="CheckButton" parent="."]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 48.0
-offset_right = 34.0
-offset_bottom = 68.0
-
-[node name="music_volume_slider" type="HSlider" parent="."]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 86.0
-offset_right = 20.0
-offset_bottom = 102.0
-step = 5.0
-value = 100.0
-
-[node name="sfx_volume_slider" type="HSlider" parent="."]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 124.0
-offset_right = 21.0
-offset_bottom = 140.0
-step = 5.0
-value = 100.0
+offset_top = 32.0
+offset_right = 124.0
+offset_bottom = 63.0
+text = "scan lines"
 
 [node name="back_button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 155.0
-offset_right = 70.0
-offset_bottom = 186.0
+offset_left = 4.0
+offset_top = 70.0
+offset_right = 73.0
+offset_bottom = 101.0
 text = "confirm"
 
-[connection signal="item_selected" from="fullscreen_option" to="." method="_on_fullscreen_option_item_selected"]
-[connection signal="value_changed" from="music_volume_slider" to="." method="_on_music_volume_slider_value_changed"]
-[connection signal="value_changed" from="sfx_volume_slider" to="." method="_on_sfx_volume_slider_value_changed"]
+[node name="fullscreen" type="CheckButton" parent="."]
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 24.0
+text = "fullscreen"
+
+[connection signal="toggled" from="scanlines" to="." method="_on_scan_lines_toggled"]
 [connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]
+[connection signal="toggled" from="fullscreen" to="." method="_on_fullscreen_toggled"]
