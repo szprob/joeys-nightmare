@@ -1,3 +1,4 @@
+# @tool
 extends Area2D
 
 var debug_draw_enabled = true
@@ -32,6 +33,3 @@ func _draw():
 		
 		draw_line(end_point, head_point1, arrow_color, 2.0)
 		draw_line(end_point, head_point2, arrow_color, 2.0)
-		
-
-	
