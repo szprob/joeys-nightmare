@@ -34,4 +34,4 @@ func _process(delta):
 
 func go_to_main_menu():
 	# 切换到主菜单场景
-	get_tree().change_scene_to_file("res://scenes/start.tscn")
+	get_tree().change_scene_to_file("res://scenes/main/start.tscn")
