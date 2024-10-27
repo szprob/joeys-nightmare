@@ -3,7 +3,7 @@ extends CharacterBody2D
 #@onready var game_manager: Node = %game_manager
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var init_flip_h : bool = animated_sprite_2d.flip_h
-@onready var ray_cast_2d: RayCast2D = $RayCast2D
+#@onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 
