@@ -18,19 +18,29 @@ var is_dropping: bool = false # Track if the player is dropping through a platfo
 var drop_timer: float = 0.0 # Timer for disabling platform collision
 # 保存原始的碰撞掩码
 var original_collision_mask: int
+var default_pos = Vector2(0, 0)
+
 
 func _ready():
 	#position = Vector2(300,-100)
-	print(position)
+	default_pos = position
+	print('default pos', default_pos)
 	#GameManager.load_game_state()
 	#position = GameManager.game_state['current_respawn_point']
 	#original_collision_mask = collision_mask
 	$GunCooldown.wait_time = cooldown
-	
+	print(get_gravity())
 func respawn():
 	# 将角色位置设置为重生点
 	#position = GameManager.game_state['current_respawn_point']
-	#print("Character respawned at ", position)
+	velocity = Vector2.ZERO
+	position = default_pos
+	# 重置所有状态
+	is_jumping = false
+	is_dropping = false
+	jump_buffer_timer = 0.0
+	jump_hold_time = 0.0
+
 	pass
 
 # 开始跳跃的函数
@@ -77,7 +87,7 @@ func remove_mask_temporarily(mask) -> void:
 
 # 检测玩家是否站在单向平台上
 func is_on_one_way_platform() -> bool:
-	if is_on_tilemap():
+	if is_on_terrain():
 		var collision = get_last_slide_collision()
 		if collision:
 			var collider = collision.get_collider()
@@ -95,7 +105,7 @@ func is_on_one_way_platform() -> bool:
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 
-	if not is_on_tilemap():
+	if not is_on_terrain():
 		#print(collision_shape_2d.collision_mask)
 		velocity += get_gravity() * delta
 		jump_buffer_timer -= delta # 在空中时，减少缓冲计时器
@@ -117,7 +127,7 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump input with buffering
 	if Input.is_action_just_pressed("jump"):
-		if is_on_tilemap():
+		if is_on_terrain():
 			# 如果按住下键并且在平台上，触发下落平台逻辑
 			if Input.is_action_pressed("down") and is_on_one_way_platform():
 				print("Player is on a one-way platform")
@@ -137,6 +147,7 @@ func _physics_process(delta: float) -> void:
 	
 	update_face_direction(direction.x)
 	if Input.is_action_pressed("shoot"):
+		print('shooting')
 		shoot(Input)
 	
 	# TODO: fix this on different gravity direction
@@ -150,7 +161,7 @@ func _physics_process(delta: float) -> void:
 	filp_player_sprite()
 
 	# paly animations
-	if is_on_tilemap(): # TODO: fix, 检查是不是在平台上
+	if is_on_terrain():
 		if direction.x == 0 and direction.y == 0:
 			animated_sprite_2d.play('idle')
 		else:
@@ -174,18 +185,18 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.y = move_toward(velocity.y, 0, Consts.SPEED)
 	
+	move_and_slide()
 	# push boxes
-	var collision_box = move_and_collide(velocity * delta)
-	if collision_box:
-		var collider_box = collision_box.get_collider()
-		if collider_box is CharacterBody2D and collider_box.is_in_group('pushable'):
-			collider_box.push(Vector2(direction))
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider is CharacterBody2D and collider.is_in_group('pushable'):
+			collider.push(Vector2(direction))
 	
 	# print player status
-	print(get_gravity())
+	# print(get_gravity())
 	
-	move_and_slide()
-
+	
 func update_face_direction(direction):
 	if direction != 0:
 		facing_direction = direction
@@ -196,7 +207,7 @@ func _on_gun_cooldown_timeout() -> void:
 	pass # Replace with function body.
 
 
-func is_on_tilemap() -> bool:
+func is_on_terrain() -> bool:
 	# 根据重力方向设置射线方向
 	var gravity_dir = get_gravity().normalized()
 	ray_cast_2d.target_position = gravity_dir * 20
@@ -204,11 +215,11 @@ func is_on_tilemap() -> bool:
 	if ray_cast_2d.is_colliding():
 		var collider = ray_cast_2d.get_collider()
 
-		if collider is TileMapLayer:
-			print('is on tilemap')
+		if collider is TileMapLayer or collider is StaticBody2D:
+			# print('is on tilemap')
 			return true
 			
-	print('not on tilemap')
+	# print('not on tilemap')
 	return false
 
 func filp_player_sprite():
