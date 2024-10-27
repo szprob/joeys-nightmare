@@ -7,6 +7,7 @@ var mass = 10
 var friction = 0.5
 
 func _ready():
+	add_to_group("pushable")
 	pass
 
 func _physics_process(delta):

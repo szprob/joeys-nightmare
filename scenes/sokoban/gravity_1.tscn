@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cv3nrtrevxkyu"]
+[gd_scene load_steps=4 format=3 uid="uid://cv3nrtrevxkyu"]
+
+[ext_resource type="Script" path="res://scripts/sokoban/gravity_1.gd" id="1_h3l67"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3pmf"]
 size = Vector2(56, 51)
@@ -12,6 +14,7 @@ collision_mask = 129
 gravity_space_override = 3
 gravity_point_center = Vector2(0, -1)
 gravity_direction = Vector2(0, -1)
+script = ExtResource("1_h3l67")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3.5)
