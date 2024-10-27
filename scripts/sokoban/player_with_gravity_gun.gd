@@ -139,6 +139,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("shoot"):
 		shoot(Input)
 	
+	# TODO: fix this on different gravity direction
 	# Flip sprite based on movement direction 
 	if direction.x > 0:
 		animated_sprite_2d.flip_h = false
@@ -146,12 +147,7 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.flip_h = true
 		
 	# Flip sprite based on gravity dirction
-	if get_gravity().y > 0:
-		animated_sprite_2d.flip_v = false
-		collision_shape_2d.scale.y = 1
-	elif get_gravity().y < 0:
-		animated_sprite_2d.flip_v = true
-		collision_shape_2d.scale.y = -1
+	filp_player_sprite()
 
 	# paly animations
 	if is_on_tilemap(): # TODO: fix, 检查是不是在平台上
@@ -214,3 +210,11 @@ func is_on_tilemap() -> bool:
 			
 	print('not on tilemap')
 	return false
+
+func filp_player_sprite():
+	# flip palyer sprite based on gravity direction
+
+	var gravity = get_gravity().normalized()
+	var angle = gravity.angle() - PI / 2 # 加90度使角色垂直于重力方向
+	animated_sprite_2d.rotation = angle
+	collision_shape_2d.rotation = angle
