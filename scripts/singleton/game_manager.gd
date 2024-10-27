@@ -4,6 +4,7 @@ var game_state  = {
 	'score' = 0 , # 积分
 	'current_respawn_point' = Vector2(-74,-39),# 重生点位置
 	'archive_index' = 1 ,# 存档索引
+	# 0: 开场 1: 找寻身份证 2: 找寻枪 3: 第一次梦境就绪
 	'day_phase' = 0,
 	'is_day_player_chatting' = false
 }
@@ -36,7 +37,8 @@ var get_current_scene: Callable = func():
 	return current_scene
 
 func _get_balloon_path() -> String:
-	var is_small_window: bool = ProjectSettings.get_setting("display/window/size/viewport_width") < 400
+	var is_small_window = true
+	# var is_small_window: bool = ProjectSettings.get_setting("display/window/size/viewport_width") < 400
 	var balloon_path: String = "res://dialogue_label/dialogue_balloon/small_example_balloon.tscn" if is_small_window else "res://dialogue_label/dialogue_balloon/example_balloon.tscn"
 	return balloon_path
 
@@ -45,3 +47,24 @@ func show_dialogue(resource: DialogueResource, title: String = "", extra_game_st
 	get_current_scene.call().add_child(balloon)
 	balloon.start(resource, title, extra_game_states)
 	return balloon
+
+func is_chatting() -> bool:
+	return game_state['is_day_player_chatting']
+
+func get_day_phase() -> int:
+	return game_state['day_phase']
+	
+func set_day_phase(phase_number: int) -> void:
+	game_state['day_phase'] = phase_number
+
+func inc_day_phase() -> void:
+	game_state['day_phase'] += 1
+
+func start_dialogue() -> void:
+	game_state['is_day_player_chatting'] = true
+
+func end_dialogue() -> void:
+	game_state['is_day_player_chatting'] = false
+
+func test_print() -> void:
+	print("hahahahahhahahaha")

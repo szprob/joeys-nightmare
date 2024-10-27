@@ -8,5 +8,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if GameManager.get_day_phase() == 3:
+	if GameManager.get_day_phase() == 2:
 		queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://blydc865qnepa"]
+[gd_scene load_steps=55 format=3 uid="uid://blydc865qnepa"]
 
 [ext_resource type="Script" path="res://scripts/player_day.gd" id="1_5yagl"]
 [ext_resource type="Texture2D" uid="uid://cah8kxv283glx" path="res://assets/sprites/day/character/Bob_idle_anim_16x16.png" id="1_ltp2t"]
@@ -387,6 +387,8 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3yw1e"]
+
 [node name="PlayerDay" type="CharacterBody2D"]
 script = ExtResource("1_5yagl")
 
@@ -398,3 +400,14 @@ shape = SubResource("CapsuleShape2D_k0oe3")
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_tfwbf")
 animation = &"idle_front"
+
+[node name="Direction" type="Marker2D" parent="."]
+
+[node name="Finder" type="Area2D" parent="Direction"]
+position = Vector2(0, 7)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/Finder"]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_3yw1e")

@@ -1,11 +1,20 @@
 ~ title
+????: ...刚才是在做梦吗，好真实的梦境
+????: [speed=0.1]......
+????: 我是谁，这是哪里?
+
+~ part1
+????: 先四处看看吧，总有一种熟悉的感觉
+=> END
+
+~ test
 Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
 Nathan: Here are some choices.
 - First one
 	Nathan: You picked the first one.
 - Second one
 	Nathan: You picked the second one.
-- Start again => title
+- Start again => test
 - End the conversation => END
 Nathan: For more information see the online documentation.
 set GameManager.game_state['phase'] = 1

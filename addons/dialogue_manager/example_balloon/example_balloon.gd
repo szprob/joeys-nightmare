@@ -165,4 +165,4 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 func _on_tree_exiting() -> void:
-	GameManager.game_state['is_day_player_chatting'] = false
+	GameManager.end_dialogue()
