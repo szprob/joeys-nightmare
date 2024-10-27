@@ -9,7 +9,6 @@ size = Vector2(56, 51)
 font_size = 11
 
 [node name="gravity-1" type="Area2D"]
-position = Vector2(380, 30)
 collision_mask = 129
 gravity_space_override = 3
 gravity_point_center = Vector2(0, -1)
@@ -17,8 +16,6 @@ gravity_direction = Vector2(0, -1)
 script = ExtResource("1_h3l67")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3.5)
-scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_u3pmf")
 
 [node name="Label" type="Label" parent="."]
