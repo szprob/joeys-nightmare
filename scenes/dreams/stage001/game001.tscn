@@ -8,9 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="6_2sq1f"]
 [ext_resource type="PackedScene" uid="uid://bxs320cj2nn71" path="res://scenes/enemy/slime.tscn" id="7_dhv15"]
 [ext_resource type="FontFile" uid="uid://dvlu6bavl0eg7" path="res://assets/fonts/PixelOperator8.ttf" id="8_qr2vs"]
-[ext_resource type="PackedScene" uid="uid://kfdbq76ixwrq" path="res://scenes/modules/save_point.tscn" id="9_ro02y"]
-[ext_resource type="PackedScene" uid="uid://b6pq8l7ym5nuh" path="res://scenes/modules/teleport.tscn" id="10_oq4yb"]
-[ext_resource type="PackedScene" uid="uid://bdap03ne0xoh3" path="res://scenes/modules/falling_trap.tscn" id="11_rscsm"]
+[ext_resource type="PackedScene" uid="uid://kfdbq76ixwrq" path="res://scenes/modules/checkpoints/save_point.tscn" id="9_ro02y"]
+[ext_resource type="PackedScene" uid="uid://b6pq8l7ym5nuh" path="res://scenes/modules/checkpoints/teleport.tscn" id="10_oq4yb"]
+[ext_resource type="PackedScene" uid="uid://bdap03ne0xoh3" path="res://scenes/modules/traps/falling_trap.tscn" id="11_rscsm"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8553"]
 distance = -68.0
