@@ -25,13 +25,17 @@ func _process(delta: float) -> void:
 			print('碰撞到地图')
 			var collision_normal = bullet_collision.get_normal()
 			var gravity_scene = preload("res://scenes/sokoban/gravity_1.tscn")
+			
 			var gravity_instance = gravity_scene.instantiate()
+			gravity_instance.add_to_group("dynamic")
 			
 			gravity_instance.position = position + collision_normal * Vector2(0, gravity_instance.get_node("CollisionShape2D").shape.get_size().y / 2)
 			collision_normal.y = collision_normal.y * -1
 			collision_normal.x = collision_normal.x * -1
 			gravity_instance.gravity_direction = collision_normal
 			#
+			print('gravity instance', gravity_instance)
+			print('gravity instance meta', gravity_instance.get_meta_list())
 			get_tree().root.add_child(gravity_instance)
 
 			queue_free() # 销毁子弹

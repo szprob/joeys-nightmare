@@ -30,6 +30,8 @@ func _ready():
 	#original_collision_mask = collision_mask
 	$GunCooldown.wait_time = cooldown
 	print(get_gravity())
+
+
 func respawn():
 	# 将角色位置设置为重生点
 	#position = GameManager.game_state['current_respawn_point']
@@ -112,17 +114,17 @@ func _physics_process(delta: float) -> void:
 		# 如果玩家正在跳跃并且继续按住跳跃键，增加跳跃高度
 		# FIXME: 没有大跳
 		if is_jumping and Input.is_action_pressed('jump'):
-			print('is jumping and jump pressed', jump_hold_time)
+			# print('is jumping and jump pressed', jump_hold_time)
 			jump_hold_time += delta
 			if jump_hold_time < Consts.MAX_JUMP_HOLD_TIME:
 				var gravity_dir = get_gravity().normalized()
 				# 计算当前速度在重力方向上的投影
 				var velocity_projection = velocity.project(gravity_dir).length()
-				print('velocity projection', velocity_projection)
+				# print('velocity projection', velocity_projection)
 				if abs(velocity_projection) < abs(Consts.MAX_JUMP_VELOCITY):
 					# 计算目标速度向量（与重力方向相反）
 					var target_velocity = -gravity_dir * abs(Consts.MAX_JUMP_VELOCITY)
-					print('target velocity', target_velocity)
+					# print('target velocity', target_velocity)
 					# 在重力方向上进行lerp
 					velocity = lerp(velocity, target_velocity, delta * 2)
 		else:
