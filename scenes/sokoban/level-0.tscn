@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=4 uid="uid://dqy1bj4scr102"]
 
-[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="1_adtox"]
+[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/player/player.tscn" id="1_adtox"]
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="2_mfowp"]
 [ext_resource type="Script" path="res://scripts/sokoban/basic_box.gd" id="3_en5yy"]
 [ext_resource type="Texture2D" uid="uid://kew5lerskks0" path="res://assets/sprites/fruit.png" id="5_c6u3y"]
-[ext_resource type="PackedScene" uid="uid://cpqr3oauheogh" path="res://scenes/sokoban/button-1.tscn" id="5_l4f35"]
-[ext_resource type="PackedScene" uid="uid://8gajxily3trj" path="res://scenes/sokoban/door_1.tscn" id="6_iowa6"]
+[ext_resource type="PackedScene" path="res://scenes/sokoban/button-1.tscn" id="5_l4f35"]
+[ext_resource type="PackedScene" path="res://scenes/sokoban/door_1.tscn" id="6_iowa6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lyhke"]
 resource_name = "<null>"

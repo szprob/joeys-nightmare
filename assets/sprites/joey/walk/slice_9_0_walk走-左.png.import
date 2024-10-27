@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i2fjowwq1hnp"
-path="res://.godot/imported/SNES - Mega Man 7 - Mega Man.png-32a018e325bb06913aa03a9e594f82f8.ctex"
+uid="uid://co07w3exw4rqs"
+path="res://.godot/imported/slice_9_0_walk走-左.png-b40fe2eaa5ba2a9e7b0f633af84a51d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/SNES - Mega Man 7 - Mega Man.png"
-dest_files=["res://.godot/imported/SNES - Mega Man 7 - Mega Man.png-32a018e325bb06913aa03a9e594f82f8.ctex"]
+source_file="res://assets/sprites/joey/walk/slice_9_0_walk走-左.png"
+dest_files=["res://.godot/imported/slice_9_0_walk走-左.png-b40fe2eaa5ba2a9e7b0f633af84a51d0.ctex"]
 
 [params]
 

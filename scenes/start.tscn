@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://d0atgq0il2toh" path="res://scenes/shader/crt.tscn" id="3_t4uvm"]
 
 [node name="start" type="Node2D"]
-position = Vector2(0, -3)
 script = ExtResource("1_u4l7m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
