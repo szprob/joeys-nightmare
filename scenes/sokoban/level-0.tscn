@@ -147,7 +147,7 @@ sources/0 = SubResource("TileSetAtlasSource_lyhke")
 [node name="Level-0" type="Node2D"]
 
 [node name="player" parent="." groups=["character"] instance=ExtResource("1_adtox")]
-position = Vector2(198, 142)
+position = Vector2(220, 144)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(1, -6)

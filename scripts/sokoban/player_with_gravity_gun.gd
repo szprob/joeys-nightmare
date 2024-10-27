@@ -38,8 +38,9 @@ func start_jump() -> void:
 	print('start jump')
 	# 获取重力方向的单位向量
 	var gravity_dir = get_gravity().normalized()
+	print('gravity dir', gravity_dir)
 	# 跳跃方向与重力方向相反
-	velocity -= gravity_dir * Consts.JUMP_VELOCITY
+	velocity -= gravity_dir * abs(Consts.JUMP_VELOCITY)
 	jump_hold_time = 0.0 # 重置跳跃键按住时间
 	is_jumping = true # 标记为跳跃状态
 	
@@ -208,5 +209,8 @@ func is_on_tilemap() -> bool:
 		var collider = ray_cast_2d.get_collider()
 
 		if collider is TileMapLayer:
+			print('is on tilemap')
 			return true
+			
+	print('not on tilemap')
 	return false
