@@ -1,5 +1,6 @@
 extends Node
 
+@export var scan_lines_scene: PackedScene
 
 var settings = {
 	'full_screen' = false,#'WINDOWED',
@@ -16,6 +17,11 @@ var game_state  = {
 }
 
 
+func _ready() -> void:
+	apply_settings()
+		
+
+
 func on_fullscreen_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
@@ -30,7 +36,21 @@ func on_fullscreen_toggled(toggled_on: bool) -> void:
 	#AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), value)
 
 func on_scan_lines_toggled(toggled_on: bool) -> void:
-	pass # Replace with function body.
+	var scanline_nodes = get_tree().get_nodes_in_group("scanlines")
+	for node in scanline_nodes:
+		if toggled_on:
+			# 检查节点是否已经有扫描线
+			if not node.has_node("ScanLines"):
+				var scan_lines_instance = scan_lines_scene.instantiate()
+				scan_lines_instance.name = "ScanLines"
+				node.add_child(scan_lines_instance)
+		else:
+			# 移除扫描线
+			if node.has_node("ScanLines"):
+				node.get_node("ScanLines").queue_free()
+
+	game_state['settings']['scan_lines'] = toggled_on
+
 
 
 func apply_settings():
