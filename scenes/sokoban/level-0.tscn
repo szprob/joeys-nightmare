@@ -187,12 +187,13 @@ position = Vector2(366, -35)
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="gravity-1" parent="Node2D" instance=ExtResource("7_u8er8")]
-position = Vector2(379, 17)
+position = Vector2(449, 11)
+scale = Vector2(0.8, 0.8)
 
 [node name="bullet" type="Node" parent="."]
 
 [node name="player_with_gravity" parent="." instance=ExtResource("1_adtox")]
-position = Vector2(515, 14)
+position = Vector2(828, 24)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
 position_smoothing_enabled = true
