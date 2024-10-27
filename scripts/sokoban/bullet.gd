@@ -16,33 +16,31 @@ func start(pos, shoot_direction):
 	direction = shoot_direction
 
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var bullet_collision = move_and_collide(speed * direction * delta)
-	if bullet_collision:  # 首先检查是否发生碰撞
-		var collider = bullet_collision.get_collider()  # 获取碰撞对象
-		print(collider)
-		if collider is TileMapLayer:  # 检查碰撞对象是否为 TileMaplayer
+	if bullet_collision: # 首先检查是否发生碰撞
+		var collider = bullet_collision.get_collider() # 获取碰撞对象
+		if collider is TileMapLayer: # 检查碰撞对象是否为 TileMaplayer
 			print('碰撞到地图')
 			var collision_normal = bullet_collision.get_normal()
 			var gravity_scene = preload("res://scenes/sokoban/gravity_1.tscn")
 			var gravity_instance = gravity_scene.instantiate()
 			
-			gravity_instance.position = position + collision_normal * Vector2(0, gravity_instance.get_node("CollisionShape2D").shape.get_size().y/2)
+			gravity_instance.position = position + collision_normal * Vector2(0, gravity_instance.get_node("CollisionShape2D").shape.get_size().y / 2)
 			collision_normal.y = collision_normal.y * -1
+			collision_normal.x = collision_normal.x * -1
 			gravity_instance.gravity_direction = collision_normal
 			#
 			get_tree().root.add_child(gravity_instance)
 
-			queue_free()  # 销毁子弹
+			queue_free() # 销毁子弹
 
 #func _on_area_entered(area: Area2D) -> void:
 	#if area is TileMapLayer:
 		#print('hit tilemap, add a gravity area')
 		
 		
-
 func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	#print(body.name)
 	#if body is TileMapLayer:
