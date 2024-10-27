@@ -1,11 +1,11 @@
-[gd_scene load_steps=12 format=4 uid="uid://dqy1bj4scr102"]
+[gd_scene load_steps=9 format=4 uid="uid://dqy1bj4scr102"]
 
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/player/player.tscn" id="1_adtox"]
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="2_mfowp"]
-[ext_resource type="Script" path="res://scripts/sokoban/basic_box.gd" id="3_en5yy"]
-[ext_resource type="Texture2D" uid="uid://kew5lerskks0" path="res://assets/sprites/fruit.png" id="5_c6u3y"]
-[ext_resource type="PackedScene" path="res://scenes/sokoban/button-1.tscn" id="5_l4f35"]
-[ext_resource type="PackedScene" path="res://scenes/sokoban/door_1.tscn" id="6_iowa6"]
+[ext_resource type="PackedScene" uid="uid://bhgixpqr8klwj" path="res://scenes/sokoban/box.tscn" id="3_tvyar"]
+[ext_resource type="PackedScene" uid="uid://cpqr3oauheogh" path="res://scenes/sokoban/button-1.tscn" id="5_l4f35"]
+[ext_resource type="PackedScene" uid="uid://8gajxily3trj" path="res://scenes/sokoban/door_1.tscn" id="6_iowa6"]
+[ext_resource type="PackedScene" uid="uid://cv3nrtrevxkyu" path="res://scenes/sokoban/gravity_1.tscn" id="7_u8er8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lyhke"]
 resource_name = "<null>"
@@ -144,19 +144,10 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 129
 sources/0 = SubResource("TileSetAtlasSource_lyhke")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_knjgw"]
-radius = 5.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3pmf"]
-size = Vector2(56, 51)
-
-[sub_resource type="LabelSettings" id="LabelSettings_i8b7l"]
-font_size = 11
-
 [node name="Level-0" type="Node2D"]
 
 [node name="player" parent="." groups=["character"] instance=ExtResource("1_adtox")]
-position = Vector2(483, 36)
+position = Vector2(200, 140)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(1, -6)
@@ -165,33 +156,26 @@ position_smoothing_enabled = true
 [node name="tiles" type="Node" parent="."]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="tiles"]
-tile_map_data = PackedByteArray("AAAMAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAAMAAAAAAAAAAAAQAAMAAAAAAAAAAAARAAMAAAAAAAAAAAASAAMAAAAAAAAAAAATAAMAAAAAAAAAAAAUAAMAAAAAAAAAAAAVAAMAAAAAAAAAAAAWAAMAAAAAAAAAAAAXAAMAAAAAAAAAAAAYAAMAAAAAAAAAAAAZAAMAAAAAAAAAAAAaAAMAAAAAAAAAAAAbAAMAAAAAAAAAAAAcAAMAAAAAAAAAAAAdAAMAAAAAAAAAAAAeAAMAAAAAAAAAAAAfAAMAAAAAAAAAAAAgAAMAAAAAAAAAAAALAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAAOAP//AAAAAAAAAAAPAP//AAAAAAAAAAAQAP//AAAAAAAAAAARAP//AAAAAAAAAAASAP//AAAAAAAAAAATAP//AAAAAAAAAAAUAP//AAAAAAAAAAAVAP//AAAAAAAAAAAWAP//AAAAAAAAAAAXAP//AAAAAAAAAAAYAP//AAAAAAAAAAAZAP//AAAAAAAAAAAaAP//AAAAAAAAAAAbAP//AAAAAAAAAAAcAP//AAAAAAAAAAAdAP//AAAAAAAAAAAeAP//AAAAAAAAAAAfAP//AAAAAAAAAAAgAP//AAAAAAAAAAAhAAMAAAAAAAAAAAAiAAMAAAAAAAAAAAAjAAMAAAAAAAAAAAAkAAMAAAAAAAAAAAAlAAMAAAAAAAAAAAAmAAMAAAAAAAAAAAAnAAMAAAAAAAAAAAAoAAMAAAAAAAAAAAApAAMAAAAAAAAAAAAqAAMAAAAAAAAAAAArAAMAAAAAAAAAAAAsAAMAAAAAAAAAAAAtAAMAAAAAAAAAAAAuAAMAAAAAAAAAAAAvAAMAAAAAAAAAAAAwAAMAAAAAAAAAAAAxAAMAAAAAAAAAAAAyAAMAAAAAAAAAAAAzAAMAAAAAAAAAAAA0AAMAAAAAAAAAAAAhAP//AAAAAAAAAAAiAP//AAAAAAAAAAAjAP//AAAAAAAAAAAkAP//AAAAAAAAAAAlAP//AAAAAAAAAAAmAP//AAAAAAAAAAAnAP//AAAAAAAAAAAoAP//AAAAAAAAAAApAP//AAAAAAAAAAAqAP//AAAAAAAAAAArAP//AAAAAAAAAAAsAP//AAAAAAAAAAAtAP//AAAAAAAAAAAuAP//AAAAAAAAAAAvAP//AAAAAAAAAAAwAP//AAAAAAAAAAAxAP//AAAAAAAAAAAyAP//AAAAAAAAAAAzAP//AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAMAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAAMAAAAAAAAAAAAQAAMAAAAAAAAAAAARAAMAAAAAAAAAAAASAAMAAAAAAAAAAAATAAMAAAAAAAAAAAAUAAMAAAAAAAAAAAAVAAMAAAAAAAAAAAAWAAMAAAAAAAAAAAAXAAMAAAAAAAAAAAAYAAMAAAAAAAAAAAAZAAMAAAAAAAAAAAAaAAMAAAAAAAAAAAAbAAMAAAAAAAAAAAAcAAMAAAAAAAAAAAAdAAMAAAAAAAAAAAAeAAMAAAAAAAAAAAAfAAMAAAAAAAAAAAAgAAMAAAAAAAAAAAALAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAAOAP//AAAAAAAAAAAPAP//AAAAAAAAAAAQAP//AAAAAAAAAAARAP//AAAAAAAAAAASAP//AAAAAAAAAAATAP//AAAAAAAAAAAUAP//AAAAAAAAAAAVAP//AAAAAAAAAAAWAP//AAAAAAAAAAAXAP//AAAAAAAAAAAYAP//AAAAAAAAAAAZAP//AAAAAAAAAAAaAP//AAAAAAAAAAAbAP//AAAAAAAAAAAcAP//AAAAAAAAAAAdAP//AAAAAAAAAAAeAP//AAAAAAAAAAAfAP//AAAAAAAAAAAgAP//AAAAAAAAAAAhAAMAAAAAAAAAAAAiAAMAAAAAAAAAAAAjAAMAAAAAAAAAAAAkAAMAAAAAAAAAAAAlAAMAAAAAAAAAAAAmAAMAAAAAAAAAAAAnAAMAAAAAAAAAAAAoAAMAAAAAAAAAAAApAAMAAAAAAAAAAAAqAAMAAAAAAAAAAAArAAMAAAAAAAAAAAAsAAMAAAAAAAAAAAAtAAMAAAAAAAAAAAAuAAMAAAAAAAAAAAAvAAMAAAAAAAAAAAAwAAMAAAAAAAAAAAAxAAMAAAAAAAAAAAAyAAMAAAAAAAAAAAAzAAMAAAAAAAAAAAA0AAMAAAAAAAAAAAAhAP//AAAAAAAAAAAiAP//AAAAAAAAAAAjAP//AAAAAAAAAAAkAP//AAAAAAAAAAAlAP//AAAAAAAAAAAmAP//AAAAAAAAAAAnAP//AAAAAAAAAAAoAP//AAAAAAAAAAApAP//AAAAAAAAAAAqAP//AAAAAAAAAAArAP//AAAAAAAAAAAsAP//AAAAAAAAAAAtAP//AAAAAAAAAAAuAP//AAAAAAAAAAAvAP//AAAAAAAAAAAwAP//AAAAAAAAAAAxAP//AAAAAAAAAAAyAP//AAAAAAAAAAAzAP//AAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAQAAYAAAAAAAAAAAARAAYAAAAAAAAAAAASAAYAAAAAAAAAAAATAAYAAAAAAAAAAAAUAAYAAAAAAAAAAAAVAAYAAAAAAAAAAAAWAAYAAAAAAAAAAAAXAAYAAAAAAAAAAAAYAAYAAAAAAAAAAAAYAAcAAAAAAAAAAAAYAAgAAAAAAAAAAAAYAAkAAAAAAAAAAAAYAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAWAAoAAAAAAAAAAAAVAAoAAAAAAAAAAAAUAAoAAAAAAAAAAAATAAoAAAAAAAAAAAASAAoAAAAAAAAAAAARAAoAAAAAAAAAAAAQAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAOAAoAAAAAAAAAAAANAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAKAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAgAAAAAAAAAAAAIAAcAAAAAAAAAAAAIAAYAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_ud7ar")
 collision_visibility_mode = 1
 
 [node name="boxes" type="Node" parent="."]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="boxes"]
-disable_mode = 2
-collision_mask = 129
-script = ExtResource("3_en5yy")
+[node name="box" parent="boxes" instance=ExtResource("3_tvyar")]
+position = Vector2(218, 44)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="boxes/CharacterBody2D"]
-position = Vector2(216, 41)
-shape = SubResource("CircleShape2D_knjgw")
-
-[node name="Sprite2D" type="Sprite2D" parent="boxes/CharacterBody2D"]
-position = Vector2(216, 39)
-texture = ExtResource("5_c6u3y")
-region_enabled = true
-region_rect = Rect2(0, 0, 16, 16)
+[node name="box2" parent="boxes" instance=ExtResource("3_tvyar")]
+position = Vector2(577, 44)
 
 [node name="button" type="Node" parent="."]
 
 [node name="button-1" parent="button" instance=ExtResource("5_l4f35")]
+door = NodePath("../../door/door-1")
 
 [node name="button-2" parent="button" instance=ExtResource("5_l4f35")]
 position = Vector2(576, 2)
+door = NodePath("../../door/door-2")
 
 [node name="door" type="Node" parent="."]
 
@@ -202,24 +186,6 @@ position = Vector2(367, -5)
 
 [node name="Node2D" type="Node2D" parent="."]
 
-[node name="gravity" type="Area2D" parent="Node2D"]
-position = Vector2(380, 30)
-collision_mask = 129
-gravity_space_override = 3
-gravity_point_center = Vector2(0, -1)
-gravity_direction = Vector2(0, -1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/gravity"]
-position = Vector2(0, -3.5)
-shape = SubResource("RectangleShape2D_u3pmf")
-
-[node name="Label" type="Label" parent="Node2D/gravity"]
-offset_left = -27.0
-offset_top = -12.0
-offset_right = 27.0
-offset_bottom = 11.0
-text = "gravity up"
-label_settings = SubResource("LabelSettings_i8b7l")
-metadata/_edit_use_anchors_ = true
+[node name="gravity-1" parent="Node2D" instance=ExtResource("7_u8er8")]
 
 [node name="bullet" type="Node" parent="."]

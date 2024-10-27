@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhgixpqr8klwj"]
+
+[ext_resource type="Script" path="res://scripts/sokoban/basic_box.gd" id="1_mcoht"]
+[ext_resource type="Texture2D" uid="uid://kew5lerskks0" path="res://assets/sprites/fruit.png" id="2_whr3d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_knjgw"]
+radius = 5.0
+
+[node name="box" type="CharacterBody2D"]
+disable_mode = 2
+collision_mask = 129
+script = ExtResource("1_mcoht")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_knjgw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+texture = ExtResource("2_whr3d")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
