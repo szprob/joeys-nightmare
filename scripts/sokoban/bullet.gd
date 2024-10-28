@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 			var gravity_instance = gravity_scene.instantiate()
 			gravity_instance.add_to_group("dynamic")
 			
-			gravity_instance.position = position + collision_normal * Vector2(0, gravity_instance.get_node("CollisionShape2D").shape.get_size().y / 2)
+			gravity_instance.position = position + collision_normal * Vector2(gravity_instance.get_node("CollisionShape2D").shape.get_size().x / 2, gravity_instance.get_node("CollisionShape2D").shape.get_size().y / 2)
 			collision_normal.y = collision_normal.y * -1
 			collision_normal.x = collision_normal.x * -1
 			gravity_instance.gravity_direction = collision_normal
