@@ -152,7 +152,6 @@ distance = -210.0
 [node name="Level-0" type="Node2D"]
 script = ExtResource("1_2o8ub")
 
-
 [node name="tiles" type="Node" parent="."]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="tiles"]
@@ -194,7 +193,7 @@ scale = Vector2(0.8, 0.8)
 [node name="bullet" type="Node" parent="."]
 
 [node name="player_with_gravity" parent="." instance=ExtResource("1_adtox")]
-position = Vector2(828, 24)
+position = Vector2(331, 140)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
 position_smoothing_enabled = true
