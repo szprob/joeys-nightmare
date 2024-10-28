@@ -165,13 +165,10 @@ func _physics_process(delta: float) -> void:
 	
 	# TODO: fix this on different gravity direction
 	# Flip sprite based on movement direction 
-	if direction.x > 0:
-		animated_sprite_2d.flip_h = false
-	elif direction.x < 0:
-		animated_sprite_2d.flip_h = true
+	
 		
 	# Flip sprite based on gravity dirction
-	filp_player_sprite()
+	filp_player_sprite(direction)
 
 	# paly animations
 	if is_on_terrain():
@@ -237,10 +234,34 @@ func is_on_terrain() -> bool:
 	# print('not on tilemap')
 	return false
 
-func filp_player_sprite():
+func filp_player_sprite(direction):
 	# flip palyer sprite based on gravity direction
-
 	var gravity = get_gravity().normalized()
 	var angle = gravity.angle() - PI / 2 # 加90度使角色垂直于重力方向
 	animated_sprite_2d.rotation = angle
 	collision_shape_2d.rotation = angle
+
+	if abs(gravity.y) > abs(gravity.x):
+		# 垂直重力情况
+		if gravity.y > 0: # 重力向下
+			if direction.x > 0:
+				animated_sprite_2d.flip_h = false
+			elif direction.x < 0:
+				animated_sprite_2d.flip_h = true
+		else: # 重力向上
+			if direction.x > 0:
+				animated_sprite_2d.flip_h = true
+			elif direction.x < 0:
+				animated_sprite_2d.flip_h = false
+	else:
+		# 水平重力情况保持不变
+		if gravity.x > 0: # 重力向右
+			if direction.y > 0:
+				animated_sprite_2d.flip_h = true
+			elif direction.y < 0:
+				animated_sprite_2d.flip_h = false
+		else: # 重力向左
+			if direction.y > 0:
+				animated_sprite_2d.flip_h = false
+			elif direction.y < 0:
+				animated_sprite_2d.flip_h = true
