@@ -23,7 +23,7 @@ buses/default_bus_layout=""
 
 Music="*res://scenes/music.tscn"
 Consts="*res://scripts/singleton/consts.gd"
-GameManager="res://scripts/singleton/game_manager.gd"
+GameManager="*res://scripts/singleton/game_manager.gd"
 
 [display]
 

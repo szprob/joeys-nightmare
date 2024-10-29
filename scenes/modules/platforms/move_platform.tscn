@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dn6fopj5n8ldj"]
+[gd_scene load_steps=5 format=3 uid="uid://dn6fopj5n8ldj"]
 
 [ext_resource type="Script" path="res://scripts/modules/platforms/move_platform.gd" id="1_euj2w"]
 [ext_resource type="Texture2D" uid="uid://8nrryef8gpok" path="res://assets/sprites/platforms.png" id="2_3knhu"]
-[ext_resource type="Texture2D" uid="uid://78w4owvufdht" path="res://icon.svg" id="3_ihbd3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8f85"]
 size = Vector2(44, 7)
@@ -36,16 +35,6 @@ collision_mask = 128
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
 position = Vector2(-2, -4)
 shape = SubResource("RectangleShape2D_cwlgc")
-
-[node name="target" type="Area2D" parent="."]
-position = Vector2(0, 100)
-collision_layer = 0
-collision_mask = 0
-
-[node name="Sprite2D2" type="Sprite2D" parent="target"]
-position = Vector2(1, 1)
-scale = Vector2(0.234375, 0.234375)
-texture = ExtResource("3_ihbd3")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
