@@ -227,11 +227,11 @@ func is_on_terrain() -> bool:
 	if ray_cast_2d.is_colliding():
 		var collider = ray_cast_2d.get_collider()
 
-		if collider is TileMapLayer or collider is StaticBody2D:
+		if collider is TileMapLayer or collider is StaticBody2D or collider is AnimatableBody2D:
 			# print('is on tilemap')
 			return true
 			
-	# print('not on tilemap')
+	# print('not on tilemap', )
 	return false
 
 func filp_player_sprite(direction):
