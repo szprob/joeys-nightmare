@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_h7dve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04vte"]
-size = Vector2(39, 335.5)
+size = Vector2(39, 488.75)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w0qlj"]
 radius = 20.0
@@ -15,7 +15,7 @@ collision_mask = 128
 script = ExtResource("1_ynfee")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 150)
+position = Vector2(0, 226.625)
 shape = SubResource("RectangleShape2D_04vte")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
