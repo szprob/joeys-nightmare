@@ -1,16 +1,30 @@
 extends Area2D
 @onready var timer: Timer = $Timer
 
+# for 死亡动画
+@onready var death_effect: ColorRect = $CanvasLayer/DeathEffect
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+func _ready():
+	death_effect.visible = false
+	death_effect.color = Color(1, 1, 1, 0)
+	death_effect.set_anchors_preset(Control.PRESET_FULL_RECT)
+	# 确保 ColorRect 显示在最上层
+	death_effect.z_index = 100
+
 func _on_body_entered(body: Node2D) -> void:
 	print("die!!")
 	Engine.time_scale = 0.5
 	# if body.has_method("respawn"):
 	# 	body.respawn()
+	death_effect.visible = true
+	animation_player.play("death_effect")
 	timer.start()
 	
 
 func _on_timer_timeout() -> void:
 	Engine.time_scale = 1
+	death_effect.visible = false
 	# var root_node = get_tree().get_root()
 	var root_node = get_tree().current_scene
 	print('root node', root_node.name)
