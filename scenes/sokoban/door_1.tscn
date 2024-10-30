@@ -18,12 +18,10 @@ image = SubResource("Image_vwtnf")
 size = Vector2(73, 8)
 
 [node name="door-1" type="StaticBody2D"]
-position = Vector2(4, -2)
 collision_mask = 129
 script = ExtResource("1_o7cmv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(284.034, 41.4191)
 rotation = -1.57834
 scale = Vector2(2.393, 1)
 texture = SubResource("ImageTexture_55p7l")
@@ -31,6 +29,5 @@ region_enabled = true
 region_rect = Rect2(16.3915, 48, 31.6085, 9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(284, 40.5)
 rotation = -1.57079
 shape = SubResource("RectangleShape2D_cyx6v")
