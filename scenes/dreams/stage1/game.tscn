@@ -413,6 +413,7 @@ autoplay = "move"
 
 [node name="move_platform" parent="platform" instance=ExtResource("6_lnq0u")]
 position = Vector2(-128, -70)
+do_detect = false
 
 [node name="target" type="Area2D" parent="platform/move_platform"]
 position = Vector2(-4, 50)
