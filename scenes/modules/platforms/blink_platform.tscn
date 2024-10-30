@@ -19,12 +19,3 @@ region_rect = Rect2(0.796703, 16.0633, 46.4421, 8.8575)
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_s4x1p")
 one_way_collision = true
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-autostart = true
-
-[node name="Timer2" type="Timer" parent="."]
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

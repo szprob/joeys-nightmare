@@ -39,3 +39,4 @@ shape = SubResource("RectangleShape2D_cwlgc")
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="detection" to="." method="_on_detection_body_exited"]
