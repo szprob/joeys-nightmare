@@ -135,7 +135,7 @@ func _physics_process(delta: float) -> void:
 				# var gravity_dir = get_gravity().normalized()
 				# 计算当前速度在重力方向上的投影
 				var velocity_projection = velocity.project(gravity_dir).length()
-				if velocity_projection < Consts.MAX_JUMP_VELOCITY:
+				if velocity_projection < abs(Consts.MAX_JUMP_VELOCITY):
 				# print('velocity projection', velocity_projection)
 					if abs(velocity_projection) < abs(Consts.MAX_JUMP_VELOCITY):
 						# 计算目标速度向量（与重力方向相反）
