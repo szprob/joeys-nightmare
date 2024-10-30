@@ -1,12 +1,12 @@
 [gd_scene load_steps=31 format=4 uid="uid://sfv4vhyx6m0a"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_jwyd3"]
-[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_7qdxb"]
+[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_8yy27"]
 [ext_resource type="PackedScene" uid="uid://d0atgq0il2toh" path="res://scenes/shader/crt.tscn" id="3_0ugil"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_trrvp"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_wl3g1"]
 [ext_resource type="PackedScene" uid="uid://bhgixpqr8klwj" path="res://scenes/sokoban/box.tscn" id="4_6n3j8"]
-[ext_resource type="Texture2D" uid="uid://clygoh63tyr7e" path="res://assets/sprites/megaman/x3_back.png" id="5_wecw0"]
+[ext_resource type="Texture2D" uid="uid://bk2cpnq615sdn" path="res://assets/sprites/back.webp" id="4_yjt6p"]
 [ext_resource type="Texture2D" uid="uid://btgd8wdsdtvdg" path="res://assets/sprites/wario/Game Boy Advance - Wario Land 4 - Crescent Moon Village.png" id="6_204oe"]
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="7_75kuo"]
 [ext_resource type="PackedScene" uid="uid://duokhi3tbe3f3" path="res://scenes/modules/trap_block.tscn" id="8_odjhm"]
@@ -1737,11 +1737,12 @@ _data = {
 [node name="Game" type="Node2D" groups=["scan_lines"]]
 script = ExtResource("1_jwyd3")
 
-[node name="player_with_gravity" parent="." instance=ExtResource("2_7qdxb")]
-position = Vector2(505, -204)
+[node name="player_with_gravity" parent="." instance=ExtResource("2_8yy27")]
+position = Vector2(558.431, -216.505)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
-position = Vector2(509, -209)
+position = Vector2(1811.53, -925.451)
+scale = Vector2(0.25, 0.25)
 process_callback = 0
 limit_left = 0
 limit_top = 0
@@ -1758,10 +1759,10 @@ script = ExtResource("3_wl3g1")
 [node name="Parallax2D" type="Parallax2D" parent="map"]
 z_index = -1
 scroll_scale = Vector2(0.1, 0.1)
-scroll_offset = Vector2(0, -251)
 
 [node name="Sprite2D" type="Sprite2D" parent="map/Parallax2D"]
-texture = ExtResource("5_wecw0")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_yjt6p")
 centered = false
 
 [node name="back" type="TileMapLayer" parent="map"]
