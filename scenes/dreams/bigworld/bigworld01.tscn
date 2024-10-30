@@ -1,22 +1,25 @@
-[gd_scene load_steps=28 format=4 uid="uid://sfv4vhyx6m0a"]
+[gd_scene load_steps=31 format=4 uid="uid://sfv4vhyx6m0a"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_jwyd3"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_7qdxb"]
 [ext_resource type="PackedScene" uid="uid://d0atgq0il2toh" path="res://scenes/shader/crt.tscn" id="3_0ugil"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_trrvp"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_wl3g1"]
+[ext_resource type="PackedScene" uid="uid://bhgixpqr8klwj" path="res://scenes/sokoban/box.tscn" id="4_6n3j8"]
 [ext_resource type="Texture2D" uid="uid://clygoh63tyr7e" path="res://assets/sprites/megaman/x3_back.png" id="5_wecw0"]
 [ext_resource type="Texture2D" uid="uid://btgd8wdsdtvdg" path="res://assets/sprites/wario/Game Boy Advance - Wario Land 4 - Crescent Moon Village.png" id="6_204oe"]
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="7_75kuo"]
 [ext_resource type="PackedScene" uid="uid://duokhi3tbe3f3" path="res://scenes/modules/trap_block.tscn" id="8_odjhm"]
-[ext_resource type="PackedScene" uid="uid://bdap03ne0xoh3" path="res://scenes/modules/falling_trap.tscn" id="9_sk006"]
+[ext_resource type="PackedScene" uid="uid://bdap03ne0xoh3" path="res://scenes/modules/traps/falling_trap.tscn" id="9_sk006"]
 [ext_resource type="PackedScene" uid="uid://cv3nrtrevxkyu" path="res://scenes/sokoban/gravity_1.tscn" id="10_1fij6"]
 [ext_resource type="PackedScene" uid="uid://dlnwqw1a3g1m3" path="res://scenes/modules/coin.tscn" id="11_4unyn"]
-[ext_resource type="PackedScene" uid="uid://kfdbq76ixwrq" path="res://scenes/modules/save_point.tscn" id="12_7ttva"]
+[ext_resource type="PackedScene" uid="uid://kfdbq76ixwrq" path="res://scenes/modules/checkpoints/save_point.tscn" id="12_7ttva"]
 [ext_resource type="PackedScene" uid="uid://do8x2w6t8vgwy" path="res://scenes/modules/platforms/platform.tscn" id="13_ydct6"]
+[ext_resource type="PackedScene" uid="uid://8gajxily3trj" path="res://scenes/sokoban/door_1.tscn" id="14_e353g"]
 [ext_resource type="PackedScene" uid="uid://b87rogf3b1s12" path="res://scenes/modules/platforms/disapper_platform.tscn" id="14_svh60"]
-[ext_resource type="PackedScene" uid="uid://gbcy7ojh6h3w" path="res://scenes/modules/platforms/blink_platform.tscn" id="15_ofpfw"]
+[ext_resource type="PackedScene" uid="uid://cpqr3oauheogh" path="res://scenes/sokoban/button-1.tscn" id="15_e7j1i"]
 [ext_resource type="PackedScene" uid="uid://bt5a3og8w7u4e" path="res://scenes/modules/platforms/unvisible_platform.tscn" id="16_i5klh"]
+[ext_resource type="PackedScene" uid="uid://dn6fopj5n8ldj" path="res://scenes/modules/platforms/move_platform.tscn" id="17_bbuw6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_madan"]
 texture = ExtResource("6_204oe")
@@ -1735,7 +1738,7 @@ _data = {
 script = ExtResource("1_jwyd3")
 
 [node name="player_with_gravity" parent="." instance=ExtResource("2_7qdxb")]
-position = Vector2(417, -416)
+position = Vector2(505, -204)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
 position = Vector2(509, -209)
@@ -1744,6 +1747,8 @@ limit_left = 0
 limit_top = 0
 limit_right = 480
 limit_bottom = 270
+limit_smoothed = true
+position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 script = ExtResource("3_wl3g1")
@@ -1752,7 +1757,7 @@ script = ExtResource("3_wl3g1")
 
 [node name="Parallax2D" type="Parallax2D" parent="map"]
 z_index = -1
-scroll_scale = Vector2(0.3, 0.3)
+scroll_scale = Vector2(0.1, 0.1)
 scroll_offset = Vector2(0, -251)
 
 [node name="Sprite2D" type="Sprite2D" parent="map/Parallax2D"]
@@ -1839,6 +1844,15 @@ rotation = 1.5708
 [node name="save_point_0" parent="stage0" instance=ExtResource("12_7ttva")]
 position = Vector2(854, -8)
 
+[node name="box" parent="stage0" instance=ExtResource("4_6n3j8")]
+position = Vector2(728, -13)
+
+[node name="door-1" parent="stage0" instance=ExtResource("14_e353g")]
+position = Vector2(934, -33)
+
+[node name="button-1" parent="stage0" instance=ExtResource("15_e7j1i")]
+position = Vector2(695, -4)
+
 [node name="stage_up" type="Node" parent="."]
 
 [node name="stage_up1" type="Node" parent="stage_up"]
@@ -1850,11 +1864,11 @@ position = Vector2(640, -377)
 scale = Vector2(4.51118, 3.71699)
 
 [node name="gravity-6" parent="stage_up/stage_up1/gravity" instance=ExtResource("10_1fij6")]
-position = Vector2(648, -644)
+position = Vector2(645, -597)
 scale = Vector2(4.51118, 3.71699)
 
 [node name="gravity-7" parent="stage_up/stage_up1/gravity" instance=ExtResource("10_1fij6")]
-position = Vector2(770, -880)
+position = Vector2(790, -782)
 scale = Vector2(4.51118, 3.71699)
 
 [node name="save_point_up1" parent="stage_up/stage_up1" instance=ExtResource("12_7ttva")]
@@ -1872,6 +1886,7 @@ position = Vector2(866, -377)
 
 [node name="move_platform_up2_2" parent="stage_up/stage_up2" instance=ExtResource("13_ydct6")]
 position = Vector2(233, -289)
+scale = Vector2(5, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="stage_up/stage_up2/move_platform_up2_2"]
 libraries = {
@@ -1883,22 +1898,52 @@ autoplay = "move"
 position = Vector2(49, -324)
 
 [node name="disapper_platform_up2_3" parent="stage_up/stage_up2" instance=ExtResource("14_svh60")]
-position = Vector2(131, -373)
-
-[node name="blink_platform" parent="stage_up/stage_up2" instance=ExtResource("15_ofpfw")]
-position = Vector2(55, -548)
-
-[node name="blink_platform2" parent="stage_up/stage_up2" instance=ExtResource("15_ofpfw")]
-position = Vector2(130, -575)
-
-[node name="blink_platform3" parent="stage_up/stage_up2" instance=ExtResource("15_ofpfw")]
-position = Vector2(206, -601)
-
-[node name="blink_platform4" parent="stage_up/stage_up2" instance=ExtResource("15_ofpfw")]
-position = Vector2(277, -631)
+position = Vector2(248, -689)
 
 [node name="unvisible_platform" parent="stage_up/stage_up2" instance=ExtResource("16_i5klh")]
 position = Vector2(49, -286)
+
+[node name="move_platform" parent="stage_up/stage_up2" instance=ExtResource("17_bbuw6")]
+position = Vector2(247, -643)
+do_detect = true
+
+[node name="target" type="Area2D" parent="stage_up/stage_up2/move_platform"]
+position = Vector2(179, 0)
+
+[node name="move_platform2" parent="stage_up/stage_up2" instance=ExtResource("17_bbuw6")]
+position = Vector2(73, -594)
+do_detect = true
+
+[node name="target" type="Area2D" parent="stage_up/stage_up2/move_platform2"]
+position = Vector2(83, 0)
+
+[node name="move_platform3" parent="stage_up/stage_up2" instance=ExtResource("17_bbuw6")]
+position = Vector2(53, -372)
+do_detect = true
+
+[node name="target" type="Area2D" parent="stage_up/stage_up2/move_platform3"]
+position = Vector2(142, 0)
+
+[node name="gravity_0_5" parent="stage_up/stage_up2" instance=ExtResource("10_1fij6")]
+position = Vector2(33, -633)
+scale = Vector2(1, 7)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_6" parent="stage_up/stage_up2" instance=ExtResource("10_1fij6")]
+position = Vector2(428, -632)
+scale = Vector2(2.91664, 7.59298)
+
+[node name="box" parent="stage_up/stage_up2" instance=ExtResource("4_6n3j8")]
+position = Vector2(247, -710)
+collision_mask = 131
+
+[node name="gravity-8" parent="stage_up/stage_up2" instance=ExtResource("10_1fij6")]
+position = Vector2(144, -449)
+scale = Vector2(2, 2)
+
+[node name="platform" parent="stage_up/stage_up2" instance=ExtResource("13_ydct6")]
+position = Vector2(154, -647)
 
 [node name="stage_down" type="Node" parent="."]
 
