@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dd2spqc4w2qfb"]
+
+[ext_resource type="Texture2D" uid="uid://8nrryef8gpok" path="res://assets/sprites/platforms.png" id="1_1duc3"]
+[ext_resource type="Script" path="res://scripts/modules/traps/auto_close_door.gd" id="1_ij38e"]
+[ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="4_e5rla"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_po82k"]
+size = Vector2(46, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sl5xh"]
+size = Vector2(48, 10)
+
+[node name="auto_close_door" type="AnimatableBody2D"]
+collision_layer = 2
+script = ExtResource("1_ij38e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1duc3")
+region_enabled = true
+region_rect = Rect2(0.734306, 32.4186, 46.355, 8.26991)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_po82k")
+
+[node name="target" type="Area2D" parent="."]
+position = Vector2(-39, 0)
+
+[node name="kill_zone" parent="." instance=ExtResource("4_e5rla")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
+shape = SubResource("RectangleShape2D_sl5xh")

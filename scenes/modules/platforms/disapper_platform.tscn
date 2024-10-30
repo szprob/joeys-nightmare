@@ -25,9 +25,6 @@ scale = Vector2(0.918129, -1.20041)
 shape = SubResource("RectangleShape2D_ueoe0")
 one_way_collision = true
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-
 [node name="detection" type="Area2D" parent="."]
 collision_mask = 128
 
@@ -35,5 +32,5 @@ collision_mask = 128
 position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_7bhky")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="detection" to="." method="_on_detection_body_exited"]

@@ -30,6 +30,8 @@ func _ready():
 	#original_collision_mask = collision_mask
 	$GunCooldown.wait_time = cooldown
 	print(get_gravity())
+
+
 func respawn():
 	# 将角色位置设置为重生点
 	#position = GameManager.game_state['current_respawn_point']
@@ -67,13 +69,13 @@ func shoot(Input) -> void:
 		b.start(position + Vector2(0, -8), shoot_direction)
 	else:
 		shoot_direction = Vector2(0, 0)
-		if Input.is_action_pressed("ui_up"):
+		if Input.is_action_pressed("up"):
 			shoot_direction.y = -1
-		if Input.is_action_pressed("ui_down"):
+		if Input.is_action_pressed("down"):
 			shoot_direction.y = 1
-		if Input.is_action_pressed("ui_left"):
+		if Input.is_action_pressed("left"):
 			shoot_direction.x = -1
-		if Input.is_action_pressed("ui_right"):
+		if Input.is_action_pressed("right"):
 			shoot_direction.x = 1
 		b.start(position + Vector2(0, -8), shoot_direction)
 
@@ -106,25 +108,43 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 
 	if not is_on_terrain():
+		print('not on terrain')
 		#print(collision_shape_2d.collision_mask)
-		velocity += get_gravity() * delta
+		var gravity = get_gravity()
+		var gravity_dir = gravity.normalized()
+		
+		# 先应用重力
+		velocity += gravity * delta
+		
+		# 然后限制重力方向上的速度分量
+		var velocity_along_gravity = velocity.project(gravity_dir)
+		if velocity_along_gravity.length() > Consts.MAX_FALLING_SPEED:
+			# 将重力方向的速度限制在400
+			velocity_along_gravity = velocity_along_gravity.normalized() * Consts.MAX_FALLING_SPEED
+			# 计算垂直于重力方向的速度分量
+			var velocity_perpendicular = velocity - velocity.project(gravity_dir)
+			# 合并两个速度分量
+			velocity = velocity_along_gravity + velocity_perpendicular
+		
 		jump_buffer_timer -= delta # 在空中时，减少缓冲计时器
 		# 如果玩家正在跳跃并且继续按住跳跃键，增加跳跃高度
-		# FIXME: 没有大跳
+
 		if is_jumping and Input.is_action_pressed('jump'):
-			print('is jumping and jump pressed', jump_hold_time)
+			# print('is jumping and jump pressed', jump_hold_time)
 			jump_hold_time += delta
 			if jump_hold_time < Consts.MAX_JUMP_HOLD_TIME:
-				var gravity_dir = get_gravity().normalized()
+				# var gravity_dir = get_gravity().normalized()
 				# 计算当前速度在重力方向上的投影
 				var velocity_projection = velocity.project(gravity_dir).length()
-				print('velocity projection', velocity_projection)
-				if abs(velocity_projection) < abs(Consts.MAX_JUMP_VELOCITY):
-					# 计算目标速度向量（与重力方向相反）
-					var target_velocity = -gravity_dir * abs(Consts.MAX_JUMP_VELOCITY)
-					print('target velocity', target_velocity)
-					# 在重力方向上进行lerp
-					velocity = lerp(velocity, target_velocity, delta * 2)
+				if velocity_projection < abs(Consts.MAX_JUMP_VELOCITY):
+				# print('velocity projection', velocity_projection)
+					if abs(velocity_projection) < abs(Consts.MAX_JUMP_VELOCITY):
+						# 计算目标速度向量（与重力方向相反）
+						var target_velocity = -gravity_dir * abs(Consts.MAX_JUMP_VELOCITY)
+						# print('target velocity', target_velocity)
+						# 在重力方向上进行lerp
+						velocity = lerp(velocity, target_velocity, delta)
+
 		else:
 			is_jumping = false # 玩家松开跳跃键，停止跳跃高度增加
 		
@@ -163,13 +183,10 @@ func _physics_process(delta: float) -> void:
 	
 	# TODO: fix this on different gravity direction
 	# Flip sprite based on movement direction 
-	if direction.x > 0:
-		animated_sprite_2d.flip_h = false
-	elif direction.x < 0:
-		animated_sprite_2d.flip_h = true
+	
 		
 	# Flip sprite based on gravity dirction
-	filp_player_sprite()
+	filp_player_sprite(direction)
 
 	# paly animations
 	if is_on_terrain():
@@ -195,17 +212,28 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, Consts.SPEED)
 		else:
 			velocity.y = move_toward(velocity.y, 0, Consts.SPEED)
-	
-	move_and_slide()
-	# push boxes
+
+
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 		if collider is CharacterBody2D and collider.is_in_group('pushable'):
-			collider.push(Vector2(direction))
+			# 获取碰撞法线
+			var normal = collision.get_normal()
+			# 获取重力方向
+			var gravity_dir = get_gravity().normalized()
+			# 检查碰撞法线是否与重力方向垂直（表示从侧面推动）
+			if abs(normal.dot(gravity_dir)) < 0.1: # 使用一个小的阈值来判断是否垂直
+				collider.push(Vector2(direction))
+	
+	move_and_slide()
+	# push boxes
+	
 	
 	# print player status
 	# print(get_gravity())
+	# print('position', position)
+	# print('velocity', velocity)
 	
 	
 func update_face_direction(direction):
@@ -221,24 +249,48 @@ func _on_gun_cooldown_timeout() -> void:
 func is_on_terrain() -> bool:
 	# 根据重力方向设置射线方向
 	var gravity_dir = get_gravity().normalized()
-	ray_cast_2d.target_position = gravity_dir * 18
+	ray_cast_2d.target_position = gravity_dir * 16
 	ray_cast_2d.enabled = true
 
 
 	if ray_cast_2d.is_colliding():
 		var collider = ray_cast_2d.get_collider()
 
-		if collider is TileMapLayer or collider is StaticBody2D:
-			# print('is on tilemap')
+		if collider is TileMapLayer or collider is StaticBody2D or collider is AnimatableBody2D or collider is CharacterBody2D:
+			print('is on tilemap')
 			return true
 			
-	# print('not on tilemap')
+	# print('not on tilemap', )
 	return false
 
-func filp_player_sprite():
+func filp_player_sprite(direction):
 	# flip palyer sprite based on gravity direction
-
 	var gravity = get_gravity().normalized()
 	var angle = gravity.angle() - PI / 2 # 加90度使角色垂直于重力方向
 	animated_sprite_2d.rotation = angle
 	collision_shape_2d.rotation = angle
+
+	if abs(gravity.y) > abs(gravity.x):
+		# 垂直重力情况
+		if gravity.y > 0: # 重力向下
+			if direction.x > 0:
+				animated_sprite_2d.flip_h = false
+			elif direction.x < 0:
+				animated_sprite_2d.flip_h = true
+		else: # 重力向上
+			if direction.x > 0:
+				animated_sprite_2d.flip_h = true
+			elif direction.x < 0:
+				animated_sprite_2d.flip_h = false
+	else:
+		# 水平重力情况保持不变
+		if gravity.x > 0: # 重力向右
+			if direction.y > 0:
+				animated_sprite_2d.flip_h = true
+			elif direction.y < 0:
+				animated_sprite_2d.flip_h = false
+		else: # 重力向左
+			if direction.y > 0:
+				animated_sprite_2d.flip_h = false
+			elif direction.y < 0:
+				animated_sprite_2d.flip_h = true

@@ -25,14 +25,14 @@ func _process(delta):
 func _on_new_pressed() -> void:
 	#GameManager.game_state['archive_index'] = 1 + GameManager.game_state['archive_index']
 	GameManager.save_game_state()
-	get_tree().change_scene_to_file("res://scenes/dreams/stage001/game001.tscn")
+	get_tree().change_scene_to_file("res://scenes/dreams/bigworld/bigworld01.tscn")
 
 
 func _on_load_pressed() -> void:
 	GameManager.load_game_state()
 	GameManager.apply_settings()
 	print('读取成功,复活点:',GameManager.game_state['current_respawn_point'])
-	get_tree().change_scene_to_file("res://scenes/dreams/stage001/game001.tscn")
+	get_tree().change_scene_to_file("res://scenes/dreams/bigworld/bigworld01.tscn")
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
