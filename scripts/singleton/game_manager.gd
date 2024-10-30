@@ -14,6 +14,8 @@ var game_state  = {
 	'archive_index' = 1 ,# 存档索引
 	# settings
 	'settings' = settings,
+	# game_play 
+	'teleport_tgt_enable' = true,
 }
 
 

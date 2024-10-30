@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://dhcoju0cv8u0y"]
+[gd_scene load_steps=29 format=4 uid="uid://dhcoju0cv8u0y"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_2ix8p"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_45goe"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dlnwqw1a3g1m3" path="res://scenes/modules/coin.tscn" id="4_jxddp"]
 [ext_resource type="PackedScene" uid="uid://b87rogf3b1s12" path="res://scenes/modules/platforms/disapper_platform.tscn" id="4_y74vq"]
 [ext_resource type="PackedScene" uid="uid://do8x2w6t8vgwy" path="res://scenes/modules/platforms/platform.tscn" id="5_3o21u"]
+[ext_resource type="PackedScene" uid="uid://cqyve764cqdom" path="res://scenes/modules/checkpoints/teleport_tgt.tscn" id="6_1od1y"]
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="6_lkbmr"]
 [ext_resource type="PackedScene" uid="uid://dn6fopj5n8ldj" path="res://scenes/modules/platforms/move_platform.tscn" id="6_lnq0u"]
 [ext_resource type="PackedScene" uid="uid://bxs320cj2nn71" path="res://scenes/enemy/slime.tscn" id="7_tn02o"]
@@ -413,7 +414,6 @@ autoplay = "move"
 
 [node name="move_platform" parent="platform" instance=ExtResource("6_lnq0u")]
 position = Vector2(-128, -70)
-do_detect = false
 
 [node name="target" type="Area2D" parent="platform/move_platform"]
 position = Vector2(-4, 50)
@@ -424,6 +424,13 @@ position = Vector2(-190, -45)
 
 [node name="target" type="Area2D" parent="platform/move_platform2"]
 position = Vector2(0, -31)
+
+[node name="teleport_tgt" parent="platform" instance=ExtResource("6_1od1y")]
+position = Vector2(-117, -28)
+teleport_time = null
+
+[node name="target" type="Area2D" parent="platform/teleport_tgt"]
+position = Vector2(-18, -72)
 
 [node name="tilemaps" type="Node" parent="."]
 
@@ -499,5 +506,6 @@ collision_mask = 128
 position = Vector2(-39, 30)
 shape = SubResource("CircleShape2D_sl21j")
 
+[editable path="platform/teleport_tgt"]
 [editable path="FallingTrapTgt"]
 [editable path="auto_close_door"]

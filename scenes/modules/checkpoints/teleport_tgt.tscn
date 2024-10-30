@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqyve764cqdom"]
+
+[ext_resource type="Texture2D" uid="uid://c8iglqhnc11rg" path="res://assets/sprites/day/room/TopDownHouse_FloorsAndWalls_OpenDoors.png" id="1_n0d0s"]
+[ext_resource type="Script" path="res://scripts/modules/checkpoints/teleport_tgt.gd" id="1_xa6op"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47aw7"]
+size = Vector2(12, 16)
+
+[node name="teleport_tgt" type="Area2D"]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("1_xa6op")
+teleport_time = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n0d0s")
+region_enabled = true
+region_rect = Rect2(-0.0837317, 0, 32.1875, 48.1711)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_47aw7")
