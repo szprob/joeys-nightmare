@@ -69,13 +69,13 @@ func shoot(Input) -> void:
 		b.start(position + Vector2(0, -8), shoot_direction)
 	else:
 		shoot_direction = Vector2(0, 0)
-		if Input.is_action_pressed("ui_up"):
+		if Input.is_action_pressed("up"):
 			shoot_direction.y = -1
-		if Input.is_action_pressed("ui_down"):
+		if Input.is_action_pressed("down"):
 			shoot_direction.y = 1
-		if Input.is_action_pressed("ui_left"):
+		if Input.is_action_pressed("left"):
 			shoot_direction.x = -1
-		if Input.is_action_pressed("ui_right"):
+		if Input.is_action_pressed("right"):
 			shoot_direction.x = 1
 		b.start(position + Vector2(0, -8), shoot_direction)
 
