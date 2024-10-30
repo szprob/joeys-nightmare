@@ -2,5 +2,6 @@
 .godot/
 /android/
 *.tmp
-.history/
+/.history/
 *.json
+/addons/godot-git-plugin/win64

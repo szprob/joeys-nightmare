@@ -1,12 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://cv3nrtrevxkyu"]
+[gd_scene load_steps=12 format=3 uid="uid://cv3nrtrevxkyu"]
 
 [ext_resource type="Script" path="res://scripts/sokoban/gravity_1.gd" id="1_h3l67"]
+[ext_resource type="Texture2D" uid="uid://bcnad1v6jy2jw" path="res://assets/sprites/arrow.png" id="2_d4o47"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3pmf"]
 size = Vector2(32, 32)
 
 [sub_resource type="LabelSettings" id="LabelSettings_i8b7l"]
 font_size = 11
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmkgc"]
+atlas = ExtResource("2_d4o47")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvp7s"]
+atlas = ExtResource("2_d4o47")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hofkf"]
+atlas = ExtResource("2_d4o47")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cwqy"]
+atlas = ExtResource("2_d4o47")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_geigk"]
+atlas = ExtResource("2_d4o47")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_waimj"]
+atlas = ExtResource("2_d4o47")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_csio3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmkgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvp7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hofkf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cwqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_geigk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_waimj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [node name="gravity-1" type="Area2D"]
 collision_mask = 129
@@ -28,3 +79,8 @@ label_settings = SubResource("LabelSettings_i8b7l")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_csio3")
+autoplay = "default"
+frame_progress = 0.366178

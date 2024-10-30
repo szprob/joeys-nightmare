@@ -91,4 +91,3 @@ func _on_detection_body_entered(body: Node2D) -> void:
 
 func _on_start_timer_timeout() -> void:
 	is_moving = true
-
