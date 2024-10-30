@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk2cpnq615sdn"
-path="res://.godot/imported/back.webp-aedfbd9f81b5bcfd1f228f0f83284187.ctex"
+uid="uid://w0wb1bpat0xx"
+path="res://.godot/imported/前.png-ff0df40bb7dc25159291b37f61118505.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/back.webp"
-dest_files=["res://.godot/imported/back.webp-aedfbd9f81b5bcfd1f228f0f83284187.ctex"]
+source_file="res://assets/sprites/joey_v3/run/前.png"
+dest_files=["res://.godot/imported/前.png-ff0df40bb7dc25159291b37f61118505.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bow14vvpg086b"
-path="res://.godot/imported/back2.webp-91025960fcbe138109cb4388aff81fb3.ctex"
+uid="uid://btup675wp16ld"
+path="res://.godot/imported/右.png-000d8e63970f03fce09a919a3e16d624.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/back2.webp"
-dest_files=["res://.godot/imported/back2.webp-91025960fcbe138109cb4388aff81fb3.ctex"]
+source_file="res://assets/sprites/joey_v3/shoot/右.png"
+dest_files=["res://.godot/imported/右.png-000d8e63970f03fce09a919a3e16d624.ctex"]
 
 [params]
 

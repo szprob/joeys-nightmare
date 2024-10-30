@@ -257,7 +257,7 @@ func is_on_terrain() -> bool:
 		var collider = ray_cast_2d.get_collider()
 
 		if collider is TileMapLayer or collider is StaticBody2D or collider is AnimatableBody2D or collider is CharacterBody2D:
-			print('is on tilemap')
+			#print('is on tilemap')
 			return true
 			
 	# print('not on tilemap', )
