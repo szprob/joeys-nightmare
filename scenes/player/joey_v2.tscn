@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=25 format=3 uid="uid://cxlf6afy3acb8"]
 
 [ext_resource type="Script" path="res://scripts/sokoban/player_with_gravity_gun.gd" id="1_2upki"]
@@ -5,6 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://cwp6e3pdmhrxa" path="res://assets/sprites/joey-v2/joey-v2_64/idle/idle_右.png" id="3_a8jo1"]
 [ext_resource type="Texture2D" uid="uid://cidpsnb4y1mlf" path="res://assets/sprites/joey-v2/joey-v2_64/walk/slice_11_0.png" id="4_p04ea"]
 [ext_resource type="Texture2D" uid="uid://b1nritt6ifjs8" path="res://assets/sprites/joey-v2/joey-v2_64/jump/slice_29_0.png" id="4_w7bl4"]
+=======
+[gd_scene load_steps=25 format=3 uid="uid://b1bektmvwaerf"]
+
+[ext_resource type="Script" path="res://scripts/sokoban/player_with_gravity_gun.gd" id="1_2upki"]
+[ext_resource type="PackedScene" uid="uid://dwkd8axprygf0" path="res://scenes/sokoban/bullet.tscn" id="2_n5gkm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/joey-v2/joey-v2_64/idle/idle_右.png" id="3_a8jo1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/joey-v2/joey-v2_64/walk/slice_11_0.png" id="4_p04ea"]
+[ext_resource type="Texture2D" path="res://assets/sprites/joey-v2/joey-v2_64/jump/slice_29_0.png" id="4_w7bl4"]
+>>>>>>> Stashed changes
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rsrhd"]
 atlas = ExtResource("3_a8jo1")
