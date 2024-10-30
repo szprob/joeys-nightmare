@@ -1,14 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dd2spqc4w2qfb"]
+[gd_scene load_steps=6 format=3 uid="uid://dd2spqc4w2qfb"]
 
 [ext_resource type="Texture2D" uid="uid://8nrryef8gpok" path="res://assets/sprites/platforms.png" id="1_1duc3"]
 [ext_resource type="Script" path="res://scripts/modules/traps/auto_close_door.gd" id="1_ij38e"]
-[ext_resource type="Texture2D" uid="uid://78w4owvufdht" path="res://icon.svg" id="2_edfvm"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="4_e5rla"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_po82k"]
 size = Vector2(46, 8)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvkyh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sl5xh"]
 size = Vector2(48, 10)
@@ -25,27 +22,10 @@ region_rect = Rect2(0.734306, 32.4186, 46.355, 8.26991)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_po82k")
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-
-[node name="detection" type="Area2D" parent="."]
-collision_mask = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
-position = Vector2(-39, 33)
-shape = SubResource("RectangleShape2D_hvkyh")
-
 [node name="target" type="Area2D" parent="."]
-position = Vector2(-39, -1)
-
-[node name="Sprite2D" type="Sprite2D" parent="target"]
-position = Vector2(0, 1)
-scale = Vector2(0.0703125, 0.078125)
-texture = ExtResource("2_edfvm")
+position = Vector2(-39, 0)
 
 [node name="kill_zone" parent="." instance=ExtResource("4_e5rla")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
 shape = SubResource("RectangleShape2D_sl5xh")
-
-[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]

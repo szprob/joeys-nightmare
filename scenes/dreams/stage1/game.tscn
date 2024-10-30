@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://dhcoju0cv8u0y"]
+[gd_scene load_steps=28 format=4 uid="uid://dhcoju0cv8u0y"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_2ix8p"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_45goe"]
@@ -370,6 +370,8 @@ texture = ExtResource("6_lkbmr")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_pwg2v")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_sl21j"]
+
 [node name="Game" type="Node2D" groups=["scan_lines"]]
 script = ExtResource("1_2ix8p")
 
@@ -488,4 +490,13 @@ position_smoothing_enabled = true
 [node name="auto_close_door" parent="." instance=ExtResource("18_nitj5")]
 position = Vector2(-246, -46)
 
+[node name="detection" type="Area2D" parent="auto_close_door"]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="auto_close_door/detection"]
+position = Vector2(-39, 30)
+shape = SubResource("CircleShape2D_sl21j")
+
 [editable path="FallingTrapTgt"]
+[editable path="auto_close_door"]
