@@ -108,6 +108,7 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 
 	if not is_on_terrain():
+		print('not on terrain')
 		#print(collision_shape_2d.collision_mask)
 		var gravity = get_gravity()
 		var gravity_dir = gravity.normalized()
@@ -212,13 +213,22 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.y = move_toward(velocity.y, 0, Consts.SPEED)
 
-	move_and_slide()
-	# push boxes
+
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 		if collider is CharacterBody2D and collider.is_in_group('pushable'):
-			collider.push(Vector2(direction))
+			# 获取碰撞法线
+			var normal = collision.get_normal()
+			# 获取重力方向
+			var gravity_dir = get_gravity().normalized()
+			# 检查碰撞法线是否与重力方向垂直（表示从侧面推动）
+			if abs(normal.dot(gravity_dir)) < 0.1: # 使用一个小的阈值来判断是否垂直
+				collider.push(Vector2(direction))
+	
+	move_and_slide()
+	# push boxes
+	
 	
 	# print player status
 	# print(get_gravity())
@@ -239,15 +249,15 @@ func _on_gun_cooldown_timeout() -> void:
 func is_on_terrain() -> bool:
 	# 根据重力方向设置射线方向
 	var gravity_dir = get_gravity().normalized()
-	ray_cast_2d.target_position = gravity_dir * 18
+	ray_cast_2d.target_position = gravity_dir * 16
 	ray_cast_2d.enabled = true
 
 
 	if ray_cast_2d.is_colliding():
 		var collider = ray_cast_2d.get_collider()
 
-		if collider is TileMapLayer or collider is StaticBody2D or collider is AnimatableBody2D:
-			# print('is on tilemap')
+		if collider is TileMapLayer or collider is StaticBody2D or collider is AnimatableBody2D or collider is CharacterBody2D:
+			print('is on tilemap')
 			return true
 			
 	# print('not on tilemap', )
