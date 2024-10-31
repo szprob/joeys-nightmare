@@ -170,7 +170,7 @@ position = Vector2(577, 44)
 [node name="button" type="Node" parent="."]
 
 [node name="button-1" parent="button" instance=ExtResource("5_l4f35")]
-door = NodePath("../../door/door-1")
+door = NodePath("../../gravity-2")
 
 [node name="button-2" parent="button" instance=ExtResource("5_l4f35")]
 position = Vector2(576, 2)
@@ -193,12 +193,13 @@ scale = Vector2(0.8, 0.8)
 [node name="bullet" type="Node" parent="."]
 
 [node name="player_with_gravity" parent="." instance=ExtResource("1_adtox")]
-position = Vector2(331, 140)
+position = Vector2(165.5, 18.5)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
 position_smoothing_enabled = true
 
 [node name="kill_zone" parent="." instance=ExtResource("7_aihdv")]
+position = Vector2(-261, -122)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
 shape = SubResource("WorldBoundaryShape2D_t8q86")
@@ -207,3 +208,7 @@ shape = SubResource("WorldBoundaryShape2D_t8q86")
 position = Vector2(749, 16)
 gravity_point_center = Vector2(0, 1)
 gravity_direction = Vector2(0, 1)
+
+[node name="gravity-2" parent="." instance=ExtResource("7_u8er8")]
+position = Vector2(257, -5)
+enabled_at_start = false
