@@ -1,10 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7l0cgfu3na7c"]
+[gd_scene load_steps=3 format=3 uid="uid://c7l0cgfu3na7c"]
 
 [ext_resource type="Script" path="res://scripts/main/start.gd" id="1_6omwx"]
 [ext_resource type="Texture2D" uid="uid://towjoisj1iyj" path="res://assets/start.png" id="2_gfm2h"]
-[ext_resource type="PackedScene" uid="uid://d0atgq0il2toh" path="res://scenes/shader/crt.tscn" id="3_olffb"]
 
-[node name="start" type="Node2D"]
+[node name="start" type="Node2D" groups=["scan_lines"]]
 position = Vector2(0, -3)
 script = ExtResource("1_6omwx")
 
@@ -49,8 +48,6 @@ offset_bottom = 283.0
 scale = Vector2(0.3, 0.3)
 theme_override_font_sizes/font_size = 48
 text = "SETTINGS"
-
-[node name="CRT" parent="." instance=ExtResource("3_olffb")]
 
 [connection signal="pressed" from="new" to="." method="_on_new_pressed"]
 [connection signal="pressed" from="load" to="." method="_on_load_pressed"]
