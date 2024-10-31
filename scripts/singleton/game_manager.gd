@@ -85,4 +85,3 @@ func load_game_state():
 	else:
 		print("无法打开存档文件")
 		init_default_state()
-

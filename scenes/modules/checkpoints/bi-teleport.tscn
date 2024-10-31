@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://be2aref2nye7h"]
+[gd_scene load_steps=29 format=3 uid="uid://b4l0s4mgeuqyq"]
 
 [ext_resource type="Script" path="res://scripts/modules/checkpoints/bi_teleport.gd" id="1_eq87d"]
 [ext_resource type="Texture2D" uid="uid://cxw3uyw1udgev" path="res://assets/teleport.png" id="2_nqy3y"]
@@ -199,7 +199,7 @@ animations = [{
 
 [node name="bi-teleport" type="Area2D"]
 collision_layer = 0
-collision_mask = 128
+collision_mask = 129
 script = ExtResource("1_eq87d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

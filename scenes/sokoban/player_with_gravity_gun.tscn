@@ -84,7 +84,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_syubq"]
 size = Vector2(10, 17)
 
-[node name="player_with_gravity" type="CharacterBody2D"]
+[node name="player_with_gravity" type="CharacterBody2D" groups=["teleport_enable"]]
 z_index = 5
 collision_layer = 128
 collision_mask = 3

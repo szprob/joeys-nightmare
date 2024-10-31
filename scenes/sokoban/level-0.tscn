@@ -1,6 +1,5 @@
-[gd_scene load_steps=14 format=4 uid="uid://dqy1bj4scr102"]
+[gd_scene load_steps=13 format=4 uid="uid://dqy1bj4scr102"]
 
-[ext_resource type="Script" path="res://scripts/sokoban/level_0.gd" id="1_2o8ub"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="1_adtox"]
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="2_mfowp"]
 [ext_resource type="PackedScene" uid="uid://bhgixpqr8klwj" path="res://scenes/sokoban/box.tscn" id="3_tvyar"]
@@ -158,7 +157,6 @@ sources/0 = SubResource("TileSetScenesCollectionSource_ho3rd")
 distance = -210.0
 
 [node name="Level-0" type="Node2D"]
-script = ExtResource("1_2o8ub")
 
 [node name="tiles" type="Node" parent="."]
 
@@ -168,7 +166,7 @@ tile_set = SubResource("TileSet_ud7ar")
 collision_visibility_mode = 1
 
 [node name="gravities" type="TileMapLayer" parent="tiles"]
-tile_map_data = PackedByteArray("AAABAPr/AAAAAAAAAQACAPr/AAAAAAAAAQADAPr/AAAAAAAAAQAEAPr/AAAAAAAAAQAEAPv/AAAAAAAAAQADAPv/AAAAAAAAAQACAPv/AAAAAAAAAQABAPv/AAAAAAAAAQABAPz/AAAAAAAAAQACAPz/AAAAAAAAAQADAPz/AAAAAAAAAQAEAPz/AAAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAABAPr/AAAAAAAAAQACAPr/AAAAAAAAAQADAPr/AAAAAAAAAQAEAPr/AAAAAAAAAQAEAPv/AAAAAAAAAQADAPv/AAAAAAAAAQACAPv/AAAAAAAAAQABAPv/AAAAAAAAAQABAPz/AAAAAAAAAQACAPz/AAAAAAAAAQADAPz/AAAAAAAAAQAEAPz/AAAAAAAAAQABAPX/AAAAAAAAAQABAPb/AAAAAAAAAQABAPf/AAAAAAAAAQABAPj/AAAAAAAAAQACAPX/AAAAAAAAAQACAPb/AAAAAAAAAQACAPf/AAAAAAAAAQACAPj/AAAAAAAAAQADAPX/AAAAAAAAAQADAPb/AAAAAAAAAQADAPf/AAAAAAAAAQADAPj/AAAAAAAAAQAEAPX/AAAAAAAAAQAEAPb/AAAAAAAAAQAEAPf/AAAAAAAAAQAEAPj/AAAAAAAAAQAFAPX/AAAAAAAAAQAFAPb/AAAAAAAAAQAFAPf/AAAAAAAAAQAFAPj/AAAAAAAAAQAGAPX/AAAAAAAAAQAGAPb/AAAAAAAAAQAGAPf/AAAAAAAAAQAGAPj/AAAAAAAAAQAHAPX/AAAAAAAAAQAHAPb/AAAAAAAAAQAHAPf/AAAAAAAAAQAHAPj/AAAAAAAAAQAIAPX/AAAAAAAAAQAIAPb/AAAAAAAAAQAIAPf/AAAAAAAAAQAIAPj/AAAAAAAAAQA=")
 tile_set = SubResource("TileSet_mw1or")
 
 [node name="boxes" type="Node" parent="."]
