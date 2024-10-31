@@ -3,6 +3,10 @@ extends Area2D
 
 var debug_draw_enabled = true
 # @export var gravity_space_override = SPACE_OVERRIDE_REPLACE
+
+@export var tile_size := Vector2(32, 32) # 平铺大小
+@export var snap_to_grid := true # 是否对齐网格
+
 @export var enabled_at_start := true
 @export var arrow_length := 16.0
 @export var arrow_color := Color.YELLOW
@@ -53,3 +57,11 @@ func close():
 	gravity_space_override = SPACE_OVERRIDE_DISABLED
 	if has_node("AnimatedSprite2D"):
 		$AnimatedSprite2D.pause() # 暂停动画
+
+# 添加编辑器中的位置吸附功能
+func _notification(what: int) -> void:
+	if Engine.is_editor_hint() and what == NOTIFICATION_TRANSFORM_CHANGED and snap_to_grid:
+		# 将位置吸附到网格
+		var snapped_pos = position.snapped(tile_size)
+		if position != snapped_pos:
+			position = snapped_pos
