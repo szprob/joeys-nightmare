@@ -6,12 +6,13 @@ extends Node
 var game_state = {
 	'score': 0,
 	'current_respawn_point': Vector2(-74, -39),
+	'respawn_enable':false,
 	'archive_index': 1,
 	'settings': {
 		'full_screen': false,
 		'scan_lines': true
 	},
-	'teleport_tgt_enable': true
+	'teleport_enable': true
 }
 
 func init_default_state():

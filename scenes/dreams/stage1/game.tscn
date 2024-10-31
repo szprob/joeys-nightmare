@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://dhcoju0cv8u0y"]
+[gd_scene load_steps=30 format=4 uid="uid://dhcoju0cv8u0y"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_2ix8p"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_45goe"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dlnwqw1a3g1m3" path="res://scenes/modules/coin.tscn" id="4_jxddp"]
 [ext_resource type="PackedScene" uid="uid://b87rogf3b1s12" path="res://scenes/modules/platforms/disapper_platform.tscn" id="4_y74vq"]
 [ext_resource type="PackedScene" uid="uid://do8x2w6t8vgwy" path="res://scenes/modules/platforms/platform.tscn" id="5_3o21u"]
-[ext_resource type="PackedScene" uid="uid://cqyve764cqdom" path="res://scenes/modules/checkpoints/teleport_tgt.tscn" id="6_1od1y"]
+[ext_resource type="PackedScene" uid="uid://bsi32sqjgm7ph" path="res://scenes/modules/checkpoints/teleport_tgt.tscn" id="6_1od1y"]
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="6_lkbmr"]
 [ext_resource type="PackedScene" uid="uid://dn6fopj5n8ldj" path="res://scenes/modules/platforms/move_platform.tscn" id="6_lnq0u"]
 [ext_resource type="PackedScene" uid="uid://bxs320cj2nn71" path="res://scenes/enemy/slime.tscn" id="7_tn02o"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="15_rx0vs"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="17_s67dx"]
 [ext_resource type="PackedScene" uid="uid://dd2spqc4w2qfb" path="res://scenes/modules/traps/auto_close_door.tscn" id="18_nitj5"]
+[ext_resource type="PackedScene" uid="uid://be2aref2nye7h" path="res://scenes/modules/checkpoints/bi-teleport.tscn" id="20_leco7"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8553"]
 distance = -68.0
@@ -427,7 +428,6 @@ position = Vector2(0, -31)
 
 [node name="teleport_tgt" parent="platform" instance=ExtResource("6_1od1y")]
 position = Vector2(-117, -28)
-teleport_time = null
 
 [node name="target" type="Area2D" parent="platform/teleport_tgt"]
 position = Vector2(-18, -72)
@@ -484,7 +484,7 @@ position = Vector2(-17, -47)
 [node name="unvisible_platform" parent="." instance=ExtResource("3_hcxfq")]
 position = Vector2(-17, -27)
 
-[node name="player" parent="." instance=ExtResource("15_rx0vs")]
+[node name="player" parent="." groups=["player"] instance=ExtResource("15_rx0vs")]
 position = Vector2(-89, -55)
 script = ExtResource("17_s67dx")
 
@@ -505,6 +505,17 @@ collision_mask = 128
 [node name="CollisionShape2D" type="CollisionShape2D" parent="auto_close_door/detection"]
 position = Vector2(-39, 30)
 shape = SubResource("CircleShape2D_sl21j")
+
+[node name="bi-teleport" parent="." node_paths=PackedStringArray("paired_portal") instance=ExtResource("20_leco7")]
+position = Vector2(-20, -61)
+teleport_type = 1
+paired_portal = NodePath("../bi-teleport2")
+
+[node name="bi-teleport2" parent="." node_paths=PackedStringArray("paired_portal") instance=ExtResource("20_leco7")]
+position = Vector2(181, -41)
+teleport_type = 1
+way = 1
+paired_portal = NodePath("../bi-teleport")
 
 [editable path="platform/teleport_tgt"]
 [editable path="FallingTrapTgt"]

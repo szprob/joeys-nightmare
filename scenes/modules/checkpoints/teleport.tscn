@@ -1,12 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6pq8l7ym5nuh"]
+[gd_scene load_steps=11 format=3 uid="uid://b6pq8l7ym5nuh"]
 
 [ext_resource type="Script" path="res://scripts/modules/checkpoints/teleport.gd" id="1_th2bk"]
-[ext_resource type="Texture2D" uid="uid://78w4owvufdht" path="res://icon.svg" id="2_ts3ne"]
+[ext_resource type="Texture2D" uid="uid://cxw3uyw1udgev" path="res://assets/teleport.png" id="2_gpdw7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylf3b"]
 size = Vector2(30, 27)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvoaw"]
+atlas = ExtResource("2_gpdw7")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tk47p"]
+atlas = ExtResource("2_gpdw7")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkljx"]
+atlas = ExtResource("2_gpdw7")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83ra0"]
+atlas = ExtResource("2_gpdw7")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r84um"]
+atlas = ExtResource("2_gpdw7")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65pdm"]
+atlas = ExtResource("2_gpdw7")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s3wi2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvoaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tk47p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkljx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83ra0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r84um")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65pdm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="teleport" type="Area2D"]
+scale = Vector2(0.5, 0.5)
 collision_mask = 129
 script = ExtResource("1_th2bk")
 
@@ -14,10 +65,10 @@ script = ExtResource("1_th2bk")
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_ylf3b")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 1)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_ts3ne")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_s3wi2")
+autoplay = "default"
+frame_progress = 0.512197
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
