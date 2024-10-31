@@ -10,6 +10,8 @@ var debug_draw_enabled = true
 func _ready() -> void:
 	if not enabled_at_start:
 		gravity_space_override = SPACE_OVERRIDE_DISABLED
+		if has_node("AnimatedSprite2D"):
+			$AnimatedSprite2D.pause() # 暂停动画
 	pass # Replace with function body.
 
 
@@ -42,11 +44,12 @@ func open():
 	"""如果和button连接，如果button被按下，调用这个函数的行为"""
 	gravity_space_override = SPACE_OVERRIDE_REPLACE
 	if has_node("AnimatedSprite2D"):
-		$AnimatedSprite2D.visible = true
+		# $AnimatedSprite2D.visible = true
+		$AnimatedSprite2D.play()
 
 func close():
 	"""如果和button连接，如果button被松开，调用这个函数的行为"""
 	
 	gravity_space_override = SPACE_OVERRIDE_DISABLED
 	if has_node("AnimatedSprite2D"):
-		$AnimatedSprite2D.visible = false
+		$AnimatedSprite2D.pause() # 暂停动画
