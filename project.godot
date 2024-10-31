@@ -46,9 +46,10 @@ enabled=PackedStringArray()
 
 [global_group]
 
-Player=""
 game=""
 scan_lines=""
+teleport_enable=""
+player=""
 
 [input]
 
