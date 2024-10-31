@@ -2733,7 +2733,6 @@ position = Vector2(934, -33)
 [node name="button-1" parent="stage0/box-door" instance=ExtResource("15_e7j1i")]
 position = Vector2(672, -112)
 rotation = 3.14159
-door = NodePath("../door-1")
 
 [node name="save_point_0" parent="stage0" instance=ExtResource("12_7ttva")]
 position = Vector2(753, -10)
@@ -2923,7 +2922,6 @@ rotation = 1.5708
 
 [node name="button-1" parent="stage1/box-door" instance=ExtResource("15_e7j1i")]
 position = Vector2(1088, 0)
-door = NodePath("../door-1")
 
 [node name="box-door2" type="Node" parent="stage1"]
 
@@ -2936,7 +2934,6 @@ position = Vector2(1399, -36)
 [node name="button-1" parent="stage1/box-door2" instance=ExtResource("15_e7j1i")]
 position = Vector2(1264, -240)
 rotation = 3.14159
-door = NodePath("../door-1")
 
 [node name="save_point_0" parent="stage1" instance=ExtResource("12_7ttva")]
 position = Vector2(968, -25)

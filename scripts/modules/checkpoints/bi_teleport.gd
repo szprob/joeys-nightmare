@@ -4,8 +4,8 @@ enum TeleportType { ONE_WAY, BI_WAY }
 enum Way { IN, OUT }
 
 @export var teleport_type: TeleportType = TeleportType.ONE_WAY
-@export var teleport_cooldown_time: float = 1.0
-@export var teleport_time: float = 0.5
+@export var teleport_cooldown_time: float = 0.8
+@export var teleport_time: float = 0.3
 @export var way: Way = Way.IN
 # 添加配对传送门的引用
 @export var paired_portal: Area2D
@@ -15,6 +15,9 @@ enum Way { IN, OUT }
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var timer2 : Timer = Timer.new()
+
+# 添加一个变量来存储当前传送的物体
+var current_body: Node2D = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -52,10 +55,12 @@ func _on_body_entered(body: Node2D) -> void:
 	# 检查是否可以传送
 	if not _can_teleport(body):
 		return
-
+		
+	# 保存当前传送的物体引用
+	current_body = body
+	
 	if timer2.is_stopped():
 		timer2.start()
-
 
 func _can_teleport(body: Node2D) -> bool:
 	# 基础检查
@@ -92,15 +97,13 @@ func _on_timer2_timeout() -> void:
 	else:
 		destination = paired_portal
 		
-	if destination:
-		# # 播放传送动画
-		# animated_sprite_2d.play("teleport")
-		# if paired_portal:
-		# 	paired_portal.animated_sprite_2d.play("receive")
-		
+	if destination and current_body:  # 确保有目标位置和物体
 		# 传送物体
-		body.global_position = destination.global_position
+		current_body.global_position = destination.global_position
 		
 		# 禁用传送功能直到计时器超时
 		GameManager.game_state['teleport_enable'] = false
 		timer.start()
+		
+		# 清除引用
+		current_body = null
