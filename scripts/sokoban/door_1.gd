@@ -13,7 +13,9 @@ func _process(delta: float) -> void:
 func open():
 	print('open door')
 	self.set_collision_layer(0)
+	self.visible=false
 	
 func close():
 	print('close door')
 	self.set_collision_layer(1)
+	self.visible=true
