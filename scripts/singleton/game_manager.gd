@@ -39,17 +39,21 @@ func on_fullscreen_toggled(toggled_on: bool) -> void:
 
 func on_scan_lines_toggled(toggled_on: bool) -> void:
 	var scanline_nodes = get_tree().get_nodes_in_group("scanlines")
+	if scanline_nodes.is_empty():
+		push_warning("没有找到带有 'scanlines' 组的节点")
+		return
+		
 	for node in scanline_nodes:
+		var existing_scan_lines = node.get_node_or_null("ScanLines")
+		
 		if toggled_on:
-			# 检查节点是否已经有扫描线
-			if not node.has_node("ScanLines"):
+			if not existing_scan_lines:
 				var scan_lines_instance = scan_lines_scene.instantiate()
 				scan_lines_instance.name = "ScanLines"
 				node.add_child(scan_lines_instance)
 		else:
-			# 移除扫描线
-			if node.has_node("ScanLines"):
-				node.get_node("ScanLines").queue_free()
+			if existing_scan_lines:
+				existing_scan_lines.queue_free()
 
 	game_state['settings']['scan_lines'] = toggled_on
 
