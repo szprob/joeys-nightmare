@@ -2,24 +2,23 @@ extends Node
 
 @export var scan_lines_scene: PackedScene
 
-var settings = {
-	'full_screen' = false,#'WINDOWED',
-	'scan_lines' = true,
+
+var game_state = {
+	'score': 0,
+	'current_respawn_point': Vector2(-74, -39),
+	'archive_index': 1,
+	'settings': {
+		'full_screen': false,
+		'scan_lines': true
+	},
+	'teleport_tgt_enable': true
 }
 
-
-var game_state  = {
-	'score' = 0 , # 积分
-	'current_respawn_point' = Vector2(-74,-39),# 重生点位置
-	'archive_index' = 1 ,# 存档索引
-	# settings
-	'settings' = settings,
-	# game_play 
-	'teleport_tgt_enable' = true,
-}
-
+func init_default_state():
+	game_state = game_state.duplicate(true)  # 深度复制默认状态
 
 func _ready() -> void:
+	init_default_state()
 	apply_settings()
 		
 
@@ -75,7 +74,14 @@ func load_game_state():
 		var json = JSON.new()
 		var result = json.parse(save_text)
 		if result == OK:
-			var game_state = json.data
+			# 正确赋值加载的游戏状态
+			game_state = json.data
 		else:
-			print("JSON Parse Error at line ",json.get_error_line())
+			print("JSON Parse Error at line ", json.get_error_line())
+			# 加载失败时初始化默认状态
+			init_default_state()
 		file.close()
+	else:
+		print("无法打开存档文件")
+		init_default_state()
+
