@@ -11,11 +11,13 @@ func _on_body_entered(body):
 	print(body)
 	if body is CharacterBody2D:
 		print('CharacterBody2D entered, open the door')
+		$AnimatedSprite2D.frame = 1
 		if door:
 			get_node(door).open()
 		
 func _on_body_exited(body):
 	if body is CharacterBody2D:
 		print('CharacterBody2D exited, close the door')
+		$AnimatedSprite2D.frame =0
 		if door:
 			get_node(door).close()

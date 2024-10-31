@@ -1,13 +1,38 @@
-[gd_scene load_steps=12 format=3 uid="uid://cv3nrtrevxkyu"]
+[gd_scene load_steps=19 format=3 uid="uid://cv3nrtrevxkyu"]
 
 [ext_resource type="Script" path="res://scripts/sokoban/gravity_1.gd" id="1_h3l67"]
-[ext_resource type="Texture2D" uid="uid://bcnad1v6jy2jw" path="res://assets/sprites/arrow.png" id="2_d4o47"]
+[ext_resource type="Texture2D" uid="uid://bh2yvy6nvv85u" path="res://assets/sprites/human/arrow2.png" id="2_536f8"]
+[ext_resource type="Texture2D" uid="uid://bcnad1v6jy2jw" path="res://assets/sprites/human/arrow.png" id="2_d4o47"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3pmf"]
 size = Vector2(32, 32)
 
 [sub_resource type="LabelSettings" id="LabelSettings_i8b7l"]
 font_size = 11
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shlss"]
+atlas = ExtResource("2_536f8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jme3x"]
+atlas = ExtResource("2_536f8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfn2r"]
+atlas = ExtResource("2_536f8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bj2to"]
+atlas = ExtResource("2_536f8")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvd2c"]
+atlas = ExtResource("2_536f8")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkhl6"]
+atlas = ExtResource("2_536f8")
+region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jmkgc"]
 atlas = ExtResource("2_d4o47")
@@ -35,6 +60,29 @@ region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_csio3"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shlss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jme3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfn2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bj2to")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvd2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkhl6")
+}],
+"loop": true,
+"name": &"d2",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jmkgc")
@@ -82,5 +130,5 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_csio3")
-autoplay = "default"
-frame_progress = 0.366178
+animation = &"d2"
+autoplay = "d2"
