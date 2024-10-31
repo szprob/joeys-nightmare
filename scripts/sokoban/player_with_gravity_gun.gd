@@ -108,7 +108,7 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 
 	if not is_on_terrain():
-		print('not on terrain')
+		# print('not on terrain')
 		#print(collision_shape_2d.collision_mask)
 		var gravity = get_gravity()
 		var gravity_dir = gravity.normalized()
