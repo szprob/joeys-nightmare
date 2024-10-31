@@ -2622,7 +2622,7 @@ _data = {
 script = ExtResource("1_jwyd3")
 
 [node name="player_with_gravity" parent="." instance=ExtResource("2_8yy27")]
-position = Vector2(1472, -40)
+position = Vector2(1048, -16)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
 position = Vector2(-1599.32, 700.03)
@@ -2748,7 +2748,6 @@ position = Vector2(934, -33)
 [node name="button-1" parent="stage0/box-door" instance=ExtResource("15_e7j1i")]
 position = Vector2(672, -112)
 rotation = 3.14159
-door = NodePath("../door-1")
 
 [node name="save_point_0" parent="stage0" instance=ExtResource("12_7ttva")]
 position = Vector2(753, -10)
@@ -2761,30 +2760,6 @@ position = Vector2(753, -10)
 
 [node name="gravity_0_2" parent="stage1/gravity/Node" instance=ExtResource("10_1fij6")]
 position = Vector2(960, -192)
-
-[node name="gravity_0_2" parent="stage1/gravity/Node/gravity_0_2" instance=ExtResource("10_1fij6")]
-position = Vector2(960, -184)
-
-[node name="gravity_0_3" parent="stage1/gravity/Node/gravity_0_2" instance=ExtResource("10_1fij6")]
-position = Vector2(960, -152)
-
-[node name="gravity_0_4" parent="stage1/gravity/Node/gravity_0_2" instance=ExtResource("10_1fij6")]
-position = Vector2(960, -120)
-
-[node name="gravity_0_5" parent="stage1/gravity/Node/gravity_0_2" instance=ExtResource("10_1fij6")]
-position = Vector2(960, -88)
-
-[node name="gravity_0_6" parent="stage1/gravity/Node/gravity_0_2" instance=ExtResource("10_1fij6")]
-position = Vector2(992, -184)
-
-[node name="gravity_0_7" parent="stage1/gravity/Node/gravity_0_2" instance=ExtResource("10_1fij6")]
-position = Vector2(992, -152)
-
-[node name="gravity_0_8" parent="stage1/gravity/Node/gravity_0_2" instance=ExtResource("10_1fij6")]
-position = Vector2(992, -120)
-
-[node name="gravity_0_9" parent="stage1/gravity/Node/gravity_0_2" instance=ExtResource("10_1fij6")]
-position = Vector2(992, -88)
 
 [node name="gravity_0_3" parent="stage1/gravity/Node" instance=ExtResource("10_1fij6")]
 position = Vector2(960, -160)
@@ -2801,89 +2776,17 @@ position = Vector2(992, -192)
 [node name="gravity_0_10" parent="stage1/gravity/Node" instance=ExtResource("10_1fij6")]
 position = Vector2(960, -224)
 
-[node name="gravity_0_2" parent="stage1/gravity/Node/gravity_0_10" instance=ExtResource("10_1fij6")]
-position = Vector2(960, -184)
-
-[node name="gravity_0_3" parent="stage1/gravity/Node/gravity_0_10" instance=ExtResource("10_1fij6")]
-position = Vector2(960, -152)
-
-[node name="gravity_0_4" parent="stage1/gravity/Node/gravity_0_10" instance=ExtResource("10_1fij6")]
-position = Vector2(960, -120)
-
-[node name="gravity_0_5" parent="stage1/gravity/Node/gravity_0_10" instance=ExtResource("10_1fij6")]
-position = Vector2(960, -88)
-
-[node name="gravity_0_6" parent="stage1/gravity/Node/gravity_0_10" instance=ExtResource("10_1fij6")]
-position = Vector2(992, -184)
-
-[node name="gravity_0_7" parent="stage1/gravity/Node/gravity_0_10" instance=ExtResource("10_1fij6")]
-position = Vector2(992, -152)
-
-[node name="gravity_0_8" parent="stage1/gravity/Node/gravity_0_10" instance=ExtResource("10_1fij6")]
-position = Vector2(992, -120)
-
-[node name="gravity_0_9" parent="stage1/gravity/Node/gravity_0_10" instance=ExtResource("10_1fij6")]
-position = Vector2(992, -88)
-
 [node name="gravity_0_11" parent="stage1/gravity/Node" instance=ExtResource("10_1fij6")]
 position = Vector2(992, -224)
 
 [node name="gravity_0_12" parent="stage1/gravity/Node" instance=ExtResource("10_1fij6")]
 position = Vector2(1024, -224)
 
-[node name="gravity_0_2" parent="stage1/gravity/Node/gravity_0_12" instance=ExtResource("10_1fij6")]
-position = Vector2(960, -184)
-
-[node name="gravity_0_3" parent="stage1/gravity/Node/gravity_0_12" instance=ExtResource("10_1fij6")]
-position = Vector2(960, -152)
-
-[node name="gravity_0_4" parent="stage1/gravity/Node/gravity_0_12" instance=ExtResource("10_1fij6")]
-position = Vector2(960, -120)
-
-[node name="gravity_0_5" parent="stage1/gravity/Node/gravity_0_12" instance=ExtResource("10_1fij6")]
-position = Vector2(960, -88)
-
-[node name="gravity_0_6" parent="stage1/gravity/Node/gravity_0_12" instance=ExtResource("10_1fij6")]
-position = Vector2(992, -184)
-
-[node name="gravity_0_7" parent="stage1/gravity/Node/gravity_0_12" instance=ExtResource("10_1fij6")]
-position = Vector2(992, -152)
-
-[node name="gravity_0_8" parent="stage1/gravity/Node/gravity_0_12" instance=ExtResource("10_1fij6")]
-position = Vector2(992, -120)
-
-[node name="gravity_0_9" parent="stage1/gravity/Node/gravity_0_12" instance=ExtResource("10_1fij6")]
-position = Vector2(992, -88)
-
 [node name="gravity_0_13" parent="stage1/gravity/Node" instance=ExtResource("10_1fij6")]
 position = Vector2(1056, -224)
 
 [node name="gravity_0_14" parent="stage1/gravity/Node" instance=ExtResource("10_1fij6")]
 position = Vector2(1088, -224)
-
-[node name="gravity_0_2" parent="stage1/gravity/Node/gravity_0_14" instance=ExtResource("10_1fij6")]
-position = Vector2(960, -184)
-
-[node name="gravity_0_3" parent="stage1/gravity/Node/gravity_0_14" instance=ExtResource("10_1fij6")]
-position = Vector2(960, -152)
-
-[node name="gravity_0_4" parent="stage1/gravity/Node/gravity_0_14" instance=ExtResource("10_1fij6")]
-position = Vector2(960, -120)
-
-[node name="gravity_0_5" parent="stage1/gravity/Node/gravity_0_14" instance=ExtResource("10_1fij6")]
-position = Vector2(960, -88)
-
-[node name="gravity_0_6" parent="stage1/gravity/Node/gravity_0_14" instance=ExtResource("10_1fij6")]
-position = Vector2(992, -184)
-
-[node name="gravity_0_7" parent="stage1/gravity/Node/gravity_0_14" instance=ExtResource("10_1fij6")]
-position = Vector2(992, -152)
-
-[node name="gravity_0_8" parent="stage1/gravity/Node/gravity_0_14" instance=ExtResource("10_1fij6")]
-position = Vector2(992, -120)
-
-[node name="gravity_0_9" parent="stage1/gravity/Node/gravity_0_14" instance=ExtResource("10_1fij6")]
-position = Vector2(992, -88)
 
 [node name="gravity_0_15" parent="stage1/gravity/Node" instance=ExtResource("10_1fij6")]
 position = Vector2(1120, -224)
@@ -2936,14 +2839,22 @@ position = Vector2(1043, -223)
 position = Vector2(1268, -185)
 rotation = 1.5708
 
+[node name="door-2" parent="stage1/box-door" instance=ExtResource("14_e353g")]
+position = Vector2(1672, -152)
+rotation = 1.5708
+
+[node name="door-3" parent="stage1/box-door" instance=ExtResource("14_e353g")]
+position = Vector2(1112, -136)
+rotation = 1.5708
+
 [node name="button-1" parent="stage1/box-door" instance=ExtResource("15_e7j1i")]
 position = Vector2(1088, 0)
-door = NodePath("../door-1")
+doors = Array[NodePath]([NodePath("../door-1"), NodePath("../door-2"), NodePath("../door-3")])
 
 [node name="box-door2" type="Node" parent="stage1"]
 
 [node name="box" parent="stage1/box-door2" instance=ExtResource("4_6n3j8")]
-position = Vector2(1264, -200)
+position = Vector2(1272, -208)
 
 [node name="door-1" parent="stage1/box-door2" instance=ExtResource("14_e353g")]
 position = Vector2(1400, -40)
@@ -2951,7 +2862,6 @@ position = Vector2(1400, -40)
 [node name="button-1" parent="stage1/box-door2" instance=ExtResource("15_e7j1i")]
 position = Vector2(1264, -240)
 rotation = 3.14159
-door = NodePath("../door-1")
 
 [node name="save_point_0" parent="stage1" instance=ExtResource("12_7ttva")]
 position = Vector2(968, -25)
@@ -2975,7 +2885,6 @@ position = Vector2(1536, -80)
 
 [node name="button-1" parent="stage2/box-door3" instance=ExtResource("15_e7j1i")]
 position = Vector2(1728, 0)
-door = NodePath("../door-1")
 
 [node name="stage_up" type="Node" parent="."]
 

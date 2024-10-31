@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dqy1bj4scr102"]
+[gd_scene load_steps=13 format=4 uid="uid://dqy1bj4scr102"]
 
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="1_adtox"]
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="2_mfowp"]
@@ -180,11 +180,9 @@ position = Vector2(577, 44)
 [node name="button" type="Node" parent="."]
 
 [node name="button-1" parent="button" instance=ExtResource("5_l4f35")]
-door = NodePath("../../gravity-2")
 
 [node name="button-2" parent="button" instance=ExtResource("5_l4f35")]
 position = Vector2(576, 2)
-door = NodePath("../../door/door-2")
 
 [node name="door" type="Node" parent="."]
 
