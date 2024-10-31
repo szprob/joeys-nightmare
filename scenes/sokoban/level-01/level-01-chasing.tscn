@@ -164,7 +164,7 @@ curve = SubResource("Curve2D_sytcm")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(124.821, 129.588)
-rotation = -0.00284056
+rotation = -0.00284078
 
 [node name="ememy" parent="Path2D/PathFollow2D" instance=ExtResource("3_364c3")]
 position = Vector2(-103.119, -10.5075)

@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var max_distance = 16 * 2 # 最大检测距离
 @export var speed = 250
 var direction = Vector2(0, 0) # 默认方向
 
@@ -27,7 +28,8 @@ func _process(delta: float) -> void:
 			
 			var gravity_instance = gravity_scene.instantiate()
 			gravity_instance.add_to_group("dynamic")
-			
+			var shape = RectangleShape2D.new() # 创建新的形状实例
+			gravity_instance.get_node("CollisionShape2D").shape = shape
 			var perpendicular = Vector2(-collision_normal.y, collision_normal.x)
 			
 			# 获取碰撞点位置，而不是使用子弹的位置
@@ -35,20 +37,21 @@ func _process(delta: float) -> void:
 			
 			# 使用碰撞点进行射线检测
 			var space_state = get_world_2d().direct_space_state
-			var distance_positive = cast_ray(space_state, collision_point, perpendicular)
-			var distance_negative = cast_ray(space_state, collision_point, -perpendicular)
+			var distance_positive = cast_ray(space_state, collision_point, perpendicular, collision_normal)
+			var distance_negative = cast_ray(space_state, collision_point, -perpendicular, collision_normal)
 			
 			var gravity_shape = gravity_instance.get_node("CollisionShape2D").shape
 			var fixed_length = 32
 			print('collision_point', collision_point)
 			print('distance_positive', distance_positive)
 			print('distance_negative', distance_negative)
-			if abs(collision_normal.x) > 0:
-				gravity_shape.size = Vector2(distance_positive + distance_negative, fixed_length)
-				gravity_instance.position = collision_point - Vector2(8, 0)
+			if abs(collision_normal.x) > 0: # 水平方向打子弹
+				# gravity_shape.size = Vector2(distance_positive + distance_negative, fixed_length)
+				gravity_shape.size = Vector2(fixed_length, distance_positive + distance_negative)
+				gravity_instance.position = collision_point + collision_normal * (fixed_length / 2) + Vector2(0, collision_normal.x * (distance_positive - distance_negative) / 2)
 			else:
 				gravity_shape.size = Vector2(distance_positive + distance_negative, fixed_length)
-				gravity_instance.position = collision_point + collision_normal * (fixed_length / 2)
+				gravity_instance.position = collision_point + collision_normal * (fixed_length / 2) - Vector2((distance_positive - distance_negative) / 2, 0)
 			
 			collision_normal.y *= -1
 			collision_normal.x *= -1
@@ -100,28 +103,34 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
-func cast_ray(space_state: PhysicsDirectSpaceState2D, from: Vector2, direction: Vector2) -> float:
-	var max_distance = 1000 # 最大检测距离
+func cast_ray(space_state: PhysicsDirectSpaceState2D, from: Vector2, direction: Vector2, collision_normal: Vector2) -> float:
+	
+	# 根据射线方向添加适当的偏移
+	var offset = 2.0 # 偏移量
+	var adjusted_from = from
+	
+	# 如果射线方向是水平的，添加垂直偏移
+	if abs(direction.x) > 0.9: # 接近水平方向
+		# adjusted_from = Vector2(0, offset)
+		adjusted_from += Vector2(0, collision_normal.y * offset)
+	# 如果射线方向是垂直的，添加水平偏移
+	elif abs(direction.y) > 0.9: # 接近垂直方向
+		adjusted_from += Vector2(collision_normal.x * offset, 0)
+	
+	print('adjusted_from', adjusted_from)
+
 	var query = PhysicsRayQueryParameters2D.create(
-		from,
-		from + direction * max_distance
+		adjusted_from,
+		adjusted_from + direction * max_distance
 	)
-	# print('from', from)
-	from = from + Vector2(2, 0)
-	print('direction', direction)
 	query.collide_with_areas = false
 	query.collide_with_bodies = true
-	# print('query', query)
 	
 	var result = space_state.intersect_ray(query)
-	print('result', result.collider)
-	print('result.position', result.position)
 	if result:
 		var collider = result.collider
 		while collider != null:
 			if collider is TileMapLayer:
-				# print('hit something')
-				# print('result', result)
 				return (result.position - from).length()
 			collider = collider.get_parent()
 	return max_distance
