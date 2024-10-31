@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bdap03ne0xoh3" path="res://scenes/modules/traps/falling_trap.tscn" id="11_7nlex"]
 [ext_resource type="PackedScene" uid="uid://c8q6wa4cofe21" path="res://scenes/modules/traps/falling_trap_tgt.tscn" id="12_k03yn"]
 [ext_resource type="PackedScene" uid="uid://gbcy7ojh6h3w" path="res://scenes/modules/platforms/blink_platform.tscn" id="13_ibtkj"]
-[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/player/player.tscn" id="15_rx0vs"]
+[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="15_rx0vs"]
 [ext_resource type="PackedScene" uid="uid://dd2spqc4w2qfb" path="res://scenes/modules/traps/auto_close_door.tscn" id="18_nitj5"]
 [ext_resource type="PackedScene" uid="uid://be2aref2nye7h" path="res://scenes/modules/checkpoints/bi-teleport.tscn" id="20_leco7"]
 

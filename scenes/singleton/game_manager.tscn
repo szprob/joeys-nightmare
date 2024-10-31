@@ -1,8 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ml8821k6283f"]
+[gd_scene load_steps=2 format=3 uid="uid://ml8821k6283f"]
 
 [ext_resource type="Script" path="res://scripts/singleton/game_manager.gd" id="1_wj842"]
-[ext_resource type="PackedScene" uid="uid://d0atgq0il2toh" path="res://scenes/shader/crt.tscn" id="2_7rx80"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_wj842")
-scan_lines_scene = ExtResource("2_7rx80")
