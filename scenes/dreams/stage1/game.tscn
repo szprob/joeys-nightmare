@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://dhcoju0cv8u0y"]
+[gd_scene load_steps=28 format=4 uid="uid://dhcoju0cv8u0y"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_2ix8p"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_45goe"]
@@ -15,8 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bdap03ne0xoh3" path="res://scenes/modules/traps/falling_trap.tscn" id="11_7nlex"]
 [ext_resource type="PackedScene" uid="uid://c8q6wa4cofe21" path="res://scenes/modules/traps/falling_trap_tgt.tscn" id="12_k03yn"]
 [ext_resource type="PackedScene" uid="uid://gbcy7ojh6h3w" path="res://scenes/modules/platforms/blink_platform.tscn" id="13_ibtkj"]
-[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="15_rx0vs"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="17_s67dx"]
+[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/player/player.tscn" id="15_rx0vs"]
 [ext_resource type="PackedScene" uid="uid://dd2spqc4w2qfb" path="res://scenes/modules/traps/auto_close_door.tscn" id="18_nitj5"]
 [ext_resource type="PackedScene" uid="uid://be2aref2nye7h" path="res://scenes/modules/checkpoints/bi-teleport.tscn" id="20_leco7"]
 
@@ -425,22 +424,6 @@ position = Vector2(-190, -45)
 [node name="target" type="Area2D" parent="platform/move_platform2"]
 position = Vector2(0, -31)
 
-[node name="teleport_tgt" parent="platform"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-position = Vector2(-117, -28)
-script = null
-
-[node name="target" type="Area2D" parent="platform/teleport_tgt"]
-position = Vector2(-18, -72)
-
 [node name="tilemaps" type="Node" parent="."]
 
 [node name="back" type="TileMapLayer" parent="tilemaps"]
@@ -495,7 +478,6 @@ position = Vector2(-17, -27)
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("15_rx0vs")]
 position = Vector2(-89, -55)
-script = ExtResource("17_s67dx")
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(0, -5)
