@@ -47,10 +47,10 @@ func respawn():
 
 # 开始跳跃的函数
 func start_jump() -> void:
-	print('start jump')
+	# print('start jump')
 	# 获取重力方向的单位向量
 	var gravity_dir = get_gravity().normalized()
-	print('gravity dir', gravity_dir)
+	# print('gravity dir', gravity_dir)
 	# 跳跃方向与重力方向相反
 	velocity -= gravity_dir * abs(Consts.JUMP_VELOCITY)
 	jump_hold_time = 0.0 # 重置跳跃键按住时间
@@ -199,33 +199,44 @@ func _physics_process(delta: float) -> void:
 		
 
 	# Handle movement
+	# if direction:
+	# 	# 根据重力方向调整移动
+	# 	if abs(get_gravity().y) > abs(get_gravity().x):
+	# 		# 垂直重力情况（向上或向下）
+	# 		velocity.x = direction.x * Consts.SPEED
+	# 	else:
+	# 		# 水平重力情况（向左或向右）
+	# 		velocity.y = direction.y * Consts.SPEED # 使用 direction.y 来控制上下移动
 	if direction:
 		# 根据重力方向调整移动
 		if abs(get_gravity().y) > abs(get_gravity().x):
-			# 垂直重力情况（向上或向下）
 			velocity.x = direction.x * Consts.SPEED
 		else:
-			# 水平重力情况（向左或向右）
-			velocity.y = direction.y * Consts.SPEED # 使用 direction.y 来控制上下移动
+			velocity.y = direction.y * Consts.SPEED
+		
+		check_box_on_head()
+		# 检测头顶上方的箱子
+		
+		
 	else:
 		if abs(get_gravity().y) > abs(get_gravity().x):
 			velocity.x = move_toward(velocity.x, 0, Consts.SPEED)
 		else:
 			velocity.y = move_toward(velocity.y, 0, Consts.SPEED)
-
+		
 
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 		if collider is CharacterBody2D and collider.is_in_group('pushable'):
+			# print('push box')
 			# 获取碰撞法线
 			var normal = collision.get_normal()
-			# 获取重力方向
-			var gravity_dir = get_gravity().normalized()
 			# 检查碰撞法线是否与重力方向垂直（表示从侧面推动）
-			if abs(normal.dot(gravity_dir)) < 0.1: # 使用一个小的阈值来判断是否垂直
-				collider.push(Vector2(direction))
-	
+			if abs(normal.dot(get_gravity().normalized())) < 0.1: # 使用一个小的阈值来判断是否垂直
+				if direction.length() > 0:
+					collider.push(direction)
+
 	move_and_slide()
 	# push boxes
 	
@@ -294,3 +305,35 @@ func filp_player_sprite(direction):
 				animated_sprite_2d.flip_h = false
 			elif direction.y < 0:
 				animated_sprite_2d.flip_h = true
+
+func free_player_from_box(box: CharacterBody2D) -> void:
+	var gravity_dir = get_gravity().normalized()
+	
+	# 给箱子一个向上的力
+	var push_force = -gravity_dir * Consts.SPEED * 0.5
+	box.velocity = push_force
+	
+	# 计算安全位置（将箱子推离玩家）
+	var safe_distance = collision_shape_2d.shape.size.y + box.get_node("CollisionShape2D").shape.size.y
+	var desired_box_pos = position - gravity_dir * safe_distance
+	
+	box.position = box.position.lerp(desired_box_pos, 0.3)
+	
+	velocity += gravity_dir * Consts.SPEED * 0.5
+
+
+func check_box_on_head() -> void:
+	var space_state = get_world_2d().direct_space_state
+	var gravity_dir = get_gravity().normalized()
+	var query = PhysicsRayQueryParameters2D.create(
+		position,
+		position - gravity_dir * 20
+	)
+	query.exclude = [self]
+	query.collision_mask = 1
+	
+	var result = space_state.intersect_ray(query)
+	if result and result.collider is CharacterBody2D and result.collider.is_in_group('pushable'):
+		print('box on head')
+	# 只在玩家向上移动时才影响箱子
+		free_player_from_box(result.collider)
