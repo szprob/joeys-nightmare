@@ -16,8 +16,16 @@ func _ready() -> void:
 		gravity_space_override = SPACE_OVERRIDE_DISABLED
 		if has_node("AnimatedSprite2D"):
 			$AnimatedSprite2D.pause() # 暂停动画
-	pass # Replace with function body.
 
+	update_sprite_rotation()
+
+func update_sprite_rotation():
+	if has_node("AnimatedSprite2D"):
+		# 获取重力方向的角度（与 _draw 函数使用相同的逻辑）
+		var gravity_dir = gravity_direction
+		var angle = gravity_dir.normalized().angle()
+		# 将精灵旋转到重力方向
+		$AnimatedSprite2D.rotation = angle + PI / 2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
