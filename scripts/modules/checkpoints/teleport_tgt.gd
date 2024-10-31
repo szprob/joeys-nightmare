@@ -18,7 +18,7 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D and GameManager.game_state['teleport_tgt_enable']:
+	if body.is_in_group("teleport_tgt") and GameManager.game_state['teleport_tgt_enable']:
 		body.global_position = target.global_position
 		GameManager.game_state['teleport_tgt_enable'] = false
 		timer.start()
