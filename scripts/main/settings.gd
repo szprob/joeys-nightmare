@@ -10,21 +10,27 @@ var current_index = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameManager.load_game_state()
-	print(full_screen.toggle_mode)
-	# 初始化控件状态
+	
+	# 设置默认值（如果是首次运行）
+	if !GameManager.game_state.has('settings'):
+		GameManager.game_state['settings'] = {
+			'full_screen': false,
+			'scan_lines': true  # 默认开启扫描线
+		}
+	
+	# 应用保存的设置
 	full_screen.set_pressed_no_signal(GameManager.game_state['settings']['full_screen'])
 	scan_lines.set_pressed_no_signal(GameManager.game_state['settings']['scan_lines'])
-	#music_volume_slider.value = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))
-	#sfx_volume_slider.value = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))
-	# 将控件添加到按钮列表中
+	
+	# 立即应用设置效果
+	GameManager.apply_settings()
+	
 	buttons = [full_screen, scan_lines, back_button]
 	buttons[current_index].grab_focus()
 
 
 func _on_back_button_pressed() -> void:
-	GameManager.apply_settings()
-	GameManager.save_game_state()
-	# 切换场景
+	GameManager.save_game_state()  # 保存设置
 	get_tree().change_scene_to_file("res://scenes/main/start.tscn")
 
 func _process(delta):

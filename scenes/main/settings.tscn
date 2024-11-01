@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/main/settings.gd" id="1_2koos"]
 
-[node name="Settings" type="Control"]
+[node name="Settings" type="Control" groups=["scan_lines"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

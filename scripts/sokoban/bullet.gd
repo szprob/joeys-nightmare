@@ -10,7 +10,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func start(pos, shoot_direction):
-	print(shoot_direction)
 	position = pos
 	
 	shoot_direction = shoot_direction.normalized()
@@ -42,9 +41,9 @@ func _process(delta: float) -> void:
 			
 			var gravity_shape = gravity_instance.get_node("CollisionShape2D").shape
 			var fixed_length = 32
-			print('collision_point', collision_point)
-			print('distance_positive', distance_positive)
-			print('distance_negative', distance_negative)
+			# print('collision_point', collision_point)
+			# print('distance_positive', distance_positive)
+			# print('distance_negative', distance_negative)
 			if abs(collision_normal.x) > 0: # 水平方向打子弹
 				# gravity_shape.size = Vector2(distance_positive + distance_negative, fixed_length)
 				gravity_shape.size = Vector2(fixed_length, distance_positive + distance_negative)
@@ -65,6 +64,8 @@ func _process(delta: float) -> void:
 				get_tree().get_root().add_child(gravity_container)
 			
 			gravity_container.add_child(gravity_instance)
+			queue_free()
+		elif collider is CharacterBody2D:
 			queue_free()
 
 #func _on_area_entered(area: Area2D) -> void:
