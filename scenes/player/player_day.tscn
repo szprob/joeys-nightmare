@@ -1,6 +1,6 @@
 [gd_scene load_steps=54 format=3 uid="uid://blydc865qnepa"]
 
-[ext_resource type="Script" path="res://scripts/player_day.gd" id="1_5yagl"]
+[ext_resource type="Script" path="res://scripts/modules/player/player_day.gd" id="1_5yagl"]
 [ext_resource type="Texture2D" uid="uid://cah8kxv283glx" path="res://assets/sprites/day/character/Bob_idle_anim_16x16.png" id="1_ltp2t"]
 [ext_resource type="Texture2D" uid="uid://cxvgd36p5ua44" path="res://assets/sprites/day/character/Bob_run_16x16.png" id="2_hv6iu"]
 

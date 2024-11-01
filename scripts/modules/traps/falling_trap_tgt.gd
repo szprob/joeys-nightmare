@@ -3,6 +3,7 @@ extends Area2D
 @export var speed: float = Consts.FALLING_TRAP_SPEED  # 可配置的速度
 @export var reset_delay : float = 1 
 @export var do_reset :bool = false
+@export var invisible_before_launch :bool = true  # 添加是否隐身的配置
 
 var is_flying_forward: bool = false
 var is_flying_backward: bool = false
@@ -23,6 +24,8 @@ func _ready() -> void:
 	target_sprite_2d.visible = false
 	final_position=target.global_position
 	timer2.wait_time = reset_delay
+	if invisible_before_launch:  # 根据配置设置初始可见性
+		modulate.a = 0  # 完全透明
 
 
 func _physics_process(delta):
@@ -45,6 +48,8 @@ func _physics_process(delta):
 
 func _on_timer_timeout() -> void:
 	is_flying_forward = true
+	if invisible_before_launch:
+		modulate.a = 1  # 发射时显示
 	fly_direction = (final_position  - position).normalized()
 
 func _on_body_entered(body: Node2D) -> void:

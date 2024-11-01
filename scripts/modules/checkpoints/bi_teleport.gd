@@ -20,6 +20,9 @@ enum Way { IN, OUT }
 # 添加一个变量来存储当前传送的物体
 var current_body: Node2D = null
 
+# 添加字典来跟踪不同物体的冷却状态
+var cooldown_states: Dictionary = {}
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# 添加计时器
@@ -65,32 +68,34 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _can_teleport(body: Node2D) -> bool:
 	# 基础检查
-	if not body.is_in_group("teleport_enable") or not GameManager.game_state['teleport_enable']:
+	if not body.is_in_group("teleport_enable"):
+		return false
+		
+	# 检查该特定物体的冷却状态
+	if cooldown_states.has(body) and not cooldown_states[body]:
 		return false
 	
 	# 检查传送类型和方向
 	if way == Way.OUT:
 		return false
 
-
 	if paired_portal != null or target != null:
 		return true
 	
 	return false
 
-
-
 func _on_timer_timeout() -> void:
-	GameManager.game_state['teleport_enable'] = true
+
+	if current_body and cooldown_states.has(current_body):
+		cooldown_states[current_body] = true
+	
 	# 重置动画
 	if way == Way.IN:
 		animated_sprite_2d.play("portal_in")
 	else:
 		animated_sprite_2d.play("portal_out")
 
-
 func _on_timer2_timeout() -> void:
-	# 执行传送
 	var destination: Node2D = null
 	
 	if teleport_type == TeleportType.ONE_WAY:
@@ -98,17 +103,28 @@ func _on_timer2_timeout() -> void:
 	else:
 		destination = paired_portal
 		
-	if destination and current_body:  # 确保有目标位置和物体
-		# 播放传送音效
+	if destination and current_body:
 		if audio_player and audio_player.stream:
 			audio_player.play()
 			
-		# 传送物体
-		current_body.global_position = destination.global_position
+		# 计算目标位置，检查是否需要偏移
+		var target_pos = destination.global_position
+		var offset = Vector2.ZERO
 		
-		# 禁用传送功能直到计时器超时
-		GameManager.game_state['teleport_enable'] = false
+		# 检查目标位置是否有其他物体
+		var space_state = get_world_2d().direct_space_state
+		var query = PhysicsRayQueryParameters2D.create(target_pos, target_pos)
+		var result = space_state.intersect_ray(query)
+		
+		if result:
+			# 如果目标位置被占用，向右偏移一点
+			offset = Vector2(32, 0)  # 可以根据需要调整偏移量
+			
+		# 传送物体到可能偏移后的位置
+		current_body.global_position = target_pos + offset
+		
+		# 更新该物体的冷却状态
+		cooldown_states[current_body] = false
 		timer.start()
 		
-		# 清除引用
 		current_body = null
