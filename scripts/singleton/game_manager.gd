@@ -20,6 +20,12 @@ var game_state = {
 	'teleport_enable': true
 }
 
+# 在文件开头添加 BGM 资源预加载
+var bgm_resources = {
+	"bgm": preload("res://assets/music/time_for_adventure.mp3"),  
+
+}
+
 func init_default_state():
 	game_state = game_state.duplicate(true)  # 深度复制默认状态
 
@@ -37,16 +43,27 @@ func _ready() -> void:
 	
 	init_default_state()
 	apply_settings()
+	
+	# 添加这一行来自动开始播放BGM
+	play_bgm("bgm")
 
 func setup_bgm_player() -> void:
 	bgm_player = AudioStreamPlayer.new()
 	bgm_player.bus = "Music"  # 确保你的项目中有名为"Music"的音频总线
+	# 添加这一行来设置循环播放
+	bgm_player.stream_paused = false
 	add_child(bgm_player)
 	
-func play_bgm(stream: AudioStream) -> void:
+# 修改 play_bgm 函数，支持通过名称播放 BGM
+func play_bgm(bgm_name: String) -> void:
 	if not game_state['settings']['bgm_enabled']:
 		return
 		
+	if not bgm_resources.has(bgm_name):
+		push_error("BGM 资源未找到：" + bgm_name)
+		return
+		
+	var stream = bgm_resources[bgm_name]
 	if bgm_player.stream != stream or not bgm_player.playing:
 		bgm_player.stream = stream
 		bgm_player.play()
