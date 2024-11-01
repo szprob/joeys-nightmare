@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="1_dfrl1"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_ywfr3"]
-[ext_resource type="PackedScene" uid="uid://v0jqcdqv2in5" path="res://scenes/sokoban/chasing_slime.tscn" id="3_364c3"]
-[ext_resource type="PackedScene" uid="uid://c20hjh7hsaqn7" path="res://scenes/sokoban/shooting_slime.tscn" id="4_na8k5"]
+[ext_resource type="PackedScene" path="res://scenes/sokoban/chasing_slime.tscn" id="3_364c3"]
+[ext_resource type="PackedScene" path="res://scenes/sokoban/shooting_slime.tscn" id="4_na8k5"]
 [ext_resource type="PackedScene" uid="uid://dwkd8axprygf0" path="res://scenes/sokoban/bullet.tscn" id="5_xgm88"]
 [ext_resource type="PackedScene" uid="uid://cpqr3oauheogh" path="res://scenes/sokoban/button-1.tscn" id="6_6uxoe"]
 [ext_resource type="PackedScene" uid="uid://8gajxily3trj" path="res://scenes/sokoban/door_1.tscn" id="7_ibk5d"]

@@ -5,7 +5,7 @@ enum Way { IN, OUT }
 
 @export var teleport_type: TeleportType = TeleportType.ONE_WAY
 @export var teleport_cooldown_time: float = 0.8
-@export var teleport_time: float = 0.3
+@export var teleport_time: float = 0.1
 @export var way: Way = Way.IN
 # 添加配对传送门的引用
 @export var paired_portal: Area2D

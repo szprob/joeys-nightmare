@@ -1,22 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://kfdbq76ixwrq"]
+[gd_scene load_steps=7 format=3 uid="uid://kfdbq76ixwrq"]
 
-[ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="1_h3rku"]
 [ext_resource type="Script" path="res://scripts/modules/checkpoints/save_point.gd" id="1_qeoh3"]
+[ext_resource type="Texture2D" uid="uid://djlitwmkmviun" path="res://assets/sprites/human/lamp.png" id="2_bador"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cergc"]
-size = Vector2(14.5, 15.5)
+size = Vector2(15.25, 15.75)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ds1ic"]
-atlas = ExtResource("1_h3rku")
-region = Rect2(32, 48, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgrs2"]
+atlas = ExtResource("2_bador")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3ei3"]
+atlas = ExtResource("2_bador")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uskgs"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ds1ic")
+"texture": SubResource("AtlasTexture_jgrs2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3ei3")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 1.0
 }]
@@ -30,7 +37,10 @@ script = ExtResource("1_qeoh3")
 shape = SubResource("RectangleShape2D_cergc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_uskgs")
+frame = 1
+frame_progress = 0.463573
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
