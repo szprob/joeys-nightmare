@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-
+@onready var jump_audio: AudioStreamPlayer2D = $JumpAudio
 # shooting
 @export var cooldown = 0.25
 @export var bullet_scene: PackedScene
@@ -14,10 +14,6 @@ var facing_direction = 1
 var jump_buffer_timer: float = 0.0 # 记录跳跃键按下的时间
 var jump_hold_time: float = 0.0 # 记录跳跃键按住的时间
 var is_jumping: bool = false # 标记是否正在跳跃
-var is_dropping: bool = false # Track if the player is dropping through a platform
-var drop_timer: float = 0.0 # Timer for disabling platform collision
-# 保存原始的碰撞掩码
-var original_collision_mask: int
 var default_pos = Vector2(0, 0)
 
 
@@ -39,7 +35,6 @@ func respawn():
 	position = default_pos
 	# 重置所有状态
 	is_jumping = false
-	is_dropping = false
 	jump_buffer_timer = 0.0
 	jump_hold_time = 0.0
 
@@ -55,6 +50,10 @@ func start_jump() -> void:
 	velocity -= gravity_dir * abs(Consts.JUMP_VELOCITY)
 	jump_hold_time = 0.0 # 重置跳跃键按住时间
 	is_jumping = true # 标记为跳跃状态
+	if jump_audio and jump_audio.stream:
+		jump_audio.play()
+
+
 	
 func shoot(Input) -> void:
 	var shoot_direction = Vector2(facing_direction, 0)
@@ -79,30 +78,7 @@ func shoot(Input) -> void:
 			shoot_direction.x = 1
 		b.start(position + Vector2(0, -8), shoot_direction)
 
-# Start dropping through the platform
-func remove_mask_temporarily(mask) -> void:
-	# 移除mask为1的部分，保持其他部分不变
-	collision_mask &= ~mask
-	# 使用协程等待0.3秒，然后恢复原始的碰撞掩码
-	await get_tree().create_timer(0.3).timeout
-	collision_mask = original_collision_mask
 
-# 检测玩家是否站在单向平台上
-func is_on_one_way_platform() -> bool:
-	if is_on_terrain():
-		var collision = get_last_slide_collision()
-		if collision:
-			var collider = collision.get_collider()
-			# 检查 collider 是否具有 collision_layer 属性
-			if collider and collider.has_method("get_collision_layer") and not (collider is TileMap):
-				if collider.collision_layer & Consts.ONE_WAY_PLATFORM_LAYER != 0:
-					return true
-			# 如果是 TileMap，可能需要其他逻辑来判断
-			elif collider is TileMap:
-				# 在这里添加处理 TileMap 的逻辑
-				# 例如，根据 TileMap 的某些属性或自定义数据来判断
-				pass
-	return false
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -159,13 +135,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		# print('is on terrain', is_on_terrain()
 		if is_on_terrain():
-			# 如果按住下键并且在平台上，触发下落平台逻辑
-			if Input.is_action_pressed("down") and is_on_one_way_platform():
-				print("Player is on a one-way platform")
-				remove_mask_temporarily(2)
-			else:
-				start_jump() # 正常跳跃
-			# start_jump()
+			start_jump() # 正常跳跃
 		else:
 			jump_buffer_timer = Consts.JUMP_BUFFER_TIME # 记录跳跃键按下的时间以便缓冲
 	#
