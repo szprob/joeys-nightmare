@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://cv3nrtrevxkyu"]
+[gd_scene load_steps=33 format=3 uid="uid://cv3nrtrevxkyu"]
 
 [ext_resource type="Script" path="res://scripts/sokoban/gravity_1.gd" id="1_h3l67"]
 [ext_resource type="Texture2D" uid="uid://bh2yvy6nvv85u" path="res://assets/sprites/human/arrow2.png" id="2_536f8"]
 [ext_resource type="Texture2D" uid="uid://bcnad1v6jy2jw" path="res://assets/sprites/human/arrow.png" id="2_d4o47"]
 [ext_resource type="Texture2D" uid="uid://cpuy03rfs5ex0" path="res://assets/sprites/human/arrow3.png" id="4_5edwb"]
+[ext_resource type="Texture2D" uid="uid://cpypjo7bgjhxb" path="res://assets/sprites/human/arrow4.png" id="5_vglvj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3pmf"]
 size = Vector2(32, 32)
@@ -83,6 +84,30 @@ region = Rect2(32, 32, 32, 32)
 atlas = ExtResource("4_5edwb")
 region = Rect2(64, 32, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_li3m5"]
+atlas = ExtResource("5_vglvj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8g3y"]
+atlas = ExtResource("5_vglvj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jo70r"]
+atlas = ExtResource("5_vglvj")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2if71"]
+atlas = ExtResource("5_vglvj")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5m7iw"]
+atlas = ExtResource("5_vglvj")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mag1b"]
+atlas = ExtResource("5_vglvj")
+region = Rect2(64, 32, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_csio3"]
 animations = [{
 "frames": [{
@@ -152,7 +177,30 @@ animations = [{
 }],
 "loop": true,
 "name": &"new_animation",
-"speed": 8.0
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_li3m5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8g3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jo70r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2if71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5m7iw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mag1b")
+}],
+"loop": true,
+"name": &"new_animation_1",
+"speed": 5.0
 }]
 
 [node name="gravity-1" type="Area2D"]
@@ -179,3 +227,5 @@ metadata/_edit_use_anchors_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_csio3")
 autoplay = "default"
+frame = 2
+frame_progress = 0.289391
