@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://be2aref2nye7h"]
+[gd_scene load_steps=30 format=3 uid="uid://b4l0s4mgeuqyq"]
 
 [ext_resource type="Script" path="res://scripts/modules/checkpoints/bi_teleport.gd" id="1_eq87d"]
 [ext_resource type="Texture2D" uid="uid://cxw3uyw1udgev" path="res://assets/teleport.png" id="2_nqy3y"]

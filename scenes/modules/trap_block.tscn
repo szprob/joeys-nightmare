@@ -1,23 +1,59 @@
-[gd_scene load_steps=4 format=3 uid="uid://duokhi3tbe3f3"]
+[gd_scene load_steps=9 format=3 uid="uid://duokhi3tbe3f3"]
 
-[ext_resource type="Texture2D" uid="uid://2aksqmjlutcn" path="res://assets/sprites/slime_purple.png" id="2_hi4od"]
+[ext_resource type="Texture2D" uid="uid://bq4508h767n7y" path="res://assets/sprites/human/monster.png" id="1_uqv67"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_51pm2"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ss2xn"]
+atlas = ExtResource("1_uqv67")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyer4"]
+atlas = ExtResource("1_uqv67")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5gb6"]
+atlas = ExtResource("1_uqv67")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2qni"]
+atlas = ExtResource("1_uqv67")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8f63d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ss2xn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyer4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5gb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2qni")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_w0qlj"]
-radius = 5.0
+radius = 6.0
 
 [node name="BlockTrap" type="Area2D"]
 collision_mask = 128
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 5.72205e-06)
-texture = ExtResource("2_hi4od")
-region_enabled = true
-region_rect = Rect2(29, 35, 14, 13)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8f63d")
+autoplay = "default"
+frame_progress = 0.40163
 
 [node name="kill_zone" parent="." instance=ExtResource("3_51pm2")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
+position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_w0qlj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
