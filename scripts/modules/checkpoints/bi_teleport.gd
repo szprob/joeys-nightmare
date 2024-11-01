@@ -16,6 +16,7 @@ enum Way { IN, OUT }
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var timer2 : Timer = Timer.new()
 
+
 # 添加一个变量来存储当前传送的物体
 var current_body: Node2D = null
 
@@ -98,6 +99,10 @@ func _on_timer2_timeout() -> void:
 		destination = paired_portal
 		
 	if destination and current_body:  # 确保有目标位置和物体
+		# 播放传送音效
+		if audio_player and audio_player.stream:
+			audio_player.play()
+			
 		# 传送物体
 		current_body.global_position = destination.global_position
 		
