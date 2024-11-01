@@ -13,12 +13,12 @@
 [ext_resource type="FontFile" uid="uid://dvlu6bavl0eg7" path="res://assets/fonts/PixelOperator8.ttf" id="8_6417c"]
 [ext_resource type="PackedScene" uid="uid://kfdbq76ixwrq" path="res://scenes/modules/checkpoints/save_point.tscn" id="9_s7j6s"]
 [ext_resource type="PackedScene" uid="uid://b6pq8l7ym5nuh" path="res://scenes/modules/checkpoints/teleport.tscn" id="10_qycbb"]
-[ext_resource type="PackedScene" uid="uid://bdap03ne0xoh3" path="res://scenes/modules/traps/falling_trap.tscn" id="11_7nlex"]
 [ext_resource type="PackedScene" uid="uid://c8q6wa4cofe21" path="res://scenes/modules/traps/falling_trap_tgt.tscn" id="12_k03yn"]
 [ext_resource type="PackedScene" uid="uid://gbcy7ojh6h3w" path="res://scenes/modules/platforms/blink_platform.tscn" id="13_ibtkj"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="15_rx0vs"]
 [ext_resource type="PackedScene" uid="uid://dd2spqc4w2qfb" path="res://scenes/modules/traps/auto_close_door.tscn" id="18_nitj5"]
-[ext_resource type="PackedScene" uid="uid://be2aref2nye7h" path="res://scenes/modules/checkpoints/bi-teleport.tscn" id="20_leco7"]
+[ext_resource type="PackedScene" uid="uid://dlyl2v0k7iiry" path="res://scenes/modules/traps/detection.tscn" id="19_nyj4w"]
+[ext_resource type="PackedScene" uid="uid://b4l0s4mgeuqyq" path="res://scenes/modules/checkpoints/bi-teleport.tscn" id="20_leco7"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8553"]
 distance = -68.0
@@ -373,7 +373,7 @@ sources/0 = SubResource("TileSetAtlasSource_pwg2v")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sl21j"]
 
-[node name="Game" type="Node2D" groups=["scan_lines"]]
+[node name="Game2" type="Node2D" groups=["scan_lines"]]
 script = ExtResource("1_2ix8p")
 
 [node name="kill_zone" parent="." instance=ExtResource("3_45goe")]
@@ -439,7 +439,7 @@ tile_map_data = PackedByteArray("AAD7/wAAAAAAAAEAAAD8/wAAAAAAAAAAAAD9/wAAAAAAAAA
 tile_set = SubResource("TileSet_rvt4p")
 
 [node name="slime" parent="." instance=ExtResource("7_tn02o")]
-position = Vector2(-17, -1)
+position = Vector2(-343.582, -20.1909)
 
 [node name="Label" type="Label" parent="."]
 offset_left = -156.0
@@ -458,16 +458,6 @@ position = Vector2(40, -37)
 [node name="teleport" parent="." instance=ExtResource("10_qycbb")]
 position = Vector2(223, -78)
 
-[node name="FallingTrap" parent="." instance=ExtResource("11_7nlex")]
-position = Vector2(120, -120)
-
-[node name="FallingTrapTgt" parent="." instance=ExtResource("12_k03yn")]
-position = Vector2(75, -119)
-do_reset = true
-
-[node name="target" parent="FallingTrapTgt" index="4"]
-position = Vector2(2, 193)
-
 [node name="blink_platform" parent="." instance=ExtResource("13_ibtkj")]
 position = Vector2(-191, -25)
 
@@ -477,8 +467,14 @@ position = Vector2(-17, -47)
 [node name="unvisible_platform" parent="." instance=ExtResource("3_hcxfq")]
 position = Vector2(-17, -27)
 
-[node name="player" parent="." groups=["player", "teleport_enable"] instance=ExtResource("15_rx0vs")]
-position = Vector2(-359.357, -36.3117)
+[node name="FallingTrapTgt" parent="." node_paths=PackedStringArray("target", "detection") instance=ExtResource("12_k03yn")]
+position = Vector2(92, -145)
+collision_layer = 0
+target = NodePath("../target")
+detection = NodePath("../Detection")
+
+[node name="player" parent="." groups=["player"] instance=ExtResource("15_rx0vs")]
+position = Vector2(-20.3671, -77.4757)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(0, -5)
@@ -500,7 +496,6 @@ shape = SubResource("CircleShape2D_sl21j")
 
 [node name="bi-teleport" parent="." node_paths=PackedStringArray("paired_portal") instance=ExtResource("20_leco7")]
 position = Vector2(-495, -15)
-collision_mask = 129
 teleport_type = 1
 paired_portal = NodePath("../bi-teleport2")
 
@@ -510,9 +505,14 @@ teleport_type = 1
 way = 1
 paired_portal = NodePath("../bi-teleport")
 
-[node name="box" parent="." groups=["teleport_enable"] instance=ExtResource("7_igw1q")]
+[node name="box" parent="." instance=ExtResource("7_igw1q")]
 position = Vector2(-418.287, -31.8219)
 collision_mask = 131
 
-[editable path="FallingTrapTgt"]
+[node name="target" type="Area2D" parent="."]
+position = Vector2(91.6711, -11.789)
+
+[node name="Detection" parent="." instance=ExtResource("19_nyj4w")]
+position = Vector2(93, -17)
+
 [editable path="auto_close_door"]

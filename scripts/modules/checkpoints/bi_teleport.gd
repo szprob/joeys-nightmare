@@ -75,8 +75,8 @@ func _can_teleport(body: Node2D) -> bool:
 	if cooldown_states.has(body) and not cooldown_states[body]:
 		return false
 	
-	# 检查传送类型和方向
-	if way == Way.OUT:
+	# 修改传送类型和方向的检查逻辑
+	if  way == Way.OUT:
 		return false
 
 	if paired_portal != null or target != null:
@@ -85,9 +85,9 @@ func _can_teleport(body: Node2D) -> bool:
 	return false
 
 func _on_timer_timeout() -> void:
-
-	if current_body and cooldown_states.has(current_body):
-		cooldown_states[current_body] = true
+	# 移除当前传送物体的冷却状态
+	if current_body:
+		cooldown_states.erase(current_body)
 	
 	# 重置动画
 	if way == Way.IN:
