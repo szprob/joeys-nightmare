@@ -495,13 +495,18 @@ position = Vector2(-39, 30)
 shape = SubResource("CircleShape2D_sl21j")
 
 [node name="bi-teleport" parent="." node_paths=PackedStringArray("paired_portal") instance=ExtResource("20_leco7")]
-position = Vector2(-495, -15)
+position = Vector2(15.3905, -15.3865)
 teleport_type = 1
+teleport_cooldown_time = null
+teleport_time = null
+way = null
 paired_portal = NodePath("../bi-teleport2")
 
 [node name="bi-teleport2" parent="." node_paths=PackedStringArray("paired_portal") instance=ExtResource("20_leco7")]
 position = Vector2(181, -41)
 teleport_type = 1
+teleport_cooldown_time = null
+teleport_time = null
 way = 1
 paired_portal = NodePath("../bi-teleport")
 

@@ -11,10 +11,10 @@ enum Way { IN, OUT }
 @export var paired_portal: Area2D
 @export var target: Area2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-@onready var timer: Timer = Timer.new()
+@onready var timer: Timer = Timer.new() #teleport_cooldown_time
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var timer2 : Timer = Timer.new()
+@onready var timer2 : Timer = Timer.new() #teleport_time
 
 
 # 添加一个变量来存储当前传送的物体
@@ -71,29 +71,27 @@ func _can_teleport(body: Node2D) -> bool:
 	if not body.is_in_group("teleport_enable"):
 		return false
 		
-	# 检查该特定物体的冷却状态
-	if cooldown_states.has(body) and not cooldown_states[body]:
-		return false
-	
-	# 修改传送类型和方向的检查逻辑
-	if  way == Way.OUT:
+	if way == Way.OUT:
 		return false
 
+	# 如果物体不在冷却字典中，初始化为true（可以传送）
+	if not cooldown_states.has(body):
+		cooldown_states[body] = true
+		
+	# 检查冷却状态
+	if not cooldown_states[body]:
+		return false
+	
 	if paired_portal != null or target != null:
 		return true
 	
 	return false
 
 func _on_timer_timeout() -> void:
-	# 移除当前传送物体的冷却状态
-	if current_body:
-		cooldown_states.erase(current_body)
+	# 将当前传送物体的冷却状态设置为true（可以传送）
+	for b in cooldown_states:
+		cooldown_states[b] = true
 	
-	# 重置动画
-	if way == Way.IN:
-		animated_sprite_2d.play("portal_in")
-	else:
-		animated_sprite_2d.play("portal_out")
 
 func _on_timer2_timeout() -> void:
 	var destination: Node2D = null
@@ -107,23 +105,19 @@ func _on_timer2_timeout() -> void:
 		if audio_player and audio_player.stream:
 			audio_player.play()
 			
-		# 计算目标位置，检查是否需要偏移
 		var target_pos = destination.global_position
 		var offset = Vector2.ZERO
 		
-		# 检查目标位置是否有其他物体
 		var space_state = get_world_2d().direct_space_state
 		var query = PhysicsRayQueryParameters2D.create(target_pos, target_pos)
 		var result = space_state.intersect_ray(query)
 		
 		if result:
-			# 如果目标位置被占用，向右偏移一点
-			offset = Vector2(32, 0)  # 可以根据需要调整偏移量
+			offset = Vector2(32, 0)
 			
-		# 传送物体到可能偏移后的位置
 		current_body.global_position = target_pos + offset
 		
-		# 更新该物体的冷却状态
+		# 设置冷却状态为false（不能传送）
 		cooldown_states[current_body] = false
 		timer.start()
 		
