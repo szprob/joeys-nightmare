@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://be2aref2nye7h"]
+[gd_scene load_steps=30 format=3 uid="uid://be2aref2nye7h"]
 
 [ext_resource type="Script" path="res://scripts/modules/checkpoints/bi_teleport.gd" id="1_eq87d"]
 [ext_resource type="Texture2D" uid="uid://cxw3uyw1udgev" path="res://assets/teleport.png" id="2_nqy3y"]
+[ext_resource type="AudioStream" uid="uid://ttiw5wfipt7v" path="res://assets/sounds/checkpoints/teleport.wav" id="3_ow3gi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2m40"]
 size = Vector2(10, 12)
@@ -210,3 +211,6 @@ scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_2g5mc")
 animation = &"portal_out"
 frame_progress = 0.763858
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ow3gi")
