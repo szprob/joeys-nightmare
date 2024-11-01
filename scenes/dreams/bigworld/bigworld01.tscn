@@ -2622,7 +2622,7 @@ _data = {
 script = ExtResource("1_jwyd3")
 
 [node name="player_with_gravity" parent="." instance=ExtResource("2_8yy27")]
-position = Vector2(1456, -16)
+position = Vector2(1029.71, -20.0609)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
 position = Vector2(-1599.32, 700.03)
@@ -3030,3 +3030,4 @@ position = Vector2(672, 96)
 scale = Vector2(2.21324, 5.73361)
 
 [node name="CRT" parent="." instance=ExtResource("3_0ugil")]
+visible = false
