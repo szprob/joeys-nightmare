@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://sfv4vhyx6m0a"]
+[gd_scene load_steps=42 format=4 uid="uid://sfv4vhyx6m0a"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_jwyd3"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_8yy27"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://cv3nrtrevxkyu" path="res://scenes/sokoban/gravity_1.tscn" id="10_1fij6"]
 [ext_resource type="PackedScene" uid="uid://dlnwqw1a3g1m3" path="res://scenes/modules/coin.tscn" id="11_4unyn"]
 [ext_resource type="PackedScene" uid="uid://kfdbq76ixwrq" path="res://scenes/modules/checkpoints/save_point.tscn" id="12_7ttva"]
+[ext_resource type="PackedScene" uid="uid://bxs320cj2nn71" path="res://scenes/enemy/slime.tscn" id="12_u8lf7"]
+[ext_resource type="Script" path="res://scripts/sokoban/chasing_slime.gd" id="13_jrh7s"]
 [ext_resource type="PackedScene" uid="uid://do8x2w6t8vgwy" path="res://scenes/modules/platforms/platform.tscn" id="13_ydct6"]
 [ext_resource type="PackedScene" uid="uid://8gajxily3trj" path="res://scenes/sokoban/door_1.tscn" id="14_e353g"]
 [ext_resource type="PackedScene" uid="uid://b87rogf3b1s12" path="res://scenes/modules/platforms/disapper_platform.tscn" id="14_svh60"]
@@ -2593,6 +2595,12 @@ sources/1 = SubResource("TileSetAtlasSource_bnodb")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k7tf7"]
 size = Vector2(446, 22.1605)
 
+[sub_resource type="Curve2D" id="Curve2D_rtoo5"]
+_data = {
+"points": PackedVector2Array(0, 0, -97.905, 0, 66.5, 28, 0, 0, 0, 0, -4.5, -31, 52.755, 0, 0, 0, -63.5, -68)
+}
+point_count = 3
+
 [sub_resource type="Animation" id="Animation_h1r88"]
 length = 0.001
 tracks/0/type = "value"
@@ -2635,7 +2643,7 @@ _data = {
 script = ExtResource("1_jwyd3")
 
 [node name="player_with_gravity" parent="." instance=ExtResource("2_8yy27")]
-position = Vector2(719.802, -31.0942)
+position = Vector2(1663, -41)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
 position = Vector2(-1599.32, 700.03)
@@ -2693,11 +2701,22 @@ shape = SubResource("RectangleShape2D_k7tf7")
 
 [node name="block_traps" type="Node" parent="stage0"]
 
-[node name="block_trap_0_1" parent="stage0/block_traps" instance=ExtResource("8_odjhm")]
-position = Vector2(618, -199)
-
 [node name="block_trap_0_2" parent="stage0/block_traps" instance=ExtResource("8_odjhm")]
 position = Vector2(758, -200)
+
+[node name="slime" parent="stage0/block_traps" instance=ExtResource("12_u8lf7")]
+position = Vector2(865, -200)
+
+[node name="Path2D" type="Path2D" parent="stage0/block_traps"]
+position = Vector2(643, -170)
+curve = SubResource("Curve2D_rtoo5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="stage0/block_traps/Path2D"]
+position = Vector2(66.5, 28)
+rotation = 3.14159
+
+[node name="block_trap_0_1" parent="stage0/block_traps/Path2D/PathFollow2D" instance=ExtResource("8_odjhm")]
+script = ExtResource("13_jrh7s")
 
 [node name="falling_traps" type="Node" parent="stage0"]
 
@@ -2720,6 +2739,9 @@ scale = Vector2(0.687991, 0.633386)
 
 [node name="gravity_0_1" parent="stage0/gravity" instance=ExtResource("10_1fij6")]
 position = Vector2(744, -232)
+
+[node name="gravity_0_7" parent="stage0/gravity" instance=ExtResource("10_1fij6")]
+position = Vector2(900, -170)
 
 [node name="gravity_0_6" parent="stage0/gravity" instance=ExtResource("10_1fij6")]
 position = Vector2(776, -232)
