@@ -1,17 +1,29 @@
 extends Node
 
 var scan_lines_scene = preload("res://scenes/shader/crt.tscn")  # 直接预加载扫描线场景
+# 添加背景音乐预加载
+var bgm_player: AudioStreamPlayer
 
 var game_state = {
 	'score': 0,
 	'current_respawn_point': Vector2(-74, -39),
 	'respawn_enable':false,
 	'archive_index': 1,
+	'equipment': {
+		'gravity_gun': false
+	},
 	'settings': {
 		'full_screen': false,
-		'scan_lines': true
+		'scan_lines': true,
+		'bgm_enabled': true  # 添加开关控制
 	},
 	'teleport_enable': true
+}
+
+# 在文件开头添加 BGM 资源预加载
+var bgm_resources = {
+	"bgm": preload("res://assets/music/time_for_adventure.mp3"),  
+
 }
 
 func init_default_state():
@@ -26,9 +38,42 @@ func _ready() -> void:
 	# 添加场景树信号连接
 	get_tree().node_added.connect(_on_node_added)
 	
+	# 初始化背景音乐播放器
+	setup_bgm_player()
+	
 	init_default_state()
 	apply_settings()
+	
+	# 添加这一行来自动开始播放BGM
+	play_bgm("bgm")
 
+func setup_bgm_player() -> void:
+	bgm_player = AudioStreamPlayer.new()
+	bgm_player.bus = "Music"  # 确保你的项目中有名为"Music"的音频总线
+	# 添加这一行来设置循环播放
+	bgm_player.stream_paused = false
+	add_child(bgm_player)
+	
+# 修改 play_bgm 函数，支持通过名称播放 BGM
+func play_bgm(bgm_name: String) -> void:
+	if not game_state['settings']['bgm_enabled']:
+		return
+		
+	if not bgm_resources.has(bgm_name):
+		push_error("BGM 资源未找到：" + bgm_name)
+		return
+		
+	var stream = bgm_resources[bgm_name]
+	if bgm_player.stream != stream or not bgm_player.playing:
+		bgm_player.stream = stream
+		bgm_player.play()
+
+func stop_bgm() -> void:
+	bgm_player.stop()
+
+func set_bgm_volume(volume: float) -> void:
+	game_state['settings']['bgm_volume'] = volume
+	bgm_player.volume_db = linear_to_db(volume)
 
 func add_scan_lines_to_node(node: Node) -> void:
 	# 防止重复添加和无限递归
