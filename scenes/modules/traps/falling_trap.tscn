@@ -1,12 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://bdap03ne0xoh3"]
+[gd_scene load_steps=15 format=3 uid="uid://bdap03ne0xoh3"]
 
-[ext_resource type="Texture2D" uid="uid://78w4owvufdht" path="res://icon.svg" id="1_qad7h"]
 [ext_resource type="Script" path="res://scripts/modules/traps/falling_trap.gd" id="1_ynfee"]
 [ext_resource type="Texture2D" uid="uid://ewcbwu2rvhjs" path="res://assets/sprites/human/fire.png" id="2_ivh0t"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_h7dve"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_04vte"]
-size = Vector2(39, 488.75)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_80aon"]
 atlas = ExtResource("2_ivh0t")
@@ -86,10 +82,6 @@ radius = 46.9791
 collision_mask = 128
 script = ExtResource("1_ynfee")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 226.625)
-shape = SubResource("RectangleShape2D_04vte")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ojlxa")
@@ -107,16 +99,6 @@ shape = SubResource("CircleShape2D_w0qlj")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
-
-[node name="target" type="Area2D" parent="."]
-position = Vector2(0, 40)
-collision_layer = 0
-collision_mask = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="target"]
-position = Vector2(-1, -1)
-scale = Vector2(0.242188, 0.265625)
-texture = ExtResource("1_qad7h")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="ready" from="." to="." method="_on_ready"]
