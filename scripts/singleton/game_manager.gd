@@ -252,5 +252,7 @@ func end_dialogue() -> void:
 func is_door_open() -> bool:
 	return game_state['is_door_open']
 
-func test_print() -> void:
-	print("hahahahahhahahaha")
+func switch_day_to_dream(scene_file_path: String) -> void:
+	game_state['target_scene'] = scene_file_path
+	game_state['teleport_type'] = "day2dream"
+	get_tree().change_scene_to_file("res://scenes/modules/checkpoints/transition.tscn")
