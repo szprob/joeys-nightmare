@@ -1,0 +1,298 @@
+[gd_scene load_steps=14 format=3 uid="uid://b5t052kpld60e"]
+
+[ext_resource type="PackedScene" uid="uid://blydc865qnepa" path="res://scenes/player/player_day.tscn" id="1_3un87"]
+[ext_resource type="PackedScene" uid="uid://bmq25pi5e8wan" path="res://scenes/day/room1/room1.tscn" id="1_fv2j8"]
+[ext_resource type="PackedScene" uid="uid://cuvs1inu1bmr" path="res://scenes/day/room2/room2.tscn" id="2_07116"]
+[ext_resource type="PackedScene" uid="uid://bnj5nw08jyh1y" path="res://scenes/player/actionable.tscn" id="3_kv5fx"]
+[ext_resource type="Script" path="res://scenes/day/room1/track_camera.gd" id="3_mf3ak"]
+[ext_resource type="Script" path="res://scenes/day/room2/room2_begin_area.gd" id="4_t55r4"]
+[ext_resource type="Resource" uid="uid://bvjxsl5w8bm2m" path="res://scenes/day/dialogues/room2.dialogue" id="5_svhg8"]
+[ext_resource type="Resource" uid="uid://6a0f0mm58veq" path="res://scenes/day/dialogues/openning.dialogue" id="7_oohak"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1ilh"]
+size = Vector2(38, 17)
+
+[sub_resource type="Animation" id="Animation_empoa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerDay:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(51, 146)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerDay/QuestionMark:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerDay/QuestionMark:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4, -31.3333)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerDay/QuestionMark:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerDay/QuestionMark:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_s5fog"]
+resource_name = "opening_animation"
+length = 1.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerDay/AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [&"idle_left", 1.0, false],
+"method": &"play"
+}, {
+"args": [&"idle_right", 1.0, false],
+"method": &"play"
+}, {
+"args": [&"idle_front", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerDay")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.43333, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [false],
+"method": &"set_physics_process"
+}, {
+"args": [],
+"method": &"show_dialog"
+}, {
+"args": [true],
+"method": &"set_physics_process"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_oh7vr"]
+resource_name = "opening_animation"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerDay:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5, 2, 2.5, 3, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(51, 146), Vector2(91, 146), Vector2(91, 146), Vector2(51, 146), Vector2(51, 146)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerDay/AnimatedSprite2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 2, 2.5, 3, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [&"run_right", 1.0, false],
+"method": &"play"
+}, {
+"args": [&"idle_right", 1.0, false],
+"method": &"play"
+}, {
+"args": [&"run_left", 1.0, false],
+"method": &"play"
+}, {
+"args": [&"idle_left", 1.0, false],
+"method": &"play"
+}, {
+"args": [&"idle_front", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerDay")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.93333, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [false],
+"method": &"set_physics_process"
+}, {
+"args": [],
+"method": &"show_dialog"
+}, {
+"args": [true],
+"method": &"set_physics_process"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerDay/QuestionMark:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerDay/QuestionMark:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3.5, 3.56667, 3.63333, 3.7, 3.76667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-4, -31.3333), Vector2(-4.66667, -31.3333), Vector2(-3.4, -34.6667), Vector2(-0.333334, -31.3333), Vector2(-4, -31.3333)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerDay/QuestionMark:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3.5, 3.56667, 3.7, 3.76667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.143565, 0.18565, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerDay/QuestionMark:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(3.5, 3.63333, 3.76667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.173, 1.173), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_as0jj"]
+_data = {
+"RESET": SubResource("Animation_empoa"),
+"look_around": SubResource("Animation_s5fog"),
+"opening_animation": SubResource("Animation_oh7vr")
+}
+
+[node name="Game" type="Node2D"]
+
+[node name="Room1" parent="." instance=ExtResource("1_fv2j8")]
+
+[node name="Room2" parent="." instance=ExtResource("2_07116")]
+position = Vector2(0, 272)
+
+[node name="Room2BeginArea" type="Sprite2D" parent="Room2"]
+position = Vector2(248, 145)
+
+[node name="Actionable" parent="Room2/Room2BeginArea" instance=ExtResource("3_kv5fx")]
+script = ExtResource("4_t55r4")
+dialogue_resource = ExtResource("5_svhg8")
+dialogue_start = "begin"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room2/Room2BeginArea/Actionable"]
+shape = SubResource("RectangleShape2D_t1ilh")
+
+[node name="PlayerDay" parent="." instance=ExtResource("1_3un87")]
+z_index = 1
+texture_filter = 1
+position = Vector2(51, 146)
+scale = Vector2(1.5, 1.5)
+dialog_resource = ExtResource("7_oohak")
+dialog_start = "title"
+
+[node name="Camera2D" type="Camera2D" parent="PlayerDay"]
+position = Vector2(-334, -247)
+process_callback = 0
+limit_left = 0
+limit_top = 0
+limit_right = 480
+limit_bottom = 270
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("3_mf3ak")
+
+[node name="QuestionMark" type="Label" parent="PlayerDay"]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+offset_left = -4.0
+offset_top = -31.3333
+offset_right = 4.0
+offset_bottom = -8.3333
+theme_override_colors/font_color = Color(0.930369, 0.903031, 0.829305, 1)
+theme_override_colors/font_outline_color = Color(0.282362, 0.154096, 0.0681141, 1)
+theme_override_constants/outline_size = 7
+text = "?"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+process_physics_priority = -1
+callback_mode_method = 1
+libraries = {
+"": SubResource("AnimationLibrary_as0jj")
+}
+autoplay = "opening_animation"
+
+[editable path="PlayerDay"]

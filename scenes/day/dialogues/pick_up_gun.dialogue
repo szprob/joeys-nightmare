@@ -1,0 +1,19 @@
+~ id_card
+身份证: (一张身份证，上面印着我的照片)
+????: 上面写着Joey Song
+Joey: Joey是我的名字，我叫Joey[speed=0.3]...
+set GameManager.set_day_phase(2)
+=> END
+
+~ gun
+if GameManager.get_day_phase() < 2:
+	????: [[一把玩具手枪，有一种熟悉的感觉|总感觉见过这把玩具手枪]]
+else:
+	Joey: 这他妈是我小时候玩的枪！ [wait=0.5][speed=0.3]要拿走吗？
+	- 是
+		Joey: [shake rate=20 level=10]牛逼！[/shake]
+		set GameManager.game_state['day_phase'] = 3
+		=> END
+	- 否
+		Joey: [wave amp=25 freq=5]拿个勾八![/wave]
+	=> END
