@@ -162,3 +162,6 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 #endregion
+func _on_tree_exiting() -> void:
+
+	GameManager.end_dialogue()

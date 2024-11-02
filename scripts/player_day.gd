@@ -86,7 +86,7 @@ func _physics_process(delta: float) -> void:
 	handle_animation()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("main_scene_select"):
 		var actionables = action_finder.get_overlapping_areas()
 		if actionables.size() > 0:
 			actionables[0].action()

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://yxyncpgcagll" path="res://assets/sprites/day/room/TopDownHouse_SmallItems.png" id="3_iikc7"]
 [ext_resource type="Texture2D" uid="uid://dijhmxvysq672" path="res://assets/sprites/day/room/Interiors_free_16x16.png" id="4_opdi8"]
 [ext_resource type="Texture2D" uid="uid://w4lm0tdvpn1j" path="res://assets/sprites/day/room/Room_Builder_free_16x16.png" id="5_g2jvf"]
-[ext_resource type="PackedScene" uid="uid://bnj5nw08jyh1y" path="res://scenes/player/actionable.tscn" id="6_x4b8a"]
+[ext_resource type="PackedScene" uid="uid://byljde6sgcfrv" path="res://scenes/player/actionable.tscn" id="6_x4b8a"]
 [ext_resource type="Resource" uid="uid://cxop0kywvogkf" path="res://scenes/day/dialogues/open_door.dialogue" id="7_louph"]
 [ext_resource type="Script" path="res://scenes/day/room1/door.gd" id="8_be4lk"]
 [ext_resource type="Texture2D" uid="uid://78w4owvufdht" path="res://icon.svg" id="9_twcge"]
