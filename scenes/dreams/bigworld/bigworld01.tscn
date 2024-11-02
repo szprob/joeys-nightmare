@@ -32,7 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://b4l0s4mgeuqyq" path="res://scenes/modules/checkpoints/bi-teleport.tscn" id="17_es12q"]
 [ext_resource type="PackedScene" uid="uid://cair83ouq2qd0" path="res://scenes/modules/checkpoints/target.tscn" id="18_xbihk"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_madan"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ognwl"]
 texture = ExtResource("6_204oe")
 0:0/0 = 0
 1:0/0 = 0
@@ -781,9 +781,9 @@ texture = ExtResource("6_204oe")
 23:35/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_vup5g"]
-sources/1 = SubResource("TileSetAtlasSource_madan")
+sources/1 = SubResource("TileSetAtlasSource_ognwl")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m6f8u"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_27oib"]
 texture = ExtResource("6_00ch7")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -794,7 +794,7 @@ texture = ExtResource("6_00ch7")
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xg3cs"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8on3o"]
 texture = ExtResource("6_204oe")
 0:0/0 = 0
 1:0/0 = 0
@@ -1584,7 +1584,7 @@ texture = ExtResource("6_204oe")
 22:35/0 = 0
 23:35/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_julaa"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_slark"]
 texture = ExtResource("6_0guuf")
 0:0/0 = 0
 1:0/0 = 0
@@ -2451,19 +2451,19 @@ texture = ExtResource("6_0guuf")
 22:33/0 = 0
 23:33/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ehdm8"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n8jio"]
 texture = ExtResource("7_vjsna")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_rvt4p"]
 physics_layer_0/collision_layer = 1
-sources/1 = SubResource("TileSetAtlasSource_xg3cs")
-sources/6 = SubResource("TileSetAtlasSource_julaa")
-sources/7 = SubResource("TileSetAtlasSource_ehdm8")
-sources/0 = SubResource("TileSetAtlasSource_m6f8u")
+sources/1 = SubResource("TileSetAtlasSource_8on3o")
+sources/6 = SubResource("TileSetAtlasSource_slark")
+sources/7 = SubResource("TileSetAtlasSource_n8jio")
+sources/0 = SubResource("TileSetAtlasSource_27oib")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bnodb"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uhr3i"]
 texture = ExtResource("7_75kuo")
 0:0/0 = 0
 1:0/0 = 0
@@ -2594,7 +2594,7 @@ texture = ExtResource("7_75kuo")
 3:15/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_cy5dp"]
-sources/1 = SubResource("TileSetAtlasSource_bnodb")
+sources/1 = SubResource("TileSetAtlasSource_uhr3i")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k7tf7"]
 size = Vector2(446, 22.1605)
@@ -2647,7 +2647,7 @@ _data = {
 script = ExtResource("1_jwyd3")
 
 [node name="player_with_gravity" parent="." instance=ExtResource("2_8yy27")]
-position = Vector2(548.268, -222.428)
+position = Vector2(1626.97, -110.759)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
 position = Vector2(-1599.32, 700.03)
