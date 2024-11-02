@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://bvjxsl5w8bm2m"
+path="res://.godot/imported/room2.dialogue-e44ac7c91e9857cf314b9814f8cce2b6.tres"
+
+[deps]
+
+source_file="res://scenes/day/dialogues/room2.dialogue"
+dest_files=["res://.godot/imported/room2.dialogue-e44ac7c91e9857cf314b9814f8cce2b6.tres"]
+
+[params]
+
+defaults=true

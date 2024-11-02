@@ -1,24 +1,26 @@
 [gd_scene load_steps=4 format=3 uid="uid://dwkd8axprygf0"]
 
-[ext_resource type="Texture2D" uid="uid://kew5lerskks0" path="res://assets/sprites/fruit.png" id="1_6hpto"]
 [ext_resource type="Script" path="res://scripts/sokoban/bullet.gd" id="1_rrbs2"]
+[ext_resource type="Texture2D" uid="uid://dgreka8asuvwi" path="res://assets/sprites/human/bullet.png" id="2_jsxlf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8716l"]
 radius = 0.0
 
 [node name="bullet" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
 collision_layer = 4
 script = ExtResource("1_rrbs2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_6hpto")
+texture = ExtResource("2_jsxlf")
 region_enabled = true
-region_rect = Rect2(0, 0, 16, 16)
+region_rect = Rect2(0, 0, 15, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_8716l")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.8125, 0.8125)
+scale = Vector2(0.81875, 0.81875)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

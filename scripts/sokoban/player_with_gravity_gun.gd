@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-#@onready var game_manager: Node = %game_manager
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-
+@onready var jump_audio: AudioStreamPlayer2D = $jump_audio
 # shooting
 @export var cooldown = 0.25
 @export var bullet_scene: PackedScene
@@ -14,40 +14,43 @@ var facing_direction = 1
 var jump_buffer_timer: float = 0.0 # 记录跳跃键按下的时间
 var jump_hold_time: float = 0.0 # 记录跳跃键按住的时间
 var is_jumping: bool = false # 标记是否正在跳跃
-var is_dropping: bool = false # Track if the player is dropping through a platform
-var drop_timer: float = 0.0 # Timer for disabling platform collision
-# 保存原始的碰撞掩码
-var original_collision_mask: int
 var default_pos = Vector2(0, 0)
-
+var respawn_pos = Vector2(0, 0)
 
 func _ready():
-	#position = Vector2(300,-100)
+	await ready
 	default_pos = position
-	print('default pos', default_pos)
-	#GameManager.load_game_state()
-	#position = GameManager.game_state['current_respawn_point']
-	#original_collision_mask = collision_mask
+	GameManager.load_game_state()
+	# 获取当前场景路径
+	var current_scene_path = get_tree().current_scene.scene_file_path
+	# 检查场景路径是否一致
+	if GameManager.game_state['last_scene_path'] == current_scene_path:
+		if GameManager.game_state['current_respawn_point_x'] != null:
+			respawn_pos = Vector2(GameManager.game_state['current_respawn_point_x'], GameManager.game_state['current_respawn_point_y'])
+			position = respawn_pos
+	else:
+		position = default_pos
 	$GunCooldown.wait_time = cooldown
-	print(get_gravity())
 
 
 func respawn():
 	# 将角色位置设置为重生点
 	#position = GameManager.game_state['current_respawn_point']
 	velocity = Vector2.ZERO
-	position = default_pos
 	# 重置所有状态
 	is_jumping = false
-	is_dropping = false
 	jump_buffer_timer = 0.0
 	jump_hold_time = 0.0
-
-	pass
+	var current_scene_path = get_tree().current_scene.scene_file_path
+	if GameManager.game_state['last_scene_path'] == current_scene_path:
+		if GameManager.game_state['current_respawn_point_x'] != null:
+			respawn_pos = Vector2(GameManager.game_state['current_respawn_point_x'], GameManager.game_state['current_respawn_point_y'])
+			position = respawn_pos
+	else:
+		position = default_pos
 
 # 开始跳跃的函数
 func start_jump() -> void:
-	# print('start jump')
 	# 获取重力方向的单位向量
 	var gravity_dir = get_gravity().normalized()
 	# print('gravity dir', gravity_dir)
@@ -55,8 +58,15 @@ func start_jump() -> void:
 	velocity -= gravity_dir * abs(Consts.JUMP_VELOCITY)
 	jump_hold_time = 0.0 # 重置跳跃键按住时间
 	is_jumping = true # 标记为跳跃状态
+	if jump_audio and jump_audio.stream:
+		jump_audio.play()
+
+
 	
 func shoot(Input) -> void:
+	print("shoot trigger: ", GameManager.game_state)
+	if not GameManager.has_item(&"玩具手枪"):
+		return
 	var shoot_direction = Vector2(facing_direction, 0)
 	if not can_shoot:
 		return
@@ -79,32 +89,12 @@ func shoot(Input) -> void:
 			shoot_direction.x = 1
 		b.start(position + Vector2(0, -8), shoot_direction)
 
-# Start dropping through the platform
-func remove_mask_temporarily(mask) -> void:
-	# 移除mask为1的部分，保持其他部分不变
-	collision_mask &= ~mask
-	# 使用协程等待0.3秒，然后恢复原始的碰撞掩码
-	await get_tree().create_timer(0.3).timeout
-	collision_mask = original_collision_mask
 
-# 检测玩家是否站在单向平台上
-func is_on_one_way_platform() -> bool:
-	if is_on_terrain():
-		var collision = get_last_slide_collision()
-		if collision:
-			var collider = collision.get_collider()
-			# 检查 collider 是否具有 collision_layer 属性
-			if collider and collider.has_method("get_collision_layer") and not (collider is TileMap):
-				if collider.collision_layer & Consts.ONE_WAY_PLATFORM_LAYER != 0:
-					return true
-			# 如果是 TileMap，可能需要其他逻辑来判断
-			elif collider is TileMap:
-				# 在这里添加处理 TileMap 的逻辑
-				# 例如，根据 TileMap 的某些属性或自定义数据来判断
-				pass
-	return false
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("reload"):
+		respawn()
+
 	# Add the gravity.
 
 	if not is_on_terrain():
@@ -159,13 +149,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		# print('is on terrain', is_on_terrain()
 		if is_on_terrain():
-			# 如果按住下键并且在平台上，触发下落平台逻辑
-			if Input.is_action_pressed("down") and is_on_one_way_platform():
-				print("Player is on a one-way platform")
-				remove_mask_temporarily(2)
-			else:
-				start_jump() # 正常跳跃
-			# start_jump()
+			start_jump() # 正常跳跃
 		else:
 			jump_buffer_timer = Consts.JUMP_BUFFER_TIME # 记录跳跃键按下的时间以便缓冲
 	#

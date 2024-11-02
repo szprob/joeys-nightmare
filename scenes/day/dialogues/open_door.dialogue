@@ -1,0 +1,40 @@
+~ 查看抽屉
+if GameManager.is_door_open() or GameManager.game_state['day_phase'] > 4:
+	橱柜: 一个空橱柜，没有其他物品了
+	=> END
+else:
+	if GameManager.get_day_phase() < 2:
+		????: 一个普通的橱柜
+	elif GameManager.get_day_phase() < 4:
+		Joey: 一个普通的橱柜
+	else:
+		Joey: 刚才的梦中也出现了这个橱柜，再仔细调查看看吧
+		Joey: [shake rate=20 level=10]角落里有把钥匙![/shake]
+		Joey: 去看看能不能把门打开吧
+		: 获得钥匙
+		set GameManager.add_item("钥匙1")
+		set GameManager.game_state['day_phase'] = 5
+	=> END
+
+
+~ 查看门
+: 门上锁了。
+if not GameManager.has_item("钥匙1"):
+	if GameManager.get_day_phase() < 2:
+		????: 有没有钥匙呢？
+	elif GameManager.get_day_phase() < 3:
+		Joey: 应该有钥匙吧？
+	=> END
+else:
+	if GameManager.get_day_phase() < 2:
+		????: 我是谁？我在哪？再找找线索吧。
+	elif GameManager.get_day_phase() < 3:
+		Joey: 总感觉还漏了什么，再看看吧。
+	else:
+		Joey: 要使用钥匙吗？
+		- 是
+			set GameManager.use_item("钥匙1")
+			set GameManager.game_state['is_door_open'] = true
+		- 否
+			=> END
+	=> END

@@ -1,0 +1,268 @@
+[gd_scene load_steps=22 format=4 uid="uid://c6mfxqilxa2m5"]
+
+[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="1_ikni4"]
+[ext_resource type="Script" path="res://scripts/camera_2d.gd" id="2_f0ykq"]
+[ext_resource type="Texture2D" uid="uid://c57fo0smy156u" path="res://assets/sprites/background/multi3/back.png" id="3_6b4i7"]
+[ext_resource type="Texture2D" uid="uid://7joprmnjucj5" path="res://assets/sprites/background/multi3/moon2.png" id="4_bbawp"]
+[ext_resource type="Texture2D" uid="uid://bl1rxkn33ywhl" path="res://assets/sprites/background/multi3/cloud.png" id="5_vr4mb"]
+[ext_resource type="Texture2D" uid="uid://bc3luaoy48sp7" path="res://assets/sprites/background/multi3/bird.png" id="6_6m3q3"]
+[ext_resource type="Texture2D" uid="uid://gvyrlttwr2dn" path="res://assets/sprites/background/multi3/people.png" id="7_ymmvj"]
+[ext_resource type="Texture2D" uid="uid://d027a6hxvbtaj" path="res://assets/sprites/background/multi3/front4.png" id="8_0nwjl"]
+[ext_resource type="Texture2D" uid="uid://pv0iwkpm3tyv" path="res://assets/sprites/human/brick2.1.png" id="9_faucd"]
+[ext_resource type="PackedScene" uid="uid://6motl652kpn3" path="res://scenes/modules/trap_tile/trap2.tscn" id="13_wa5ti"]
+[ext_resource type="PackedScene" uid="uid://mx3jx68fdgqm" path="res://scenes/modules/trap_tile/trap3.tscn" id="14_1arg2"]
+[ext_resource type="PackedScene" uid="uid://bgtv7blulem34" path="res://scenes/modules/trap_tile/trap4.tscn" id="15_bdere"]
+[ext_resource type="PackedScene" uid="uid://8qshk6ynrxhj" path="res://scenes/modules/trap_tile/trap.tscn" id="16_73w3g"]
+[ext_resource type="PackedScene" uid="uid://cv3nrtrevxkyu" path="res://scenes/sokoban/gravity_1.tscn" id="17_5hdhh"]
+[ext_resource type="PackedScene" uid="uid://deu5vht28g1ac" path="res://scenes/enemy/chase.tscn" id="17_dhjhw"]
+[ext_resource type="PackedScene" uid="uid://bvruyxf2kytoc" path="res://scenes/modules/platforms_new/platform.tscn" id="17_y7e8u"]
+[ext_resource type="PackedScene" uid="uid://b6pq8l7ym5nuh" path="res://scenes/modules/checkpoints/teleport.tscn" id="19_qyudg"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eniy7"]
+texture = ExtResource("9_faucd")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_gv3fn"]
+scenes/1/scene = ExtResource("13_wa5ti")
+scenes/2/scene = ExtResource("14_1arg2")
+scenes/3/scene = ExtResource("15_bdere")
+scenes/4/scene = ExtResource("16_73w3g")
+
+[sub_resource type="TileSet" id="TileSet_t7n24"]
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetScenesCollectionSource_gv3fn")
+sources/0 = SubResource("TileSetAtlasSource_eniy7")
+
+[sub_resource type="Curve2D" id="Curve2D_0f7vn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 96, 100, 0, 0, 0, 0, 1000, 100)
+}
+point_count = 3
+
+[node name="Chase" type="Node2D" groups=["scan_lines"]]
+
+[node name="player_with_gravity" parent="." groups=["player"] instance=ExtResource("1_ikni4")]
+position = Vector2(1050.53, -207.891)
+
+[node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
+position = Vector2(-1599.32, 700.03)
+scale = Vector2(0.25, 0.25)
+process_callback = 0
+limit_left = 0
+limit_top = 0
+limit_right = 480
+limit_bottom = 270
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+script = ExtResource("2_f0ykq")
+
+[node name="map" type="Node" parent="."]
+
+[node name="parallax" type="Node2D" parent="map"]
+position = Vector2(64, 8)
+
+[node name="back" type="Parallax2D" parent="map/parallax"]
+z_index = -1
+scroll_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="map/parallax/back"]
+position = Vector2(-179.325, -91)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_6b4i7")
+centered = false
+
+[node name="moon" type="Parallax2D" parent="map/parallax"]
+z_index = -1
+scroll_scale = Vector2(0.05, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="map/parallax/moon"]
+position = Vector2(-179, -45.22)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_bbawp")
+centered = false
+
+[node name="cloud" type="Parallax2D" parent="map/parallax"]
+z_index = -1
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(859.12, 0)
+autoscroll = Vector2(16, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="map/parallax/cloud"]
+position = Vector2(-8, -52.445)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_vr4mb")
+centered = false
+
+[node name="bird" type="Parallax2D" parent="map/parallax"]
+z_index = -1
+scroll_scale = Vector2(0.15, 0)
+repeat_size = Vector2(768, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="map/parallax/bird"]
+position = Vector2(-68, -72)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_6m3q3")
+centered = false
+
+[node name="people" type="Parallax2D" parent="map/parallax"]
+z_index = -1
+scroll_scale = Vector2(0.2, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="map/parallax/people"]
+position = Vector2(-0.999992, -72)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_ymmvj")
+centered = false
+
+[node name="front" type="Parallax2D" parent="map/parallax"]
+z_index = -1
+scroll_scale = Vector2(0.3, 0)
+scroll_offset = Vector2(-10, -8)
+repeat_size = Vector2(768, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="map/parallax/front"]
+position = Vector2(90, -40.545)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_0nwjl")
+centered = false
+
+[node name="tile" type="TileMapLayer" parent="map"]
+position = Vector2(48, 0)
+tile_map_data = PackedByteArray("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")
+tile_set = SubResource("TileSet_t7n24")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(536, -208)
+curve = SubResource("Curve2D_0f7vn")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotates = false
+
+[node name="Monster" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("player") instance=ExtResource("17_dhjhw")]
+speed = 30
+player = NodePath("../../../player_with_gravity")
+
+[node name="platform" parent="." instance=ExtResource("17_y7e8u")]
+position = Vector2(1136, -32)
+
+[node name="teleport" parent="." instance=ExtResource("19_qyudg")]
+position = Vector2(1056, -168)
+
+[node name="gravity" type="Node" parent="."]
+
+[node name="gravity" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(992, -16)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity2" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(992, -48)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity3" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(992, -80)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity4" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(992, -112)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity5" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(992, -144)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity7" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1200, -128)
+
+[node name="gravity15" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1200, -160)
+
+[node name="gravity21" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1232, -224)
+
+[node name="gravity35" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1392, -224)
+
+[node name="gravity16" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1232, -160)
+
+[node name="gravity17" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1264, -160)
+
+[node name="gravity18" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1296, -160)
+
+[node name="gravity19" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1328, -160)
+
+[node name="gravity20" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1360, -160)
+
+[node name="gravity22" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1264, -128)
+
+[node name="gravity23" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1296, -128)
+
+[node name="gravity8" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1232, -128)
+
+[node name="gravity14" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1264, -96)
+
+[node name="gravity27" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1232, -96)
+
+[node name="gravity28" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1200, -96)
+
+[node name="gravity24" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1296, -96)
+
+[node name="gravity25" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1328, -96)
+
+[node name="gravity26" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1360, -96)
+
+[node name="gravity29" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1264, -64)
+
+[node name="gravity30" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1232, -64)
+
+[node name="gravity31" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1200, -64)
+
+[node name="gravity32" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1296, -64)
+
+[node name="gravity33" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1328, -64)
+
+[node name="gravity34" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1360, -64)
+
+[node name="gravity10" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1328, -128)
+
+[node name="gravity12" parent="gravity" instance=ExtResource("17_5hdhh")]
+position = Vector2(1360, -128)

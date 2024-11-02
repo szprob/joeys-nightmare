@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpqr3oauheogh"]
+[gd_scene load_steps=8 format=3 uid="uid://cpqr3oauheogh"]
 
 [ext_resource type="Script" path="res://scripts/sokoban/basic_button.gd" id="1_dcxri"]
 [ext_resource type="Texture2D" uid="uid://b5ivgq13ksjri" path="res://assets/sprites/human/button2.png" id="2_2we12"]
+[ext_resource type="AudioStream" uid="uid://bg01uylk64iae" path="res://assets/sounds/interface/button.wav" id="3_5ikra"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wclvy"]
 atlas = ExtResource("2_2we12")
@@ -40,3 +41,6 @@ frame_progress = 0.291725
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_gcigk")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_5ikra")

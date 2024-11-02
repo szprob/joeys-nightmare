@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://dwby8p0771vpf"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_sm7do"]
+[ext_resource type="Script" path="res://scripts/modules/player/player.gd" id="1_sm7do"]
 [ext_resource type="Texture2D" uid="uid://3scwxguin8be" path="res://assets/sprites/megaman/SNES - Mega Man 7 - Mega Man.png" id="2_64a0s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2v3ly"]
