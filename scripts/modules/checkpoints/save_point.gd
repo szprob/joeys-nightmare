@@ -29,7 +29,10 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 	if body.is_in_group("player"):
 		has_been_activated = true
 		animated_sprite_2d.frame = 1
-		GameManager.game_state['current_respawn_point'] = position
+		var current_scene_path = get_tree().current_scene.scene_file_path
+		GameManager.game_state['last_scene_path'] = current_scene_path
+		GameManager.game_state['current_respawn_point_x'] = position.x
+		GameManager.game_state['current_respawn_point_y'] = position.y
 		GameManager.game_state['respawn_enable'] = true
 		GameManager.save_game_state()
 		

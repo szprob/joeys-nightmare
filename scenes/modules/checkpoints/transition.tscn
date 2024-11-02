@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://1ugf14a2vgl4"]
+
+[ext_resource type="Script" path="res://scripts/modules/checkpoints/transition.gd" id="1_1k3n3"]
+[ext_resource type="Texture2D" uid="uid://cxw3uyw1udgev" path="res://assets/teleport.png" id="2_150ek"]
+[ext_resource type="Texture2D" uid="uid://dy8a8ar6qlsno" path="res://assets/sprites/像素火焰1.0.png" id="3_w31n6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88tox"]
+atlas = ExtResource("2_150ek")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypilk"]
+atlas = ExtResource("2_150ek")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ddej"]
+atlas = ExtResource("3_w31n6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hub0q"]
+atlas = ExtResource("3_w31n6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x7wle"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88tox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypilk")
+}],
+"loop": true,
+"name": &"dat2dream",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ddej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hub0q")
+}],
+"loop": true,
+"name": &"dream2day",
+"speed": 1.0
+}]
+
+[node name="Transition" type="Node2D"]
+script = ExtResource("1_1k3n3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(971, 535)
+scale = Vector2(10.1256, 8.98937)
+sprite_frames = SubResource("SpriteFrames_x7wle")
+animation = &"dat2dream"
+frame_progress = 0.960514

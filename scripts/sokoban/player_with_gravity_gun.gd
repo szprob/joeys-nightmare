@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-#@onready var game_manager: Node = %game_manager
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -15,17 +15,21 @@ var jump_buffer_timer: float = 0.0 # 记录跳跃键按下的时间
 var jump_hold_time: float = 0.0 # 记录跳跃键按住的时间
 var is_jumping: bool = false # 标记是否正在跳跃
 var default_pos = Vector2(0, 0)
-
+var respawn_pos = Vector2(0, 0)
 
 func _ready():
-	#position = Vector2(300,-100)
 	default_pos = position
-	print('default pos', default_pos)
-	#GameManager.load_game_state()
-	#position = GameManager.game_state['current_respawn_point']
-	#original_collision_mask = collision_mask
+	GameManager.load_game_state()
+	# 获取当前场景路径
+	var current_scene_path = get_tree().current_scene.scene_file_path
+	# 检查场景路径是否一致
+	if GameManager.game_state['last_scene_path'] == current_scene_path:
+		if GameManager.game_state['current_respawn_point_x'] != null:
+			respawn_pos = Vector2(GameManager.game_state['current_respawn_point_x'], GameManager.game_state['current_respawn_point_y'])
+			position = respawn_pos
+	else:
+		position = default_pos
 	$GunCooldown.wait_time = cooldown
-	print(get_gravity())
 
 
 func respawn():
@@ -42,7 +46,6 @@ func respawn():
 
 # 开始跳跃的函数
 func start_jump() -> void:
-	print('start jump')
 	# 获取重力方向的单位向量
 	var gravity_dir = get_gravity().normalized()
 	print('gravity dir', gravity_dir)
@@ -56,6 +59,8 @@ func start_jump() -> void:
 
 	
 func shoot(Input) -> void:
+	if not GameManager.has_item('玩具手枪'):
+		return
 	var shoot_direction = Vector2(facing_direction, 0)
 	if not can_shoot:
 		return
