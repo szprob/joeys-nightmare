@@ -1,6 +1,6 @@
 extends Area2D
 
-enum TeleportType {DAY2DREAM,DREAM2DAY} 
+enum TeleportType {DAY2DREAM,DREAM2DAY,DREAM2DREAM} 
 
 @export var teleport_time: float = 0.1
 @export var target_scene: String = "res://scenes/day/game/game.tscn"
@@ -8,7 +8,6 @@ enum TeleportType {DAY2DREAM,DREAM2DAY}
 @export var transition_scene: String = "res://scenes/modules/checkpoints/transition.tscn"  # 添加过渡场景路径
 
 var player_inside = false  # 用于跟踪玩家是否在存档点内
-var next_scene_resource: Resource  # 用于存储预加载的场景
 
 @onready var timer: Timer = Timer.new() #teleport_time
 @onready var label: Label = $Label # 按键提醒
@@ -47,12 +46,12 @@ func _on_body_exited(body: Node) -> void:
 
 func _on_timer_timeout():
 	# 创建过渡场景实例
-	var transition_instance = load(transition_scene).instantiate()
-	# 将目标场景路径传递给过渡场景
-	transition_instance.next_scene_path = target_scene
-	# 将过渡类型传递给过渡场景
-	transition_instance.teleport_type = teleport_type
-	# 添加过渡场景到根节点
-	get_tree().root.add_child(transition_instance)
-	# 移除当前场景
-	get_tree().current_scene.queue_free()
+	GameManager.game_state['target_scene'] = target_scene
+	if teleport_type == TeleportType.DAY2DREAM:
+		GameManager.game_state['teleport_type'] = 'day2dream'
+	elif teleport_type == TeleportType.DREAM2DAY:
+		GameManager.game_state['teleport_type'] = 'dream2day'
+	elif teleport_type == TeleportType.DREAM2DREAM:
+		GameManager.game_state['teleport_type'] = 'dream2dream'
+	GameManager.save_game_state()
+	get_tree().change_scene_to_file(transition_scene)
