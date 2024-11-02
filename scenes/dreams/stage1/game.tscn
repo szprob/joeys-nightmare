@@ -456,7 +456,7 @@ space控制跳跃"
 position = Vector2(-556, -10)
 
 [node name="teleport" parent="." instance=ExtResource("10_qycbb")]
-position = Vector2(223, -78)
+position = Vector2(-656.999, -13.7744)
 
 [node name="blink_platform" parent="." instance=ExtResource("13_ibtkj")]
 position = Vector2(-191, -25)
