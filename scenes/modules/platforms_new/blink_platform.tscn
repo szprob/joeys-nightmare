@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0rdt0oel663m"]
+
+[ext_resource type="Script" path="res://scripts/modules/platforms/blink_platform.gd" id="1_4ef6u"]
+[ext_resource type="Texture2D" uid="uid://8nrryef8gpok" path="res://assets/sprites/platforms.png" id="2_pmofh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4x1p"]
+size = Vector2(46, 7)
+
+[node name="blink_platform" type="AnimatableBody2D"]
+collision_layer = 2
+script = ExtResource("1_4ef6u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pmofh")
+region_enabled = true
+region_rect = Rect2(0.796703, 16.0633, 46.4421, 8.8575)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_s4x1p")
+one_way_collision = true

@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://6motl652kpn3"]
+
+[ext_resource type="Script" path="res://scripts/sokoban/chasing_slime_bak.gd" id="1_cj5ww"]
+[ext_resource type="Texture2D" uid="uid://bwfxekt16jbbl" path="res://assets/sprites/human/trap.png" id="2_bukvl"]
+[ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_xvtlh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8f63d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bukvl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_18lyn"]
+points = PackedVector2Array(-1, -14, -16, 15, 16, 15)
+
+[node name="BlockTrap" type="Area2D"]
+collision_mask = 128
+script = ExtResource("1_cj5ww")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_8f63d")
+autoplay = "default"
+frame_progress = 0.40163
+
+[node name="kill_zone" parent="." instance=ExtResource("3_xvtlh")]
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
+rotation = 1.5708
+shape = SubResource("ConvexPolygonShape2D_18lyn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="ready" from="." to="." method="_on_ready"]

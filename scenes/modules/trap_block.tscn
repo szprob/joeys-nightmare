@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://duokhi3tbe3f3"]
 
-[ext_resource type="Script" path="res://scripts/sokoban/chasing_slime.gd" id="1_qpl3o"]
+[ext_resource type="Script" path="res://scripts/sokoban/chasing_slime_bak.gd" id="1_qpl3o"]
 [ext_resource type="Texture2D" uid="uid://bq4508h767n7y" path="res://assets/sprites/human/monster.png" id="1_uqv67"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_51pm2"]
 

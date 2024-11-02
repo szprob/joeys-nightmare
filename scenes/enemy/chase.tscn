@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://deu5vht28g1ac"]
+
+[ext_resource type="Script" path="res://scripts/enemy/chasing_boss.gd" id="1_nbhrx"]
+[ext_resource type="PackedScene" uid="uid://dwkd8axprygf0" path="res://scenes/sokoban/bullet.tscn" id="2_hwqqf"]
+[ext_resource type="Texture2D" uid="uid://dd3c3ld27t64x" path="res://assets/sprites/human/chase.png" id="2_m4dqr"]
+[ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_1ct2n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_scbdh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m4dqr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wt7tk"]
+radius = 5.73166
+height = 15.4967
+
+[node name="Monster" type="CharacterBody2D"]
+script = ExtResource("1_nbhrx")
+bullet_scene = ExtResource("2_hwqqf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4.72, 4.72)
+sprite_frames = SubResource("SpriteFrames_scbdh")
+autoplay = "default"
+
+[node name="kill_zone" parent="." instance=ExtResource("3_1ct2n")]
+scale = Vector2(8.81513, 8.81513)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
+position = Vector2(-0.226883, 3.06292)
+scale = Vector2(1.06877, 1.06877)
+shape = SubResource("CapsuleShape2D_wt7tk")
