@@ -1,0 +1,4 @@
+~ begin
+Joey: [speed=0.1]????
+Joey: 空房间？
+set GameManager.set_day_phase(5)

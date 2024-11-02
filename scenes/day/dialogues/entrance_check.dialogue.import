@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://8vbxyi40kkjc"
+path="res://.godot/imported/entrance_check.dialogue-821d64e1dcecb08d9247e1d70d18bd99.tres"
+
+[deps]
+
+source_file="res://scenes/day/dialogues/entrance_check.dialogue"
+dest_files=["res://.godot/imported/entrance_check.dialogue-821d64e1dcecb08d9247e1d70d18bd99.tres"]
+
+[params]
+
+defaults=true

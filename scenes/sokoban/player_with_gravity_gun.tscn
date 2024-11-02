@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dwkd8axprygf0" path="res://scenes/sokoban/bullet.tscn" id="2_3vowl"]
 [ext_resource type="Texture2D" uid="uid://0mwdr7djeqhh" path="res://assets/sprites/human/joey.png" id="3_yodxx"]
 [ext_resource type="Texture2D" uid="uid://ivexiot7363h" path="res://assets/sprites/human/joey_full.png" id="5_8ebi1"]
+[ext_resource type="AudioStream" uid="uid://c8n5qm0wdo23u" path="res://assets/sounds/player/jump.wav" id="5_rl8ln"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_343cs"]
 atlas = ExtResource("5_8ebi1")
@@ -20,7 +21,6 @@ region = Rect2(64, 224, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hfwqb"]
 atlas = ExtResource("5_8ebi1")
 region = Rect2(96, 224, 32, 32)
-[ext_resource type="AudioStream" uid="uid://c8n5qm0wdo23u" path="res://assets/sounds/player/jump.wav" id="5_rl8ln"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j7nx6"]
 atlas = ExtResource("3_yodxx")
