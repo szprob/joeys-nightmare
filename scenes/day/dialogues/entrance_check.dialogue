@@ -10,7 +10,7 @@ else:
 	空床: (准备好睡觉了吗？)
 	- 是
 		Joey: 感觉好困 [wait=0.3 speed=0.3]...
-		# go to night
+		set GameManager.switch_day_to_dream("res://scenes/dreams/bigworld/bigworld02.tscn")
 		=> END
 	- 否
 		Joey: 睡你麻痹！
