@@ -1,20 +1,26 @@
-[gd_scene load_steps=18 format=4 uid="uid://c3xcedudjutyn"]
+[gd_scene load_steps=27 format=4 uid="uid://c6mfxqilxa2m5"]
 
-[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="1_kakkw"]
-[ext_resource type="Script" path="res://scripts/camera_2d.gd" id="2_43fcx"]
-[ext_resource type="Texture2D" uid="uid://dg67w0qbntq1g" path="res://assets/sprites/background/multi2/back2.png" id="3_hmuy3"]
-[ext_resource type="Texture2D" uid="uid://bpwukwd6wl1im" path="res://assets/sprites/background/multi2/moon.png" id="4_fif3h"]
-[ext_resource type="Texture2D" uid="uid://c8rhd8q1lk31i" path="res://assets/sprites/background/multi2/cloud.png" id="5_8xn7n"]
-[ext_resource type="Texture2D" uid="uid://c666yb3bxibpx" path="res://assets/sprites/background/multi2/bird.png" id="6_ny6l7"]
-[ext_resource type="Texture2D" uid="uid://ex2h25lemrdv" path="res://assets/sprites/background/multi2/people.png" id="7_y1bpw"]
-[ext_resource type="Texture2D" uid="uid://cffmiojm7jo0i" path="res://assets/sprites/background/multi2/front.png" id="8_phgg8"]
-[ext_resource type="Texture2D" uid="uid://pv0iwkpm3tyv" path="res://assets/sprites/human/brick2.1.png" id="9_7wsvr"]
-[ext_resource type="Texture2D" uid="uid://btgd8wdsdtvdg" path="res://assets/sprites/wario/Game Boy Advance - Wario Land 4 - Crescent Moon Village.png" id="10_etr6s"]
-[ext_resource type="Texture2D" uid="uid://vkmdsyer0pm8" path="res://assets/sprites/ai/brick_64_2.png" id="11_27bfg"]
-[ext_resource type="Texture2D" uid="uid://bhekhmarft4x2" path="res://assets/sprites/human/bricks.png" id="12_hv3ce"]
+[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="1_ikni4"]
+[ext_resource type="Script" path="res://scripts/camera_2d.gd" id="2_f0ykq"]
+[ext_resource type="Texture2D" uid="uid://dg67w0qbntq1g" path="res://assets/sprites/background/multi2/back2.png" id="3_pw30s"]
+[ext_resource type="Texture2D" uid="uid://bpwukwd6wl1im" path="res://assets/sprites/background/multi2/moon.png" id="4_esilx"]
+[ext_resource type="Texture2D" uid="uid://c8rhd8q1lk31i" path="res://assets/sprites/background/multi2/cloud.png" id="5_1sqoa"]
+[ext_resource type="Texture2D" uid="uid://c666yb3bxibpx" path="res://assets/sprites/background/multi2/bird.png" id="6_x85qq"]
+[ext_resource type="Texture2D" uid="uid://ex2h25lemrdv" path="res://assets/sprites/background/multi2/people.png" id="7_2hggx"]
+[ext_resource type="Texture2D" uid="uid://cffmiojm7jo0i" path="res://assets/sprites/background/multi2/front.png" id="8_gptfw"]
+[ext_resource type="Texture2D" uid="uid://pv0iwkpm3tyv" path="res://assets/sprites/human/brick2.1.png" id="9_faucd"]
+[ext_resource type="Texture2D" uid="uid://btgd8wdsdtvdg" path="res://assets/sprites/wario/Game Boy Advance - Wario Land 4 - Crescent Moon Village.png" id="10_p225r"]
+[ext_resource type="Texture2D" uid="uid://vkmdsyer0pm8" path="res://assets/sprites/ai/brick_64_2.png" id="11_bqjs1"]
+[ext_resource type="Texture2D" uid="uid://bhekhmarft4x2" path="res://assets/sprites/human/bricks.png" id="12_ow22m"]
+[ext_resource type="PackedScene" uid="uid://6motl652kpn3" path="res://scenes/modules/trap_tile/trap2.tscn" id="13_wa5ti"]
+[ext_resource type="PackedScene" uid="uid://mx3jx68fdgqm" path="res://scenes/modules/trap_tile/trap3.tscn" id="14_1arg2"]
+[ext_resource type="PackedScene" uid="uid://bgtv7blulem34" path="res://scenes/modules/trap_tile/trap4.tscn" id="15_bdere"]
+[ext_resource type="PackedScene" uid="uid://8qshk6ynrxhj" path="res://scenes/modules/trap_tile/trap.tscn" id="16_73w3g"]
+[ext_resource type="PackedScene" uid="uid://deu5vht28g1ac" path="res://scenes/enemy/chase.tscn" id="17_dhjhw"]
+[ext_resource type="PackedScene" uid="uid://bvruyxf2kytoc" path="res://scenes/modules/platforms_new/platform.tscn" id="17_y7e8u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t8474"]
-texture = ExtResource("9_7wsvr")
+texture = ExtResource("9_faucd")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -25,7 +31,7 @@ texture = ExtResource("9_7wsvr")
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8j3hq"]
-texture = ExtResource("10_etr6s")
+texture = ExtResource("10_p225r")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -815,7 +821,7 @@ texture = ExtResource("10_etr6s")
 23:35/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cynj8"]
-texture = ExtResource("11_27bfg")
+texture = ExtResource("11_bqjs1")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -1682,7 +1688,7 @@ texture = ExtResource("11_27bfg")
 23:33/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ohyxr"]
-texture = ExtResource("12_hv3ce")
+texture = ExtResource("12_ow22m")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
@@ -1693,10 +1699,25 @@ sources/6 = SubResource("TileSetAtlasSource_cynj8")
 sources/7 = SubResource("TileSetAtlasSource_ohyxr")
 sources/0 = SubResource("TileSetAtlasSource_t8474")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_gv3fn"]
+scenes/1/scene = ExtResource("13_wa5ti")
+scenes/2/scene = ExtResource("14_1arg2")
+scenes/3/scene = ExtResource("15_bdere")
+scenes/4/scene = ExtResource("16_73w3g")
+
+[sub_resource type="TileSet" id="TileSet_t7n24"]
+sources/1 = SubResource("TileSetScenesCollectionSource_gv3fn")
+
+[sub_resource type="Curve2D" id="Curve2D_0f7vn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 96, 100, 0, 0, 0, 0, 1000, 100)
+}
+point_count = 3
+
 [node name="Chase" type="Node2D" groups=["scan_lines"]]
 
-[node name="player_with_gravity" parent="." instance=ExtResource("1_kakkw")]
-position = Vector2(560, -48)
+[node name="player_with_gravity" parent="." instance=ExtResource("1_ikni4")]
+position = Vector2(616, -16)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
 position = Vector2(-1599.32, 700.03)
@@ -1710,7 +1731,7 @@ limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-script = ExtResource("2_43fcx")
+script = ExtResource("2_f0ykq")
 
 [node name="map" type="Node" parent="."]
 
@@ -1724,7 +1745,7 @@ scroll_scale = Vector2(0, 0)
 [node name="Sprite2D" type="Sprite2D" parent="map/parallax/back"]
 position = Vector2(-179.325, -91)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("3_hmuy3")
+texture = ExtResource("3_pw30s")
 centered = false
 
 [node name="moon" type="Parallax2D" parent="map/parallax"]
@@ -1735,7 +1756,7 @@ repeat_times = 2
 [node name="Sprite2D" type="Sprite2D" parent="map/parallax/moon"]
 position = Vector2(-179, -72)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("4_fif3h")
+texture = ExtResource("4_esilx")
 centered = false
 
 [node name="cloud" type="Parallax2D" parent="map/parallax"]
@@ -1747,7 +1768,7 @@ repeat_times = 3
 [node name="Sprite2D" type="Sprite2D" parent="map/parallax/cloud"]
 position = Vector2(-7.99999, -72)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("5_8xn7n")
+texture = ExtResource("5_1sqoa")
 centered = false
 
 [node name="bird" type="Parallax2D" parent="map/parallax"]
@@ -1759,7 +1780,7 @@ repeat_times = 3
 [node name="Sprite2D" type="Sprite2D" parent="map/parallax/bird"]
 position = Vector2(-68, -72)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("6_ny6l7")
+texture = ExtResource("6_x85qq")
 centered = false
 
 [node name="people" type="Parallax2D" parent="map/parallax"]
@@ -1770,7 +1791,7 @@ repeat_times = 2
 [node name="Sprite2D" type="Sprite2D" parent="map/parallax/people"]
 position = Vector2(-0.999992, -72)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("7_y1bpw")
+texture = ExtResource("7_2hggx")
 centered = false
 
 [node name="front" type="Parallax2D" parent="map/parallax"]
@@ -1783,11 +1804,36 @@ repeat_times = 3
 [node name="Sprite2D" type="Sprite2D" parent="map/parallax/front"]
 position = Vector2(90, -40)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("8_phgg8")
+texture = ExtResource("8_gptfw")
 centered = false
 
 [node name="mid" type="TileMapLayer" parent="map"]
 use_parent_material = true
-position = Vector2(-2, -1)
-tile_map_data = PackedByteArray("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")
+tile_map_data = PackedByteArray("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")
 tile_set = SubResource("TileSet_3kxba")
+
+[node name="Trap" type="TileMapLayer" parent="map"]
+position = Vector2(48, 0)
+tile_map_data = PackedByteArray("AAAqAP//AQAAAAAABAA/AP//AQAAAAAABABAAP//AQAAAAAABAA=")
+tile_set = SubResource("TileSet_t7n24")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(536, -208)
+curve = SubResource("Curve2D_0f7vn")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotates = false
+
+[node name="Monster" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("player") instance=ExtResource("17_dhjhw")]
+speed = 30
+player = NodePath("../../../player_with_gravity")
+
+[node name="platform" parent="." instance=ExtResource("17_y7e8u")]
+position = Vector2(1192, -32)
+
+[connection signal="body_entered" from="map/Trap/BlockTrap" to="map/Trap/BlockTrap" method="_on_body_entered"]
+[connection signal="ready" from="map/Trap/BlockTrap" to="map/Trap/BlockTrap" method="_on_ready"]
+[connection signal="body_entered" from="map/Trap/@Area2D@61337" to="map/Trap/@Area2D@61337" method="_on_body_entered"]
+[connection signal="ready" from="map/Trap/@Area2D@61337" to="map/Trap/@Area2D@61337" method="_on_ready"]
+[connection signal="body_entered" from="map/Trap/@Area2D@61338" to="map/Trap/@Area2D@61338" method="_on_body_entered"]
+[connection signal="ready" from="map/Trap/@Area2D@61338" to="map/Trap/@Area2D@61338" method="_on_ready"]

@@ -1,57 +1,38 @@
-[gd_scene load_steps=10 format=3 uid="uid://dt3ultwbwh0wt"]
+[gd_scene load_steps=7 format=3 uid="uid://deu5vht28g1ac"]
 
-[ext_resource type="Script" path="res://scripts/follow_path.gd" id="1_hok1a"]
-[ext_resource type="Texture2D" uid="uid://bq4508h767n7y" path="res://assets/sprites/human/monster.png" id="2_2n3nl"]
+[ext_resource type="Script" path="res://scripts/enemy/chasing_boss.gd" id="1_nbhrx"]
+[ext_resource type="PackedScene" uid="uid://dwkd8axprygf0" path="res://scenes/sokoban/bullet.tscn" id="2_hwqqf"]
+[ext_resource type="Texture2D" uid="uid://dd3c3ld27t64x" path="res://assets/sprites/human/chase.png" id="2_m4dqr"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_1ct2n"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ss2xn"]
-atlas = ExtResource("2_2n3nl")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tyer4"]
-atlas = ExtResource("2_2n3nl")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o5gb6"]
-atlas = ExtResource("2_2n3nl")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r2qni"]
-atlas = ExtResource("2_2n3nl")
-region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_scbdh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ss2xn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tyer4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o5gb6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r2qni")
+"texture": ExtResource("2_m4dqr")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_701nk"]
-radius = 6.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wt7tk"]
+radius = 5.73166
+height = 15.4967
 
-[node name="MonsterByPath" type="CharacterBody2D"]
-script = ExtResource("1_hok1a")
+[node name="Monster" type="CharacterBody2D"]
+script = ExtResource("1_nbhrx")
+bullet_scene = ExtResource("2_hwqqf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4.72, 4.72)
 sprite_frames = SubResource("SpriteFrames_scbdh")
 autoplay = "default"
 
 [node name="kill_zone" parent="." instance=ExtResource("3_1ct2n")]
+scale = Vector2(8.81513, 8.81513)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
-position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_701nk")
+position = Vector2(-0.226883, 3.06292)
+scale = Vector2(1.06877, 1.06877)
+shape = SubResource("CapsuleShape2D_wt7tk")
