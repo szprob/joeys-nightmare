@@ -18,6 +18,7 @@ var default_pos = Vector2(0, 0)
 var respawn_pos = Vector2(0, 0)
 
 func _ready():
+	await ready
 	default_pos = position
 	GameManager.load_game_state()
 	# 获取当前场景路径

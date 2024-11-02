@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://ttiw5wfipt7v" path="res://assets/sounds/checkpoints/teleport.wav" id="3_cbcyq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylf3b"]
-size = Vector2(30, 27)
+size = Vector2(55, 52.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fvoaw"]
 atlas = ExtResource("2_gpdw7")
@@ -64,7 +64,8 @@ collision_mask = 128
 script = ExtResource("1_th2bk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(-9.53674e-07, 0)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ylf3b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
