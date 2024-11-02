@@ -57,8 +57,9 @@ animations = [{
 }]
 
 [node name="teleport" type="Area2D"]
-scale = Vector2(0.5, 0.5)
-collision_mask = 129
+scale = Vector2(0.4, 0.4)
+collision_layer = 0
+collision_mask = 128
 script = ExtResource("1_th2bk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -69,6 +70,14 @@ shape = SubResource("RectangleShape2D_ylf3b")
 sprite_frames = SubResource("SpriteFrames_s3wi2")
 autoplay = "default"
 frame_progress = 0.512197
+
+[node name="Label" type="Label" parent="."]
+offset_left = -97.5
+offset_top = -82.5
+offset_right = 111.5
+offset_bottom = -46.5
+theme_override_font_sizes/font_size = 26
+text = "Press E to return"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
