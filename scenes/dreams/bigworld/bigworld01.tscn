@@ -1,22 +1,22 @@
-[gd_scene load_steps=46 format=4 uid="uid://sfv4vhyx6m0a"]
+[gd_scene load_steps=47 format=4 uid="uid://sfv4vhyx6m0a"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_jwyd3"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_8yy27"]
 [ext_resource type="PackedScene" uid="uid://d0atgq0il2toh" path="res://scenes/shader/crt.tscn" id="3_0ugil"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_trrvp"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_wl3g1"]
-[ext_resource type="Texture2D" uid="uid://dg67w0qbntq1g" path="res://assets/sprites/background/multi2/back2.png" id="4_2ccrj"]
 [ext_resource type="PackedScene" uid="uid://bhgixpqr8klwj" path="res://scenes/sokoban/box.tscn" id="4_6n3j8"]
-[ext_resource type="Texture2D" uid="uid://bpwukwd6wl1im" path="res://assets/sprites/background/multi2/moon.png" id="5_a0avw"]
+[ext_resource type="Texture2D" uid="uid://c57fo0smy156u" path="res://assets/sprites/background/multi3/back.png" id="4_bqc3c"]
+[ext_resource type="Texture2D" uid="uid://7joprmnjucj5" path="res://assets/sprites/background/multi3/moon2.png" id="5_5xaru"]
 [ext_resource type="Texture2D" uid="uid://pv0iwkpm3tyv" path="res://assets/sprites/human/brick2.1.png" id="6_00ch7"]
 [ext_resource type="Texture2D" uid="uid://vkmdsyer0pm8" path="res://assets/sprites/ai/brick_64_2.png" id="6_0guuf"]
 [ext_resource type="Texture2D" uid="uid://btgd8wdsdtvdg" path="res://assets/sprites/wario/Game Boy Advance - Wario Land 4 - Crescent Moon Village.png" id="6_204oe"]
-[ext_resource type="Texture2D" uid="uid://c8rhd8q1lk31i" path="res://assets/sprites/background/multi2/cloud.png" id="6_i3tp0"]
+[ext_resource type="Texture2D" uid="uid://bl1rxkn33ywhl" path="res://assets/sprites/background/multi3/cloud.png" id="6_bapcn"]
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="7_75kuo"]
-[ext_resource type="Texture2D" uid="uid://c666yb3bxibpx" path="res://assets/sprites/background/multi2/bird.png" id="7_chhvy"]
 [ext_resource type="Texture2D" uid="uid://bhekhmarft4x2" path="res://assets/sprites/human/bricks.png" id="7_vjsna"]
-[ext_resource type="Texture2D" uid="uid://ex2h25lemrdv" path="res://assets/sprites/background/multi2/people.png" id="8_ujp0y"]
-[ext_resource type="Texture2D" uid="uid://cffmiojm7jo0i" path="res://assets/sprites/background/multi2/front.png" id="9_cseyy"]
+[ext_resource type="Texture2D" uid="uid://bc3luaoy48sp7" path="res://assets/sprites/background/multi3/bird.png" id="7_wp3lq"]
+[ext_resource type="Texture2D" uid="uid://gvyrlttwr2dn" path="res://assets/sprites/background/multi3/people.png" id="8_u1onk"]
+[ext_resource type="Texture2D" uid="uid://d027a6hxvbtaj" path="res://assets/sprites/background/multi3/front4.png" id="9_2xeya"]
 [ext_resource type="PackedScene" uid="uid://cv3nrtrevxkyu" path="res://scenes/sokoban/gravity_1.tscn" id="10_1fij6"]
 [ext_resource type="PackedScene" uid="uid://dlnwqw1a3g1m3" path="res://scenes/modules/coin.tscn" id="11_4unyn"]
 [ext_resource type="PackedScene" uid="uid://dtn6bt0ark3is" path="res://scenes/enemy/monster.tscn" id="12_4biqa"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://dn6fopj5n8ldj" path="res://scenes/modules/platforms/move_platform.tscn" id="17_bbuw6"]
 [ext_resource type="PackedScene" uid="uid://b4l0s4mgeuqyq" path="res://scenes/modules/checkpoints/bi-teleport.tscn" id="17_es12q"]
 [ext_resource type="PackedScene" uid="uid://cair83ouq2qd0" path="res://scenes/modules/checkpoints/target.tscn" id="18_xbihk"]
+[ext_resource type="PackedScene" uid="uid://b6pq8l7ym5nuh" path="res://scenes/modules/checkpoints/teleport.tscn" id="32_08r4e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ognwl"]
 texture = ExtResource("6_204oe")
@@ -2646,8 +2647,9 @@ _data = {
 [node name="Game" type="Node2D" groups=["scan_lines"]]
 script = ExtResource("1_jwyd3")
 
-[node name="player_with_gravity" parent="." instance=ExtResource("2_8yy27")]
-position = Vector2(1626.97, -110.759)
+[node name="player_with_gravity" parent="." groups=["player"] instance=ExtResource("2_8yy27")]
+position = Vector2(1513.41, -55.6473)
+scale = Vector2(0.98913, 1)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
 position = Vector2(-1599.32, 700.03)
@@ -2675,7 +2677,7 @@ scroll_scale = Vector2(0, 0)
 [node name="Sprite2D" type="Sprite2D" parent="map/parallax/back"]
 position = Vector2(-179.325, -91)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("4_2ccrj")
+texture = ExtResource("4_bqc3c")
 centered = false
 
 [node name="moon" type="Parallax2D" parent="map/parallax"]
@@ -2684,21 +2686,22 @@ scroll_scale = Vector2(0.05, 0)
 repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="map/parallax/moon"]
-position = Vector2(-179, -72)
+position = Vector2(-179, -45.22)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("5_a0avw")
+texture = ExtResource("5_5xaru")
 centered = false
 
 [node name="cloud" type="Parallax2D" parent="map/parallax"]
 z_index = -1
 scroll_scale = Vector2(0.1, 0)
-repeat_size = Vector2(768, 0)
+repeat_size = Vector2(859.12, 0)
+autoscroll = Vector2(16, 0)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="map/parallax/cloud"]
-position = Vector2(-7.99999, -72)
+position = Vector2(-8, -52.445)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("6_i3tp0")
+texture = ExtResource("6_bapcn")
 centered = false
 
 [node name="bird" type="Parallax2D" parent="map/parallax"]
@@ -2710,7 +2713,7 @@ repeat_times = 3
 [node name="Sprite2D" type="Sprite2D" parent="map/parallax/bird"]
 position = Vector2(-68, -72)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("7_chhvy")
+texture = ExtResource("7_wp3lq")
 centered = false
 
 [node name="people" type="Parallax2D" parent="map/parallax"]
@@ -2721,7 +2724,7 @@ repeat_times = 2
 [node name="Sprite2D" type="Sprite2D" parent="map/parallax/people"]
 position = Vector2(-0.999992, -72)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("8_ujp0y")
+texture = ExtResource("8_u1onk")
 centered = false
 
 [node name="front" type="Parallax2D" parent="map/parallax"]
@@ -2732,9 +2735,9 @@ repeat_size = Vector2(768, 0)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="map/parallax/front"]
-position = Vector2(90, -40)
+position = Vector2(90, -40.545)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("9_cseyy")
+texture = ExtResource("9_2xeya")
 centered = false
 
 [node name="back" type="TileMapLayer" parent="map"]
@@ -3183,3 +3186,7 @@ scale = Vector2(2.21324, 5.73361)
 
 [node name="CRT" parent="." instance=ExtResource("3_0ugil")]
 visible = false
+
+[node name="teleport" parent="." instance=ExtResource("32_08r4e")]
+position = Vector2(2000, -24)
+target_scene = "res://scenes/dreams/bigworld/chase_stage.tscn"

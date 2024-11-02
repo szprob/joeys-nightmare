@@ -142,7 +142,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_syubq"]
-size = Vector2(7, 10.75)
+size = Vector2(7, 13.75)
 
 [node name="player_with_gravity" type="CharacterBody2D" groups=["teleport_enable"]]
 z_index = 5
@@ -153,11 +153,13 @@ bullet_scene = ExtResource("2_3vowl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_q7svh")
-animation = &"idle"
+animation = &"jump"
 autoplay = "idle"
+frame = 3
+frame_progress = 0.0402239
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5.375)
+position = Vector2(0, 3.875)
 shape = SubResource("RectangleShape2D_syubq")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
