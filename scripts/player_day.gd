@@ -13,6 +13,12 @@ var is_got_gun = false
 @onready var action_finder: Area2D = $Direction/Finder
 @onready var finder_direction: Marker2D = $Direction
 
+func _ready() -> void:
+	if GameManager.get_day_phase() < 1:
+		var anim_player := %AnimationPlayer as AnimationPlayer
+		anim_player.play("opening_animation")
+		await anim_player.animation_finished
+
 
 func handle_direction():
 	move_direction.x = Input.get_axis("left", "right")
