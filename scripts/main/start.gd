@@ -1,7 +1,11 @@
 extends Node2D
 
+@export var transition_scene: String = "res://scenes/modules/checkpoints/transition.tscn"  # 添加过渡场景路径
+@export var target_scene: String = "res://scenes/dreams/bigworld/bigworld01.tscn"
+
 var buttons = []
 var current_index = 0
+
 @onready var new_button: Button = $new
 @onready var load_button: Button = $load
 @onready var set_button: Button = $set
@@ -23,16 +27,17 @@ func _process(delta):
 		buttons[current_index].emit_signal("pressed")
 
 func _on_new_pressed() -> void:
-	#GameManager.game_state['archive_index'] = 1 + GameManager.game_state['archive_index']
+	GameManager.game_state['target_scene'] = target_scene
+	GameManager.game_state['teleport_type'] = 'day2dream'
 	GameManager.save_game_state()
-	get_tree().change_scene_to_file("res://scenes/dreams/bigworld/bigworld01.tscn")
+	get_tree().change_scene_to_file(transition_scene)
 
 
 func _on_load_pressed() -> void:
 	GameManager.load_game_state()
 	GameManager.apply_settings()
-	print('读取成功,复活点:',GameManager.game_state['current_respawn_point'])
-	get_tree().change_scene_to_file("res://scenes/dreams/bigworld/bigworld01.tscn")
+	# 创建过渡场景实例
+	get_tree().change_scene_to_file(transition_scene)
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
