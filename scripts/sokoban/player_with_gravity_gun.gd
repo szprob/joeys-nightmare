@@ -37,13 +37,17 @@ func respawn():
 	# 将角色位置设置为重生点
 	#position = GameManager.game_state['current_respawn_point']
 	velocity = Vector2.ZERO
-	position = default_pos
 	# 重置所有状态
 	is_jumping = false
 	jump_buffer_timer = 0.0
 	jump_hold_time = 0.0
-
-	pass
+	var current_scene_path = get_tree().current_scene.scene_file_path
+	if GameManager.game_state['last_scene_path'] == current_scene_path:
+		if GameManager.game_state['current_respawn_point_x'] != null:
+			respawn_pos = Vector2(GameManager.game_state['current_respawn_point_x'], GameManager.game_state['current_respawn_point_y'])
+			position = respawn_pos
+	else:
+		position = default_pos
 
 # 开始跳跃的函数
 func start_jump() -> void:
@@ -88,6 +92,9 @@ func shoot(Input) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("reload"):
+		respawn()
+
 	# Add the gravity.
 
 	if not is_on_terrain():

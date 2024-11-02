@@ -7,3 +7,4 @@
 /addons/godot-git-plugin/win64/*
 /addons/godot-git-plugin/macos/*
 /addons/godot-git-plugin/linux/*
+export_presets.cfg
