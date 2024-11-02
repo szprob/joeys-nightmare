@@ -29,7 +29,9 @@ var game_state = {
 	'is_door_open': false,
 	'is_day_player_chatting' : false,
 	# 玩家道具库存： 只存道具名称
-	'inventory' : []
+	'inventory' : [],
+	'teleport_type': 'day2dream',
+	'target_scene': 'res://scenes/dreams/bigworld/bigworld01.tscn'
 }
 
 # 在文件开头添加 BGM 资源预加载
