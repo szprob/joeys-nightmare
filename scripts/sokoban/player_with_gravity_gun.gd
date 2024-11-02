@@ -20,9 +20,15 @@ var respawn_pos = Vector2(0, 0)
 func _ready():
 	default_pos = position
 	GameManager.load_game_state()
-	if GameManager.game_state['current_respawn_point_x'] != null :
-		respawn_pos = Vector2(GameManager.game_state['current_respawn_point_x'], GameManager.game_state['current_respawn_point_y'])
-		position = respawn_pos
+	# 获取当前场景路径
+	var current_scene_path = get_tree().current_scene.scene_file_path
+	# 检查场景路径是否一致
+	if GameManager.game_state['last_scene_path'] == current_scene_path:
+		if GameManager.game_state['current_respawn_point_x'] != null:
+			respawn_pos = Vector2(GameManager.game_state['current_respawn_point_x'], GameManager.game_state['current_respawn_point_y'])
+			position = respawn_pos
+	else:
+		position = default_pos
 	$GunCooldown.wait_time = cooldown
 
 
@@ -40,7 +46,6 @@ func respawn():
 
 # 开始跳跃的函数
 func start_jump() -> void:
-	print('start jump')
 	# 获取重力方向的单位向量
 	var gravity_dir = get_gravity().normalized()
 	print('gravity dir', gravity_dir)
@@ -54,6 +59,8 @@ func start_jump() -> void:
 
 	
 func shoot(Input) -> void:
+	if not GameManager.has_item('玩具手枪'):
+		return
 	var shoot_direction = Vector2(facing_direction, 0)
 	if not can_shoot:
 		return

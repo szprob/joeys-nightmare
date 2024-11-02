@@ -13,13 +13,11 @@ var bgm_player: AudioStreamPlayer
 
 var game_state = {
 	'score': 0,
+	'last_scene_path': "",
 	'current_respawn_point_x': null,
 	'current_respawn_point_y': null,
 	'respawn_enable':false,
 	'archive_index': 1,
-	'equipment': {
-		'gravity_gun': false
-	},
 	'settings': {
 		'full_screen': false,
 		'scan_lines': true,
