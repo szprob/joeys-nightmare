@@ -2,8 +2,10 @@ extends Node
 
 # 需要预加载 ItemManager 脚本
 const ItemManager = preload("res://scripts/singleton/item_manager.gd")
+const PipelineManagerScript = preload("res://scripts/singleton/pipeline_manager.gd")
 
 var item_manager : ItemManager
+var pipeline_manager : PipelineManagerScript
 
 var scan_lines_scene = preload("res://scenes/shader/crt.tscn")  # 直接预加载扫描线场景
 # 添加背景音乐预加载
@@ -11,7 +13,8 @@ var bgm_player: AudioStreamPlayer
 
 var game_state = {
 	'score': 0,
-	'current_respawn_point': Vector2(-74, -39),
+	'current_respawn_point_x': null,
+	'current_respawn_point_y': null,
 	'respawn_enable':false,
 	'archive_index': 1,
 	'equipment': {
@@ -57,6 +60,7 @@ func get_items() -> Array[StringName]:
 func _ready() -> void:
 	# 创建 ItemManager 实例时传入 self 作为参数
 	item_manager = ItemManager.new(self)
+	pipeline_manager = PipelineManagerScript.new(self)
 	# 确保场景已被正确加载
 	if not scan_lines_scene:
 		push_error("扫描线场景未设置！请在检查器中设置scan_lines_scene")
@@ -178,9 +182,11 @@ func save_game_state():
 	var archive_index = str(game_state['archive_index'])
 	var file_path = "res://save/save_game"+archive_index+".json"
 	
+	# 在保存之前转换 Vector2
+	var save_data = game_state.duplicate(true)
 	var file = FileAccess.open(file_path, FileAccess.WRITE)
 	if file:
-		file.store_string(JSON.stringify(game_state))
+		file.store_string(JSON.stringify(save_data))
 		file.close()
 		print("游戏已成功保存")
 	else:
@@ -195,8 +201,8 @@ func load_game_state():
 		var json = JSON.new()
 		var result = json.parse(save_text)
 		if result == OK:
-			# 正确赋值加载的游戏状态
 			game_state = json.data
+			pipeline_manager.sync_game_state(game_state)
 		else:
 			print("JSON Parse Error at line ", json.get_error_line())
 			# 加载失败时初始化默认状态

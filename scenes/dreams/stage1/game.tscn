@@ -453,7 +453,7 @@ text = "wasd控制方向
 space控制跳跃"
 
 [node name="save_point" parent="." instance=ExtResource("9_s7j6s")]
-position = Vector2(40, -37)
+position = Vector2(-556, -10)
 
 [node name="teleport" parent="." instance=ExtResource("10_qycbb")]
 position = Vector2(223, -78)
@@ -474,7 +474,7 @@ target = NodePath("../target")
 detection = NodePath("../Detection")
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("15_rx0vs")]
-position = Vector2(-20.3671, -77.4757)
+position = Vector2(-613.742, -33.2204)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(0, -5)
