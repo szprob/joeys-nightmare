@@ -1,0 +1,37 @@
+~ 查看抽屉
+if GameManager.has_item("钥匙1"):
+	抽屉: 钥匙已被取走
+	=> END
+else:
+	if GameManager.get_day_phase() < 2:
+		????: 抽屉里有好像有东西[speed=0.3]...是钥匙！这下能从这个房间出去了！
+	else:
+		Joey: 抽屉里有好像有东西[speed=0.3]...是钥匙！这下能从这个房间出去了！
+
+	: 获得钥匙
+
+	set GameManager.add_item("钥匙1")
+	=> END
+
+
+~ 查看门
+: 门上锁了。
+if not GameManager.has_item("钥匙1"):
+	if GameManager.get_day_phase() < 2:
+		????: 有没有钥匙呢？
+	elif GameManager.get_day_phase() < 3:
+		Joey: 应该有钥匙吧？
+	=> END
+else:
+	if GameManager.get_day_phase() < 2:
+		????: 我是谁？我在哪？再找找线索吧。
+	elif GameManager.get_day_phase() < 3:
+		Joey: 总感觉还漏了什么，再看看吧。
+	else:
+		Joey: 要使用钥匙吗？
+		- 是
+			set GameManager.use_item("钥匙1")
+			set GameManager.game_state['day_phase'] = 4
+		- 否
+			=> END
+	=> END
