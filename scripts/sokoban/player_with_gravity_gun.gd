@@ -60,7 +60,8 @@ func start_jump() -> void:
 
 	
 func shoot(Input) -> void:
-	if not GameManager.has_item('玩具手枪'):
+	print("shoot trigger: ", GameManager.game_state)
+	if not GameManager.has_item(&"玩具手枪"):
 		return
 	var shoot_direction = Vector2(facing_direction, 0)
 	if not can_shoot:

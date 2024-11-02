@@ -1,6 +1,6 @@
 ~ 查看抽屉
-if GameManager.is_door_open():
-	抽屉: 一个空抽屉，没有其他物品了
+if GameManager.is_door_open() or GameManager.game_state['day_phase'] > 4:
+	橱柜: 一个空橱柜，没有其他物品了
 	=> END
 else:
 	if GameManager.get_day_phase() < 2:
@@ -13,6 +13,7 @@ else:
 		Joey: 去看看能不能把门打开吧
 		: 获得钥匙
 		set GameManager.add_item("钥匙1")
+		set GameManager.game_state['day_phase'] = 5
 	=> END
 
 
@@ -33,7 +34,7 @@ else:
 		Joey: 要使用钥匙吗？
 		- 是
 			set GameManager.use_item("钥匙1")
-			set GameManager.game_state['day_phase'] = 4
+			set GameManager.game_state['is_door_open'] = true
 		- 否
 			=> END
 	=> END

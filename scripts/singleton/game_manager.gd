@@ -46,7 +46,9 @@ func init_default_state():
 
 
 func add_item(item_name:StringName)->void:
+	print(item_name)
 	game_state['inventory'].append(item_name)
+	print(game_state)
 
 func use_item(item_name:StringName) -> void:
 	game_state['inventory'].erase(item_name)
@@ -257,4 +259,6 @@ func is_door_open() -> bool:
 func switch_day_to_dream(scene_file_path: String) -> void:
 	game_state['target_scene'] = scene_file_path
 	game_state['teleport_type'] = "day2dream"
+	end_dialogue()
+	GameManager.save_game_state()
 	get_tree().change_scene_to_file("res://scenes/modules/checkpoints/transition.tscn")

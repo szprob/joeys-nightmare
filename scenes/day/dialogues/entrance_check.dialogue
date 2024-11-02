@@ -13,7 +13,6 @@ else:
 		set GameManager.switch_day_to_dream("res://scenes/dreams/bigworld/bigworld02.tscn")
 		=> END
 	- 否
-		Joey: 睡你麻痹！
-		set GameManager.test_print()
+		Joey: 好像还不困，再看下房间周围吧
 		=> END
 	=> END

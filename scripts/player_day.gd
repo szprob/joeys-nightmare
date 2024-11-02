@@ -73,6 +73,8 @@ func handle_animation():
 func show_dialog() -> void:
 	if GameManager.get_day_phase() > dialog_finished_phase:
 		return
+	if GameManager.get_day_phase() == 3:
+		GameManager.inc_day_phase()
 	GameManager.start_dialogue()
 	GameManager.show_dialogue(dialog_resource, dialog_start).tree_exited.connect(_on_dialog_finished)
 

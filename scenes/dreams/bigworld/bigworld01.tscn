@@ -2648,7 +2648,7 @@ _data = {
 script = ExtResource("1_jwyd3")
 
 [node name="player_with_gravity" parent="." groups=["player"] instance=ExtResource("2_8yy27")]
-position = Vector2(623.625, -27.8952)
+position = Vector2(1960, -32)
 scale = Vector2(0.98913, 1)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
@@ -3053,7 +3053,7 @@ position = Vector2(1792, -112)
 position = Vector2(1528, -192)
 
 [node name="door-1" parent="stage2/box-door3" instance=ExtResource("14_e353g")]
-position = Vector2(1840, -56)
+position = Vector2(1864, -24)
 
 [node name="button-1" parent="stage2/box-door3" instance=ExtResource("15_e7j1i")]
 position = Vector2(1792, -240)
