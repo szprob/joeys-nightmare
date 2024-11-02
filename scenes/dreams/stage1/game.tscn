@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://dhcoju0cv8u0y"]
+[gd_scene load_steps=30 format=4 uid="uid://dhcoju0cv8u0y"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_2ix8p"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_45goe"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="15_rx0vs"]
 [ext_resource type="PackedScene" uid="uid://dd2spqc4w2qfb" path="res://scenes/modules/traps/auto_close_door.tscn" id="18_nitj5"]
 [ext_resource type="PackedScene" uid="uid://dlyl2v0k7iiry" path="res://scenes/modules/traps/detection.tscn" id="19_nyj4w"]
+[ext_resource type="PackedScene" uid="uid://cpqr3oauheogh" path="res://scenes/sokoban/button-1.tscn" id="20_0io07"]
 [ext_resource type="PackedScene" uid="uid://b4l0s4mgeuqyq" path="res://scenes/modules/checkpoints/bi-teleport.tscn" id="20_leco7"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8553"]
@@ -519,5 +520,8 @@ position = Vector2(91.6711, -11.789)
 
 [node name="Detection" parent="." instance=ExtResource("19_nyj4w")]
 position = Vector2(93, -17)
+
+[node name="button-1" parent="." instance=ExtResource("20_0io07")]
+position = Vector2(-614, -8)
 
 [editable path="auto_close_door"]
