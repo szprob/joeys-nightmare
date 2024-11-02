@@ -4,9 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_1gqju"]
 [ext_resource type="Texture2D" uid="uid://dy8a8ar6qlsno" path="res://assets/sprites/像素火焰1.0.png" id="3_8s65a"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_w0qlj"]
-radius = 20.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_emold"]
 atlas = ExtResource("3_8s65a")
 region = Rect2(0, 0, 32, 32)
@@ -78,14 +75,23 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_w0qlj"]
+radius = 12.0
+
 [node name="FallingTrapTgt" type="Area2D"]
 collision_mask = 128
 script = ExtResource("1_4m5pv")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_7bjxk")
+frame_progress = 0.872945
+
 [node name="kill_zone" parent="." instance=ExtResource("3_1gqju")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
-position = Vector2(-1, 0)
+position = Vector2(-1, 9)
 shape = SubResource("CircleShape2D_w0qlj")
 
 [node name="Timer" type="Timer" parent="."]
@@ -94,10 +100,6 @@ one_shot = true
 
 [node name="Timer2" type="Timer" parent="."]
 one_shot = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_7bjxk")
-frame_progress = 0.872945
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="ready" from="." to="." method="_on_ready"]
