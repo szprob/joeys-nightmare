@@ -258,9 +258,12 @@ shape = SubResource("RectangleShape2D_t1ilh")
 z_index = 1
 texture_filter = 1
 position = Vector2(51, 146)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(0.75, 0.75)
 dialog_resource = ExtResource("7_oohak")
 dialog_start = "title"
+
+[node name="Finder" parent="PlayerDay/Direction" index="0"]
+scale = Vector2(1.37784, 1.37784)
 
 [node name="Camera2D" type="Camera2D" parent="PlayerDay"]
 position = Vector2(-334, -247)
@@ -293,6 +296,5 @@ callback_mode_method = 1
 libraries = {
 "": SubResource("AnimationLibrary_as0jj")
 }
-autoplay = "opening_animation"
 
 [editable path="PlayerDay"]
