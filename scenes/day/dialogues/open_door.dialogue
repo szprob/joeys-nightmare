@@ -1,16 +1,18 @@
 ~ 查看抽屉
-if GameManager.has_item("钥匙1"):
-	抽屉: 钥匙已被取走
+if GameManager.is_door_open():
+	抽屉: 一个空抽屉，没有其他物品了
 	=> END
 else:
 	if GameManager.get_day_phase() < 2:
-		????: 抽屉里有好像有东西[speed=0.3]...是钥匙！这下能从这个房间出去了！
+		????: 一个普通的橱柜
+	elif GameManager.get_day_phase() < 4:
+		Joey: 一个普通的橱柜
 	else:
-		Joey: 抽屉里有好像有东西[speed=0.3]...是钥匙！这下能从这个房间出去了！
-
-	: 获得钥匙
-
-	set GameManager.add_item("钥匙1")
+		Joey: 刚才的梦中也出现了这个橱柜，再仔细调查看看吧
+		Joey: [shake rate=20 level=10]角落里有把钥匙![/shake]
+		Joey: 去看看能不能把门打开吧
+		: 获得钥匙
+		set GameManager.add_item("钥匙1")
 	=> END
 
 

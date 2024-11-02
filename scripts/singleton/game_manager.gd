@@ -25,6 +25,7 @@ var game_state = {
 	'teleport_enable': true,
 	# 0: 开场 1: 找寻身份证 2: 找寻枪 3: 第一次梦境就绪
 	'day_phase' : 0,
+	'is_door_open': false,
 	'is_day_player_chatting' : false,
 	# 玩家道具库存： 只存道具名称
 	'inventory' : []
@@ -243,6 +244,9 @@ func start_dialogue() -> void:
 
 func end_dialogue() -> void:
 	game_state['is_day_player_chatting'] = false
+	
+func is_door_open() -> bool:
+	return game_state['is_door_open']
 
 func test_print() -> void:
 	print("hahahahahhahahaha")
