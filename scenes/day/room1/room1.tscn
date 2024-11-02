@@ -1,21 +1,22 @@
-[gd_scene load_steps=24 format=4 uid="uid://bmq25pi5e8wan"]
+[gd_scene load_steps=33 format=4 uid="uid://bmq25pi5e8wan"]
 
-[ext_resource type="PackedScene" uid="uid://blydc865qnepa" path="res://scenes/player/player_day.tscn" id="1_k525a"]
-[ext_resource type="Texture2D" uid="uid://dapevi3u1jt0p" path="res://assets/sprites/day/room/TopDownHouse_FloorsAndWalls.png" id="2_0v5au"]
-[ext_resource type="Texture2D" uid="uid://d2ry76th5cvay" path="res://assets/sprites/day/room/TopDownHouse_FurnitureState1.png" id="3_npemu"]
-[ext_resource type="Texture2D" uid="uid://yxyncpgcagll" path="res://assets/sprites/day/room/TopDownHouse_SmallItems.png" id="4_lh27a"]
-[ext_resource type="Texture2D" uid="uid://dijhmxvysq672" path="res://assets/sprites/day/room/Interiors_free_16x16.png" id="5_ogpiu"]
-[ext_resource type="Texture2D" uid="uid://w4lm0tdvpn1j" path="res://assets/sprites/day/room/Room_Builder_free_16x16.png" id="6_tr673"]
-[ext_resource type="Script" path="res://scenes/day/stage1/track_camera.gd" id="7_57sbh"]
-[ext_resource type="Texture2D" uid="uid://78w4owvufdht" path="res://icon.svg" id="7_y38vl"]
-[ext_resource type="Script" path="res://scenes/day/stage1/gun_2d.gd" id="8_wupmh"]
-[ext_resource type="PackedScene" uid="uid://bnj5nw08jyh1y" path="res://scenes/player/actionable.tscn" id="10_5eyec"]
-[ext_resource type="Resource" uid="uid://cdvfsg22mr26p" path="res://scenes/day/dialogues/pick_up_gun.dialogue" id="11_6vtx1"]
-[ext_resource type="Resource" uid="uid://8vbxyi40kkjc" path="res://scenes/day/dialogues/entrance_check.dialogue" id="12_rgu6k"]
-[ext_resource type="Script" path="res://scenes/day/stage1/id_card.gd" id="13_jyh0e"]
+[ext_resource type="Texture2D" uid="uid://dapevi3u1jt0p" path="res://assets/sprites/day/room/TopDownHouse_FloorsAndWalls.png" id="1_h0361"]
+[ext_resource type="Texture2D" uid="uid://d2ry76th5cvay" path="res://assets/sprites/day/room/TopDownHouse_FurnitureState1.png" id="2_kt8cv"]
+[ext_resource type="Texture2D" uid="uid://yxyncpgcagll" path="res://assets/sprites/day/room/TopDownHouse_SmallItems.png" id="3_iikc7"]
+[ext_resource type="Texture2D" uid="uid://dijhmxvysq672" path="res://assets/sprites/day/room/Interiors_free_16x16.png" id="4_opdi8"]
+[ext_resource type="Texture2D" uid="uid://w4lm0tdvpn1j" path="res://assets/sprites/day/room/Room_Builder_free_16x16.png" id="5_g2jvf"]
+[ext_resource type="PackedScene" uid="uid://bnj5nw08jyh1y" path="res://scenes/player/actionable.tscn" id="6_x4b8a"]
+[ext_resource type="Resource" uid="uid://cxop0kywvogkf" path="res://scenes/day/dialogues/open_door.dialogue" id="7_louph"]
+[ext_resource type="Script" path="res://scenes/day/room1/door.gd" id="8_be4lk"]
+[ext_resource type="Texture2D" uid="uid://78w4owvufdht" path="res://icon.svg" id="9_twcge"]
+[ext_resource type="Script" path="res://scenes/day/room1/gun_2d.gd" id="10_uojay"]
+[ext_resource type="Resource" uid="uid://cdvfsg22mr26p" path="res://scenes/day/dialogues/pick_up_gun.dialogue" id="11_fcr2e"]
+[ext_resource type="Resource" uid="uid://8vbxyi40kkjc" path="res://scenes/day/dialogues/entrance_check.dialogue" id="12_s1yr7"]
+[ext_resource type="Script" path="res://scenes/day/room1/id_card.gd" id="13_w5kc4"]
+[ext_resource type="Shader" path="res://scenes/day/room1/blink.gdshader" id="14_3xj6h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uqj6m"]
-texture = ExtResource("2_0v5au")
+texture = ExtResource("1_h0361")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -191,7 +192,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_uqj6m")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_67l37"]
-texture = ExtResource("3_npemu")
+texture = ExtResource("2_kt8cv")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -419,7 +420,7 @@ texture = ExtResource("3_npemu")
 0:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-14.75, -25.5, 2.75, -22.25, 5.75, -13.75, 6, 14.5, 2.2981, 17.1473, -2.82843, 17.3241, -13.6118, 16.7938, -16.25, 11.5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x0a0g"]
-texture = ExtResource("4_lh27a")
+texture = ExtResource("3_iikc7")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -486,7 +487,7 @@ texture = ExtResource("4_lh27a")
 7:7/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8fcbb"]
-texture = ExtResource("5_ogpiu")
+texture = ExtResource("4_opdi8")
 1:0/0 = 0
 2:0/0 = 0
 4:0/0 = 0
@@ -1220,6 +1221,7 @@ texture = ExtResource("5_ogpiu")
 0:57/0 = 0
 1:57/0 = 0
 2:57/0 = 0
+2:57/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3, 8, -3, 8, 8, -8, 8)
 5:57/0 = 0
 6:57/0 = 0
 7:57/0 = 0
@@ -1234,6 +1236,7 @@ texture = ExtResource("5_ogpiu")
 0:58/0 = 0
 1:58/0 = 0
 2:58/0 = 0
+2:58/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 1, -8, 1)
 3:58/0 = 0
 4:58/0 = 0
 5:58/0 = 0
@@ -1606,7 +1609,7 @@ texture = ExtResource("5_ogpiu")
 15:88/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ehion"]
-texture = ExtResource("6_tr673")
+texture = ExtResource("5_g2jvf")
 3:0/0 = 0
 4:0/0 = 0
 5:0/0 = 0
@@ -1859,31 +1862,72 @@ sources/1 = SubResource("TileSetAtlasSource_x0a0g")
 sources/2 = SubResource("TileSetAtlasSource_8fcbb")
 sources/3 = SubResource("TileSetAtlasSource_ehion")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfd1h"]
+size = Vector2(16, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvgx3"]
+atlas = ExtResource("4_opdi8")
+region = Rect2(176.102, 386.968, 32.119, 28.5195)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_the48"]
+size = Vector2(32, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fi1co"]
+size = Vector2(32, 26)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ct54f"]
 size = Vector2(124.121, 131.879)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3qsg"]
 size = Vector2(20, 53)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8h3pb"]
+shader = ExtResource("14_3xj6h")
+shader_parameter/visibility = 1.0
+shader_parameter/color = Color(0.817077, 0.988649, 0.926666, 1)
+shader_parameter/blink_speed = 3.0
+
+[sub_resource type="Animation" id="Animation_m2vql"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-17.4546, -139.636)]
+}
+
+[sub_resource type="Animation" id="Animation_75rvp"]
+resource_name = "hint"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-17.4546, -139.636), Vector2(-17.4546, -168.727)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dl50r"]
+_data = {
+"RESET": SubResource("Animation_m2vql"),
+"hint": SubResource("Animation_75rvp")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bfn3l"]
 size = Vector2(129.059, 129.059)
 
 [node name="Room1" type="Node2D"]
-
-[node name="PlayerDay" parent="." instance=ExtResource("1_k525a")]
-z_index = 1
-texture_filter = 1
-position = Vector2(51, 146)
-scale = Vector2(1.5, 1.5)
-
-[node name="Camera2D" type="Camera2D" parent="PlayerDay"]
-position = Vector2(-334, -247)
-process_callback = 0
-limit_left = 0
-limit_top = 0
-limit_right = 480
-limit_bottom = 270
-script = ExtResource("7_57sbh")
 
 [node name="background" type="TileMapLayer" parent="."]
 z_index = -8
@@ -1892,44 +1936,99 @@ tile_map_data = PackedByteArray("AAD//wAAAAAKAAYAAAAAAAAAAAALAAYAAAD/////AAAKAAY
 tile_set = SubResource("TileSet_hpdmr")
 
 [node name="things" type="TileMapLayer" parent="."]
-position = Vector2(200, 205)
-tile_map_data = PackedByteArray("AAAEAP//AAAAAAIAAAD1//z/AAAAAAwAAAA=")
+position = Vector2(200, 201)
+tile_map_data = PackedByteArray("AAAEAP//AAAAAAIAAAD1//z/AAAAAAwAAAACAPr/AgACADkAAAACAPv/AgACADoAAAA=")
 tile_set = SubResource("TileSet_2mlm7")
 
-[node name="Gun" type="Sprite2D" parent="."]
-position = Vector2(259, 190)
-scale = Vector2(0.128906, 0.128906)
-texture = ExtResource("7_y38vl")
-script = ExtResource("8_wupmh")
+[node name="Draw" type="Sprite2D" parent="."]
+position = Vector2(213, -30)
 
-[node name="Actionable" parent="Gun" instance=ExtResource("10_5eyec")]
+[node name="Actionable" parent="Draw" instance=ExtResource("6_x4b8a")]
+dialogue_resource = ExtResource("7_louph")
+dialogue_start = "查看抽屉"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Draw/Actionable"]
+position = Vector2(27, 149.5)
+shape = SubResource("RectangleShape2D_cfd1h")
+
+[node name="Door" type="Sprite2D" parent="."]
+position = Vector2(247, 252)
+texture = SubResource("AtlasTexture_fvgx3")
+script = ExtResource("8_be4lk")
+
+[node name="Actionable" parent="Door" instance=ExtResource("6_x4b8a")]
+dialogue_resource = ExtResource("7_louph")
+dialogue_start = "查看门"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/Actionable"]
+shape = SubResource("RectangleShape2D_the48")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Door"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/StaticBody2D"]
+shape = SubResource("RectangleShape2D_fi1co")
+
+[node name="玩具手枪" type="Sprite2D" parent="."]
+position = Vector2(259, 186)
+scale = Vector2(0.128906, 0.128906)
+texture = ExtResource("9_twcge")
+script = ExtResource("10_uojay")
+
+[node name="Actionable" parent="玩具手枪" instance=ExtResource("6_x4b8a")]
 collision_mask = 0
-dialogue_resource = ExtResource("11_6vtx1")
+dialogue_resource = ExtResource("11_fcr2e")
 dialogue_start = "gun"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gun/Actionable"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="玩具手枪/Actionable"]
 position = Vector2(0, 1.14441e-05)
 shape = SubResource("RectangleShape2D_ct54f")
 
 [node name="DreamEntrance" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
 
-[node name="Actionable" parent="DreamEntrance" instance=ExtResource("10_5eyec")]
-dialogue_resource = ExtResource("12_rgu6k")
+[node name="Actionable" parent="DreamEntrance" instance=ExtResource("6_x4b8a")]
+dialogue_resource = ExtResource("12_s1yr7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DreamEntrance/Actionable"]
 position = Vector2(27, 149.5)
 shape = SubResource("RectangleShape2D_j3qsg")
 
-[node name="IDCard" type="Sprite2D" parent="."]
-position = Vector2(132, 152)
+[node name="身份证" type="Sprite2D" parent="."]
+position = Vector2(132, 148)
 scale = Vector2(0.154967, 0.154967)
-texture = ExtResource("7_y38vl")
-script = ExtResource("13_jyh0e")
+texture = ExtResource("9_twcge")
+script = ExtResource("13_w5kc4")
 
-[node name="Actionable" parent="IDCard" instance=ExtResource("10_5eyec")]
-dialogue_resource = ExtResource("11_6vtx1")
+[node name="Outline" type="Sprite2D" parent="身份证"]
+z_index = -1
+material = SubResource("ShaderMaterial_8h3pb")
+scale = Vector2(1.10911, 1.10911)
+texture = ExtResource("9_twcge")
+
+[node name="Label" type="Label" parent="身份证/Outline"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.4546
+offset_top = -139.636
+offset_right = -50.4546
+offset_bottom = -53.6363
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(2.40654e-07, 0.288411, 0.254277, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 62
+text = "↓"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="身份证/Outline"]
+libraries = {
+"": SubResource("AnimationLibrary_dl50r")
+}
+autoplay = "hint"
+
+[node name="Actionable" parent="身份证" instance=ExtResource("6_x4b8a")]
+dialogue_resource = ExtResource("11_fcr2e")
 dialogue_start = "id_card"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="IDCard/Actionable"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="身份证/Actionable"]
 position = Vector2(-0.00012207, 0)
 shape = SubResource("RectangleShape2D_bfn3l")

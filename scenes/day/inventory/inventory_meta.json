@@ -1,0 +1,47 @@
+[
+	{
+		"index": -1,
+		"name": "item1",
+		"description": "This is a decription of item1."
+	},
+	{
+		"index": 1,
+		"name": "item2",
+		"description": "This is a decription of item2."
+	},
+	{
+		"index": -1,
+		"name": "item3",
+		"description": "This is a decription of item3."
+	},
+	{
+		"index": 0,
+		"name": "item4",
+		"description": "This is a decription of item4."
+	},
+	{
+		"index": 3,
+		"name": "item5",
+		"description": "This is a decription of item5."
+	},
+	{
+		"index": 2,
+		"name": "item6",
+		"description": "This is a decription of item6. Blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla"
+	},
+	{
+		"index": 4,
+		"name": "身份证",
+		"description": "一张身份证。持有人: Joey Song"
+	},
+	{
+		"index": 5,
+		"name": "玩具手枪",
+		"description": "儿时的玩具手枪，很酷！"
+	},
+	{
+		"index": 6,
+		"name": "钥匙1",
+		"description": "应该是某处的房门钥匙。"
+	}
+]

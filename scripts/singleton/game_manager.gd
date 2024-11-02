@@ -6,8 +6,22 @@ var game_state  = {
 	'archive_index' = 1 ,# 存档索引
 	# 0: 开场 1: 找寻身份证 2: 找寻枪 3: 第一次梦境就绪
 	'day_phase' = 0,
-	'is_day_player_chatting' = false
+	'is_day_player_chatting' = false,
+	# 玩家道具库存： 只存道具名称
+	'inventory' = []
 }
+
+func add_item(item_name:StringName)->void:
+	game_state['inventory'].append(item_name)
+
+func use_item(item_name:StringName) -> void:
+	game_state['inventory'].erase(item_name)
+
+func has_item(item_name:StringName) -> bool:
+	return game_state['inventory'].has(item_name)
+
+func get_items() -> Array[StringName]:
+	return Array(game_state['inventory'], TYPE_STRING_NAME, &"", null)
 
 func save_game_state():
 	var archive_index = str(game_state['archive_index'])
