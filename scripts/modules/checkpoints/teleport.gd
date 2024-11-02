@@ -2,16 +2,18 @@ extends Area2D
 
 enum TeleportType {DAY2DREAM,DREAM2DAY,DREAM2DREAM} 
 
-@export var teleport_time: float = 0.1
+@export var teleport_time: float = 0.8
 @export var target_scene: String = "res://scenes/day/game/game.tscn"
 @export var teleport_type: TeleportType = TeleportType.DREAM2DAY
 @export var transition_scene: String = "res://scenes/modules/checkpoints/transition.tscn"  # 添加过渡场景路径
+
 
 var player_inside = false  # 用于跟踪玩家是否在存档点内
 
 @onready var timer: Timer = Timer.new() #teleport_time
 @onready var label: Label = $Label # 按键提醒
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready():
 	# 添加计时器
@@ -30,6 +32,7 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("select") and player_inside:
+		audio_player.play()
 		timer.start()
 
 func _on_body_entered(body: CharacterBody2D) -> void:

@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-@onready var jump_audio: AudioStreamPlayer2D = $JumpAudio
+@onready var jump_audio: AudioStreamPlayer2D = $jump_audio
 # shooting
 @export var cooldown = 0.25
 @export var bullet_scene: PackedScene
