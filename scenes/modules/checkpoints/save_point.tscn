@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://kfdbq76ixwrq"]
+[gd_scene load_steps=8 format=3 uid="uid://kfdbq76ixwrq"]
 
 [ext_resource type="Script" path="res://scripts/modules/checkpoints/save_point.gd" id="1_qeoh3"]
 [ext_resource type="Texture2D" uid="uid://djlitwmkmviun" path="res://assets/sprites/human/lamp.png" id="2_bador"]
+[ext_resource type="FontFile" uid="uid://dvlu6bavl0eg7" path="res://assets/fonts/PixelOperator8.ttf" id="3_yvnj7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cergc"]
 size = Vector2(15.25, 15.75)
@@ -40,7 +41,19 @@ shape = SubResource("RectangleShape2D_cergc")
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_uskgs")
 frame = 1
-frame_progress = 0.463573
+frame_progress = 1.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = -25.0
+offset_top = -24.0
+offset_right = 28.0
+offset_bottom = -11.0
+theme_override_fonts/font = ExtResource("3_yvnj7")
+theme_override_font_sizes/font_size = 12
+text = "saved"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
