@@ -93,6 +93,8 @@ func setup_bgm_player() -> void:
 	bgm_player.stream_paused = false
 	# 设置音量为原来的25%（-12分贝）
 	bgm_player.volume_db = -12
+	# 添加这一行来设置循环播放
+	bgm_player.finished.connect(func(): bgm_player.play())
 	add_child(bgm_player)
 	
 # 修改 play_bgm 函数，支持通过名称播放 BGM
