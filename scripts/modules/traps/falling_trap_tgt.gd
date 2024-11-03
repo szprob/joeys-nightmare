@@ -14,6 +14,7 @@ var do_detect = true
 @onready var falling_trap: Area2D = $"."
 @onready var timer: Timer = $Timer
 @onready var animated_sprited_2d:  AnimatedSprite2D = $AnimatedSprite2D
+@onready var sfx_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
 	init_position = position
@@ -47,3 +48,5 @@ func _on_detection_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D and do_detect:
 		timer.start()
 		do_detect=false
+		if sfx_player:
+			sfx_player.play()

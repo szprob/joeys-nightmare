@@ -19,7 +19,7 @@ var game_state = {
 	'respawn_enable':false,
 	'archive_index': 1,
 	'settings': {
-		'full_screen': false,
+		'full_screen': true,
 		'scan_lines': true,
 		'bgm_enabled': true  # 添加开关控制
 	},

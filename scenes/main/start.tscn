@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvseym5ftmktl"]
+[gd_scene load_steps=6 format=3 uid="uid://cvseym5ftmktl"]
 
 [ext_resource type="Script" path="res://scripts/main/start.gd" id="1_6omwx"]
 [ext_resource type="Texture2D" uid="uid://njds0q2uhdcf" path="res://assets/sprites/transition2/4.png" id="2_hku6m"]
 [ext_resource type="Texture2D" uid="uid://qq31oblodnpn" path="res://assets/sprites/transition2/3.png" id="3_fmh3v"]
 [ext_resource type="Texture2D" uid="uid://bdqrjujg5pjbr" path="res://assets/sprites/transition2/1.png" id="4_pe2rc"]
+[ext_resource type="AudioStream" uid="uid://bg01uylk64iae" path="res://assets/sounds/interface/button.wav" id="5_mr72s"]
 
 [node name="start" type="Node2D" groups=["scan_lines"]]
 position = Vector2(236, 152)
@@ -50,3 +51,6 @@ offset_right = -577.0
 offset_bottom = 345.0
 theme_override_font_sizes/font_size = 48
 text = "QUIT"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_mr72s")

@@ -7,7 +7,7 @@ var has_been_activated = false  # 新增变量，用于记录是否已经激活�
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var saved_label: Label = $Label
 @onready var saved_timer: Timer
-
+@onready var sfx_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 # 在_ready中添加Label节点
 func _ready() -> void:
@@ -27,6 +27,8 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 		return
 
 	if body.is_in_group("player"):
+		if sfx_player:
+			sfx_player.play()
 		has_been_activated = true
 		animated_sprite_2d.frame = 1
 		var current_scene_path = get_tree().current_scene.scene_file_path

@@ -1,16 +1,27 @@
 extends Node2D
 
-@onready var sprite: Sprite2D = $CanvasLayer/Sprite2D
-var fade_duration: float = 1.5
-var display_time: float = 1.5
+@onready var sprite: Sprite2D = $CanvasLayer/Sprite2D3
+@onready var sfx_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
+var fade_duration: float = 2.5
+var display_time: float = 2.5
 var timer: float = 0.0
 var phase: int = 0 # 0: fade in, 1: display, 2: fade out
+var audio_timer: float = 0.0  # 新增音频计时器
 
 func _ready():
 	# 初始化图片透明度为0
 	sprite.modulate.a = 0.0
+	if sfx_player:
+		sfx_player.play()
 
 func _process(delta):
+	# 新增音频计时逻辑
+	if sfx_player and sfx_player.playing:
+		audio_timer += delta
+		if audio_timer >= 7.0:  # 7秒后停止播放
+			sfx_player.stop()
+	
 	match phase:
 		0:
 			# 渐入阶段
