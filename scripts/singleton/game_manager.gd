@@ -41,6 +41,11 @@ var bgm_resources = {
 
 }
 
+var dialogue_image_storage = {
+	"joey_normal": "res://assets/sprites/day/character/JOEY帅气版.png",
+	"joey_happy": "res://assets/sprites/day/character/joey帅气版2.png"
+}
+
 func init_default_state():
 	game_state = game_state.duplicate(true)  # 深度复制默认状态
 

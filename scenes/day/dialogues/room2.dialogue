@@ -1,4 +1,10 @@
 ~ begin
-Joey: [speed=0.1]????
-Joey: 空房间？
+Joey: [speed=0.5]????
+Joey: 这就没了？
 set GameManager.set_day_phase(5)
+: (看起来已经暂告一段落了，接下来怎么办)
+- 再玩一遍吧
+	set GameManager.switch_day_to_dream("res://scenes/main/splash_screen.tscn")
+- 不玩了
+	Joey: 886
+	set get_tree().quit()
