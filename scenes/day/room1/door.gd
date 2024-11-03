@@ -1,8 +1,15 @@
 extends Sprite2D
 
+@onready var audio_player: AudioStreamPlayer2D = $door_audio
 
+var audio_finished: bool = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _ready() -> void:
+	audio_player.connect("finished", _on_AudioStreamPlayer_finished)
+
 func _process(delta: float) -> void:
-	if GameManager.is_door_open():
-		queue_free()
+	if GameManager.is_door_open() and not audio_player.is_playing():
+		audio_player.play()
+
+func _on_AudioStreamPlayer_finished():
+	queue_free()
