@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlfchg888eh7x"]
 
 [ext_resource type="Script" path="res://scripts/modules/platforms/disapper_platform.gd" id="1_ffval"]
-[ext_resource type="Texture2D" uid="uid://8nrryef8gpok" path="res://assets/sprites/platforms.png" id="2_qofgv"]
+[ext_resource type="Texture2D" uid="uid://cmbxyp4glv8m7" path="res://assets/sprites/human/platform2.png" id="2_c7fr4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ueoe0"]
-size = Vector2(50.1019, 5.85101)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aiukp"]
+size = Vector2(29, 7.875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bhky"]
 size = Vector2(40, 3)
@@ -14,15 +14,13 @@ collision_layer = 2
 script = ExtResource("1_ffval")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_qofgv")
+texture = ExtResource("2_c7fr4")
 region_enabled = true
-region_rect = Rect2(0.879799, 48.0388, 46.2027, 8.37872)
+region_rect = Rect2(0, 1, 31, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
-rotation = -3.14159
-scale = Vector2(0.918129, -1.20041)
-shape = SubResource("RectangleShape2D_ueoe0")
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_aiukp")
 one_way_collision = true
 
 [node name="detection" type="Area2D" parent="."]

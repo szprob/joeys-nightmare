@@ -20,6 +20,16 @@ func _ready() -> void:
 		# print('container', container)
 
 func _physics_process(delta: float) -> void:
+	var distance =  player.global_position.distance_to(global_position)
+	if distance > 240:
+		speed = (distance / 240) * 100 - 60
+	elif distance > 120:
+		speed = 40
+	else :
+		speed = 20
+	#print("distance", distance)
+	#print("speed", speed)
+	
 	# 更新射击计时器
 	time_since_last_shot += delta
 	
