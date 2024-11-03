@@ -3111,9 +3111,6 @@ position = Vector2(160, -632)
 
 [node name="gravity" type="Node" parent="stage_down/stage_down1"]
 
-[node name="gravity_0_15" parent="stage_down/stage_down1/gravity" instance=ExtResource("19_q6x3f")]
-position = Vector2(672, 16)
-
 [node name="gravity_0_16" parent="stage_down/stage_down1/gravity" instance=ExtResource("19_q6x3f")]
 position = Vector2(672, 48)
 
