@@ -426,7 +426,7 @@ texture = ExtResource("2_kt8cv")
 12:17/0 = 0
 0:2/size_in_atlas = Vector2i(3, 2)
 0:2/0 = 0
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-22.25, -17.375, -21.625, -2.75, 22.25, -2, 22.5, -18)
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-22.25, -22, -21.625, -2.75, 22.25, -2, 22, -21.75)
 0:12/size_in_atlas = Vector2i(2, 4)
 0:12/0 = 0
 0:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-14.75, -25.5, 2.75, -22.25, 5.75, -13.75, 6, 14.5, 2.2981, 17.1473, -2.82843, 17.3241, -13.6118, 16.7938, -16.25, 11.5)
@@ -2954,6 +2954,7 @@ position = Vector2(27, 149.5)
 shape = SubResource("RectangleShape2D_cfd1h")
 
 [node name="Door" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(247, 277)
 texture = SubResource("AtlasTexture_fvgx3")
 script = ExtResource("8_be4lk")
