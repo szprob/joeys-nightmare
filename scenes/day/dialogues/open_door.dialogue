@@ -1,11 +1,11 @@
 ~ 查看抽屉
-if GameManager.is_door_open() or GameManager.game_state['day_phase'] > 4:
+if GameManager.is_door_open() or GameManager.game_state['day_phase'] >= 4:
 	橱柜: 一个空橱柜，没有其他物品了
 	=> END
 else:
 	if GameManager.get_day_phase() < 2:
 		????: 一个普通的橱柜
-	elif GameManager.get_day_phase() < 4:
+	elif !GameManager.game_state['has_slept']:
 		Joey: 一个普通的橱柜
 	else:
 		Joey: 刚才的梦中也出现了这个橱柜，再仔细调查看看吧
@@ -13,7 +13,7 @@ else:
 		Joey: 去看看能不能把门打开吧
 		: 获得钥匙
 		set GameManager.add_item("钥匙1")
-		set GameManager.game_state['day_phase'] = 5
+		set GameManager.game_state['day_phase'] = 4
 	=> END
 
 

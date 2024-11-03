@@ -31,6 +31,7 @@ var game_state = {
 	# 玩家道具库存： 只存道具名称
 	'inventory' : [],
 	'teleport_type': 'day2dream',
+	'has_slept': false,
 	'target_scene': 'res://scenes/dreams/bigworld/bigworld01.tscn'
 }
 
