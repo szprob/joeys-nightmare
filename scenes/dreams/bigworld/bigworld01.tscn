@@ -1,8 +1,7 @@
-[gd_scene load_steps=48 format=4 uid="uid://sfv4vhyx6m0a"]
+[gd_scene load_steps=47 format=4 uid="uid://sfv4vhyx6m0a"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_jwyd3"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_8yy27"]
-[ext_resource type="PackedScene" uid="uid://d0atgq0il2toh" path="res://scenes/shader/crt.tscn" id="3_0ugil"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_trrvp"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_wl3g1"]
 [ext_resource type="PackedScene" uid="uid://bhgixpqr8klwj" path="res://scenes/sokoban/box.tscn" id="4_6n3j8"]
@@ -2652,17 +2651,13 @@ script = ExtResource("1_jwyd3")
 position = Vector2(512, -208)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
-position = Vector2(-1599.32, 700.03)
-scale = Vector2(0.25, 0.25)
-process_callback = 0
-limit_left = 0
-limit_top = 0
-limit_right = 480
-limit_bottom = 270
+position = Vector2(192, 88)
+limit_left = 464
+limit_top = -254
+limit_right = 944
+limit_bottom = 16
 limit_smoothed = true
 position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
 script = ExtResource("3_wl3g1")
 
 [node name="map" type="Node" parent="."]
@@ -3182,9 +3177,6 @@ position = Vector2(672, 80)
 
 [node name="gravity_0_18" parent="stage_down/stage_down1/gravity" instance=ExtResource("10_1fij6")]
 position = Vector2(672, 112)
-
-[node name="CRT" parent="." instance=ExtResource("3_0ugil")]
-visible = false
 
 [node name="teleport" parent="." instance=ExtResource("32_08r4e")]
 position = Vector2(2272, -16)
