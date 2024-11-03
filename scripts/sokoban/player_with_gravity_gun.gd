@@ -19,35 +19,17 @@ var respawn_pos = Vector2(0, 0)
 
 func _ready():
 	await ready
-	default_pos = position
 	GameManager.load_game_state()
-	# 获取当前场景路径
+	# 只在初始加载时设置位置,而不是reload
 	var current_scene_path = get_tree().current_scene.scene_file_path
-	# 检查场景路径是否一致
 	if GameManager.game_state['last_scene_path'] == current_scene_path:
 		if GameManager.game_state['current_respawn_point_x'] != null:
 			respawn_pos = Vector2(GameManager.game_state['current_respawn_point_x'], GameManager.game_state['current_respawn_point_y'])
 			position = respawn_pos
-	else:
-		position = default_pos
-	$GunCooldown.wait_time = cooldown
-
 
 func respawn():
-	# 将角色位置设置为重生点
-	#position = GameManager.game_state['current_respawn_point']
-	velocity = Vector2.ZERO
-	# 重置所有状态
-	is_jumping = false
-	jump_buffer_timer = 0.0
-	jump_hold_time = 0.0
-	var current_scene_path = get_tree().current_scene.scene_file_path
-	if GameManager.game_state['last_scene_path'] == current_scene_path:
-		if GameManager.game_state['current_respawn_point_x'] != null:
-			respawn_pos = Vector2(GameManager.game_state['current_respawn_point_x'], GameManager.game_state['current_respawn_point_y'])
-			position = respawn_pos
-	else:
-		position = default_pos
+	# 直接重新加载场景,不做其他处理
+	get_tree().reload_current_scene()
 
 # 开始跳跃的函数
 func start_jump() -> void:
