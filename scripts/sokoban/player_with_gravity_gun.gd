@@ -216,10 +216,18 @@ func _physics_process(delta: float) -> void:
 			# print('push box')
 			# 获取碰撞法线
 			var normal = collision.get_normal()
-			# 检查碰撞法线是否与重力方向垂直（表示从侧面推动）
-			if abs(normal.dot(get_gravity().normalized())) < 0.1: # 使用一个小的阈值来判断是否垂直
-				if direction.length() > 0:
-					collider.push(direction)
+			var gravity_dir = get_gravity().normalized()
+			
+			# 检查是否从侧面推动（碰撞法线与重力方向垂直）
+			if abs(normal.dot(gravity_dir)) < 0.1:
+				# 计算与重力方向垂直的方向向量
+				var perpendicular_dir = Vector2(-gravity_dir.y, gravity_dir.x)
+				# 计算输入方向在垂直方向上的投影
+				var projected_direction = direction.project(perpendicular_dir)
+				
+				# 只有当投影后的方向有效时才推动箱子
+				if projected_direction.length() > 0:
+					collider.push(projected_direction.normalized())
 
 	move_and_slide()
 	# push boxes
