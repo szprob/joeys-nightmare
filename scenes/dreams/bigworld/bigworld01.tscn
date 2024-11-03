@@ -2648,7 +2648,7 @@ _data = {
 script = ExtResource("1_jwyd3")
 
 [node name="player_with_gravity" parent="." groups=["player"] instance=ExtResource("2_8yy27")]
-position = Vector2(512, -208)
+position = Vector2(512, -200)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
 position = Vector2(192, 88)
@@ -2663,6 +2663,7 @@ script = ExtResource("3_wl3g1")
 [node name="map" type="Node" parent="."]
 
 [node name="parallax" type="Node2D" parent="map"]
+z_index = -2
 position = Vector2(64, 8)
 
 [node name="back" type="Parallax2D" parent="map/parallax"]
@@ -2843,16 +2844,16 @@ scale = Vector2(2.29504, 1.04272)
 [node name="gravity" type="Node" parent="stage0"]
 
 [node name="gravity_0_1" parent="stage0/gravity" instance=ExtResource("10_1fij6")]
-position = Vector2(744, -232)
+position = Vector2(744, -224)
 
 [node name="gravity_0_6" parent="stage0/gravity" instance=ExtResource("10_1fij6")]
-position = Vector2(776, -232)
+position = Vector2(776, -224)
 
 [node name="gravity_0_3" parent="stage0/gravity" instance=ExtResource("10_1fij6")]
-position = Vector2(784, -168)
+position = Vector2(784, -160)
 
 [node name="gravity_0_8" parent="stage0/gravity" instance=ExtResource("10_1fij6")]
-position = Vector2(816, -168)
+position = Vector2(816, -160)
 
 [node name="gravity_0_5" parent="stage0/gravity" instance=ExtResource("10_1fij6")]
 position = Vector2(488, -8)
@@ -2860,10 +2861,10 @@ gravity_point_center = Vector2(1, 0)
 gravity_direction = Vector2(1, 0)
 
 [node name="gravity_0_4" parent="stage0/gravity" instance=ExtResource("10_1fij6")]
-position = Vector2(656, -104)
+position = Vector2(656, -96)
 
 [node name="gravity_0_10" parent="stage0/gravity" instance=ExtResource("10_1fij6")]
-position = Vector2(688, -104)
+position = Vector2(688, -96)
 
 [node name="coins" type="Node" parent="stage0"]
 
@@ -3022,7 +3023,7 @@ target = NodePath("../Target")
 position = Vector2(1000, -216)
 
 [node name="bi-teleport2" parent="stage2/swap1" node_paths=PackedStringArray("target") instance=ExtResource("17_es12q")]
-position = Vector2(960, -192)
+position = Vector2(968, -192)
 target = NodePath("../Target2")
 
 [node name="Target2" parent="stage2/swap1" instance=ExtResource("18_xbihk")]
@@ -3183,10 +3184,12 @@ position = Vector2(2272, -16)
 target_scene = "res://scenes/dreams/bigworld/chase_stage.tscn"
 teleport_type = 2
 
-[node name="AutoInvisibleLabel" parent="." instance=ExtResource("33_obdeb")]
+[node name="label" type="Node" parent="."]
+
+[node name="AutoInvisibleLabel" parent="label" instance=ExtResource("33_obdeb")]
 offset_left = 525.0
 offset_top = -238.0
-offset_right = 526.0
+offset_right = 591.0
 offset_bottom = -215.0
 theme_override_font_sizes/font_size = 12
 text = "我这是在哪?"

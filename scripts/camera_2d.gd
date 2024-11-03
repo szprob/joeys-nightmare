@@ -12,6 +12,3 @@ func _process(delta: float) -> void:
 	
 	limit_top = floor($"..".global_position.y / camera_v) * camera_v
 	limit_bottom = limit_top + camera_v + grid_size
-
-	
-	print("limit_left",limit_left," limit_right",limit_right," limit_top",limit_top," limit_bottom",limit_bottom)		
