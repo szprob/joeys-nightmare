@@ -90,8 +90,9 @@ func _ready() -> void:
 func setup_bgm_player() -> void:
 	bgm_player = AudioStreamPlayer.new()
 	bgm_player.bus = "Music"  # 确保你的项目中有名为"Music"的音频总线
-	# 添加这一行来设置循环播放
 	bgm_player.stream_paused = false
+	# 设置音量为原来的25%（-12分贝）
+	bgm_player.volume_db = -12
 	add_child(bgm_player)
 	
 # 修改 play_bgm 函数，支持通过名称播放 BGM
