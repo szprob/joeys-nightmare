@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://kfdbq76ixwrq"]
+[gd_scene load_steps=8 format=3 uid="uid://kfdbq76ixwrq"]
 
 [ext_resource type="Script" path="res://scripts/modules/checkpoints/save_point.gd" id="1_qeoh3"]
 [ext_resource type="Texture2D" uid="uid://djlitwmkmviun" path="res://assets/sprites/human/lamp.png" id="2_bador"]
+[ext_resource type="AudioStream" uid="uid://tb42whn5javk" path="res://assets/sounds/checkpoints/load.wav" id="3_ffag6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cergc"]
 size = Vector2(15.25, 15.75)
@@ -52,6 +53,9 @@ text = "saved"
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ffag6")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
