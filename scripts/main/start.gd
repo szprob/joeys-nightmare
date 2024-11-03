@@ -10,11 +10,16 @@ var current_index = 0
 @onready var load_button: Button = $load
 @onready var set_button: Button = $set
 @onready var quit_button: Button = $quit
-
+@onready var logo: Sprite2D = $Sprite2D
 
 func _ready():
-	buttons = [new_button, load_button,set_button, quit_button]  # Replace with your actual button paths
+	
+	buttons = [new_button, load_button, set_button, quit_button]
 	buttons[current_index].grab_focus()
+	new_button.pressed.connect(_on_new_pressed)
+	load_button.pressed.connect(_on_load_pressed)
+	set_button.pressed.connect(_on_set_pressed)
+	quit_button.pressed.connect(_on_quit_pressed)
 
 func _process(delta):
 	if Input.is_action_just_pressed("down"):
