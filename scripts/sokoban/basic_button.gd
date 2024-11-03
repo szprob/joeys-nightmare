@@ -8,10 +8,16 @@ var tracked_bodies: Dictionary = {}
 
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
+# 添加音频衰减相关变量
+@export var max_hearing_distance: float = 200.0  # 最大听觉距离
+var player: Node2D = null  # 用于存储玩家引用
+
 func _ready() -> void:
 	connect("body_entered", Callable(self, "_on_body_entered"))
 	connect("body_exited", Callable(self, "_on_body_exited"))
-	
+	# 获取玩家引用
+	player = get_tree().get_first_node_in_group("player")
+
 func _on_body_entered(body):
 	# 检查是否是玩家或箱子，且还未被记录
 	if (body is CharacterBody2D or body.is_in_group("box")) and not tracked_bodies.has(body):
@@ -39,3 +45,12 @@ func _on_body_exited(body):
 			for door_path in doors:
 				if door_path:
 					get_node(door_path).close()
+
+# 添加新函数来更新音量
+func _process(_delta: float) -> void:
+	if player and audio_player:
+		var distance = global_position.distance_to(player.global_position)
+		# 线性衰减，最大音量1.5倍（3.5 dB），最小值 -80dB
+		var attenuation = 2 * (1.0 - clamp(distance / max_hearing_distance, 0.0, 1.0))
+		var volume_db = linear_to_db(attenuation)
+		audio_player.volume_db = float(volume_db if volume_db > -80.0 else -80.0)
