@@ -2647,7 +2647,7 @@ _data = {
 script = ExtResource("1_ildsd")
 
 [node name="player_with_gravity" parent="." groups=["player"] instance=ExtResource("2_ody63")]
-position = Vector2(512, -208)
+position = Vector2(512, -200)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
 position = Vector2(192, 88)
@@ -2662,6 +2662,7 @@ script = ExtResource("3_qlmgj")
 [node name="map" type="Node" parent="."]
 
 [node name="parallax" type="Node2D" parent="map"]
+z_index = -2
 position = Vector2(64, 8)
 
 [node name="back" type="Parallax2D" parent="map/parallax"]
@@ -2978,7 +2979,7 @@ target = NodePath("../Target")
 position = Vector2(1000, -216)
 
 [node name="bi-teleport2" parent="stage2/swap1" node_paths=PackedStringArray("target") instance=ExtResource("25_0p22n")]
-position = Vector2(960, -192)
+position = Vector2(968, -192)
 target = NodePath("../Target2")
 
 [node name="Target2" parent="stage2/swap1" instance=ExtResource("26_84upl")]
@@ -3109,9 +3110,6 @@ position = Vector2(160, -632)
 [node name="stage_down1" type="Node" parent="stage_down"]
 
 [node name="gravity" type="Node" parent="stage_down/stage_down1"]
-
-[node name="gravity_0_15" parent="stage_down/stage_down1/gravity" instance=ExtResource("19_q6x3f")]
-position = Vector2(672, 16)
 
 [node name="gravity_0_16" parent="stage_down/stage_down1/gravity" instance=ExtResource("19_q6x3f")]
 position = Vector2(672, 48)
