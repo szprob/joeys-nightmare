@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bwc7723uv1013"
+path="res://.godot/imported/Drone Ambient Background by Infraction [No Copyright Music] _ Calm.mp3-34a22b31f9d9c0743e32971eef8367ef.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Drone Ambient Background by Infraction [No Copyright Music] _ Calm.mp3"
+dest_files=["res://.godot/imported/Drone Ambient Background by Infraction [No Copyright Music] _ Calm.mp3-34a22b31f9d9c0743e32971eef8367ef.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -37,7 +37,7 @@ var game_state = {
 
 # 在文件开头添加 BGM 资源预加载
 var bgm_resources = {
-	"bgm": preload("res://assets/music/time_for_adventure.mp3"),  
+	"bgm": preload("res://assets/music/Drone Ambient Background by Infraction [No Copyright Music] _ Calm.mp3"),  
 
 }
 
@@ -78,14 +78,14 @@ func _ready() -> void:
 	# 添加场景树信号连接
 	get_tree().node_added.connect(_on_node_added)
 	
-	# 初始化背景音乐播放器
-	setup_bgm_player()
+	# # 初始化背景音乐播放器
+	# setup_bgm_player()
 	
 	init_default_state()
 	apply_settings()
 	
 	# 添加这一行来自动开始播放BGM
-	play_bgm("bgm")
+	# play_bgm("bgm")
 
 func setup_bgm_player() -> void:
 	bgm_player = AudioStreamPlayer.new()
