@@ -31,6 +31,7 @@ var game_state = {
 	# 玩家道具库存： 只存道具名称
 	'inventory' : [],
 	'teleport_type': 'day2dream',
+	'has_slept': false,
 	'target_scene': 'res://scenes/dreams/bigworld/bigworld01.tscn'
 }
 
@@ -38,6 +39,11 @@ var game_state = {
 var bgm_resources = {
 	"bgm": preload("res://assets/music/time_for_adventure.mp3"),  
 
+}
+
+var dialogue_image_storage = {
+	"joey_normal": "res://assets/sprites/day/character/JOEY帅气版.png",
+	"joey_happy": "res://assets/sprites/day/character/joey帅气版2.png"
 }
 
 func init_default_state():

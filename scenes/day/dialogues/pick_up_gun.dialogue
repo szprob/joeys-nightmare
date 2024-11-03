@@ -1,5 +1,5 @@
 ~ id_card
-身份证: (一张身份证，上面印着我的照片)
+身份证[#thing]: (一张身份证，上面印着我的照片)
 ????: 上面写着Joey Song
 Joey: Joey是我的名字，我叫Joey[speed=0.3]...
 set GameManager.set_day_phase(2)
@@ -11,7 +11,7 @@ if GameManager.get_day_phase() < 2:
 else:
 	Joey: 这好像是我小时候玩的枪
 	Joey: 小时候总是在奶奶家拿着这把枪扮演太空牛仔，利用它的重力子弹在复杂的太空峡谷中飞檐走壁
-	Joey: 我就是最英勇的太空牛仔！[shake rate=20 level=10]泰酷辣![/shake]
+	Joey[#joey_happy]: 我就是最英勇的太空牛仔！[shake rate=20 level=10]泰酷辣![/shake]
 	Joey: ...刚才的梦里好像也有类似的重力场，[wait=0.5][speed=0.3]要不把它拿走吧？
 	- 是
 		Joey: 天好像还没亮，有点困了[wait=0.4][speed=0.3]，去睡会儿吧

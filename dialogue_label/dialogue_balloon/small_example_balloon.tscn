@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://taqu68ow2xsh"]
+[gd_scene load_steps=11 format=3 uid="uid://taqu68ow2xsh"]
 
 [ext_resource type="Script" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_ubsg3"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_d22er"]
+[ext_resource type="Texture2D" uid="uid://bdmi6t07ffc65" path="res://assets/sprites/day/character/JOEY帅气版.png" id="3_bdtls"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_wukh8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_235ry"]
@@ -121,6 +122,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 69.0
+offset_top = 6.0
+offset_right = 69.0
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -142,6 +147,14 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue..."
+
+[node name="TextureRect" type="TextureRect" parent="Balloon/Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -7.0
+offset_right = 65.0
+offset_bottom = 57.0
+texture = ExtResource("3_bdtls")
 
 [node name="Responses" type="MarginContainer" parent="Balloon"]
 layout_mode = 1

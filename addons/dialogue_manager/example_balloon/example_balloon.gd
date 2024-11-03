@@ -56,7 +56,15 @@ var dialogue_line: DialogueLine:
 		if not dialogue_line.text.is_empty():
 			dialogue_label.type_out()
 			await dialogue_label.finished_typing
-
+		if dialogue_line.tags != null and dialogue_line.tags.size() > 0:
+			print(dialogue_line.tags)
+			for tag in dialogue_line.tags:
+				if tag in GameManager.dialogue_image_storage.keys():
+					image_box.show()
+					image_box.texture = load(GameManager.dialogue_image_storage[tag])
+		else:
+			image_box.show()
+			image_box.texture = load(GameManager.dialogue_image_storage['joey_normal'])
 		# Wait for input
 		if dialogue_line.responses.size() > 0:
 			balloon.focus_mode = Control.FOCUS_NONE
@@ -84,6 +92,7 @@ var dialogue_line: DialogueLine:
 ## The menu of responses
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
+@onready var image_box: TextureRect = $Balloon/Panel/TextureRect
 
 func _ready() -> void:
 	balloon.hide()
