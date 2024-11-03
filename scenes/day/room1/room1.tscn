@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://bmq25pi5e8wan"]
+[gd_scene load_steps=63 format=4 uid="uid://bmq25pi5e8wan"]
 
 [ext_resource type="Texture2D" uid="uid://dapevi3u1jt0p" path="res://assets/sprites/day/room/TopDownHouse_FloorsAndWalls.png" id="1_h0361"]
 [ext_resource type="Texture2D" uid="uid://d2ry76th5cvay" path="res://assets/sprites/day/room/TopDownHouse_FurnitureState1.png" id="2_kt8cv"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://c8iglqhnc11rg" path="res://assets/sprites/day/room/TopDownHouse_FloorsAndWalls_OpenDoors.png" id="15_sesl3"]
 [ext_resource type="Texture2D" uid="uid://72mwfwsbffg4" path="res://assets/sprites/day/room/TopDownHouse_FurnitureState2.png" id="16_huyqj"]
 [ext_resource type="FontFile" uid="uid://5btxwrwd804s" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="18_uwswc"]
+[ext_resource type="AudioStream" uid="uid://cnvum410tmlnh" path="res://assets/sounds/interface/door.wav" id="20_p5g06"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uqj6m"]
 texture = ExtResource("1_h0361")
@@ -2970,6 +2971,9 @@ shape = SubResource("RectangleShape2D_the48")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door/StaticBody2D"]
 shape = SubResource("RectangleShape2D_fi1co")
+
+[node name="door_audio" type="AudioStreamPlayer2D" parent="Door"]
+stream = ExtResource("20_p5g06")
 
 [node name="玩具手枪" type="Sprite2D" parent="."]
 position = Vector2(269, 185)
