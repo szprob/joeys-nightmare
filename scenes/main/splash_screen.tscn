@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dv4qux6l7p60q"]
+[gd_scene load_steps=5 format=3 uid="uid://dv4qux6l7p60q"]
 
 [ext_resource type="Script" path="res://scripts/main/splash_screen.gd" id="1_cid4r"]
 [ext_resource type="Texture2D" uid="uid://calyp4j8mdjjb" path="res://assets/a_star.webp" id="2_k6y7v"]
+[ext_resource type="Texture2D" uid="uid://ciu6bf1gejpeh" path="res://assets/sprites/logo/1730554692.png" id="2_upeg5"]
+[ext_resource type="Texture2D" uid="uid://b3awifxs8qf21" path="res://assets/sprites/logo/1730554691_x.png" id="4_3a5dr"]
 
 [node name="splash_screen" type="Node2D" groups=["scan_lines"]]
 scale = Vector2(1.01756, 1.00604)
@@ -10,6 +12,18 @@ script = ExtResource("1_cid4r")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+visible = false
 scale = Vector2(0.469599, 0.469599)
 texture = ExtResource("2_k6y7v")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+scale = Vector2(0.234375, 0.234375)
+texture = ExtResource("2_upeg5")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer"]
+scale = Vector2(0.477431, 0.477431)
+texture = ExtResource("4_3a5dr")
 centered = false
