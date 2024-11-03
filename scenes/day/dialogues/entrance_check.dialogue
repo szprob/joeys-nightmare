@@ -7,13 +7,17 @@ if GameManager.get_day_phase() < 3:
 	Joey: [[我得先找找有没有其他线索。|先四处看看吧，肯定能找到些什么]]
 	=> END
 else:
-	空床[#thing]: (准备好睡觉了吗？)
-	- 是
-		Joey: 感觉好困 [wait=0.3 speed=0.3]...
-		set GameManager.game_state['has_slept'] = true
-		set GameManager.switch_day_to_dream("res://scenes/dreams/bigworld/bigworld02.tscn")
+	if GameManager.game_state['has_slept']:
+		Joey: 才刚睡醒，去检查一下柜子吧
 		=> END
-	- 否
-		Joey: 好像还不困
+	else:
+		空床[#thing]: (准备好睡觉了吗？)
+		- 是
+			Joey: 感觉好困 [wait=0.3 speed=0.3]...
+			set GameManager.game_state['has_slept'] = true
+			set GameManager.switch_day_to_dream("res://scenes/dreams/bigworld/bigworld02.tscn")
+			=> END
+		- 否
+			Joey: 好像还不困
+			=> END
 		=> END
-	=> END
