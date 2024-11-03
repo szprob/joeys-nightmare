@@ -1,6 +1,6 @@
 ~ id_card
 身份证[#thing]: (一张身份证，上面印着我的照片)
-????: 上面写着Joey Song
+????: 上面写着Joey Belmont
 Joey: Joey是我的名字，我叫Joey[speed=0.3]...
 set GameManager.set_day_phase(2)
 => END

@@ -1,55 +1,56 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7l0cgfu3na7c"]
+[gd_scene load_steps=6 format=3 uid="uid://cvseym5ftmktl"]
 
 [ext_resource type="Script" path="res://scripts/main/start.gd" id="1_6omwx"]
-[ext_resource type="Texture2D" uid="uid://towjoisj1iyj" path="res://assets/start.png" id="2_gfm2h"]
+[ext_resource type="Texture2D" uid="uid://njds0q2uhdcf" path="res://assets/sprites/transition2/4.png" id="2_hku6m"]
+[ext_resource type="Texture2D" uid="uid://qq31oblodnpn" path="res://assets/sprites/transition2/3.png" id="3_fmh3v"]
+[ext_resource type="Texture2D" uid="uid://bdqrjujg5pjbr" path="res://assets/sprites/transition2/1.png" id="4_pe2rc"]
+[ext_resource type="AudioStream" uid="uid://bg01uylk64iae" path="res://assets/sounds/interface/button.wav" id="5_mr72s"]
 
 [node name="start" type="Node2D" groups=["scan_lines"]]
-position = Vector2(0, -3)
+position = Vector2(236, 152)
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_6omwx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -9)
-scale = Vector2(0.293447, 0.293447)
-texture = ExtResource("2_gfm2h")
-centered = false
+[node name="Sprite4" type="Sprite2D" parent="."]
+texture = ExtResource("2_hku6m")
+
+[node name="Sprite3" type="Sprite2D" parent="."]
+texture = ExtResource("3_fmh3v")
+
+[node name="Sprite1" type="Sprite2D" parent="."]
+texture = ExtResource("4_pe2rc")
 
 [node name="new" type="Button" parent="."]
-offset_left = 15.0
-offset_top = 152.0
-offset_right = 295.0
-offset_bottom = 227.0
-scale = Vector2(0.3, 0.3)
+offset_left = -700.0
+offset_right = -432.0
+offset_bottom = 75.0
 theme_override_font_sizes/font_size = 48
 text = "NEW GAME"
+alignment = 0
 
 [node name="load" type="Button" parent="."]
-offset_left = 15.0
-offset_top = 180.0
-offset_right = 158.0
-offset_bottom = 255.0
-scale = Vector2(0.3, 0.3)
+offset_left = -700.0
+offset_top = 90.0
+offset_right = -561.0
+offset_bottom = 165.0
 theme_override_font_sizes/font_size = 48
 text = "LOAD"
 
-[node name="quit" type="Button" parent="."]
-offset_left = 16.0
-offset_top = 232.0
-offset_right = 139.0
-offset_bottom = 307.0
-scale = Vector2(0.3, 0.3)
-theme_override_font_sizes/font_size = 48
-text = "QUIT"
-
 [node name="set" type="Button" parent="."]
-offset_left = 15.0
-offset_top = 208.0
-offset_right = 244.0
-offset_bottom = 283.0
-scale = Vector2(0.3, 0.3)
+offset_left = -700.0
+offset_top = 180.0
+offset_right = -471.0
+offset_bottom = 255.0
 theme_override_font_sizes/font_size = 48
 text = "SETTINGS"
 
-[connection signal="pressed" from="new" to="." method="_on_new_pressed"]
-[connection signal="pressed" from="load" to="." method="_on_load_pressed"]
-[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="set" to="." method="_on_set_pressed"]
+[node name="quit" type="Button" parent="."]
+offset_left = -700.0
+offset_top = 270.0
+offset_right = -577.0
+offset_bottom = 345.0
+theme_override_font_sizes/font_size = 48
+text = "QUIT"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_mr72s")

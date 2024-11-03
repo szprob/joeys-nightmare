@@ -17,7 +17,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Music="*res://scenes/music.tscn"
 Consts="*res://scripts/singleton/consts.gd"
 GameManager="*res://scripts/singleton/game_manager.gd"
 Inventory="*res://scenes/day/inventory/inventory.tscn"

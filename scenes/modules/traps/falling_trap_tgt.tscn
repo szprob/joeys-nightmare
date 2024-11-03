@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://c8q6wa4cofe21"]
+[gd_scene load_steps=16 format=3 uid="uid://c8q6wa4cofe21"]
 
 [ext_resource type="Script" path="res://scripts/modules/traps/falling_trap_tgt.gd" id="1_4m5pv"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_1gqju"]
 [ext_resource type="Texture2D" uid="uid://dy8a8ar6qlsno" path="res://assets/sprites/像素火焰1.0.png" id="3_8s65a"]
+[ext_resource type="AudioStream" uid="uid://bguhgybwm1ifa" path="res://assets/sounds/traps/Spell_04.wav" id="4_cojqg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_emold"]
 atlas = ExtResource("3_8s65a")
@@ -100,6 +101,9 @@ one_shot = true
 
 [node name="Timer2" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_cojqg")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="ready" from="." to="." method="_on_ready"]

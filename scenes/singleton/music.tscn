@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvas31x5l30ex"]
+
+[ext_resource type="AudioStream" uid="uid://bwc7723uv1013" path="res://assets/music/Drone Ambient Background by Infraction [No Copyright Music] _ Calm.mp3" id="1_kbc7t"]
+
+[node name="music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_kbc7t")
+autoplay = true

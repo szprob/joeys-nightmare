@@ -2649,7 +2649,6 @@ script = ExtResource("1_ildsd")
 
 [node name="player_with_gravity" parent="." groups=["player"] instance=ExtResource("2_ody63")]
 position = Vector2(524.333, -210.667)
-scale = Vector2(0.98913, 1)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
 position = Vector2(-1599.32, 700.03)

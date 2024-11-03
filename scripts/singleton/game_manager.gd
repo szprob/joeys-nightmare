@@ -19,7 +19,7 @@ var game_state = {
 	'respawn_enable':false,
 	'archive_index': 1,
 	'settings': {
-		'full_screen': false,
+		'full_screen': true,
 		'scan_lines': true,
 		'bgm_enabled': true  # 添加开关控制
 	},
@@ -37,7 +37,7 @@ var game_state = {
 
 # 在文件开头添加 BGM 资源预加载
 var bgm_resources = {
-	"bgm": preload("res://assets/music/time_for_adventure.mp3"),  
+	"bgm": preload("res://assets/music/Drone Ambient Background by Infraction [No Copyright Music] _ Calm.mp3"),  
 
 }
 
@@ -78,20 +78,21 @@ func _ready() -> void:
 	# 添加场景树信号连接
 	get_tree().node_added.connect(_on_node_added)
 	
-	# 初始化背景音乐播放器
-	setup_bgm_player()
+	# # 初始化背景音乐播放器
+	# setup_bgm_player()
 	
 	init_default_state()
 	apply_settings()
 	
 	# 添加这一行来自动开始播放BGM
-	play_bgm("bgm")
+	# play_bgm("bgm")
 
 func setup_bgm_player() -> void:
 	bgm_player = AudioStreamPlayer.new()
 	bgm_player.bus = "Music"  # 确保你的项目中有名为"Music"的音频总线
-	# 添加这一行来设置循环播放
 	bgm_player.stream_paused = false
+	# 设置音量为原来的25%（-12分贝）
+	bgm_player.volume_db = -12
 	add_child(bgm_player)
 	
 # 修改 play_bgm 函数，支持通过名称播放 BGM

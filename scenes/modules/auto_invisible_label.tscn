@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyp6s0hn0oacu"]
+
+[ext_resource type="Script" path="res://scripts/modules/auto_invisible_label.gd" id="1_yae3g"]
+
+[node name="AutoInvisibleLabel" type="Label"]
+script = ExtResource("1_yae3g")

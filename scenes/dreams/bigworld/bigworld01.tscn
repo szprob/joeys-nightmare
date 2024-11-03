@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://sfv4vhyx6m0a"]
+[gd_scene load_steps=48 format=4 uid="uid://sfv4vhyx6m0a"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_jwyd3"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_8yy27"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://b4l0s4mgeuqyq" path="res://scenes/modules/checkpoints/bi-teleport.tscn" id="17_es12q"]
 [ext_resource type="PackedScene" uid="uid://cair83ouq2qd0" path="res://scenes/modules/checkpoints/target.tscn" id="18_xbihk"]
 [ext_resource type="PackedScene" uid="uid://b6pq8l7ym5nuh" path="res://scenes/modules/checkpoints/teleport.tscn" id="32_08r4e"]
+[ext_resource type="PackedScene" uid="uid://cyp6s0hn0oacu" path="res://scenes/modules/auto_invisible_label.tscn" id="33_obdeb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ognwl"]
 texture = ExtResource("6_204oe")
@@ -2648,8 +2649,7 @@ _data = {
 script = ExtResource("1_jwyd3")
 
 [node name="player_with_gravity" parent="." groups=["player"] instance=ExtResource("2_8yy27")]
-position = Vector2(2198.89, -40.2897)
-scale = Vector2(0.98913, 1)
+position = Vector2(512, -208)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
 position = Vector2(-1599.32, 700.03)
@@ -3190,3 +3190,11 @@ visible = false
 position = Vector2(2272, -16)
 target_scene = "res://scenes/dreams/bigworld/chase_stage.tscn"
 teleport_type = 2
+
+[node name="AutoInvisibleLabel" parent="." instance=ExtResource("33_obdeb")]
+offset_left = 525.0
+offset_top = -238.0
+offset_right = 526.0
+offset_bottom = -215.0
+theme_override_font_sizes/font_size = 12
+text = "我这是在哪?"
