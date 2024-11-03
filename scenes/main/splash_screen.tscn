@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://calyp4j8mdjjb" path="res://assets/a_star.webp" id="2_k6y7v"]
 [ext_resource type="Texture2D" uid="uid://ciu6bf1gejpeh" path="res://assets/sprites/logo/1730554692.png" id="2_upeg5"]
 [ext_resource type="Texture2D" uid="uid://b3awifxs8qf21" path="res://assets/sprites/logo/1730554691_x.png" id="4_3a5dr"]
-[ext_resource type="AudioStream" uid="uid://oh0lw0d106u3" path="res://assets/sounds/main/Jingle_Win_00.wav" id="5_f5hwt"]
+[ext_resource type="AudioStream" uid="uid://blcs3ppiiacku" path="res://assets/sounds/main/Jingle_Win_01.wav" id="5_r6h44"]
 
 [node name="splash_screen" type="Node2D" groups=["scan_lines"]]
 scale = Vector2(1.01756, 1.00604)
@@ -30,4 +30,4 @@ texture = ExtResource("4_3a5dr")
 centered = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_f5hwt")
+stream = ExtResource("5_r6h44")

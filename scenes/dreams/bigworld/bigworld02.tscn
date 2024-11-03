@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://blobxm3abpj5n"]
+[gd_scene load_steps=46 format=4 uid="uid://blobxm3abpj5n"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_ildsd"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_ody63"]
@@ -30,7 +30,6 @@
 [ext_resource type="PackedScene" uid="uid://b87rogf3b1s12" path="res://scenes/modules/platforms/disapper_platform.tscn" id="28_xtxa6"]
 [ext_resource type="PackedScene" uid="uid://bt5a3og8w7u4e" path="res://scenes/modules/platforms/unvisible_platform.tscn" id="29_8h7ro"]
 [ext_resource type="PackedScene" uid="uid://dn6fopj5n8ldj" path="res://scenes/modules/platforms/move_platform.tscn" id="30_ng0ab"]
-[ext_resource type="PackedScene" uid="uid://d0atgq0il2toh" path="res://scenes/shader/crt.tscn" id="31_h850a"]
 [ext_resource type="PackedScene" uid="uid://b6pq8l7ym5nuh" path="res://scenes/modules/checkpoints/teleport.tscn" id="32_apr0x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ognwl"]
@@ -2648,20 +2647,16 @@ _data = {
 script = ExtResource("1_ildsd")
 
 [node name="player_with_gravity" parent="." groups=["player"] instance=ExtResource("2_ody63")]
-position = Vector2(524.333, -210.667)
+position = Vector2(512, -208)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
-position = Vector2(-1599.32, 700.03)
-scale = Vector2(0.25, 0.25)
-process_callback = 0
-limit_left = 0
-limit_top = 0
-limit_right = 480
-limit_bottom = 270
+position = Vector2(192, 88)
+limit_left = 464
+limit_top = -254
+limit_right = 944
+limit_bottom = 16
 limit_smoothed = true
 position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
 script = ExtResource("3_qlmgj")
 
 [node name="map" type="Node" parent="."]
@@ -3126,9 +3121,6 @@ position = Vector2(672, 80)
 
 [node name="gravity_0_18" parent="stage_down/stage_down1/gravity" instance=ExtResource("19_q6x3f")]
 position = Vector2(672, 112)
-
-[node name="CRT" parent="." instance=ExtResource("31_h850a")]
-visible = false
 
 [node name="teleport2" parent="." instance=ExtResource("32_apr0x")]
 position = Vector2(2280, -16)
