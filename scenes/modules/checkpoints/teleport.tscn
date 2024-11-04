@@ -78,7 +78,7 @@ offset_top = -82.5
 offset_right = 111.5
 offset_bottom = -46.5
 theme_override_font_sizes/font_size = 26
-text = "Press E to return"
+text = "Press E to enter"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_cbcyq")
