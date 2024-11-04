@@ -47,7 +47,7 @@ var dialogue_image_storage = {
 }
 
 func init_default_state():
-	game_state = {
+	var game_state2 = {
 		'score': 0,
 		'last_scene_path': "",
 		'current_respawn_point_x': null,
@@ -70,7 +70,7 @@ func init_default_state():
 		'has_slept': false,
 		'target_scene': 'res://scenes/dreams/bigworld/bigworld01.tscn'
 	}
-	game_state = game_state.duplicate(true)  # 深度复制默认状态
+	game_state = game_state2.duplicate(true)  # 深度复制默认状态
 
 
 
@@ -237,7 +237,7 @@ func load_game_state():
 		var result = json.parse(save_text)
 		if result == OK:
 			game_state = json.data
-			pipeline_manager.sync_game_state(game_state)
+			# pipeline_manager.sync_game_state(game_state)
 		else:
 			print("JSON Parse Error at line ", json.get_error_line())
 			# 加载失败时初始化默认状态

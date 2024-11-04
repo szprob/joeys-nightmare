@@ -1,6 +1,5 @@
-[gd_scene load_steps=47 format=4 uid="uid://sfv4vhyx6m0a"]
+[gd_scene load_steps=46 format=4 uid="uid://sfv4vhyx6m0a"]
 
-[ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_jwyd3"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_8yy27"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_trrvp"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_wl3g1"]
@@ -2645,7 +2644,6 @@ _data = {
 }
 
 [node name="Game" type="Node2D" groups=["scan_lines"]]
-script = ExtResource("1_jwyd3")
 
 [node name="player_with_gravity" parent="." groups=["player"] instance=ExtResource("2_8yy27")]
 position = Vector2(512, -200)
