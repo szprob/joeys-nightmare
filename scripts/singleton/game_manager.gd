@@ -210,12 +210,12 @@ func apply_settings() -> void:
 
 func save_game_state():
 	# 确保存档目录存在
-	var dir = DirAccess.open("res://")
+	var dir = DirAccess.open("user://")
 	if not dir.dir_exists("save"):
 		dir.make_dir("save")
 	
 	var archive_index = str(game_state['archive_index'])
-	var file_path = "res://save/save_game"+archive_index+".json"
+	var file_path = "user://save/save_game"+archive_index+".json"
 	
 	# 在保存之前转换 Vector2
 	var save_data = game_state.duplicate(true)
@@ -229,7 +229,7 @@ func save_game_state():
 
 func load_game_state():
 	var archive_index = str(game_state['archive_index'])
-	var file_path = "res://save/save_game"+archive_index+".json"
+	var file_path = "user://save/save_game"+archive_index+".json"
 	var file = FileAccess.open(file_path, FileAccess.READ)
 	if file:
 		var save_text = file.get_as_text()
