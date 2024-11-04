@@ -49,11 +49,12 @@ func _physics_process(delta: float) -> void:
 
 
 func shoot() -> void:
-	var b = bullet_scene.instantiate()
-	# print('b', b)
-	# 将子弹添加到专门的容器中
-	get_tree().root.add_child(b)
+	return
+	# var b = bullet_scene.instantiate()
+	# # print('b', b)
+	# # 将子弹添加到专门的容器中
+	# get_tree().root.add_child(b)
 	
-	var shoot_direction = (player.global_position - global_position).normalized()
-	# 设置子弹的全局位置为发射点的位置
-	b.start(global_position, shoot_direction)
+	# var shoot_direction = (player.global_position - global_position).normalized()
+	# # 设置子弹的全局位置为发射点的位置
+	# b.start(global_position, shoot_direction)
