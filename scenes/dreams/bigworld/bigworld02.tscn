@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://blobxm3abpj5n"]
+[gd_scene load_steps=47 format=4 uid="uid://blobxm3abpj5n"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_ildsd"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_ody63"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://bt5a3og8w7u4e" path="res://scenes/modules/platforms/unvisible_platform.tscn" id="29_8h7ro"]
 [ext_resource type="PackedScene" uid="uid://dn6fopj5n8ldj" path="res://scenes/modules/platforms/move_platform.tscn" id="30_ng0ab"]
 [ext_resource type="PackedScene" uid="uid://b6pq8l7ym5nuh" path="res://scenes/modules/checkpoints/teleport.tscn" id="32_apr0x"]
+[ext_resource type="PackedScene" uid="uid://cyp6s0hn0oacu" path="res://scenes/modules/auto_invisible_label.tscn" id="32_n137b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ognwl"]
 texture = ExtResource("10_l2isq")
@@ -3122,3 +3123,12 @@ position = Vector2(672, 112)
 
 [node name="teleport2" parent="." instance=ExtResource("32_apr0x")]
 position = Vector2(2280, -16)
+
+[node name="AutoInvisibleLabel" parent="." instance=ExtResource("32_n137b")]
+offset_left = 494.0
+offset_top = -236.0
+offset_right = 615.0
+offset_bottom = -213.0
+text = "按E发射重力子弹"
+time_to_fade = 10.0
+fade_duration = 5.0
