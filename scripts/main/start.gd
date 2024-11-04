@@ -42,6 +42,7 @@ func _process(delta):
 
 func _on_new_pressed() -> void:
 	play_sfx()
+	GameManager.init_default_state()
 	GameManager.game_state['target_scene'] = target_scene
 	GameManager.game_state['teleport_type'] = 'day2dream'
 	GameManager.save_game_state()

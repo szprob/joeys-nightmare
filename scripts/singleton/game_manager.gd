@@ -47,6 +47,29 @@ var dialogue_image_storage = {
 }
 
 func init_default_state():
+	game_state = {
+		'score': 0,
+		'last_scene_path': "",
+		'current_respawn_point_x': null,
+		'current_respawn_point_y': null,
+		'respawn_enable':false,
+		'archive_index': 1,
+		'settings': {
+			'full_screen': true,
+			'scan_lines': true,
+			'bgm_enabled': true  # 添加开关控制
+		},
+		'teleport_enable': true,
+		# 0: 开场 1: 找寻身份证 2: 找寻枪 3: 第一次梦境就绪
+		'day_phase' : 0,
+		'is_door_open': false,
+		'is_day_player_chatting' : false,
+		# 玩家道具库存： 只存道具名称
+		'inventory' : [],
+		'teleport_type': 'day2dream',
+		'has_slept': false,
+		'target_scene': 'res://scenes/dreams/bigworld/bigworld01.tscn'
+	}
 	game_state = game_state.duplicate(true)  # 深度复制默认状态
 
 
