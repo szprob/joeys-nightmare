@@ -237,7 +237,7 @@ func load_game_state():
 		var result = json.parse(save_text)
 		if result == OK:
 			game_state = json.data
-			pipeline_manager.sync_game_state(game_state)
+			# pipeline_manager.sync_game_state(game_state)
 		else:
 			print("JSON Parse Error at line ", json.get_error_line())
 			# 加载失败时初始化默认状态
