@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bdqrjujg5pjbr" path="res://assets/sprites/transition2/1.png" id="4_pe2rc"]
 [ext_resource type="AudioStream" uid="uid://bg01uylk64iae" path="res://assets/sounds/interface/button.wav" id="5_mr72s"]
 
-[node name="start" type="Node2D" groups=["scan_lines"]]
+[node name="start" type="Node2D" groups=["no_pause", "scan_lines"]]
 position = Vector2(236, 152)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_6omwx")
