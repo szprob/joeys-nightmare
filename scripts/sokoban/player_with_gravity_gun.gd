@@ -8,6 +8,8 @@ extends CharacterBody2D
 # shooting
 @export var cooldown = 0.25
 @export var bullet_scene: PackedScene
+@export var mass: float = 1.0
+
 var can_shoot = true
 var facing_direction = 1
 
