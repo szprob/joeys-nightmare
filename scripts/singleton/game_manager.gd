@@ -8,38 +8,18 @@ var item_manager : ItemManager
 var pipeline_manager : PipelineManagerScript
 
 var scan_lines_scene = preload("res://scenes/shader/crt.tscn")  # 直接预加载扫描线场景
+var pause_scene = preload("res://scenes/main/pause.tscn")
 # 添加背景音乐预加载
 var bgm_player: AudioStreamPlayer
 
-var game_state = {
-	'score': 0,
-	'last_scene_path': "",
-	'current_respawn_point_x': null,
-	'current_respawn_point_y': null,
-	'respawn_enable':false,
-	'archive_index': 1,
-	'settings': {
-		'full_screen': true,
-		'scan_lines': true,
-		'bgm_enabled': true  # 添加开关控制
-	},
-	'teleport_enable': true,
-	# 0: 开场 1: 找寻身份证 2: 找寻枪 3: 第一次梦境就绪
-	'day_phase' : 0,
-	'is_door_open': false,
-	'is_day_player_chatting' : false,
-	# 玩家道具库存： 只存道具名称
-	'inventory' : [],
-	'teleport_type': 'day2dream',
-	'has_slept': false,
-	'target_scene': 'res://scenes/dreams/bigworld/bigworld01.tscn'
-}
+var game_state = {}
 
 # 在文件开头添加 BGM 资源预加载
 var bgm_resources = {
 	"bgm": preload("res://assets/music/Drone Ambient Background by Infraction [No Copyright Music] _ Calm.mp3"),  
 
 }
+
 
 var dialogue_image_storage = {
 	"joey_normal": "res://assets/sprites/day/character/JOEY帅气版.png",
@@ -68,7 +48,8 @@ func init_default_state():
 		'inventory' : [],
 		'teleport_type': 'day2dream',
 		'has_slept': false,
-		'target_scene': 'res://scenes/dreams/bigworld/bigworld01.tscn'
+		'target_scene': 'res://scenes/dreams/bigworld/bigworld01.tscn',
+		'is_paused': false,
 	}
 	game_state = game_state2.duplicate(true)  # 深度复制默认状态
 
@@ -90,9 +71,12 @@ func get_items() -> Array[StringName]:
 
 
 func _ready() -> void:
+	init_default_state()  # 确保这是第一个调用的函数
+	
 	# 创建 ItemManager 实例时传入 self 作为参数
 	item_manager = ItemManager.new(self)
 	pipeline_manager = PipelineManagerScript.new(self)
+	
 	# 确保场景已被正确加载
 	if not scan_lines_scene:
 		push_error("扫描线场景未设置！请在检查器中设置scan_lines_scene")
@@ -101,14 +85,7 @@ func _ready() -> void:
 	# 添加场景树信号连接
 	get_tree().node_added.connect(_on_node_added)
 	
-	# # 初始化背景音乐播放器
-	# setup_bgm_player()
-	
-	init_default_state()
 	apply_settings()
-	
-	# 添加这一行来自动开始播放BGM
-	# play_bgm("bgm")
 
 func setup_bgm_player() -> void:
 	bgm_player = AudioStreamPlayer.new()
@@ -294,3 +271,60 @@ func switch_day_to_dream(scene_file_path: String) -> void:
 	end_dialogue()
 	GameManager.save_game_state()
 	get_tree().change_scene_to_file("res://scenes/modules/checkpoints/transition.tscn")
+
+# 添加暂停相关的方法
+func _input(event: InputEvent) -> void:
+	# 确保只在按键事件时调用 is_action_just_pressed
+	if event is InputEventKey and event.is_pressed():
+		if Input.is_action_just_pressed("esc"):
+			print("ESC 键被按下")
+			if not get_tree().current_scene.is_in_group("no_pause"):
+				print("当前场景允许暂停")
+				toggle_pause_menu()
+			else:
+				print("当前场景不允许暂停")
+
+func toggle_pause_menu() -> void:
+	if not game_state.has("is_paused"):
+		game_state["is_paused"] = false
+		
+	if game_state['is_paused']:
+		resume_game()
+	else:
+		pause_game()
+
+func pause_game() -> void:
+	print("正在暂停游戏...")
+	
+	# 先检查是否已经存在暂停菜单
+	var current_scene = get_tree().current_scene
+	var existing_pause = current_scene.get_node_or_null("PauseMenu")
+	if existing_pause:
+		print("暂停菜单已存在，跳过创建")
+		return
+		
+	game_state['is_paused'] = true
+	get_tree().paused = true
+	
+	var pause_scene_instance = pause_scene.instantiate()
+	pause_scene_instance.name = "PauseMenu"
+	
+	var canvas_layer = CanvasLayer.new()
+	canvas_layer.name = "PauseMenu"  # 给 CanvasLayer 也设置相同的名称
+	canvas_layer.layer = 99
+	canvas_layer.add_child(pause_scene_instance)
+	current_scene.add_child(canvas_layer)
+
+func resume_game() -> void:
+	print("正在恢复游戏...")
+	game_state['is_paused'] = false
+	
+	# 查找并删除所有暂停菜单实例
+	var current_scene = get_tree().current_scene
+	var pause_menu = current_scene.get_node_or_null("PauseMenu")
+	if pause_menu:
+		pause_menu.queue_free()
+	
+	get_tree().paused = false
+	print("游戏已恢复")
+

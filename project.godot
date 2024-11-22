@@ -48,6 +48,7 @@ game=""
 scan_lines=""
 teleport_enable=""
 player=""
+no_pause=""
 
 [input]
 

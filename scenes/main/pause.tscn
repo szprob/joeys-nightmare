@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnqwjaemhy5ug"]
+
+[ext_resource type="Script" path="res://scripts/singleton/pause.gd" id="1_mlgo2"]
+[ext_resource type="Texture2D" uid="uid://njds0q2uhdcf" path="res://assets/sprites/transition2/4.png" id="2_codny"]
+[ext_resource type="AudioStream" uid="uid://bg01uylk64iae" path="res://assets/sounds/interface/button.wav" id="2_eucxy"]
+
+[node name="Pause" type="Node2D" groups=["no_pause", "scan_lines"]]
+position = Vector2(236, 152)
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_mlgo2")
+
+[node name="Sprite4" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_codny")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_eucxy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_right = -150.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="continue" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "CONTINUE"
+
+[node name="main_menu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "MAIN MENU"
+
+[node name="quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "QUIT"
