@@ -2667,9 +2667,11 @@ shape = SubResource("RectangleShape2D_k7tf7")
 
 [node name="block_trap_0_1" parent="stage0/block_traps" instance=ExtResource("9_asb56")]
 position = Vector2(618, -199)
+script = null
 
 [node name="block_trap_0_2" parent="stage0/block_traps" instance=ExtResource("9_asb56")]
 position = Vector2(758, -200)
+script = null
 
 [node name="falling_traps" type="Node" parent="stage0"]
 

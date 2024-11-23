@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bhgixpqr8klwj" path="res://scenes/sokoban/box.tscn" id="7_igw1q"]
 [ext_resource type="PackedScene" uid="uid://bxs320cj2nn71" path="res://scenes/enemy/slime.tscn" id="7_tn02o"]
 [ext_resource type="FontFile" uid="uid://dvlu6bavl0eg7" path="res://assets/fonts/PixelOperator8.ttf" id="8_6417c"]
-[ext_resource type="PackedScene" uid="uid://kfdbq76ixwrq" path="res://scenes/modules/checkpoints/save_point.tscn" id="9_s7j6s"]
 [ext_resource type="PackedScene" uid="uid://b6pq8l7ym5nuh" path="res://scenes/modules/checkpoints/teleport.tscn" id="10_qycbb"]
 [ext_resource type="PackedScene" uid="uid://c8q6wa4cofe21" path="res://scenes/modules/traps/falling_trap_tgt.tscn" id="12_k03yn"]
 [ext_resource type="PackedScene" uid="uid://gbcy7ojh6h3w" path="res://scenes/modules/platforms/blink_platform.tscn" id="13_ibtkj"]
@@ -21,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cpqr3oauheogh" path="res://scenes/sokoban/button-1.tscn" id="20_0io07"]
 [ext_resource type="PackedScene" uid="uid://b4l0s4mgeuqyq" path="res://scenes/modules/checkpoints/bi-teleport.tscn" id="20_leco7"]
 [ext_resource type="PackedScene" uid="uid://d7nfljtqe8a6" path="res://scenes/modules/platforms/swing.tscn" id="21_60bxa"]
+[ext_resource type="PackedScene" uid="uid://cburb6kjbbck0" path="res://scenes/modules/platforms/seesaw.tscn" id="22_lmyni"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8553"]
 distance = -68.0
@@ -454,9 +454,6 @@ theme_override_font_sizes/font_size = 16
 text = "wasd控制方向
 space控制跳跃"
 
-[node name="save_point" parent="." instance=ExtResource("9_s7j6s")]
-position = Vector2(-556, -10)
-
 [node name="teleport" parent="." instance=ExtResource("10_qycbb")]
 position = Vector2(-656.999, -13.7744)
 
@@ -529,5 +526,9 @@ position = Vector2(-614, -8)
 position = Vector2(-549, -54)
 pivot_position = Vector2(-503, -100)
 player_force_factor = 20.0
+
+[node name="Seesaw" parent="." instance=ExtResource("22_lmyni")]
+position = Vector2(-822, -27)
+scale = Vector2(0.7, 0.7)
 
 [editable path="auto_close_door"]

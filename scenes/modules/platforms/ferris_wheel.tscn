@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn5no8n8sl8p8"]
+
+[ext_resource type="Script" path="res://scripts/modules/platforms/ferris_wheel.gd" id="1_d8uru"]
+[ext_resource type="Texture2D" uid="uid://bolosay51ijuk" path="res://assets/sprites/human/door.png" id="2_l6nvq"]
+
+[node name="FerrisWheel" type="Area2D"]
+position = Vector2(117, 81)
+script = ExtResource("1_d8uru")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -29)
+texture = ExtResource("2_l6nvq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1, 24)
+texture = ExtResource("2_l6nvq")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-28, -1)
+rotation = 1.5708
+texture = ExtResource("2_l6nvq")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(26, -3)
+rotation = 1.5708
+texture = ExtResource("2_l6nvq")

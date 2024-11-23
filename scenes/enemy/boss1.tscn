@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://berhy2v7l8ihk"]
+
+[ext_resource type="Script" path="res://scripts/enemy/boss_1.gd" id="1_edpoa"]
+[ext_resource type="Texture2D" uid="uid://c3n5taeck6b0m" path="res://assets/sprites/ai/ComfyUI_temp_ognfm_00040_.png" id="2_b2sya"]
+[ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_t24yw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2isk4"]
+atlas = ExtResource("2_b2sya")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vpq7c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2isk4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Boss1" type="CharacterBody2D"]
+script = ExtResource("1_edpoa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vpq7c")
+
+[node name="kill_zone" parent="." instance=ExtResource("3_t24yw")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
