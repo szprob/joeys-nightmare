@@ -81,6 +81,11 @@ func start_dialogue() -> void:
         current_state = NPCState.TALKING
         is_dialogue_active = true
         
+        # 获取玩家节点并禁用其输入
+        var player = get_tree().get_first_node_in_group("player")
+        if player and player.has_method("set_can_move"):
+            player.set_can_move(false)
+        
         # 使用 get_singleton() 获取 DialogueManager 实例
         var dialogue_manager = get_node("/root/DialogueManager")
         dialogue_manager.show_dialogue_balloon(
@@ -97,6 +102,12 @@ func start_dialogue() -> void:
 func _on_dialogue_ended(_resource: DialogueResourceFile) -> void:
     current_state = NPCState.IDLE
     is_dialogue_active = false
+    
+    # 重新启用玩家输入
+    var player = get_tree().get_first_node_in_group("player")
+    if player and player.has_method("set_can_move"):
+        player.set_can_move(true)
+        
     # 使用实例断开信号连接
     get_node("/root/DialogueManager").dialogue_ended.disconnect(_on_dialogue_ended)
 
