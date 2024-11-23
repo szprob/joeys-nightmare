@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://cburb6kjbbck0"]
+
+[ext_resource type="Script" path="res://scripts/modules/platforms/seesaw.gd" id="1_ch7th"]
+[ext_resource type="Texture2D" uid="uid://bolosay51ijuk" path="res://assets/sprites/human/door.png" id="2_s8iw6"]
+[ext_resource type="Texture2D" uid="uid://cmbxyp4glv8m7" path="res://assets/sprites/human/platform2.png" id="3_7idt3"]
+[ext_resource type="Texture2D" uid="uid://bwfxekt16jbbl" path="res://assets/sprites/human/trap.png" id="4_c1x25"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0myxd"]
+size = Vector2(29, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oo8sd"]
+size = Vector2(29, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bi5lp"]
+size = Vector2(30, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gusyr"]
+size = Vector2(193, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4adrr"]
+size = Vector2(27, 28)
+
+[node name="Seesaw" type="Area2D"]
+script = ExtResource("1_ch7th")
+
+[node name="left_side" type="Area2D" parent="."]
+position = Vector2(-99, -29)
+collision_layer = 0
+collision_mask = 129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left_side"]
+position = Vector2(4.5, 1)
+shape = SubResource("RectangleShape2D_0myxd")
+
+[node name="right_side" type="Area2D" parent="."]
+position = Vector2(89, -30)
+collision_layer = 0
+collision_mask = 129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right_side"]
+position = Vector2(6, 2)
+shape = SubResource("RectangleShape2D_oo8sd")
+
+[node name="right_plate" type="StaticBody2D" parent="."]
+position = Vector2(95, -10)
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="right_plate"]
+texture = ExtResource("3_7idt3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right_plate"]
+shape = SubResource("RectangleShape2D_bi5lp")
+one_way_collision = true
+
+[node name="left_plate" type="StaticBody2D" parent="."]
+position = Vector2(-93, -10)
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="left_plate"]
+texture = ExtResource("3_7idt3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left_plate"]
+shape = SubResource("RectangleShape2D_bi5lp")
+one_way_collision = true
+
+[node name="rod" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="rod"]
+rotation = 1.5708
+scale = Vector2(0.777024, 6.28056)
+texture = ExtResource("2_s8iw6")
+region_enabled = true
+region_rect = Rect2(2.91972, 8.62095, 10.1375, 31.7205)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rod"]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_gusyr")
+one_way_collision = true
+
+[node name="fulcrum" type="StaticBody2D" parent="."]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="fulcrum"]
+position = Vector2(1, 19)
+texture = ExtResource("4_c1x25")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fulcrum"]
+position = Vector2(2, 20)
+shape = SubResource("RectangleShape2D_4adrr")

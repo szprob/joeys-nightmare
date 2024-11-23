@@ -11,6 +11,9 @@ var buttons = []
 # 添加背景矩形的引用
 var background_rect: ColorRect
 
+var can_process_input = false  # 新增：控制是否处理输入的标志
+@onready var input_timer: Timer = Timer.new()  # 新增：计时器
+
 func _ready() -> void:
 	# 修改这些初始设置
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -48,6 +51,13 @@ func _ready() -> void:
 	for button in buttons:
 		button.custom_minimum_size.x = 150  # 按钮宽度稍小于容器
 		button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER  # 居中对齐
+	
+	# 设置并启动计时器
+	input_timer.one_shot = true  # 设置为一次性计时器
+	input_timer.wait_time = 0.7  # 设置等待时间为0.5秒
+	input_timer.timeout.connect(_on_input_timer_timeout)
+	add_child(input_timer)
+	input_timer.start()
 
 # 添加这个新函数
 func set_process_mode_recursive(node: Node) -> void:
@@ -60,6 +70,9 @@ func play_sfx():
 		sfx_player.play()
 
 func _process(_delta):
+	if !can_process_input:  # 如果还不能处理输入，直接返回
+		return
+		
 	if Input.is_action_just_pressed("down"):
 		current_index = (current_index + 1) % buttons.size()
 		buttons[current_index].grab_focus()
@@ -71,7 +84,13 @@ func _process(_delta):
 	elif Input.is_action_just_pressed("main_scene_select"):
 		buttons[current_index].emit_signal("pressed")
 		play_sfx()
+	elif Input.is_action_just_pressed("esc"):
+		play_sfx()
+		GameManager.resume_game()
 
+# 新增：计时器超时回调函数
+func _on_input_timer_timeout() -> void:
+	can_process_input = true
 
 func _on_continue_button_pressed() -> void:
 	play_sfx()
