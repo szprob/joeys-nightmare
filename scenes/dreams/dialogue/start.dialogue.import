@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://bcqs2anodc70i"
+path="res://.godot/imported/start.dialogue-a749e20523e0716c2aa1bfd7ddab9c47.tres"
+
+[deps]
+
+source_file="res://scenes/dreams/dialogue/start.dialogue"
+dest_files=["res://.godot/imported/start.dialogue-a749e20523e0716c2aa1bfd7ddab9c47.tres"]
+
+[params]
+
+defaults=true
