@@ -7,11 +7,13 @@ var debug_draw_enabled = true
 @export var tile_size := Vector2(32, 32) # 平铺大小
 @export var snap_to_grid := true # 是否对齐网格
 
+@export var one_time_use := false
 @export var enabled_at_start := true
 @export var arrow_length := 16.0
 @export var arrow_color := Color.YELLOW
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	body_exited.connect(_on_body_exited)
 	if not enabled_at_start:
 		gravity_space_override = SPACE_OVERRIDE_DISABLED
 		if has_node("AnimatedSprite2D"):
@@ -73,3 +75,11 @@ func _notification(what: int) -> void:
 		var snapped_pos = position.snapped(tile_size)
 		if position != snapped_pos:
 			position = snapped_pos
+
+func _on_body_exited(body: Node2D) -> void:
+	if one_time_use and body.is_in_group("player"):
+		# 可以直接销毁，或添加一个短暂的视觉效果后再销毁
+		# if has_node("AnimatedSprite2D"):
+		# 	$AnimatedSprite2D.play("fade_out") # 如果有淡出动画的话
+		# 	await $AnimatedSprite2D.animation_finished
+		queue_free()

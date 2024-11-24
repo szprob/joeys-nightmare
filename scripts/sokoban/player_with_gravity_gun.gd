@@ -28,6 +28,8 @@ func _ready():
 		if GameManager.game_state['current_respawn_point_x'] != null:
 			respawn_pos = Vector2(GameManager.game_state['current_respawn_point_x'], GameManager.game_state['current_respawn_point_y'])
 			position = respawn_pos
+	add_to_group("player")
+
 
 func respawn():
 	# 直接重新加载场景,不做其他处理
@@ -46,7 +48,6 @@ func start_jump() -> void:
 		jump_audio.play()
 
 
-	
 func shoot(Input) -> void:
 	print("shoot trigger: ", GameManager.game_state)
 	if not GameManager.has_item(&"玩具手枪"):
@@ -72,7 +73,6 @@ func shoot(Input) -> void:
 		if Input.is_action_pressed("right"):
 			shoot_direction.x = 1
 		b.start(position + Vector2(0, -8), shoot_direction)
-
 
 
 func _physics_process(delta: float) -> void:
