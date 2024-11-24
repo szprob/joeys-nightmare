@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck4p24ug1b88b"]
+
+[ext_resource type="Script" path="res://scripts/sokoban/qte_gravity_area.gd" id="1_cf5my"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wpe4i"]
+radius = 21.0238
+
+[node name="qte_gravity_area" type="Area2D"]
+position = Vector2(175, -27)
+collision_mask = 129
+script = ExtResource("1_cf5my")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wpe4i")
