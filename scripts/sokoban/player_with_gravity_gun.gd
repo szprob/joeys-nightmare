@@ -9,8 +9,12 @@ extends CharacterBody2D
 @export var cooldown = 0.25
 @export var bullet_scene: PackedScene
 @export var mass: float = 1.0
+@export var second_jump_enabled = true
 
 var can_shoot = true
+var has_double_jumped = false
+var second_jump_gravity_timer: float = 1.0
+var has_released_jump: bool = false
 var facing_direction = 1
 
 var jump_buffer_timer: float = 0.0 # 记录跳跃键按下的时间
@@ -18,6 +22,8 @@ var jump_hold_time: float = 0.0 # 记录跳跃键按住的时间
 var is_jumping: bool = false # 标记是否正在跳跃
 var default_pos = Vector2(0, 0)
 var respawn_pos = Vector2(0, 0)
+
+var gravity_scene = preload("res://scenes/sokoban/gravity_1.tscn")
 
 func _ready():
 	await ready
@@ -37,6 +43,9 @@ func respawn():
 
 # 开始跳跃的函数
 func start_jump() -> void:
+	has_released_jump = false
+	has_double_jumped = false
+	# has_released_jump = false
 	# 获取重力方向的单位向量
 	var gravity_dir = get_gravity().normalized()
 	# print('gravity dir', gravity_dir)
@@ -101,6 +110,11 @@ func _physics_process(delta: float) -> void:
 			velocity = velocity_along_gravity + velocity_perpendicular
 		
 		jump_buffer_timer -= delta # 在空中时，减少缓冲计时器
+
+		# print('has released jump1: ', has_released_jump)
+		if Input.is_action_just_released('jump'):
+			has_released_jump = true
+
 		# 如果玩家正在跳跃并且继续按住跳跃键，增加跳跃高度
 
 		if is_jumping and Input.is_action_pressed('jump'):
@@ -118,11 +132,20 @@ func _physics_process(delta: float) -> void:
 						# print('target velocity', target_velocity)
 						# 在重力方向上进行lerp
 						velocity = lerp(velocity, target_velocity, delta)
-
 		else:
 			is_jumping = false # 玩家松开跳跃键，停止跳跃高度增加
+		# 二段跳
 		
+		# print('has released jump2: ', has_released_jump)
+		if not has_double_jumped and second_jump_enabled and has_released_jump and Input.is_action_just_pressed('jump'):
+		# if second_jump_enabled and has_released_jump: # 筋斗云
+			has_double_jumped = true
+			set_gravity(Vector2(0, -5))
+			# second_jump_enabled = false
+
 	else:
+		# 落地时重置二段跳
+		has_double_jumped = false
 		# 角色刚落地时，检查是否在缓冲时间内按下过跳跃键
 		if jump_buffer_timer > 0:
 			start_jump() # 如果缓冲计时器大于0，则自动跳跃
@@ -313,3 +336,13 @@ func check_box_on_head() -> void:
 		print('box on head')
 	# 只在玩家向上移动时才影响箱子
 		free_player_from_box(result.collider)
+
+func set_gravity(new_gravity_direction: Vector2) -> void:
+	var gravity_instance = gravity_scene.instantiate()
+	gravity_instance.position = position
+	gravity_instance.scale = Vector2(2, 2)
+	gravity_instance.gravity_direction = new_gravity_direction
+	get_parent().add_child(gravity_instance)
+	var timer = get_tree().create_timer(second_jump_gravity_timer)
+	# second_jump_gravity_timer 秒后删除重力实例
+	timer.timeout.connect(func(): gravity_instance.queue_free())
