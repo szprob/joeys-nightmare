@@ -23,11 +23,10 @@ const PortalScene = preload("res://scenes/modules/checkpoints/empty-teleport.tsc
 
 # 添加新的变量
 @export var dialogue_resource: DialogueResourceFile
-@export var dialogue_start: String = "start"
-@export var dialogue_default: String = "default"
 
-
-
+# 添加对话进度追踪变量
+@export var dialogue_index: int = 0
+@export var dialogue_titles: Array[String] = ["start", "second", "final"]
 
 func _ready() -> void:
     # 初始化对话区域信号
@@ -78,7 +77,6 @@ func set_movement_target(target_position: Vector2) -> void:
 
 func start_dialogue() -> void:
     if can_interact and player_in_range and not is_dialogue_active:
-        current_state = NPCState.TALKING
         is_dialogue_active = true
         
         # 获取玩家节点并禁用其输入
@@ -86,17 +84,21 @@ func start_dialogue() -> void:
         if player and player.has_method("set_can_move"):
             player.set_can_move(false)
         
-        # 使用 get_singleton() 获取 DialogueManager 实例
+        # 根据对话进度选择对话标题
+        var current_title = dialogue_titles[dialogue_index] if dialogue_index < dialogue_titles.size() else dialogue_default
+        
         var dialogue_manager = get_node("/root/DialogueManager")
         dialogue_manager.show_dialogue_balloon(
             dialogue_resource,
-            dialogue_start,
+            current_title,  # 使用当前对话标题
             {
                 "npc": self,
             }
         )
         
-        # 监听对话结束事件
+        # 更新对话进度
+        dialogue_index = mini(dialogue_index + 1, dialogue_titles.size())
+        
         dialogue_manager.dialogue_ended.connect(_on_dialogue_ended)
 
 func _on_dialogue_ended(_resource: DialogueResourceFile) -> void:
