@@ -16,7 +16,7 @@ var has_double_jumped = false
 var second_jump_gravity_timer: float = 1.0
 var has_released_jump: bool = false
 var facing_direction = 1
-
+var can_move = true
 var jump_buffer_timer: float = 0.0 # 记录跳跃键按下的时间
 var jump_hold_time: float = 0.0 # 记录跳跃键按住的时间
 var is_jumping: bool = false # 标记是否正在跳跃
@@ -56,12 +56,16 @@ func start_jump() -> void:
 	if jump_audio and jump_audio.stream:
 		jump_audio.play()
 
-
+func set_can_move(value: bool) -> void:
+	can_move = value
+	
 func shoot(Input) -> void:
 	print("shoot trigger: ", GameManager.game_state)
 	if not GameManager.has_item(&"玩具手枪"):
 		return
 	var shoot_direction = Vector2(facing_direction, 0)
+	if not can_move:
+		return
 	if not can_shoot:
 		return
 	can_shoot = false
@@ -235,6 +239,14 @@ func _physics_process(delta: float) -> void:
 				# 只有当投影后的方向有效时才推动箱子
 				if projected_direction.length() > 0:
 					collider.push(projected_direction.normalized())
+
+	# 在处理移动之前检查can_move
+	if not can_move:
+		# 如果不能移动，将速度设为0并继续处理其他逻辑
+		velocity.x = 0
+		velocity.y = 0
+		move_and_slide()
+		return
 
 	move_and_slide()
 	# push boxes

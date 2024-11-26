@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://dhcoju0cv8u0y"]
+[gd_scene load_steps=33 format=4 uid="uid://dhcoju0cv8u0y"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_2ix8p"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_45goe"]
@@ -20,7 +20,9 @@
 [ext_resource type="PackedScene" uid="uid://cpqr3oauheogh" path="res://scenes/sokoban/button-1.tscn" id="20_0io07"]
 [ext_resource type="PackedScene" uid="uid://b4l0s4mgeuqyq" path="res://scenes/modules/checkpoints/bi-teleport.tscn" id="20_leco7"]
 [ext_resource type="PackedScene" uid="uid://d7nfljtqe8a6" path="res://scenes/modules/platforms/swing.tscn" id="21_60bxa"]
+[ext_resource type="PackedScene" uid="uid://c5x12p3650b3l" path="res://scenes/player/npc.tscn" id="22_fpvdh"]
 [ext_resource type="PackedScene" uid="uid://cburb6kjbbck0" path="res://scenes/modules/platforms/seesaw.tscn" id="22_lmyni"]
+[ext_resource type="Resource" uid="uid://bcqs2anodc70i" path="res://scenes/dreams/dialogue/start.dialogue" id="23_gxjlj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8553"]
 distance = -68.0
@@ -472,16 +474,6 @@ collision_layer = 0
 target = NodePath("../target")
 detection = NodePath("../Detection")
 
-[node name="player" parent="." groups=["player"] instance=ExtResource("15_rx0vs")]
-position = Vector2(-613.742, -33.2204)
-
-[node name="Camera2D" type="Camera2D" parent="player"]
-position = Vector2(0, -5)
-process_callback = 0
-limit_bottom = 150
-limit_smoothed = true
-position_smoothing_enabled = true
-
 [node name="auto_close_door" parent="." instance=ExtResource("18_nitj5")]
 position = Vector2(-246, -46)
 
@@ -522,6 +514,16 @@ position = Vector2(93, -17)
 [node name="button-1" parent="." instance=ExtResource("20_0io07")]
 position = Vector2(-614, -8)
 
+[node name="player" parent="." groups=["player"] instance=ExtResource("15_rx0vs")]
+position = Vector2(-960.404, -31.0477)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(0, -5)
+process_callback = 0
+limit_bottom = 150
+limit_smoothed = true
+position_smoothing_enabled = true
+
 [node name="Swing" parent="." instance=ExtResource("21_60bxa")]
 position = Vector2(-549, -54)
 pivot_position = Vector2(-503, -100)
@@ -530,5 +532,9 @@ player_force_factor = 20.0
 [node name="Seesaw" parent="." instance=ExtResource("22_lmyni")]
 position = Vector2(-822, -27)
 scale = Vector2(0.7, 0.7)
+
+[node name="Npc" parent="." instance=ExtResource("22_fpvdh")]
+position = Vector2(-1033, -14)
+dialogue_resource = ExtResource("23_gxjlj")
 
 [editable path="auto_close_door"]

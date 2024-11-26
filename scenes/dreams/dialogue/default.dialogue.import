@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://f16gojrrwojy"
+path="res://.godot/imported/default.dialogue-4b79d8fd5e560d0f799365990b7a7652.tres"
+
+[deps]
+
+source_file="res://scenes/dreams/dialogue/default.dialogue"
+dest_files=["res://.godot/imported/default.dialogue-4b79d8fd5e560d0f799365990b7a7652.tres"]
+
+[params]
+
+defaults=true
