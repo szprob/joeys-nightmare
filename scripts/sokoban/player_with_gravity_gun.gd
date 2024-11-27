@@ -89,10 +89,19 @@ func shoot(Input) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# 在函数开始时就检查 can_move
+	if not can_move:
+		# 如果不能移动，将速度设为0并直接返回
+		velocity = Vector2.ZERO
+		animated_sprite_2d.play('idle')
+		return
+		
 	if Input.is_action_just_pressed("reload"):
 		respawn()
 
 	# Add the gravity.
+	
+
 
 	if not is_on_terrain():
 		# print('not on terrain')
@@ -159,7 +168,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump input with buffering
 	if Input.is_action_just_pressed("jump"):
 		# print('is on terrain', is_on_terrain()
-		if is_on_terrain():
+		if is_on_terrain() and can_move:
 			start_jump() # 正常跳跃
 		else:
 			jump_buffer_timer = Consts.JUMP_BUFFER_TIME # 记录跳跃键按下的时间以便缓冲

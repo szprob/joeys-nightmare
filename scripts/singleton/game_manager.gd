@@ -235,7 +235,7 @@ var get_current_scene: Callable = func():
 func _get_balloon_path() -> String:
 	var is_small_window = true
 	# var is_small_window: bool = ProjectSettings.get_setting("display/window/size/viewport_width") < 400
-	var balloon_path: String = "res://dialogue_label/dialogue_balloon/small_example_balloon.tscn" if is_small_window else "res://dialogue_label/dialogue_balloon/example_balloon.tscn"
+	var balloon_path: String = "res://dialogue_label/dialogue_balloon_dream/small_example_balloon.tscn" if is_small_window else "res://dialogue_label/dialogue_balloon/example_balloon.tscn"
 	return balloon_path
 
 func show_dialogue(resource: DialogueResource, title: String = "", extra_game_states: Array = []) -> CanvasLayer:

@@ -62,7 +62,15 @@ var translation_source: TranslationSource = TranslationSource.Guess
 var get_current_scene: Callable = func():
 	var current_scene: Node = Engine.get_main_loop().current_scene
 	if current_scene == null:
-		current_scene = Engine.get_main_loop().root.get_child(Engine.get_main_loop().root.get_child_count() - 1)
+		# 尝试从根节点获取当前场景
+		var root = Engine.get_main_loop().root
+		current_scene = root.get_child(root.get_child_count() - 1)
+		
+		# 如果仍然为空，打印警告并返回根节点
+		if current_scene == null:
+			push_warning("无法获取当前场景，将使用根节点")
+			current_scene = root
+			
 	return current_scene
 
 var _has_loaded_autoloads: bool = false
