@@ -112,9 +112,14 @@ animations = [{
 size = Vector2(34, 19)
 
 [node name="Npc" type="CharacterBody2D" groups=["teleport_enable"]]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_drs2f")
-dialogue_start = null
-dialogue_default = null
+target_position = null
+texts = null
+bubble_delay = null
+bubble_texts = null
+bubble_index = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6.5)
@@ -131,5 +136,4 @@ collision_layer = 0
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueArea"]
-position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_a2kjh")
