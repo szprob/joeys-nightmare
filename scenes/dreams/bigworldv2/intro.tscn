@@ -1,0 +1,556 @@
+[gd_scene load_steps=31 format=4 uid="uid://dsaj4gvygalut"]
+
+[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="1_e7g7y"]
+[ext_resource type="Script" path="res://scripts/camera_2d.gd" id="2_326va"]
+[ext_resource type="Texture2D" uid="uid://b5jfcv0uem5wb" path="res://assets/sprites/background/multi3/back2.png" id="3_bywe3"]
+[ext_resource type="Texture2D" uid="uid://7joprmnjucj5" path="res://assets/sprites/background/multi3/moon2.png" id="4_kh1ep"]
+[ext_resource type="Texture2D" uid="uid://bl1rxkn33ywhl" path="res://assets/sprites/background/multi3/cloud.png" id="5_xeiy2"]
+[ext_resource type="Texture2D" uid="uid://bc3luaoy48sp7" path="res://assets/sprites/background/multi3/bird.png" id="6_donhh"]
+[ext_resource type="Texture2D" uid="uid://gvyrlttwr2dn" path="res://assets/sprites/background/multi3/people.png" id="7_jr474"]
+[ext_resource type="PackedScene" uid="uid://bi3000vv4vu3x" path="res://scenes/sokoban/gravity_tile/gravity_down.tscn" id="8_5eqv2"]
+[ext_resource type="Texture2D" uid="uid://c8ktpt687sgsd" path="res://assets/sprites/background/multi3/frontv2_1.png" id="8_6xflk"]
+[ext_resource type="PackedScene" uid="uid://cootft3ha6veu" path="res://scenes/sokoban/gravity_tile/gravity_left.tscn" id="9_cu7lw"]
+[ext_resource type="Texture2D" uid="uid://pv0iwkpm3tyv" path="res://assets/sprites/human/brick2.1.png" id="10_efx6i"]
+[ext_resource type="PackedScene" uid="uid://dlv4fqe1sg0dm" path="res://scenes/sokoban/gravity_tile/gravity_right.tscn" id="10_tpfo1"]
+[ext_resource type="PackedScene" uid="uid://bh3778qpcat7y" path="res://scenes/sokoban/gravity_tile/gravity_up.tscn" id="11_lt8ss"]
+[ext_resource type="PackedScene" uid="uid://dtn6bt0ark3is" path="res://scenes/enemy/monster.tscn" id="15_ylsp5"]
+[ext_resource type="PackedScene" uid="uid://c8q6wa4cofe21" path="res://scenes/modules/traps/falling_trap_tgt.tscn" id="16_2msuj"]
+[ext_resource type="PackedScene" uid="uid://dlyl2v0k7iiry" path="res://scenes/modules/traps/detection.tscn" id="17_k0brv"]
+[ext_resource type="PackedScene" uid="uid://cv3nrtrevxkyu" path="res://scenes/sokoban/gravity_1.tscn" id="18_76axl"]
+[ext_resource type="PackedScene" uid="uid://bhgixpqr8klwj" path="res://scenes/sokoban/box.tscn" id="19_dim88"]
+[ext_resource type="PackedScene" uid="uid://8gajxily3trj" path="res://scenes/sokoban/door_1.tscn" id="20_bt1wm"]
+[ext_resource type="PackedScene" uid="uid://cpqr3oauheogh" path="res://scenes/sokoban/button-1.tscn" id="21_rwo23"]
+[ext_resource type="PackedScene" uid="uid://kfdbq76ixwrq" path="res://scenes/modules/checkpoints/save_point.tscn" id="22_tqmij"]
+[ext_resource type="PackedScene" uid="uid://b4l0s4mgeuqyq" path="res://scenes/modules/checkpoints/bi-teleport.tscn" id="23_hcf7t"]
+[ext_resource type="PackedScene" uid="uid://cair83ouq2qd0" path="res://scenes/modules/checkpoints/target.tscn" id="24_qgt10"]
+[ext_resource type="PackedScene" uid="uid://b6pq8l7ym5nuh" path="res://scenes/modules/checkpoints/teleport.tscn" id="30_jtg7r"]
+[ext_resource type="PackedScene" uid="uid://cyp6s0hn0oacu" path="res://scenes/modules/auto_invisible_label.tscn" id="31_t7bi6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_27oib"]
+texture = ExtResource("10_efx6i")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_rvt4p"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_27oib")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ewwqt"]
+scenes/1/scene = ExtResource("8_5eqv2")
+scenes/2/scene = ExtResource("9_cu7lw")
+scenes/3/scene = ExtResource("10_tpfo1")
+scenes/4/scene = ExtResource("11_lt8ss")
+
+[sub_resource type="TileSet" id="TileSet_js2h5"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetScenesCollectionSource_ewwqt")
+
+[sub_resource type="Curve2D" id="Curve2D_rtoo5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 64, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 4
+
+[node name="Game" type="Node2D" groups=["scan_lines"]]
+
+[node name="backgroud" type="Node2D" parent="."]
+z_index = -2
+position = Vector2(64, 8)
+
+[node name="back" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/back"]
+position = Vector2(-179.325, -91)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_bywe3")
+centered = false
+
+[node name="moon" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.05, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/moon"]
+position = Vector2(-179, -45.22)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_kh1ep")
+centered = false
+
+[node name="cloud" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(859.12, 0)
+autoscroll = Vector2(16, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/cloud"]
+position = Vector2(-8, -52.445)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_xeiy2")
+centered = false
+
+[node name="bird" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.15, 0)
+repeat_size = Vector2(768, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/bird"]
+position = Vector2(-68, -72)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_donhh")
+centered = false
+
+[node name="people" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.2, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/people"]
+position = Vector2(-0.999992, -72)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_jr474")
+centered = false
+
+[node name="front" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.3, 0)
+scroll_offset = Vector2(-10, -8.19)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/front"]
+position = Vector2(90, -40.545)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_6xflk")
+centered = false
+
+[node name="maps" type="Node2D" parent="."]
+
+[node name="map3" type="Node2D" parent="maps"]
+position = Vector2(464, -512)
+
+[node name="map" type="TileMapLayer" parent="maps/map3"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAAAAAAAAAARABAAAAAAAAAAAAASABAAAAAAAAAAAAATABAAAAAAAAAAAAAUABAAAAAAAAAAAAAVABAAAAAAAAAAAAAWABAAAAAAAAAAAAAXABAAAAAAAAAAAAAYABAAAAAAAAAAAAAZABAAAAAAAAAAAAAaABAAAAAAAAAAAAAbABAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAAcAA8AAAAAAAAAAAAcAA4AAAAAAAAAAAAcAA0AAAAAAAAAAAAcAAwAAAAAAAAAAAAcAAsAAAAAAAAAAAAcAAoAAAAAAAAAAAAcAAkAAAAAAAAAAAAcAAgAAAAAAAAAAAAbAAoAAAAAAAAAAAAbAAsAAAAAAAAAAAAbAAwAAAAAAAAAAAAbAA0AAAAAAAAAAAAbAA4AAAAAAAAAAAAbAA8AAAAAAAAAAAAaAA8AAAAAAAAAAAAaAA4AAAAAAAAAAAAaAA0AAAAAAAAAAAAaAAwAAAAAAAAAAAAZAA0AAAAAAAAAAAAZAA4AAAAAAAAAAAAZAA8AAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAADAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAAEAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAoAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAkAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAoAAAAAAAAAAAAQAAgAAAAAAAAAAAAQAAkAAAAAAAAAAAARAAkAAAAAAAAAAAASAAkAAAAAAAAAAAASAAoAAAAAAAAAAAATAAoAAAAAAAAAAAARAAoAAAAAAAAAAAAQAAoAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAMAAAAAAAAAAAARAA8AAAAAAAAAAAAGAA8AAAAAAAAAAAAFAA8AAAAAAAAAAAAEAA8AAAAAAAAAAAAEAA4AAAAAAAAAAAAFAA4AAAAAAAAAAAAQAA8AAAAAAAAAAAASAA8AAAAAAAAAAAARAA4AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="map" type="Node2D" parent="maps"]
+
+[node name="map" type="TileMapLayer" parent="maps/map"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABAAAAAAAAAAAAAAABABAAAAAAAAAAAAACAAAAAAAAAAAAAAACABAAAAAAAAAAAAADAAAAAAAAAAAAAAADABAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEABAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFABAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGABAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHABAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIABAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJABAAAAAAAAAAAAAKAAAAAAAAAAAAAAAKABAAAAAAAAAAAAALAAAAAAAAAAAAAAALABAAAAAAAAAAAAAMAAAAAAAAAAAAAAAMABAAAAAAAAAAAAANAAAAAAAAAAAAAAANABAAAAAAAAAAAAAOAAAAAAAAAAAAAAAOABAAAAAAAAAAAAAPAAAAAAAAAAAAAAAPABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWAAAAAAAAAAAAAAAWABAAAAAAAAAAAAAXAAAAAAAAAAAAAAAXABAAAAAAAAAAAAAYAAAAAAAAAAAAAAAYABAAAAAAAAAAAAAZAAAAAAAAAAAAAAAZABAAAAAAAAAAAAAaAAAAAAAAAAAAAAAaABAAAAAAAAAAAAAbAAAAAAAAAAAAAAAbABAAAAAAAAAAAAAcAAAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="map7" type="Node2D" parent="maps"]
+
+[node name="gravity" type="Node2D" parent="maps/map7"]
+
+[node name="gravity_0_16" parent="maps/map7/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(672, 48)
+
+[node name="gravity_0_17" parent="maps/map7/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(672, 80)
+
+[node name="gravity_0_18" parent="maps/map7/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(672, 112)
+
+[node name="map" type="TileMapLayer" parent="maps/map7"]
+use_parent_material = true
+position = Vector2(464, 0)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABAAAAAAAAAAAAAAABABAAAAAAAAAAAAACAAAAAAAAAAAAAAACABAAAAAAAAAAAAADAAAAAAAAAAAAAAADABAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEABAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFABAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGABAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHABAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIABAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJABAAAAAAAAAAAAAKAAAAAAAAAAAAAAAKABAAAAAAAAAAAAALAAAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOAAAAAAAAAAAAAAAOABAAAAAAAAAAAAAPAAAAAAAAAAAAAAAPABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWAAAAAAAAAAAAAAAWABAAAAAAAAAAAAAXAAAAAAAAAAAAAAAXABAAAAAAAAAAAAAYAAAAAAAAAAAAAAAYABAAAAAAAAAAAAAZAAAAAAAAAAAAAAAZABAAAAAAAAAAAAAaAAAAAAAAAAAAAAAaABAAAAAAAAAAAAAbAAAAAAAAAAAAAAAbABAAAAAAAAAAAAAcAAAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAAOAAcAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAQAAAAAAAAAAAAOAAMAAAAAAAAAAAAOAAIAAAAAAAAAAAAOAAEAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="teleport" parent="maps/map7" instance=ExtResource("30_jtg7r")]
+position = Vector2(1872, -32)
+target_scene = "res://scenes/dreams/bigworld/chase_stage.tscn"
+teleport_type = 2
+
+[node name="map6" type="Node2D" parent="maps"]
+position = Vector2(1392, -256)
+
+[node name="map" type="TileMapLayer" parent="maps/map6"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAABAAAAAAAAAAAAABAAAAAAAAAAAAAAABABAAAAAAAAAAAAACAAAAAAAAAAAAAAACABAAAAAAAAAAAAADAAAAAAAAAAAAAAADABAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEABAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFABAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGABAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHABAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIABAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJABAAAAAAAAAAAAAKAAAAAAAAAAAAAAAKABAAAAAAAAAAAAALAAAAAAAAAAAAAAALABAAAAAAAAAAAAAMAAAAAAAAAAAAAAAMABAAAAAAAAAAAAANAAAAAAAAAAAAAAANABAAAAAAAAAAAAAOAAAAAAAAAAAAAAAOABAAAAAAAAAAAAAPAAAAAAAAAAAAAAAPABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWAAAAAAAAAAAAAAAWABAAAAAAAAAAAAAXAAAAAAAAAAAAAAAXABAAAAAAAAAAAAAYAAAAAAAAAAAAAAAYABAAAAAAAAAAAAAZAAAAAAAAAAAAAAAZABAAAAAAAAAAAAAaAAAAAAAAAAAAAAAaABAAAAAAAAAAAAAbAAAAAAAAAAAAAAAbABAAAAAAAAAAAAAcAAAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAAbAAsAAAAAAAAAAAAcAAsAAAAAAAAAAAAbAAoAAAAAAAAAAAAcAAoAAAAAAAAAAAAcAAkAAAAAAAAAAAAbAA8AAAAAAAAAAAAcAA8AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="swap1" type="Node2D" parent="maps/map6"]
+position = Vector2(-1392, 256)
+
+[node name="bi-teleport" parent="maps/map6/swap1" node_paths=PackedStringArray("target") instance=ExtResource("23_hcf7t")]
+position = Vector2(1176, -16)
+target = NodePath("../Target")
+
+[node name="Target" parent="maps/map6/swap1" instance=ExtResource("24_qgt10")]
+position = Vector2(1000, -216)
+
+[node name="bi-teleport2" parent="maps/map6/swap1" node_paths=PackedStringArray("target") instance=ExtResource("23_hcf7t")]
+position = Vector2(968, -192)
+target = NodePath("../Target2")
+
+[node name="Target2" parent="maps/map6/swap1" instance=ExtResource("24_qgt10")]
+position = Vector2(1128, -40)
+
+[node name="box-door3" type="Node2D" parent="maps/map6"]
+position = Vector2(-1392, 256)
+
+[node name="box" parent="maps/map6/box-door3" instance=ExtResource("19_dim88")]
+position = Vector2(1312, -112)
+
+[node name="box2" parent="maps/map6/box-door3" instance=ExtResource("19_dim88")]
+position = Vector2(1048, -192)
+
+[node name="door-1" parent="maps/map6/box-door3" instance=ExtResource("20_bt1wm")]
+position = Vector2(1312, -24)
+
+[node name="button-1" parent="maps/map6/box-door3" instance=ExtResource("21_rwo23")]
+position = Vector2(1312, -240)
+rotation = 3.14159
+doors = Array[NodePath]([NodePath("../door-1")])
+
+[node name="box-door4" type="Node2D" parent="maps/map6"]
+position = Vector2(-1392, 256)
+
+[node name="gravity3" parent="maps/map6/box-door4" instance=ExtResource("18_76axl")]
+position = Vector2(1312, -128)
+enabled_at_start = false
+
+[node name="gravity4" parent="maps/map6/box-door4" instance=ExtResource("18_76axl")]
+position = Vector2(1312, -160)
+enabled_at_start = false
+
+[node name="gravity5" parent="maps/map6/box-door4" instance=ExtResource("18_76axl")]
+position = Vector2(1312, -192)
+enabled_at_start = false
+
+[node name="gravity6" parent="maps/map6/box-door4" instance=ExtResource("18_76axl")]
+position = Vector2(1312, -224)
+enabled_at_start = false
+
+[node name="button-1" parent="maps/map6/box-door4" instance=ExtResource("21_rwo23")]
+position = Vector2(1072, -8)
+doors = Array[NodePath]([NodePath("../gravity3"), NodePath("../gravity4"), NodePath("../gravity5"), NodePath("../gravity6")])
+
+[node name="gravity" type="Node2D" parent="maps/map6"]
+position = Vector2(-1392, 256)
+
+[node name="save_point_1" parent="maps/map6" instance=ExtResource("22_tqmij")]
+position = Vector2(-408, 248)
+
+[node name="map5" type="Node2D" parent="maps"]
+position = Vector2(928, -256)
+
+[node name="map" type="TileMapLayer" parent="maps/map5"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABAAAAAAAAAAAAAAABABAAAAAAAAAAAAACAAAAAAAAAAAAAAACABAAAAAAAAAAAAADAAAAAAAAAAAAAAADABAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEABAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFABAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGABAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHABAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIABAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJABAAAAAAAAAAAAAKAAAAAAAAAAAAAAAKABAAAAAAAAAAAAALAAAAAAAAAAAAAAALABAAAAAAAAAAAAAMAAAAAAAAAAAAAAAMABAAAAAAAAAAAAANAAAAAAAAAAAAAAANABAAAAAAAAAAAAAOAAAAAAAAAAAAAAAOABAAAAAAAAAAAAAPAAAAAAAAAAAAAAAPABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWAAAAAAAAAAAAAAAWABAAAAAAAAAAAAAXAAAAAAAAAAAAAAAXABAAAAAAAAAAAAAYAAAAAAAAAAAAAAAYABAAAAAAAAAAAAAZAAAAAAAAAAAAAAAZABAAAAAAAAAAAAAaAAAAAAAAAAAAAAAaABAAAAAAAAAAAAAbAAAAAAAAAAAAAAAbABAAAAAAAAAAAAAcAAAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdABAAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAQAAAAAAAAAAAAQAAoAAAAAAAAAAAARAAoAAAAAAAAAAAASAAoAAAAAAAAAAAATAAoAAAAAAAAAAAAUAAoAAAAAAAAAAAAVAAoAAAAAAAAAAAAWAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAYAAoAAAAAAAAAAAAZAAoAAAAAAAAAAAAaAAoAAAAAAAAAAAAbAAoAAAAAAAAAAAAcAAoAAAAAAAAAAAAcAAsAAAAAAAAAAAAbAAsAAAAAAAAAAAAaAAsAAAAAAAAAAAAZAAsAAAAAAAAAAAAYAAsAAAAAAAAAAAAXAAsAAAAAAAAAAAAWAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAVAAwAAAAAAAAAAAAWAAwAAAAAAAAAAAAXAAwAAAAAAAAAAAAYAAwAAAAAAAAAAAAZAAwAAAAAAAAAAAAaAAwAAAAAAAAAAAAbAAwAAAAAAAAAAAAcAAwAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="gravity" type="Node2D" parent="maps/map5"]
+position = Vector2(-928, 256)
+
+[node name="gravity_0_31" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1424, -192)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_32" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1424, -160)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_33" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1424, -128)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_34" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1424, -96)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_36" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1456, -192)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_37" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1456, -160)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_38" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1456, -128)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_39" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1456, -96)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_11" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1456, -224)
+
+[node name="gravity_0_35" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1488, -224)
+
+[node name="gravity_0_12" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1424, -224)
+
+[node name="gravity_0_13" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1520, -224)
+
+[node name="gravity_0_14" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1552, -224)
+
+[node name="gravity_0_15" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1584, -224)
+
+[node name="gravity_0_16" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1752, -72)
+
+[node name="gravity_0_17" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1752, -40)
+
+[node name="gravity_0_18" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1784, -72)
+
+[node name="gravity_0_19" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1784, -40)
+
+[node name="gravity_0_20" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1752, -104)
+
+[node name="gravity_0_21" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1784, -104)
+
+[node name="gravity_0_22" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1752, -136)
+
+[node name="gravity_0_23" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1784, -136)
+
+[node name="gravity_0_24" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1752, -168)
+
+[node name="gravity_0_25" parent="maps/map5/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(1784, -168)
+
+[node name="box-door" type="Node2D" parent="maps/map5"]
+position = Vector2(-928, 256)
+
+[node name="box" parent="maps/map5/box-door" instance=ExtResource("19_dim88")]
+position = Vector2(1507, -223)
+
+[node name="door-1" parent="maps/map5/box-door" instance=ExtResource("20_bt1wm")]
+position = Vector2(1744, -184)
+rotation = 1.5708
+
+[node name="door-2" parent="maps/map5/box-door" instance=ExtResource("20_bt1wm")]
+position = Vector2(1792, -184)
+rotation = 1.5708
+
+[node name="button-1" parent="maps/map5/box-door" instance=ExtResource("21_rwo23")]
+position = Vector2(1552, 0)
+doors = Array[NodePath]([NodePath("../door-1"), NodePath("../door-2"), NodePath("")])
+
+[node name="box-door2" type="Node2D" parent="maps/map5"]
+position = Vector2(-928, 256)
+
+[node name="box" parent="maps/map5/box-door2" instance=ExtResource("19_dim88")]
+position = Vector2(1768, -208)
+
+[node name="door-1" parent="maps/map5/box-door2" instance=ExtResource("20_bt1wm")]
+position = Vector2(1848, -40)
+
+[node name="button-1" parent="maps/map5/box-door2" instance=ExtResource("21_rwo23")]
+position = Vector2(1768, -240)
+rotation = 3.14159
+doors = Array[NodePath]([NodePath("../door-1")])
+
+[node name="save_point_0" parent="maps/map5" instance=ExtResource("22_tqmij")]
+position = Vector2(512, 232)
+
+[node name="map4" type="Node2D" parent="maps"]
+position = Vector2(464, -256)
+
+[node name="map" type="TileMapLayer" parent="maps/map4"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEABAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFABAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGABAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHABAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIABAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJABAAAAAAAAAAAAAKAAAAAAAAAAAAAAAKABAAAAAAAAAAAAALAAAAAAAAAAAAAAALABAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAOABAAAAAAAAAAAAAPAAAAAAAAAAAAAAAPABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWAAAAAAAAAAAAAAAWABAAAAAAAAAAAAAXAAAAAAAAAAAAAAAXABAAAAAAAAAAAAAYAAAAAAAAAAAAAAAYABAAAAAAAAAAAAAZAAAAAAAAAAAAAAAZABAAAAAAAAAAAAAaAAAAAAAAAAAAAAAaABAAAAAAAAAAAAAbAAAAAAAAAAAAAAAbABAAAAAAAAAAAAAcAAAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAAAAAAAAAAAPAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAARAAQAAAAAAAAAAAASAAQAAAAAAAAAAAATAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAVAAQAAAAAAAAAAAAWAAQAAAAAAAAAAAAXAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAZAAQAAAAAAAAAAAAcAAgAAAAAAAAAAAAbAAgAAAAAAAAAAAAaAAgAAAAAAAAAAAAZAAgAAAAAAAAAAAAYAAgAAAAAAAAAAAAXAAgAAAAAAAAAAAAWAAgAAAAAAAAAAAAVAAgAAAAAAAAAAAAUAAgAAAAAAAAAAAATAAgAAAAAAAAAAAASAAgAAAAAAAAAAAARAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAcAAwAAAAAAAAAAAAbAAwAAAAAAAAAAAAaAAwAAAAAAAAAAAAXAAwAAAAAAAAAAAAWAAwAAAAAAAAAAAAVAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAATAAwAAAAAAAAAAAASAAwAAAAAAAAAAAARAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAAPAAwAAAAAAAAAAAAOAAwAAAAAAAAAAAALAAwAAAAAAAAAAAAKAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAHAAwAAAAAAAAAAAAGAAwAAAAAAAAAAAAFAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAADAAwAAAAAAAAAAAACAAwAAAAAAAAAAAABAAwAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="gravity_tile" type="TileMapLayer" parent="maps/map4"]
+tile_set = SubResource("TileSet_js2h5")
+
+[node name="monster" type="Node2D" parent="maps/map4"]
+position = Vector2(-464, 256)
+
+[node name="Path2D" type="Path2D" parent="maps/map4/monster"]
+position = Vector2(600, -200)
+curve = SubResource("Curve2D_rtoo5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="maps/map4/monster/Path2D"]
+rotates = false
+
+[node name="MonsterByPath2" parent="maps/map4/monster/Path2D/PathFollow2D" instance=ExtResource("15_ylsp5")]
+
+[node name="Path2D2" type="Path2D" parent="maps/map4/monster"]
+position = Vector2(728, -200)
+curve = SubResource("Curve2D_rtoo5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="maps/map4/monster/Path2D2"]
+rotates = false
+
+[node name="MonsterByPath2" parent="maps/map4/monster/Path2D2/PathFollow2D" instance=ExtResource("15_ylsp5")]
+
+[node name="Path2D3" type="Path2D" parent="maps/map4/monster"]
+position = Vector2(744, -200)
+curve = SubResource("Curve2D_rtoo5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="maps/map4/monster/Path2D3"]
+rotates = false
+
+[node name="MonsterByPath3" parent="maps/map4/monster/Path2D3/PathFollow2D" instance=ExtResource("15_ylsp5")]
+
+[node name="falling_traps" type="Node2D" parent="maps/map4"]
+position = Vector2(-464, 256)
+
+[node name="falling_traps" type="Node" parent="maps/map4/falling_traps"]
+
+[node name="FallingTrapTgt" parent="maps/map4/falling_traps/falling_traps" node_paths=PackedStringArray("target", "detection") instance=ExtResource("16_2msuj")]
+position = Vector2(480, -136)
+rotation = -1.5708
+target = NodePath("target")
+detection = NodePath("../Detection")
+
+[node name="target" type="Area2D" parent="maps/map4/falling_traps/falling_traps/FallingTrapTgt"]
+position = Vector2(0, 455)
+scale = Vector2(16.0005, 16)
+
+[node name="Detection" parent="maps/map4/falling_traps/falling_traps" instance=ExtResource("17_k0brv")]
+position = Vector2(859, -154)
+scale = Vector2(3.83945, 1.39896)
+
+[node name="falling_traps2" type="Node" parent="maps/map4/falling_traps"]
+
+[node name="FallingTrapTgt" parent="maps/map4/falling_traps/falling_traps2" node_paths=PackedStringArray("target", "detection") instance=ExtResource("16_2msuj")]
+position = Vector2(912, -72)
+rotation = 1.5708
+target = NodePath("target")
+detection = NodePath("../Detection")
+
+[node name="target" type="Area2D" parent="maps/map4/falling_traps/falling_traps2/FallingTrapTgt"]
+position = Vector2(1.90735e-05, 440)
+rotation = 3.14159
+scale = Vector2(16.0005, 16)
+
+[node name="Detection" parent="maps/map4/falling_traps/falling_traps2" instance=ExtResource("17_k0brv")]
+position = Vector2(544, -88)
+scale = Vector2(3.83945, 1.39896)
+
+[node name="falling_traps3" type="Node" parent="maps/map4/falling_traps"]
+
+[node name="FallingTrapTgt" parent="maps/map4/falling_traps/falling_traps3" node_paths=PackedStringArray("target", "detection") instance=ExtResource("16_2msuj")]
+position = Vector2(912, -96)
+rotation = 1.5708
+target = NodePath("target")
+detection = NodePath("../Detection")
+
+[node name="target" type="Area2D" parent="maps/map4/falling_traps/falling_traps3/FallingTrapTgt"]
+position = Vector2(1.90735e-05, 440)
+rotation = 3.14159
+scale = Vector2(16.0005, 16)
+
+[node name="Detection" parent="maps/map4/falling_traps/falling_traps3" instance=ExtResource("17_k0brv")]
+position = Vector2(672, -96)
+scale = Vector2(2.29504, 1.04272)
+
+[node name="gravity" type="Node2D" parent="maps/map4"]
+position = Vector2(-464, 256)
+
+[node name="gravity_0_1" parent="maps/map4/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(744, -224)
+
+[node name="gravity_0_6" parent="maps/map4/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(776, -224)
+
+[node name="gravity_0_3" parent="maps/map4/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(784, -160)
+
+[node name="gravity_0_8" parent="maps/map4/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(816, -160)
+
+[node name="gravity_0_5" parent="maps/map4/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(488, -8)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity_0_4" parent="maps/map4/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(656, -96)
+
+[node name="gravity_0_10" parent="maps/map4/gravity" instance=ExtResource("18_76axl")]
+position = Vector2(688, -96)
+
+[node name="coins" type="Node2D" parent="maps/map4"]
+position = Vector2(-464, 256)
+
+[node name="box-door" type="Node2D" parent="maps/map4"]
+position = Vector2(-464, 256)
+
+[node name="box" parent="maps/map4/box-door" instance=ExtResource("19_dim88")]
+position = Vector2(542, -17)
+
+[node name="door-1" parent="maps/map4/box-door" instance=ExtResource("20_bt1wm")]
+position = Vector2(896, -24)
+
+[node name="button-1" parent="maps/map4/box-door" instance=ExtResource("21_rwo23")]
+position = Vector2(672, -112)
+rotation = 3.14159
+doors = Array[NodePath]([NodePath("../door-1")])
+
+[node name="save_point_0" parent="maps/map4" instance=ExtResource("22_tqmij")]
+position = Vector2(288, 248)
+
+[node name="map1" type="Node2D" parent="maps"]
+position = Vector2(0, -512)
+
+[node name="player_with_gravity" parent="maps/map1" groups=["player"] instance=ExtResource("1_e7g7y")]
+position = Vector2(176, 104)
+
+[node name="Camera2D" type="Camera2D" parent="maps/map1/player_with_gravity"]
+position = Vector2(192, 88)
+limit_left = 464
+limit_top = -254
+limit_right = 944
+limit_bottom = 16
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("2_326va")
+
+[node name="AutoInvisibleLabel" parent="maps/map1/player_with_gravity" instance=ExtResource("31_t7bi6")]
+offset_left = -24.0
+offset_top = -40.0
+offset_right = 42.0
+offset_bottom = -17.0
+theme_override_font_sizes/font_size = 12
+text = "我这是在哪?"
+
+[node name="map" type="TileMapLayer" parent="maps/map1"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAAAAAAAAAARABAAAAAAAAAAAAASABAAAAAAAAAAAAATABAAAAAAAAAAAAAUABAAAAAAAAAAAAAVABAAAAAAAAAAAAAWABAAAAAAAAAAAAAXABAAAAAAAAAAAAAYABAAAAAAAAAAAAAZABAAAAAAAAAAAAAaABAAAAAAAAAAAAAbABAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAABAAsAAAAAAAAAAAABAAwAAAAAAAAAAAABAA0AAAAAAAAAAAABAA4AAAAAAAAAAAABAA8AAAAAAAAAAAACAAsAAAAAAAAAAAACAAwAAAAAAAAAAAACAA0AAAAAAAAAAAACAA4AAAAAAAAAAAACAA8AAAAAAAAAAAADAAsAAAAAAAAAAAADAAwAAAAAAAAAAAADAA0AAAAAAAAAAAADAA4AAAAAAAAAAAADAA8AAAAAAAAAAAAEAAsAAAAAAAAAAAAEAAwAAAAAAAAAAAAEAA0AAAAAAAAAAAAEAA4AAAAAAAAAAAAEAA8AAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAAAAAAFAA0AAAAAAAAAAAAFAA4AAAAAAAAAAAAFAA8AAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAwAAAAAAAAAAAAGAA0AAAAAAAAAAAAGAA4AAAAAAAAAAAAGAA8AAAAAAAAAAAAHAAsAAAAAAAAAAAAHAAwAAAAAAAAAAAAHAA0AAAAAAAAAAAAHAA4AAAAAAAAAAAAHAA8AAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAAAAAAIAA0AAAAAAAAAAAAIAA4AAAAAAAAAAAAIAA8AAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAJAA0AAAAAAAAAAAAJAA4AAAAAAAAAAAAJAA8AAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAAKAA0AAAAAAAAAAAAKAA4AAAAAAAAAAAAKAA8AAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAALAA0AAAAAAAAAAAALAA4AAAAAAAAAAAALAA8AAAAAAAAAAAAMAAsAAAAAAAAAAAAMAAwAAAAAAAAAAAAMAA0AAAAAAAAAAAAMAA4AAAAAAAAAAAAMAA8AAAAAAAAAAAANAAsAAAAAAAAAAAANAAwAAAAAAAAAAAANAA0AAAAAAAAAAAANAA4AAAAAAAAAAAANAA8AAAAAAAAAAAAOAAsAAAAAAAAAAAAOAAwAAAAAAAAAAAAOAA0AAAAAAAAAAAAOAA4AAAAAAAAAAAAOAA8AAAAAAAAAAAAPAAsAAAAAAAAAAAAPAAwAAAAAAAAAAAAPAA0AAAAAAAAAAAAPAA4AAAAAAAAAAAAPAA8AAAAAAAAAAAAQAAsAAAAAAAAAAAAQAAwAAAAAAAAAAAAQAA0AAAAAAAAAAAAQAA4AAAAAAAAAAAAQAA8AAAAAAAAAAAARAAsAAAAAAAAAAAARAAwAAAAAAAAAAAARAA0AAAAAAAAAAAARAA4AAAAAAAAAAAARAA8AAAAAAAAAAAASAAsAAAAAAAAAAAASAAwAAAAAAAAAAAASAA0AAAAAAAAAAAASAA4AAAAAAAAAAAASAA8AAAAAAAAAAAATAAsAAAAAAAAAAAATAAwAAAAAAAAAAAATAA0AAAAAAAAAAAATAA4AAAAAAAAAAAATAA8AAAAAAAAAAAAUAAsAAAAAAAAAAAAUAAwAAAAAAAAAAAAUAA0AAAAAAAAAAAAUAA4AAAAAAAAAAAAUAA8AAAAAAAAAAAAVAAsAAAAAAAAAAAAVAAwAAAAAAAAAAAAVAA0AAAAAAAAAAAAVAA4AAAAAAAAAAAAVAA8AAAAAAAAAAAAWAAsAAAAAAAAAAAAWAAwAAAAAAAAAAAAWAA0AAAAAAAAAAAAWAA4AAAAAAAAAAAAWAA8AAAAAAAAAAAAXAAsAAAAAAAAAAAAXAAwAAAAAAAAAAAAXAA0AAAAAAAAAAAAXAA4AAAAAAAAAAAAXAA8AAAAAAAAAAAAYAAsAAAAAAAAAAAAYAAwAAAAAAAAAAAAYAA0AAAAAAAAAAAAYAA4AAAAAAAAAAAAYAA8AAAAAAAAAAAAZAAsAAAAAAAAAAAAZAAwAAAAAAAAAAAAZAA0AAAAAAAAAAAAZAA4AAAAAAAAAAAAZAA8AAAAAAAAAAAAaAAsAAAAAAAAAAAAaAAwAAAAAAAAAAAAaAA0AAAAAAAAAAAAaAA4AAAAAAAAAAAAaAA8AAAAAAAAAAAAbAAsAAAAAAAAAAAAbAAwAAAAAAAAAAAAbAA0AAAAAAAAAAAAbAA4AAAAAAAAAAAAbAA8AAAAAAAAAAAAcAAsAAAAAAAAAAAAcAAwAAAAAAAAAAAAcAA0AAAAAAAAAAAAcAA4AAAAAAAAAAAAcAA8AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="map2" type="Node2D" parent="maps"]
+position = Vector2(-464, -512)
+
+[node name="map" type="TileMapLayer" parent="maps/map2"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAAAAAAAAAARABAAAAAAAAAAAAASABAAAAAAAAAAAAATABAAAAAAAAAAAAAUABAAAAAAAAAAAAAVABAAAAAAAAAAAAAWABAAAAAAAAAAAAAXABAAAAAAAAAAAAAYABAAAAAAAAAAAAAZABAAAAAAAAAAAAAaABAAAAAAAAAAAAAbABAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAAcAAsAAAAAAAAAAAAbAAwAAAAAAAAAAAAaAAwAAAAAAAAAAAAZAAwAAAAAAAAAAAAZAA0AAAAAAAAAAAAYAA0AAAAAAAAAAAAXAA0AAAAAAAAAAAAXAA4AAAAAAAAAAAAWAA4AAAAAAAAAAAAWAA8AAAAAAAAAAAAVAA8AAAAAAAAAAAAUAA8AAAAAAAAAAAAcAAwAAAAAAAAAAAAcAA0AAAAAAAAAAAAbAA0AAAAAAAAAAAAaAA0AAAAAAAAAAAAaAA4AAAAAAAAAAAAZAA4AAAAAAAAAAAAYAA4AAAAAAAAAAAAXAA8AAAAAAAAAAAAYAA8AAAAAAAAAAAAZAA8AAAAAAAAAAAAaAA8AAAAAAAAAAAAbAA8AAAAAAAAAAAAcAA8AAAAAAAAAAAAcAA4AAAAAAAAAAAAbAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA0AAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAoAAAAAAAAAAAABAAsAAAAAAAAAAAABAAwAAAAAAAAAAAABAA0AAAAAAAAAAAABAA4AAAAAAAAAAAABAA8AAAAAAAAAAAADAA8AAAAAAAAAAAADAA4AAAAAAAAAAAACAA4AAAAAAAAAAAACAA0AAAAAAAAAAAACAAwAAAAAAAAAAAACAA8AAAAAAAAAAAADAA0AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
