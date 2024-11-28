@@ -4,10 +4,10 @@ extends Node
 const ItemManager = preload("res://scripts/singleton/item_manager.gd")
 const PipelineManagerScript = preload("res://scripts/singleton/pipeline_manager.gd")
 
-var item_manager : ItemManager
-var pipeline_manager : PipelineManagerScript
+var item_manager: ItemManager
+var pipeline_manager: PipelineManagerScript
 
-var scan_lines_scene = preload("res://scenes/shader/crt.tscn")  # 直接预加载扫描线场景
+var scan_lines_scene = preload("res://scenes/shader/crt.tscn") # 直接预加载扫描线场景
 var pause_scene = preload("res://scenes/main/pause.tscn")
 # 添加背景音乐预加载
 var bgm_player: AudioStreamPlayer
@@ -16,7 +16,7 @@ var game_state = {}
 
 # 在文件开头添加 BGM 资源预加载
 var bgm_resources = {
-	"bgm": preload("res://assets/music/Drone Ambient Background by Infraction [No Copyright Music] _ Calm.mp3"),  
+	"bgm": preload("res://assets/music/Drone Ambient Background by Infraction [No Copyright Music] _ Calm.mp3"),
 
 }
 
@@ -32,38 +32,52 @@ func init_default_state():
 		'last_scene_path': "",
 		'current_respawn_point_x': null,
 		'current_respawn_point_y': null,
-		'respawn_enable':false,
+		'respawn_enable': false,
 		'archive_index': 1,
 		'settings': {
 			'full_screen': true,
 			'scan_lines': true,
-			'bgm_enabled': true  # 添加开关控制
+			'bgm_enabled': true # 添加开关控制
 		},
 		'teleport_enable': true,
 		# 0: 开场 1: 找寻身份证 2: 找寻枪 3: 第一次梦境就绪
-		'day_phase' : 0,
+		'day_phase': 0,
 		'is_door_open': false,
-		'is_day_player_chatting' : false,
+		'is_day_player_chatting': false,
 		# 玩家道具库存： 只存道具名称
-		'inventory' : [],
+		'inventory': [],
 		'teleport_type': 'day2dream',
 		'has_slept': false,
 		'target_scene': 'res://scenes/dreams/bigworld/bigworld01.tscn',
 		'is_paused': false,
+		'skills': {
+			'second_jump_enabled': false
+		}
 	}
-	game_state = game_state2.duplicate(true)  # 深度复制默认状态
+	game_state = game_state2.duplicate(true) # 深度复制默认状态
 
+var _skill_cache := {}
 
+func set_skill_enabled(skill_name: StringName, value: bool) -> void:
+	game_state['skills'][skill_name] = value
+	_skill_cache[skill_name] = value
 
-func add_item(item_name:StringName)->void:
+func is_skill_enabled(skill_name: StringName) -> bool:
+	if skill_name in _skill_cache:
+		return _skill_cache[skill_name]
+	var value = game_state['skills'].get(skill_name, false)
+	_skill_cache[skill_name] = value
+	return value
+
+func add_item(item_name: StringName) -> void:
 	print(item_name)
 	game_state['inventory'].append(item_name)
 	print(game_state)
 
-func use_item(item_name:StringName) -> void:
+func use_item(item_name: StringName) -> void:
 	game_state['inventory'].erase(item_name)
 
-func has_item(item_name:StringName) -> bool:
+func has_item(item_name: StringName) -> bool:
 	return game_state['inventory'].has(item_name)
 
 func get_items() -> Array[StringName]:
@@ -71,7 +85,7 @@ func get_items() -> Array[StringName]:
 
 
 func _ready() -> void:
-	init_default_state()  # 确保这是第一个调用的函数
+	init_default_state() # 确保这是第一个调用的函数
 	
 	# 创建 ItemManager 实例时传入 self 作为参数
 	item_manager = ItemManager.new(self)
@@ -89,7 +103,7 @@ func _ready() -> void:
 
 func setup_bgm_player() -> void:
 	bgm_player = AudioStreamPlayer.new()
-	bgm_player.bus = "Music"  # 确保你的项目中有名为"Music"的音频总线
+	bgm_player.bus = "Music" # 确保你的项目中有名为"Music"的音频总线
 	bgm_player.stream_paused = false
 	# 设置音量为原来的25%（-12分贝）
 	bgm_player.volume_db = -12
@@ -125,7 +139,7 @@ func add_scan_lines_to_node(node: Node) -> void:
 	var current_node = node
 	while current_node:
 		if current_node.get_node_or_null("ScanLines"):
-			return  # 如果任何父节点已有扫描线，就不再添加
+			return # 如果任何父节点已有扫描线，就不再添加
 		current_node = current_node.get_parent()
 	
 	if not node.name == "ScanLines" and (not parent or parent.name != "ScanLines"):
@@ -192,7 +206,7 @@ func save_game_state():
 		dir.make_dir("save")
 	
 	var archive_index = str(game_state['archive_index'])
-	var file_path = "user://save/save_game"+archive_index+".json"
+	var file_path = "user://save/save_game" + archive_index + ".json"
 	
 	# 在保存之前转换 Vector2
 	var save_data = game_state.duplicate(true)
@@ -206,7 +220,7 @@ func save_game_state():
 
 func load_game_state():
 	var archive_index = str(game_state['archive_index'])
-	var file_path = "user://save/save_game"+archive_index+".json"
+	var file_path = "user://save/save_game" + archive_index + ".json"
 	var file = FileAccess.open(file_path, FileAccess.READ)
 	if file:
 		var save_text = file.get_as_text()
@@ -220,6 +234,7 @@ func load_game_state():
 			# 加载失败时初始化默认状态
 			init_default_state()
 		file.close()
+		_skill_cache.clear()
 	else:
 		print("无法打开存档文件")
 		init_default_state()
@@ -310,7 +325,7 @@ func pause_game() -> void:
 	pause_scene_instance.name = "PauseMenu"
 	
 	var canvas_layer = CanvasLayer.new()
-	canvas_layer.name = "PauseMenu"  # 给 CanvasLayer 也设置相同的名称
+	canvas_layer.name = "PauseMenu" # 给 CanvasLayer 也设置相同的名称
 	canvas_layer.layer = 99
 	canvas_layer.add_child(pause_scene_instance)
 	current_scene.add_child(canvas_layer)

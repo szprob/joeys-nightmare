@@ -31,6 +31,7 @@ var gravity_scene = preload("res://scenes/sokoban/gravity_1.tscn")
 func _ready():
 	await ready
 	GameManager.load_game_state()
+	print('game state', GameManager.game_state)
 	# 只在初始加载时设置位置,而不是reload
 	var current_scene_path = get_tree().current_scene.scene_file_path
 	if GameManager.game_state['last_scene_path'] == current_scene_path:
@@ -168,7 +169,7 @@ func _physics_process(delta: float) -> void:
 		# 二段跳
 		
 		# print('has released jump2: ', has_released_jump)
-		if not has_double_jumped and second_jump_enabled and has_released_jump and Input.is_action_just_pressed('jump'):
+		if not has_double_jumped and has_released_jump and Input.is_action_just_pressed('jump') and can_second_jump():
 		# if second_jump_enabled and has_released_jump: # 筋斗云
 			has_double_jumped = true
 			set_gravity(Vector2(0, -5))
@@ -391,3 +392,6 @@ func set_gravity(new_gravity_direction: Vector2) -> void:
 
 func add_gravity_field(field: Node2D) -> void:
 	active_gravity_gun_fields.append(field)
+
+func can_second_jump() -> bool:
+	return GameManager.is_skill_enabled("second_jump_enabled")
