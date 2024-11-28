@@ -22,6 +22,7 @@ var jump_hold_time: float = 0.0 # 记录跳跃键按住的时间
 var is_jumping: bool = false # 标记是否正在跳跃
 var default_pos = Vector2(0, 0)
 var respawn_pos = Vector2(0, 0)
+# var ammo_count = 1 # 子弹数量
 
 var gravity_scene = preload("res://scenes/sokoban/gravity_1.tscn")
 
@@ -101,7 +102,6 @@ func _physics_process(delta: float) -> void:
 
 	# Add the gravity.
 	
-
 
 	if not is_on_terrain():
 		# print('not on terrain')
@@ -366,4 +366,7 @@ func set_gravity(new_gravity_direction: Vector2) -> void:
 	get_parent().add_child(gravity_instance)
 	var timer = get_tree().create_timer(second_jump_gravity_timer)
 	# second_jump_gravity_timer 秒后删除重力实例
-	timer.timeout.connect(func(): gravity_instance.queue_free())
+	timer.timeout.connect(func():
+		if is_instance_valid(gravity_instance) and not gravity_instance.is_queued_for_deletion():
+			gravity_instance.queue_free()
+	)
