@@ -20,6 +20,8 @@ func _ready() -> void:
 			$AnimatedSprite2D.pause() # 暂停动画
 
 	update_sprite_rotation()
+	add_to_group('gravity')
+	add_to_group('Hookable')
 
 func update_sprite_rotation():
 	if has_node("AnimatedSprite2D"):

@@ -3,13 +3,26 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
+@onready var hook_ray_cast: RayCast2D = $HookRayCast # 新增钩爪专用射线
+
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var jump_audio: AudioStreamPlayer2D = $jump_audio
+@onready var pinjoint: PinJoint2D = get_tree().current_scene.get_node("PinJoint2D")
+@onready var spring_joint: DampedSpringJoint2D = get_tree().current_scene.get_node("DampedSpringJoint2D")
+
+@onready var line = $Line2D
+
+
 # shooting
 @export var cooldown = 0.25
 @export var bullet_scene: PackedScene
 @export var mass: float = 1.0
 @export var second_jump_enabled = true
+@export var hook_scene: PackedScene
+
+
+@export var hook: CharacterBody2D
+@onready var line_end = hook.get_node("Marker2D")
 
 var can_shoot = true
 var has_double_jumped = false
@@ -22,6 +35,15 @@ var jump_hold_time: float = 0.0 # 记录跳跃键按住的时间
 var is_jumping: bool = false # 标记是否正在跳跃
 var default_pos = Vector2(0, 0)
 var respawn_pos = Vector2(0, 0)
+
+# hook
+var hook_instance = null
+var is_hooked = false
+var hook_point = Vector2.ZERO
+var swing_force: float = 250.0 # 荡秋千的力度
+var swing_damping: float = 0.98
+var hook_radius: float = 30.0
+
 
 var gravity_scene = preload("res://scenes/sokoban/gravity_1.tscn")
 
@@ -36,7 +58,7 @@ func _ready():
 			position = respawn_pos
 	add_to_group("player")
 
-
+	print('pinjoint', pinjoint)
 func respawn():
 	# 直接重新加载场景,不做其他处理
 	get_tree().reload_current_scene()
@@ -92,6 +114,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("reload"):
 		respawn()
 
+	
 	# Add the gravity.
 
 	if not is_on_terrain():
@@ -175,7 +198,73 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("shoot"):
 		print('shooting')
 		shoot(Input)
+
 	
+	## hook
+	# if Input.is_action_just_pressed("hook") and not is_hooked:
+	# 	print('shooting hook')
+	# 	shoot_hook(position, direction)
+
+	# if is_hooked:
+	# 	var swing_input = Input.get_axis("left", "right")
+	# 	if swing_input != 0:
+	# 		# 添加水平推力来影响摆动
+	# 		velocity.x += swing_input * swing_force * delta
+		
+	# 	# 可以保留少量重力影响
+	# 	velocity += get_gravity() * delta * 0.1
+	# 	# 应用阻尼
+	# 	velocity *= swing_damping
+
+	# 	line.clear_points()
+	# 	line.add_point(Vector2.ZERO)
+	# 	line.add_point(to_local(hook.global_position))
+	
+	# else:
+	# 	line.clear_points()
+	if Input.is_action_just_pressed("hook") and not is_hooked:
+		shoot_hook(position, direction)
+	# hook
+	if is_hooked:
+		# 计算钩爪约束力
+		var to_hook = hook_point - position
+		var hook_distance = to_hook.length()
+		var hook_direction = to_hook.normalized()
+		
+		# 计算切向量(用于摆动)
+		var tangent = Vector2(-hook_direction.y, hook_direction.x)
+		var current_tangent_velocity = velocity.project(tangent)
+		
+		# 添加摆动加速度而不是直接修改速度
+		var swing_input = Input.get_axis("left", "right")
+		if swing_input != 0:
+			var swing_acceleration = tangent * swing_input * swing_force
+			# 根据当前速度调整加速度(速度越大,加速度越小)
+			var speed_factor = max(0, 1.0 - current_tangent_velocity.length() / 600.0)
+			velocity += swing_acceleration * speed_factor * delta
+		
+		# apply gravity (重力会增加摆动效果)
+		var gravity = get_gravity()
+		velocity += gravity * delta * 2 # 可以调整重力影响
+		
+		# hook force (弹性约束)
+		if hook_distance > hook_radius:
+			var hook_force = (hook_distance - hook_radius) * 20.0 # 增加弹性系数
+			var perpendicular_vector = Vector2(-hook_direction.y, hook_direction.x)
+			# 保持切向速度,只调整径向速度
+			velocity = velocity.project(perpendicular_vector) + hook_direction * hook_force * delta
+		
+		# 应用非线性阻尼(速度越大阻尼越大)
+		var speed = velocity.length()
+		var damping_factor = lerp(0.99, 0.95, speed / 800.0)
+		velocity *= damping_factor
+
+		line.clear_points()
+		line.add_point(Vector2.ZERO)
+		line.add_point(to_local(hook_point))
+	else:
+		line.clear_points()
+
 	# TODO: fix this on different gravity direction
 	# Flip sprite based on movement direction 
 	
@@ -252,12 +341,6 @@ func _physics_process(delta: float) -> void:
 	# push boxes
 	
 	
-	# print player status
-	# print(get_gravity())
-	# print('position', position)
-	# print('velocity', velocity)
-	
-	
 func update_face_direction(direction):
 	if direction != 0:
 		facing_direction = direction
@@ -279,10 +362,8 @@ func is_on_terrain() -> bool:
 		var collider = ray_cast_2d.get_collider()
 
 		if collider is TileMapLayer or collider is StaticBody2D or collider is AnimatableBody2D or collider is CharacterBody2D:
-			#print('is on tilemap')
 			return true
 			
-	# print('not on tilemap', )
 	return false
 
 func filp_player_sprite(direction):
@@ -358,3 +439,65 @@ func set_gravity(new_gravity_direction: Vector2) -> void:
 	var timer = get_tree().create_timer(second_jump_gravity_timer)
 	# second_jump_gravity_timer 秒后删除重力实例
 	timer.timeout.connect(func(): gravity_instance.queue_free())
+
+
+func shoot_hook(pos: Vector2, dir: Vector2) -> void:
+	is_hooked = true
+	var hook_distance = 200 # 设置钩爪射线的最大距离
+	var hook_direction = Vector2.ZERO
+	
+	# 如果没有输入方向,默认使用面朝方向
+	if dir == Vector2.ZERO:
+		hook_direction = Vector2(facing_direction, 0)
+	else:
+		hook_direction = dir.normalized()
+	print('hook direction', hook_direction)
+	print('ray collision mask:', hook_ray_cast.collision_mask)
+	print('ray target position:', hook_ray_cast.target_position)
+	# hook_ray_cast.target_position = hook_direction * hook_distance
+	# hook_ray_cast.force_raycast_update()
+
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(
+		position,
+		position + hook_direction * hook_distance
+	)
+	query.collide_with_areas = true
+	var result = space_state.intersect_ray(query)
+
+	if result:
+		#get values from raycast
+		var hook_pos = result.position
+		var collider = result.collider
+		print('collider', collider)
+		print('pin joint', pinjoint)
+			#if the ray collides with a hookable object, move pinjoint and hook to it
+		if collider.is_in_group("Hookable"):
+			# print('hookable')
+			# spring_joint.global_position = hook_pos
+			# hook.global_position = hook_pos
+			# print('player position', position)
+			# print('hook position', hook.global_position)
+			# print('pinjoint a', spring_joint.node_a)
+			# spring_joint.node_b = get_path_to(hook)
+			# spring_joint.disable_collision = false
+			# spring_joint.length = 10.0
+			# spring_joint.stiffness = 20.0
+			# spring_joint.damping = 1.0
+			# print('pinjoint node b', spring_joint.node_b)
+			# #rotate the hook so it is the right angle
+			# var direction = hook_pos - global_position
+			# hook.rotation = direction.angle()
+
+			# if spring_joint.node_a != NodePath("") and spring_joint.node_b != NodePath("") and is_instance_valid(hook):
+			# 	# var direction = hook_pos - global_position
+			# 	# hook.rotation = direction.angle()
+			# 	print("钩爪连接成功!")
+			# else:
+			# 	print("钩爪连接失败!")
+			# is_hooked = false # 重置钩爪状态
+			hook_point = hook_pos
+			is_hooked = true
+			line.clear_points()
+			line.add_point(Vector2.ZERO) # 玩家本地坐标系中的起点
+			line.add_point(to_local(hook_pos))
