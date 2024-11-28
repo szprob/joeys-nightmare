@@ -37,7 +37,7 @@ func _ready():
 	if GameManager.game_state['last_scene_path'] == current_scene_path:
 		if GameManager.game_state['current_respawn_point_x'] != null:
 			respawn_pos = Vector2(GameManager.game_state['current_respawn_point_x'], GameManager.game_state['current_respawn_point_y'])
-			position = respawn_pos
+			global_position = respawn_pos
 	add_to_group("player")
 
 
