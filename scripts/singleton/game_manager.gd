@@ -328,3 +328,14 @@ func resume_game() -> void:
 	get_tree().paused = false
 	print("游戏已恢复")
 
+func read_txt_to_list(file_path: String) -> Array:
+	var content = []
+	
+	if FileAccess.file_exists(file_path):
+		var file = FileAccess.open(file_path, FileAccess.READ)
+		while !file.eof_reached():
+			var line = file.get_line()
+			content.append(line)
+		file.close()
+	
+	return content
