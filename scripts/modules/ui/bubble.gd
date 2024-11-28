@@ -1,12 +1,12 @@
 extends Node2D
 
+var text : String = ""
+var t: float = 1
+var text_speed: float = 0.04  # 每个字符显示的间隔时间
+
 @onready var bubble_panel: Panel = $Panel
 @onready var label: Label = $Panel/Label
 
-
-@export var t: float = 1
-@export var text: String = "hello world"
-@export var text_speed: float = 0.04  # 每个字符显示的间隔时间
 
 func _ready() -> void:
 	# 初始化时显示气泡
@@ -22,9 +22,13 @@ func show_bubble() -> void:
 	# 设置文本内容和字体大小
 	var full_text = text
 	label.text = ""  # 初始化为空文本
-	label.add_theme_font_size_override("font_size", 10)
+	label.add_theme_font_size_override("font_size", 12)
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-
+	
+	# 添加自动换行设置
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	label.custom_minimum_size.x = 100  # 设置最小宽度，触发自动换行
+	
 	# 等待一帧让 Label 更新尺寸
 	await get_tree().process_frame
 	

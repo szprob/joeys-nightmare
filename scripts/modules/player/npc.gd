@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var dialogue_area: Area2D = $DialogueArea
+@onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
+
 
 enum NPCState {
 	IDLE,
@@ -14,6 +17,10 @@ var dialogue_data: Dictionary = {}
 var can_interact: bool = true
 var player_in_range: bool = false
 var is_dialogue_active: bool = false
+var target_position: Vector2 = Vector2(0,0)
+var timer: Timer
+var disappear_timer: Timer
+var bubble_texts: Array = []
 
 # 添加新的导入
 const DialogueResourceFile = preload("res://addons/dialogue_manager/dialogue_resource.gd")
@@ -22,17 +29,19 @@ const PortalScene = preload("res://scenes/modules/checkpoints/empty-teleport.tsc
 const BubbleScene = preload("res://scenes/modules/ui/bubble.tscn")
 
 # 添加新的变量
-@export var target_position: Vector2 = Vector2(0, 0)
-@export var texts: Vector2 = Vector2(0, 0)
-@export var bubble_delay: float = 1.0
-@export var bubble_texts: Array[String] = ['player:你好你好你好你好你好你好你好你好你好你好你好你好你好你好','npc:你好你好你好你好你好你好你好你好你好你好你好你好你好你好']
-var timer: Timer
+@export var bubble_delay: float = 1.2
+@export var bubble_speed: float = 0.06
+@export var bubble_file: String = "res://assets/dialogue/start.txt"
 @export var bubble_index: int = 0
+@export var teleport: Node2D
+@export var disappear_delay: float = 1.5
+
 
 func _ready() -> void:
+	teleport.visible = false
 	# 初始化对话区域信号
-	dialogue_area.body_entered.connect(_on_dialogue_area_body_entered)
-	dialogue_area.body_exited.connect(_on_dialogue_area_body_exited)
+	# dialogue_area.body_entered.connect(_on_dialogue_area_body_entered)
+	# dialogue_area.body_exited.connect(_on_dialogue_area_body_exited)
 	_update_animation()
 
 	# 创建并初始化计时器
@@ -43,6 +52,14 @@ func _ready() -> void:
 	timer.wait_time = bubble_delay
 	timer.start()
 
+	disappear_timer = Timer.new()
+	add_child(disappear_timer)
+	disappear_timer.timeout.connect(_on_disappear_timer_timeout)
+	disappear_timer.one_shot = true
+	disappear_timer.wait_time = disappear_delay
+
+
+	bubble_texts = GameManager.read_txt_to_list(bubble_file)
 
 
 # 	var player = get_tree().get_first_node_in_group("player")
@@ -69,13 +86,11 @@ func _on_timer_timeout():
 
 
 func _physics_process(delta: float) -> void:
-	if not visible:
-		queue_free()
 
-	if velocity.x < 0.01 and velocity.y < 0.01 and velocity.x > -0.01 and velocity.y > -0.01:
-		current_state = NPCState.IDLE
-	else:
-		current_state = NPCState.WALKING
+	# if velocity.x < 0.01 and velocity.y < 0.01 and velocity.x > -0.01 and velocity.y > -0.01:
+	# 	current_state = NPCState.IDLE
+	# else:
+	# 	current_state = NPCState.WALKING
 
 	_update_animation()
 	match current_state:
@@ -87,19 +102,19 @@ func _physics_process(delta: float) -> void:
 func _process_idle_state() -> void:
 	pass
 
-func _process_walking_state(delta: float):
-
-    
-	# 计算到目标的距离
-	var distance = global_position.distance_to(target_position)
-	if distance < 5.0:  # 到达目标的阈值
+func _process_walking_state(_delta: float):
+	# 添加调试信息
+	var distance = position.distance_to(target_position)
+	if distance < 5.0:
 		current_state = NPCState.IDLE
 		position = target_position
+		disappear()
 	else:
-		var direction = global_position.direction_to(target_position)
+		var direction = position.direction_to(target_position)
 		velocity = direction * movement_speed
-		position += velocity * delta
 		
+		if velocity.length() > 0:
+			move_and_slide()
 
 func _update_animation() -> void:
 	match current_state:
@@ -110,69 +125,69 @@ func _update_animation() -> void:
 			# 根据移动方向翻转精灵
 			animated_sprite.flip_h = velocity.x < 0
 
-func set_movement_target(target_pos: Vector2) -> void:
-	target_position = target_pos
-	current_state = NPCState.WALKING
+# func _on_dialogue_area_body_entered(body: Node2D) -> void:
+# 	if body.is_in_group("player"):
+# 		player_in_range = true
 
+# func _on_dialogue_area_body_exited(body: Node2D) -> void:
+# 	if body.is_in_group("player"):
+# 		player_in_range = false
 
-func _on_dialogue_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		player_in_range = true
+# func set_dialogue_data(data: Dictionary) -> void:
+# 	dialogue_data = data
 
-func _on_dialogue_area_body_exited(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		player_in_range = false
-
-func set_dialogue_data(data: Dictionary) -> void:
-	dialogue_data = data
-
-func set_interactable(value: bool) -> void:
-	can_interact = value
+# func set_interactable(value: bool) -> void:
+# 	can_interact = value
 
 # 添加新的函数
-func create_portal_and_disappear(portal_position: Vector2) -> void:
-	# 创建传送门实例
-	var portal = PortalScene.instantiate()
-	get_parent().add_child(portal)
-	portal.global_position = portal_position
-	
-	# NPC走向传送门
-	set_movement_target(portal_position)
-	
-	# 添加信号监听以检测NPC是否到达传送门位置
-	var timer = get_tree().create_timer(0.1)
-	timer.timeout.connect(func():
-		if position.distance_to(portal_position) < 5.0:
-			visible = false  # 使NPC消失
-			portal.queue_free()  # 删除传送门
-	)
+func create_portal() -> void:
+	teleport.visible = true
+	# 添加调试信息
+	print("Teleport global position:", teleport.global_position)
+	target_position = teleport.global_position
+	print("Target position (local):", target_position)
+	print("Current position:", position)
+	current_state = NPCState.WALKING
 
+func disappear() -> void:
+	visible = false
+	if audio_player and audio_player.stream:
+		audio_player.play()
+	var player = get_tree().get_first_node_in_group("player")
+	if player and player.has_method("set_can_move"):
+		player.set_can_move(true)
+	disappear_timer.start()
+
+func _on_disappear_timer_timeout() -> void:
+	teleport.queue_free()
+	queue_free()
 
 
 func create_bubble() -> void:
-	var bubble_instance = BubbleScene.instantiate()
-	get_parent().add_child(bubble_instance)
-	
-	# 获取当前文本并处理前缀
+	# 首先获取当前文本并处理前缀
 	var current_text = bubble_texts[bubble_index]
 	var bubble_position = global_position + Vector2(-48, -53)  # 默认NPC位置
 	
 	if current_text.begins_with("player:"):
-		# 如果是玩家对话，找到玩家并设置位置
 		var player = get_tree().get_first_node_in_group("player")
 		if player:
 			bubble_position = player.global_position + Vector2(-48, -53)
-		current_text = current_text.substr(7)  # 删除"player:"前缀
+		current_text = current_text.substr(7)
 	elif current_text.begins_with("npc:"):
-		current_text = current_text.substr(4)  # 删除"npc:"前缀
+		current_text = current_text.substr(4)
 	
+	# 然后创建气泡实例并使用处理后的文本
+	var bubble_instance = BubbleScene.instantiate()
 	bubble_instance.text = current_text
+	bubble_instance.t = bubble_delay
+	bubble_instance.text_speed = bubble_speed
 	bubble_instance.global_position = bubble_position
 	bubble_instance.tree_exited.connect(_on_bubble_destroyed)
+	get_parent().add_child(bubble_instance)
 
 func _on_bubble_destroyed() -> void:
 	bubble_index += 1
 	if bubble_index < bubble_texts.size():
 		create_bubble()
 	else:
-		create_portal_and_disappear(target_position)
+		create_portal()

@@ -533,10 +533,9 @@ player_force_factor = 20.0
 position = Vector2(-822, -27)
 scale = Vector2(0.7, 0.7)
 
-[node name="Npc" parent="." instance=ExtResource("22_fpvdh")]
+[node name="Npc" parent="." node_paths=PackedStringArray("teleport") instance=ExtResource("22_fpvdh")]
 position = Vector2(-1069, -12)
-target_position = Vector2(-900, -12)
-bubble_texts = Array[String](["npc:你好,joey", "player:你好,美女"])
+teleport = NodePath("../empty-teleport")
 
 [node name="empty-teleport" parent="." instance=ExtResource("23_vi6el")]
 position = Vector2(-1169, -16)
