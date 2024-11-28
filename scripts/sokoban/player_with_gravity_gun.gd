@@ -42,7 +42,7 @@ var is_hooked = false
 var hook_point = Vector2.ZERO
 var swing_force: float = 250.0 # 荡秋千的力度
 var swing_damping: float = 0.98
-var hook_radius: float = 30.0
+var hook_radius: float = 50.0
 
 
 var gravity_scene = preload("res://scenes/sokoban/gravity_1.tscn")
@@ -226,7 +226,6 @@ func _physics_process(delta: float) -> void:
 		shoot_hook(position, direction)
 	# hook
 	if is_hooked:
-		# 计算钩爪约束力
 		var to_hook = hook_point - position
 		var hook_distance = to_hook.length()
 		var hook_direction = to_hook.normalized()
@@ -235,35 +234,56 @@ func _physics_process(delta: float) -> void:
 		var tangent = Vector2(-hook_direction.y, hook_direction.x)
 		var current_tangent_velocity = velocity.project(tangent)
 		
-		# 添加摆动加速度而不是直接修改速度
+		# 添加摆动加速度
+		
+		
+		# hook force (弹性约束)
+		# if hook_distance > hook_radius:
+		# 	var hook_force = (hook_distance - hook_radius) * 50.0
+		# 	var perpendicular_vector = Vector2(-hook_direction.y, hook_direction.x)
+		# 	velocity = velocity.project(perpendicular_vector) + hook_direction * hook_force * delta
+		
+
+		var hook_force = (hook_distance - hook_radius) * 50.0
+		velocity += hook_direction * hook_force * delta
+
 		var swing_input = Input.get_axis("left", "right")
 		if swing_input != 0:
 			var swing_acceleration = tangent * swing_input * swing_force
-			# 根据当前速度调整加速度(速度越大,加速度越小)
-			var speed_factor = max(0, 1.0 - current_tangent_velocity.length() / 600.0)
-			velocity += swing_acceleration * speed_factor * delta
-		
-		# apply gravity (重力会增加摆动效果)
-		var gravity = get_gravity()
-		velocity += gravity * delta * 2 # 可以调整重力影响
-		
-		# hook force (弹性约束)
-		if hook_distance > hook_radius:
-			var hook_force = (hook_distance - hook_radius) * 20.0 # 增加弹性系数
-			var perpendicular_vector = Vector2(-hook_direction.y, hook_direction.x)
-			# 保持切向速度,只调整径向速度
-			velocity = velocity.project(perpendicular_vector) + hook_direction * hook_force * delta
-		
-		# 应用非线性阻尼(速度越大阻尼越大)
-		var speed = velocity.length()
-		var damping_factor = lerp(0.99, 0.95, speed / 800.0)
-		velocity *= damping_factor
+			velocity += swing_acceleration * delta
+		else:
+			# 计算垂直于钩爪方向的速度分量
+			# var tangent_velocity = velocity - velocity.project(hook_direction)
+			# 添加一个较小的阻尼力来减缓摆动
+			var parallel_velocity = velocity.project(hook_direction)
+			var perpendicular_velocity = velocity - parallel_velocity
+
+			# 应用阻尼到垂直分量
+			var damping = 0.05
+			perpendicular_velocity *= (1.0 - damping)
+
+			# 合并速度
+			velocity = parallel_velocity + perpendicular_velocity
+
+		# 应用非线性阻尼
+		# var damping_factor = 0.98 # 调整此值以获得适当的阻尼效果
+		# velocity *= damping_factor
 
 		line.clear_points()
 		line.add_point(Vector2.ZERO)
 		line.add_point(to_local(hook_point))
+
+		var current_angle = abs(get_gravity().angle_to(hook_direction) + PI)
+		print('current angle', current_angle)
+
+	# 如果超过最大角度，解除钩爪
+		if current_angle > PI * 0.8:
+			is_hooked = false
+			line.clear_points()
+
 	else:
 		line.clear_points()
+
 
 	# TODO: fix this on different gravity direction
 	# Flip sprite based on movement direction 
@@ -473,29 +493,7 @@ func shoot_hook(pos: Vector2, dir: Vector2) -> void:
 		print('pin joint', pinjoint)
 			#if the ray collides with a hookable object, move pinjoint and hook to it
 		if collider.is_in_group("Hookable"):
-			# print('hookable')
-			# spring_joint.global_position = hook_pos
-			# hook.global_position = hook_pos
-			# print('player position', position)
-			# print('hook position', hook.global_position)
-			# print('pinjoint a', spring_joint.node_a)
-			# spring_joint.node_b = get_path_to(hook)
-			# spring_joint.disable_collision = false
-			# spring_joint.length = 10.0
-			# spring_joint.stiffness = 20.0
-			# spring_joint.damping = 1.0
-			# print('pinjoint node b', spring_joint.node_b)
-			# #rotate the hook so it is the right angle
-			# var direction = hook_pos - global_position
-			# hook.rotation = direction.angle()
 
-			# if spring_joint.node_a != NodePath("") and spring_joint.node_b != NodePath("") and is_instance_valid(hook):
-			# 	# var direction = hook_pos - global_position
-			# 	# hook.rotation = direction.angle()
-			# 	print("钩爪连接成功!")
-			# else:
-			# 	print("钩爪连接失败!")
-			# is_hooked = false # 重置钩爪状态
 			hook_point = hook_pos
 			is_hooked = true
 			line.clear_points()
