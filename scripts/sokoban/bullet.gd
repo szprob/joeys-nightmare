@@ -64,6 +64,9 @@ func _process(delta: float) -> void:
 				get_tree().get_root().add_child(gravity_container)
 			
 			gravity_container.add_child(gravity_instance)
+			var player = get_tree().get_first_node_in_group("player") # 确保player加入了"player"组
+			if player and player.has_method("add_gravity_field"):
+				player.add_gravity_field(gravity_instance)
 			queue_free()
 		elif collider is CharacterBody2D:
 			queue_free()
