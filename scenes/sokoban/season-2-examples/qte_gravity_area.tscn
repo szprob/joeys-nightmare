@@ -6,7 +6,6 @@
 radius = 21.0238
 
 [node name="qte_gravity_area" type="Area2D"]
-position = Vector2(175, -27)
 collision_mask = 129
 script = ExtResource("1_cf5my")
 
