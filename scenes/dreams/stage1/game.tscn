@@ -538,6 +538,6 @@ position = Vector2(-1069, -12)
 teleport = NodePath("../empty-teleport")
 
 [node name="empty-teleport" parent="." instance=ExtResource("23_vi6el")]
-position = Vector2(-1169, -16)
+position = Vector2(-1170, -12)
 
 [editable path="auto_close_door"]

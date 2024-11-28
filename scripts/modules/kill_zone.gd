@@ -1,4 +1,7 @@
 extends Area2D
+
+var can_die: bool = true
+
 @onready var timer: Timer = $Timer
 
 # for 死亡动画
@@ -19,10 +22,13 @@ func _on_body_entered(body: Node2D) -> void:
 	# 	body.respawn()
 	death_effect.visible = true
 	animation_player.play("death_effect")
-	timer.start()
+	if can_die:
+		timer.start()
+	can_die = false
 	
 
 func _on_timer_timeout() -> void:
+	can_die = true
 	Engine.time_scale = 1
 	death_effect.visible = false
 	# var root_node = get_tree().get_root()

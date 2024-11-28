@@ -30,10 +30,11 @@ func _ready():
 	GameManager.load_game_state()
 	# 只在初始加载时设置位置,而不是reload
 	var current_scene_path = get_tree().current_scene.scene_file_path
-	if GameManager.game_state['last_scene_path'] == current_scene_path:
-		if GameManager.game_state['current_respawn_point_x'] != null:
-			respawn_pos = Vector2(GameManager.game_state['current_respawn_point_x'], GameManager.game_state['current_respawn_point_y'])
-			position = respawn_pos
+	if GameManager.game_state['last_scene_path'] == current_scene_path and GameManager.game_state['current_respawn_point_x'] != null:
+		respawn_pos = Vector2(GameManager.game_state['current_respawn_point_x'], GameManager.game_state['current_respawn_point_y'])
+		position = respawn_pos
+	else:
+		position = default_pos
 	add_to_group("player")
 
 
