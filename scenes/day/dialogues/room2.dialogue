@@ -1,10 +1,5 @@
 ~ begin
 Joey: [speed=0.5]????
-Joey: 这就没了？
+Joey: 我的房子蛮大的！(欢迎你们来我家玩?)
 set GameManager.set_day_phase(5)
-: (看起来已经暂告一段落了，接下来怎么办)
-- 再玩一遍吧
-	set GameManager.switch_day_to_dream("res://scenes/main/splash_screen.tscn")
-- 不玩了
-	Joey: 886
-	set get_tree().quit()
+: (领悟了[b]重力二段跳[/b]的能力，没其他事情的话再去睡一会儿吧)

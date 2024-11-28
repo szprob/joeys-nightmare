@@ -327,4 +327,3 @@ func resume_game() -> void:
 	
 	get_tree().paused = false
 	print("游戏已恢复")
-
