@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var bullet_scene: PackedScene
 @export var mass: float = 1.0
 @export var second_jump_enabled = true
+@export var ammo_count = 1 # 子弹数量
 
 var can_shoot = true
 var has_double_jumped = false
@@ -23,11 +24,14 @@ var is_jumping: bool = false # 标记是否正在跳跃
 var default_pos = Vector2(0, 0)
 var respawn_pos = Vector2(0, 0)
 
+var active_gravity_gun_fields: Array = []
+
 var gravity_scene = preload("res://scenes/sokoban/gravity_1.tscn")
 
 func _ready():
 	await ready
 	GameManager.load_game_state()
+	print('game state', GameManager.game_state)
 	# 只在初始加载时设置位置,而不是reload
 	var current_scene_path = get_tree().current_scene.scene_file_path
 	if GameManager.game_state['last_scene_path'] == current_scene_path:
@@ -60,18 +64,34 @@ func set_can_move(value: bool) -> void:
 	can_move = value
 	
 func shoot(Input) -> void:
-	print("shoot trigger: ", GameManager.game_state)
+	# print("shoot trigger: ", GameManager.game_state)
 	if not GameManager.has_item(&"玩具手枪"):
 		return
-	var shoot_direction = Vector2(facing_direction, 0)
 	if not can_move:
 		return
 	if not can_shoot:
 		return
+		
+	# 清理无效的重力场，同时从场景树中删除
+	active_gravity_gun_fields = active_gravity_gun_fields.filter(func(field):
+		return is_instance_valid(field) and not field.is_queued_for_deletion())
+	
+	# 如果达到上限，删除最旧的重力场
+	if active_gravity_gun_fields.size() >= ammo_count:
+		var oldest_field = active_gravity_gun_fields.pop_front()
+		# if is_instance_valid(oldest_field) and not oldest_field.is_queued_for_deletion():
+		if is_instance_valid(oldest_field):
+			# 如果重力场在GravityContainer中，需要从父节点中移除
+			if oldest_field.get_parent() != null:
+				oldest_field.get_parent().remove_child(oldest_field)
+			oldest_field.queue_free()
+	
 	can_shoot = false
 	$GunCooldown.start()
 	var b = bullet_scene.instantiate()
 	get_tree().root.add_child(b)
+	
+	var shoot_direction = Vector2(facing_direction, 0)
 	if not (Input.is_action_pressed('up') or Input.is_action_pressed('down') or
 			Input.is_action_pressed('left') or Input.is_action_pressed('right')):
 		b.start(position + Vector2(0, -8), shoot_direction)
@@ -89,10 +109,18 @@ func shoot(Input) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# 在函数开始时就检查 can_move
+	if not can_move:
+		# 如果不能移动，将速度设为0并直接返回
+		velocity = Vector2.ZERO
+		animated_sprite_2d.play('idle')
+		return
+		
 	if Input.is_action_just_pressed("reload"):
 		respawn()
 
 	# Add the gravity.
+	
 
 	if not is_on_terrain():
 		# print('not on terrain')
@@ -141,7 +169,7 @@ func _physics_process(delta: float) -> void:
 		# 二段跳
 		
 		# print('has released jump2: ', has_released_jump)
-		if not has_double_jumped and second_jump_enabled and has_released_jump and Input.is_action_just_pressed('jump'):
+		if not has_double_jumped and has_released_jump and Input.is_action_just_pressed('jump') and can_second_jump():
 		# if second_jump_enabled and has_released_jump: # 筋斗云
 			has_double_jumped = true
 			set_gravity(Vector2(0, -5))
@@ -159,7 +187,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump input with buffering
 	if Input.is_action_just_pressed("jump"):
 		# print('is on terrain', is_on_terrain()
-		if is_on_terrain():
+		if is_on_terrain() and can_move:
 			start_jump() # 正常跳跃
 		else:
 			jump_buffer_timer = Consts.JUMP_BUFFER_TIME # 记录跳跃键按下的时间以便缓冲
@@ -172,7 +200,7 @@ func _physics_process(delta: float) -> void:
 	)
 	
 	update_face_direction(direction.x)
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot"):
 		print('shooting')
 		shoot(Input)
 	
@@ -357,4 +385,13 @@ func set_gravity(new_gravity_direction: Vector2) -> void:
 	get_parent().add_child(gravity_instance)
 	var timer = get_tree().create_timer(second_jump_gravity_timer)
 	# second_jump_gravity_timer 秒后删除重力实例
-	timer.timeout.connect(func(): gravity_instance.queue_free())
+	timer.timeout.connect(func():
+		if is_instance_valid(gravity_instance) and not gravity_instance.is_queued_for_deletion():
+			gravity_instance.queue_free()
+	)
+
+func add_gravity_field(field: Node2D) -> void:
+	active_gravity_gun_fields.append(field)
+
+func can_second_jump() -> bool:
+	return GameManager.is_skill_enabled("second_jump_enabled")

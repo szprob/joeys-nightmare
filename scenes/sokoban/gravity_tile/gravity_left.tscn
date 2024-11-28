@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cootft3ha6veu"]
+
+[ext_resource type="PackedScene" uid="uid://cv3nrtrevxkyu" path="res://scenes/sokoban/gravity_1.tscn" id="1_ttcld"]
+
+[node name="GravityLeft" type="Node2D"]
+
+[node name="gravity-1" parent="." instance=ExtResource("1_ttcld")]
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)

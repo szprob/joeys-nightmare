@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtwf8pwh5am4d"]
+
+[ext_resource type="Script" path="res://scripts/modules/ui/bubble.gd" id="1_wgqlx"]
+
+[node name="Bubble" type="Node2D"]
+script = ExtResource("1_wgqlx")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(100, 40)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
