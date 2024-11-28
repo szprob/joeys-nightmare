@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var bullet_scene: PackedScene
 @export var mass: float = 1.0
 @export var second_jump_enabled = true
+@export var ammo_count = 1 # 子弹数量
 
 var can_shoot = true
 var has_double_jumped = false
@@ -22,7 +23,8 @@ var jump_hold_time: float = 0.0 # 记录跳跃键按住的时间
 var is_jumping: bool = false # 标记是否正在跳跃
 var default_pos = Vector2(0, 0)
 var respawn_pos = Vector2(0, 0)
-# var ammo_count = 1 # 子弹数量
+
+var active_gravity_gun_fields: Array = []
 
 var gravity_scene = preload("res://scenes/sokoban/gravity_1.tscn")
 
@@ -61,18 +63,34 @@ func set_can_move(value: bool) -> void:
 	can_move = value
 	
 func shoot(Input) -> void:
-	print("shoot trigger: ", GameManager.game_state)
+	# print("shoot trigger: ", GameManager.game_state)
 	if not GameManager.has_item(&"玩具手枪"):
 		return
-	var shoot_direction = Vector2(facing_direction, 0)
 	if not can_move:
 		return
 	if not can_shoot:
 		return
+		
+	# 清理无效的重力场，同时从场景树中删除
+	active_gravity_gun_fields = active_gravity_gun_fields.filter(func(field):
+		return is_instance_valid(field) and not field.is_queued_for_deletion())
+	
+	# 如果达到上限，删除最旧的重力场
+	if active_gravity_gun_fields.size() >= ammo_count:
+		var oldest_field = active_gravity_gun_fields.pop_front()
+		# if is_instance_valid(oldest_field) and not oldest_field.is_queued_for_deletion():
+		if is_instance_valid(oldest_field):
+			# 如果重力场在GravityContainer中，需要从父节点中移除
+			if oldest_field.get_parent() != null:
+				oldest_field.get_parent().remove_child(oldest_field)
+			oldest_field.queue_free()
+	
 	can_shoot = false
 	$GunCooldown.start()
 	var b = bullet_scene.instantiate()
 	get_tree().root.add_child(b)
+	
+	var shoot_direction = Vector2(facing_direction, 0)
 	if not (Input.is_action_pressed('up') or Input.is_action_pressed('down') or
 			Input.is_action_pressed('left') or Input.is_action_pressed('right')):
 		b.start(position + Vector2(0, -8), shoot_direction)
@@ -181,7 +199,7 @@ func _physics_process(delta: float) -> void:
 	)
 	
 	update_face_direction(direction.x)
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot"):
 		print('shooting')
 		shoot(Input)
 	
@@ -370,3 +388,6 @@ func set_gravity(new_gravity_direction: Vector2) -> void:
 		if is_instance_valid(gravity_instance) and not gravity_instance.is_queued_for_deletion():
 			gravity_instance.queue_free()
 	)
+
+func add_gravity_field(field: Node2D) -> void:
+	active_gravity_gun_fields.append(field)
