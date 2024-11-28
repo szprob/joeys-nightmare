@@ -8,6 +8,7 @@ enum MoveType { ONE_WAY, LOOP }  # 移动类型：单程或往返
 @export var move_speed: float = Consts.MOVE_PLATFORM_SPEED
 @export var initial_delay: float = 0.5  # 添加初始等待时间设置
 @export var invisible_before_trigger: bool = false  # 添加是否在触发前隐身的选项
+@export var target: Area2D
 
 var is_moving: bool = false
 var move_direction: Vector2 = Vector2.ZERO
@@ -19,16 +20,15 @@ var moving_to_target: bool = true  # 用于往返移动
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var timer: Timer = Timer.new() #启动时间
 @onready var start_timer: Timer = Timer.new() #初始等待时间
-@onready var target: Area2D = $target
 
 func _ready() -> void:
 	if not target:
 		push_error("移动平台缺少目标点!")
 		return
 		
-	start_position = position
+	start_position = global_position
 	final_position = target.global_position
-	move_direction = (target.global_position - position).normalized()
+	move_direction = (target.global_position - global_position).normalized()
 	
 	# 如果设置为触发前隐身,则初始化时隐藏平台
 	if invisible_before_trigger:
@@ -56,10 +56,10 @@ func _physics_process(delta: float) -> void:
 		return
 		
 	var target_pos = final_position if moving_to_target else start_position
-	position += move_direction * move_speed * delta
+	global_position += move_direction * move_speed * delta
 	
-	if position.distance_to(target_pos) < 3:
-		position = target_pos
+	if global_position.distance_to(target_pos) < 3:
+		global_position = target_pos
 		handle_destination_reached()
 
 func handle_destination_reached() -> void:
@@ -83,7 +83,7 @@ func _on_detection_body_entered(body: Node2D) -> void:
 	if not do_detect:
 		return
 		
-	if body is CharacterBody2D and body.position.y < position.y:
+	if body is CharacterBody2D and body.global_position.y < global_position.y:
 		if invisible_before_trigger:
 			# 显示平台
 			modulate.a = 1.0
