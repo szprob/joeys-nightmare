@@ -343,6 +343,7 @@ func resume_game() -> void:
 	get_tree().paused = false
 	print("游戏已恢复")
 
+
 func read_txt_to_list(file_path: String) -> Array:
 	var content = []
 	

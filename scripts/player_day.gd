@@ -18,6 +18,8 @@ func _ready() -> void:
 		var anim_player := %AnimationPlayer as AnimationPlayer
 		anim_player.play("opening_animation")
 		await anim_player.animation_finished
+	else:
+		position = Vector2(120, 146)
 
 
 func handle_direction():
