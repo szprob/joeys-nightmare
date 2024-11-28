@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://mx3jx68fdgqm"]
+[gd_scene load_steps=5 format=3 uid="uid://mx3jx68fdgqm"]
 
-[ext_resource type="Script" path="res://scripts/sokoban/chasing_slime_bak.gd" id="1_luda7"]
 [ext_resource type="Texture2D" uid="uid://bwfxekt16jbbl" path="res://assets/sprites/human/trap.png" id="2_nni11"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_b16t3"]
 
@@ -20,7 +19,6 @@ points = PackedVector2Array(-1, -14, -16, 15, 16, 15)
 
 [node name="BlockTrap" type="Area2D"]
 collision_mask = 128
-script = ExtResource("1_luda7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 3.14159

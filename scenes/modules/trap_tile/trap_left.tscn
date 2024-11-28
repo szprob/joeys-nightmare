@@ -1,14 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://8qshk6ynrxhj"]
+[gd_scene load_steps=5 format=3 uid="uid://bgtv7blulem34"]
 
-[ext_resource type="Script" path="res://scripts/sokoban/chasing_slime_bak.gd" id="1_5bb57"]
-[ext_resource type="Texture2D" uid="uid://bwfxekt16jbbl" path="res://assets/sprites/human/trap.png" id="2_bnjs0"]
-[ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_emlkn"]
+[ext_resource type="Texture2D" uid="uid://bwfxekt16jbbl" path="res://assets/sprites/human/trap.png" id="2_xcgym"]
+[ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_n7ul7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8f63d"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_bnjs0")
+"texture": ExtResource("2_xcgym")
 }],
 "loop": true,
 "name": &"default",
@@ -20,18 +19,19 @@ points = PackedVector2Array(-1, -14, -16, 15, 16, 15)
 
 [node name="BlockTrap" type="Area2D"]
 collision_mask = 128
-script = ExtResource("1_5bb57")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 4.71239
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_8f63d")
 autoplay = "default"
 frame_progress = 0.40163
 
-[node name="kill_zone" parent="." instance=ExtResource("3_emlkn")]
+[node name="kill_zone" parent="." instance=ExtResource("3_n7ul7")]
 scale = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
+rotation = 4.71239
 shape = SubResource("ConvexPolygonShape2D_18lyn")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

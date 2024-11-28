@@ -93,6 +93,7 @@ sprite_frames = SubResource("SpriteFrames_spw7t")
 animation = &"move"
 autoplay = "idle"
 frame_progress = 0.576418
+flip_h = true
 
 [node name="DialogueArea" type="Area2D" parent="."]
 collision_layer = 0
