@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://cv3nrtrevxkyu"]
+[gd_scene load_steps=75 format=3 uid="uid://cv3nrtrevxkyu"]
 
 [ext_resource type="Script" path="res://scripts/sokoban/gravity_1.gd" id="1_h3l67"]
 [ext_resource type="Texture2D" uid="uid://bh2yvy6nvv85u" path="res://assets/sprites/human/arrow2.png" id="2_536f8"]
@@ -11,9 +11,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3pmf"]
 size = Vector2(32, 32)
-
-[sub_resource type="LabelSettings" id="LabelSettings_i8b7l"]
-font_size = 11
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_shlss"]
 atlas = ExtResource("2_536f8")
@@ -512,17 +509,6 @@ arrow_color = Color(1, 1, 0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_u3pmf")
-
-[node name="Label" type="Label" parent="."]
-offset_left = -27.0
-offset_top = -12.0
-offset_right = 27.0
-offset_bottom = 11.0
-text = "G"
-label_settings = SubResource("LabelSettings_i8b7l")
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_csio3")

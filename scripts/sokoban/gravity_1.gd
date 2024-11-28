@@ -27,7 +27,7 @@ func update_sprite_rotation():
 		var gravity_dir = gravity_direction
 		var angle = gravity_dir.normalized().angle()
 		# 将精灵旋转到重力方向
-		$AnimatedSprite2D.rotation = angle + PI / 2
+		rotation = angle + PI / 2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

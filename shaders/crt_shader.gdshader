@@ -1,8 +1,8 @@
 /*
 Shader from Godot Shaders - the free shader library.
 
-This shader is under CC0 license. Feel free to use, improve and 
-change this shader according to your needs and consider sharing 
+This shader is under CC0 license. Feel free to use, improve and
+change this shader according to your needs and consider sharing
 the modified result to godotshaders.com.
 
 Optimised and packed by @c64cosmin
@@ -61,11 +61,11 @@ vec3 fetch_pixel(vec2 uv, vec2 off){
 }
 
 // Distance in emulated pixels to nearest texel.
-vec2 Dist(vec2 pos){ 
+vec2 Dist(vec2 pos){
 	pos = pos * resolution;
 	return - ((pos - floor(pos)) - vec2(0.5));
 }
-	
+
 // 1D Gaussian.
 float Gaus(float pos, float scale){ return exp2(scale * pos * pos); }
 
@@ -75,13 +75,13 @@ vec3 Horz3(vec2 pos, float off){
 	vec3 c = fetch_pixel(pos, vec2( 0.0, off));
 	vec3 d = fetch_pixel(pos, vec2( 1.0, off));
 	float dst = Dist(pos).x;
-	
+
 	// Convert distance to weight.
 	float scale = pixel_strength;
 	float wb = Gaus(dst - 1.0, scale);
 	float wc = Gaus(dst + 0.0, scale);
 	float wd = Gaus(dst + 1.0, scale);
-	
+
 	// Return filtered sample.
 	return (b * wb + c * wc + d * wd) / (wb + wc + wd);
 }
@@ -89,7 +89,7 @@ vec3 Horz3(vec2 pos, float off){
 // Return scanline weight.
 float Scan(vec2 pos, float off){
 	float dst = Dist(pos).y;
-	
+
 	return Gaus(dst + off, scan_line_strength);
 }
 
@@ -117,7 +117,7 @@ vec2 warp(vec2 uv){
 	float delta2 = dot(delta.xy, delta.xy);
 	float delta4 = delta2 * delta2;
 	float delta_offset = delta4 * warp_amount;
-	
+
 	vec2 warped = uv + delta * delta_offset;
 	return (warped - 0.5) / mix(1.0,1.2,warp_amount/5.0) + 0.5;
 }
@@ -151,7 +151,7 @@ float roll_line(vec2 uv){
 void fragment(){
 	vec2 pix = FRAGCOORD.xy;
 	vec2 pos = warp(SCREEN_UV);
-	
+
 	float line = 0.0;
 	if(roll_line_amount > 0.0){
 		line = roll_line(pos);
@@ -173,11 +173,11 @@ void fragment(){
 		float b = Tri(pos + chromatic_x).b;
 		clr = vec3(r,g,b);
 	}
-	
+
 	if(grille_amount > 0.0)clr *= grille(pix);
 	clr *= 1.0 + scan_line_amount * 0.6 + line * 3.0 + grille_amount * 2.0;
 	if(vignette_amount > 0.0)clr *= vignette(pos);
-	
+
 	COLOR.rgb = clr;
 	COLOR.a = 1.0;
 }
