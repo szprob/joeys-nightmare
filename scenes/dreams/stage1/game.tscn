@@ -19,10 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://dlyl2v0k7iiry" path="res://scenes/modules/traps/detection.tscn" id="19_nyj4w"]
 [ext_resource type="PackedScene" uid="uid://cpqr3oauheogh" path="res://scenes/sokoban/button-1.tscn" id="20_0io07"]
 [ext_resource type="PackedScene" uid="uid://b4l0s4mgeuqyq" path="res://scenes/modules/checkpoints/bi-teleport.tscn" id="20_leco7"]
-[ext_resource type="PackedScene" uid="uid://d7nfljtqe8a6" path="res://scenes/modules/platforms/swing.tscn" id="21_60bxa"]
+[ext_resource type="PackedScene" path="res://scenes/modules/platforms/swing.tscn" id="21_60bxa"]
 [ext_resource type="PackedScene" uid="uid://c5x12p3650b3l" path="res://scenes/player/npc.tscn" id="22_fpvdh"]
-[ext_resource type="PackedScene" uid="uid://cburb6kjbbck0" path="res://scenes/modules/platforms/seesaw.tscn" id="22_lmyni"]
-[ext_resource type="PackedScene" uid="uid://yan3jqnet7ud" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="23_vi6el"]
+[ext_resource type="PackedScene" path="res://scenes/modules/platforms/seesaw.tscn" id="22_lmyni"]
+[ext_resource type="PackedScene" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="23_vi6el"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8553"]
 distance = -68.0
