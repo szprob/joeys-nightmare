@@ -76,7 +76,7 @@ point_count = 4
 [node name="Game" type="Node2D" groups=["scan_lines"]]
 
 [node name="player_with_gravity" parent="." groups=["player"] instance=ExtResource("1_e7g7y")]
-position = Vector2(142.396, 43.7262)
+position = Vector2(-294, -270)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
 position = Vector2(192, 88)
@@ -101,7 +101,7 @@ text = "我这是在哪?"
 
 [node name="Npc" parent="npc" node_paths=PackedStringArray("teleport") instance=ExtResource("4_y75vi")]
 z_index = 1
-position = Vector2(-312, -264)
+position = Vector2(-235, -265)
 teleport = NodePath("../empty-teleport")
 
 [node name="empty-teleport" parent="npc" instance=ExtResource("5_j5x44")]
