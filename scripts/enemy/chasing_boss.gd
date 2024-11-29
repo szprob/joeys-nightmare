@@ -14,7 +14,7 @@ func _ready():
 		add_child(container)
 	
 	# 初试位置在玩家的左上方
-	global_position = player.global_position + Vector2(-100, -100)
+	global_position = player.global_position + Vector2(-300, -100)
 
 
 func _physics_process(delta: float) -> void:
