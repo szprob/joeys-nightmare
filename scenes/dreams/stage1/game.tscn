@@ -545,6 +545,6 @@ offset_left = -1151.0
 offset_top = -108.0
 offset_right = -890.0
 offset_bottom = -85.0
-text = "你已经通关,欢迎来到开发素材杂物间"
+text = "你已经通关一阶段DEMO,欢迎来到开发素材杂物间"
 
 [editable path="auto_close_door"]
