@@ -35,7 +35,7 @@ const BubbleScene = preload("res://scenes/modules/ui/bubble.tscn")
 @export var bubble_index: int = 0
 @export var teleport: Node2D
 @export var disappear_delay: float = 1.5
-
+@export var player : CharacterBody2D
 
 func _ready() -> void:
 	if bubble_file in GameManager.game_state['npc_dialogue_list']:
@@ -83,7 +83,6 @@ func _ready() -> void:
 
 
 func _on_timer_timeout():
-	var player = get_tree().get_first_node_in_group("player")
 	if player and player.has_method("set_can_move"):
 		player.set_can_move(false)
 	create_bubble()
@@ -157,7 +156,6 @@ func disappear() -> void:
 	visible = false
 	if audio_player and audio_player.stream:
 		audio_player.play()
-	var player = get_tree().get_first_node_in_group("player")
 	if player and player.has_method("set_can_move"):
 		player.set_can_move(true)
 	disappear_timer.start()
@@ -173,7 +171,6 @@ func create_bubble() -> void:
 	var bubble_position = global_position + Vector2(-48, -53)  # 默认NPC位置
 	
 	if current_text.begins_with("player:"):
-		var player = get_tree().get_first_node_in_group("player")
 		if player:
 			bubble_position = player.global_position + Vector2(-48, -53)
 		current_text = current_text.substr(7)
