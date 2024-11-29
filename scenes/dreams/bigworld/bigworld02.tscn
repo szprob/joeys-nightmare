@@ -2648,7 +2648,7 @@ _data = {
 script = ExtResource("1_ildsd")
 
 [node name="player_with_gravity" parent="." groups=["player"] instance=ExtResource("2_ody63")]
-position = Vector2(2204.73, -35.6407)
+position = Vector2(2218.52, -65.6601)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
 position = Vector2(192, 88)
