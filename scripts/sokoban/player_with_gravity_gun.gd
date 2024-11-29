@@ -284,7 +284,7 @@ func _physics_process(delta: float) -> void:
 	# print(get_gravity())
 	# print('position', position)
 	# print('velocity', velocity)
-	
+	print('is on terrain', is_on_terrain())
 	
 func update_face_direction(direction):
 	if direction != 0:
@@ -297,20 +297,26 @@ func _on_gun_cooldown_timeout() -> void:
 
 
 func is_on_terrain() -> bool:
-	# 根据重力方向设置射线方向
 	var gravity_dir = get_gravity().normalized()
-	ray_cast_2d.target_position = gravity_dir * 16
-	ray_cast_2d.enabled = true
-
-
-	if ray_cast_2d.is_colliding():
-		var collider = ray_cast_2d.get_collider()
-
-		if collider is TileMapLayer or collider is StaticBody2D or collider is AnimatableBody2D or collider is CharacterBody2D:
-			#print('is on tilemap')
-			return true
-			
-	# print('not on tilemap', )
+	var collision_width = collision_shape_2d.shape.size.x
+	
+	# 创建3条射线：左、中、右
+	var offsets = [-collision_width * 0.6, 0, collision_width * 0.6]
+	
+	for offset in offsets:
+		# 计算射线起点的偏移量
+		var offset_vector = Vector2(-gravity_dir.y, gravity_dir.x) * offset
+		ray_cast_2d.position = offset_vector
+		ray_cast_2d.target_position = gravity_dir * 16
+		ray_cast_2d.force_raycast_update()
+		
+		if ray_cast_2d.is_colliding():
+			var collider = ray_cast_2d.get_collider()
+			if collider is TileMapLayer or collider is StaticBody2D or collider is AnimatableBody2D or collider is CharacterBody2D:
+				ray_cast_2d.position = Vector2.ZERO # 重置射线位置
+				return true
+	
+	ray_cast_2d.position = Vector2.ZERO # 重置射线位置
 	return false
 
 func filp_player_sprite(direction):
