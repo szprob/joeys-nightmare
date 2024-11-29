@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var transition_scene: String = "res://scenes/modules/checkpoints/transition.tscn"  # 添加过渡场景路径
-@export var target_scene: String = "res://scenes/dreams/bigworld/bigworld01.tscn"
+@export var target_scene: String = "res://scenes/dreams/bigworldv2/intro.tscn"
 
 var buttons = []
 var current_index = 0

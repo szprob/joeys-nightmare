@@ -26,7 +26,7 @@ else:
 		- 是
 			Joey: 感觉好困 [wait=0.3 speed=0.3]...
 			set GameManager.game_state['has_slept'] = true
-			set GameManager.switch_day_to_dream("res://scenes/dreams/bigworld/bigworld02.tscn")
+			set GameManager.switch_day_to_dream("res://scenes/dreams/bigworldv2/stage1.tscn")
 			=> END
 		- 否
 			Joey: 好像还不困
