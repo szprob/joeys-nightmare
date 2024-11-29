@@ -1,10 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5t052kpld60e"]
+[gd_scene load_steps=14 format=3 uid="uid://b5t052kpld60e"]
 
 [ext_resource type="PackedScene" uid="uid://blydc865qnepa" path="res://scenes/player/player_day.tscn" id="1_3un87"]
 [ext_resource type="PackedScene" uid="uid://bmq25pi5e8wan" path="res://scenes/day/room1/room1.tscn" id="1_fv2j8"]
 [ext_resource type="PackedScene" uid="uid://cuvs1inu1bmr" path="res://scenes/day/room2/room2.tscn" id="2_07116"]
 [ext_resource type="Script" path="res://scenes/day/room1/track_camera.gd" id="3_mf3ak"]
+[ext_resource type="Script" path="res://scripts/day/enter_animation.gd" id="3_v5xrb"]
+[ext_resource type="PackedScene" uid="uid://byljde6sgcfrv" path="res://scenes/player/actionable.tscn" id="4_epc0u"]
+[ext_resource type="Resource" uid="uid://bvjxsl5w8bm2m" path="res://scenes/day/dialogues/room2.dialogue" id="5_m6frk"]
 [ext_resource type="Resource" uid="uid://6a0f0mm58veq" path="res://scenes/day/dialogues/openning.dialogue" id="7_oohak"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rl6hv"]
+size = Vector2(35, 20)
 
 [sub_resource type="Animation" id="Animation_empoa"]
 length = 0.001
@@ -237,6 +243,18 @@ _data = {
 [node name="Room2" parent="." instance=ExtResource("2_07116")]
 position = Vector2(0, 272)
 
+[node name="EnterAnimation" type="Sprite2D" parent="Room2"]
+position = Vector2(229, 153)
+script = ExtResource("3_v5xrb")
+
+[node name="Actionable" parent="Room2/EnterAnimation" instance=ExtResource("4_epc0u")]
+dialogue_resource = ExtResource("5_m6frk")
+dialogue_start = "begin"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room2/EnterAnimation/Actionable"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_rl6hv")
+
 [node name="PlayerDay" parent="." instance=ExtResource("1_3un87")]
 z_index = 1
 texture_filter = 1
@@ -279,5 +297,7 @@ callback_mode_method = 1
 libraries = {
 "": SubResource("AnimationLibrary_as0jj")
 }
+
+[connection signal="body_entered" from="Room2/EnterAnimation/Actionable" to="Room2/EnterAnimation" method="_on_actionable_body_entered"]
 
 [editable path="PlayerDay"]

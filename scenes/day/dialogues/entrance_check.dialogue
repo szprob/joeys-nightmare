@@ -8,7 +8,18 @@ if GameManager.get_day_phase() < 3:
 	=> END
 else:
 	if GameManager.game_state['has_slept']:
-		Joey: 才刚睡醒，去检查一下柜子吧
+		if GameManager.is_skill_enabled("second_jump_enabled"):
+			空床[#thing]: (准备好睡觉了吗？)
+			- 是
+				Joey: 玩累了就直接睡觉，没问题的[wait=0.3 speed=0.3]...
+				set GameManager.set_skill_enabled("second_jump_enabled", true)
+				set GameManager.switch_day_to_dream("res://scenes/dreams/stage1/game.tscn")
+				=> END
+			- 否
+				Joey: 好像还不困
+				=> END
+		else:
+			Joey: 才刚睡醒，去检查一下柜子吧
 		=> END
 	else:
 		空床[#thing]: (准备好睡觉了吗？)
