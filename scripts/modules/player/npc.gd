@@ -38,6 +38,10 @@ const BubbleScene = preload("res://scenes/modules/ui/bubble.tscn")
 
 
 func _ready() -> void:
+	if bubble_file in GameManager.game_state['npc_dialogue_list']:
+		teleport.queue_free()
+		queue_free()
+		return
 	teleport.visible = false
 	# 初始化对话区域信号
 	# dialogue_area.body_entered.connect(_on_dialogue_area_body_entered)
@@ -190,4 +194,5 @@ func _on_bubble_destroyed() -> void:
 	if bubble_index < bubble_texts.size():
 		create_bubble()
 	else:
+		GameManager.game_state['npc_dialogue_list'].append(bubble_file)
 		create_portal()

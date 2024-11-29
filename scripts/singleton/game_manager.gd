@@ -52,7 +52,8 @@ func init_default_state():
 		'is_paused': false,
 		'skills': {
 			'second_jump_enabled': false
-		}
+		},
+		'npc_dialogue_list': []
 	}
 	game_state = game_state2.duplicate(true) # 深度复制默认状态
 
