@@ -301,7 +301,7 @@ func is_on_terrain() -> bool:
 	var collision_width = collision_shape_2d.shape.size.x
 	
 	# 创建3条射线：左、中、右
-	var offsets = [-collision_width * 0.6, 0, collision_width * 0.6]
+	var offsets = [-collision_width * 0.4, 0, collision_width * 0.4]
 	
 	for offset in offsets:
 		# 计算射线起点的偏移量
