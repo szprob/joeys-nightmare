@@ -13,6 +13,9 @@ extends CharacterBody2D
 @export var ammo_count = 1 # 子弹数量
 @export var coyote_time: float = 0.2 # 离开平台边缘还能起跳的时间，为了更宽松的平台边缘的跳跃
 
+# run variables
+@export var acceleration_frames: int = 3 # 达到最高速需要的帧数
+@export var deceleration_frames: int = 3 # 减速到0需要的帧数
 
 var can_shoot = true
 var has_double_jumped = false
@@ -27,6 +30,8 @@ var default_pos = Vector2(0, 0)
 var respawn_pos = Vector2(0, 0)
 var coyote_timer: float = 0.0
 var was_on_ground: bool = false
+var current_speed: float = 0.0
+
 
 var active_gravity_gun_fields: Array = []
 
@@ -239,20 +244,45 @@ func _physics_process(delta: float) -> void:
 	# 		velocity.y = direction.y * Consts.SPEED # 使用 direction.y 来控制上下移动
 	if direction:
 		# 根据重力方向调整移动
+		var speed_step = Consts.SPEED / acceleration_frames  # 每帧增加的速度
 		if abs(get_gravity().y) > abs(get_gravity().x):
-			velocity.x = direction.x * Consts.SPEED
+			# 水平移动
+			var target_speed = direction.x * Consts.SPEED
+			if sign(target_speed) != sign(current_speed):
+				current_speed = 0  # 改变方向时重置速度
+			current_speed = clamp(
+				current_speed + (speed_step * sign(target_speed)),
+				-Consts.SPEED,
+				Consts.SPEED
+			)
+			velocity.x = current_speed
 		else:
-			velocity.y = direction.y * Consts.SPEED
+			# 垂直移动
+			var target_speed = direction.y * Consts.SPEED
+			if sign(target_speed) != sign(current_speed):
+				current_speed = 0  # 改变方向时重置速度
+			current_speed = clamp(
+				current_speed + (speed_step * sign(target_speed)),
+				-Consts.SPEED,
+				Consts.SPEED
+			)
+			velocity.y = current_speed
 		
 		check_box_on_head()
 		# 检测头顶上方的箱子
 		
 		
 	else:
-		if abs(get_gravity().y) > abs(get_gravity().x):
-			velocity.x = move_toward(velocity.x, 0, Consts.SPEED)
+		var speed_step = Consts.SPEED / deceleration_frames  # 每帧减少的速度
+		if abs(current_speed) <= speed_step:
+			current_speed = 0
 		else:
-			velocity.y = move_toward(velocity.y, 0, Consts.SPEED)
+			current_speed = move_toward(current_speed, 0, speed_step)
+		
+		if abs(get_gravity().y) > abs(get_gravity().x):
+			velocity.x = current_speed
+		else:
+			velocity.y = current_speed
 		
 
 	for i in get_slide_collision_count():
