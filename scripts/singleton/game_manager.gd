@@ -54,7 +54,8 @@ func init_default_state():
 			'second_jump_enabled': false
 		},
 		'npc_dialogue_list': [],
-		'laji': ''
+		'laji': '',
+		'can_detect_kill_zone': true
 	}
 	game_state = game_state2.duplicate(true) # 深度复制默认状态
 

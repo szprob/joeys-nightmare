@@ -47,5 +47,5 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 
 func _on_saved_timer_timeout() -> void:
 	saved_label.visible = false
-	has_been_activated = false
-	animated_sprite_2d.frame = 0
+	# has_been_activated = false
+	# animated_sprite_2d.frame = 0
