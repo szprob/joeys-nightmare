@@ -12,7 +12,7 @@ var pause_scene = preload("res://scenes/main/pause.tscn")
 # 添加背景音乐预加载
 var bgm_player: AudioStreamPlayer
 
-var game_state = {}
+
 
 # 在文件开头添加 BGM 资源预加载
 var bgm_resources = {
@@ -25,6 +25,8 @@ var dialogue_image_storage = {
 	"joey_normal": "res://assets/sprites/day/character/JOEY帅气版.png",
 	"joey_happy": "res://assets/sprites/day/character/joey帅气版2.png"
 }
+var game_state = {}
+var game_state_cache = {'can_detect_kill_zone': true, 'do_detect_teleport': true}
 
 func init_default_state():
 	var game_state2 = {
@@ -54,8 +56,7 @@ func init_default_state():
 			'second_jump_enabled': false
 		},
 		'npc_dialogue_list': [],
-		'laji': '',
-		'can_detect_kill_zone': true
+		'laji': ''
 	}
 	game_state = game_state2.duplicate(true) # 深度复制默认状态
 
