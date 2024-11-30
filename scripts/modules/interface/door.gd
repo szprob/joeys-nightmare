@@ -10,7 +10,7 @@ var player_in_range: bool = false
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 @export var door_name: String = '城堡第一个门'
-@export var key_name: String = '彩色钥匙1'
+@export var key_name_need: String = '彩色钥匙1'
 
 
 # Called when the node enters the scene tree for the first time.
@@ -40,7 +40,7 @@ func _process(_delta: float) -> void:
 
 	if player_in_range and Input.is_action_just_pressed("select"):
 		# 检查钥匙是否在背包中
-		if key_name in GameManager.game_state['inventory']:
+		if key_name_need in GameManager.game_state['inventory']:
 			# 播放开门音效
 			if audio_player:
 				audio_player.play()
