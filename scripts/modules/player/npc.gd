@@ -192,4 +192,5 @@ func _on_bubble_destroyed() -> void:
 		create_bubble()
 	else:
 		GameManager.game_state['npc_dialogue_list'].append(bubble_file)
+		GameManager.save_game_state()
 		create_portal()
