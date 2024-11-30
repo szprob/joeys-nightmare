@@ -9,6 +9,7 @@ var can_die: bool = true
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready():
+	Engine.time_scale = 1
 	death_effect.visible = false
 	death_effect.color = Color(1, 1, 1, 0)
 	death_effect.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -16,25 +17,24 @@ func _ready():
 	death_effect.z_index = 100
 
 func _on_body_entered(body: Node2D) -> void:
+	if not GameManager.game_state['can_detect_kill_zone']:
+		return
 	print("die!!")
+	GameManager.game_state['can_detect_kill_zone'] = false
 	Engine.time_scale = 0.5
 	# if body.has_method("respawn"):
 	# 	body.respawn()
 	death_effect.visible = true
 	animation_player.play("death_effect")
-	if can_die:
-		timer.start()
-	can_die = false
+	timer.start()
 	
 
 func _on_timer_timeout() -> void:
-	can_die = true
 	Engine.time_scale = 1
+	GameManager.game_state['can_detect_kill_zone'] = true
 	death_effect.visible = false
 	# var root_node = get_tree().get_root()
 	var root_node = get_tree().current_scene
-	print('root node', root_node.name)
-	
 	cleanup_dynamic_nodes()
 	get_tree().change_scene_to_file(root_node.scene_file_path)
 
