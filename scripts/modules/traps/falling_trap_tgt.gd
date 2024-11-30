@@ -17,7 +17,7 @@ var do_detect = true
 @onready var sfx_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
-	init_position = position
+	init_position = global_position
 	final_position = target.global_position
 	if invisible_before_launch:  # 根据配置设置初始可见性
 		modulate.a = 0  # 完全透明
@@ -28,9 +28,9 @@ func _ready() -> void:
 
 func _physics_process(delta):
 	if is_flying_forward:
-		position += fly_direction * speed * delta
-		if position.distance_to(final_position) < 5:
-			position = final_position
+		global_position += fly_direction * speed * delta
+		if global_position.distance_to(final_position) < 5:
+			global_position = final_position
 			queue_free()
 		
 		
@@ -39,7 +39,7 @@ func _on_timer_timeout() -> void:
 	is_flying_forward = true
 	if invisible_before_launch:
 		modulate.a = 1  # 发射时显示
-	fly_direction = (final_position  - position).normalized()
+	fly_direction = (final_position  - global_position).normalized()
 
 
 
