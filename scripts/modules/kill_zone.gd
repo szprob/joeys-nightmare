@@ -1,7 +1,5 @@
 extends Area2D
 
-var can_die: bool = true
-
 @onready var timer: Timer = $Timer
 
 # for 死亡动画
@@ -24,6 +22,8 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 
 	GameManager.game_state_cache['can_detect_kill_zone'] = false
+	GameManager.game_state['number_deaths'] += 1
+	print('number_deaths : ', GameManager.game_state['number_deaths'])
 	Engine.time_scale = 0.5
 	# if body.has_method("respawn"):
 	# 	body.respawn()

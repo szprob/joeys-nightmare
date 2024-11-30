@@ -56,7 +56,8 @@ func init_default_state():
 			'second_jump_enabled': false
 		},
 		'npc_dialogue_list': [],
-		'laji': ''
+		'laji': '',
+		'number_deaths': 0
 	}
 	game_state = game_state2.duplicate(true) # 深度复制默认状态
 
