@@ -118,6 +118,8 @@ func shoot(Input) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# print('second jump enabled', can_second_jump())
+	print('coyote timer', coyote_timer)
 	# 在函数开始时就检查 can_move
 	if not can_move:
 		# 如果不能移动，将速度设为0并直接返回
@@ -134,8 +136,12 @@ func _physics_process(delta: float) -> void:
 	if not is_on_terrain():
 		# print('not on terrain')
 		#print(collision_shape_2d.collision_mask)
-		was_on_ground = true
-		coyote_timer = coyote_time
+		if was_on_ground:  # Only start coyote time when first leaving ground
+			coyote_timer = coyote_time
+			was_on_ground = false
+		else:
+			coyote_timer -= delta  # Only decrease timer if we're already in air
+		
 		var gravity = get_gravity()
 		var gravity_dir = gravity.normalized()
 		
@@ -187,15 +193,18 @@ func _physics_process(delta: float) -> void:
 			# second_jump_enabled = false
 
 	else:
-		# 落地时重置二段跳
+		# Reset flags when touching ground
+		was_on_ground = true
+		coyote_timer = 0  # Reset coyote timer when on ground
 		has_double_jumped = false
-		# 角色刚落地时，检查是否在缓冲时间内按下过跳跃键
-		if jump_buffer_timer > 0:
-			start_jump() # 如果缓冲计时器大于0，则自动跳跃
-			jump_buffer_timer = 0 # 跳跃后重置计时器
-		if was_on_ground: # 刚离开地面
-			was_on_ground = false
-		coyote_timer -= delta
+		
+		if jump_buffer_timer > 0 and has_released_jump:
+			start_jump()
+			jump_buffer_timer = 0
+
+	if is_jumping:
+		was_on_ground = false
+		coyote_timer = 0
 	# Handle jump input with buffering
 	if Input.is_action_just_pressed("jump"):
 		# print('is on terrain', is_on_terrain()
@@ -321,7 +330,7 @@ func _physics_process(delta: float) -> void:
 	# print(get_gravity())
 	# print('position', position)
 	# print('velocity', velocity)
-	print('is on terrain', is_on_terrain())
+	# print('is on terrain', is_on_terrain())
 	
 func update_face_direction(direction):
 	if direction != 0:
