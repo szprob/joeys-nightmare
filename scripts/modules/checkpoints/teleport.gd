@@ -16,6 +16,7 @@ var player_inside = false  # 用于跟踪玩家是否在存档点内
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready():
+	GameManager.game_state_cache['do_detect_teleport'] = true
 	# 添加计时器
 	add_child(timer)
 	timer.wait_time = teleport_time
@@ -31,14 +32,16 @@ func _ready():
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("select") and player_inside:
+	if Input.is_action_just_pressed("select") and player_inside and GameManager.game_state_cache['do_detect_teleport']:
 		audio_player.play()
+		GameManager.game_state_cache['do_detect_teleport'] = false
 		timer.start()
 
 func _on_body_entered(body: CharacterBody2D) -> void:
 	if body is CharacterBody2D:
 		player_inside = true
 		label.visible = true
+		
 	
 func _on_body_exited(body: Node) -> void:
 	if body is CharacterBody2D:
@@ -48,6 +51,7 @@ func _on_body_exited(body: Node) -> void:
 
 
 func _on_timer_timeout():
+	GameManager.game_state_cache['do_detect_teleport'] = true
 	# 创建过渡场景实例
 	GameManager.game_state['target_scene'] = target_scene
 	if teleport_type == TeleportType.DAY2DREAM:

@@ -17,10 +17,13 @@ func _ready():
 	death_effect.z_index = 100
 
 func _on_body_entered(body: Node2D) -> void:
-	if not GameManager.game_state['can_detect_kill_zone']:
+	if not GameManager.game_state_cache['can_detect_kill_zone']:
 		return
-	print("die!!")
-	GameManager.game_state['can_detect_kill_zone'] = false
+	
+	if not body is CharacterBody2D:
+		return
+
+	GameManager.game_state_cache['can_detect_kill_zone'] = false
 	Engine.time_scale = 0.5
 	# if body.has_method("respawn"):
 	# 	body.respawn()
@@ -31,7 +34,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_timer_timeout() -> void:
 	Engine.time_scale = 1
-	GameManager.game_state['can_detect_kill_zone'] = true
+	GameManager.game_state_cache['can_detect_kill_zone'] = true
 	death_effect.visible = false
 	# var root_node = get_tree().get_root()
 	var root_node = get_tree().current_scene
