@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx0dlu782dwi5"]
+
+[ext_resource type="Script" path="res://scripts/modules/interface/key.gd" id="1_av0vg"]
+[ext_resource type="Texture2D" uid="uid://78w4owvufdht" path="res://icon.svg" id="2_hxl3j"]
+[ext_resource type="AudioStream" uid="uid://j1hk7cjwtvxj" path="res://assets/sounds/coin.wav" id="3_jvbkn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdmr8"]
+size = Vector2(51, 45)
+
+[node name="Key" type="Area2D"]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("1_av0vg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(50, 57)
+scale = Vector2(0.476563, 0.460938)
+texture = ExtResource("2_hxl3j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(51, 57)
+shape = SubResource("RectangleShape2D_xdmr8")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -17.0
+offset_top = -2.0
+offset_right = 123.0
+offset_bottom = 26.0
+theme_override_font_sizes/font_size = 20
+text = "获得了红色钥匙"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jvbkn")
