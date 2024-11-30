@@ -21,6 +21,7 @@ var target_position: Vector2 = Vector2(0,0)
 var timer: Timer
 var disappear_timer: Timer
 var bubble_texts: Array = []
+var player : CharacterBody2D
 
 # 添加新的导入
 const DialogueResourceFile = preload("res://addons/dialogue_manager/dialogue_resource.gd")
@@ -35,13 +36,15 @@ const BubbleScene = preload("res://scenes/modules/ui/bubble.tscn")
 @export var bubble_index: int = 0
 @export var teleport: Node2D
 @export var disappear_delay: float = 1.5
-@export var player : CharacterBody2D
+
 
 func _ready() -> void:
 	if bubble_file in GameManager.game_state['npc_dialogue_list']:
 		teleport.queue_free()
 		queue_free()
 		return
+
+	player = get_tree().get_first_node_in_group("player")
 	teleport.visible = false
 	# 初始化对话区域信号
 	# dialogue_area.body_entered.connect(_on_dialogue_area_body_entered)
@@ -64,6 +67,10 @@ func _ready() -> void:
 
 
 	bubble_texts = GameManager.read_txt_to_list(bubble_file)
+	if bubble_texts.is_empty():
+		print("警告: 无法读取对话文件 ", bubble_file)
+		queue_free()
+		return
 
 
 # 	var player = get_tree().get_first_node_in_group("player")

@@ -57,7 +57,8 @@ func init_default_state():
 		},
 		'npc_dialogue_list': [],
 		'laji': '',
-		'number_deaths': 0
+		'number_deaths': 0,
+		'doors_opened': []
 	}
 	game_state = game_state2.duplicate(true) # 深度复制默认状态
 
