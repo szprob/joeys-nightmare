@@ -11,6 +11,8 @@ extends CharacterBody2D
 @export var mass: float = 1.0
 @export var second_jump_enabled = true
 @export var ammo_count = 1 # 子弹数量
+@export var coyote_time: float = 0.2 # 离开平台边缘还能起跳的时间，为了更宽松的平台边缘的跳跃
+
 
 var can_shoot = true
 var has_double_jumped = false
@@ -23,6 +25,8 @@ var jump_hold_time: float = 0.0 # 记录跳跃键按住的时间
 var is_jumping: bool = false # 标记是否正在跳跃
 var default_pos = Vector2(0, 0)
 var respawn_pos = Vector2(0, 0)
+var coyote_timer: float = 0.0
+var was_on_ground: bool = false
 
 var active_gravity_gun_fields: Array = []
 
@@ -125,6 +129,8 @@ func _physics_process(delta: float) -> void:
 	if not is_on_terrain():
 		# print('not on terrain')
 		#print(collision_shape_2d.collision_mask)
+		was_on_ground = true
+		coyote_timer = coyote_time
 		var gravity = get_gravity()
 		var gravity_dir = gravity.normalized()
 		
@@ -182,12 +188,13 @@ func _physics_process(delta: float) -> void:
 		if jump_buffer_timer > 0:
 			start_jump() # 如果缓冲计时器大于0，则自动跳跃
 			jump_buffer_timer = 0 # 跳跃后重置计时器
-
-
+		if was_on_ground: # 刚离开地面
+			was_on_ground = false
+		coyote_timer -= delta
 	# Handle jump input with buffering
 	if Input.is_action_just_pressed("jump"):
 		# print('is on terrain', is_on_terrain()
-		if is_on_terrain() and can_move:
+		if (is_on_terrain() or coyote_timer > 0) and can_move:
 			start_jump() # 正常跳跃
 		else:
 			jump_buffer_timer = Consts.JUMP_BUFFER_TIME # 记录跳跃键按下的时间以便缓冲
