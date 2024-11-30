@@ -558,6 +558,7 @@ position = Vector2(-1285, -58)
 scale = Vector2(0.6, 0.6)
 
 [node name="Door" parent="." instance=ExtResource("26_hb01r")]
-position = Vector2(-1334, -47)
+position = Vector2(-1332, -39)
+scale = Vector2(0.7, 0.7)
 
 [editable path="auto_close_door"]
