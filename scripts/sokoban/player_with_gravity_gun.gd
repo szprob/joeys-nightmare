@@ -74,10 +74,17 @@ func start_jump() -> void:
 	has_released_jump = false
 	has_double_jumped = false
 	var gravity_dir = get_gravity().normalized()
+	
+	# 添加水平方向的速度提升
+	var perpendicular_dir = Vector2(-gravity_dir.y, gravity_dir.x)  # 垂直于重力方向的向量
+	var horizontal_input = Input.get_axis("left", "right")
+	if horizontal_input != 0:
+		velocity += perpendicular_dir * (Consts.SPEED * 0.5 * horizontal_input)  # 可以调整这个系数
+	
 	# 将跳跃速度分成多帧加速
 	var jump_speed_per_frame = abs(Consts.MAX_JUMP_VELOCITY) / jump_acceleration_frames
 	velocity -= gravity_dir * jump_speed_per_frame
-	# print('velocity after', velocity)
+	
 	jump_hold_time = 0.0
 	jump_acceleration_counter = 0
 	is_jumping = true
