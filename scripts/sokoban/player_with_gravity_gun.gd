@@ -49,6 +49,9 @@ const GROUND_CONTACT_THRESHOLD: int = 2  # 需要2帧才确认离开地面
 # logging
 var jump_start_position: Vector2 = Vector2.ZERO
 
+@export var fall_multiplier_duration: float = 0.2  # 加倍重力的持续时间(秒)
+var fall_multiplier_timer: float = 0.0  # 计时器
+
 func _ready():
 	await ready
 	GameManager.load_game_state()
@@ -220,10 +223,28 @@ func _physics_process(delta: float) -> void:
 				velocity -= gravity_dir * (Consts.MAX_JUMP_VELOCITY * -0.6) * delta
 			else:
 				is_jumping = false
-				velocity += gravity * delta
+				# 只在开始下落后的短时间内应用加倍重力
+				if velocity.dot(gravity_dir) > 0:  # 检查是否在下落
+					if fall_multiplier_timer < fall_multiplier_duration:
+						velocity += gravity * delta * 1.8  # 加倍重力
+						fall_multiplier_timer += delta
+					else:
+						velocity += gravity * delta  # 正常重力
+				else:
+					fall_multiplier_timer = 0.0  # 重置计时器
+					velocity += gravity * delta
 		else:
 			is_jumping = false
-			velocity += gravity * delta
+			# 只在开始下落后的短时间内应用加倍重力
+			if velocity.dot(gravity_dir) > 0:  # 检查是否在下落
+				if fall_multiplier_timer < fall_multiplier_duration:
+					velocity += gravity * delta * 1.5  # 加倍重力
+					fall_multiplier_timer += delta
+				else:
+					velocity += gravity * delta  # 正常重力
+			else:
+				fall_multiplier_timer = 0.0  # 重置计时器
+				velocity += gravity * delta
 		# 二段跳
 		
 		# print('has released jump2: ', has_released_jump)
