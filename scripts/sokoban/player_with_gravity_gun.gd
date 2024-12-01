@@ -17,6 +17,11 @@ extends CharacterBody2D
 @export var acceleration_frames: int = 3 # 达到最高速需要的帧数
 @export var deceleration_frames: int = 3 # 减速到0需要的帧数
 
+# jump variables
+@export var jump_acceleration_frames: int = 5 # 达到最高跳跃速度需要的帧数
+@export var jump_deceleration_frames: int = 5 # 减速到0需要的帧数
+
+
 var can_shoot = true
 var has_double_jumped = false
 var second_jump_gravity_timer: float = 1.0
@@ -31,11 +36,15 @@ var respawn_pos = Vector2(0, 0)
 var coyote_timer: float = 0.0
 var was_on_ground: bool = false
 var current_speed: float = 0.0
-
+var jump_acceleration_counter: int = 0
 
 var active_gravity_gun_fields: Array = []
 
 var gravity_scene = preload("res://scenes/sokoban/gravity_1.tscn")
+
+# 在类变量中添加
+var ground_contact_frames: int = 0      # 接触地面的帧数
+const GROUND_CONTACT_THRESHOLD: int = 1  # 需要多少帧才确认离开地面
 
 func _ready():
 	await ready
@@ -56,16 +65,18 @@ func respawn():
 
 # 开始跳跃的函数
 func start_jump() -> void:
+	print('start jump')
+	print('velocity', velocity)
 	has_released_jump = false
 	has_double_jumped = false
-	# has_released_jump = false
-	# 获取重力方向的单位向量
 	var gravity_dir = get_gravity().normalized()
-	# print('gravity dir', gravity_dir)
-	# 跳跃方向与重力方向相反
-	velocity -= gravity_dir * abs(Consts.JUMP_VELOCITY)
-	jump_hold_time = 0.0 # 重置跳跃键按住时间
-	is_jumping = true # 标记为跳跃状态
+	# 将跳跃速度分成多帧加速
+	var jump_speed_per_frame = abs(Consts.MAX_JUMP_VELOCITY) / jump_acceleration_frames
+	velocity -= gravity_dir * jump_speed_per_frame
+	print('velocity after', velocity)
+	jump_hold_time = 0.0
+	jump_acceleration_counter = 0
+	is_jumping = true
 	if jump_audio and jump_audio.stream:
 		jump_audio.play()
 
@@ -119,8 +130,15 @@ func shoot(Input) -> void:
 
 func _physics_process(delta: float) -> void:
 	# print('second jump enabled', can_second_jump())
-	print('coyote timer', coyote_timer)
+	# print('coyote timer', coyote_timer)
+	print("Current animation: ", animated_sprite_2d.animation)
+
+	if jump_buffer_timer > 0:
+		print('jump buffer timer', jump_buffer_timer)
+	if Input.is_action_just_pressed('jump'):
+		print('jump pressed')
 	# 在函数开始时就检查 can_move
+
 	if not can_move:
 		# 如果不能移动，将速度设为0并直接返回
 		velocity = Vector2.ZERO
@@ -132,7 +150,7 @@ func _physics_process(delta: float) -> void:
 
 	# Add the gravity.
 	
-
+	# print('is on terrain', is_on_terrain())
 	if not is_on_terrain():
 		# print('not on terrain')
 		#print(collision_shape_2d.collision_mask)
@@ -146,7 +164,7 @@ func _physics_process(delta: float) -> void:
 		var gravity_dir = gravity.normalized()
 		
 		# 先应用重力
-		velocity += gravity * delta
+		# velocity += gravity * delta
 		
 		# 然后限制重力方向上的速度分量
 		var velocity_along_gravity = velocity.project(gravity_dir)
@@ -167,22 +185,28 @@ func _physics_process(delta: float) -> void:
 		# 如果玩家正在跳跃并且继续按住跳跃键，增加跳跃高度
 
 		if is_jumping and Input.is_action_pressed('jump'):
-			# print('is jumping and jump pressed', jump_hold_time)
 			jump_hold_time += delta
 			if jump_hold_time < Consts.MAX_JUMP_HOLD_TIME:
-				# var gravity_dir = get_gravity().normalized()
-				# 计算当前速度在重力方向上的投影
 				var velocity_projection = velocity.project(gravity_dir).length()
-				if velocity_projection < abs(Consts.MAX_JUMP_VELOCITY):
-				# print('velocity projection', velocity_projection)
-					if abs(velocity_projection) < abs(Consts.MAX_JUMP_VELOCITY):
-						# 计算目标速度向量（与重力方向相反）
-						var target_velocity = -gravity_dir * abs(Consts.MAX_JUMP_VELOCITY)
-						# print('target velocity', target_velocity)
-						# 在重力方向上进行lerp
-						velocity = lerp(velocity, target_velocity, delta)
+				if velocity_projection < abs(Consts.MAX_JUMP_VELOCITY) and jump_acceleration_counter < jump_acceleration_frames:
+					var target_velocity = -gravity_dir * abs(Consts.MAX_JUMP_VELOCITY)
+					var lerp_weight = 1.0 / jump_acceleration_frames
+					velocity = lerp(velocity, target_velocity, lerp_weight)
+					jump_acceleration_counter += 1
+					# print('lerp velocity', velocity, target_velocity)
+					velocity -= gravity * delta
+				else:
+					# print('hit max velocity or acceleration frames')
+					is_jumping = false
+					velocity += gravity * delta
+			else:
+				# print('hit max hold time')
+				is_jumping = false
+				velocity += gravity * delta
 		else:
-			is_jumping = false # 玩家松开跳跃键，停止跳跃高度增加
+			# print('hit max hold time')
+			is_jumping = false
+			velocity += gravity * delta
 		# 二段跳
 		
 		# print('has released jump2: ', has_released_jump)
@@ -197,9 +221,10 @@ func _physics_process(delta: float) -> void:
 		was_on_ground = true
 		coyote_timer = 0  # Reset coyote timer when on ground
 		has_double_jumped = false
-		
 		if jump_buffer_timer > 0 and has_released_jump:
+			print('try pre imput jump')
 			start_jump()
+			print('reset jump buffer timer')
 			jump_buffer_timer = 0
 
 	if is_jumping:
@@ -342,28 +367,57 @@ func _on_gun_cooldown_timeout() -> void:
 	pass # Replace with function body.
 
 
-func is_on_terrain() -> bool:
-	var gravity_dir = get_gravity().normalized()
-	var collision_width = collision_shape_2d.shape.size.x
+# func is_on_terrain() -> bool:
+# 	var gravity_dir = get_gravity().normalized()
+# 	var collision_width = collision_shape_2d.shape.size.x
+# 	var collision_height = collision_shape_2d.shape.size.y
+# 	# print('collision height', collision_height)
+# 	# 创建3条射线：左、中、右
+# 	var offsets = [-collision_width * 0.4, 0, collision_width * 0.4]
 	
-	# 创建3条射线：左、中、右
-	var offsets = [-collision_width * 0.4, 0, collision_width * 0.4]
-	
-	for offset in offsets:
-		# 计算射线起点的偏移量
-		var offset_vector = Vector2(-gravity_dir.y, gravity_dir.x) * offset
-		ray_cast_2d.position = offset_vector
-		ray_cast_2d.target_position = gravity_dir * 16
-		ray_cast_2d.force_raycast_update()
+# 	for offset in offsets:
+# 		# 计算射线起点的偏移量
+# 		var offset_vector = Vector2(-gravity_dir.y, gravity_dir.x) * offset
+# 		ray_cast_2d.position = offset_vector
+# 		ray_cast_2d.target_position = gravity_dir * (collision_height/2 + 1.0)
+# 		ray_cast_2d.force_raycast_update()
 		
-		if ray_cast_2d.is_colliding():
-			var collider = ray_cast_2d.get_collider()
-			if collider is TileMapLayer or collider is StaticBody2D or collider is AnimatableBody2D or collider is CharacterBody2D:
-				ray_cast_2d.position = Vector2.ZERO # 重置射线位置
-				return true
+# 		if ray_cast_2d.is_colliding():
+# 			var collider = ray_cast_2d.get_collider()
+# 			if collider is TileMapLayer or collider is StaticBody2D or collider is AnimatableBody2D or collider is CharacterBody2D:
+# 				ray_cast_2d.position = Vector2.ZERO # 重置射线位置
+# 				return true
 	
-	ray_cast_2d.position = Vector2.ZERO # 重置射线位置
-	return false
+# 	ray_cast_2d.position = Vector2.ZERO # 重置射线位置
+# 	return false
+
+# func is_on_terrain() -> bool:
+# 	var gravity_dir = get_gravity().normalized()
+# 	var is_touching_ground = false
+	
+# 	# 检查当前帧的碰撞
+# 	for i in get_slide_collision_count():
+# 		var collision = get_slide_collision(i)
+# 		var normal = collision.get_normal()
+		
+# 		if normal.dot(-gravity_dir) > 0.5:
+# 			var collider = collision.get_collider()
+# 			if collider is TileMapLayer or collider is StaticBody2D or collider is AnimatableBody2D or collider is CharacterBody2D:
+# 				is_touching_ground = true
+# 				break
+	
+# 	# 更新接触帧数
+# 	if is_touching_ground:
+# 		ground_contact_frames = GROUND_CONTACT_THRESHOLD
+# 	elif ground_contact_frames > 0:
+# 		ground_contact_frames -= 1
+	
+# 	# 只有当完全没有接触帧数时才认为离开地面
+# 	return ground_contact_frames > 0
+
+func is_on_terrain() -> bool:
+	set_up_direction(-get_gravity().normalized())
+	return is_on_floor()
 
 func filp_player_sprite(direction):
 	# flip palyer sprite based on gravity direction
