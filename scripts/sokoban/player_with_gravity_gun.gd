@@ -49,6 +49,11 @@ const GROUND_CONTACT_THRESHOLD: int = 2  # 需要2帧才确认离开地面
 # logging
 var jump_start_position: Vector2 = Vector2.ZERO
 
+# 添加新的类变量
+var corner_buffer_size: float = 16.0  # 转角缓冲区大小
+var in_corner_buffer: bool = false
+var corner_transition_direction: Vector2 = Vector2.ZERO
+
 func _ready():
 	await ready
 	GameManager.load_game_state()
@@ -295,12 +300,15 @@ func _physics_process(delta: float) -> void:
 	# 	else:
 	# 		# 水平重力情况（向左或向右）
 	# 		velocity.y = direction.y * Consts.SPEED # 使用 direction.y 来控制上下移动
-	if direction:
-		# 根据重力方向调整移动
-		var speed_step = Consts.SPEED / acceleration_frames  # 每帧增加的速度
+	if direction or in_corner_buffer:
+		var actual_direction = direction
+		if in_corner_buffer:
+			actual_direction = handle_corner_movement(direction)
+		
+		# 使用实际方向进行移动
+		var speed_step = Consts.SPEED / acceleration_frames
 		if abs(get_gravity().y) > abs(get_gravity().x):
-			# 水平移动
-			var target_speed = direction.x * Consts.SPEED
+			var target_speed = actual_direction.x * Consts.SPEED
 			if sign(target_speed) != sign(current_speed):
 				current_speed = 0  # 改变方向时重置速度
 			current_speed = clamp(
@@ -311,7 +319,7 @@ func _physics_process(delta: float) -> void:
 			velocity.x = current_speed
 		else:
 			# 垂直移动
-			var target_speed = direction.y * Consts.SPEED
+			var target_speed = actual_direction.y * Consts.SPEED
 			if sign(target_speed) != sign(current_speed):
 				current_speed = 0  # 改变方向时重置速度
 			current_speed = clamp(
@@ -533,3 +541,68 @@ func add_gravity_field(field: Node2D) -> void:
 
 func can_second_jump() -> bool:
 	return GameManager.is_skill_enabled("second_jump_enabled")
+
+# 添加新的转角缓冲区检测函数
+func check_corner_buffer(input_direction: Vector2) -> void:
+	var space_state = get_world_2d().direct_space_state
+	var gravity_dir = get_gravity().normalized()
+	var perpendicular_dir = Vector2(-gravity_dir.y, gravity_dir.x)
+	
+	# 根据重力方向调整检测方向
+	var forward_dir = perpendicular_dir
+	var side_dir = -gravity_dir
+	
+	# 创建检测区域
+	var query_forward = PhysicsRayQueryParameters2D.create(
+		global_position,
+		global_position + forward_dir * corner_buffer_size
+	)
+	var query_side = PhysicsRayQueryParameters2D.create(
+		global_position,
+		global_position + side_dir * corner_buffer_size
+	)
+	query_forward.exclude = [self]
+	query_side.exclude = [self]
+	
+	var result_forward = space_state.intersect_ray(query_forward)
+	var result_side = space_state.intersect_ray(query_side)
+	
+	# 检测是否在转角缓冲区内
+	if result_forward and result_side:
+		var forward_dist = (result_forward.position - global_position).length()
+		var side_dist = (result_side.position - global_position).length()
+		
+		if forward_dist < corner_buffer_size and side_dist < corner_buffer_size:
+			in_corner_buffer = true
+			# 根据重力方向设置转向方向
+			corner_transition_direction = forward_dir
+			return
+	
+	in_corner_buffer = false
+	corner_transition_direction = Vector2.ZERO
+
+# 添加转角移动处理函数
+func handle_corner_movement(input_direction: Vector2) -> Vector2:
+	var gravity_dir = get_gravity().normalized()
+	var perpendicular_dir = Vector2(-gravity_dir.y, gravity_dir.x)
+	
+	# 计算输入方向在重力方向和垂直方向上的分量
+	var gravity_input = input_direction.dot(gravity_dir)
+	var perp_input = input_direction.dot(perpendicular_dir)
+	
+	# 如果在按重力方向的移动键
+	if abs(gravity_input) > 0.1:
+		# 如果也在按垂直方向键，给予更强的转向辅助
+		if abs(perp_input) > 0.1:
+			return (input_direction + corner_transition_direction * 0.5).normalized()
+		
+		# 只按重力方向时，给予轻微的转向辅助
+		return (input_direction + corner_transition_direction * 0.3).normalized()
+	
+	return input_direction
+
+# 可选：添加视觉反馈
+func _process(_delta: float) -> void:
+	if in_corner_buffer:
+		# 可以在这里添加视觉提示，比如改变角色颜色或添加特效
+		pass
