@@ -541,14 +541,18 @@ func check_corner_buffer(input_direction: Vector2) -> void:
 	var gravity_dir = get_gravity().normalized()
 	var perpendicular_dir = Vector2(-gravity_dir.y, gravity_dir.x)
 	
+	# 根据重力方向调整检测方向
+	var forward_dir = perpendicular_dir
+	var side_dir = -gravity_dir
+	
 	# 创建检测区域
 	var query_forward = PhysicsRayQueryParameters2D.create(
 		global_position,
-		global_position + perpendicular_dir * corner_buffer_size
+		global_position + forward_dir * corner_buffer_size
 	)
 	var query_side = PhysicsRayQueryParameters2D.create(
 		global_position,
-		global_position - gravity_dir * corner_buffer_size
+		global_position + side_dir * corner_buffer_size
 	)
 	query_forward.exclude = [self]
 	query_side.exclude = [self]
@@ -563,8 +567,8 @@ func check_corner_buffer(input_direction: Vector2) -> void:
 		
 		if forward_dist < corner_buffer_size and side_dist < corner_buffer_size:
 			in_corner_buffer = true
-			# 记录可能的转向方向
-			corner_transition_direction = perpendicular_dir
+			# 根据重力方向设置转向方向
+			corner_transition_direction = forward_dir
 			return
 	
 	in_corner_buffer = false
@@ -575,15 +579,17 @@ func handle_corner_movement(input_direction: Vector2) -> Vector2:
 	var gravity_dir = get_gravity().normalized()
 	var perpendicular_dir = Vector2(-gravity_dir.y, gravity_dir.x)
 	
-	# 如果玩家在按当前重力方向的移动键
-	if abs(input_direction.dot(gravity_dir.normalized())) > 0.1:
-		# 检查是否也在按垂直于重力的方向键
-		var perp_input = input_direction.dot(perpendicular_dir)
+	# 计算输入方向在重力方向和垂直方向上的分量
+	var gravity_input = input_direction.dot(gravity_dir)
+	var perp_input = input_direction.dot(perpendicular_dir)
+	
+	# 如果在按重力方向的移动键
+	if abs(gravity_input) > 0.1:
+		# 如果也在按垂直方向键，给予更强的转向辅助
 		if abs(perp_input) > 0.1:
-			# 允许斜向移动，给予额外的移动辅助
 			return (input_direction + corner_transition_direction * 0.5).normalized()
 		
-		# 如果只按重力方向，给予一点向转角方向的偏移
+		# 只按重力方向时，给予轻微的转向辅助
 		return (input_direction + corner_transition_direction * 0.3).normalized()
 	
 	return input_direction
