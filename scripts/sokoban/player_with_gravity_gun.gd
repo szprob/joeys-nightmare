@@ -18,7 +18,7 @@ extends CharacterBody2D
 @export var deceleration_frames: int = 3 # 减速到0需要的帧数
 
 # jump variables
-@export var jump_acceleration_frames: int = 5 # 达到最高跳跃速度需要的帧数
+@export var jump_acceleration_frames: int = 3 # 达到最高跳跃速度需要的帧数
 @export var jump_deceleration_frames: int = 5 # 减速到0需要的帧数
 
 
@@ -44,7 +44,10 @@ var gravity_scene = preload("res://scenes/sokoban/gravity_1.tscn")
 
 # 在类变量中添加
 var ground_contact_frames: int = 0      # 接触地面的帧数
-const GROUND_CONTACT_THRESHOLD: int = 1  # 需要多少帧才确认离开地面
+const GROUND_CONTACT_THRESHOLD: int = 2  # 需要2帧才确认离开地面
+
+# logging
+var jump_start_position: Vector2 = Vector2.ZERO
 
 func _ready():
 	await ready
@@ -65,15 +68,16 @@ func respawn():
 
 # 开始跳跃的函数
 func start_jump() -> void:
-	print('start jump')
-	print('velocity', velocity)
+	# logging
+	jump_start_position = global_position
+
 	has_released_jump = false
 	has_double_jumped = false
 	var gravity_dir = get_gravity().normalized()
 	# 将跳跃速度分成多帧加速
 	var jump_speed_per_frame = abs(Consts.MAX_JUMP_VELOCITY) / jump_acceleration_frames
 	velocity -= gravity_dir * jump_speed_per_frame
-	print('velocity after', velocity)
+	# print('velocity after', velocity)
 	jump_hold_time = 0.0
 	jump_acceleration_counter = 0
 	is_jumping = true
@@ -129,14 +133,24 @@ func shoot(Input) -> void:
 
 
 func _physics_process(delta: float) -> void:
+
+	# logging
 	# print('second jump enabled', can_second_jump())
 	# print('coyote timer', coyote_timer)
-	print("Current animation: ", animated_sprite_2d.animation)
+	# print("Current animation: ", animated_sprite_2d.animation)
+	var player_height = 16.0  # 角色高度为16像素
+	if is_jumping:
+		# 计算当前位置与起跳位置的距离(考虑重力方向)
+		var gravity_dir = get_gravity().normalized()
+		var height_diff = (jump_start_position - global_position).project(-gravity_dir).length()
+		var height_in_player_units = height_diff / player_height
+		print('height_diff', height_diff)
+		print("当前跳跃高度: %.2f 个角色高度" % height_in_player_units)
 
-	if jump_buffer_timer > 0:
-		print('jump buffer timer', jump_buffer_timer)
-	if Input.is_action_just_pressed('jump'):
-		print('jump pressed')
+	# if jump_buffer_timer > 0:
+	# 	print('jump buffer timer', jump_buffer_timer)
+	# if Input.is_action_just_pressed('jump'):
+		# print('jump pressed')
 	# 在函数开始时就检查 can_move
 
 	if not can_move:
@@ -186,25 +200,21 @@ func _physics_process(delta: float) -> void:
 
 		if is_jumping and Input.is_action_pressed('jump'):
 			jump_hold_time += delta
-			if jump_hold_time < Consts.MAX_JUMP_HOLD_TIME:
-				var velocity_projection = velocity.project(gravity_dir).length()
-				if velocity_projection < abs(Consts.MAX_JUMP_VELOCITY) and jump_acceleration_counter < jump_acceleration_frames:
-					var target_velocity = -gravity_dir * abs(Consts.MAX_JUMP_VELOCITY)
-					var lerp_weight = 1.0 / jump_acceleration_frames
-					velocity = lerp(velocity, target_velocity, lerp_weight)
-					jump_acceleration_counter += 1
-					# print('lerp velocity', velocity, target_velocity)
-					velocity -= gravity * delta
-				else:
-					# print('hit max velocity or acceleration frames')
-					is_jumping = false
-					velocity += gravity * delta
+			var velocity_projection = velocity.project(gravity_dir).length()
+			
+			if jump_acceleration_counter < jump_acceleration_frames:
+				# 初始加速阶段
+				var target_velocity = -gravity_dir * abs(Consts.JUMP_VELOCITY)
+				var lerp_weight = 1.0 / jump_acceleration_frames
+				velocity = lerp(velocity, target_velocity, lerp_weight)
+				jump_acceleration_counter += 1
+			elif jump_hold_time < Consts.MAX_JUMP_HOLD_TIME:
+				# 持续按住跳跃键时保持向上的力
+				velocity -= gravity_dir * (Consts.MAX_JUMP_VELOCITY * -0.6) * delta
 			else:
-				# print('hit max hold time')
 				is_jumping = false
 				velocity += gravity * delta
 		else:
-			# print('hit max hold time')
 			is_jumping = false
 			velocity += gravity * delta
 		# 二段跳
@@ -234,6 +244,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		# print('is on terrain', is_on_terrain()
 		if (is_on_terrain() or coyote_timer > 0) and can_move:
+			if coyote_timer > 0:
+				print('coyote jump')
 			start_jump() # 正常跳跃
 		else:
 			jump_buffer_timer = Consts.JUMP_BUFFER_TIME # 记录跳跃键按下的时间以便缓冲
@@ -417,7 +429,20 @@ func _on_gun_cooldown_timeout() -> void:
 
 func is_on_terrain() -> bool:
 	set_up_direction(-get_gravity().normalized())
-	return is_on_floor()
+	var is_touching_ground = is_on_floor()
+	
+	# 更新接触帧数
+	if is_touching_ground:
+		ground_contact_frames = GROUND_CONTACT_THRESHOLD  # 立即接触时设为最大值
+	elif ground_contact_frames > 0:
+		ground_contact_frames -= 1  # 离开地面时逐帧减少
+	# logging	
+	# if get_gravity().x != 0:
+	# 	print('is on floor', is_on_floor())
+	# 	print('ground contact frames', ground_contact_frames)
+	
+	# 只要计数器大于0就认为在地面上
+	return ground_contact_frames > 0
 
 func filp_player_sprite(direction):
 	# flip palyer sprite based on gravity direction
