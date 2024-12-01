@@ -376,6 +376,9 @@ func _physics_process(delta: float) -> void:
 	# print('velocity', velocity)
 	# print('is on terrain', is_on_terrain())
 	
+	# 添加边角碰撞检测和修正
+	handle_corner_correction()
+	
 func update_face_direction(direction):
 	if direction != 0:
 		facing_direction = direction
@@ -533,3 +536,48 @@ func add_gravity_field(field: Node2D) -> void:
 
 func can_second_jump() -> bool:
 	return GameManager.is_skill_enabled("second_jump_enabled")
+
+# 添加这个新函数来处理边角碰撞修正
+func handle_corner_correction() -> void:
+	if is_on_terrain():
+		return
+		
+	var gravity_dir = get_gravity().normalized()
+	var perpendicular_dir = Vector2(-gravity_dir.y, gravity_dir.x)
+	var correction_distance = 8.0
+	
+	var space_state = get_world_2d().direct_space_state
+	var movement_dir = velocity.project(perpendicular_dir).normalized()
+	if movement_dir.length() == 0:
+		return
+		
+	# 检测前方是否有墙
+	var front_query = PhysicsRayQueryParameters2D.create(
+		global_position,
+		global_position + movement_dir * correction_distance
+	)
+	front_query.exclude = [self]
+	var front_result = space_state.intersect_ray(front_query)
+	
+	if front_result:
+		# 检测四个方向: 上、下、左上、右上
+		var offsets = [
+			-gravity_dir * correction_distance,  # 上
+			gravity_dir * correction_distance,   # 下
+			-gravity_dir * correction_distance + perpendicular_dir * correction_distance,  # 左上/右上
+			-gravity_dir * correction_distance - perpendicular_dir * correction_distance   # 右上/左上
+		]
+		
+		for offset in offsets:
+			var corner_query = PhysicsRayQueryParameters2D.create(
+				global_position + offset,
+				global_position + offset + movement_dir * correction_distance
+			)
+			corner_query.exclude = [self]
+			var corner_result = space_state.intersect_ray(corner_query)
+			
+			# 如果某个方向有空间，进行位置修正
+			if !corner_result:
+				position += offset * 0.5
+				print("应用边角修正: ", offset)
+				return  # 找到可行的修正方向后立即返回
