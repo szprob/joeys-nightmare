@@ -7,7 +7,8 @@ extends CharacterBody2D
 @export var rope_width: float = 2.0  # 绳子宽度
 @export var speed_factor = 0.4  # 减速系数
 @export var init_damping = 1  # 阻尼系数,控制摆动衰减速度
-@export var player_force_factor = 500.0  # 玩家移动产生的力的系数
+@export var player_force_factor = 40.0  # 玩家移动产生的力的系数
+@export var max_angular_velocity = 1.5  # 角速度上限
 
 var damping = init_damping
 var current_angle = 0.0
@@ -83,6 +84,10 @@ func _physics_process(delta):
 
 	# 更新角度和角速度
 	angular_velocity = angular_velocity * damping + angular_acceleration * delta
+	
+	# 给角速度一个上限
+	angular_velocity = clamp(angular_velocity, -max_angular_velocity, max_angular_velocity)
+	
 	current_angle += rad_to_deg(angular_velocity) * delta
 	
 	# 使用更柔和的限制
