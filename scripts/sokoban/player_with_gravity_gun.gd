@@ -18,7 +18,7 @@ extends CharacterBody2D
 @export var deceleration_frames: int = 3 # 减速到0需要的帧数
 
 # jump variables
-@export var jump_acceleration_frames: int = 3 # 达到最高跳跃速度需要的帧数
+@export var jump_acceleration_frames: int = 4 # 达到最高跳跃速度需要的帧数
 @export var jump_deceleration_frames: int = 5 # 减速到0需要的帧数
 
 
