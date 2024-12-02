@@ -8,14 +8,29 @@ var player_in_range: bool = false
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D #open
 @onready var audio_player2: AudioStreamPlayer2D = $AudioStreamPlayer2D2 #locked
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var area: StaticBody2D = $StaticBody2D
 
 @export var door_name: String = '城堡第一个门'
 @export var key_name_need: String = '彩色钥匙1'
+enum DoorColor {
+	RED,
+	YELLOW,
+	BLUE
+}
+@export var door_color: DoorColor = DoorColor.RED # 导出颜色属性
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	label.visible = false
+	# 根据颜色加载相应的sprite
+	match door_color:
+		DoorColor.RED:
+			sprite.texture = preload("res://assets/sprites/modules/pillar_r.png")
+		DoorColor.YELLOW:
+			sprite.texture = preload("res://assets/sprites/modules/pillar_y.png")
+		DoorColor.BLUE:
+			sprite.texture = preload("res://assets/sprites/modules/pillar_b.png")
 	# 绑定进入信号
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
@@ -47,6 +62,8 @@ func _process(_delta: float) -> void:
 			# 执行开门逻辑
 			GameManager.game_state['doors_opened'].append(door_name)
 			collision_shape.disabled = true
+			if area:
+				area.queue_free()
 			sprite.visible = false
 			label.visible = false
 		else:

@@ -11,6 +11,7 @@ size = Vector2(51, 45)
 collision_layer = 0
 collision_mask = 128
 script = ExtResource("1_av0vg")
+key_name = "彩色钥匙1"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(50, 57)
