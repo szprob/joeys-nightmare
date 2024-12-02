@@ -41,10 +41,19 @@ func _physics_process(delta):
 	
 	# 修改角度因子计算
 	var angle_rad = deg_to_rad(current_angle)
-	var angle_factor = cos(angle_rad)  # 使用完整的cos值
+	var angle_factor = cos(angle_rad)
 	
-	damping = float(init_damping)  # 确保 damping 是浮点数
-
+	# 计算目标位置
+	var target_x = pivot_position.x + rope_length * sin(deg_to_rad(current_angle))
+	var target_y = pivot_position.y + rope_length * cos(deg_to_rad(current_angle))
+	var target_pos = Vector2(target_x, target_y)
+	
+	# 直接设置位置,而不是通过velocity移动
+	global_position = target_pos
+	
+	# 其他物理计算保持不变
+	damping = float(init_damping)
+	
 	var angle_abs = abs(current_angle)
 	if angle_abs > 10.0:
 		damping = 0.996
@@ -78,17 +87,6 @@ func _physics_process(delta):
 	
 	# 使用更柔和的限制
 	current_angle = clamp(current_angle, -89.0, 89.0)
-	
-	# 首先计算目标位置
-	var target_x = pivot_position.x + rope_length * sin(deg_to_rad(current_angle))
-	var target_y = pivot_position.y + rope_length * cos(deg_to_rad(current_angle))
-	var target_pos = Vector2(target_x, target_y)
-	
-	# 计算所需的速度
-	velocity = (target_pos - global_position) / delta
-	
-	# 应用移动
-	move_and_slide()
 	
 	# 每次更新位置后重绘绳子
 	queue_redraw()
