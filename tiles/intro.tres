@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" load_steps=6 format=3 uid="uid://ch8e8ygmw6bpr"]
 
-[ext_resource type="PackedScene" path="res://scenes/modules/trap_tile/trap_down.tscn" id="1_epvmy"]
-[ext_resource type="PackedScene" path="res://scenes/modules/trap_tile/trap_left.tscn" id="2_2f4rb"]
-[ext_resource type="PackedScene" path="res://scenes/modules/trap_tile/trap_right.tscn" id="3_ba7gj"]
-[ext_resource type="PackedScene" path="res://scenes/modules/trap_tile/trap_up.tscn" id="4_r724u"]
+[ext_resource type="PackedScene" uid="uid://mx3jx68fdgqm" path="res://scenes/modules/trap_tile/trap_down.tscn" id="1_epvmy"]
+[ext_resource type="PackedScene" uid="uid://bgtv7blulem34" path="res://scenes/modules/trap_tile/trap_left.tscn" id="2_2f4rb"]
+[ext_resource type="PackedScene" uid="uid://6motl652kpn3" path="res://scenes/modules/trap_tile/trap_right.tscn" id="3_ba7gj"]
+[ext_resource type="PackedScene" uid="uid://8qshk6ynrxhj" path="res://scenes/modules/trap_tile/trap_up.tscn" id="4_r724u"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_na2ci"]
 scenes/1/scene = ExtResource("1_epvmy")

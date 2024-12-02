@@ -1,51 +1,64 @@
 extends CharacterBody2D
 
-@export var speed = 40
-@export var bullet_scene: PackedScene
-@export var shoot_interval: float = 2.0
+# 添加计时器和目标位置变量
+@export var state_timer: float = 0.0
+@export var idle_duration: float = 5.0
+@export var prepare_duration: float = 3.0
+@export var dash_speed: float = 300.0
 @export var player: Node2D
+@export var prepare_move_speed: float = 10.0
 
-var time_since_last_shot: float = 0.0
+# 添加状态枚举
+enum State {IDLE, PREPARING, DASH}
+var current_state = State.IDLE
+var target_position: Vector2
+
+@onready var animated_sprite = $AnimatedSprite2D
 
 func _ready():
-	if !has_node("BulletContainer"):
-		var container = Node2D.new()
-		container.name = "BulletContainer"
-		add_child(container)
-	
-	# 初试位置在玩家的左上方
-	global_position = player.global_position + Vector2(-300, -100)
-
+	global_position = player.global_position + Vector2(-200, -100)
+	change_state(State.IDLE)
 
 func _physics_process(delta: float) -> void:
-	var distance = player.global_position.distance_to(global_position)
-	if distance > 240:
-		speed = (distance / 240) * 80 - 45
-	elif distance > 120:
-		speed = 35
-	else:
-		speed = 15
+	state_timer += delta
 	
-	# 计算朝向玩家的方向
-	var direction = (player.global_position - global_position).normalized()
-	
-	# 设置速度并移动
-	velocity = direction * speed
+	match current_state:
+		State.IDLE:
+			animated_sprite.play("idle")
+			if state_timer >= idle_duration:
+				change_state(State.PREPARING)
+			var idle_direction = (player.global_position - global_position).normalized()
+			animated_sprite.flip_h = idle_direction.x < 0
+			# animated_sprite.rotation = idle_direction.angle() + (PI as float if animated_sprite.flip_h else 0.0)
+		
+		State.PREPARING:
+			animated_sprite.play("preparing")
+			if state_timer >= prepare_duration:
+				change_state(State.DASH)
+		State.DASH:
+			animated_sprite.play("dash")
+			var direction = (target_position - global_position).normalized()
+			velocity = direction * dash_speed
+			animated_sprite.flip_h = direction.x < 0
+			animated_sprite.rotation = direction.angle() + (PI as float if animated_sprite.flip_h else 0.0)
+			if global_position.distance_to(target_position) < 10:
+				change_state(State.IDLE)
 	move_and_slide()
-	
-	# 更新射击计时器
-	time_since_last_shot += delta
-	if time_since_last_shot >= shoot_interval:
-		shoot()
-		time_since_last_shot = 0.0
 
-func shoot() -> void:
-	return
-	# var b = bullet_scene.instantiate()
-	# # print('b', b)
-	# # 将子弹添加到专门的容器中
-	# get_tree().root.add_child(b)
+func change_state(new_state: State) -> void:
+	current_state = new_state
+	state_timer = 0.0
 	
-	# var shoot_direction = (player.global_position - global_position).normalized()
-	# # 设置子弹的全局位置为发射点的位置
-	# b.start(global_position, shoot_direction)
+	match new_state:
+		State.IDLE:
+			velocity = Vector2.ZERO
+			animated_sprite.rotation = 0
+		State.PREPARING:
+			# 记录玩家位置作为冲刺目标
+			target_position = player.global_position
+			var prepare_direction = (target_position - global_position).normalized()
+			velocity = prepare_direction * prepare_move_speed
+			animated_sprite.flip_h = prepare_direction.x < 0
+			animated_sprite.rotation = prepare_direction.angle() + (PI as float if animated_sprite.flip_h else 0.0)
+		State.DASH:
+			pass
