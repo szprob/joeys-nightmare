@@ -7,8 +7,9 @@ const grid_size = 16
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	limit_left = floor($"..".global_position.x / camera_h) * camera_h
-	limit_right = limit_left + camera_h + grid_size
-	
-	limit_top = floor($"..".global_position.y / camera_v) * camera_v
-	limit_bottom = limit_top + camera_v + grid_size
+	#limit_left = floor($"..".global_position.x / camera_h) * camera_h
+	#limit_right = limit_left + camera_h + grid_size
+	#
+	#limit_top = floor($"..".global_position.y / camera_v) * camera_v
+	#limit_bottom = limit_top + camera_v + grid_size
+	pass
