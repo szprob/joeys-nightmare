@@ -39,8 +39,13 @@ const BubbleScene = preload("res://scenes/modules/ui/bubble.tscn")
 
 
 func _ready() -> void:
-	if bubble_file in GameManager.game_state['npc_dialogue_list']:
-		teleport.queue_free()
+	# 检查对话文件是否在已完成列表中
+	print(GameManager.game_state['npc_dialogue_list'])
+	print(typeof(GameManager.game_state['npc_dialogue_list']))
+	if GameManager.game_state.has('npc_dialogue_list') and bubble_file in GameManager.game_state['npc_dialogue_list']:
+		print('该NPC对话已完成，将被移除: ', bubble_file)
+		if teleport:
+			teleport.queue_free()
 		queue_free()
 		return
 
@@ -198,6 +203,8 @@ func _on_bubble_destroyed() -> void:
 	if bubble_index < bubble_texts.size():
 		create_bubble()
 	else:
+		print('save dialogue')
 		GameManager.game_state['npc_dialogue_list'].append(bubble_file)
 		GameManager.save_game_state()
+		print('create portal')
 		create_portal()

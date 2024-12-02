@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 @export var mass = 1  # 物体质量
 @export var swing_amplitude = 10.0  # 初始摆动幅度(度)
-@export var max_swing_amplitude = 50.0  # 最大摆动幅度(度)
 @export var pivot_target: Area2D  # 枢轴点位置
 @export var rope_color: Color = Color.WHEAT  # 绳子颜色
 @export var rope_width: float = 2.0  # 绳子宽度
@@ -40,44 +39,45 @@ func _physics_process(delta):
 	var gravity_strength = gravity_vec.length()
 	var _gravity_angle = gravity_vec.angle()
 	
-	var angular_acceleration = -gravity_strength * sin(deg_to_rad(current_angle)) / rope_length * speed_factor
-	damping = init_damping
+	# 修改角度因子计算
+	var angle_rad = deg_to_rad(current_angle)
+	var angle_factor = cos(angle_rad)  # 使用完整的cos值
+	
+	damping = float(init_damping)  # 确保 damping 是浮点数
+
+	var angle_abs = abs(current_angle)
+	if angle_abs > 10.0:
+		damping = 0.996
+	
+	var angular_acceleration = -gravity_strength * sin(angle_rad) / rope_length * speed_factor * angle_factor
+	
 	# 检测玩家的水平移动并添加额外的角加速度
 	if get_child_count() > 0:
 		var player = get_tree().get_nodes_in_group("player")[0]
-		if player and player_on_swing:  # 只在玩家在秋千上时计算
+		if player and player_on_swing:
 			var player_movement = player.velocity.x
 			if player_movement != 0:
-				# 根据秋千当前运动方向调整力度
 				var swing_direction = sign(angular_velocity)
 				var movement_direction = sign(player_movement)
 				
-				# 根据方向调整力度倍数
+				# 同样为玩家施加的力添加角度因子
 				var direction_multiplier = 1.0
 				if swing_direction == movement_direction:
-					direction_multiplier = 3.0  # 同向时增强
+					direction_multiplier = 3.0 * angle_factor  # 同向时也考虑角度因素
 				else:
-					direction_multiplier = 0.1  # 反向时减弱
-					damping = 0.95
+					direction_multiplier = 0.1
+					damping = 0.97
 				
 				var player_force = movement_direction * player_force_factor * direction_multiplier
-				var additional_angular_acc = player_force * cos(deg_to_rad(current_angle)) / rope_length
+				var additional_angular_acc = player_force * cos(angle_rad) / rope_length
 				angular_acceleration += additional_angular_acc
 
-	angular_velocity += angular_acceleration * delta
-	
-	# 增加阻尼系数使运动更自然
-	angular_velocity *= damping
-	
-	# 更新角度
+	# 更新角度和角速度
+	angular_velocity = angular_velocity * damping + angular_acceleration * delta
 	current_angle += rad_to_deg(angular_velocity) * delta
 	
-	# 限制最大摆动幅度
-	current_angle = clamp(current_angle, -max_swing_amplitude, max_swing_amplitude)
-	
-	# 如果达到最大摆动幅度，减小角速度以防止突然的反弹
-	if abs(current_angle) >= max_swing_amplitude:
-		angular_velocity *= 0.5
+	# 使用更柔和的限制
+	current_angle = clamp(current_angle, -89.0, 89.0)
 	
 	# 首先计算目标位置
 	var target_x = pivot_position.x + rope_length * sin(deg_to_rad(current_angle))
