@@ -1,75 +1,16 @@
-[gd_scene load_steps=36 format=4 uid="uid://dhcoju0cv8u0y"]
+[gd_scene load_steps=11 format=4 uid="uid://c8krv0f3hnljm"]
 
-[ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_2ix8p"]
-[ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_45goe"]
-[ext_resource type="PackedScene" uid="uid://bt5a3og8w7u4e" path="res://scenes/modules/platforms/unvisible_platform.tscn" id="3_hcxfq"]
-[ext_resource type="PackedScene" uid="uid://dlnwqw1a3g1m3" path="res://scenes/modules/coin.tscn" id="4_jxddp"]
-[ext_resource type="PackedScene" uid="uid://b87rogf3b1s12" path="res://scenes/modules/platforms/disapper_platform.tscn" id="4_y74vq"]
-[ext_resource type="PackedScene" uid="uid://do8x2w6t8vgwy" path="res://scenes/modules/platforms/platform.tscn" id="5_3o21u"]
-[ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="6_lkbmr"]
-[ext_resource type="PackedScene" uid="uid://dn6fopj5n8ldj" path="res://scenes/modules/platforms/move_platform.tscn" id="6_lnq0u"]
-[ext_resource type="PackedScene" uid="uid://bhgixpqr8klwj" path="res://scenes/sokoban/box.tscn" id="7_igw1q"]
-[ext_resource type="PackedScene" uid="uid://bxs320cj2nn71" path="res://scenes/enemy/slime.tscn" id="7_tn02o"]
-[ext_resource type="FontFile" uid="uid://dvlu6bavl0eg7" path="res://assets/fonts/PixelOperator8.ttf" id="8_6417c"]
-[ext_resource type="PackedScene" uid="uid://b6pq8l7ym5nuh" path="res://scenes/modules/checkpoints/teleport.tscn" id="10_qycbb"]
-[ext_resource type="PackedScene" uid="uid://c8q6wa4cofe21" path="res://scenes/modules/traps/falling_trap_tgt.tscn" id="12_k03yn"]
-[ext_resource type="PackedScene" uid="uid://gbcy7ojh6h3w" path="res://scenes/modules/platforms/blink_platform.tscn" id="13_ibtkj"]
-[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="15_rx0vs"]
-[ext_resource type="PackedScene" uid="uid://dd2spqc4w2qfb" path="res://scenes/modules/traps/auto_close_door.tscn" id="18_nitj5"]
-[ext_resource type="PackedScene" uid="uid://dlyl2v0k7iiry" path="res://scenes/modules/traps/detection.tscn" id="19_nyj4w"]
-[ext_resource type="PackedScene" uid="uid://cpqr3oauheogh" path="res://scenes/sokoban/button-1.tscn" id="20_0io07"]
-[ext_resource type="PackedScene" uid="uid://b4l0s4mgeuqyq" path="res://scenes/modules/checkpoints/bi-teleport.tscn" id="20_leco7"]
-[ext_resource type="PackedScene" uid="uid://d7nfljtqe8a6" path="res://scenes/modules/platforms/swing.tscn" id="21_60bxa"]
-[ext_resource type="PackedScene" uid="uid://c5x12p3650b3l" path="res://scenes/player/npc.tscn" id="22_fpvdh"]
-[ext_resource type="PackedScene" uid="uid://cburb6kjbbck0" path="res://scenes/modules/platforms/seesaw.tscn" id="22_lmyni"]
-[ext_resource type="PackedScene" uid="uid://yan3jqnet7ud" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="23_vi6el"]
-[ext_resource type="PackedScene" uid="uid://kfdbq76ixwrq" path="res://scenes/modules/checkpoints/save_point.tscn" id="24_nngac"]
-[ext_resource type="PackedScene" uid="uid://cx0dlu782dwi5" path="res://scenes/modules/interface/key.tscn" id="25_hdn0c"]
-[ext_resource type="PackedScene" uid="uid://c7x7ua18gfh11" path="res://scenes/modules/interface/door.tscn" id="26_hb01r"]
+[ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_i8ht2"]
+[ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="2_6wmt0"]
+[ext_resource type="PackedScene" uid="uid://deu5vht28g1ac" path="res://scenes/enemy/chase.tscn" id="4_uh5x6"]
+[ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="6_b7ixv"]
+[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="26_fn7sq"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8553"]
 distance = -68.0
 
-[sub_resource type="Animation" id="Animation_hclr2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(445, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_bddde"]
-resource_name = "move"
-length = 2.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(445, 1), Vector2(528, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_osoiu"]
-_data = {
-"RESET": SubResource("Animation_hclr2"),
-"move": SubResource("Animation_bddde")
-}
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_frels"]
-texture = ExtResource("6_lkbmr")
+texture = ExtResource("6_b7ixv")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -202,7 +143,7 @@ texture = ExtResource("6_lkbmr")
 sources/0 = SubResource("TileSetAtlasSource_frels")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pwg2v"]
-texture = ExtResource("6_lkbmr")
+texture = ExtResource("6_b7ixv")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -378,59 +319,13 @@ texture = ExtResource("6_lkbmr")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_pwg2v")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sl21j"]
-
 [node name="Game2" type="Node2D" groups=["scan_lines"]]
-script = ExtResource("1_2ix8p")
+script = ExtResource("1_i8ht2")
 
-[node name="kill_zone" parent="." instance=ExtResource("3_45goe")]
+[node name="kill_zone" parent="." instance=ExtResource("2_6wmt0")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
 shape = SubResource("WorldBoundaryShape2D_w8553")
-
-[node name="coins" type="Node" parent="."]
-
-[node name="coin1" parent="coins" instance=ExtResource("4_jxddp")]
-position = Vector2(326, -40)
-
-[node name="coin2" parent="coins" instance=ExtResource("4_jxddp")]
-position = Vector2(40, -3)
-
-[node name="coin3" parent="coins" instance=ExtResource("4_jxddp")]
-position = Vector2(380, -8)
-
-[node name="coin4" parent="coins" instance=ExtResource("4_jxddp")]
-position = Vector2(46, -3)
-
-[node name="coint5" parent="coins" instance=ExtResource("4_jxddp")]
-position = Vector2(52, -3)
-
-[node name="platform" type="Node" parent="."]
-
-[node name="platform" parent="platform" instance=ExtResource("5_3o21u")]
-position = Vector2(40, -26)
-
-[node name="platform2" parent="platform" instance=ExtResource("5_3o21u")]
-position = Vector2(445, 1)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="platform/platform2"]
-libraries = {
-"": SubResource("AnimationLibrary_osoiu")
-}
-autoplay = "move"
-
-[node name="move_platform" parent="platform" instance=ExtResource("6_lnq0u")]
-position = Vector2(-128, -70)
-
-[node name="target" type="Area2D" parent="platform/move_platform"]
-position = Vector2(-4, 50)
-scale = Vector2(53.7192, 3.57436)
-
-[node name="move_platform2" parent="platform" instance=ExtResource("6_lnq0u")]
-position = Vector2(-190, -45)
-
-[node name="target" type="Area2D" parent="platform/move_platform2"]
-position = Vector2(0, -31)
 
 [node name="tilemaps" type="Node" parent="."]
 
@@ -445,113 +340,12 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAD7/wAAAAAAAAEAAAD8/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD4/wAAAAAAAAAAAAD5/wAAAAAAAAAAAAD6/wAAAAAAAAEAAAD6//7/AAAAAAAAAAD7//7/AAAAAAAAAAD6////AAAAAAEAAAD7////AAAAAAEAAAD6/wEAAAAAAAEAAAD7/wEAAAAAAAEAAAD5/wEAAAAAAAEAAAD4/wEAAAAAAAEAAAD8/wEAAAAAAAEAAAD9/wEAAAAAAAEAAAD9/wIAAAAAAAEAAAD8/wIAAAAAAAEAAAD7/wIAAAAAAAEAAAD6/wIAAAAAAAEAAAD5/wIAAAAAAAEAAAD4/wIAAAAAAAEAAAD+/wAAAAAGAAAAAAD//wAAAAAGAAAAAAD+/wEAAAAGAAEAAAD//wEAAAAGAAEAAAD//wIAAAAGAAEAAAAAAAIAAAAGAAEAAAAAAAEAAAAGAAEAAAD+/wIAAAAGAAEAAAAEAAAAAAAGAAAAAAAEAAIAAAAGAAEAAAAEAAEAAAAGAAEAAAABAAAAAAAJAAAAAAACAAAAAAAKAAAAAAADAAAAAAALAAAAAAAAAAAAAAAGAAAAAAAFAAAAAAAGAAAAAAAFAAEAAAAGAAEAAAAFAAIAAAAGAAEAAAAGAAAAAAAJAAAAAAAHAAAAAAAKAAAAAAAIAAAAAAALAAAAAAAJAAAAAAAGAAAAAAAKAAAAAAAGAAAAAAAJAAEAAAAGAAEAAAAJAAIAAAAGAAEAAAAKAAIAAAAGAAEAAAAKAAEAAAAGAAEAAAANAPz/AAAAAAAAAAAOAPz/AAAAAAAAAAANAP3/AAAAAAEAAAANAP7/AAAAAAEAAAAOAP7/AAAAAAEAAAAOAP3/AAAAAAEAAAAOAP//AAAAAAEAAAANAP//AAAAAAEAAAAPAPv/AAAAAAEAAAAPAPr/AAAAAAAAAAAQAPr/AAAAAAAAAAAQAPv/AAAAAAEAAAAQAPz/AAAAAAEAAAAQAP3/AAAAAAEAAAAQAP7/AAABAAEAAAAQAP//AAAAAAEAAAAPAP//AAABAAEAAAAPAP7/AAABAAEAAAAPAPz/AAAAAAEAAAAPAP3/AAABAAEAAAARAP3/AAAAAAAAAAASAP3/AAAAAAAAAAARAP7/AAAAAAEAAAARAP//AAAAAAEAAAASAP//AAAAAAEAAAASAP7/AAAAAAEA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")
 tile_set = SubResource("TileSet_rvt4p")
 
-[node name="slime" parent="." instance=ExtResource("7_tn02o")]
-position = Vector2(-343.582, -20.1909)
+[node name="Monster" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_uh5x6")]
+position = Vector2(-1711, -162)
+scale = Vector2(0.5, 0.5)
+player = NodePath("../player")
 
-[node name="Label" type="Label" parent="."]
-offset_left = -156.0
-offset_top = -129.0
-offset_right = -22.0
-offset_bottom = -80.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("8_6417c")
-theme_override_font_sizes/font_size = 16
-text = "wasd控制方向
-space控制跳跃"
-
-[node name="teleport" parent="." instance=ExtResource("10_qycbb")]
-position = Vector2(-656.999, -13.7744)
-
-[node name="blink_platform" parent="." instance=ExtResource("13_ibtkj")]
-position = Vector2(-191, -25)
-
-[node name="disapper_platform" parent="." instance=ExtResource("4_y74vq")]
-position = Vector2(-17, -47)
-
-[node name="unvisible_platform" parent="." instance=ExtResource("3_hcxfq")]
-position = Vector2(-17, -27)
-
-[node name="FallingTrapTgt" parent="." node_paths=PackedStringArray("target", "detection") instance=ExtResource("12_k03yn")]
-position = Vector2(92, -145)
-collision_layer = 0
-target = NodePath("../target")
-detection = NodePath("../Detection")
-
-[node name="auto_close_door" parent="." instance=ExtResource("18_nitj5")]
-position = Vector2(-246, -46)
-
-[node name="detection" type="Area2D" parent="auto_close_door"]
-collision_layer = 0
-collision_mask = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="auto_close_door/detection"]
-position = Vector2(-39, 30)
-shape = SubResource("CircleShape2D_sl21j")
-
-[node name="bi-teleport" parent="." node_paths=PackedStringArray("paired_portal") instance=ExtResource("20_leco7")]
-position = Vector2(15.3905, -15.3865)
-teleport_type = 1
-teleport_cooldown_time = null
-teleport_time = null
-way = null
-paired_portal = NodePath("../bi-teleport2")
-
-[node name="bi-teleport2" parent="." node_paths=PackedStringArray("paired_portal") instance=ExtResource("20_leco7")]
-position = Vector2(181, -41)
-teleport_type = 1
-teleport_cooldown_time = null
-teleport_time = null
-way = 1
-paired_portal = NodePath("../bi-teleport")
-
-[node name="box" parent="." instance=ExtResource("7_igw1q")]
-position = Vector2(-418.287, -31.8219)
-collision_mask = 131
-
-[node name="target" type="Area2D" parent="."]
-position = Vector2(91.6711, -11.789)
-
-[node name="Detection" parent="." instance=ExtResource("19_nyj4w")]
-position = Vector2(93, -17)
-
-[node name="button-1" parent="." instance=ExtResource("20_0io07")]
-position = Vector2(-614, -8)
-
-[node name="Swing" parent="." instance=ExtResource("21_60bxa")]
-position = Vector2(-549, -54)
-pivot_position = Vector2(-503, -100)
-player_force_factor = 20.0
-
-[node name="Seesaw" parent="." instance=ExtResource("22_lmyni")]
-position = Vector2(-822, -27)
-scale = Vector2(0.7, 0.7)
-
-[node name="Npc" parent="." node_paths=PackedStringArray("teleport") instance=ExtResource("22_fpvdh")]
-position = Vector2(-1069, -12)
-teleport = NodePath("../empty-teleport")
-
-[node name="empty-teleport" parent="." instance=ExtResource("23_vi6el")]
-position = Vector2(-1170, -12)
-
-[node name="Label2" type="Label" parent="."]
-offset_left = -1151.0
-offset_top = -108.0
-offset_right = -890.0
-offset_bottom = -85.0
-text = "你已经通关一阶段DEMO,欢迎来到开发素材杂物间"
-
-[node name="save_point" parent="." instance=ExtResource("24_nngac")]
-position = Vector2(-967, -10)
-
-[node name="Key" parent="." instance=ExtResource("25_hdn0c")]
-position = Vector2(-1285, -58)
-scale = Vector2(0.6, 0.6)
-
-[node name="Door" parent="." instance=ExtResource("26_hb01r")]
-position = Vector2(-1332, -39)
-scale = Vector2(0.7, 0.7)
-
-[node name="player" parent="." groups=["player"] instance=ExtResource("15_rx0vs")]
+[node name="player" parent="." groups=["player"] instance=ExtResource("26_fn7sq")]
 position = Vector2(-1455.69, -34.0674)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -560,5 +354,3 @@ process_callback = 0
 limit_bottom = 150
 limit_smoothed = true
 position_smoothing_enabled = true
-
-[editable path="auto_close_door"]

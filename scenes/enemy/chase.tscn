@@ -1,18 +1,63 @@
-[gd_scene load_steps=7 format=3 uid="uid://deu5vht28g1ac"]
+[gd_scene load_steps=12 format=3 uid="uid://deu5vht28g1ac"]
 
 [ext_resource type="Script" path="res://scripts/enemy/chasing_boss.gd" id="1_nbhrx"]
-[ext_resource type="PackedScene" uid="uid://dwkd8axprygf0" path="res://scenes/sokoban/bullet.tscn" id="2_hwqqf"]
 [ext_resource type="Texture2D" uid="uid://dd3c3ld27t64x" path="res://assets/sprites/human/chase.png" id="2_m4dqr"]
+[ext_resource type="Texture2D" uid="uid://78w4owvufdht" path="res://icon.svg" id="2_uyd83"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_1ct2n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qa86n"]
+atlas = ExtResource("2_uyd83")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppq8y"]
+atlas = ExtResource("2_uyd83")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxu57"]
+atlas = ExtResource("2_uyd83")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ves2"]
+atlas = ExtResource("2_uyd83")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6d4s"]
+atlas = ExtResource("2_uyd83")
+region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_scbdh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_qa86n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppq8y")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_m4dqr")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxu57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ves2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6d4s")
+}],
+"loop": true,
+"name": &"preparing",
 "speed": 5.0
 }]
 
@@ -24,12 +69,12 @@ height = 15.4967
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_nbhrx")
-bullet_scene = ExtResource("2_hwqqf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4.72, 4.72)
 sprite_frames = SubResource("SpriteFrames_scbdh")
-autoplay = "default"
+animation = &"idle"
+autoplay = "idle"
 
 [node name="kill_zone" parent="." instance=ExtResource("3_1ct2n")]
 scale = Vector2(8.81513, 8.81513)
