@@ -249,7 +249,7 @@ func _physics_process(delta: float) -> void:
 		# 二段跳
 		
 		# print('has released jump2: ', has_released_jump)
-		if not has_double_jumped and has_released_jump and Input.is_action_just_pressed('jump') and can_second_jump():
+		if not has_double_jumped and has_released_jump and Input.is_action_just_pressed('jump') and can_second_jump() and coyote_timer <= 0:
 		# if second_jump_enabled and has_released_jump: # 筋斗云
 			has_double_jumped = true
 			gravity_dir = get_gravity().normalized()
@@ -299,7 +299,6 @@ func _physics_process(delta: float) -> void:
 	# TODO: fix this on different gravity direction
 	# Flip sprite based on movement direction 
 	
-		
 	# Flip sprite based on gravity dirction
 	filp_player_sprite(direction)
 
