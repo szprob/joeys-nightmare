@@ -12,14 +12,15 @@ var is_got_gun = false
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var action_finder: Area2D = $Direction/Finder
 @onready var finder_direction: Marker2D = $Direction
+@onready var introduction: Control = %Introduction
 
 func _ready() -> void:
 	if GameManager.get_day_phase() < 1:
 		var anim_player := %AnimationPlayer as AnimationPlayer
 		anim_player.play("opening_animation")
 		await anim_player.animation_finished
-	else:
-		position = Vector2(120, 146)
+	#else:
+		#position = Vector2(120, 146)
 
 
 func handle_direction():
@@ -118,3 +119,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		#GameManager.start_dialogue()
 		#GameManager.show_dialogue(load("res://scenes/day/dialogues/entrance_check.dialogue"), "title")
 		## TODO enter the dream stage
+
+
+func _on_finder_area_entered(area: Area2D) -> void:
+	print("found area entered")
+	introduction.show_check()
+
+
+func _on_finder_area_exited(area: Area2D) -> void:
+	print("found area exited")
+	introduction.hide_check()

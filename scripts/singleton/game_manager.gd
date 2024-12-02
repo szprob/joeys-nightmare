@@ -76,9 +76,10 @@ func is_skill_enabled(skill_name: StringName) -> bool:
 	return value
 
 func add_item(item_name: StringName) -> void:
-	print(item_name)
+	print("获得物品： ", item_name)
 	game_state['inventory'].append(item_name)
-	print(game_state)
+	print("当前物品栏： ", game_state['inventory'])
+	print("是否包含物品[" , item_name, "]: ", has_item(item_name))
 
 func use_item(item_name: StringName) -> void:
 	game_state['inventory'].erase(item_name)
