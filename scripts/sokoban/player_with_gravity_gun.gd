@@ -128,7 +128,7 @@ func shoot(Input) -> void:
 	var shoot_direction = Vector2(facing_direction, 0)
 	if not (Input.is_action_pressed('up') or Input.is_action_pressed('down') or
 			Input.is_action_pressed('left') or Input.is_action_pressed('right')):
-		b.start(position + Vector2(0, -8), shoot_direction)
+		b.start(global_position + Vector2(0, -8), shoot_direction)
 	else:
 		shoot_direction = Vector2(0, 0)
 		if Input.is_action_pressed("up"):
@@ -139,7 +139,7 @@ func shoot(Input) -> void:
 			shoot_direction.x = -1
 		if Input.is_action_pressed("right"):
 			shoot_direction.x = 1
-		b.start(position + Vector2(0, -8), shoot_direction)
+		b.start(global_position + Vector2(0, -8), shoot_direction)
 
 
 func _physics_process(delta: float) -> void:
