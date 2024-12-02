@@ -24,7 +24,8 @@ extends CharacterBody2D
 
 var can_shoot = true
 var has_double_jumped = false
-var second_jump_gravity_timer: float = 1.0
+var second_jump_gravity_timer: float = 0.2
+var second_jump_gravity_value: float = 1
 var has_released_jump: bool = false
 var facing_direction = 1
 var can_move = true
@@ -251,7 +252,12 @@ func _physics_process(delta: float) -> void:
 		if not has_double_jumped and has_released_jump and Input.is_action_just_pressed('jump') and can_second_jump():
 		# if second_jump_enabled and has_released_jump: # 筋斗云
 			has_double_jumped = true
-			set_gravity(Vector2(0, -5))
+			gravity_dir = get_gravity().normalized()
+			if velocity_along_gravity.dot(gravity_dir) > 0:	
+				velocity_along_gravity = velocity.project(gravity_dir)
+				var velocity_perpendicular = velocity - velocity_along_gravity
+				velocity = velocity_perpendicular + (velocity_along_gravity * -0.1)
+			set_gravity(Vector2(0, -second_jump_gravity_value))
 			# second_jump_enabled = false
 
 	else:
@@ -540,13 +546,20 @@ func check_box_on_head() -> void:
 		free_player_from_box(result.collider)
 
 func set_gravity(new_gravity_direction: Vector2) -> void:
+	print('set gravity')
 	var gravity_instance = gravity_scene.instantiate()
-	gravity_instance.position = position
+	# gravity_instance.global_position = global_position
+	gravity_instance.position = Vector2.ZERO
 	gravity_instance.scale = Vector2(2, 2)
 	gravity_instance.gravity_direction = new_gravity_direction
-	get_parent().add_child(gravity_instance)
+	# gravity_instance.top_level = true
+	# 将重力场作为玩家的子节点，这样它会自动跟随玩家移动
+	add_child(gravity_instance)
+	
+	# 创建一个计时器来控制重力场的生命周期
 	var timer = get_tree().create_timer(second_jump_gravity_timer)
-	# second_jump_gravity_timer 秒后删除重力实例
+	
+	# 当计时器结束时移除重力场
 	timer.timeout.connect(func():
 		if is_instance_valid(gravity_instance) and not gravity_instance.is_queued_for_deletion():
 			gravity_instance.queue_free()
