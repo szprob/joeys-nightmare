@@ -549,7 +549,7 @@ func set_gravity(new_gravity_direction: Vector2) -> void:
 	var gravity_instance = gravity_scene.instantiate()
 	# gravity_instance.global_position = global_position
 	gravity_instance.position = Vector2.ZERO
-	gravity_instance.scale = Vector2(2, 2)
+	gravity_instance.scale = Vector2(1, 1)
 	gravity_instance.gravity_direction = new_gravity_direction
 	# gravity_instance.top_level = true
 	# 将重力场作为玩家的子节点，这样它会自动跟随玩家移动

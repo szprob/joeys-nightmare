@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var mass = 1  # 物体质量
 @export var swing_amplitude = 10.0  # 初始摆动幅度(度)
 @export var max_swing_amplitude = 50.0  # 最大摆动幅度(度)
-@export var pivot_position: Vector2  # 枢轴点位置
+@export var pivot_target: Area2D  # 枢轴点位置
 @export var rope_color: Color = Color.WHEAT  # 绳子颜色
 @export var rope_width: float = 2.0  # 绳子宽度
 @export var speed_factor = 0.4  # 减速系数
@@ -15,8 +15,11 @@ var current_angle = 0.0
 var angular_velocity = 0.0
 var rope_length = 0.0  # 现在在_ready中自动计算
 var player_on_swing = false  # 新增变量跟踪玩家是否在秋千上
+var pivot_position : Vector2
 
 func _ready():
+	pivot_position = pivot_target.global_position
+	
 	# 根据初始位置计算绳长
 	rope_length = global_position.distance_to(pivot_position)
 	
