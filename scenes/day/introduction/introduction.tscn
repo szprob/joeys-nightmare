@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://67xd1lwqas7a"]
+
+[ext_resource type="Texture2D" uid="uid://78w4owvufdht" path="res://icon.svg" id="1_d3smw"]
+[ext_resource type="Script" path="res://scripts/day/introduction.gd" id="1_dpbxb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fmss1"]
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6ut2n"]
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Introduction" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dpbxb")
+
+[node name="PackIntro" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1848.0
+offset_top = 1051.0
+offset_right = 1976.0
+offset_bottom = 1096.0
+text = "打开背包"
+label_settings = SubResource("LabelSettings_fmss1")
+
+[node name="PackIcon" type="TextureRect" parent="PackIntro"]
+layout_mode = 0
+offset_left = -26.0
+offset_top = -3.0
+offset_right = 102.0
+offset_bottom = 125.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_d3smw")
+
+[node name="CheckIntro" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1776.0
+offset_top = 1052.0
+offset_right = 1840.0
+offset_bottom = 1097.0
+text = "调查"
+label_settings = SubResource("LabelSettings_6ut2n")
+
+[node name="CheckIcon" type="TextureRect" parent="CheckIntro"]
+layout_mode = 0
+offset_left = -27.0
+offset_top = -5.0
+offset_right = 101.0
+offset_bottom = 123.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_d3smw")

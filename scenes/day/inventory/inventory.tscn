@@ -6,7 +6,7 @@
 font_size = 37
 
 [node name="InventoryUI" type="Control"]
-z_index = 2
+z_index = 5
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -51,7 +51,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "背包（按Esc关闭）"
+text = "背包"
 label_settings = SubResource("LabelSettings_vq7sa")
 horizontal_alignment = 1
 vertical_alignment = 1

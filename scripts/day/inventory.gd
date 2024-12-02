@@ -39,10 +39,14 @@ func _process(delta: float) -> void:
 
 	if not visible and Input.is_action_just_pressed("inventory") and not GameManager.is_chatting():
 		show()
+		print("show inventory")
+		return
 
-	if visible and (Input.is_action_just_pressed("esc")):
+	if visible and (Input.is_action_just_pressed("inventory")):
 		hide()
 		hide_item_detail_panel()
+		print("hide inventory")
+		return
 
 
 func load_inventory_info() -> void:
