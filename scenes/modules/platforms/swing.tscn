@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d7nfljtqe8a6"]
+[gd_scene load_steps=5 format=3 uid="uid://be4tvkuckghc4"]
 
 [ext_resource type="Script" path="res://scripts/modules/platforms/swing.gd" id="1_1lo10"]
 [ext_resource type="Texture2D" uid="uid://cmbxyp4glv8m7" path="res://assets/sprites/human/platform2.png" id="2_08hjc"]
@@ -15,10 +15,12 @@ script = ExtResource("1_1lo10")
 pivot_position = Vector2(0, -50)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 1)
 texture = ExtResource("2_08hjc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -3)
+scale = Vector2(3, 1)
 shape = SubResource("RectangleShape2D_53igl")
 one_way_collision = true
 
@@ -28,6 +30,7 @@ collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
 position = Vector2(0, -8)
+scale = Vector2(3, 1)
 shape = SubResource("RectangleShape2D_v8ykw")
 
 [connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]

@@ -100,12 +100,12 @@ func set_can_move(value: bool) -> void:
 	
 func shoot(Input) -> void:
 	# print("shoot trigger: ", GameManager.game_state)
-	if not GameManager.has_item(&"玩具手枪"):
-		return
-	if not can_move:
-		return
-	if not can_shoot:
-		return
+	#if not GameManager.has_item(&"玩具手枪"):
+		#return
+	#if not can_move:
+		#return
+	#if not can_shoot:
+		#return
 		
 	# 清理无效的重力场，同时从场景树中删除
 	active_gravity_gun_fields = active_gravity_gun_fields.filter(func(field):

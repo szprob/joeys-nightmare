@@ -18,7 +18,7 @@ var player_on_swing = false  # 新增变量跟踪玩家是否在秋千上
 
 func _ready():
 	# 根据初始位置计算绳长
-	rope_length = position.distance_to(pivot_position)
+	rope_length = global_position.distance_to(pivot_position)
 	
 	# 设置初始角度为最大摆动幅度
 	current_angle = swing_amplitude
@@ -82,13 +82,10 @@ func _physics_process(delta):
 	var target_pos = Vector2(target_x, target_y)
 	
 	# 计算所需的速度
-	velocity = (target_pos - position) / delta
+	velocity = (target_pos - global_position) / delta
 	
 	# 应用移动
 	move_and_slide()
-	
-	# 更新实际位置（考虑碰撞后的位置）
-	position = position
 	
 	# 每次更新位置后重绘绳子
 	queue_redraw()
