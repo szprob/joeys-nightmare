@@ -132,8 +132,11 @@ collision_mask = 128
 script = ExtResource("1_4p1w1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_oep8r")
 frame_progress = 0.5703
+centered = false
+offset = Vector2(-16, -32)
 
 [node name="kill_zone" parent="." instance=ExtResource("3_xntn5")]
 collision_layer = 0

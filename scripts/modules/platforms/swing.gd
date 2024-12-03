@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var animated_sprites: Array[AnimatedSprite2D] = []
+
 @export var mass = 1  # 物体质量
 @export var pivot_target: Area2D  # 枢轴点位置
 @export var rope_color: Color = Color.WHEAT  # 绳子颜色
@@ -16,10 +18,17 @@ var angular_velocity = 0.0
 var rope_length = 0.0  # 现在在_ready中自动计算
 var player_on_swing = false  # 新增变量跟踪玩家是否在秋千上
 var pivot_position : Vector2
+var original_scale
 
 func _ready():
 	pivot_position = pivot_target.global_position
 	
+	# 在_ready中初始化精灵数组并设置偏移原点
+	for i in range(1, 9):
+		var sprite_name = "AnimatedSprite2D" if i == 1 else "AnimatedSprite2D" + str(i)
+		var sprite = get_node(sprite_name)
+		animated_sprites.append(sprite)
+		
 	# 根据初始位置计算绳长
 	rope_length = global_position.distance_to(pivot_position)
 	
@@ -39,8 +48,28 @@ func _ready():
 	var gravity_strength = get_gravity().length()
 	angular_velocity = sqrt(2 * gravity_strength * max_height) / rope_length
 
+	original_scale = animated_sprites[0].scale  # 获取精灵的当前缩放值
+
+func animate_swing():
+	# 计算火焰变形的基础参数
+	var normalized_speed = clamp(angular_velocity / max_angular_velocity, -1.0, 1.0)
+	
+	for sprite in animated_sprites:
+		# 增加旋转角度范围
+		var rotation_angle = -normalized_speed * 45.0
+		
+		# 增加变形系数
+		var deform_factor = abs(normalized_speed)
+		var scale_x = original_scale.x * (1.0 - deform_factor * 0.5)
+		var scale_y = original_scale.y * (1.0 + deform_factor * 0.6)
+		
+		# 应用变形和偏移，保持原始位置
+		sprite.rotation_degrees = rotation_angle
+		sprite.scale = Vector2(scale_x, scale_y)
+
 
 func _physics_process(delta):
+	animate_swing()
 	# 获取当前位置的重力
 	var gravity_vec = get_gravity()
 	var gravity_strength = gravity_vec.length()

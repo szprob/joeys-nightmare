@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c7xf3ln8bdag4" path="res://assets/sprites/traps/VFX_Fire_2.png" id="3_wg8n5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_53igl"]
-size = Vector2(23.6667, 6)
+size = Vector2(23.5, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8ykw"]
 size = Vector2(32, 4)
@@ -138,9 +138,10 @@ script = ExtResource("1_1lo10")
 position = Vector2(-1, -1)
 scale = Vector2(1.67188, 1)
 texture = ExtResource("2_qmrav")
+offset = Vector2(0, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.499999, -3)
+position = Vector2(-1, 6)
 scale = Vector2(3, 1)
 shape = SubResource("RectangleShape2D_53igl")
 one_way_collision = true
@@ -150,58 +151,74 @@ collision_layer = 0
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
-position = Vector2(0, -8)
+position = Vector2(0, -1)
 scale = Vector2(3, 1)
 shape = SubResource("RectangleShape2D_v8ykw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-44, -15)
+position = Vector2(-44, -2)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_cy574")
 autoplay = "default"
 frame_progress = 0.622426
+centered = false
+offset = Vector2(-16, -32)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-position = Vector2(-31, -18)
+position = Vector2(-31, -4)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_cy574")
 autoplay = "default"
+centered = false
+offset = Vector2(-16, -32)
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
-position = Vector2(29, -18)
+position = Vector2(29, -4)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_cy574")
 autoplay = "default"
+centered = false
+offset = Vector2(-16, -32)
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
-position = Vector2(43, -15)
+position = Vector2(43, -1)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_cy574")
 autoplay = "default"
+centered = false
+offset = Vector2(-16, -32)
 
 [node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="."]
-position = Vector2(-33, -5)
+position = Vector2(-33, 9)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_cy574")
 autoplay = "default"
+centered = false
+offset = Vector2(-16, -32)
 
 [node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="."]
-position = Vector2(-21, -6)
+position = Vector2(-21, 8)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_cy574")
 autoplay = "default"
+centered = false
+offset = Vector2(-16, -32)
 
 [node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="."]
-position = Vector2(17, -6)
+position = Vector2(17, 8)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_cy574")
 autoplay = "default"
+centered = false
+offset = Vector2(-16, -32)
 
 [node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="."]
-position = Vector2(29, -5)
+position = Vector2(29, 9)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_cy574")
 autoplay = "default"
+centered = false
+offset = Vector2(-16, -32)
 
 [connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
 [connection signal="body_exited" from="detection" to="." method="_on_detection_body_exited"]
