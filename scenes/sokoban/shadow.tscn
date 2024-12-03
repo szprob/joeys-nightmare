@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://niv7kyal3axp"]
+
+[ext_resource type="Script" path="res://scripts/sokoban/shadow.gd" id="1_dscb8"]
+
+[node name="shadow" type="Sprite2D"]
+script = ExtResource("1_dscb8")
