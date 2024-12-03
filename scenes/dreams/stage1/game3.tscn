@@ -360,4 +360,6 @@ rope_color = Color(0.960784, 0.870588, 0.701961, 1)
 position = Vector2(-5.72644, -129.738)
 
 [node name="Fires" parent="." instance=ExtResource("6_hleku")]
-position = Vector2(-1567.65, -131.688)
+position = Vector2(-1191.89, -77.6274)
+rotation_angular_velocity = 1.0
+clockwise = false
