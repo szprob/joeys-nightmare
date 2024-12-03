@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="2_gmqmk"]
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="3_lojxw"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="5_kmimm"]
-[ext_resource type="PackedScene" uid="uid://bprgch0ov1uwm" path="res://scenes/modules/traps/fire.tscn" id="5_mgy2v"]
+[ext_resource type="PackedScene" uid="uid://c7tkc43k3y7u6" path="res://scenes/modules/traps/fires.tscn" id="6_hleku"]
 [ext_resource type="PackedScene" uid="uid://be4tvkuckghc4" path="res://scenes/modules/platforms/swing.tscn" id="6_i4wv8"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8553"]
@@ -351,20 +351,13 @@ limit_bottom = 150
 limit_smoothed = true
 position_smoothing_enabled = true
 
-[node name="Fire" parent="." instance=ExtResource("5_mgy2v")]
-position = Vector2(-1570.99, -70.2858)
-
 [node name="Swing" parent="." node_paths=PackedStringArray("pivot_target") instance=ExtResource("6_i4wv8")]
 position = Vector2(-1337, -46)
-mass = 1
-swing_amplitude = 10.0
 pivot_target = NodePath("Area2D")
 rope_color = Color(0.960784, 0.870588, 0.701961, 1)
-rope_width = 2.0
-speed_factor = 0.4
-init_damping = 1
-player_force_factor = 35.0
-max_angular_velocity = 1.5
 
 [node name="Area2D" type="Area2D" parent="Swing"]
 position = Vector2(-5.72644, -129.738)
+
+[node name="Fires" parent="." instance=ExtResource("6_hleku")]
+position = Vector2(-1567.65, -131.688)
