@@ -1,6 +1,5 @@
-[gd_scene load_steps=22 format=3 uid="uid://bprgch0ov1uwm"]
+[gd_scene load_steps=21 format=3 uid="uid://bprgch0ov1uwm"]
 
-[ext_resource type="Script" path="res://scripts/modules/traps/fire.gd" id="1_a3fjw"]
 [ext_resource type="Texture2D" uid="uid://c7xf3ln8bdag4" path="res://assets/sprites/traps/VFX_Fire_2.png" id="1_r2ati"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_xntn5"]
 
@@ -127,7 +126,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_sfanl"]
 
 [node name="Fire" type="AnimatableBody2D"]
-script = ExtResource("1_a3fjw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_oep8r")
