@@ -21,6 +21,12 @@ extends CharacterBody2D
 @export var jump_acceleration_frames: int = 4 # 达到最高跳跃速度需要的帧数
 @export var jump_deceleration_frames: int = 5 # 减速到0需要的帧数
 
+# shadow/ after image / 残影
+@export var after_image_scene: PackedScene
+var after_image_timer: float = 0.0
+var after_image_interval: float = 0.05
+
+
 # hook variables
 var is_hooking = false
 var hook_target = null
@@ -320,9 +326,12 @@ func _physics_process(delta: float) -> void:
 				hook_target = last_field
 	if is_hooking and is_instance_valid(hook_target):
 		hook_timer += delta
-		print('tracing hook block')
-		print('hook timer', hook_timer)
-		print('hook durtion')
+		after_image_timer += delta
+
+		if after_image_timer >= after_image_interval:
+			spawn_after_image()
+			after_image_timer = 0.0
+
 		if hook_timer >= hook_duration:
 			end_hook()
 			return
@@ -353,6 +362,7 @@ func _physics_process(delta: float) -> void:
 		var target_velocity = hook_direction * hook_speed
 		# 使用插值平滑过渡到目标速度
 		velocity = velocity.lerp(target_velocity, 0.8)
+		velocity += get_gravity() * delta * 1
 		
 		# 仍然应用重力，但减小影响
 		# var gravity = get_gravity() * delta * 0.3
@@ -724,3 +734,15 @@ func end_hook() -> void:
 	# 保持一定的动量
 	velocity = velocity * 0.5
 	# print('hook end')
+
+
+func spawn_after_image():
+	var after_image = after_image_scene.instantiate()
+	get_parent().add_child(after_image)
+	
+	# 设置残影的属性
+	after_image.texture = animated_sprite_2d.sprite_frames.get_frame_texture(animated_sprite_2d.animation, animated_sprite_2d.frame)
+	after_image.global_position = global_position
+	after_image.rotation = animated_sprite_2d.rotation
+	after_image.flip_h = animated_sprite_2d.flip_h
+	after_image.scale = animated_sprite_2d.scale
