@@ -1,0 +1,1457 @@
+[gd_scene load_steps=166 format=4 uid="uid://ddde53umsxpu2"]
+
+[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="1_t74i2"]
+[ext_resource type="Script" path="res://scripts/camera_2d.gd" id="2_2vkas"]
+[ext_resource type="PackedScene" uid="uid://cyp6s0hn0oacu" path="res://scenes/modules/auto_invisible_label.tscn" id="3_janyi"]
+[ext_resource type="PackedScene" uid="uid://c5x12p3650b3l" path="res://scenes/player/npc.tscn" id="4_8y5pk"]
+[ext_resource type="PackedScene" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="5_14wtn"]
+[ext_resource type="Texture2D" uid="uid://b5jfcv0uem5wb" path="res://assets/sprites/background/multi3/back2.png" id="6_eerys"]
+[ext_resource type="Texture2D" uid="uid://7joprmnjucj5" path="res://assets/sprites/background/multi3/moon2.png" id="7_tnvsg"]
+[ext_resource type="Texture2D" uid="uid://bl1rxkn33ywhl" path="res://assets/sprites/background/multi3/cloud.png" id="8_cd34x"]
+[ext_resource type="Texture2D" uid="uid://bc3luaoy48sp7" path="res://assets/sprites/background/multi3/bird.png" id="9_xkh5g"]
+[ext_resource type="Texture2D" uid="uid://gvyrlttwr2dn" path="res://assets/sprites/background/multi3/people.png" id="10_jwfh1"]
+[ext_resource type="Texture2D" uid="uid://c8ktpt687sgsd" path="res://assets/sprites/background/multi3/frontv2_1.png" id="11_dlogs"]
+[ext_resource type="Texture2D" uid="uid://cc213l304x8tw" path="res://assets/sprites/map/med3.png" id="12_jk2vm"]
+[ext_resource type="Texture2D" uid="uid://pv0iwkpm3tyv" path="res://assets/sprites/human/brick2.1.png" id="13_bny1k"]
+[ext_resource type="Texture2D" uid="uid://deqrfc6dygry5" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00000.png" id="13_ok1or"]
+[ext_resource type="PackedScene" uid="uid://bi3000vv4vu3x" path="res://scenes/sokoban/gravity_tile/gravity_down.tscn" id="14_1wc3g"]
+[ext_resource type="Texture2D" uid="uid://cgr5hgci663ww" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00001.png" id="14_81m00"]
+[ext_resource type="Texture2D" uid="uid://dbl58shf8krbi" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00002.png" id="15_5b1rp"]
+[ext_resource type="PackedScene" uid="uid://cootft3ha6veu" path="res://scenes/sokoban/gravity_tile/gravity_left.tscn" id="15_y6w4c"]
+[ext_resource type="Texture2D" uid="uid://nrhffn25r7bp" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00003.png" id="16_a32g7"]
+[ext_resource type="PackedScene" uid="uid://dlv4fqe1sg0dm" path="res://scenes/sokoban/gravity_tile/gravity_right.tscn" id="16_f3lwq"]
+[ext_resource type="PackedScene" uid="uid://bh3778qpcat7y" path="res://scenes/sokoban/gravity_tile/gravity_up.tscn" id="17_q3sb0"]
+[ext_resource type="Texture2D" uid="uid://b1cg3obv0c3x6" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00004.png" id="17_s1jho"]
+[ext_resource type="PackedScene" path="res://scenes/modules/trap_tile/trap_down.tscn" id="18_54ooj"]
+[ext_resource type="Texture2D" uid="uid://bgm1l566akr6e" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00005.png" id="18_f3jjh"]
+[ext_resource type="Texture2D" uid="uid://po0q1r5n3d6f" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00006.png" id="19_d00ih"]
+[ext_resource type="PackedScene" path="res://scenes/modules/trap_tile/trap_left.tscn" id="19_h1h8v"]
+[ext_resource type="PackedScene" uid="uid://ck4p24ug1b88b" path="res://scenes/sokoban/season-2-examples/qte_gravity_area.tscn" id="20_gn4rn"]
+[ext_resource type="Texture2D" uid="uid://tywc4tgqqrnc" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00007.png" id="20_pk534"]
+[ext_resource type="PackedScene" path="res://scenes/modules/trap_tile/trap_right.tscn" id="20_x7ics"]
+[ext_resource type="PackedScene" uid="uid://cv3nrtrevxkyu" path="res://scenes/sokoban/gravity_1.tscn" id="21_6vl2b"]
+[ext_resource type="PackedScene" uid="uid://b67w4ct47vhpw" path="res://scenes/modules/trap_tile/trap_up.tscn" id="21_57c4m"]
+[ext_resource type="Texture2D" uid="uid://cmf4jnjwhit65" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00008.png" id="21_s0olw"]
+[ext_resource type="PackedScene" uid="uid://b4l0s4mgeuqyq" path="res://scenes/modules/checkpoints/bi-teleport.tscn" id="22_86ci1"]
+[ext_resource type="TileSet" uid="uid://ch8e8ygmw6bpr" path="res://tiles/intro.tres" id="22_jru5g"]
+[ext_resource type="Texture2D" uid="uid://dxscy6ncnkmhn" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00009.png" id="22_yqbu6"]
+[ext_resource type="Texture2D" uid="uid://bk3tyj5o2guij" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00010.png" id="23_flau7"]
+[ext_resource type="PackedScene" uid="uid://cair83ouq2qd0" path="res://scenes/modules/checkpoints/target.tscn" id="23_q0u5u"]
+[ext_resource type="PackedScene" uid="uid://bhgixpqr8klwj" path="res://scenes/sokoban/box.tscn" id="24_gb3bk"]
+[ext_resource type="Texture2D" uid="uid://cyb287rgwnw16" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00011.png" id="24_r8uqr"]
+[ext_resource type="Texture2D" uid="uid://dmtwoj2xgpkxt" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00012.png" id="25_4hckh"]
+[ext_resource type="PackedScene" uid="uid://8gajxily3trj" path="res://scenes/sokoban/door_1.tscn" id="25_6ye8u"]
+[ext_resource type="PackedScene" uid="uid://cpqr3oauheogh" path="res://scenes/sokoban/button-1.tscn" id="26_84l8x"]
+[ext_resource type="Texture2D" uid="uid://bqieiu41gs8xf" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00013.png" id="26_a17tl"]
+[ext_resource type="Texture2D" uid="uid://swn1ohrmgorl" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00014.png" id="27_p02e7"]
+[ext_resource type="PackedScene" uid="uid://kfdbq76ixwrq" path="res://scenes/modules/checkpoints/save_point.tscn" id="27_y68ly"]
+[ext_resource type="PackedScene" uid="uid://dtn6bt0ark3is" path="res://scenes/enemy/monster.tscn" id="28_b3n87"]
+[ext_resource type="Texture2D" uid="uid://b4klcdf0wlum8" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00015.png" id="28_xu1j2"]
+[ext_resource type="Texture2D" uid="uid://bqhdjmchxgnwa" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00016.png" id="29_5bymo"]
+[ext_resource type="PackedScene" uid="uid://c8q6wa4cofe21" path="res://scenes/modules/traps/falling_trap_tgt.tscn" id="29_t6fgn"]
+[ext_resource type="PackedScene" uid="uid://dlyl2v0k7iiry" path="res://scenes/modules/traps/detection.tscn" id="30_4fgsd"]
+[ext_resource type="Texture2D" uid="uid://pbx4d0nkj3re" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00017.png" id="30_wxmgo"]
+[ext_resource type="PackedScene" uid="uid://b6pq8l7ym5nuh" path="res://scenes/modules/checkpoints/teleport.tscn" id="31_722qi"]
+[ext_resource type="Texture2D" uid="uid://yubwm85xatpn" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00018.png" id="31_x5ppm"]
+[ext_resource type="Texture2D" uid="uid://b4qkcxcvlqsau" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00019.png" id="32_cxsc5"]
+[ext_resource type="Texture2D" uid="uid://d2kluhm1ekavb" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00020.png" id="33_0r7ks"]
+[ext_resource type="Texture2D" uid="uid://6gvyi2hwfx3q" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00021.png" id="34_caag2"]
+[ext_resource type="Texture2D" uid="uid://cnv7kbgqqddl3" path="res://assets/sprites/background/intro/box1.png" id="35_dmd75"]
+[ext_resource type="Texture2D" uid="uid://d257d808t2y7j" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00022.png" id="35_sr6qu"]
+[ext_resource type="Texture2D" uid="uid://103xnlx8whou" path="res://assets/sprites/background/intro/pillar1.png" id="36_lmhxl"]
+[ext_resource type="Texture2D" uid="uid://df5r4dxxfjod4" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00023.png" id="36_n8bnp"]
+[ext_resource type="Texture2D" uid="uid://ct685d52goop4" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00024.png" id="37_r3u1t"]
+[ext_resource type="Texture2D" uid="uid://cx83fsqaaclml" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00025.png" id="38_27it4"]
+[ext_resource type="Texture2D" uid="uid://cf3g4er55s8f5" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00026.png" id="39_s4l1t"]
+[ext_resource type="Texture2D" uid="uid://dg6yc4npt8o6t" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00027.png" id="40_atrv8"]
+[ext_resource type="Texture2D" uid="uid://bhafn5f1rl8sv" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00028.png" id="41_b71rr"]
+[ext_resource type="Texture2D" uid="uid://05odak7mwdv5" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00029.png" id="42_t8ovq"]
+[ext_resource type="Texture2D" uid="uid://imny8dd2cqlu" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00030.png" id="43_yrhkw"]
+[ext_resource type="Texture2D" uid="uid://b2kjtqbw3awco" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00031.png" id="44_3g2bv"]
+[ext_resource type="Texture2D" uid="uid://ctus1avgwdlkn" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00032.png" id="45_i6yio"]
+[ext_resource type="Texture2D" uid="uid://cwhsts7oe6amc" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00033.png" id="46_lg0sm"]
+[ext_resource type="Texture2D" uid="uid://dbmdcjn1h7a6j" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00034.png" id="47_hg8g5"]
+[ext_resource type="Texture2D" uid="uid://y50jtj81smk6" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00035.png" id="48_sfhqf"]
+[ext_resource type="Texture2D" uid="uid://dtuesunk8lnjl" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00036.png" id="49_83u6q"]
+[ext_resource type="Texture2D" uid="uid://cfhveec8h2veb" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00037.png" id="50_liv04"]
+[ext_resource type="Texture2D" uid="uid://dftu6l0gt23gi" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00038.png" id="51_vbfou"]
+[ext_resource type="Texture2D" uid="uid://da2stkr4dnrp2" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00039.png" id="52_k87v4"]
+[ext_resource type="Texture2D" uid="uid://bb8d6ghlifxhd" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00040.png" id="53_cjp22"]
+[ext_resource type="Texture2D" uid="uid://b314b7a03t2p6" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00041.png" id="54_gvdos"]
+[ext_resource type="Texture2D" uid="uid://d0skqu6owtexb" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00042.png" id="55_4u83m"]
+[ext_resource type="Texture2D" uid="uid://ctgh04yqgswx" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00043.png" id="56_n4flq"]
+[ext_resource type="Texture2D" uid="uid://c5sb2gep4bg7p" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00044.png" id="57_5ntbc"]
+[ext_resource type="Texture2D" uid="uid://bijynnbw44s1e" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00045.png" id="58_dbw70"]
+[ext_resource type="Texture2D" uid="uid://yuovvjc2js3f" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00046.png" id="59_cket4"]
+[ext_resource type="Texture2D" uid="uid://iihkdmxn6wog" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00047.png" id="60_oxfqk"]
+[ext_resource type="Texture2D" uid="uid://b8dxxmjxp85ef" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00048.png" id="61_a4tmf"]
+[ext_resource type="Texture2D" uid="uid://s3y6f3gx2by0" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00049.png" id="62_08fj0"]
+[ext_resource type="Texture2D" uid="uid://bw6yqi3xryx3l" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00050.png" id="63_prwiy"]
+[ext_resource type="Texture2D" uid="uid://dnheqdqisnw20" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00051.png" id="64_5xs2g"]
+[ext_resource type="Texture2D" uid="uid://3i2b1da6t8gb" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00052.png" id="65_s0ekr"]
+[ext_resource type="Texture2D" uid="uid://dexdikqsihy6h" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00053.png" id="66_gnr1w"]
+[ext_resource type="Texture2D" uid="uid://bab31uggo7v61" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00054.png" id="67_y1p3r"]
+[ext_resource type="Texture2D" uid="uid://5mnmwjtc2x3o" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00055.png" id="68_oteak"]
+[ext_resource type="Texture2D" uid="uid://p432ii7ru3v" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00056.png" id="69_vlhky"]
+[ext_resource type="Texture2D" uid="uid://dpuk2cl4yo84h" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00057.png" id="70_d0155"]
+[ext_resource type="Texture2D" uid="uid://ybv73uqeahnm" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00058.png" id="71_rkcec"]
+[ext_resource type="Texture2D" uid="uid://tdnbluwuify3" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00059.png" id="72_348fn"]
+[ext_resource type="Texture2D" uid="uid://cklqaispf4gd1" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00060.png" id="73_d1i35"]
+[ext_resource type="Texture2D" uid="uid://bmefqxldmw8yn" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00061.png" id="74_0dtal"]
+[ext_resource type="Texture2D" uid="uid://dtpyo0kf1k0pp" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00062.png" id="75_c2j7h"]
+[ext_resource type="Texture2D" uid="uid://ppmijyi8ddhc" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00063.png" id="76_25jef"]
+[ext_resource type="Texture2D" uid="uid://do4pydyyl7ilo" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00064.png" id="77_ippdh"]
+[ext_resource type="Texture2D" uid="uid://cvepltqt8rt6o" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00065.png" id="78_tqkuv"]
+[ext_resource type="Texture2D" uid="uid://c2kttf65vsnth" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00066.png" id="79_u36gc"]
+[ext_resource type="Texture2D" uid="uid://c6mdeqtwdad1j" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00067.png" id="80_jjtjg"]
+[ext_resource type="Texture2D" uid="uid://c2brmru3lpkto" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00068.png" id="81_lar8b"]
+[ext_resource type="Texture2D" uid="uid://8tk8cajxgo2o" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00069.png" id="82_idjw0"]
+[ext_resource type="Texture2D" uid="uid://c56jwhdgre3ye" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00070.png" id="83_8w0fu"]
+[ext_resource type="Texture2D" uid="uid://b1f6qx7014y06" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00071.png" id="84_fyw2m"]
+[ext_resource type="Texture2D" uid="uid://b5apgrgflh4j7" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00072.png" id="85_qajv7"]
+[ext_resource type="Texture2D" uid="uid://bqyqjkifacw0a" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00073.png" id="86_m3vjq"]
+[ext_resource type="Texture2D" uid="uid://ctkgkeejrq03t" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00074.png" id="87_uh5ms"]
+[ext_resource type="Texture2D" uid="uid://c85kusdoqkuiu" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00075.png" id="88_75jyy"]
+[ext_resource type="Texture2D" uid="uid://by6oprlg1whdr" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00076.png" id="89_tclv1"]
+[ext_resource type="Texture2D" uid="uid://2red1xxjuwj8" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00077.png" id="90_0klk1"]
+[ext_resource type="Texture2D" uid="uid://x5up3tv270qa" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00078.png" id="91_xlrtx"]
+[ext_resource type="Texture2D" uid="uid://dsf2cym0vykja" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00079.png" id="92_03apy"]
+[ext_resource type="Texture2D" uid="uid://bor7j84rarg5w" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00080.png" id="93_pnutg"]
+[ext_resource type="Texture2D" uid="uid://du2v58yjlxnu7" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00081.png" id="94_lk61u"]
+[ext_resource type="Texture2D" uid="uid://qau5j12o0q77" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00082.png" id="95_xqm5a"]
+[ext_resource type="Texture2D" uid="uid://b7xgjcw4d21i1" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00083.png" id="96_j7s83"]
+[ext_resource type="Texture2D" uid="uid://cpbjnli73fdh" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00084.png" id="97_2ttxj"]
+[ext_resource type="Texture2D" uid="uid://dmiygty6eetpp" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00085.png" id="98_7xkmr"]
+[ext_resource type="Texture2D" uid="uid://cirntrh6kp0m0" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00086.png" id="99_b0h58"]
+[ext_resource type="Texture2D" uid="uid://iaeosrehdyr2" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00087.png" id="100_ybudy"]
+[ext_resource type="Texture2D" uid="uid://dtw05pig7lt3q" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00088.png" id="101_51868"]
+[ext_resource type="Texture2D" uid="uid://c602660edxp61" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00089.png" id="102_op45x"]
+[ext_resource type="Texture2D" uid="uid://6ujjfw3wllk0" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00090.png" id="103_mhjyt"]
+[ext_resource type="Texture2D" uid="uid://sgfcxg5mw0t7" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00091.png" id="104_wljfh"]
+[ext_resource type="Texture2D" uid="uid://dj34mkla4kjg1" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00092.png" id="105_lyb1a"]
+[ext_resource type="Texture2D" uid="uid://ccyhxp6jckx58" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00093.png" id="106_to3iw"]
+[ext_resource type="Texture2D" uid="uid://dqxgxwlut55ag" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00094.png" id="107_rwc2n"]
+[ext_resource type="Texture2D" uid="uid://cys6n6aqp1cxw" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00095.png" id="108_focui"]
+[ext_resource type="Texture2D" uid="uid://kahghliniq41" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00096.png" id="109_mtrnh"]
+[ext_resource type="Texture2D" uid="uid://du0oa3cijhq66" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00097.png" id="110_6eka1"]
+[ext_resource type="Texture2D" uid="uid://bd6raytdjxlu3" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00098.png" id="111_qrra7"]
+[ext_resource type="Texture2D" uid="uid://b0ywpxytam5qm" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00099.png" id="112_240a1"]
+[ext_resource type="Texture2D" uid="uid://f5okfnn1dtkq" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00100.png" id="113_ou2th"]
+[ext_resource type="Texture2D" uid="uid://0x3ii158nx5c" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00101.png" id="114_bnc47"]
+[ext_resource type="Texture2D" uid="uid://byc8cl1ck4fda" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00102.png" id="115_xyyp2"]
+[ext_resource type="Texture2D" uid="uid://mnf11rxenacb" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00103.png" id="116_ts377"]
+[ext_resource type="Texture2D" uid="uid://dxy63rrofxtq8" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00104.png" id="117_uenv7"]
+[ext_resource type="Texture2D" uid="uid://c2wsmvs8nbjgj" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00105.png" id="118_ygthx"]
+[ext_resource type="Texture2D" uid="uid://27525doqo0bo" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00106.png" id="119_pcgnm"]
+[ext_resource type="Texture2D" uid="uid://ctu07k7klv6g8" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00107.png" id="120_2q40v"]
+[ext_resource type="Texture2D" uid="uid://dl64uvw38pkjb" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00108.png" id="121_njmf7"]
+[ext_resource type="Texture2D" uid="uid://xxb3k1deab4f" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00109.png" id="122_rks86"]
+[ext_resource type="Texture2D" uid="uid://cbbo0vqh4hy7w" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00110.png" id="123_anu31"]
+[ext_resource type="Texture2D" uid="uid://ckwwfx50bgao4" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00111.png" id="124_6k0fs"]
+[ext_resource type="Texture2D" uid="uid://dfuudsp88weuy" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00112.png" id="125_lw2vk"]
+[ext_resource type="Texture2D" uid="uid://ddds4n2tydo7e" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00113.png" id="126_uncv0"]
+[ext_resource type="Texture2D" uid="uid://br5b5k44s2qdq" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00114.png" id="127_iws10"]
+[ext_resource type="Texture2D" uid="uid://vadu5cmknx8o" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00115.png" id="128_yuwk8"]
+[ext_resource type="Texture2D" uid="uid://cs6e7mx8s7bwp" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00116.png" id="129_3p22k"]
+[ext_resource type="Texture2D" uid="uid://b0h7n5e43ekhy" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00117.png" id="130_x0p17"]
+[ext_resource type="Texture2D" uid="uid://dpxdocp0ixuqh" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00118.png" id="131_tgqrh"]
+[ext_resource type="Texture2D" uid="uid://b7siakx72osmm" path="res://assets/sprites/background/frame_ _bg/frame_ _bg_00119.png" id="132_f7nsg"]
+[ext_resource type="Texture2D" uid="uid://dbgfhg70dnrat" path="res://assets/sprites/background/intro/tiles-v2-intro-map0.png" id="155_nm28v"]
+[ext_resource type="Texture2D" uid="uid://cey7y33tq1n5q" path="res://scenes/dreams/playground/WechatIMG1159.png" id="157_8dtuq"]
+[ext_resource type="Texture2D" uid="uid://kpau1xqiaaa8" path="res://scenes/dreams/playground/WechatIMG1161.png" id="158_1dk1o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8q8je"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_ok1or")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_81m00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_5b1rp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_a32g7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_s1jho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_f3jjh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_d00ih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_pk534")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_s0olw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_yqbu6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_flau7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_r8uqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_4hckh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_a17tl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_p02e7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_xu1j2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_5bymo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_wxmgo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_x5ppm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_cxsc5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_0r7ks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_caag2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_sr6qu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_n8bnp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_r3u1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_27it4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_s4l1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_atrv8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_b71rr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_t8ovq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_yrhkw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_3g2bv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_i6yio")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_lg0sm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_hg8g5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_sfhqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_83u6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_liv04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_vbfou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_k87v4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_cjp22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_gvdos")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_4u83m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_n4flq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_5ntbc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_dbw70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_cket4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_oxfqk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_a4tmf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_08fj0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_prwiy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_5xs2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_s0ekr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_gnr1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_y1p3r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_oteak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_vlhky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_d0155")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_rkcec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_348fn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_d1i35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_0dtal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_c2j7h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_25jef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_ippdh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_tqkuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_u36gc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_jjtjg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_lar8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_idjw0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_8w0fu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_fyw2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_qajv7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_m3vjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_uh5ms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_75jyy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_tclv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_0klk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_xlrtx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_03apy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_pnutg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_lk61u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_xqm5a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_j7s83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_2ttxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_7xkmr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_b0h58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_ybudy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_51868")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_op45x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_mhjyt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_wljfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_lyb1a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_to3iw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_rwc2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_focui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_mtrnh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_6eka1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_qrra7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_240a1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_ou2th")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_bnc47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_xyyp2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_ts377")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_uenv7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_ygthx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_pcgnm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_2q40v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_njmf7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_rks86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_anu31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_6k0fs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_lw2vk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_uncv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_iws10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_yuwk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("129_3p22k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("130_x0p17")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_tgqrh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_f7nsg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_27oib"]
+texture = ExtResource("13_bny1k")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_35uyc"]
+resource_name = "gravity"
+scenes/1/scene = ExtResource("14_1wc3g")
+scenes/2/scene = ExtResource("15_y6w4c")
+scenes/3/scene = ExtResource("16_f3lwq")
+scenes/4/scene = ExtResource("17_q3sb0")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_j0lat"]
+resource_name = "trap"
+scenes/1/scene = ExtResource("18_54ooj")
+scenes/2/scene = ExtResource("19_h1h8v")
+scenes/3/scene = ExtResource("20_x7ics")
+scenes/4/scene = ExtResource("21_57c4m")
+
+[sub_resource type="TileSet" id="TileSet_rvt4p"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_27oib")
+sources/2 = SubResource("TileSetScenesCollectionSource_j0lat")
+sources/1 = SubResource("TileSetScenesCollectionSource_35uyc")
+
+[sub_resource type="Curve2D" id="Curve2D_rtoo5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 64, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 4
+
+[node name="Game" type="Node2D" groups=["scan_lines"]]
+position = Vector2(0, -272)
+
+[node name="player_with_gravity" parent="." groups=["player"] instance=ExtResource("1_t74i2")]
+position = Vector2(-273.078, -268.554)
+
+[node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
+position = Vector2(200, 93.9448)
+limit_left = 464
+limit_top = -254
+limit_right = 944
+limit_bottom = 16
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("2_2vkas")
+
+[node name="AutoInvisibleLabel" parent="player_with_gravity" instance=ExtResource("3_janyi")]
+visible = false
+offset_left = -24.0
+offset_top = -40.0
+offset_right = 42.0
+offset_bottom = -17.0
+theme_override_font_sizes/font_size = 12
+text = "我这是在哪?"
+
+[node name="npc" type="Node2D" parent="."]
+
+[node name="Npc" parent="npc" node_paths=PackedStringArray("teleport") instance=ExtResource("4_8y5pk")]
+z_index = 1
+position = Vector2(-235, -265)
+teleport = NodePath("../empty-teleport")
+
+[node name="empty-teleport" parent="npc" instance=ExtResource("5_14wtn")]
+z_index = 1
+position = Vector2(-192, -264)
+
+[node name="backgroud" type="Node2D" parent="."]
+visible = false
+z_index = -2
+position = Vector2(-38, 272)
+
+[node name="back" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/back"]
+position = Vector2(-179.325, -91)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_eerys")
+centered = false
+
+[node name="moon" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.05, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/moon"]
+position = Vector2(-179, -45.22)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_tnvsg")
+centered = false
+
+[node name="cloud" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(859.12, 0)
+autoscroll = Vector2(16, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/cloud"]
+position = Vector2(-8, -52.445)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_cd34x")
+centered = false
+
+[node name="bird" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.15, 0)
+repeat_size = Vector2(768, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/bird"]
+visible = false
+position = Vector2(-68, -72)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_xkh5g")
+centered = false
+
+[node name="birdv2" type="AnimatedSprite2D" parent="backgroud/bird"]
+position = Vector2(235, 95)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_8q8je")
+autoplay = "default"
+frame_progress = 0.84002
+
+[node name="people" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.2, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/people"]
+position = Vector2(-0.999992, -72)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("10_jwfh1")
+centered = false
+
+[node name="front" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.3, 0)
+scroll_offset = Vector2(-10, -8.19)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/front"]
+position = Vector2(90, -40.545)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("11_dlogs")
+centered = false
+
+[node name="backgroud2" type="Node2D" parent="."]
+z_index = -2
+position = Vector2(64, 8)
+
+[node name="back" type="Parallax2D" parent="backgroud2"]
+z_index = -1
+scroll_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud2/back"]
+position = Vector2(-179.325, -91)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_eerys")
+centered = false
+
+[node name="moon" type="Parallax2D" parent="backgroud2"]
+z_index = -1
+scroll_scale = Vector2(0.05, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud2/moon"]
+position = Vector2(-179, -45.22)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_tnvsg")
+centered = false
+
+[node name="cloud" type="Parallax2D" parent="backgroud2"]
+visible = false
+z_index = -1
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(859.12, 0)
+autoscroll = Vector2(16, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud2/cloud"]
+position = Vector2(-8, -52.445)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_cd34x")
+centered = false
+
+[node name="bird" type="Parallax2D" parent="backgroud2"]
+z_index = -1
+scroll_scale = Vector2(0.15, 0)
+scroll_offset = Vector2(-766, 211)
+repeat_size = Vector2(768, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud2/bird"]
+position = Vector2(-68, -72)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("12_jk2vm")
+centered = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="backgroud2/bird"]
+position = Vector2(977, 203)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_8q8je")
+autoplay = "default"
+frame_progress = 0.421084
+
+[node name="people" type="Parallax2D" parent="backgroud2"]
+visible = false
+z_index = -1
+scroll_scale = Vector2(0.2, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud2/people"]
+position = Vector2(-0.999992, -72)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("10_jwfh1")
+centered = false
+
+[node name="front" type="Parallax2D" parent="backgroud2"]
+visible = false
+z_index = -1
+scroll_scale = Vector2(0.3, 0)
+scroll_offset = Vector2(-10, -8.19)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud2/front"]
+position = Vector2(90, -40.545)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("11_dlogs")
+centered = false
+
+[node name="maps" type="Node2D" parent="."]
+
+[node name="map3" type="Node2D" parent="maps"]
+position = Vector2(464, -512)
+
+[node name="map" type="TileMapLayer" parent="maps/map3"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAAAAAAAAAARABAAAAAAAAAAAAASABAAAAAAAAAAAAATABAAAAAAAAAAAAAUABAAAAAAAAAAAAAVABAAAAAAAAAAAAAWABAAAAAAAAAAAAAXABAAAAAAAAAAAAAYABAAAAAAAAAAAAAZABAAAAAAAAAAAAAaABAAAAAAAAAAAAAbABAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAAcAA8AAAAAAAAAAAAcAA4AAAAAAAAAAAAcAA0AAAAAAAAAAAAcAAwAAAAAAAAAAAAcAAsAAAAAAAAAAAAcAAoAAAAAAAAAAAAcAAkAAAAAAAAAAAAcAAgAAAAAAAAAAAAbAAwAAAAAAAAAAAAbAA0AAAAAAAAAAAAbAA4AAAAAAAAAAAAbAA8AAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAADAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAAFAAoAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAkAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAoAAAAAAAAAAAARAAoAAAAAAAAAAAAQAAoAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAMAAAAAAAAAAAARAA8AAAAAAAAAAAAGAA8AAAAAAAAAAAAFAA8AAAAAAAAAAAAEAA8AAAAAAAAAAAAEAA4AAAAAAAAAAAAFAA4AAAAAAAAAAAAQAA8AAAAAAAAAAAASAA8AAAAAAAAAAAARAA4AAAAAAAAAAAAPAAcAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAEAAAAAAAAAAAALAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAAEAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAIAAwAAQAAAAAABAAJAAwAAQAAAAAABAAKAAwAAQAAAAAABAAMAAwAAQAAAAAABAANAAwAAQAAAAAABAAOAAwAAQAAAAAABAAOAA0AAQAAAAAABAANAA0AAQAAAAAABAAMAA0AAQAAAAAABAALAA0AAQAAAAAABAAKAA0AAQAAAAAABAAJAA0AAQAAAAAABAAIAA0AAQAAAAAABAAPAA0AAQAAAAAABAAPAAwAAQAAAAAABAAHAA0AAQAAAAAABAAHAAwAAQAAAAAABAAGAAoAAgAAAAAABAAHAAoAAgAAAAAABAAKAAoAAgAAAAAABAALAAoAAgAAAAAABAAMAAoAAgAAAAAABAANAAoAAgAAAAAABAAOAAoAAgAAAAAABAAOAAgAAQAAAAAAAwAOAAcAAQAAAAAAAwAOAAYAAQAAAAAAAwANAAgAAQAAAAAAAwANAAcAAQAAAAAAAwANAAYAAQAAAAAAAwAcAAcAAgAAAAAAAgAcAAYAAgAAAAAAAgAcAAUAAgAAAAAAAgAcAAQAAgAAAAAAAgAcAAMAAgAAAAAAAgAcAAIAAgAAAAAAAgAcAAEAAgAAAAAAAgAbAAgAAgAAAAAAAgAbAAkAAgAAAAAAAgANAAkAAQAAAAAAAwAOAAkAAQAAAAAAAwASAAoAAAAAAAAAAAAbAAsAAgAAAAAAAgAbAAoAAgAAAAAAAgAWAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAXAAsAAAAAAAAAAAATAAoAAAAAAAAAAAAUAAoAAAAAAAAAAAAPAA4AAQAAAAAABAAOAA4AAQAAAAAABAANAA4AAQAAAAAABAAMAA4AAQAAAAAABAALAA4AAQAAAAAABAAKAA4AAQAAAAAABAAJAA4AAQAAAAAABAAIAA4AAQAAAAAABAAHAA4AAQAAAAAABAAHAA8AAQAAAAAABAAIAA8AAQAAAAAABAAJAA8AAQAAAAAABAAKAA8AAQAAAAAABAALAA8AAQAAAAAABAAMAA8AAQAAAAAABAANAA8AAQAAAAAABAAOAA8AAQAAAAAABAAPAA8AAQAAAAAABAALAAwAAQAAAAAABAAWAAwAAgAAAAAAAQAPAAYAAAAAAAAAAAAPAAUAAAAAAAAAAAANAAUAAQAAAAAAAwAOAAUAAQAAAAAAAwANAAQAAQAAAAAAAwAOAAQAAQAAAAAAAwAQAAUAAAAAAAAAAAAQAAYAAAAAAAAAAAAQAAcAAAAAAAAAAAAQAAgAAAAAAAAAAAARAAgAAAAAAAAAAAARAAkAAAAAAAAAAAAQAAkAAAAAAAAAAAARAAcAAAAAAAAAAAARAAYAAAAAAAAAAAARAAUAAAAAAAAAAAAVAAoAAAAAAAAAAAAWAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAXAAkAAAAAAAAAAAAWAAkAAAAAAAAAAAAVAAkAAAAAAAAAAAAVAAgAAAAAAAAAAAAXAAgAAAAAAAAAAAAWAAgAAAAAAAAAAAAVAAcAAgAAAAAABAAWAAcAAgAAAAAABAAXAAcAAgAAAAAABAASAAkAAQAAAAAABAATAAkAAQAAAAAABAAUAAkAAQAAAAAABAAUAAgAAQAAAAAABAATAAgAAQAAAAAABAASAAgAAQAAAAAABAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="trap" type="TileMapLayer" parent="maps/map3"]
+tile_map_data = PackedByteArray("AAALAAwAAAAAAAAAAQA=")
+tile_set = ExtResource("22_jru5g")
+
+[node name="save_point_0" parent="maps/map3" instance=ExtResource("27_y68ly")]
+position = Vector2(80, 136)
+
+[node name="save_point_1" parent="maps/map3" instance=ExtResource("27_y68ly")]
+position = Vector2(408, 248)
+
+[node name="map" type="Node2D" parent="maps"]
+position = Vector2(-464, 0)
+
+[node name="map" type="TileMapLayer" parent="maps/map"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABAAAAAAAAAAAAAAABABAAAAAAAAAAAAACAAAAAAAAAAAAAAACABAAAAAAAAAAAAADAAAAAAAAAAAAAAADABAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEABAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFABAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGABAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHABAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIABAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJABAAAAAAAAAAAAAKAAAAAAAAAAAAAAAKABAAAAAAAAAAAAALAAAAAAAAAAAAAAALABAAAAAAAAAAAAAMAAAAAAAAAAAAAAAMABAAAAAAAAAAAAANAAAAAAAAAAAAAAANABAAAAAAAAAAAAAOAAAAAAAAAAAAAAAOABAAAAAAAAAAAAAPAAAAAAAAAAAAAAAPABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWAAAAAAAAAAAAAAAWABAAAAAAAAAAAAAXAAAAAAAAAAAAAAAXABAAAAAAAAAAAAAYAAAAAAAAAAAAAAAYABAAAAAAAAAAAAAZAAAAAAAAAAAAAAAZABAAAAAAAAAAAAAaAAAAAAAAAAAAAAAaABAAAAAAAAAAAAAbAAAAAAAAAAAAAAAbABAAAAAAAAAAAAAcAAAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="map11" type="Node2D" parent="maps"]
+position = Vector2(1392, -512)
+
+[node name="map" type="TileMapLayer" parent="maps/map11"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAABAAAAAAAAAAAAABAAAAAAAAAAAAAAABABAAAAAAAAAAAAACAAAAAAAAAAAAAAACABAAAAAAAAAAAAADAAAAAAAAAAAAAAADABAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEABAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFABAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGABAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHABAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIABAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJABAAAAAAAAAAAAAKAAAAAAAAAAAAAAAKABAAAAAAAAAAAAALAAAAAAAAAAAAAAALABAAAAAAAAAAAAAMAAAAAAAAAAAAAAAMABAAAAAAAAAAAAANAAAAAAAAAAAAAAANABAAAAAAAAAAAAAOAAAAAAAAAAAAAAAOABAAAAAAAAAAAAAPAAAAAAAAAAAAAAAPABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAAcABAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="map10" type="Node2D" parent="maps"]
+position = Vector2(928, -256)
+
+[node name="map" type="TileMapLayer" parent="maps/map10"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAABAAAAAAAAAAAAABAAAAAAAAAAAAAAABABAAAAAAAAAAAAACAAAAAAAAAAAAAAACABAAAAAAAAAAAAADAAAAAAAAAAAAAAADABAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEABAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFABAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGABAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHABAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIABAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJABAAAAAAAAAAAAAKAAAAAAAAAAAAAAAKABAAAAAAAAAAAAALAAAAAAAAAAAAAAALABAAAAAAAAAAAAAMAAAAAAAAAAAAAAAMABAAAAAAAAAAAAANAAAAAAAAAAAAAAANABAAAAAAAAAAAAAOAAAAAAAAAAAAAAAOABAAAAAAAAAAAAAPAAAAAAAAAAAAAAAPABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWABAAAAAAAAAAAAAXABAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAAcAAAAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAkAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAAAAAAAAAALAAgAAAAAAAAAAAALAAkAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAkAAAAAAAAAAAAXAA8AAgAAAAAABAAWAA8AAgAAAAAABAAVAA8AAgAAAAAABAAUAA8AAgAAAAAABAATAA8AAgAAAAAABAASAA8AAgAAAAAABAARAA8AAgAAAAAABAAQAA8AAgAAAAAABAAPAA8AAgAAAAAABAAOAA8AAgAAAAAABAANAA8AAgAAAAAABAAMAA8AAgAAAAAABAALAA8AAgAAAAAABAAKAA8AAgAAAAAABAAJAA8AAgAAAAAABAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="qte_gravity_area3" parent="maps/map10" instance=ExtResource("20_gn4rn")]
+position = Vector2(88, 136)
+
+[node name="qte_gravity_area4" parent="maps/map10" instance=ExtResource("20_gn4rn")]
+position = Vector2(384, 64)
+
+[node name="save_point_0" parent="maps/map10" instance=ExtResource("27_y68ly")]
+position = Vector2(48, 248)
+
+[node name="map9" type="Node2D" parent="maps"]
+
+[node name="map" type="TileMapLayer" parent="maps/map9"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALAAAAAAAAAAAAAAALABAAAAAAAAAAAAAMAAAAAAAAAAAAAAAMABAAAAAAAAAAAAANAAAAAAAAAAAAAAANABAAAAAAAAAAAAAOAAAAAAAAAAAAAAAOABAAAAAAAAAAAAAPAAAAAAAAAAAAAAAPABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWAAAAAAAAAAAAAAAWABAAAAAAAAAAAAAXAAAAAAAAAAAAAAAXABAAAAAAAAAAAAAYAAAAAAAAAAAAAAAYABAAAAAAAAAAAAAZAAAAAAAAAAAAAAAZABAAAAAAAAAAAAAaAAAAAAAAAAAAAAAaABAAAAAAAAAAAAAbAAAAAAAAAAAAAAAbABAAAAAAAAAAAAAcAAAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAALAAUAAAAAAAAAAAASAA0AAAAAAAAAAAARAA0AAAAAAAAAAAAQAA0AAAAAAAAAAAAPAA0AAAAAAAAAAAAQAAwAAAAAAAAAAAAPAAwAAAAAAAAAAAARAAwAAAAAAAAAAAASAAwAAAAAAAAAAAAVAAkAAAAAAAAAAAAWAAkAAAAAAAAAAAAXAAkAAAAAAAAAAAAYAAkAAAAAAAAAAAAYAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAWAAoAAAAAAAAAAAAVAAoAAAAAAAAAAAAZAAQAAAAAAAAAAAAaAAQAAAAAAAAAAAAbAAQAAAAAAAAAAAAcAAQAAAAAAAAAAAAdAAQAAAAAAAAAAAAcAAUAAAAAAAAAAAAbAAUAAAAAAAAAAAAaAAUAAAAAAAAAAAAZAAUAAAAAAAAAAAAPAAEAAQAAAAAABAAQAAEAAQAAAAAABAARAAEAAQAAAAAABAASAAEAAQAAAAAABAATAAEAAQAAAAAABAAUAAEAAQAAAAAABAAZAAEAAQAAAAAABAAaAAEAAQAAAAAABAAYAAEAAQAAAAAABAAXAAEAAQAAAAAABAAWAAEAAQAAAAAABAAVAAEAAQAAAAAABAAOAAEAAQAAAAAABAANAAEAAQAAAAAABAAUAAkAAQAAAAAAAwAOAAwAAQAAAAAAAwAUAAoAAQAAAAAAAwAOAA0AAQAAAAAAAwAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAgAAAAAAAAAAAAGAAkAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAgAAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAoAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAgAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAADAAEAAgAAAAAAAwADAAIAAgAAAAAAAwACAAMAAgAAAAAAAwABAAQAAgAAAAAAAwABAAUAAgAAAAAAAwABAAYAAgAAAAAAAwAGAA8AAAAAAAAAAAAHAA8AAAAAAAAAAAAIAA8AAAAAAAAAAAAJAA8AAAAAAAAAAAAKAA8AAAAAAAAAAAALAA8AAAAAAAAAAAAMAA8AAAAAAAAAAAANAA8AAAAAAAAAAAAOAA8AAAAAAAAAAAAFAA8AAAAAAAAAAAAEAA8AAAAAAAAAAAADAA8AAAAAAAAAAAACAA8AAAAAAAAAAAABAA8AAAAAAAAAAAABAA4AAAAAAAAAAAABAA0AAAAAAAAAAAABAAwAAAAAAAAAAAABAAsAAAAAAAAAAAAcAA8AAgAAAAAABAAbAA8AAgAAAAAABAAaAA8AAgAAAAAABAAZAA8AAgAAAAAABAAYAA8AAgAAAAAABAAXAA8AAgAAAAAABAAWAA8AAgAAAAAABAAVAA8AAgAAAAAABAAUAA8AAgAAAAAABAATAA8AAgAAAAAABAASAA8AAgAAAAAABAARAA8AAgAAAAAABAAQAA8AAgAAAAAABAAPAA8AAgAAAAAABAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="trap" type="TileMapLayer" parent="maps/map9"]
+tile_set = ExtResource("22_jru5g")
+
+[node name="qte_gravity_area3" parent="maps/map9" instance=ExtResource("20_gn4rn")]
+position = Vector2(272, 104)
+
+[node name="map8" type="Node2D" parent="maps"]
+position = Vector2(0, -256)
+
+[node name="map" type="TileMapLayer" parent="maps/map8"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAANABAAAAAAAAAAAAAOAAAAAAAAAAAAAAAOABAAAAAAAAAAAAAPAAAAAAAAAAAAAAAPABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWAAAAAAAAAAAAAAAWABAAAAAAAAAAAAAXAAAAAAAAAAAAAAAXABAAAAAAAAAAAAAYAAAAAAAAAAAAAAAYABAAAAAAAAAAAAAZAAAAAAAAAAAAAAAZABAAAAAAAAAAAAAaAAAAAAAAAAAAAAAaABAAAAAAAAAAAAAbAAAAAAAAAAAAAAAbABAAAAAAAAAAAAAcAAAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdABAAAAAAAAAAAAAUAA8AAAAAAAAAAAAUAA4AAAAAAAAAAAAUAA0AAAAAAAAAAAAUAAwAAAAAAAAAAAAUAAsAAAAAAAAAAAAUAAoAAAAAAAAAAAAUAAkAAAAAAAAAAAATAAkAAAAAAAAAAAASAAkAAAAAAAAAAAASAAoAAAAAAAAAAAASAAsAAAAAAAAAAAATAAwAAAAAAAAAAAATAA0AAAAAAAAAAAATAA4AAAAAAAAAAAATAA8AAAAAAAAAAAATAAsAAAAAAAAAAAATAAoAAAAAAAAAAAASAAwAAAAAAAAAAAASAA0AAAAAAAAAAAASAA4AAAAAAAAAAAASAA8AAAAAAAAAAAAHAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAJAAkAAAAAAAAAAAAJAAoAAAAAAAAAAAAVAAkAAAAAAAAAAAAVAAoAAAAAAAAAAAAVAA4AAAAAAAAAAAAVAA8AAAAAAAAAAAAVAA0AAAAAAAAAAAAVAAwAAAAAAAAAAAAVAAsAAAAAAAAAAAAMABAAAAAAAAAAAAALABAAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAALAAkAAAAAAAAAAAALAAoAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAALAA0AAAAAAAAAAAALAA4AAAAAAAAAAAALAA8AAAAAAAAAAAAWAA8AAQAAAAAAAgAWAA4AAQAAAAAAAgAWAA0AAQAAAAAAAgAWAAwAAQAAAAAAAgAWAAsAAQAAAAAAAgAWAAoAAQAAAAAAAgAWAAkAAQAAAAAAAgAXAA8AAQAAAAAAAgAXAA4AAQAAAAAAAgAXAA0AAQAAAAAAAgAXAAwAAQAAAAAAAgAXAAsAAQAAAAAAAgAXAAoAAQAAAAAAAgAXAAkAAQAAAAAAAgAMAA8AAgAAAAAABAANAA8AAgAAAAAABAAOAA8AAgAAAAAABAAPAA8AAgAAAAAABAAQAA8AAgAAAAAABAARAA8AAgAAAAAABAARAA4AAgAAAAAAAgARAA0AAgAAAAAAAgARAAwAAgAAAAAAAgARAAsAAgAAAAAAAgARAAoAAgAAAAAAAgAMAA4AAgAAAAAAAwAMAA0AAgAAAAAAAwAMAAwAAgAAAAAAAwAMAAoAAgAAAAAAAwAMAAsAAgAAAAAAAwAXAAgAAQAAAAAAAgAWAAgAAQAAAAAAAgALAAgAAgAAAAAABAAKAAgAAgAAAAAABAAJAAgAAgAAAAAABAAIAAgAAgAAAAAABAAHAAgAAgAAAAAABAAMAAkAAgAAAAAAAwARAAkAAgAAAAAAAgAHAAEAAQAAAAAAAgAHAAIAAQAAAAAAAgAHAAMAAQAAAAAAAgAHAAQAAQAAAAAAAgAHAAUAAQAAAAAAAgAHAAYAAQAAAAAAAgAHAAcAAQAAAAAAAgAIAAEAAQAAAAAAAgAIAAIAAQAAAAAAAgAIAAMAAQAAAAAAAgAIAAQAAQAAAAAAAgAIAAUAAQAAAAAAAgAIAAYAAQAAAAAAAgAIAAcAAQAAAAAAAgAJAAEAAQAAAAAAAgAJAAIAAQAAAAAAAgAJAAMAAQAAAAAAAgAJAAQAAQAAAAAAAgAJAAUAAQAAAAAAAgAJAAYAAQAAAAAAAgAJAAcAAQAAAAAAAgAKAAEAAQAAAAAAAgAKAAIAAQAAAAAAAgAKAAMAAQAAAAAAAgAKAAQAAQAAAAAAAgAKAAUAAQAAAAAAAgAKAAYAAQAAAAAAAgAKAAcAAQAAAAAAAgALAAEAAQAAAAAAAgALAAIAAQAAAAAAAgALAAMAAQAAAAAAAgALAAQAAQAAAAAAAgALAAUAAQAAAAAAAgALAAYAAQAAAAAAAgALAAcAAQAAAAAAAgAHAAsAAAAAAAAAAAAHAAwAAAAAAAAAAAAHAA0AAAAAAAAAAAAHAA4AAAAAAAAAAAAHAA8AAAAAAAAAAAAHABAAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAAAAAAIAA0AAAAAAAAAAAAIAA4AAAAAAAAAAAAIAA8AAAAAAAAAAAAIABAAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAJAA0AAAAAAAAAAAAJAA4AAAAAAAAAAAAJAA8AAAAAAAAAAAAJABAAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAAKAA0AAAAAAAAAAAAKAA4AAAAAAAAAAAAKAA8AAAAAAAAAAAAKABAAAAAAAAAAAAAGAAEAAQAAAAAAAgAGAAIAAQAAAAAAAgAGAAMAAQAAAAAAAgAGAAQAAQAAAAAAAgAGAAUAAQAAAAAAAgAGAAYAAQAAAAAAAgAGAAcAAQAAAAAAAgAGAAgAAgAAAAAABAAGAAkAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAwAAAAAAAAAAAAGAA0AAAAAAAAAAAAGAA4AAAAAAAAAAAAGAA8AAAAAAAAAAAAGABAAAAAAAAAAAAABAAkAAgAAAAAAAwABAAoAAgAAAAAAAwABAAsAAgAAAAAAAwABAAwAAgAAAAAAAwACAA0AAgAAAAAAAwACAA4AAgAAAAAAAwADAA8AAgAAAAAAAwADABAAAgAAAAAAAwABAA0AAAAAAAAAAAABAA4AAAAAAAAAAAABAA8AAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAACAA8AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="trap" type="TileMapLayer" parent="maps/map8"]
+position = Vector2(0, -32)
+tile_set = ExtResource("22_jru5g")
+
+[node name="save_point_0" parent="maps/map8" instance=ExtResource("27_y68ly")]
+position = Vector2(424, 248)
+
+[node name="qte_gravity_area3" parent="maps/map8" instance=ExtResource("20_gn4rn")]
+position = Vector2(240, 200)
+
+[node name="map7" type="Node2D" parent="maps"]
+position = Vector2(464, 0)
+
+[node name="map" type="TileMapLayer" parent="maps/map7"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABAAAAAAAAAAAAAAABABAAAAAAAAAAAAACAAAAAAAAAAAAAAACABAAAAAAAAAAAAADAAAAAAAAAAAAAAADABAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEABAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFABAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGABAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHABAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIABAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJABAAAAAAAAAAAAAKAAAAAAAAAAAAAAAKABAAAAAAAAAAAAALAAAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPAAAAAAAAAAAAAAAPABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWAAAAAAAAAAAAAAAWABAAAAAAAAAAAAAXAAAAAAAAAAAAAAAXABAAAAAAAAAAAAAYAAAAAAAAAAAAAAAYABAAAAAAAAAAAAAZAAAAAAAAAAAAAAAZABAAAAAAAAAAAAAaAAAAAAAAAAAAAAAaABAAAAAAAAAAAAAbAAAAAAAAAAAAAAAbABAAAAAAAAAAAAAcAAAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdABAAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAALAAgAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAALAAkAAAAAAAAAAAALAAoAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAADAAsAAAAAAAAAAAADAAwAAAAAAAAAAAAEAAsAAAAAAAAAAAAEAAwAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAwAAAAAAAAAAAAHAAsAAAAAAAAAAAAHAAwAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAEAAAAAAAAAAAAMAAAAAQAAAAAABAAMAAEAAQAAAAAABAAMAAIAAQAAAAAABAAMAAMAAQAAAAAABAAMAAQAAQAAAAAABAAMAAUAAQAAAAAABAAMAAYAAQAAAAAABAAMAAcAAQAAAAAABAAMAAgAAQAAAAAABAAMAAkAAQAAAAAABAANAAAAAQAAAAAABAANAAEAAQAAAAAABAANAAIAAQAAAAAABAANAAMAAQAAAAAABAANAAQAAQAAAAAABAANAAUAAQAAAAAABAANAAYAAQAAAAAABAANAAcAAQAAAAAABAANAAgAAQAAAAAABAANAAkAAQAAAAAABAAOAAAAAQAAAAAABAAOAAEAAQAAAAAABAAOAAIAAQAAAAAABAAOAAMAAQAAAAAABAAOAAQAAQAAAAAABAAOAAUAAQAAAAAABAAOAAYAAQAAAAAABAAOAAcAAQAAAAAABAAOAAgAAQAAAAAABAAOAAkAAQAAAAAABAAdAA8AAAAAAAAAAAAPAAwAAAAAAAAAAAAPAAsAAAAAAAAAAAAMAAwAAAAAAAAAAAANAAwAAAAAAAAAAAAOAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAARAAwAAAAAAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAVAAwAAAAAAAAAAAAWAAwAAAAAAAAAAAAWAAsAAAAAAAAAAAAWAAoAAAAAAAAAAAAWAAkAAAAAAAAAAAAWAAgAAAAAAAAAAAAWAAcAAAAAAAAAAAAWAAYAAAAAAAAAAAAWAAUAAAAAAAAAAAAVAAUAAAAAAAAAAAAUAAUAAAAAAAAAAAATAAUAAAAAAAAAAAAMAAoAAQAAAAAABAANAAoAAQAAAAAABAAOAAoAAQAAAAAABAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAPAAcAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAADAAgAAQAAAAAAAgADAAkAAQAAAAAAAgADAAoAAQAAAAAAAgAEAAgAAQAAAAAAAgAEAAkAAQAAAAAAAgAEAAoAAQAAAAAAAgAFAAgAAQAAAAAAAgAFAAkAAQAAAAAAAgAFAAoAAQAAAAAAAgAGAAgAAQAAAAAAAgAGAAkAAQAAAAAAAgAGAAoAAQAAAAAAAgAHAAgAAQAAAAAAAgAHAAkAAQAAAAAAAgAHAAoAAQAAAAAAAgAIAAgAAQAAAAAAAgAIAAkAAQAAAAAAAgAIAAoAAQAAAAAAAgAJAAgAAQAAAAAAAgAJAAkAAQAAAAAAAgAJAAoAAQAAAAAAAgAKAAgAAQAAAAAAAgAKAAkAAQAAAAAAAgAKAAoAAQAAAAAAAgABAA0AAQAAAAAAAwABAA4AAQAAAAAAAwABAA8AAQAAAAAAAwACAA0AAQAAAAAAAwACAA4AAQAAAAAAAwACAA8AAQAAAAAAAwADAA0AAQAAAAAAAwADAA4AAQAAAAAAAwADAA8AAQAAAAAAAwAEAA0AAQAAAAAAAwAEAA4AAQAAAAAAAwAEAA8AAQAAAAAAAwAFAA0AAQAAAAAAAwAFAA4AAQAAAAAAAwAFAA8AAQAAAAAAAwAGAA0AAQAAAAAAAwAGAA4AAQAAAAAAAwAGAA8AAQAAAAAAAwAHAA0AAQAAAAAAAwAHAA4AAQAAAAAAAwAHAA8AAQAAAAAAAwAIAA0AAQAAAAAAAwAIAA4AAQAAAAAAAwAIAA8AAQAAAAAAAwAJAA0AAQAAAAAAAwAJAA4AAQAAAAAAAwAJAA8AAQAAAAAAAwAKAA0AAQAAAAAAAwAKAA4AAQAAAAAAAwAKAA8AAQAAAAAAAwALAA0AAQAAAAAAAwALAA4AAQAAAAAAAwALAA8AAQAAAAAAAwAMAA0AAQAAAAAAAwAMAA4AAQAAAAAAAwAMAA8AAQAAAAAAAwANAA0AAQAAAAAAAwANAA4AAQAAAAAAAwANAA8AAQAAAAAAAwAOAA0AAQAAAAAAAwAOAA4AAQAAAAAAAwAOAA8AAQAAAAAAAwAPAA0AAQAAAAAAAwAPAA4AAQAAAAAAAwAPAA8AAQAAAAAAAwAQAA0AAQAAAAAAAwAQAA4AAQAAAAAAAwAQAA8AAQAAAAAAAwARAA0AAQAAAAAAAwARAA4AAQAAAAAAAwARAA8AAQAAAAAAAwASAA0AAQAAAAAAAwASAA4AAQAAAAAAAwASAA8AAQAAAAAAAwATAA0AAQAAAAAAAwATAA4AAQAAAAAAAwATAA8AAQAAAAAAAwAUAA0AAQAAAAAAAwAUAA4AAQAAAAAAAwAUAA8AAQAAAAAAAwAVAA0AAQAAAAAAAwAVAA4AAQAAAAAAAwAVAA8AAQAAAAAAAwAWAA0AAQAAAAAAAwAWAA4AAQAAAAAAAwAWAA8AAQAAAAAAAwAPAAgAAAABAAAAAAAPAAkAAAABAAAAAAAPAAoAAAABAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="qte_gravity_area4" parent="maps/map7" instance=ExtResource("20_gn4rn")]
+position = Vector2(416, 104)
+
+[node name="map6" type="Node2D" parent="maps"]
+position = Vector2(928, -512)
+
+[node name="swap1" type="Node2D" parent="maps/map6"]
+position = Vector2(-928, 256)
+
+[node name="bi-teleport" parent="maps/map6/swap1" node_paths=PackedStringArray("target") instance=ExtResource("22_86ci1")]
+position = Vector2(968, -16)
+target = NodePath("../Target")
+
+[node name="Target" parent="maps/map6/swap1" instance=ExtResource("23_q0u5u")]
+position = Vector2(1000, -216)
+
+[node name="bi-teleport2" parent="maps/map6/swap1" node_paths=PackedStringArray("target") instance=ExtResource("22_86ci1")]
+position = Vector2(968, -160)
+target = NodePath("../Target2")
+
+[node name="Target2" parent="maps/map6/swap1" instance=ExtResource("23_q0u5u")]
+position = Vector2(1032, -32)
+
+[node name="box-door3" type="Node2D" parent="maps/map6"]
+position = Vector2(-928, 256)
+
+[node name="box" parent="maps/map6/box-door3" instance=ExtResource("24_gb3bk")]
+position = Vector2(1312, -112)
+
+[node name="box2" parent="maps/map6/box-door3" instance=ExtResource("24_gb3bk")]
+position = Vector2(1048, -160)
+
+[node name="door-1" parent="maps/map6/box-door3" instance=ExtResource("25_6ye8u")]
+position = Vector2(1368, -24)
+
+[node name="button-1" parent="maps/map6/box-door3" instance=ExtResource("26_84l8x")]
+position = Vector2(1312, -240)
+rotation = 3.14159
+doors = Array[NodePath]([NodePath("../door-1")])
+
+[node name="box-door4" type="Node2D" parent="maps/map6"]
+position = Vector2(-928, 256)
+
+[node name="gravity3" parent="maps/map6/box-door4" instance=ExtResource("21_6vl2b")]
+position = Vector2(1312, -120)
+enabled_at_start = false
+
+[node name="button-1" parent="maps/map6/box-door4" instance=ExtResource("26_84l8x")]
+position = Vector2(1112, -8)
+doors = Array[NodePath]([NodePath("../gravity3"), NodePath(""), NodePath(""), NodePath("")])
+
+[node name="gravity" type="Node2D" parent="maps/map6"]
+position = Vector2(-928, 256)
+
+[node name="save_point_1" parent="maps/map6" instance=ExtResource("27_y68ly")]
+position = Vector2(240, 232)
+
+[node name="map" type="TileMapLayer" parent="maps/map6"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAABAAAAAAAAAAAAABAAAAAAAAAAAAAAABABAAAAAAAAAAAAACAAAAAAAAAAAAAAACABAAAAAAAAAAAAADAAAAAAAAAAAAAAADABAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEABAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFABAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGABAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHABAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIABAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJABAAAAAAAAAAAAAKAAAAAAAAAAAAAAAKABAAAAAAAAAAAAALAAAAAAAAAAAAAAALABAAAAAAAAAAAAAMAAAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAbABAAAAAAAAAAAAAcAAAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdABAAAAAAAAAAAAAQAAoAAAAAAAAAAAARAAoAAAAAAAAAAAASAAoAAAAAAAAAAAATAAoAAAAAAAAAAAAUAAoAAAAAAAAAAAAVAAoAAAAAAAAAAAAWAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAYAAoAAAAAAAAAAAAZAAoAAAAAAAAAAAAaAAoAAAAAAAAAAAAbAAoAAAAAAAAAAAAcAAoAAAAAAAAAAAAcAAsAAAAAAAAAAAAbAAsAAAAAAAAAAAAaAAsAAAAAAAAAAAAZAAsAAAAAAAAAAAAYAAsAAAAAAAAAAAAXAAsAAAAAAAAAAAAWAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAcAAwAAAAAAAAAAAAAAAwAAAAAAAAAAAANAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAbAAwAAAAAAAAAAAAaAAwAAAAAAAAAAAAZAAwAAAAAAAAAAAAYAAwAAAAAAAAAAAAXAAwAAAAAAAAAAAAWAAwAAAAAAAAAAAAVAAwAAAAAAAAAAAAcAA0AAQAAAAAABAAbAA0AAQAAAAAABAAaAA0AAQAAAAAABAAZAA0AAQAAAAAABAAYAA0AAQAAAAAABAAXAA0AAQAAAAAABAAWAA0AAQAAAAAABAAVAA0AAQAAAAAABAARAAkAAAAAAAAAAAAQAAkAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAALAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAALAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAACAAgAAAAAAAAAAAABAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAcAAkAAQAAAAAAAgAcAAgAAQAAAAAAAgAdAAkAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAcAAAAAAAAAAAAOAA8AAAAAAAAAAAAPAA8AAAAAAAAAAAAdAA0AAQAAAAAABAAaABAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="map5" type="Node2D" parent="maps"]
+position = Vector2(928, 0)
+
+[node name="gravity" type="Node2D" parent="maps/map5"]
+position = Vector2(-1392, 256)
+
+[node name="gravity_0_31" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1424, -192)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_32" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1424, -160)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_33" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1424, -128)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_34" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1424, -96)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_36" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1456, -192)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_37" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1456, -160)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_38" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1456, -128)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_39" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1456, -96)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_11" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1456, -224)
+
+[node name="gravity_0_35" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1488, -224)
+
+[node name="gravity_0_12" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1424, -224)
+
+[node name="gravity_0_13" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1520, -224)
+
+[node name="gravity_0_16" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1664, -72)
+
+[node name="gravity_0_17" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1664, -40)
+
+[node name="gravity_0_18" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1696, -72)
+
+[node name="gravity_0_19" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1696, -40)
+
+[node name="gravity_0_20" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1664, -104)
+
+[node name="gravity_0_21" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1696, -104)
+
+[node name="gravity_0_22" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1664, -136)
+
+[node name="gravity_0_23" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1696, -136)
+
+[node name="gravity_0_24" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1664, -168)
+
+[node name="gravity_0_25" parent="maps/map5/gravity" instance=ExtResource("21_6vl2b")]
+position = Vector2(1696, -168)
+
+[node name="box-door" type="Node2D" parent="maps/map5"]
+position = Vector2(-1392, 256)
+
+[node name="box" parent="maps/map5/box-door" instance=ExtResource("24_gb3bk")]
+position = Vector2(1507, -223)
+
+[node name="door-1" parent="maps/map5/box-door" instance=ExtResource("25_6ye8u")]
+position = Vector2(1656, -184)
+rotation = 1.5708
+
+[node name="door-2" parent="maps/map5/box-door" instance=ExtResource("25_6ye8u")]
+position = Vector2(1704, -184)
+rotation = 1.5708
+
+[node name="button-1" parent="maps/map5/box-door" instance=ExtResource("26_84l8x")]
+position = Vector2(1552, 0)
+doors = Array[NodePath]([NodePath("../door-1"), NodePath("../door-2"), NodePath("")])
+
+[node name="box-door2" type="Node2D" parent="maps/map5"]
+position = Vector2(-1392, 256)
+
+[node name="box" parent="maps/map5/box-door2" instance=ExtResource("24_gb3bk")]
+position = Vector2(1663, -160)
+
+[node name="door-1" parent="maps/map5/box-door2" instance=ExtResource("25_6ye8u")]
+position = Vector2(1768, -40)
+
+[node name="button-1" parent="maps/map5/box-door2" instance=ExtResource("26_84l8x")]
+position = Vector2(1680, -240)
+rotation = 3.14159
+doors = Array[NodePath]([NodePath("../door-1")])
+
+[node name="save_point_0" parent="maps/map5" instance=ExtResource("27_y68ly")]
+position = Vector2(48, 232)
+
+[node name="map" type="TileMapLayer" parent="maps/map5"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFABAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGABAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHABAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIABAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANAAAAAAAAAAAAAAANABAAAAAAAAAAAAAOAAAAAAAAAAAAAAAOABAAAAAAAAAAAAAPAAAAAAAAAAAAAAAPABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWAAAAAAAAAAAAAAAWABAAAAAAAAAAAAAXAAAAAAAAAAAAAAAXABAAAAAAAAAAAAAYABAAAAAAAAAAAAAZABAAAAAAAAAAAAAaABAAAAAAAAAAAAAbABAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAAbAA8AAAAAAAAAAAAcAA8AAAAAAAAAAAAEAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAACAA8AAAAAAAAAAAADAA8AAAAAAAAAAAABAA8AAAAAAAAAAAAEAA8AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA0AAAAAAAAAAAAdAAwAAAAAAAAAAAAaAA8AAAAAAAAAAAAZAA8AAAAAAAAAAAAYAA8AAAAAAAAAAAAXAA8AAAAAAAAAAAAcAAkAAQAAAAAAAgAcAAoAAQAAAAAAAgAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAXAAsAAAAAAAAAAAAZAAsAAAAAAAAAAAAaAAsAAAAAAAAAAAAbAAsAAAAAAAAAAAAcAAsAAAAAAAAAAAAYAAsAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="teleport" parent="maps/map5" instance=ExtResource("31_722qi")]
+position = Vector2(424, 224)
+target_scene = "res://scenes/dreams/bigworld/chase_stage.tscn"
+teleport_type = 2
+
+[node name="map4" type="Node2D" parent="maps"]
+position = Vector2(464, -256)
+
+[node name="map" type="TileMapLayer" parent="maps/map4"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEABAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFABAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGABAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHABAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIABAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJABAAAAAAAAAAAAAKAAAAAAAAAAAAAAAKABAAAAAAAAAAAAALAAAAAAAAAAAAAAALABAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAPABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWAAAAAAAAAAAAAAAWABAAAAAAAAAAAAAXAAAAAAAAAAAAAAAXABAAAAAAAAAAAAAYAAAAAAAAAAAAAAAYABAAAAAAAAAAAAAZAAAAAAAAAAAAAAAZABAAAAAAAAAAAAAaAAAAAAAAAAAAAAAaABAAAAAAAAAAAAAbAAAAAAAAAAAAAAAbABAAAAAAAAAAAAAcAAAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdABAAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAAAAAAAAAAAPAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAARAAQAAAAAAAAAAAASAAQAAAAAAAAAAAATAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAVAAQAAAAAAAAAAAAWAAQAAAAAAAAAAAAXAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAZAAQAAAAAAAAAAAAcAAgAAAAAAAAAAAAbAAgAAAAAAAAAAAAaAAgAAAAAAAAAAAAZAAgAAAAAAAAAAAAYAAgAAAAAAAAAAAAXAAgAAAAAAAAAAAAWAAgAAAAAAAAAAAAVAAgAAAAAAAAAAAAUAAgAAAAAAAAAAAATAAgAAAAAAAAAAAASAAgAAAAAAAAAAAARAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAcAAwAAAAAAAAAAAAbAAwAAAAAAAAAAAAaAAwAAAAAAAAAAAAXAAwAAAAAAAAAAAAWAAwAAAAAAAAAAAAVAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAATAAwAAAAAAAAAAAASAAwAAAAAAAAAAAARAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAAPAAwAAAAAAAAAAAALAAwAAAAAAAAAAAAKAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAHAAwAAAAAAAAAAAAGAAwAAAAAAAAAAAAFAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAADAAwAAAAAAAAAAAACAAwAAAAAAAAAAAABAAwAAAAAAAAAAAALAA8AAAAAAAAAAAAQAAEAAQAAAAAABAARAAEAAQAAAAAABAAHAAEAAQAAAAAABAAIAAEAAQAAAAAABAAJAAEAAQAAAAAABAASAAEAAQAAAAAABAATAAUAAQAAAAAABAAUAAUAAQAAAAAABAAVAAUAAQAAAAAABAAWAAUAAQAAAAAABAAXAAUAAQAAAAAABAAMAAoAAQAAAAAABAANAAoAAQAAAAAABAAOAAoAAQAAAAAABAAOAAkAAQAAAAAABAANAAkAAQAAAAAABAAMAAkAAQAAAAAABAAXAA8AAAAAAAAAAAALAAoAAQAAAAAABAALAAkAAQAAAAAABAAPAAoAAQAAAAAABAAPAAkAAQAAAAAABAAaAA8AAAABAAAAAAAaAA4AAAABAAAAAAAaAA0AAAABAAAAAAAIAAcAAgAAAAAABAAJAAcAAgAAAAAABAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="monster" type="Node2D" parent="maps/map4"]
+position = Vector2(-464, 256)
+
+[node name="Path2D" type="Path2D" parent="maps/map4/monster"]
+position = Vector2(600, -200)
+curve = SubResource("Curve2D_rtoo5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="maps/map4/monster/Path2D"]
+rotates = false
+
+[node name="MonsterByPath2" parent="maps/map4/monster/Path2D/PathFollow2D" instance=ExtResource("28_b3n87")]
+
+[node name="Path2D2" type="Path2D" parent="maps/map4/monster"]
+position = Vector2(728, -200)
+curve = SubResource("Curve2D_rtoo5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="maps/map4/monster/Path2D2"]
+rotates = false
+
+[node name="MonsterByPath2" parent="maps/map4/monster/Path2D2/PathFollow2D" instance=ExtResource("28_b3n87")]
+
+[node name="Path2D3" type="Path2D" parent="maps/map4/monster"]
+position = Vector2(744, -200)
+curve = SubResource("Curve2D_rtoo5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="maps/map4/monster/Path2D3"]
+rotates = false
+
+[node name="MonsterByPath3" parent="maps/map4/monster/Path2D3/PathFollow2D" instance=ExtResource("28_b3n87")]
+
+[node name="falling_traps" type="Node2D" parent="maps/map4"]
+position = Vector2(-464, 256)
+
+[node name="falling_traps" type="Node2D" parent="maps/map4/falling_traps"]
+
+[node name="FallingTrapTgt" parent="maps/map4/falling_traps/falling_traps" node_paths=PackedStringArray("target", "detection") instance=ExtResource("29_t6fgn")]
+z_index = 1
+position = Vector2(480, -136)
+rotation = -1.5708
+target = NodePath("target")
+detection = NodePath("../Detection")
+
+[node name="target" type="Area2D" parent="maps/map4/falling_traps/falling_traps/FallingTrapTgt"]
+position = Vector2(0, 455)
+scale = Vector2(16.0005, 16)
+
+[node name="Detection" parent="maps/map4/falling_traps/falling_traps" instance=ExtResource("30_4fgsd")]
+position = Vector2(859, -154)
+scale = Vector2(3.83945, 1.39896)
+
+[node name="falling_traps2" type="Node2D" parent="maps/map4/falling_traps"]
+
+[node name="FallingTrapTgt" parent="maps/map4/falling_traps/falling_traps2" node_paths=PackedStringArray("target", "detection") instance=ExtResource("29_t6fgn")]
+z_index = 1
+position = Vector2(912, -72)
+rotation = 1.5708
+target = NodePath("target")
+detection = NodePath("../Detection")
+
+[node name="target" type="Area2D" parent="maps/map4/falling_traps/falling_traps2/FallingTrapTgt"]
+position = Vector2(1.90735e-05, 440)
+rotation = 3.14159
+scale = Vector2(16.0005, 16)
+
+[node name="Detection" parent="maps/map4/falling_traps/falling_traps2" instance=ExtResource("30_4fgsd")]
+position = Vector2(544, -88)
+scale = Vector2(3.83945, 1.39896)
+
+[node name="falling_traps3" type="Node2D" parent="maps/map4/falling_traps"]
+
+[node name="FallingTrapTgt" parent="maps/map4/falling_traps/falling_traps3" node_paths=PackedStringArray("target", "detection") instance=ExtResource("29_t6fgn")]
+z_index = 1
+position = Vector2(946, -221)
+rotation = 1.5708
+target = NodePath("target")
+detection = NodePath("../Detection")
+
+[node name="target" type="Area2D" parent="maps/map4/falling_traps/falling_traps3/FallingTrapTgt"]
+position = Vector2(1.90735e-05, 440)
+rotation = 3.14159
+scale = Vector2(16.0005, 16)
+
+[node name="Detection" parent="maps/map4/falling_traps/falling_traps3" instance=ExtResource("30_4fgsd")]
+position = Vector2(680, -90.0552)
+scale = Vector2(2.29504, 1.04272)
+
+[node name="box-door" type="Node2D" parent="maps/map4"]
+position = Vector2(-464, 256)
+
+[node name="box" parent="maps/map4/box-door" instance=ExtResource("24_gb3bk")]
+position = Vector2(808, -16)
+
+[node name="door-1" parent="maps/map4/box-door" instance=ExtResource("25_6ye8u")]
+position = Vector2(536, -24)
+
+[node name="button-1" parent="maps/map4/box-door" instance=ExtResource("26_84l8x")]
+position = Vector2(680, -110.055)
+rotation = 3.14159
+doors = Array[NodePath]([NodePath("../door-1")])
+
+[node name="save_point_1" parent="maps/map4" instance=ExtResource("27_y68ly")]
+z_index = 1
+position = Vector2(48, 56)
+
+[node name="tiles-v2" type="Sprite2D" parent="maps/map4"]
+position = Vector2(240, 134)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("155_nm28v")
+
+[node name="map1" type="Node2D" parent="maps"]
+position = Vector2(0, -512)
+
+[node name="map" type="TileMapLayer" parent="maps/map1"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAAAAAAAAAARABAAAAAAAAAAAAASABAAAAAAAAAAAAATABAAAAAAAAAAAAAUABAAAAAAAAAAAAAVABAAAAAAAAAAAAAWABAAAAAAAAAAAAAXABAAAAAAAAAAAAAYABAAAAAAAAAAAAAZABAAAAAAAAAAAAAaABAAAAAAAAAAAAAbABAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAABAAsAAAAAAAAAAAABAAwAAAAAAAAAAAABAA0AAAAAAAAAAAABAA4AAAAAAAAAAAABAA8AAAAAAAAAAAACAAwAAAAAAAAAAAACAA0AAAAAAAAAAAACAA4AAAAAAAAAAAACAA8AAAAAAAAAAAADAA0AAAAAAAAAAAADAA4AAAAAAAAAAAADAA8AAAAAAAAAAAAEAA0AAAAAAAAAAAAEAA4AAAAAAAAAAAAEAA8AAAAAAAAAAAAFAA4AAAAAAAAAAAAFAA8AAAAAAAAAAAAGAA8AAAAAAAAAAAAHAA8AAAAAAAAAAAAIAA8AAAAAAAAAAAAaAA4AAAAAAAAAAAAaAA8AAAAAAAAAAAAbAA0AAAAAAAAAAAAbAA4AAAAAAAAAAAAbAA8AAAAAAAAAAAAcAAsAAAAAAAAAAAAcAAwAAAAAAAAAAAAcAA0AAAAAAAAAAAAcAA4AAAAAAAAAAAAcAA8AAAAAAAAAAAAKAA0AAAAAAAAAAAALAA0AAAAAAAAAAAAMAA0AAAAAAAAAAAAJAA8AAgAAAAAABAAKAA8AAgAAAAAABAALAA8AAgAAAAAABAAMAA8AAgAAAAAABAANAA8AAgAAAAAABAAOAA8AAgAAAAAABAAPAA8AAgAAAAAABAAQAA8AAgAAAAAABAARAA8AAgAAAAAABAASAA8AAgAAAAAABAAOAAoAAQAAAAAABAAPAAoAAQAAAAAABAAOAAkAAQAAAAAABAAPAAkAAQAAAAAABAAOAAgAAQAAAAAABAAPAAgAAQAAAAAABAAOAAsAAQAAAAAABAAPAAsAAQAAAAAABAAaAA0AAAAAAAAAAAAVAA0AAAAAAAAAAAAWAA0AAAAAAAAAAAATAA8AAgAAAAAABAAUAA8AAgAAAAAABAAVAA8AAgAAAAAABAAWAA8AAgAAAAAABAAXAA8AAgAAAAAABAAYAA8AAgAAAAAABAAZAA8AAgAAAAAABAAXAA0AAAAAAAAAAAAOAAwAAQAAAAAABAAPAAwAAQAAAAAABAAOAA0AAQAAAAAABAAPAA0AAQAAAAAABAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="save_point_0" parent="maps/map1" instance=ExtResource("27_y68ly")]
+position = Vector2(120, 232)
+
+[node name="map2" type="Node2D" parent="maps"]
+position = Vector2(-464, -512)
+
+[node name="map" type="TileMapLayer" parent="maps/map2"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAAAAAAAAAARABAAAAAAAAAAAAASABAAAAAAAAAAAAATABAAAAAAAAAAAAAUABAAAAAAAAAAAAAVABAAAAAAAAAAAAAWABAAAAAAAAAAAAAXABAAAAAAAAAAAAAYABAAAAAAAAAAAAAZABAAAAAAAAAAAAAaABAAAAAAAAAAAAAbABAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAAcAAsAAAAAAAAAAAAbAAwAAAAAAAAAAAAaAAwAAAAAAAAAAAAZAAwAAAAAAAAAAAAZAA0AAAAAAAAAAAAYAA0AAAAAAAAAAAAXAA0AAAAAAAAAAAAXAA4AAAAAAAAAAAAWAA4AAAAAAAAAAAAWAA8AAAAAAAAAAAAVAA8AAAAAAAAAAAAUAA8AAAAAAAAAAAAcAAwAAAAAAAAAAAAcAA0AAAAAAAAAAAAbAA0AAAAAAAAAAAAaAA0AAAAAAAAAAAAaAA4AAAAAAAAAAAAZAA4AAAAAAAAAAAAYAA4AAAAAAAAAAAAXAA8AAAAAAAAAAAAYAA8AAAAAAAAAAAAZAA8AAAAAAAAAAAAaAA8AAAAAAAAAAAAbAA8AAAAAAAAAAAAcAA8AAAAAAAAAAAAcAA4AAAAAAAAAAAAbAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA0AAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAoAAAAAAAAAAAABAAsAAAAAAAAAAAABAAwAAAAAAAAAAAABAA0AAAAAAAAAAAABAA4AAAAAAAAAAAABAA8AAAAAAAAAAAADAA8AAAAAAAAAAAADAA4AAAAAAAAAAAACAA4AAAAAAAAAAAACAA0AAAAAAAAAAAACAAwAAAAAAAAAAAACAA8AAAAAAAAAAAADAA0AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAkAAAAAAAAAAAABAAgAAAAAAAAAAAACAAsAAgAAAAAAAwACAAoAAgAAAAAAAwACAAkAAgAAAAAAAwACAAgAAgAAAAAAAwABAAcAAgAAAAAAAwABAAYAAgAAAAAAAwADAAwAAgAAAAAAAwAAAAUAAgAAAAAABAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 232.0
+offset_top = -200.0
+offset_right = 363.0
+offset_bottom = -177.0
+text = "Press [Space]  [K]"
+
+[node name="v2-map-0" type="Sprite2D" parent="."]
+position = Vector2(1145, 201)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("35_dmd75")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1281, 229)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("36_lmhxl")
+
+[node name="test_animal" type="Sprite2D" parent="."]
+modulate = Color(0.368627, 0.427451, 1, 1)
+z_index = -1
+position = Vector2(-353, -282)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("157_8dtuq")
+
+[node name="aninal-2" type="Sprite2D" parent="."]
+modulate = Color(0.454902, 0.611765, 1, 1)
+self_modulate = Color(0.596078, 0.564706, 1, 1)
+position = Vector2(-313, -280)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("158_1dk1o")
+
+[connection signal="body_entered" from="maps/map3/map/BlockTrap" to="maps/map3/map/BlockTrap" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/BlockTrap" to="maps/map3/map/BlockTrap" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134834" to="maps/map3/map/@Area2D@134834" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134834" to="maps/map3/map/@Area2D@134834" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134835" to="maps/map3/map/@Area2D@134835" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134835" to="maps/map3/map/@Area2D@134835" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134836" to="maps/map3/map/@Area2D@134836" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134836" to="maps/map3/map/@Area2D@134836" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134837" to="maps/map3/map/@Area2D@134837" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134837" to="maps/map3/map/@Area2D@134837" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134838" to="maps/map3/map/@Area2D@134838" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134838" to="maps/map3/map/@Area2D@134838" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134839" to="maps/map3/map/@Area2D@134839" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134839" to="maps/map3/map/@Area2D@134839" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134845" to="maps/map3/map/@Area2D@134845" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134845" to="maps/map3/map/@Area2D@134845" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134846" to="maps/map3/map/@Area2D@134846" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134846" to="maps/map3/map/@Area2D@134846" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134847" to="maps/map3/map/@Area2D@134847" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134847" to="maps/map3/map/@Area2D@134847" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134848" to="maps/map3/map/@Area2D@134848" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134848" to="maps/map3/map/@Area2D@134848" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134849" to="maps/map3/map/@Area2D@134849" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134849" to="maps/map3/map/@Area2D@134849" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134850" to="maps/map3/map/@Area2D@134850" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134850" to="maps/map3/map/@Area2D@134850" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134851" to="maps/map3/map/@Area2D@134851" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134851" to="maps/map3/map/@Area2D@134851" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134852" to="maps/map3/map/@Area2D@134852" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134852" to="maps/map3/map/@Area2D@134852" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134853" to="maps/map3/map/@Area2D@134853" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134853" to="maps/map3/map/@Area2D@134853" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134856" to="maps/map3/map/@Area2D@134856" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134856" to="maps/map3/map/@Area2D@134856" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134857" to="maps/map3/map/@Area2D@134857" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134857" to="maps/map3/map/@Area2D@134857" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134877" to="maps/map3/map/@Area2D@134877" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134877" to="maps/map3/map/@Area2D@134877" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134882" to="maps/map3/map/@Area2D@134882" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134882" to="maps/map3/map/@Area2D@134882" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134883" to="maps/map3/map/@Area2D@134883" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134883" to="maps/map3/map/@Area2D@134883" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/map/@Area2D@134884" to="maps/map3/map/@Area2D@134884" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/map/@Area2D@134884" to="maps/map3/map/@Area2D@134884" method="_on_ready"]
+[connection signal="body_entered" from="maps/map3/trap/BlockTrap" to="maps/map3/trap/BlockTrap" method="_on_body_entered"]
+[connection signal="ready" from="maps/map3/trap/BlockTrap" to="maps/map3/trap/BlockTrap" method="_on_ready"]
+[connection signal="body_entered" from="maps/map10/map/BlockTrap" to="maps/map10/map/BlockTrap" method="_on_body_entered"]
+[connection signal="ready" from="maps/map10/map/BlockTrap" to="maps/map10/map/BlockTrap" method="_on_ready"]
+[connection signal="body_entered" from="maps/map10/map/@Area2D@134891" to="maps/map10/map/@Area2D@134891" method="_on_body_entered"]
+[connection signal="ready" from="maps/map10/map/@Area2D@134891" to="maps/map10/map/@Area2D@134891" method="_on_ready"]
+[connection signal="body_entered" from="maps/map10/map/@Area2D@134892" to="maps/map10/map/@Area2D@134892" method="_on_body_entered"]
+[connection signal="ready" from="maps/map10/map/@Area2D@134892" to="maps/map10/map/@Area2D@134892" method="_on_ready"]
+[connection signal="body_entered" from="maps/map10/map/@Area2D@134893" to="maps/map10/map/@Area2D@134893" method="_on_body_entered"]
+[connection signal="ready" from="maps/map10/map/@Area2D@134893" to="maps/map10/map/@Area2D@134893" method="_on_ready"]
+[connection signal="body_entered" from="maps/map10/map/@Area2D@134894" to="maps/map10/map/@Area2D@134894" method="_on_body_entered"]
+[connection signal="ready" from="maps/map10/map/@Area2D@134894" to="maps/map10/map/@Area2D@134894" method="_on_ready"]
+[connection signal="body_entered" from="maps/map10/map/@Area2D@134895" to="maps/map10/map/@Area2D@134895" method="_on_body_entered"]
+[connection signal="ready" from="maps/map10/map/@Area2D@134895" to="maps/map10/map/@Area2D@134895" method="_on_ready"]
+[connection signal="body_entered" from="maps/map10/map/@Area2D@134896" to="maps/map10/map/@Area2D@134896" method="_on_body_entered"]
+[connection signal="ready" from="maps/map10/map/@Area2D@134896" to="maps/map10/map/@Area2D@134896" method="_on_ready"]
+[connection signal="body_entered" from="maps/map10/map/@Area2D@134897" to="maps/map10/map/@Area2D@134897" method="_on_body_entered"]
+[connection signal="ready" from="maps/map10/map/@Area2D@134897" to="maps/map10/map/@Area2D@134897" method="_on_ready"]
+[connection signal="body_entered" from="maps/map10/map/@Area2D@134898" to="maps/map10/map/@Area2D@134898" method="_on_body_entered"]
+[connection signal="ready" from="maps/map10/map/@Area2D@134898" to="maps/map10/map/@Area2D@134898" method="_on_ready"]
+[connection signal="body_entered" from="maps/map10/map/@Area2D@134899" to="maps/map10/map/@Area2D@134899" method="_on_body_entered"]
+[connection signal="ready" from="maps/map10/map/@Area2D@134899" to="maps/map10/map/@Area2D@134899" method="_on_ready"]
+[connection signal="body_entered" from="maps/map10/map/@Area2D@134900" to="maps/map10/map/@Area2D@134900" method="_on_body_entered"]
+[connection signal="ready" from="maps/map10/map/@Area2D@134900" to="maps/map10/map/@Area2D@134900" method="_on_ready"]
+[connection signal="body_entered" from="maps/map10/map/@Area2D@134901" to="maps/map10/map/@Area2D@134901" method="_on_body_entered"]
+[connection signal="ready" from="maps/map10/map/@Area2D@134901" to="maps/map10/map/@Area2D@134901" method="_on_ready"]
+[connection signal="body_entered" from="maps/map10/map/@Area2D@134902" to="maps/map10/map/@Area2D@134902" method="_on_body_entered"]
+[connection signal="ready" from="maps/map10/map/@Area2D@134902" to="maps/map10/map/@Area2D@134902" method="_on_ready"]
+[connection signal="body_entered" from="maps/map10/map/@Area2D@134903" to="maps/map10/map/@Area2D@134903" method="_on_body_entered"]
+[connection signal="ready" from="maps/map10/map/@Area2D@134903" to="maps/map10/map/@Area2D@134903" method="_on_ready"]
+[connection signal="body_entered" from="maps/map10/map/@Area2D@134904" to="maps/map10/map/@Area2D@134904" method="_on_body_entered"]
+[connection signal="ready" from="maps/map10/map/@Area2D@134904" to="maps/map10/map/@Area2D@134904" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/BlockTrap" to="maps/map9/map/BlockTrap" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/BlockTrap" to="maps/map9/map/BlockTrap" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@134921" to="maps/map9/map/@Area2D@134921" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@134921" to="maps/map9/map/@Area2D@134921" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@134922" to="maps/map9/map/@Area2D@134922" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@134922" to="maps/map9/map/@Area2D@134922" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@134923" to="maps/map9/map/@Area2D@134923" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@134923" to="maps/map9/map/@Area2D@134923" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@134924" to="maps/map9/map/@Area2D@134924" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@134924" to="maps/map9/map/@Area2D@134924" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@134925" to="maps/map9/map/@Area2D@134925" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@134925" to="maps/map9/map/@Area2D@134925" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@134926" to="maps/map9/map/@Area2D@134926" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@134926" to="maps/map9/map/@Area2D@134926" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@134927" to="maps/map9/map/@Area2D@134927" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@134927" to="maps/map9/map/@Area2D@134927" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@134928" to="maps/map9/map/@Area2D@134928" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@134928" to="maps/map9/map/@Area2D@134928" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@134929" to="maps/map9/map/@Area2D@134929" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@134929" to="maps/map9/map/@Area2D@134929" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@134930" to="maps/map9/map/@Area2D@134930" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@134930" to="maps/map9/map/@Area2D@134930" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@134931" to="maps/map9/map/@Area2D@134931" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@134931" to="maps/map9/map/@Area2D@134931" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@134932" to="maps/map9/map/@Area2D@134932" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@134932" to="maps/map9/map/@Area2D@134932" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@134933" to="maps/map9/map/@Area2D@134933" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@134933" to="maps/map9/map/@Area2D@134933" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@134934" to="maps/map9/map/@Area2D@134934" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@134934" to="maps/map9/map/@Area2D@134934" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@134935" to="maps/map9/map/@Area2D@134935" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@134935" to="maps/map9/map/@Area2D@134935" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@134936" to="maps/map9/map/@Area2D@134936" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@134936" to="maps/map9/map/@Area2D@134936" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@134937" to="maps/map9/map/@Area2D@134937" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@134937" to="maps/map9/map/@Area2D@134937" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@134938" to="maps/map9/map/@Area2D@134938" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@134938" to="maps/map9/map/@Area2D@134938" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@134939" to="maps/map9/map/@Area2D@134939" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@134939" to="maps/map9/map/@Area2D@134939" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/BlockTrap" to="maps/map8/map/BlockTrap" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/BlockTrap" to="maps/map8/map/BlockTrap" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134953" to="maps/map8/map/@Area2D@134953" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134953" to="maps/map8/map/@Area2D@134953" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134954" to="maps/map8/map/@Area2D@134954" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134954" to="maps/map8/map/@Area2D@134954" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134955" to="maps/map8/map/@Area2D@134955" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134955" to="maps/map8/map/@Area2D@134955" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134956" to="maps/map8/map/@Area2D@134956" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134956" to="maps/map8/map/@Area2D@134956" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134957" to="maps/map8/map/@Area2D@134957" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134957" to="maps/map8/map/@Area2D@134957" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134958" to="maps/map8/map/@Area2D@134958" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134958" to="maps/map8/map/@Area2D@134958" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134959" to="maps/map8/map/@Area2D@134959" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134959" to="maps/map8/map/@Area2D@134959" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134960" to="maps/map8/map/@Area2D@134960" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134960" to="maps/map8/map/@Area2D@134960" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134961" to="maps/map8/map/@Area2D@134961" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134961" to="maps/map8/map/@Area2D@134961" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134962" to="maps/map8/map/@Area2D@134962" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134962" to="maps/map8/map/@Area2D@134962" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134963" to="maps/map8/map/@Area2D@134963" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134963" to="maps/map8/map/@Area2D@134963" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134964" to="maps/map8/map/@Area2D@134964" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134964" to="maps/map8/map/@Area2D@134964" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134965" to="maps/map8/map/@Area2D@134965" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134965" to="maps/map8/map/@Area2D@134965" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134966" to="maps/map8/map/@Area2D@134966" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134966" to="maps/map8/map/@Area2D@134966" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134967" to="maps/map8/map/@Area2D@134967" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134967" to="maps/map8/map/@Area2D@134967" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134970" to="maps/map8/map/@Area2D@134970" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134970" to="maps/map8/map/@Area2D@134970" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134971" to="maps/map8/map/@Area2D@134971" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134971" to="maps/map8/map/@Area2D@134971" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134972" to="maps/map8/map/@Area2D@134972" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134972" to="maps/map8/map/@Area2D@134972" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134973" to="maps/map8/map/@Area2D@134973" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134973" to="maps/map8/map/@Area2D@134973" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134974" to="maps/map8/map/@Area2D@134974" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134974" to="maps/map8/map/@Area2D@134974" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134975" to="maps/map8/map/@Area2D@134975" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134975" to="maps/map8/map/@Area2D@134975" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@134976" to="maps/map8/map/@Area2D@134976" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@134976" to="maps/map8/map/@Area2D@134976" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@135019" to="maps/map8/map/@Area2D@135019" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@135019" to="maps/map8/map/@Area2D@135019" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@135020" to="maps/map8/map/@Area2D@135020" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@135020" to="maps/map8/map/@Area2D@135020" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@135021" to="maps/map8/map/@Area2D@135021" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@135021" to="maps/map8/map/@Area2D@135021" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@135022" to="maps/map8/map/@Area2D@135022" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@135022" to="maps/map8/map/@Area2D@135022" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@135023" to="maps/map8/map/@Area2D@135023" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@135023" to="maps/map8/map/@Area2D@135023" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@135024" to="maps/map8/map/@Area2D@135024" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@135024" to="maps/map8/map/@Area2D@135024" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@135025" to="maps/map8/map/@Area2D@135025" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@135025" to="maps/map8/map/@Area2D@135025" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@135026" to="maps/map8/map/@Area2D@135026" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@135026" to="maps/map8/map/@Area2D@135026" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@135027" to="maps/map8/map/@Area2D@135027" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@135027" to="maps/map8/map/@Area2D@135027" method="_on_ready"]
+[connection signal="body_entered" from="maps/map4/map/BlockTrap" to="maps/map4/map/BlockTrap" method="_on_body_entered"]
+[connection signal="ready" from="maps/map4/map/BlockTrap" to="maps/map4/map/BlockTrap" method="_on_ready"]
+[connection signal="body_entered" from="maps/map4/map/@Area2D@135178" to="maps/map4/map/@Area2D@135178" method="_on_body_entered"]
+[connection signal="ready" from="maps/map4/map/@Area2D@135178" to="maps/map4/map/@Area2D@135178" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1/map/BlockTrap" to="maps/map1/map/BlockTrap" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1/map/BlockTrap" to="maps/map1/map/BlockTrap" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1/map/@Area2D@135179" to="maps/map1/map/@Area2D@135179" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1/map/@Area2D@135179" to="maps/map1/map/@Area2D@135179" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1/map/@Area2D@135180" to="maps/map1/map/@Area2D@135180" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1/map/@Area2D@135180" to="maps/map1/map/@Area2D@135180" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1/map/@Area2D@135181" to="maps/map1/map/@Area2D@135181" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1/map/@Area2D@135181" to="maps/map1/map/@Area2D@135181" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1/map/@Area2D@135182" to="maps/map1/map/@Area2D@135182" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1/map/@Area2D@135182" to="maps/map1/map/@Area2D@135182" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1/map/@Area2D@135183" to="maps/map1/map/@Area2D@135183" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1/map/@Area2D@135183" to="maps/map1/map/@Area2D@135183" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1/map/@Area2D@135184" to="maps/map1/map/@Area2D@135184" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1/map/@Area2D@135184" to="maps/map1/map/@Area2D@135184" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1/map/@Area2D@135185" to="maps/map1/map/@Area2D@135185" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1/map/@Area2D@135185" to="maps/map1/map/@Area2D@135185" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1/map/@Area2D@135186" to="maps/map1/map/@Area2D@135186" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1/map/@Area2D@135186" to="maps/map1/map/@Area2D@135186" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1/map/@Area2D@135187" to="maps/map1/map/@Area2D@135187" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1/map/@Area2D@135187" to="maps/map1/map/@Area2D@135187" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1/map/@Area2D@135195" to="maps/map1/map/@Area2D@135195" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1/map/@Area2D@135195" to="maps/map1/map/@Area2D@135195" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1/map/@Area2D@135196" to="maps/map1/map/@Area2D@135196" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1/map/@Area2D@135196" to="maps/map1/map/@Area2D@135196" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1/map/@Area2D@135197" to="maps/map1/map/@Area2D@135197" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1/map/@Area2D@135197" to="maps/map1/map/@Area2D@135197" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1/map/@Area2D@135198" to="maps/map1/map/@Area2D@135198" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1/map/@Area2D@135198" to="maps/map1/map/@Area2D@135198" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1/map/@Area2D@135199" to="maps/map1/map/@Area2D@135199" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1/map/@Area2D@135199" to="maps/map1/map/@Area2D@135199" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1/map/@Area2D@135200" to="maps/map1/map/@Area2D@135200" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1/map/@Area2D@135200" to="maps/map1/map/@Area2D@135200" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1/map/@Area2D@135201" to="maps/map1/map/@Area2D@135201" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1/map/@Area2D@135201" to="maps/map1/map/@Area2D@135201" method="_on_ready"]
+[connection signal="body_entered" from="maps/map2/map/BlockTrap" to="maps/map2/map/BlockTrap" method="_on_body_entered"]
+[connection signal="ready" from="maps/map2/map/BlockTrap" to="maps/map2/map/BlockTrap" method="_on_ready"]
+[connection signal="body_entered" from="maps/map2/map/@Area2D@135206" to="maps/map2/map/@Area2D@135206" method="_on_body_entered"]
+[connection signal="ready" from="maps/map2/map/@Area2D@135206" to="maps/map2/map/@Area2D@135206" method="_on_ready"]
+[connection signal="body_entered" from="maps/map2/map/@Area2D@135207" to="maps/map2/map/@Area2D@135207" method="_on_body_entered"]
+[connection signal="ready" from="maps/map2/map/@Area2D@135207" to="maps/map2/map/@Area2D@135207" method="_on_ready"]
+[connection signal="body_entered" from="maps/map2/map/@Area2D@135208" to="maps/map2/map/@Area2D@135208" method="_on_body_entered"]
+[connection signal="ready" from="maps/map2/map/@Area2D@135208" to="maps/map2/map/@Area2D@135208" method="_on_ready"]
+[connection signal="body_entered" from="maps/map2/map/@Area2D@135209" to="maps/map2/map/@Area2D@135209" method="_on_body_entered"]
+[connection signal="ready" from="maps/map2/map/@Area2D@135209" to="maps/map2/map/@Area2D@135209" method="_on_ready"]
+[connection signal="body_entered" from="maps/map2/map/@Area2D@135210" to="maps/map2/map/@Area2D@135210" method="_on_body_entered"]
+[connection signal="ready" from="maps/map2/map/@Area2D@135210" to="maps/map2/map/@Area2D@135210" method="_on_ready"]
+[connection signal="body_entered" from="maps/map2/map/@Area2D@135211" to="maps/map2/map/@Area2D@135211" method="_on_body_entered"]
+[connection signal="ready" from="maps/map2/map/@Area2D@135211" to="maps/map2/map/@Area2D@135211" method="_on_ready"]
+[connection signal="body_entered" from="maps/map2/map/@Area2D@135212" to="maps/map2/map/@Area2D@135212" method="_on_body_entered"]
+[connection signal="ready" from="maps/map2/map/@Area2D@135212" to="maps/map2/map/@Area2D@135212" method="_on_ready"]

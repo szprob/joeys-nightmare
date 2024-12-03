@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var max_distance = 16 * 2 # 最大检测距离
-@export var speed = 250
+@export var speed = 250 * 3
 var direction = Vector2(0, 0) # 默认方向
 
 
