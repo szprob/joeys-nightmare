@@ -1,0 +1,1201 @@
+[gd_scene load_steps=131 format=4 uid="uid://c3bm4uor0vfjs"]
+
+[ext_resource type="Script" path="res://scripts/dreams/castel.gd" id="1_jsqe7"]
+[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_i455q"]
+[ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_u2231"]
+[ext_resource type="Texture2D" uid="uid://bnu8gne6vd7iy" path="res://assets/sprites/background/cave1/back.png" id="4_llk7s"]
+[ext_resource type="Texture2D" uid="uid://7joprmnjucj5" path="res://assets/sprites/background/multi3/moon2.png" id="6_0kmkg"]
+[ext_resource type="Texture2D" uid="uid://bl1rxkn33ywhl" path="res://assets/sprites/background/multi3/cloud.png" id="7_7kl8k"]
+[ext_resource type="Texture2D" uid="uid://dm3g8bywq8uy1" path="res://assets/sprites/background/cave1/bear.png" id="7_iu72o"]
+[ext_resource type="Texture2D" uid="uid://dam5ana38r7ad" path="res://assets/sprites/background/cave1/water.png" id="8_vhcwn"]
+[ext_resource type="Texture2D" uid="uid://dcrd6ox65a4g8" path="res://assets/sprites/background/cave1/front.png" id="9_r1pc1"]
+[ext_resource type="Texture2D" uid="uid://sar2w363uavd" path="res://assets/sprites/background/cave2/back.png" id="10_o7rat"]
+[ext_resource type="Texture2D" uid="uid://b3kfsaqq4tfmw" path="res://assets/sprites/background/cave2/back_dark.png" id="11_4li74"]
+[ext_resource type="Texture2D" uid="uid://b3fnxgtqdc08e" path="res://assets/sprites/background/cave2/bear.png" id="11_c37d6"]
+[ext_resource type="Texture2D" uid="uid://pv0iwkpm3tyv" path="res://assets/sprites/human/brick2.1.png" id="11_o3ppc"]
+[ext_resource type="Texture2D" uid="uid://c5rsp0kvguovl" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0000_bg.png" id="12_4tuf8"]
+[ext_resource type="Texture2D" uid="uid://01af3tcjm0da" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0000_bg.png" id="12_b8rmu"]
+[ext_resource type="PackedScene" uid="uid://bi3000vv4vu3x" path="res://scenes/sokoban/gravity_tile/gravity_down.tscn" id="12_r10c0"]
+[ext_resource type="Texture2D" uid="uid://cpew2p21w3cec" path="res://assets/sprites/background/cave2/zhu.png" id="12_yv3bo"]
+[ext_resource type="Texture2D" uid="uid://cf12krokubj8o" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0001_bg.png" id="13_bu4de"]
+[ext_resource type="Texture2D" uid="uid://d0ujlncwjh5xa" path="res://assets/sprites/background/cave2/front.png" id="13_datgp"]
+[ext_resource type="Texture2D" uid="uid://be47sihicu2gl" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0001_bg.png" id="13_hap72"]
+[ext_resource type="PackedScene" uid="uid://cootft3ha6veu" path="res://scenes/sokoban/gravity_tile/gravity_left.tscn" id="13_w60xb"]
+[ext_resource type="Texture2D" uid="uid://u17bnfkvai03" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0002_bg.png" id="14_2um0t"]
+[ext_resource type="PackedScene" uid="uid://dlv4fqe1sg0dm" path="res://scenes/sokoban/gravity_tile/gravity_right.tscn" id="14_n5qgd"]
+[ext_resource type="Texture2D" uid="uid://dywlaulkthmw5" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0002_bg.png" id="14_oyovx"]
+[ext_resource type="Texture2D" uid="uid://dwgfwvxvl8fxj" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0003_bg.png" id="15_bwhvb"]
+[ext_resource type="Texture2D" uid="uid://b8vx6uvwsnfpg" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0003_bg.png" id="15_kphln"]
+[ext_resource type="PackedScene" uid="uid://bh3778qpcat7y" path="res://scenes/sokoban/gravity_tile/gravity_up.tscn" id="15_she0j"]
+[ext_resource type="Texture2D" uid="uid://blnalav8h3n7g" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0004_bg.png" id="16_1vgb4"]
+[ext_resource type="Texture2D" uid="uid://c154qgdo28agx" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0004_bg.png" id="16_426vk"]
+[ext_resource type="PackedScene" uid="uid://mx3jx68fdgqm" path="res://scenes/modules/trap_tile/trap_down.tscn" id="16_ag0xs"]
+[ext_resource type="Texture2D" uid="uid://duav47asvc1d6" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0005_bg.png" id="17_2pauq"]
+[ext_resource type="Texture2D" uid="uid://vfwxv41nvof" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0005_bg.png" id="17_ghobg"]
+[ext_resource type="PackedScene" uid="uid://bgtv7blulem34" path="res://scenes/modules/trap_tile/trap_left.tscn" id="17_jd47e"]
+[ext_resource type="Texture2D" uid="uid://bpsovu60agkll" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0006_bg.png" id="18_1vd3g"]
+[ext_resource type="Texture2D" uid="uid://boty2y71xrxpv" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0006_bg.png" id="18_kislf"]
+[ext_resource type="PackedScene" uid="uid://6motl652kpn3" path="res://scenes/modules/trap_tile/trap_right.tscn" id="18_rrmfq"]
+[ext_resource type="PackedScene" uid="uid://8qshk6ynrxhj" path="res://scenes/modules/trap_tile/trap_up.tscn" id="19_4p1hd"]
+[ext_resource type="Texture2D" uid="uid://cikilmqiil1yy" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0007_bg.png" id="19_je74f"]
+[ext_resource type="Script" path="res://scripts/camera_area.gd" id="19_jneqm"]
+[ext_resource type="Texture2D" uid="uid://c1637g1s6ga2y" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0007_bg.png" id="19_t12rs"]
+[ext_resource type="Texture2D" uid="uid://bpekbp4je4sqy" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0008_bg.png" id="20_e5d21"]
+[ext_resource type="Texture2D" uid="uid://belsl10xkkaex" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0008_bg.png" id="20_wcws0"]
+[ext_resource type="Texture2D" uid="uid://dhrk1jm1orsho" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0009_bg.png" id="21_2xa3a"]
+[ext_resource type="Texture2D" uid="uid://b6fbxec70dlik" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0009_bg.png" id="21_geyaa"]
+[ext_resource type="Texture2D" uid="uid://cjd65lhe2nx7i" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0010_bg.png" id="22_d00hg"]
+[ext_resource type="Texture2D" uid="uid://q4p4f3vmfe4e" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0010_bg.png" id="22_v1mmy"]
+[ext_resource type="Texture2D" uid="uid://bfrxaiub63fxa" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0011_bg.png" id="23_4fdky"]
+[ext_resource type="Texture2D" uid="uid://buam5etw32evn" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0011_bg.png" id="23_v2bvm"]
+[ext_resource type="Texture2D" uid="uid://bv5sr57ejvkfp" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0012_bg.png" id="24_08gqr"]
+[ext_resource type="Texture2D" uid="uid://1rgx8xwqsta8" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0012_bg.png" id="24_ve5bq"]
+[ext_resource type="Texture2D" uid="uid://d01pbyf0kch81" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0013_bg.png" id="25_8irrj"]
+[ext_resource type="Texture2D" uid="uid://cwiato0t1mkxw" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0013_bg.png" id="25_agji1"]
+[ext_resource type="Texture2D" uid="uid://bv4me1s18cggt" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0014_bg.png" id="26_qr3d6"]
+[ext_resource type="Texture2D" uid="uid://du7cojp5t45rd" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0014_bg.png" id="26_wrdfc"]
+[ext_resource type="Texture2D" uid="uid://crjdc5djyekmd" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0015_bg.png" id="27_4gn2n"]
+[ext_resource type="Texture2D" uid="uid://c11x7s5cbbow" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0015_bg.png" id="27_x77xf"]
+[ext_resource type="Texture2D" uid="uid://bocwtfvme52kf" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0016_bg.png" id="28_3salv"]
+[ext_resource type="Texture2D" uid="uid://bkm85mckm56ek" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0016_bg.png" id="28_klpwk"]
+[ext_resource type="Texture2D" uid="uid://b4ec76vbkb652" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0017_bg.png" id="29_ctrwu"]
+[ext_resource type="Texture2D" uid="uid://b5uiep3qh7kfh" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0017_bg.png" id="29_s4pff"]
+[ext_resource type="Texture2D" uid="uid://ceu4xajltfoxb" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0018_bg.png" id="30_17tlf"]
+[ext_resource type="Texture2D" uid="uid://bgj48ltrbqblx" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0018_bg.png" id="30_ma8pt"]
+[ext_resource type="Texture2D" uid="uid://b34m43h7hr56y" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0019_bg.png" id="31_esylp"]
+[ext_resource type="Texture2D" uid="uid://ccyh88swkioxv" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0019_bg.png" id="31_netvg"]
+[ext_resource type="Texture2D" uid="uid://b8nhw1xtvjp0t" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0020_bg.png" id="32_6tmec"]
+[ext_resource type="Texture2D" uid="uid://bn1tfwfivf3ll" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0020_bg.png" id="32_hhyij"]
+[ext_resource type="Texture2D" uid="uid://crdjivby0mp5c" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0021_bg.png" id="33_a1o16"]
+[ext_resource type="Texture2D" uid="uid://cj4xhl2jb0jmm" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0021_bg.png" id="33_ox3qt"]
+[ext_resource type="Texture2D" uid="uid://bv5cl2ffl5psm" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0022_bg.png" id="34_w5abu"]
+[ext_resource type="Texture2D" uid="uid://b7u4ssjcd8e27" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0022_bg.png" id="34_wprkm"]
+[ext_resource type="Texture2D" uid="uid://dcxj23rwkaku5" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0023_bg.png" id="35_5vacs"]
+[ext_resource type="Texture2D" uid="uid://c5jpwg2f0ji44" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0023_bg.png" id="35_yshv2"]
+[ext_resource type="Texture2D" uid="uid://bmidbn7aa5lke" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0024_bg.png" id="36_e3pq7"]
+[ext_resource type="Texture2D" uid="uid://dn2pccmsh0jmx" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0024_bg.png" id="36_s1vu3"]
+[ext_resource type="Texture2D" uid="uid://cko24rarwjvvh" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0025_bg.png" id="37_07ct5"]
+[ext_resource type="Texture2D" uid="uid://cy0huvws53sp3" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0025_bg.png" id="37_oehs2"]
+[ext_resource type="Texture2D" uid="uid://2yhkgl54gdm" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0026_bg.png" id="38_1l4ci"]
+[ext_resource type="Texture2D" uid="uid://di2u5jj0r2x8o" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0026_bg.png" id="38_t2jjv"]
+[ext_resource type="Texture2D" uid="uid://dnygdfb8r0ykv" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0027_bg.png" id="39_2ngh0"]
+[ext_resource type="Texture2D" uid="uid://cj4b0o2jnomf6" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0027_bg.png" id="39_k7h50"]
+[ext_resource type="Texture2D" uid="uid://bkt0bbwncdc24" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0028_bg.png" id="40_a7t3u"]
+[ext_resource type="Texture2D" uid="uid://dmfjrjbv8wiaa" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0028_bg.png" id="40_v7ahx"]
+[ext_resource type="Texture2D" uid="uid://blwblqija6ygi" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0029_bg.png" id="41_4toel"]
+[ext_resource type="Texture2D" uid="uid://cuxirvl0e3k2r" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0029_bg.png" id="41_jr8j6"]
+[ext_resource type="Texture2D" uid="uid://bt7mb4tpycbkp" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0030_bg.png" id="42_8n2yd"]
+[ext_resource type="Texture2D" uid="uid://dv66tejkbx3ye" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0030_bg.png" id="42_fmrvh"]
+[ext_resource type="Texture2D" uid="uid://bpg5ugcybb63v" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0031_bg.png" id="43_brv8l"]
+[ext_resource type="Texture2D" uid="uid://brqycvfajde2a" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0031_bg.png" id="43_cotgl"]
+[ext_resource type="Texture2D" uid="uid://c6iaj3ca6s56" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0032_bg.png" id="44_3flvv"]
+[ext_resource type="Texture2D" uid="uid://5emgw87k3v7d" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0032_bg.png" id="44_bgefs"]
+[ext_resource type="Texture2D" uid="uid://k012ty5neght" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0033_bg.png" id="45_ku77f"]
+[ext_resource type="Texture2D" uid="uid://pi237p7f44j" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0033_bg.png" id="45_p7akv"]
+[ext_resource type="Texture2D" uid="uid://dlgje8idqatqp" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0034_bg.png" id="46_wbqkh"]
+[ext_resource type="Texture2D" uid="uid://85roakcgust4" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0034_bg.png" id="46_ysv0k"]
+[ext_resource type="Texture2D" uid="uid://3hkyw0upv1yw" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0035_bg.png" id="47_64unm"]
+[ext_resource type="Texture2D" uid="uid://bu2h1bddm6ifg" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0035_bg.png" id="47_ykrep"]
+[ext_resource type="Texture2D" uid="uid://c4awbf38fxl3x" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0036_bg.png" id="48_8siub"]
+[ext_resource type="Texture2D" uid="uid://bh6qfq81r0xuj" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0036_bg.png" id="48_ihcwr"]
+[ext_resource type="Texture2D" uid="uid://bsklxkrrxuv5e" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0037_bg.png" id="49_5sg8a"]
+[ext_resource type="Texture2D" uid="uid://c63bwlufwbebs" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0037_bg.png" id="49_ly56u"]
+[ext_resource type="Texture2D" uid="uid://clwwkv3vi5vtn" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0038_bg.png" id="50_gm1mt"]
+[ext_resource type="Texture2D" uid="uid://dieythlf7wsje" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0038_bg.png" id="50_syhqa"]
+[ext_resource type="Texture2D" uid="uid://jg62k50in637" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0039_bg.png" id="51_nf7i0"]
+[ext_resource type="Texture2D" uid="uid://cs5s3uowcwoa6" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0039_bg.png" id="51_uxdeg"]
+[ext_resource type="Texture2D" uid="uid://nedo42f0pfkn" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0040_bg.png" id="52_1v2pg"]
+[ext_resource type="Texture2D" uid="uid://drv3nr2s4vsl" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0040_bg.png" id="52_rasop"]
+[ext_resource type="Texture2D" uid="uid://b8oi76eei0e07" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0041_bg.png" id="53_xgbus"]
+[ext_resource type="Texture2D" uid="uid://c1nm6qgikbm7h" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0041_bg.png" id="53_yl4vg"]
+[ext_resource type="Texture2D" uid="uid://gdqno4o15qj5" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0042_bg.png" id="54_jl365"]
+[ext_resource type="Texture2D" uid="uid://cidxh2v0bksba" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0042_bg.png" id="54_v1x3x"]
+[ext_resource type="Texture2D" uid="uid://bigysavdix7lv" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0043_bg.png" id="55_0wxoh"]
+[ext_resource type="Texture2D" uid="uid://bcmgp47px8i4t" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0043_bg.png" id="55_dxn3g"]
+[ext_resource type="Texture2D" uid="uid://o218wbnlr0t6" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0044_bg.png" id="56_5fjfc"]
+[ext_resource type="Texture2D" uid="uid://5ycc7bqcgpo8" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0044_bg.png" id="56_e63nq"]
+[ext_resource type="Texture2D" uid="uid://dvor21ar1rwc6" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0045_bg.png" id="57_8a4r7"]
+[ext_resource type="Texture2D" uid="uid://b4pg2r1md88ue" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0045_bg.png" id="57_ttug7"]
+[ext_resource type="Texture2D" uid="uid://bxv3lp2jgjb61" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0046_bg.png" id="58_ab2w3"]
+[ext_resource type="Texture2D" uid="uid://b0qjabk4f33su" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0046_bg.png" id="58_qlnxi"]
+[ext_resource type="Texture2D" uid="uid://4l3ljb876wib" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0047_bg.png" id="59_0ylmm"]
+[ext_resource type="Texture2D" uid="uid://p28166m5iwit" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0047_bg.png" id="59_hsnyi"]
+[ext_resource type="Texture2D" uid="uid://bdm550kdafbjf" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0048_bg.png" id="60_8uyy8"]
+[ext_resource type="Texture2D" uid="uid://eysie56urc86" path="res://assets/sprites/background/cave2/bear2_frames_rmbg/frame_0048_bg.png" id="60_inmkp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qif0g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_b8rmu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_hap72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_oyovx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_kphln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_426vk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_2pauq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_1vd3g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_je74f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_wcws0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_geyaa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_v1mmy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_v2bvm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ve5bq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_8irrj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_wrdfc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_4gn2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_3salv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_s4pff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_ma8pt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_netvg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_hhyij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_a1o16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_wprkm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_5vacs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_e3pq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_07ct5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_t2jjv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_2ngh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_a7t3u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_4toel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_8n2yd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_brv8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_3flvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_p7akv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_wbqkh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_64unm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_8siub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_ly56u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_syhqa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_uxdeg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_rasop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_yl4vg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_v1x3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_dxn3g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_5fjfc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_8a4r7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_ab2w3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_hsnyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_8uyy8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wbns4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_4tuf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_bu4de")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2um0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_bwhvb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_1vgb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ghobg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_kislf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_t12rs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_e5d21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_2xa3a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_d00hg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_4fdky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_08gqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_agji1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_qr3d6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_x77xf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_klpwk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_ctrwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_17tlf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_esylp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_6tmec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_ox3qt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_w5abu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_yshv2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_s1vu3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_oehs2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_1l4ci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_k7h50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_v7ahx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_jr8j6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_fmrvh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_cotgl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_bgefs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_ku77f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_ysv0k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_ykrep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_ihcwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_5sg8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_gm1mt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_nf7i0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_1v2pg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_xgbus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_jl365")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_0wxoh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_e63nq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_ttug7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_qlnxi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_0ylmm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_inmkp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ogtr0"]
+texture = ExtResource("11_o3ppc")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_q5dgm"]
+resource_name = "gravity"
+scenes/1/scene = ExtResource("12_r10c0")
+scenes/2/scene = ExtResource("13_w60xb")
+scenes/3/scene = ExtResource("14_n5qgd")
+scenes/4/scene = ExtResource("15_she0j")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ixvcl"]
+resource_name = "trap"
+scenes/1/scene = ExtResource("16_ag0xs")
+scenes/2/scene = ExtResource("17_jd47e")
+scenes/3/scene = ExtResource("18_rrmfq")
+scenes/4/scene = ExtResource("19_4p1hd")
+
+[sub_resource type="TileSet" id="TileSet_rvt4p"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ogtr0")
+sources/2 = SubResource("TileSetScenesCollectionSource_ixvcl")
+sources/1 = SubResource("TileSetScenesCollectionSource_q5dgm")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ln1e"]
+size = Vector2(928, 270)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bj6vh"]
+size = Vector2(452, 328)
+
+[node name="Game" type="Node2D" groups=["scan_lines"]]
+script = ExtResource("1_jsqe7")
+
+[node name="player" parent="." groups=["player"] instance=ExtResource("2_i455q")]
+position = Vector2(232, -136)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+script = ExtResource("3_u2231")
+
+[node name="CameraRef" type="Camera2D" parent="player"]
+enabled = false
+zoom = Vector2(4, 4)
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("3_u2231")
+
+[node name="backgroud" type="Node2D" parent="."]
+visible = false
+z_index = -2
+position = Vector2(144, -48)
+
+[node name="back" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/back"]
+position = Vector2(-179.325, -91)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_llk7s")
+centered = false
+
+[node name="moon" type="Parallax2D" parent="backgroud"]
+visible = false
+z_index = -1
+scroll_scale = Vector2(0.05, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/moon"]
+visible = false
+position = Vector2(-179, -45.22)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_0kmkg")
+centered = false
+
+[node name="cloud" type="Parallax2D" parent="backgroud"]
+visible = false
+z_index = -1
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(859.12, 0)
+autoscroll = Vector2(16, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/cloud"]
+position = Vector2(-8, -52.445)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_7kl8k")
+centered = false
+
+[node name="bear" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.15, 0)
+repeat_size = Vector2(768, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/bear"]
+position = Vector2(-160, -72)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_iu72o")
+centered = false
+
+[node name="water" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.2, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/water"]
+position = Vector2(-160, -88)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_vhcwn")
+centered = false
+
+[node name="front" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.3, 0)
+scroll_offset = Vector2(-472, -88)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/front"]
+visible = false
+position = Vector2(-166, 32.19)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_r1pc1")
+centered = false
+
+[node name="backgroud2" type="Node2D" parent="."]
+z_index = -2
+position = Vector2(168, -80)
+
+[node name="back" type="Parallax2D" parent="backgroud2"]
+z_index = -1
+scroll_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud2/back"]
+position = Vector2(-179.325, -91)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("10_o7rat")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="backgroud2/back"]
+visible = false
+position = Vector2(-179.325, -91)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("11_4li74")
+centered = false
+
+[node name="moon" type="Parallax2D" parent="backgroud2"]
+visible = false
+z_index = -1
+scroll_scale = Vector2(0.05, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud2/moon"]
+visible = false
+position = Vector2(-179, -45.22)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_0kmkg")
+centered = false
+
+[node name="cloud" type="Parallax2D" parent="backgroud2"]
+visible = false
+z_index = -1
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(859.12, 0)
+autoscroll = Vector2(16, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud2/cloud"]
+position = Vector2(-8, -52.445)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_7kl8k")
+centered = false
+
+[node name="bear" type="Parallax2D" parent="backgroud2"]
+z_index = -1
+scroll_scale = Vector2(0.15, 0)
+repeat_size = Vector2(768, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud2/bear"]
+visible = false
+position = Vector2(-160, -48)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("11_c37d6")
+centered = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="backgroud2/bear"]
+position = Vector2(184, 200)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_qif0g")
+autoplay = "default"
+frame_progress = 0.448498
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="backgroud2/bear"]
+visible = false
+position = Vector2(184, 200)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_wbns4")
+autoplay = "default"
+
+[node name="zhu" type="Parallax2D" parent="backgroud2"]
+z_index = -1
+scroll_scale = Vector2(0.2, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud2/zhu"]
+position = Vector2(-176, -48)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("12_yv3bo")
+centered = false
+
+[node name="front" type="Parallax2D" parent="backgroud2"]
+z_index = -1
+scroll_scale = Vector2(0.3, 0)
+scroll_offset = Vector2(-472, -88)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud2/front"]
+position = Vector2(288, 32)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("13_datgp")
+centered = false
+
+[node name="map" type="Node2D" parent="."]
+
+[node name="map" type="TileMapLayer" parent="map"]
+use_parent_material = true
+position = Vector2(-8, -264)
+tile_map_data = PackedByteArray("AAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAAAAAAAAAARABAAAAAAAAAAAAASABAAAAAAAAAAAAATABAAAAAAAAAAAAAUABAAAAAAAAAAAAAVABAAAAAAAAAAAAAWABAAAAAAAAAAAAAXABAAAAAAAAAAAAAYABAAAAAAAAAAAAAZABAAAAAAAAAAAAAaABAAAAAAAAAAAAAbABAAAAAAAAAAAAAcABAAAAAAAAAAAAAdABAAAAAAAAAAAAAeABAAAAAAAAAAAAAfABAAAAAAAAAAAAAgABAAAAAAAAAAAAAhABAAAAAAAAAAAAAiABAAAAAAAAAAAAAjABAAAAAAAAAAAAAkABAAAAAAAAAAAAAlABAAAAAAAAAAAAAmABAAAAAAAAAAAAAnABAAAAAAAAAAAAAoABAAAAAAAAAAAAApABAAAAAAAAAAAAAqABAAAAAAAAAAAAArABAAAAAAAAAAAAAsABAAAAAAAAAAAAAtABAAAAAAAAAAAAAuABAAAAAAAAAAAAAvABAAAAAAAAAAAAAwABAAAAAAAAAAAAAxABAAAAAAAAAAAAAyABAAAAAAAAAAAAAzABAAAAAAAAAAAAA0ABAAAAAAAAAAAAA1ABAAAAAAAAAAAAA2ABAAAAAAAAAAAAA3ABAAAAAAAAAAAAA4ABAAAAAAAAAAAAA5ABAAAAAAAAAAAAA6ABAAAAAAAAAAAAA7ABAAAAAAAAAAAAA8ABAAAAAAAAAAAAA9ABAAAAAAAAAAAAA+ABAAAAAAAAAAAAA/ABAAAAAAAAAAAABAABAAAAAAAAAAAABBABAAAAAAAAAAAABCABAAAAAAAAAAAABDABAAAAAAAAAAAABEABAAAAAAAAAAAABFABAAAAAAAAAAAABGABAAAAAAAAAAAABHABAAAAAAAAAAAABIABAAAAAAAAAAAABJABAAAAAAAAAAAABKABAAAAAAAAAAAABLABAAAAAAAAAAAABMABAAAAAAAAAAAABNABAAAAAAAAAAAABOABAAAAAAAAAAAABPABAAAAAAAAAAAABQABAAAAAAAAAAAABRABAAAAAAAAAAAABSABAAAAAAAAAAAABTABAAAAAAAAAAAABUABAAAAAAAAAAAABVABAAAAAAAAAAAABWABAAAAAAAAAAAABXABAAAAAAAAAAAABYABAAAAAAAAAAAABZABAAAAAAAAAAAABaABAAAAAAAAAAAABbABAAAAAAAAAAAABcABAAAAAAAAAAAABdABAAAAAAAAAAAABeABAAAAAAAAAAAABfABAAAAAAAAAAAABgABAAAAAAAAAAAABhABAAAAAAAAAAAABiABAAAAAAAAAAAABjABAAAAAAAAAAAABkABAAAAAAAAAAAABlABAAAAAAAAAAAABmABAAAAAAAAAAAABnABAAAAAAAAAAAABoABAAAAAAAAAAAABpABAAAAAAAAAAAABqABAAAAAAAAAAAABrABAAAAAAAAAAAABsABAAAAAAAAAAAABtABAAAAAAAAAAAABuABAAAAAAAAAAAABvABAAAAAAAAAAAABwABAAAAAAAAAAAABxABAAAAAAAAAAAAByABAAAAAAAAAAAABzABAAAAAAAAAAAAB0ABAAAAAAAAAAAAB1ABAAAAAAAAAAAAB2ABAAAAAAAAAAAAB3ABAAAAAAAAAAAAB4ABAAAAAAAAAAAAB5ABAAAAAAAAAAAAB6ABAAAAAAAAAAAAB7ABAAAAAAAAAAAAB8ABAAAAAAAAAAAAB9ABAAAAAAAAAAAAB+ABAAAAAAAAAAAAB/ABAAAAAAAAAAAACAABAAAAAAAAAAAACBABAAAAAAAAAAAACCABAAAAAAAAAAAACDABAAAAAAAAAAAACEABAAAAAAAAAAAACFABAAAAAAAAAAAACGABAAAAAAAAAAAACHABAAAAAAAAAAAACIABAAAAAAAAAAAACJABAAAAAAAAAAAACKABAAAAAAAAAAAACLABAAAAAAAAAAAACMABAAAAAAAAAAAACNABAAAAAAAAAAAACOABAAAAAAAAAAAACPABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAPz/AAAAAAAAAAAAAPv/AAAAAAAAAAAAAPr/AAAAAAAAAAAAAPn/AAAAAAAAAAAAAPj/AAAAAAAAAAAAAPf/AAAAAAAAAAAAAPb/AAAAAAAAAAAAAPX/AAAAAAAAAAAAAPT/AAAAAAAAAAAAAPP/AAAAAAAAAAAAAPL/AAAAAAAAAAAAAPH/AAAAAAAAAAAAAPD/AAAAAAAAAAAAAO//AAAAAAAAAAAAAO7/AAAAAAAAAAAAAO3/AAAAAAAAAAAAAOz/AAAAAAAAAAAAAOv/AAAAAAAAAAAAAOr/AAAAAAAAAAArAOr/AAAAAAAAAAAsAOr/AAAAAAAAAAAtAOr/AAAAAAAAAAAuAOr/AAAAAAAAAAAvAOr/AAAAAAAAAAAwAOr/AAAAAAAAAAAxAOr/AAAAAAAAAAAyAOr/AAAAAAAAAAAzAOr/AAAAAAAAAAA0AOr/AAAAAAAAAAA1AOr/AAAAAAAAAAA2AOr/AAAAAAAAAAA3AOr/AAAAAAAAAAA4AOr/AAAAAAAAAAA5AOr/AAAAAAAAAAA6AOr/AAAAAAAAAAA7AOr/AAAAAAAAAAA8AOr/AAAAAAAAAAA9AOr/AAAAAAAAAAA+AOr/AAAAAAAAAAA/AOr/AAAAAAAAAABAAOr/AAAAAAAAAABBAOr/AAAAAAAAAABCAOr/AAAAAAAAAABDAOr/AAAAAAAAAABEAOr/AAAAAAAAAABFAOr/AAAAAAAAAABGAOr/AAAAAAAAAABHAOr/AAAAAAAAAABIAOr/AAAAAAAAAABJAOr/AAAAAAAAAABKAOr/AAAAAAAAAABLAOr/AAAAAAAAAABMAOr/AAAAAAAAAABNAOr/AAAAAAAAAABOAOr/AAAAAAAAAABPAOr/AAAAAAAAAABQAOr/AAAAAAAAAABRAOr/AAAAAAAAAABSAOr/AAAAAAAAAABTAOr/AAAAAAAAAABUAOr/AAAAAAAAAABVAOr/AAAAAAAAAABWAOr/AAAAAAAAAABXAOr/AAAAAAAAAABYAOr/AAAAAAAAAABZAOr/AAAAAAAAAABaAOr/AAAAAAAAAABbAOr/AAAAAAAAAABcAOr/AAAAAAAAAABdAOr/AAAAAAAAAABeAOr/AAAAAAAAAABfAOr/AAAAAAAAAABgAOr/AAAAAAAAAABhAOr/AAAAAAAAAABiAOr/AAAAAAAAAABjAOr/AAAAAAAAAABkAOr/AAAAAAAAAABlAOr/AAAAAAAAAABmAOr/AAAAAAAAAABnAOr/AAAAAAAAAABNAOv/AgAAAAAAAQBOAOv/AgAAAAAAAQBPAOv/AgAAAAAAAQBQAOv/AgAAAAAAAQBRAOv/AgAAAAAAAQBSAOv/AgAAAAAAAQBTAOv/AgAAAAAAAQBUAOv/AgAAAAAAAQBiAOv/AgAAAAAAAQBjAOv/AgAAAAAAAQBkAOv/AgAAAAAAAQBlAOv/AgAAAAAAAQBmAOv/AgAAAAAAAQBnAOv/AgAAAAAAAQBnAOn/AAAAAAAAAABnAOj/AAAAAAAAAABnAOf/AAAAAAAAAABnAOb/AAAAAAAAAABnAOX/AAAAAAAAAABnAOT/AAAAAAAAAABnAOP/AAAAAAAAAABnAOL/AAAAAAAAAABnAOH/AAAAAAAAAABnAOD/AAAAAAAAAABnAN//AAAAAAAAAABnAN7/AAAAAAAAAABnAN3/AAAAAAAAAABnANz/AAAAAAAAAABnANv/AAAAAAAAAABnANr/AAAAAAAAAABnANn/AAAAAAAAAABnANj/AAAAAAAAAABnANf/AAAAAAAAAABnANb/AAAAAAAAAABnANX/AAAAAAAAAABnANT/AAAAAAAAAABnANP/AAAAAAAAAABnANL/AAAAAAAAAABnANH/AAAAAAAAAABnAND/AAAAAAAAAABnAM//AAAAAAAAAABnAM7/AAAAAAAAAABnAM3/AAAAAAAAAABnAMz/AAAAAAAAAABnAMv/AAAAAAAAAABnAMr/AAAAAAAAAABnAMn/AAAAAAAAAABnAMj/AAAAAAAAAABnAMf/AAAAAAAAAABnAMb/AAAAAAAAAABnAMX/AAAAAAAAAABnAMT/AAAAAAAAAABnAMP/AAAAAAAAAABnAML/AAAAAAAAAABnAMH/AAAAAAAAAABnAMD/AAAAAAAAAABnAL//AAAAAAAAAABnAL7/AAAAAAAAAABnAL3/AAAAAAAAAAAqAOr/AAAAAAAAAAApAOr/AAAAAAAAAAAoAOr/AAAAAAAAAAAnAOr/AAAAAAAAAAAmAOr/AAAAAAAAAAAlAOr/AAAAAAAAAAAkAOr/AAAAAAAAAAAjAOr/AAAAAAAAAAAiAOr/AAAAAAAAAAAhAOr/AAAAAAAAAAAgAOr/AAAAAAAAAAAfAOr/AAAAAAAAAAAeAOr/AAAAAAAAAAAdAOr/AAAAAAAAAAAcAOr/AAAAAAAAAAAbAOr/AAAAAAAAAAAaAOr/AAAAAAAAAAAZAOr/AAAAAAAAAAAYAOr/AAAAAAAAAAAXAOr/AAAAAAAAAAAWAOr/AAAAAAAAAAAVAOr/AAAAAAAAAAAUAOr/AAAAAAAAAAATAOr/AAAAAAAAAAASAOr/AAAAAAAAAAARAOr/AAAAAAAAAAAQAOr/AAAAAAAAAAAPAOr/AAAAAAAAAAAOAOr/AAAAAAAAAAANAOr/AAAAAAAAAAAMAOr/AAAAAAAAAAALAOr/AAAAAAAAAAAKAOr/AAAAAAAAAAAJAOr/AAAAAAAAAAAIAOr/AAAAAAAAAAAHAOr/AAAAAAAAAAAGAOr/AAAAAAAAAAAFAOr/AAAAAAAAAAAEAOr/AAAAAAAAAAADAOr/AAAAAAAAAAACAOr/AAAAAAAAAAABAOr/AAAAAAAAAAAqAOv/AgAAAAAAAQApAOv/AgAAAAAAAQAoAOv/AgAAAAAAAQAnAOv/AgAAAAAAAQAmAOv/AgAAAAAAAQAlAOv/AgAAAAAAAQAkAOv/AgAAAAAAAQAjAOv/AgAAAAAAAQAiAOv/AgAAAAAAAQAhAOv/AgAAAAAAAQAgAOv/AgAAAAAAAQAfAOv/AgAAAAAAAQAeAOv/AgAAAAAAAQAdAOv/AgAAAAAAAQAcAOv/AgAAAAAAAQAbAOv/AgAAAAAAAQAaAOv/AgAAAAAAAQAZAOv/AgAAAAAAAQAYAOv/AgAAAAAAAQAXAOv/AgAAAAAAAQAWAOv/AgAAAAAAAQAVAOv/AgAAAAAAAQAUAOv/AgAAAAAAAQATAOv/AgAAAAAAAQASAOv/AgAAAAAAAQARAOv/AgAAAAAAAQAQAOv/AgAAAAAAAQAPAOv/AgAAAAAAAQAOAOv/AgAAAAAAAQANAOv/AgAAAAAAAQAMAOv/AgAAAAAAAQALAOv/AgAAAAAAAQAKAOv/AgAAAAAAAQAJAOv/AgAAAAAAAQAIAOv/AgAAAAAAAQAHAOv/AgAAAAAAAQAGAOv/AgAAAAAAAQAFAOv/AgAAAAAAAQAEAOv/AgAAAAAAAQADAOv/AgAAAAAAAQACAOv/AgAAAAAAAQABAOv/AgAAAAAAAQArAOv/AgAAAAAAAQAsAOv/AgAAAAAAAQAtAOv/AgAAAAAAAQAuAOv/AgAAAAAAAQAvAOv/AgAAAAAAAQAwAOv/AgAAAAAAAQAxAOv/AgAAAAAAAQAyAOv/AgAAAAAAAQA7AOv/AgAAAAAAAQA8AOv/AgAAAAAAAQA9AOv/AgAAAAAAAQA+AOv/AgAAAAAAAQA/AOv/AgAAAAAAAQBAAOv/AgAAAAAAAQBBAOv/AgAAAAAAAQBCAOv/AgAAAAAAAQBkAPb/AAAAAAAAAABlAPb/AAAAAAAAAABmAPb/AAAAAAAAAABnAPb/AAAAAAAAAABkAPP/AAAAAAAAAABkAPT/AAAAAAAAAABkAPX/AAAAAAAAAABlAPP/AAAAAAAAAABlAPT/AAAAAAAAAABlAPX/AAAAAAAAAABmAPP/AAAAAAAAAABmAPT/AAAAAAAAAABmAPX/AAAAAAAAAABnAPP/AAAAAAAAAABnAPT/AAAAAAAAAABnAPX/AAAAAAAAAABwAPj/AAAAAAAAAABwAPn/AAAAAAAAAABwAPr/AAAAAAAAAABwAPv/AAAAAAAAAABxAPj/AAAAAAAAAABxAPn/AAAAAAAAAABxAPr/AAAAAAAAAABxAPv/AAAAAAAAAAByAPj/AAAAAAAAAAByAPn/AAAAAAAAAAByAPr/AAAAAAAAAAByAPv/AAAAAAAAAABzAPj/AAAAAAAAAABzAPn/AAAAAAAAAABzAPr/AAAAAAAAAABzAPv/AAAAAAAAAAB/AO7/AAAAAAAAAAB/AO//AAAAAAAAAAB/APD/AAAAAAAAAAB/APH/AAAAAAAAAACAAO7/AAAAAAAAAACAAO//AAAAAAAAAACAAPD/AAAAAAAAAACAAPH/AAAAAAAAAACBAO7/AAAAAAAAAACBAO//AAAAAAAAAACBAPD/AAAAAAAAAACBAPH/AAAAAAAAAACCAO7/AAAAAAAAAACCAO//AAAAAAAAAACCAPD/AAAAAAAAAACCAPH/AAAAAAAAAACPAA8AAAAAAAAAAACPAA4AAAAAAAAAAACPAA0AAAAAAAAAAACPAAwAAAAAAAAAAACPAAsAAAAAAAAAAACPAAoAAAAAAAAAAACPAAkAAAAAAAAAAACPAAgAAAAAAAAAAACPAAcAAAAAAAAAAACPAAYAAAAAAAAAAACPAAUAAAAAAAAAAACPAAQAAAAAAAAAAACPAAMAAAAAAAAAAACPAAIAAAAAAAAAAACPAAEAAAAAAAAAAACPAAAAAAAAAAAAAACPAP//AAAAAAAAAACPAP7/AAAAAAAAAACPAP3/AAAAAAAAAACPAPz/AAAAAAAAAACPAPv/AAAAAAAAAACPAPr/AAAAAAAAAACPAPn/AAAAAAAAAACPAPj/AAAAAAAAAACPAPf/AAAAAAAAAACPAPb/AAAAAAAAAACPAPX/AAAAAAAAAACPAPT/AAAAAAAAAACPAPP/AAAAAAAAAACPAPL/AAAAAAAAAACPAPH/AAAAAAAAAACPAPD/AAAAAAAAAACPAO//AAAAAAAAAACPAO7/AAAAAAAAAACPAO3/AAAAAAAAAACPAOz/AAAAAAAAAACPAOv/AAAAAAAAAACPAOr/AAAAAAAAAACPAOn/AAAAAAAAAACPAOj/AAAAAAAAAACPAOf/AAAAAAAAAACPAOb/AAAAAAAAAACPAOX/AAAAAAAAAACPAOT/AAAAAAAAAACPAOP/AAAAAAAAAACPAOL/AAAAAAAAAACPAOH/AAAAAAAAAACPAOD/AAAAAAAAAACPAN//AAAAAAAAAACPAN7/AAAAAAAAAACPAN3/AAAAAAAAAACPANz/AAAAAAAAAACPANv/AAAAAAAAAACPANr/AAAAAAAAAACPANn/AAAAAAAAAACPANj/AAAAAAAAAACPANf/AAAAAAAAAACPANb/AAAAAAAAAACPANX/AAAAAAAAAACPANT/AAAAAAAAAACPANP/AAAAAAAAAACPANL/AAAAAAAAAACPANH/AAAAAAAAAACPAND/AAAAAAAAAACPAM//AAAAAAAAAACPAM7/AAAAAAAAAACPAM3/AAAAAAAAAACPAMz/AAAAAAAAAACPAMv/AAAAAAAAAACPAMr/AAAAAAAAAACPAMn/AAAAAAAAAACPAMj/AAAAAAAAAACPAMf/AAAAAAAAAACPAMb/AAAAAAAAAACPAMX/AAAAAAAAAACPAMT/AAAAAAAAAACPAMP/AAAAAAAAAACPAML/AAAAAAAAAACPAMH/AAAAAAAAAACPAMD/AAAAAAAAAACPAL//AAAAAAAAAACPAL7/AAAAAAAAAACPAL3/AAAAAAAAAABxANX/AAAAAAAAAABxANb/AAAAAAAAAABxANf/AAAAAAAAAABxANj/AAAAAAAAAAByANX/AAAAAAAAAAByANb/AAAAAAAAAAByANf/AAAAAAAAAAByANj/AAAAAAAAAABzANX/AAAAAAAAAABzANb/AAAAAAAAAABzANf/AAAAAAAAAABzANj/AAAAAAAAAAB0ANX/AAAAAAAAAAB0ANb/AAAAAAAAAAB0ANf/AAAAAAAAAAB0ANj/AAAAAAAAAACCAMH/AAAAAAAAAACCAML/AAAAAAAAAACCAMP/AAAAAAAAAACCAMT/AAAAAAAAAAB/AMH/AAAAAAAAAAB/AML/AAAAAAAAAAB/AMP/AAAAAAAAAAB/AMT/AAAAAAAAAACAAMH/AAAAAAAAAACAAML/AAAAAAAAAACAAMP/AAAAAAAAAACAAMT/AAAAAAAAAACBAMH/AAAAAAAAAACBAML/AAAAAAAAAACBAMP/AAAAAAAAAACBAMT/AAAAAAAAAABoAOr/AgAAAAAAAwBoAOn/AgAAAAAAAwBoAOj/AgAAAAAAAwBoAOf/AgAAAAAAAwBoAOb/AgAAAAAAAwBoAOX/AgAAAAAAAwBoAOT/AgAAAAAAAwBoAOP/AgAAAAAAAwBoAOL/AgAAAAAAAwBoAOH/AgAAAAAAAwBoAOD/AgAAAAAAAwBoAN//AgAAAAAAAwBoAN7/AgAAAAAAAwBoAN3/AgAAAAAAAwBoANz/AgAAAAAAAwBoANv/AgAAAAAAAwBoANr/AgAAAAAAAwBoANn/AgAAAAAAAwBoANj/AgAAAAAAAwBoANf/AgAAAAAAAwBoANb/AgAAAAAAAwBoANX/AgAAAAAAAwBoANT/AgAAAAAAAwBoANP/AgAAAAAAAwABAA8AAgAAAAAABAACAA8AAgAAAAAABAADAA8AAgAAAAAABAAEAA8AAgAAAAAABAAFAA8AAgAAAAAABAAGAA8AAgAAAAAABAAHAA8AAgAAAAAABAAIAA8AAgAAAAAABAAJAA8AAgAAAAAABAAKAA8AAgAAAAAABAALAA8AAgAAAAAABAAMAA8AAgAAAAAABAANAA8AAAAAAAAAAAAOAA8AAAAAAAAAAAAPAA8AAAAAAAAAAAAQAA8AAAAAAAAAAAARAA8AAgAAAAAABAASAA8AAgAAAAAABAATAA8AAgAAAAAABAAUAA8AAgAAAAAABAAVAA8AAgAAAAAABAAWAA8AAgAAAAAABAAXAA8AAgAAAAAABAAYAA8AAgAAAAAABAAZAA8AAgAAAAAABAAaAA8AAgAAAAAABAAbAA8AAgAAAAAABAAcAA8AAgAAAAAABAAdAA8AAgAAAAAABAAeAA8AAgAAAAAABAAfAA8AAgAAAAAABAAgAA8AAgAAAAAABAAhAA8AAgAAAAAABAAiAA8AAgAAAAAABAAjAA8AAgAAAAAABAAkAA8AAgAAAAAABAAlAA8AAgAAAAAABAAmAA8AAgAAAAAABAAnAA8AAgAAAAAABAAoAA8AAgAAAAAABAApAA8AAgAAAAAABAAqAA8AAgAAAAAABAArAA8AAgAAAAAABAAsAA8AAgAAAAAABAAtAA8AAgAAAAAABAAuAA8AAgAAAAAABAAvAA8AAgAAAAAABAAwAA8AAgAAAAAABAAxAA8AAgAAAAAABAAyAA8AAgAAAAAABAAzAA8AAgAAAAAABAA0AA8AAgAAAAAABAA1AA8AAgAAAAAABAA2AA8AAgAAAAAABAA3AA8AAgAAAAAABAA4AA8AAgAAAAAABAA5AA8AAgAAAAAABAA6AA8AAgAAAAAABAA7AA8AAgAAAAAABAA8AA8AAgAAAAAABAA9AA8AAgAAAAAABAA+AA8AAgAAAAAABAA/AA8AAgAAAAAABABAAA8AAgAAAAAABABBAA8AAgAAAAAABABCAA8AAgAAAAAABABDAA8AAgAAAAAABABEAA8AAgAAAAAABABFAA8AAgAAAAAABABGAA8AAgAAAAAABABHAA8AAgAAAAAABABIAA8AAgAAAAAABABJAA8AAgAAAAAABABKAA8AAgAAAAAABABLAA8AAgAAAAAABABMAA8AAgAAAAAABABNAA8AAgAAAAAABABOAA8AAgAAAAAABABPAA8AAgAAAAAABABQAA8AAgAAAAAABABRAA8AAgAAAAAABABSAA8AAgAAAAAABABTAA8AAgAAAAAABABUAA8AAgAAAAAABABVAA8AAgAAAAAABABWAA8AAgAAAAAABABXAA8AAgAAAAAABABYAA8AAgAAAAAABABZAA8AAgAAAAAABABaAA8AAgAAAAAABABbAA8AAgAAAAAABABcAA8AAgAAAAAABABdAA8AAgAAAAAABABeAA8AAgAAAAAABABfAA8AAgAAAAAABABgAA8AAgAAAAAABABhAA8AAgAAAAAABABiAA8AAgAAAAAABABjAA8AAgAAAAAABABkAA8AAgAAAAAABABlAA8AAgAAAAAABABmAA8AAgAAAAAABABnAA8AAgAAAAAABABoAA8AAgAAAAAABABpAA8AAgAAAAAABABqAA8AAgAAAAAABABrAA8AAgAAAAAABABsAA8AAgAAAAAABABtAA8AAgAAAAAABABuAA8AAgAAAAAABABvAA8AAgAAAAAABABwAA8AAgAAAAAABABxAA8AAgAAAAAABAByAA8AAgAAAAAABABzAA8AAgAAAAAABAB0AA8AAgAAAAAABAB1AA8AAgAAAAAABAB2AA8AAgAAAAAABAB3AA8AAgAAAAAABAB4AA8AAgAAAAAABAB5AA8AAgAAAAAABAB6AA8AAgAAAAAABAB7AA8AAgAAAAAABAB8AA8AAgAAAAAABAB9AA8AAgAAAAAABAB+AA8AAgAAAAAABAB/AA8AAgAAAAAABACAAA8AAgAAAAAABACBAA8AAgAAAAAABACCAA8AAgAAAAAABACDAA8AAgAAAAAABACEAA8AAgAAAAAABACFAA8AAgAAAAAABACGAA8AAgAAAAAABACHAA8AAgAAAAAABACIAA8AAgAAAAAABACJAA8AAgAAAAAABACKAA8AAgAAAAAABACLAA8AAgAAAAAABACMAA8AAgAAAAAABACNAA8AAgAAAAAABACOAA8AAgAAAAAABAABAAAAAAAAAAAAAAABAP//AAAAAAAAAAABAP7/AgAAAAAAAwABAP3/AgAAAAAAAwABAPz/AgAAAAAAAwABAPv/AgAAAAAAAwABAPr/AgAAAAAAAwABAPn/AgAAAAAAAwABAPj/AgAAAAAAAwABAPf/AgAAAAAAAwABAPb/AgAAAAAAAwABAPX/AgAAAAAAAwABAPT/AgAAAAAAAwABAPP/AgAAAAAAAwABAPL/AgAAAAAAAwABAPH/AgAAAAAAAwABAPD/AgAAAAAAAwABAO//AgAAAAAAAwABAO7/AgAAAAAAAwABAO3/AgAAAAAAAwABAOz/AgAAAAAAAwANAA0AAAAAAAAAAAANAA4AAAAAAAAAAAAOAA0AAAAAAAAAAAAOAA4AAAAAAAAAAAAPAA0AAAAAAAAAAAAPAA4AAAAAAAAAAAAQAA0AAAAAAAAAAAAQAA4AAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAALAAAAAAAAAAAAAAATAAAAAAAAAAAAAAASAAQAAAAAAAAAAAATAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAVAAQAAAAAAAAAAAAWAAQAAAAAAAAAAAAKAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAAOAP//AAAAAAAAAAAPAP//AAAAAAAAAAAQAP//AAAAAAAAAAARAP//AAAAAAAAAAASAP//AAAAAAAAAAATAP//AAAAAAAAAAAgAAUAAAAAAAAAAAAgAAYAAAAAAAAAAAAgAAcAAAAAAAAAAAAgAAgAAAAAAAAAAAAhAAUAAAAAAAAAAAAhAAYAAAAAAAAAAAAhAAcAAAAAAAAAAAAhAAgAAAAAAAAAAAAiAAUAAAAAAAAAAAAiAAYAAAAAAAAAAAAiAAcAAAAAAAAAAAAiAAgAAAAAAAAAAAAjAAUAAAAAAAAAAAAjAAYAAAAAAAAAAAAjAAcAAAAAAAAAAAAjAAgAAAAAAAAAAAAvAP7/AAAAAAAAAAAvAP//AAAAAAAAAAAvAAAAAAAAAAAAAAAvAAEAAAAAAAAAAAAwAP7/AAAAAAAAAAAwAP//AAAAAAAAAAAwAAAAAAAAAAAAAAAwAAEAAAAAAAAAAAAxAP7/AAAAAAAAAAAxAP//AAAAAAAAAAAxAAAAAAAAAAAAAAAxAAEAAAAAAAAAAAAyAP7/AAAAAAAAAAAyAP//AAAAAAAAAAAyAAAAAAAAAAAAAAAyAAEAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="camera_area" type="Area2D" parent="map"]
+visible = false
+position = Vector2(232, -136)
+collision_mask = 129
+script = ExtResource("19_jneqm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="map/camera_area"]
+position = Vector2(224, 0)
+shape = SubResource("RectangleShape2D_3ln1e")
+
+[node name="camera_area2" type="Area2D" parent="map"]
+visible = false
+position = Vector2(1192, -376)
+collision_mask = 129
+script = ExtResource("19_jneqm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="map/camera_area2"]
+position = Vector2(-496, -60)
+shape = SubResource("RectangleShape2D_bj6vh")
+
+[connection signal="body_entered" from="map/map/BlockTrap" to="map/map/BlockTrap" method="_on_body_entered"]
+[connection signal="ready" from="map/map/BlockTrap" to="map/map/BlockTrap" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85950" to="map/map/@Area2D@85950" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85950" to="map/map/@Area2D@85950" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85951" to="map/map/@Area2D@85951" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85951" to="map/map/@Area2D@85951" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85952" to="map/map/@Area2D@85952" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85952" to="map/map/@Area2D@85952" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85953" to="map/map/@Area2D@85953" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85953" to="map/map/@Area2D@85953" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85954" to="map/map/@Area2D@85954" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85954" to="map/map/@Area2D@85954" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85955" to="map/map/@Area2D@85955" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85955" to="map/map/@Area2D@85955" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85956" to="map/map/@Area2D@85956" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85956" to="map/map/@Area2D@85956" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85957" to="map/map/@Area2D@85957" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85957" to="map/map/@Area2D@85957" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85958" to="map/map/@Area2D@85958" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85958" to="map/map/@Area2D@85958" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85959" to="map/map/@Area2D@85959" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85959" to="map/map/@Area2D@85959" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85960" to="map/map/@Area2D@85960" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85960" to="map/map/@Area2D@85960" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85961" to="map/map/@Area2D@85961" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85961" to="map/map/@Area2D@85961" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85962" to="map/map/@Area2D@85962" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85962" to="map/map/@Area2D@85962" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85963" to="map/map/@Area2D@85963" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85963" to="map/map/@Area2D@85963" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85964" to="map/map/@Area2D@85964" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85964" to="map/map/@Area2D@85964" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85965" to="map/map/@Area2D@85965" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85965" to="map/map/@Area2D@85965" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85966" to="map/map/@Area2D@85966" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85966" to="map/map/@Area2D@85966" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85967" to="map/map/@Area2D@85967" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85967" to="map/map/@Area2D@85967" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85968" to="map/map/@Area2D@85968" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85968" to="map/map/@Area2D@85968" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85969" to="map/map/@Area2D@85969" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85969" to="map/map/@Area2D@85969" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85970" to="map/map/@Area2D@85970" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85970" to="map/map/@Area2D@85970" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85971" to="map/map/@Area2D@85971" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85971" to="map/map/@Area2D@85971" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85972" to="map/map/@Area2D@85972" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85972" to="map/map/@Area2D@85972" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85973" to="map/map/@Area2D@85973" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85973" to="map/map/@Area2D@85973" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85974" to="map/map/@Area2D@85974" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85974" to="map/map/@Area2D@85974" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85975" to="map/map/@Area2D@85975" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85975" to="map/map/@Area2D@85975" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85976" to="map/map/@Area2D@85976" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85976" to="map/map/@Area2D@85976" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85977" to="map/map/@Area2D@85977" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85977" to="map/map/@Area2D@85977" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85978" to="map/map/@Area2D@85978" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85978" to="map/map/@Area2D@85978" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85979" to="map/map/@Area2D@85979" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85979" to="map/map/@Area2D@85979" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85980" to="map/map/@Area2D@85980" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85980" to="map/map/@Area2D@85980" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85981" to="map/map/@Area2D@85981" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85981" to="map/map/@Area2D@85981" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85982" to="map/map/@Area2D@85982" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85982" to="map/map/@Area2D@85982" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85983" to="map/map/@Area2D@85983" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85983" to="map/map/@Area2D@85983" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85984" to="map/map/@Area2D@85984" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85984" to="map/map/@Area2D@85984" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85985" to="map/map/@Area2D@85985" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85985" to="map/map/@Area2D@85985" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85986" to="map/map/@Area2D@85986" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85986" to="map/map/@Area2D@85986" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85987" to="map/map/@Area2D@85987" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85987" to="map/map/@Area2D@85987" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85988" to="map/map/@Area2D@85988" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85988" to="map/map/@Area2D@85988" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85989" to="map/map/@Area2D@85989" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85989" to="map/map/@Area2D@85989" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85990" to="map/map/@Area2D@85990" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85990" to="map/map/@Area2D@85990" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85991" to="map/map/@Area2D@85991" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85991" to="map/map/@Area2D@85991" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85992" to="map/map/@Area2D@85992" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85992" to="map/map/@Area2D@85992" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85993" to="map/map/@Area2D@85993" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85993" to="map/map/@Area2D@85993" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85994" to="map/map/@Area2D@85994" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85994" to="map/map/@Area2D@85994" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85995" to="map/map/@Area2D@85995" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85995" to="map/map/@Area2D@85995" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85996" to="map/map/@Area2D@85996" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85996" to="map/map/@Area2D@85996" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85997" to="map/map/@Area2D@85997" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85997" to="map/map/@Area2D@85997" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85998" to="map/map/@Area2D@85998" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85998" to="map/map/@Area2D@85998" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@85999" to="map/map/@Area2D@85999" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@85999" to="map/map/@Area2D@85999" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86000" to="map/map/@Area2D@86000" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86000" to="map/map/@Area2D@86000" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86001" to="map/map/@Area2D@86001" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86001" to="map/map/@Area2D@86001" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86002" to="map/map/@Area2D@86002" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86002" to="map/map/@Area2D@86002" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86003" to="map/map/@Area2D@86003" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86003" to="map/map/@Area2D@86003" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86004" to="map/map/@Area2D@86004" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86004" to="map/map/@Area2D@86004" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86005" to="map/map/@Area2D@86005" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86005" to="map/map/@Area2D@86005" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86006" to="map/map/@Area2D@86006" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86006" to="map/map/@Area2D@86006" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86007" to="map/map/@Area2D@86007" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86007" to="map/map/@Area2D@86007" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86008" to="map/map/@Area2D@86008" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86008" to="map/map/@Area2D@86008" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86009" to="map/map/@Area2D@86009" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86009" to="map/map/@Area2D@86009" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86010" to="map/map/@Area2D@86010" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86010" to="map/map/@Area2D@86010" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86011" to="map/map/@Area2D@86011" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86011" to="map/map/@Area2D@86011" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86012" to="map/map/@Area2D@86012" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86012" to="map/map/@Area2D@86012" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86013" to="map/map/@Area2D@86013" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86013" to="map/map/@Area2D@86013" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86014" to="map/map/@Area2D@86014" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86014" to="map/map/@Area2D@86014" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86015" to="map/map/@Area2D@86015" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86015" to="map/map/@Area2D@86015" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86016" to="map/map/@Area2D@86016" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86016" to="map/map/@Area2D@86016" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86017" to="map/map/@Area2D@86017" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86017" to="map/map/@Area2D@86017" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86018" to="map/map/@Area2D@86018" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86018" to="map/map/@Area2D@86018" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86019" to="map/map/@Area2D@86019" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86019" to="map/map/@Area2D@86019" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86020" to="map/map/@Area2D@86020" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86020" to="map/map/@Area2D@86020" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86021" to="map/map/@Area2D@86021" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86021" to="map/map/@Area2D@86021" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86022" to="map/map/@Area2D@86022" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86022" to="map/map/@Area2D@86022" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86023" to="map/map/@Area2D@86023" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86023" to="map/map/@Area2D@86023" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86024" to="map/map/@Area2D@86024" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86024" to="map/map/@Area2D@86024" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86025" to="map/map/@Area2D@86025" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86025" to="map/map/@Area2D@86025" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86026" to="map/map/@Area2D@86026" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86026" to="map/map/@Area2D@86026" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86027" to="map/map/@Area2D@86027" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86027" to="map/map/@Area2D@86027" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86028" to="map/map/@Area2D@86028" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86028" to="map/map/@Area2D@86028" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86029" to="map/map/@Area2D@86029" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86029" to="map/map/@Area2D@86029" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86030" to="map/map/@Area2D@86030" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86030" to="map/map/@Area2D@86030" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86031" to="map/map/@Area2D@86031" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86031" to="map/map/@Area2D@86031" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86032" to="map/map/@Area2D@86032" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86032" to="map/map/@Area2D@86032" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86033" to="map/map/@Area2D@86033" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86033" to="map/map/@Area2D@86033" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86034" to="map/map/@Area2D@86034" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86034" to="map/map/@Area2D@86034" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86035" to="map/map/@Area2D@86035" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86035" to="map/map/@Area2D@86035" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86036" to="map/map/@Area2D@86036" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86036" to="map/map/@Area2D@86036" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86037" to="map/map/@Area2D@86037" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86037" to="map/map/@Area2D@86037" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86038" to="map/map/@Area2D@86038" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86038" to="map/map/@Area2D@86038" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86039" to="map/map/@Area2D@86039" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86039" to="map/map/@Area2D@86039" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86040" to="map/map/@Area2D@86040" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86040" to="map/map/@Area2D@86040" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86041" to="map/map/@Area2D@86041" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86041" to="map/map/@Area2D@86041" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86042" to="map/map/@Area2D@86042" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86042" to="map/map/@Area2D@86042" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86043" to="map/map/@Area2D@86043" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86043" to="map/map/@Area2D@86043" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86044" to="map/map/@Area2D@86044" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86044" to="map/map/@Area2D@86044" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86045" to="map/map/@Area2D@86045" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86045" to="map/map/@Area2D@86045" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86046" to="map/map/@Area2D@86046" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86046" to="map/map/@Area2D@86046" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86047" to="map/map/@Area2D@86047" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86047" to="map/map/@Area2D@86047" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86048" to="map/map/@Area2D@86048" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86048" to="map/map/@Area2D@86048" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86049" to="map/map/@Area2D@86049" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86049" to="map/map/@Area2D@86049" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86050" to="map/map/@Area2D@86050" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86050" to="map/map/@Area2D@86050" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86051" to="map/map/@Area2D@86051" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86051" to="map/map/@Area2D@86051" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86052" to="map/map/@Area2D@86052" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86052" to="map/map/@Area2D@86052" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86053" to="map/map/@Area2D@86053" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86053" to="map/map/@Area2D@86053" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86054" to="map/map/@Area2D@86054" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86054" to="map/map/@Area2D@86054" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86055" to="map/map/@Area2D@86055" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86055" to="map/map/@Area2D@86055" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86056" to="map/map/@Area2D@86056" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86056" to="map/map/@Area2D@86056" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86057" to="map/map/@Area2D@86057" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86057" to="map/map/@Area2D@86057" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86058" to="map/map/@Area2D@86058" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86058" to="map/map/@Area2D@86058" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86059" to="map/map/@Area2D@86059" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86059" to="map/map/@Area2D@86059" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86060" to="map/map/@Area2D@86060" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86060" to="map/map/@Area2D@86060" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86061" to="map/map/@Area2D@86061" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86061" to="map/map/@Area2D@86061" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86062" to="map/map/@Area2D@86062" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86062" to="map/map/@Area2D@86062" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86063" to="map/map/@Area2D@86063" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86063" to="map/map/@Area2D@86063" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86064" to="map/map/@Area2D@86064" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86064" to="map/map/@Area2D@86064" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86065" to="map/map/@Area2D@86065" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86065" to="map/map/@Area2D@86065" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86066" to="map/map/@Area2D@86066" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86066" to="map/map/@Area2D@86066" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86067" to="map/map/@Area2D@86067" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86067" to="map/map/@Area2D@86067" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86068" to="map/map/@Area2D@86068" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86068" to="map/map/@Area2D@86068" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86069" to="map/map/@Area2D@86069" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86069" to="map/map/@Area2D@86069" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86070" to="map/map/@Area2D@86070" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86070" to="map/map/@Area2D@86070" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86071" to="map/map/@Area2D@86071" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86071" to="map/map/@Area2D@86071" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86072" to="map/map/@Area2D@86072" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86072" to="map/map/@Area2D@86072" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86073" to="map/map/@Area2D@86073" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86073" to="map/map/@Area2D@86073" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86074" to="map/map/@Area2D@86074" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86074" to="map/map/@Area2D@86074" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86075" to="map/map/@Area2D@86075" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86075" to="map/map/@Area2D@86075" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86076" to="map/map/@Area2D@86076" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86076" to="map/map/@Area2D@86076" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86077" to="map/map/@Area2D@86077" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86077" to="map/map/@Area2D@86077" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86078" to="map/map/@Area2D@86078" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86078" to="map/map/@Area2D@86078" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86079" to="map/map/@Area2D@86079" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86079" to="map/map/@Area2D@86079" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86080" to="map/map/@Area2D@86080" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86080" to="map/map/@Area2D@86080" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86081" to="map/map/@Area2D@86081" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86081" to="map/map/@Area2D@86081" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86082" to="map/map/@Area2D@86082" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86082" to="map/map/@Area2D@86082" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86083" to="map/map/@Area2D@86083" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86083" to="map/map/@Area2D@86083" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86084" to="map/map/@Area2D@86084" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86084" to="map/map/@Area2D@86084" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86085" to="map/map/@Area2D@86085" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86085" to="map/map/@Area2D@86085" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86086" to="map/map/@Area2D@86086" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86086" to="map/map/@Area2D@86086" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86087" to="map/map/@Area2D@86087" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86087" to="map/map/@Area2D@86087" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86088" to="map/map/@Area2D@86088" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86088" to="map/map/@Area2D@86088" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86089" to="map/map/@Area2D@86089" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86089" to="map/map/@Area2D@86089" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86090" to="map/map/@Area2D@86090" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86090" to="map/map/@Area2D@86090" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86091" to="map/map/@Area2D@86091" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86091" to="map/map/@Area2D@86091" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86092" to="map/map/@Area2D@86092" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86092" to="map/map/@Area2D@86092" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86093" to="map/map/@Area2D@86093" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86093" to="map/map/@Area2D@86093" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86094" to="map/map/@Area2D@86094" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86094" to="map/map/@Area2D@86094" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86095" to="map/map/@Area2D@86095" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86095" to="map/map/@Area2D@86095" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86096" to="map/map/@Area2D@86096" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86096" to="map/map/@Area2D@86096" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86097" to="map/map/@Area2D@86097" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86097" to="map/map/@Area2D@86097" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86098" to="map/map/@Area2D@86098" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86098" to="map/map/@Area2D@86098" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86099" to="map/map/@Area2D@86099" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86099" to="map/map/@Area2D@86099" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86100" to="map/map/@Area2D@86100" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86100" to="map/map/@Area2D@86100" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86101" to="map/map/@Area2D@86101" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86101" to="map/map/@Area2D@86101" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86102" to="map/map/@Area2D@86102" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86102" to="map/map/@Area2D@86102" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86103" to="map/map/@Area2D@86103" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86103" to="map/map/@Area2D@86103" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86104" to="map/map/@Area2D@86104" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86104" to="map/map/@Area2D@86104" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86105" to="map/map/@Area2D@86105" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86105" to="map/map/@Area2D@86105" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86106" to="map/map/@Area2D@86106" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86106" to="map/map/@Area2D@86106" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86107" to="map/map/@Area2D@86107" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86107" to="map/map/@Area2D@86107" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86108" to="map/map/@Area2D@86108" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86108" to="map/map/@Area2D@86108" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86109" to="map/map/@Area2D@86109" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86109" to="map/map/@Area2D@86109" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86110" to="map/map/@Area2D@86110" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86110" to="map/map/@Area2D@86110" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86111" to="map/map/@Area2D@86111" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86111" to="map/map/@Area2D@86111" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86112" to="map/map/@Area2D@86112" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86112" to="map/map/@Area2D@86112" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86113" to="map/map/@Area2D@86113" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86113" to="map/map/@Area2D@86113" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86114" to="map/map/@Area2D@86114" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86114" to="map/map/@Area2D@86114" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86115" to="map/map/@Area2D@86115" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86115" to="map/map/@Area2D@86115" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86116" to="map/map/@Area2D@86116" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86116" to="map/map/@Area2D@86116" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86117" to="map/map/@Area2D@86117" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86117" to="map/map/@Area2D@86117" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86118" to="map/map/@Area2D@86118" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86118" to="map/map/@Area2D@86118" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86119" to="map/map/@Area2D@86119" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86119" to="map/map/@Area2D@86119" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86120" to="map/map/@Area2D@86120" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86120" to="map/map/@Area2D@86120" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86121" to="map/map/@Area2D@86121" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86121" to="map/map/@Area2D@86121" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86122" to="map/map/@Area2D@86122" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86122" to="map/map/@Area2D@86122" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86123" to="map/map/@Area2D@86123" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86123" to="map/map/@Area2D@86123" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86124" to="map/map/@Area2D@86124" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86124" to="map/map/@Area2D@86124" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86125" to="map/map/@Area2D@86125" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86125" to="map/map/@Area2D@86125" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86126" to="map/map/@Area2D@86126" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86126" to="map/map/@Area2D@86126" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86127" to="map/map/@Area2D@86127" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86127" to="map/map/@Area2D@86127" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86128" to="map/map/@Area2D@86128" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86128" to="map/map/@Area2D@86128" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86129" to="map/map/@Area2D@86129" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86129" to="map/map/@Area2D@86129" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86130" to="map/map/@Area2D@86130" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86130" to="map/map/@Area2D@86130" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86131" to="map/map/@Area2D@86131" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86131" to="map/map/@Area2D@86131" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86132" to="map/map/@Area2D@86132" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86132" to="map/map/@Area2D@86132" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86133" to="map/map/@Area2D@86133" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86133" to="map/map/@Area2D@86133" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86134" to="map/map/@Area2D@86134" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86134" to="map/map/@Area2D@86134" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86135" to="map/map/@Area2D@86135" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86135" to="map/map/@Area2D@86135" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86136" to="map/map/@Area2D@86136" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86136" to="map/map/@Area2D@86136" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86137" to="map/map/@Area2D@86137" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86137" to="map/map/@Area2D@86137" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86138" to="map/map/@Area2D@86138" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86138" to="map/map/@Area2D@86138" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86139" to="map/map/@Area2D@86139" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86139" to="map/map/@Area2D@86139" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86140" to="map/map/@Area2D@86140" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86140" to="map/map/@Area2D@86140" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86141" to="map/map/@Area2D@86141" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86141" to="map/map/@Area2D@86141" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86142" to="map/map/@Area2D@86142" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86142" to="map/map/@Area2D@86142" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86143" to="map/map/@Area2D@86143" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86143" to="map/map/@Area2D@86143" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86144" to="map/map/@Area2D@86144" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86144" to="map/map/@Area2D@86144" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86145" to="map/map/@Area2D@86145" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86145" to="map/map/@Area2D@86145" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86146" to="map/map/@Area2D@86146" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86146" to="map/map/@Area2D@86146" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86147" to="map/map/@Area2D@86147" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86147" to="map/map/@Area2D@86147" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86148" to="map/map/@Area2D@86148" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86148" to="map/map/@Area2D@86148" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86149" to="map/map/@Area2D@86149" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86149" to="map/map/@Area2D@86149" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86150" to="map/map/@Area2D@86150" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86150" to="map/map/@Area2D@86150" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86151" to="map/map/@Area2D@86151" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86151" to="map/map/@Area2D@86151" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86152" to="map/map/@Area2D@86152" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86152" to="map/map/@Area2D@86152" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86153" to="map/map/@Area2D@86153" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86153" to="map/map/@Area2D@86153" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86154" to="map/map/@Area2D@86154" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86154" to="map/map/@Area2D@86154" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86155" to="map/map/@Area2D@86155" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86155" to="map/map/@Area2D@86155" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86156" to="map/map/@Area2D@86156" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86156" to="map/map/@Area2D@86156" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86157" to="map/map/@Area2D@86157" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86157" to="map/map/@Area2D@86157" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86158" to="map/map/@Area2D@86158" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86158" to="map/map/@Area2D@86158" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86159" to="map/map/@Area2D@86159" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86159" to="map/map/@Area2D@86159" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86160" to="map/map/@Area2D@86160" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86160" to="map/map/@Area2D@86160" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86161" to="map/map/@Area2D@86161" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86161" to="map/map/@Area2D@86161" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86162" to="map/map/@Area2D@86162" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86162" to="map/map/@Area2D@86162" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86163" to="map/map/@Area2D@86163" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86163" to="map/map/@Area2D@86163" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86164" to="map/map/@Area2D@86164" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86164" to="map/map/@Area2D@86164" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86165" to="map/map/@Area2D@86165" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86165" to="map/map/@Area2D@86165" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86166" to="map/map/@Area2D@86166" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86166" to="map/map/@Area2D@86166" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86167" to="map/map/@Area2D@86167" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86167" to="map/map/@Area2D@86167" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86168" to="map/map/@Area2D@86168" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86168" to="map/map/@Area2D@86168" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86169" to="map/map/@Area2D@86169" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86169" to="map/map/@Area2D@86169" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86170" to="map/map/@Area2D@86170" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86170" to="map/map/@Area2D@86170" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86171" to="map/map/@Area2D@86171" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86171" to="map/map/@Area2D@86171" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86172" to="map/map/@Area2D@86172" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86172" to="map/map/@Area2D@86172" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86173" to="map/map/@Area2D@86173" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86173" to="map/map/@Area2D@86173" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86174" to="map/map/@Area2D@86174" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86174" to="map/map/@Area2D@86174" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86175" to="map/map/@Area2D@86175" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86175" to="map/map/@Area2D@86175" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86176" to="map/map/@Area2D@86176" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86176" to="map/map/@Area2D@86176" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86177" to="map/map/@Area2D@86177" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86177" to="map/map/@Area2D@86177" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86178" to="map/map/@Area2D@86178" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86178" to="map/map/@Area2D@86178" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86179" to="map/map/@Area2D@86179" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86179" to="map/map/@Area2D@86179" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86180" to="map/map/@Area2D@86180" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86180" to="map/map/@Area2D@86180" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86181" to="map/map/@Area2D@86181" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86181" to="map/map/@Area2D@86181" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86182" to="map/map/@Area2D@86182" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86182" to="map/map/@Area2D@86182" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86183" to="map/map/@Area2D@86183" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86183" to="map/map/@Area2D@86183" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86184" to="map/map/@Area2D@86184" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86184" to="map/map/@Area2D@86184" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86185" to="map/map/@Area2D@86185" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86185" to="map/map/@Area2D@86185" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86186" to="map/map/@Area2D@86186" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86186" to="map/map/@Area2D@86186" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86187" to="map/map/@Area2D@86187" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86187" to="map/map/@Area2D@86187" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86188" to="map/map/@Area2D@86188" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86188" to="map/map/@Area2D@86188" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86189" to="map/map/@Area2D@86189" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86189" to="map/map/@Area2D@86189" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86190" to="map/map/@Area2D@86190" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86190" to="map/map/@Area2D@86190" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86191" to="map/map/@Area2D@86191" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86191" to="map/map/@Area2D@86191" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86192" to="map/map/@Area2D@86192" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86192" to="map/map/@Area2D@86192" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86193" to="map/map/@Area2D@86193" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86193" to="map/map/@Area2D@86193" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86194" to="map/map/@Area2D@86194" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86194" to="map/map/@Area2D@86194" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86195" to="map/map/@Area2D@86195" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86195" to="map/map/@Area2D@86195" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86196" to="map/map/@Area2D@86196" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86196" to="map/map/@Area2D@86196" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86197" to="map/map/@Area2D@86197" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86197" to="map/map/@Area2D@86197" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86198" to="map/map/@Area2D@86198" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86198" to="map/map/@Area2D@86198" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86199" to="map/map/@Area2D@86199" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86199" to="map/map/@Area2D@86199" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86200" to="map/map/@Area2D@86200" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86200" to="map/map/@Area2D@86200" method="_on_ready"]
+[connection signal="body_entered" from="map/map/@Area2D@86201" to="map/map/@Area2D@86201" method="_on_body_entered"]
+[connection signal="ready" from="map/map/@Area2D@86201" to="map/map/@Area2D@86201" method="_on_ready"]

@@ -175,8 +175,8 @@ func _physics_process(delta: float) -> void:
 		var gravity_dir = get_gravity().normalized()
 		var height_diff = (jump_start_position - global_position).project(-gravity_dir).length()
 		var height_in_player_units = height_diff / player_height
-		print('height_diff', height_diff)
-		print("当前跳跃高度: %.2f 个角色高度" % height_in_player_units)
+		#print('height_diff', height_diff)
+		#print("当前跳跃高度: %.2f 个角色高度" % height_in_player_units)
 
 	# if jump_buffer_timer > 0:
 	# 	print('jump buffer timer', jump_buffer_timer)
