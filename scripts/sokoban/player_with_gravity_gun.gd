@@ -60,6 +60,12 @@ var jump_start_position: Vector2 = Vector2.ZERO
 @export var fall_multiplier_duration: float = 0.2  # 加倍重力的持续时间(秒)
 var fall_multiplier_timer: float = 0.0  # 计时器
 
+# 在类变量中添加
+var last_hook_position: Vector2 = Vector2.ZERO
+var stuck_check_timer: float = 0.0
+var stuck_check_interval: float = 0.1  # 检查间隔时间
+var stuck_distance_threshold: float = 5.0  # 判定为卡住的距离阈值
+
 func _ready():
 	await ready
 	GameManager.load_game_state()
@@ -314,6 +320,9 @@ func _physics_process(delta: float) -> void:
 				hook_target = last_field
 	if is_hooking and is_instance_valid(hook_target):
 		hook_timer += delta
+		print('tracing hook block')
+		print('hook timer', hook_timer)
+		print('hook durtion')
 		if hook_timer >= hook_duration:
 			end_hook()
 			return
@@ -326,6 +335,20 @@ func _physics_process(delta: float) -> void:
 		if hook_distance < 30:
 			end_hook()
 			return
+			
+		# 检查是否卡住
+		stuck_check_timer += delta
+		if stuck_check_timer >= stuck_check_interval:
+			var moved_distance = global_position.distance_to(last_hook_position)
+			if moved_distance < stuck_distance_threshold:
+				# 如果在检查间隔内移动距离小于阈值，认为卡住了
+				end_hook()
+				return
+			# 更新位置和计时器
+			last_hook_position = global_position
+			stuck_check_timer = 0.0
+		
+				
 		# 计算钩爪力
 		var target_velocity = hook_direction * hook_speed
 		# 使用插值平滑过渡到目标速度
@@ -391,7 +414,7 @@ func _physics_process(delta: float) -> void:
 		
 		
 	elif not direction and not is_hooking:
-		print('into deceleration')
+
 		var speed_step = Consts.SPEED / deceleration_frames  # 每帧减少的速度
 		if abs(current_speed) <= speed_step:
 			current_speed = 0
@@ -690,8 +713,9 @@ func handle_corner_correction() -> void:
 func hook(field: Node2D) -> void:
 	is_hooking = true
 	hook_target = field
-	hook_timer = 0.0  # 重置计时器
-	# print('hook start')
+	hook_timer = 0.0
+	stuck_check_timer = 0.0
+	last_hook_position = global_position  # 记录初始位置
 
 func end_hook() -> void:
 	is_hooking = false
