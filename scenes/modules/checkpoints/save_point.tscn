@@ -1,11 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://kfdbq76ixwrq"]
+[gd_scene load_steps=11 format=3 uid="uid://kfdbq76ixwrq"]
 
 [ext_resource type="Script" path="res://scripts/modules/checkpoints/save_point.gd" id="1_qeoh3"]
 [ext_resource type="Texture2D" uid="uid://djlitwmkmviun" path="res://assets/sprites/human/lamp.png" id="2_bador"]
 [ext_resource type="AudioStream" uid="uid://tb42whn5javk" path="res://assets/sounds/checkpoints/load.wav" id="3_ffag6"]
+[ext_resource type="Texture2D" uid="uid://dc3rowlo1my4s" path="res://assets/sprites/background/intro/light1.png" id="3_utb07"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cergc"]
 size = Vector2(15.25, 15.75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3knm"]
+atlas = ExtResource("3_utb07")
+region = Rect2(133, 0, 133, 137)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu3vu"]
+atlas = ExtResource("3_utb07")
+region = Rect2(0, 0, 133, 137)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jgrs2"]
 atlas = ExtResource("2_bador")
@@ -19,13 +28,24 @@ region = Rect2(32, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_s3knm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gu3vu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_jgrs2")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c3ei3")
 }],
 "loop": false,
-"name": &"default",
+"name": &"old",
 "speed": 1.0
 }]
 
@@ -38,10 +58,9 @@ script = ExtResource("1_qeoh3")
 shape = SubResource("RectangleShape2D_cergc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+position = Vector2(0, -4)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_uskgs")
-frame = 1
-frame_progress = 1.0
 
 [node name="Label" type="Label" parent="."]
 offset_left = -17.0

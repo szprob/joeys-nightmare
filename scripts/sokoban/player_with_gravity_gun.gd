@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var jump_audio: AudioStreamPlayer2D = $jump_audio
 # shooting
-@export var cooldown = 0.25
+@export var cooldown = 2
 @export var bullet_scene: PackedScene
 @export var mass: float = 1.0
 @export var second_jump_enabled = true
@@ -21,6 +21,13 @@ extends CharacterBody2D
 @export var jump_acceleration_frames: int = 4 # 达到最高跳跃速度需要的帧数
 @export var jump_deceleration_frames: int = 5 # 减速到0需要的帧数
 
+# hook variables
+var is_hooking = false
+var hook_target = null
+var hook_speed = 500.0
+var hook_strength = 20.0
+var hook_duration = 5  # 钩爪最大持续时间(秒)
+var hook_timer = 0.0    # 计时器
 
 var can_shoot = true
 var has_double_jumped = false
@@ -83,7 +90,7 @@ func start_jump() -> void:
 	var perpendicular_dir = Vector2(-gravity_dir.y, gravity_dir.x)  # 垂直于重力方向的向量
 	var horizontal_input = Input.get_axis("left", "right")
 	if horizontal_input != 0:
-		velocity += perpendicular_dir * (Consts.SPEED * 0.5 * horizontal_input)  # 可以调整这个系数
+		velocity += perpendicular_dir * (Consts.SPEED  * horizontal_input)  # 可以调整这个系数
 	
 	# 将跳跃速度分成多帧加速
 	var jump_speed_per_frame = abs(Consts.MAX_JUMP_VELOCITY) / jump_acceleration_frames
@@ -144,7 +151,8 @@ func shoot(Input) -> void:
 
 
 func _physics_process(delta: float) -> void:
-
+	can_move = true
+	# print('can shoot', can_shoot)
 	# logging
 	# print('second jump enabled', can_second_jump())
 	# print('coyote timer', coyote_timer)
@@ -295,7 +303,37 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		print('shooting')
 		shoot(Input)
-	
+
+	# hook
+	if Input.is_action_just_pressed("hook"):
+		if not active_gravity_gun_fields.is_empty():
+			var last_field = active_gravity_gun_fields.back()
+			if is_instance_valid(last_field) and not last_field.is_queued_for_deletion():
+				# 在这里实现钩爪逻辑，使用 last_field
+				hook(last_field)
+				hook_target = last_field
+	if is_hooking and is_instance_valid(hook_target):
+		hook_timer += delta
+		if hook_timer >= hook_duration:
+			end_hook()
+			return
+			
+		var hook_target_position = hook_target.global_position
+		var hook_direction = (hook_target_position - global_position).normalized()
+		var hook_distance = global_position.distance_to(hook_target_position)
+		
+		# 如果距离很近，结束钩爪状态
+		if hook_distance < 30:
+			end_hook()
+			return
+		# 计算钩爪力
+		var target_velocity = hook_direction * hook_speed
+		# 使用插值平滑过渡到目标速度
+		velocity = velocity.lerp(target_velocity, 0.8)
+		
+		# 仍然应用重力，但减小影响
+		# var gravity = get_gravity() * delta * 0.3
+		# velocity += gravity	
 	# TODO: fix this on different gravity direction
 	# Flip sprite based on movement direction 
 	
@@ -321,7 +359,8 @@ func _physics_process(delta: float) -> void:
 	# 	else:
 	# 		# 水平重力情况（向左或向右）
 	# 		velocity.y = direction.y * Consts.SPEED # 使用 direction.y 来控制上下移动
-	if direction:
+	if direction and not is_hooking:
+		# print('into handle movement')
 		# 根据重力方向调整移动
 		var speed_step = Consts.SPEED / acceleration_frames  # 每帧增加的速度
 		if abs(get_gravity().y) > abs(get_gravity().x):
@@ -351,7 +390,8 @@ func _physics_process(delta: float) -> void:
 		# 检测头顶上方的箱子
 		
 		
-	else:
+	elif not direction and not is_hooking:
+		print('into deceleration')
 		var speed_step = Consts.SPEED / deceleration_frames  # 每帧减少的速度
 		if abs(current_speed) <= speed_step:
 			current_speed = 0
@@ -363,6 +403,24 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.y = current_speed
 		
+	# var collision_collider = move_and_collide(velocity * delta)
+	
+	# # 处理碰撞
+	# if collision_collider:
+	# 	var collider = collision_collider.get_collider()
+		
+	# 	# 如果碰撞体是 CharacterBody2D
+	# 	if collider is CharacterBody2D:
+	# 		var normal = collision_collider.get_normal()
+	# 		var relative_velocity = velocity - collider.velocity
+	# 		var impulse = relative_velocity.dot(normal) * 0.5  # 0.5 是弹性系数
+			
+	# 		# 直接修改两个物体的速度
+	# 		velocity = velocity - normal * impulse
+	# 		collider.velocity = collider.velocity + normal * impulse
+			
+	# 		# 让引擎处理实际的移动
+	# 		collider.move_and_collide(collider.velocity * delta)
 
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
@@ -383,6 +441,19 @@ func _physics_process(delta: float) -> void:
 				# 只有当投影后的方向有效时才推动箱子
 				if projected_direction.length() > 0:
 					collider.push(projected_direction.normalized())
+			# elif abs(normal.dot(gravity_dir)) > 0.9:
+			# 	if collider.is_in_group("bouncy"):
+			# 		# 如果是弹性箱子，给玩家一个向上的速度
+			# 		velocity = -gravity_dir * Consts.MAX_JUMP_VELOCITY * 1.2
+			# 	else:
+			# 		var relative_velocity = velocity - collider.velocity
+			# 		var impulse = relative_velocity.dot(normal) * mass / (mass + collider.mass)
+					
+			# 		# 更新速度
+			# 		velocity -= normal * impulse
+			# 		collider.velocity += normal * impulse
+			# 		collider.stomp(normal * impulse * mass/ collider.mass, delta)
+
 
 	# 在处理移动之前检查can_move
 	if not can_move:
@@ -391,7 +462,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 0
 		move_and_slide()
 		return
-
+	
 	move_and_slide()
 	# push boxes
 	
@@ -479,6 +550,7 @@ func is_on_terrain() -> bool:
 	
 	# 只要计数器大于0就认为在地面上
 	return ground_contact_frames > 0
+	# return true
 
 func filp_player_sprite(direction):
 	# flip palyer sprite based on gravity direction
@@ -614,3 +686,17 @@ func handle_corner_correction() -> void:
 				position += offset * 0.5
 				print("应用边角修正: ", offset)
 				return  # 找到可行的修正方向后立即返回
+
+func hook(field: Node2D) -> void:
+	is_hooking = true
+	hook_target = field
+	hook_timer = 0.0  # 重置计时器
+	# print('hook start')
+
+func end_hook() -> void:
+	is_hooking = false
+	hook_target = null
+	# can_move = true
+	# 保持一定的动量
+	velocity = velocity * 0.5
+	# print('hook end')

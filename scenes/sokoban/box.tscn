@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhgixpqr8klwj"]
+[gd_scene load_steps=5 format=3 uid="uid://bhgixpqr8klwj"]
 
 [ext_resource type="Script" path="res://scripts/sokoban/basic_box.gd" id="1_mcoht"]
 [ext_resource type="Texture2D" uid="uid://btgd8wdsdtvdg" path="res://assets/sprites/wario/Game Boy Advance - Wario Land 4 - Crescent Moon Village.png" id="2_2t4gm"]
+[ext_resource type="Texture2D" uid="uid://cnv7kbgqqddl3" path="res://assets/sprites/background/intro/box1.png" id="3_oqtn4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwdh7"]
 size = Vector2(30, 30)
@@ -18,3 +19,7 @@ region_rect = Rect2(256, 48, 32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qwdh7")
+
+[node name="v2-1" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_oqtn4")

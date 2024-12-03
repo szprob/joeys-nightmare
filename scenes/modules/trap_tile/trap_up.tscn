@@ -1,7 +1,52 @@
-[gd_scene load_steps=5 format=3 uid="uid://8qshk6ynrxhj"]
+[gd_scene load_steps=41 format=3 uid="uid://b67w4ct47vhpw"]
 
+[ext_resource type="Texture2D" uid="uid://ddd58o3kftlsy" path="res://assets/sprites/background/intro/毒/毒_00000.png" id="2_7blek"]
 [ext_resource type="Texture2D" uid="uid://bwfxekt16jbbl" path="res://assets/sprites/human/trap.png" id="2_bnjs0"]
+[ext_resource type="Texture2D" uid="uid://dkxtpdfp8ui1c" path="res://assets/sprites/background/intro/ci1.png" id="2_ovihv"]
+[ext_resource type="Texture2D" uid="uid://hnn66ujlr7et" path="res://assets/sprites/background/intro/毒/毒_00001.png" id="3_ekm1o"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_emlkn"]
+[ext_resource type="Texture2D" uid="uid://cke7s7ttdvrfj" path="res://assets/sprites/background/intro/ci2.png" id="3_kqkth"]
+[ext_resource type="Texture2D" uid="uid://bycnryr21kktt" path="res://assets/sprites/background/intro/毒/毒_00002.png" id="4_oveng"]
+[ext_resource type="Texture2D" uid="uid://dpqsyrgj85hod" path="res://assets/sprites/background/intro/毒/毒_00003.png" id="5_i818e"]
+[ext_resource type="Texture2D" uid="uid://oyt5mq5nwnr0" path="res://assets/sprites/background/intro/毒/毒_00004.png" id="6_frwas"]
+[ext_resource type="Texture2D" uid="uid://biydvbq4c16qh" path="res://assets/sprites/background/intro/毒/毒_00005.png" id="7_th7wf"]
+[ext_resource type="Texture2D" uid="uid://d24g07yq2vfm6" path="res://assets/sprites/background/intro/毒/毒_00006.png" id="8_u1x36"]
+[ext_resource type="Texture2D" uid="uid://d24dunmq1ne1d" path="res://assets/sprites/background/intro/毒/毒_00007.png" id="9_f0d8f"]
+[ext_resource type="Texture2D" uid="uid://38f5fovvmfg0" path="res://assets/sprites/background/intro/毒/毒_00008.png" id="10_faixu"]
+[ext_resource type="Texture2D" uid="uid://bdunaph0kcr07" path="res://assets/sprites/background/intro/毒/毒_00009.png" id="11_l4o3e"]
+[ext_resource type="Texture2D" uid="uid://bxjnj0cv2n21y" path="res://assets/sprites/background/intro/毒/毒_00010.png" id="12_ekmbt"]
+[ext_resource type="Texture2D" uid="uid://dildpoo7qdttw" path="res://assets/sprites/background/intro/毒/毒_00011.png" id="13_27em0"]
+[ext_resource type="Texture2D" uid="uid://40kay6mlb3xw" path="res://assets/sprites/background/intro/毒/毒_00012.png" id="14_6wngc"]
+[ext_resource type="Texture2D" uid="uid://dovtalt3cf3fh" path="res://assets/sprites/background/intro/毒/毒_00013.png" id="15_rmyai"]
+[ext_resource type="Texture2D" uid="uid://bnc4bvdvpwusi" path="res://assets/sprites/background/intro/毒/毒_00014.png" id="16_mpgxp"]
+[ext_resource type="Texture2D" uid="uid://r8mueq27iagv" path="res://assets/sprites/background/intro/毒/毒_00015.png" id="17_kx3g1"]
+[ext_resource type="Texture2D" uid="uid://bw4mxjpfsislv" path="res://assets/sprites/background/intro/毒/毒_00016.png" id="18_cdyhx"]
+[ext_resource type="Texture2D" uid="uid://syycksgxlrrq" path="res://assets/sprites/background/intro/毒/毒_00017.png" id="19_hm0x3"]
+[ext_resource type="Texture2D" uid="uid://cg6wadxf3pn8j" path="res://assets/sprites/background/intro/毒/毒_00018.png" id="20_f01l8"]
+[ext_resource type="Texture2D" uid="uid://bufw1dnlvlxnj" path="res://assets/sprites/background/intro/毒/毒_00019.png" id="21_e14op"]
+[ext_resource type="Texture2D" uid="uid://bpidajshjsmkg" path="res://assets/sprites/background/intro/毒/毒_00020.png" id="22_afja6"]
+[ext_resource type="Texture2D" uid="uid://dsmecukd0cc8d" path="res://assets/sprites/background/intro/毒/毒_00021.png" id="23_oe5p3"]
+[ext_resource type="Texture2D" uid="uid://dp0j28yraq6u1" path="res://assets/sprites/background/intro/毒/毒_00022.png" id="24_tnpsg"]
+[ext_resource type="Texture2D" uid="uid://vif032jjjtau" path="res://assets/sprites/background/intro/毒/毒_00023.png" id="25_ornoy"]
+[ext_resource type="Texture2D" uid="uid://2m8b7hb54dku" path="res://assets/sprites/background/intro/毒/毒_00024.png" id="26_hqok2"]
+[ext_resource type="Texture2D" uid="uid://56ucxv02w1lc" path="res://assets/sprites/background/intro/毒/毒_00025.png" id="27_r6xdu"]
+[ext_resource type="Texture2D" uid="uid://dmu2df77t5jlx" path="res://assets/sprites/background/intro/毒/毒_00026.png" id="28_avdok"]
+[ext_resource type="Texture2D" uid="uid://deq5vcwlgaqw" path="res://assets/sprites/background/intro/毒/毒_00027.png" id="29_ajk5h"]
+[ext_resource type="Texture2D" uid="uid://ddmbjxamfv5on" path="res://assets/sprites/background/intro/毒/毒_00028.png" id="30_q8ksq"]
+[ext_resource type="Texture2D" uid="uid://cgjqiqeqb782l" path="res://assets/sprites/background/intro/毒/毒_00029.png" id="31_14f7v"]
+[ext_resource type="Texture2D" uid="uid://d2cuurcxa6phx" path="res://assets/sprites/background/intro/ci3.png" id="32_xc2le"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6xw1"]
+atlas = ExtResource("32_xc2le")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lerr"]
+atlas = ExtResource("2_ovihv")
+region = Rect2(88, 0, 88, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6jjq"]
+atlas = ExtResource("3_kqkth")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8f63d"]
 animations = [{
@@ -12,6 +57,125 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7blek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ekm1o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_oveng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i818e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_frwas")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_th7wf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_u1x36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_f0d8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_faixu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_l4o3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ekmbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_27em0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_6wngc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_rmyai")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_mpgxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_kx3g1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_cdyhx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_hm0x3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f01l8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_e14op")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_afja6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_oe5p3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_tnpsg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ornoy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_hqok2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_r6xdu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_avdok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_ajk5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_q8ksq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_14f7v")
+}],
+"loop": true,
+"name": &"poison",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6xw1")
+}],
+"loop": true,
+"name": &"throns",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lerr")
+}],
+"loop": true,
+"name": &"v2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6jjq")
+}],
+"loop": true,
+"name": &"v3",
+"speed": 5.0
 }]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_18lyn"]
@@ -21,10 +185,11 @@ points = PackedVector2Array(-1, -14, -16, 15, 16, 15)
 collision_mask = 128
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+position = Vector2(0, -8)
+scale = Vector2(0.5, 1)
 sprite_frames = SubResource("SpriteFrames_8f63d")
-autoplay = "default"
-frame_progress = 0.40163
+animation = &"poison"
+autoplay = "poison"
 
 [node name="kill_zone" parent="." instance=ExtResource("3_emlkn")]
 scale = Vector2(0.5, 0.5)
