@@ -41,7 +41,8 @@ func animate_fire():
 		
 		# 根据当前实际旋转方向动态更新flip_h
 		sprite.flip_v = false if clockwise else true
-		
+		sprite.flip_h = true if clockwise else false
+
 		# 使用距离因子调整变形效果
 		var deform_factor = abs(normalized_speed) * (1.0 + distance_factor)
 		var scale_x = original_scale.x * (1.0 - deform_factor * 0.5)
