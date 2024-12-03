@@ -18,20 +18,20 @@ func _ready():
         add_child(new_flame)
         flames.append(new_flame)
         
-        # 计算每个火焰的初始位置
+        # 计算每个火焰的初始位置（使用全局坐标）
         var angle = (2 * PI / flame_number) * i
         var pos = Vector2(radius * cos(angle), radius * sin(angle))
-        new_flame.position = pivot_position.position + pos
+        new_flame.global_position = pivot_position.global_position + pos
 
 func _physics_process(delta):
     # 更新旋转角度
     var rotation_direction = -1 if clockwise else 1
     current_angle += rotation_angular_velocity * delta * rotation_direction
     
-    # 更新所有火焰的位置
+    # 更新所有火焰的位置（使用全局坐标）
     for i in range(flame_number):
         var angle = current_angle + (2 * PI / flame_number) * i
         var pos = Vector2(radius * cos(angle), radius * sin(angle))
-        flames[i].position = pivot_position.position + pos
+        flames[i].global_position = pivot_position.global_position + pos
 
 
