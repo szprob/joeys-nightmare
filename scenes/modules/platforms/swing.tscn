@@ -12,7 +12,6 @@ size = Vector2(32, 4)
 [node name="Swing" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_1lo10")
-pivot_position = Vector2(0, -50)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3, 1)

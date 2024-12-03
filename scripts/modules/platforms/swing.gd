@@ -7,7 +7,8 @@ extends CharacterBody2D
 @export var rope_width: float = 2.0  # 绳子宽度
 @export var speed_factor = 0.4  # 减速系数
 @export var init_damping = 1  # 阻尼系数,控制摆动衰减速度
-@export var player_force_factor = 500.0  # 玩家移动产生的力的系数
+@export var player_force_factor = 35.0  # 玩家移动产生的力的系数
+@export var max_angular_velocity = 1.5  # 角速度上限
 
 var damping = init_damping
 var current_angle = 0.0
@@ -48,9 +49,25 @@ func _physics_process(delta):
 	var target_y = pivot_position.y + rope_length * cos(deg_to_rad(current_angle))
 	var target_pos = Vector2(target_x, target_y)
 	
-	# 直接设置位置,而不是通过velocity移动
-	global_position = target_pos
+	# 将直接设置位置改为使用velocity和move_and_slide
+	var desired_velocity = (target_pos - global_position) / delta
 	
+	# 计算最大线速度
+	var max_linear_velocity = rad_to_deg(max_angular_velocity) * rope_length
+	
+	# 限制desired_velocity的长度
+	if desired_velocity.length() > max_linear_velocity:
+		desired_velocity = desired_velocity.normalized() * max_linear_velocity
+	
+	velocity = desired_velocity
+	move_and_slide()
+	
+	# 更新rope_length以保持绳子长度不变
+	var current_length = global_position.distance_to(pivot_position)
+	if current_length != rope_length:
+		var correction = (pivot_position - global_position).normalized() * (current_length - rope_length)
+		global_position += correction
+
 	# 其他物理计算保持不变
 	damping = float(init_damping)
 	
@@ -83,6 +100,10 @@ func _physics_process(delta):
 
 	# 更新角度和角速度
 	angular_velocity = angular_velocity * damping + angular_acceleration * delta
+	
+	# 给角速度一个上限
+	angular_velocity = clamp(angular_velocity, -max_angular_velocity, max_angular_velocity)
+	
 	current_angle += rad_to_deg(angular_velocity) * delta
 	
 	# 使用更柔和的限制
