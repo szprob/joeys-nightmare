@@ -519,14 +519,8 @@ position = Vector2(-614, -8)
 
 [node name="Swing" parent="." node_paths=PackedStringArray("pivot_target") instance=ExtResource("21_60bxa")]
 position = Vector2(-1441, -53)
-mass = 1
-swing_amplitude = 10.0
 pivot_target = NodePath("Area2D")
 rope_color = Color(0.960784, 0.870588, 0.701961, 1)
-rope_width = 2.0
-speed_factor = 0.4
-init_damping = 1
-player_force_factor = 35.0
 max_angular_velocity = 1.0
 
 [node name="Area2D" type="Area2D" parent="Swing"]

@@ -58,7 +58,8 @@ func init_default_state():
 		'npc_dialogue_list': [],
 		'laji': '',
 		'number_deaths': 0,
-		'doors_opened': []
+		'doors_opened': [],
+		'play_time_seconds': 0  # 添加游戏时间记录（秒）
 	}
 	game_state = game_state2.duplicate(true) # 深度复制默认状态
 
@@ -362,3 +363,17 @@ func read_txt_to_list(file_path: String) -> Array:
 		file.close()
 	
 	return content
+
+# 添加计时器回调函数
+func _on_play_time_timer_timeout() -> void:
+	if not game_state['is_paused']:  # 暂停时不计时
+		game_state['play_time_seconds'] += 1
+
+# 添加获取格式化时间的函数
+func get_formatted_play_time() -> String:
+	var total_seconds = game_state['play_time_seconds']
+	var hours = total_seconds / 3600
+	var minutes = (total_seconds % 3600) / 60
+	var seconds = total_seconds % 60
+	
+	return "%02d:%02d:%02d" % [hours, minutes, seconds]
