@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 @export var mass = 1  # 物体质量
-@export var swing_amplitude = 10.0  # 初始摆动幅度(度)
 @export var pivot_target: Area2D  # 枢轴点位置
 @export var rope_color: Color = Color.WHEAT  # 绳子颜色
 @export var rope_width: float = 2.0  # 绳子宽度
@@ -9,6 +8,7 @@ extends CharacterBody2D
 @export var init_damping = 1  # 阻尼系数,控制摆动衰减速度
 @export var player_force_factor = 35.0  # 玩家移动产生的力的系数
 @export var max_angular_velocity = 1.5  # 角速度上限
+@export var min_swing_amplitude = 5.0  # 最小摆动幅度(度)
 
 var damping = init_damping
 var current_angle = 0.0
@@ -23,13 +23,19 @@ func _ready():
 	# 根据初始位置计算绳长
 	rope_length = global_position.distance_to(pivot_position)
 	
-	# 设置初始角度为最大摆动幅度
-	current_angle = swing_amplitude
+	# 根据初始位置计算摆动幅度
+	var initial_offset = global_position - pivot_position
+	var vertical_down = Vector2(0, 1)  # 垂直向下的向量
+	current_angle = rad_to_deg(initial_offset.angle_to(vertical_down))
+	
+	# 确保至少有最小摆动幅度
+	if abs(current_angle) < min_swing_amplitude:
+		current_angle = min_swing_amplitude * sign(current_angle)
+		if current_angle == 0:  # 如果角度为0，默认向右摆动
+			current_angle = min_swing_amplitude
 	
 	# 根据摆动幅度计算所需的初始角速度
-	# 使用简谐运动公式: v = sqrt(2gh)(1-cos(θ))
-	# 其中 h 是最大高度变化,可以通过摆动幅度计算
-	var max_height = rope_length * (1 - cos(deg_to_rad(swing_amplitude)))
+	var max_height = rope_length * (1 - cos(deg_to_rad(current_angle)))
 	var gravity_strength = get_gravity().length()
 	angular_velocity = sqrt(2 * gravity_strength * max_height) / rope_length
 
@@ -59,8 +65,8 @@ func _physics_process(delta):
 	if desired_velocity.length() > max_linear_velocity:
 		desired_velocity = desired_velocity.normalized() * max_linear_velocity
 	
-	velocity = desired_velocity
-	move_and_slide()
+	# 使用global_position直接更新位置
+	global_position += desired_velocity * delta
 	
 	# 更新rope_length以保持绳子长度不变
 	var current_length = global_position.distance_to(pivot_position)
