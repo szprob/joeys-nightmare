@@ -21,6 +21,7 @@ Consts="*res://scripts/singleton/consts.gd"
 GameManager="*res://scripts/singleton/game_manager.gd"
 Inventory="*res://scenes/day/inventory/inventory.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+SoundPlayer="*res://scenes/day/sound/SoundPlayer.tscn"
 
 [display]
 
