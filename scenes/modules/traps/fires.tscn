@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7tkc43k3y7u6"]
+[gd_scene load_steps=3 format=3 uid="uid://dut7ju0rsdkfv"]
 
 [ext_resource type="Script" path="res://scripts/modules/traps/fires.gd" id="1_os0ju"]
 [ext_resource type="PackedScene" uid="uid://bprgch0ov1uwm" path="res://scenes/modules/traps/fire.tscn" id="2_35nqn"]

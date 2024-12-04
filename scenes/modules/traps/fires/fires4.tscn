@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://pe8srikvnre3"]
+
+[ext_resource type="Script" path="res://scripts/modules/traps/fires.gd" id="1_4rjmn"]
+[ext_resource type="PackedScene" uid="uid://bprgch0ov1uwm" path="res://scenes/modules/traps/fire.tscn" id="2_ej6qo"]
+
+[node name="Fires" type="AnimatableBody2D"]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("1_4rjmn")
+
+[node name="Fire" parent="." instance=ExtResource("2_ej6qo")]
+
+[node name="Fire2" parent="." instance=ExtResource("2_ej6qo")]
+position = Vector2(20, 0)
+
+[node name="Fire3" parent="." instance=ExtResource("2_ej6qo")]
+position = Vector2(40, 0)
+
+[node name="Fire4" parent="." instance=ExtResource("2_ej6qo")]
+position = Vector2(60, 0)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://be4tvkuckghc4"]
 
 [ext_resource type="Script" path="res://scripts/modules/platforms/swing.gd" id="1_1lo10"]
-[ext_resource type="Texture2D" uid="uid://rsnoo1dap1pm" path="res://assets/sprites/modules/deng2.png" id="2_qmrav"]
+[ext_resource type="Texture2D" uid="uid://q1ucjxwxlmsd" path="res://assets/sprites/modules/deng2.png" id="2_qmrav"]
 [ext_resource type="Texture2D" uid="uid://c7xf3ln8bdag4" path="res://assets/sprites/traps/VFX_Fire_2.png" id="3_wg8n5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_53igl"]

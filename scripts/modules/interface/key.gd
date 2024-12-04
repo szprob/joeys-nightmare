@@ -10,6 +10,12 @@ var do_detect: bool = true
 
 @export var key_name: String = "彩色钥匙"
 @export var disappear_delay: float = 3
+enum KeyColor {
+	RED,
+	YELLOW,
+	BLUE
+}
+@export var key_color: KeyColor = KeyColor.RED # 导出颜色属性
 
 
 # Called when the node enters the scene tree for the first time.
@@ -26,6 +32,16 @@ func _ready() -> void:
 	timer.timeout.connect(_on_timer_timeout)
 	timer.wait_time = disappear_delay
 	# timer.start()
+	match key_color:
+		KeyColor.RED:
+			sprite.texture = preload("res://assets/sprites/modules/key_r.png")
+		KeyColor.YELLOW:
+			sprite.texture = preload("res://assets/sprites/modules/key_y.png")
+		KeyColor.BLUE:
+			sprite.texture = preload("res://assets/sprites/modules/key_b.png")
+
+
+
 
 func _on_body_entered(body: CharacterBody2D) -> void:
 	if body.is_in_group('player') and do_detect:

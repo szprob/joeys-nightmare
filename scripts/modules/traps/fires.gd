@@ -44,7 +44,7 @@ func animate_fire():
 		sprite.flip_h = true if clockwise else false
 
 		# 使用距离因子调整变形效果
-		var deform_factor = abs(normalized_speed) * (1.0 + distance_factor)
+		var deform_factor = abs(normalized_speed) * (1.0 + distance_factor) / 2
 		var scale_x = original_scale.x * (1.0 - deform_factor * 0.5)
 		var scale_y = original_scale.y * (1.0 + deform_factor * 0.6)
 		

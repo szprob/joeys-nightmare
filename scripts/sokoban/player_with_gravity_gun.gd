@@ -34,8 +34,11 @@ var hook_speed = 500.0
 var hook_strength = 20.0
 var hook_duration = 5  # 钩爪最大持续时间(秒)
 var hook_timer = 0.0    # 计时器
+var hookable_areas: Array = []
 
-var can_shoot = true
+
+var player_state = 'idle' # 玩家状态(can move or not)
+var can_shoot = false
 var has_double_jumped = false
 var second_jump_gravity_timer: float = 0.2
 var second_jump_gravity_value: float = 1
@@ -82,6 +85,10 @@ func _ready():
 		if GameManager.game_state['current_respawn_point_x'] != null:
 			respawn_pos = Vector2(GameManager.game_state['current_respawn_point_x'], GameManager.game_state['current_respawn_point_y'])
 			global_position = respawn_pos
+
+	$HookableDetector.area_entered.connect(_on_hookable_area_entered)
+	$HookableDetector.area_exited.connect(_on_hookable_area_exited)
+
 	add_to_group("player")
 
 
@@ -114,8 +121,9 @@ func start_jump() -> void:
 	if jump_audio and jump_audio.stream:
 		jump_audio.play()
 
-func set_can_move(value: bool) -> void:
+func set_can_move(value: bool,state='idle') -> void:
 	can_move = value
+	player_state = state 
 	
 func shoot(Input) -> void:
 	# print("shoot trigger: ", GameManager.game_state)
@@ -163,7 +171,17 @@ func shoot(Input) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	can_move = true
+	if not can_move:
+		if player_state == 'death':
+			animated_sprite_2d.play('death')
+			# 死亡状态下仍然受到重力和惯性影响
+			var gravity = get_gravity()
+			velocity += gravity * delta
+			move_and_slide()
+		else:
+			velocity = Vector2.ZERO
+			animated_sprite_2d.play('idle')
+		return
 	# print('can shoot', can_shoot)
 	# logging
 	# print('second jump enabled', can_second_jump())
@@ -175,8 +193,8 @@ func _physics_process(delta: float) -> void:
 		var gravity_dir = get_gravity().normalized()
 		var height_diff = (jump_start_position - global_position).project(-gravity_dir).length()
 		var height_in_player_units = height_diff / player_height
-		print('height_diff', height_diff)
-		print("当前跳跃高度: %.2f 个角色高度" % height_in_player_units)
+		#print('height_diff', height_diff)
+		#print("当前跳跃高度: %.2f 个角色高度" % height_in_player_units)
 
 	# if jump_buffer_timer > 0:
 	# 	print('jump buffer timer', jump_buffer_timer)
@@ -184,11 +202,7 @@ func _physics_process(delta: float) -> void:
 		# print('jump pressed')
 	# 在函数开始时就检查 can_move
 
-	if not can_move:
-		# 如果不能移动，将速度设为0并直接返回
-		velocity = Vector2.ZERO
-		animated_sprite_2d.play('idle')
-		return
+
 		
 	if Input.is_action_just_pressed("reload"):
 		respawn()
@@ -317,13 +331,13 @@ func _physics_process(delta: float) -> void:
 		shoot(Input)
 
 	# hook
+
 	if Input.is_action_just_pressed("hook"):
-		if not active_gravity_gun_fields.is_empty():
-			var last_field = active_gravity_gun_fields.back()
-			if is_instance_valid(last_field) and not last_field.is_queued_for_deletion():
-				# 在这里实现钩爪逻辑，使用 last_field
-				hook(last_field)
-				hook_target = last_field
+		var nearest_field = find_nearest_hookable_area()
+		# print('nearest field', nearest_field)
+		if nearest_field:
+			hook(nearest_field)
+			hook_target = nearest_field
 	if is_hooking and is_instance_valid(hook_target):
 		hook_timer += delta
 		after_image_timer += delta
@@ -336,12 +350,12 @@ func _physics_process(delta: float) -> void:
 			end_hook()
 			return
 			
-		var hook_target_position = hook_target.global_position
+		var hook_target_position = hook_target.get_hook_position()
 		var hook_direction = (hook_target_position - global_position).normalized()
 		var hook_distance = global_position.distance_to(hook_target_position)
 		
 		# 如果距离很近，结束钩爪状态
-		if hook_distance < 30:
+		if hook_distance < 10:
 			end_hook()
 			return
 			
@@ -746,3 +760,46 @@ func spawn_after_image():
 	after_image.rotation = animated_sprite_2d.rotation
 	after_image.flip_h = animated_sprite_2d.flip_h
 	after_image.scale = animated_sprite_2d.scale
+
+
+func apply_force(collision_direction):
+	# 反向作用力
+	velocity += collision_direction
+
+# 添加这个新函数来查找最近的重力场
+func find_nearest_hookable_area() -> Node2D:
+	if hookable_areas.is_empty():
+		return null
+		
+	var nearest = null
+	var shortest_distance = 200
+	
+	for area in hookable_areas:
+		if not is_instance_valid(area):
+			continue
+			
+		var distance = global_position.distance_to(area.global_position)
+		if distance < shortest_distance:
+			# 进行视线检测
+			var space_state = get_world_2d().direct_space_state
+			var query = PhysicsRayQueryParameters2D.create(
+				global_position,
+				area.global_position
+			)
+			query.exclude = [self]
+			
+			var result = space_state.intersect_ray(query)
+			if not result:
+				shortest_distance = distance
+				nearest = area
+	
+	return nearest
+
+# 新增：当进入可钩爪区域检测范围
+func _on_hookable_area_entered(area: Area2D) -> void:
+	if area.is_in_group("hookable"):
+		hookable_areas.append(area)
+
+# 新增：当离开可钩爪区域检测范围
+func _on_hookable_area_exited(area: Area2D) -> void:
+	hookable_areas.erase(area)

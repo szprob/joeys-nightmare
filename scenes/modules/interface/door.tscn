@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c7x7ua18gfh11"]
 
 [ext_resource type="Script" path="res://scripts/modules/interface/door.gd" id="1_5p6ui"]
-[ext_resource type="Texture2D" uid="uid://6juiabkx60ed" path="res://assets/sprites/modules/pillar_b.png" id="2_ki0w5"]
+[ext_resource type="Texture2D" uid="uid://bwpnycjvwkdkp" path="res://assets/sprites/modules/pillar_b.png" id="2_ki0w5"]
 [ext_resource type="AudioStream" uid="uid://cnvum410tmlnh" path="res://assets/sounds/interface/door.wav" id="3_cqtie"]
 [ext_resource type="AudioStream" uid="uid://dwy27phsanvvi" path="res://assets/sounds/explosion.wav" id="4_s4rsd"]
 

@@ -108,7 +108,10 @@ func _physics_process(delta):
 	
 	var angle_abs = abs(current_angle)
 	if angle_abs > 10.0:
-		damping = 0.996
+		if player_on_swing:
+			damping = 0.996
+		else:
+			damping = 1 
 	
 	var angular_acceleration = -gravity_strength * sin(angle_rad) / rope_length * speed_factor * angle_factor
 	

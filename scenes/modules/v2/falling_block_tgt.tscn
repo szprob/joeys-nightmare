@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://burxykvkyw21f"]
+
+[ext_resource type="Script" path="res://scripts/modules/traps/falling_block_tgt.gd" id="1_mq0ba"]
+
+[node name="FallingBlockTgt" type="Area2D"]
+collision_mask = 128
+script = ExtResource("1_mq0ba")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
