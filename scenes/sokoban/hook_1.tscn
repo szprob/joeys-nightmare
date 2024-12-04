@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxdvjkmdm30bc"]
+
+[ext_resource type="Script" path="res://scripts/sokoban/hook_1.gd" id="1_fflkm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3qypd"]
+radius = 1.0
+
+[node name="hook1" type="Area2D"]
+script = ExtResource("1_fflkm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3qypd")
