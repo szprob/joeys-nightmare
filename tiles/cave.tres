@@ -1,0 +1,42 @@
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://eahum84lpc4q"]
+
+[ext_resource type="Texture2D" uid="uid://pv0iwkpm3tyv" path="res://assets/sprites/human/brick2.1.png" id="1_rxsfc"]
+[ext_resource type="PackedScene" uid="uid://bi3000vv4vu3x" path="res://scenes/sokoban/gravity_tile/gravity_down.tscn" id="2_258ul"]
+[ext_resource type="PackedScene" uid="uid://cootft3ha6veu" path="res://scenes/sokoban/gravity_tile/gravity_left.tscn" id="3_40stj"]
+[ext_resource type="PackedScene" uid="uid://dlv4fqe1sg0dm" path="res://scenes/sokoban/gravity_tile/gravity_right.tscn" id="4_a12x5"]
+[ext_resource type="PackedScene" uid="uid://bh3778qpcat7y" path="res://scenes/sokoban/gravity_tile/gravity_up.tscn" id="5_ig7xv"]
+[ext_resource type="PackedScene" uid="uid://mx3jx68fdgqm" path="res://scenes/modules/trap_tile/trap_down.tscn" id="6_erj6d"]
+[ext_resource type="PackedScene" uid="uid://bgtv7blulem34" path="res://scenes/modules/trap_tile/trap_left.tscn" id="7_j2cvv"]
+[ext_resource type="PackedScene" uid="uid://6motl652kpn3" path="res://scenes/modules/trap_tile/trap_right.tscn" id="8_mvkda"]
+[ext_resource type="PackedScene" uid="uid://8qshk6ynrxhj" path="res://scenes/modules/trap_tile/trap_up.tscn" id="9_m833l"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ogtr0"]
+texture = ExtResource("1_rxsfc")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_q5dgm"]
+resource_name = "gravity"
+scenes/1/scene = ExtResource("2_258ul")
+scenes/2/scene = ExtResource("3_40stj")
+scenes/3/scene = ExtResource("4_a12x5")
+scenes/4/scene = ExtResource("5_ig7xv")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ixvcl"]
+resource_name = "trap"
+scenes/1/scene = ExtResource("6_erj6d")
+scenes/2/scene = ExtResource("7_j2cvv")
+scenes/3/scene = ExtResource("8_mvkda")
+scenes/4/scene = ExtResource("9_m833l")
+
+[resource]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ogtr0")
+sources/2 = SubResource("TileSetScenesCollectionSource_ixvcl")
+sources/1 = SubResource("TileSetScenesCollectionSource_q5dgm")
