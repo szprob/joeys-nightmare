@@ -19,7 +19,6 @@ var is_line_flashing = false
 var flash_time = 0.0
 var do_detect=true # 是否检测碰撞
 var camera: Camera2D
-var shake_amount = 15.0  # 振动强度
 var is_shaking = false
 var velocity = Vector2.ZERO  # 声明 velocity 变量
 
@@ -70,17 +69,6 @@ func _physics_process(delta):
 				handle_dash_state(delta)
 			"stun":
 				handle_stun_state(delta)
-		
-		# 添加基本的物理碰撞移动
-		if do_detect:
-			var collision_direction = (global_position - player.global_position).normalized()
-			if global_position.distance_to(player.global_position) < 50:  # 当距离小于50时产生推力
-				velocity = collision_direction * 200  # 推力大小
-				move_and_slide()
-				
-				# 给玩家一个反向推力
-				if player.has_method("apply_force"):
-					player.apply_force(-collision_direction * 200)
 
 func handle_idle_state(delta):
 	idle_timer += delta
@@ -204,57 +192,13 @@ func update_line_collision():
 	kill_collision.disabled = not (state == "shoot")
 
 
-# 添加新的碰撞效果函数
-func create_collision_effect(pos: Vector2):
-	# 创建一个 CPUParticles2D 节点来显示碰撞效果
-	var particles = CPUParticles2D.new()
-	add_child(particles)
-	particles.global_position = pos
-	
-	# 设置粒子效果参数
-	particles.emitting = true
-	particles.one_shot = true
-	particles.explosiveness = 1.0
-	particles.amount = 50
-	particles.lifetime = 1.0
-	particles.direction = Vector2.UP
-	particles.spread = 180
-	particles.initial_velocity_min = 200
-	particles.initial_velocity_max = 400
-	particles.scale_amount_min = 5
-	particles.scale_amount_max = 8
-	particles.color = Color(1, 0.2, 0, 1)  # 更鲜艳的橙色
-	
-	# 设置粒子自动销毁
-	await get_tree().create_timer(particles.lifetime).timeout
-	particles.queue_free()
-
-# 添加新的振动相关函数
-func start_shake():
-	if not is_shaking:
-		is_shaking = true
-		var shake_duration = 0.5  # 振动持续时间
-		var tween = create_tween()
-		tween.tween_method(shake_camera, 1.0, 0.0, shake_duration).set_ease(Tween.EASE_OUT)
-		tween.tween_callback(stop_shake)
-
-func stop_shake():
-	is_shaking = false
-	if camera:
-		camera.offset = Vector2.ZERO
-
-func shake_camera(intensity: float):
-	if camera and is_shaking:
-		camera.offset = Vector2(
-			randf_range(-1.0, 1.0) * shake_amount * intensity,
-			randf_range(-1.0, 1.0) * shake_amount * intensity
-		)
-
 # 定义 on_body_entered 函数
 func on_body_entered(body):
 	if body.is_in_group("player") and do_detect:
-		create_collision_effect(body.global_position)
 		change_state("stun")
 		# 添加振动效果
-		if camera:
-			start_shake()
+		GameManager.camera_shake_requested.emit(15, 0.2)
+		# 给玩家一个反向作用力
+		if body.has_method("apply_force"):
+			var collision_direction = (body.global_position - global_position).normalized()
+			body.apply_force(collision_direction * 1000)

@@ -36,7 +36,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cn6r0"]
-size = Vector2(23, 24)
+size = Vector2(34.5, 35)
 
 [node name="Boss1" type="Area2D"]
 collision_mask = 128
@@ -58,7 +58,7 @@ default_color = Color(1, 0.299402, 0.0110381, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 1)
+position = Vector2(-0.25, 3.5)
 shape = SubResource("RectangleShape2D_cn6r0")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
