@@ -7,6 +7,14 @@
 ????: 先四处看看吧，这个房间有一种熟悉的感觉
 => END
 
+~ radio
+????[#radio]: *&#听@@*得见*^!吗？
+Joey[#joey_normal] : ?谁在说话
+????[#radio]: 看来你已经醒了Joey
+Joey[#joey_normal] : 你怎么知道我的名字？你是谁？
+????[#radio] : 你一下子问太多问题了，我当然知道你的名字了，我想你现在是被困在这里了
+=> END
+
 ~ test
 Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
 Nathan: Here are some choices.

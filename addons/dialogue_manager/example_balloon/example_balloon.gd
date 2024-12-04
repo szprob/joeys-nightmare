@@ -54,14 +54,16 @@ var dialogue_line: DialogueLine:
 
 		dialogue_label.show()
 		if not dialogue_line.text.is_empty():
-			dialogue_label.type_out()
-			await dialogue_label.finished_typing
-		if dialogue_line.tags != null and dialogue_line.tags.size() > 0:
-			print(dialogue_line.tags)
-			for tag in dialogue_line.tags:
+			# show texture due to the dialogue tag
+			if dialogue_line.tags != null and dialogue_line.tags.size() > 0:
+				print(dialogue_line.tags)
+				var tag = dialogue_line.tags[0]
 				if tag in GameManager.dialogue_image_storage.keys():
 					image_box.show()
 					image_box.texture = load(GameManager.dialogue_image_storage[tag])
+			dialogue_label.type_out()
+			await dialogue_label.finished_typing
+		
 		else:
 			image_box.show()
 			image_box.texture = load(GameManager.dialogue_image_storage['joey_normal'])
@@ -93,6 +95,7 @@ var dialogue_line: DialogueLine:
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
 @onready var image_box: TextureRect = $Balloon/Panel/TextureRect
+@onready var talk_sound: AudioStreamPlayer = $TalkSound
 
 func _ready() -> void:
 	balloon.hide()
@@ -174,3 +177,9 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 func _on_tree_exiting() -> void:
 
 	GameManager.end_dialogue()
+
+
+func _on_dialogue_label_spoke(letter: String, letter_index: int, speed: float) -> void:
+	talk_sound.pitch_scale = randf_range(0.9, 1.1)
+	talk_sound.play()
+	pass # Replace with function body.

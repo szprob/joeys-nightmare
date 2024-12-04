@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2weisgbke04l"]
+
+[ext_resource type="Script" path="res://scripts/day/sound_player.gd" id="1_odmxn"]
+
+[node name="SoundPlayer" type="Node2D"]
+script = ExtResource("1_odmxn")
+
+[node name="sound" type="AudioStreamPlayer2D" parent="."]
+volume_db = 1.0
