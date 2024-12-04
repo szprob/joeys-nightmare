@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ojcm7cd2jskc"]
+[gd_scene load_steps=26 format=3 uid="uid://ojcm7cd2jskc"]
 
 [ext_resource type="Script" path="res://scripts/sokoban/player_with_gravity_gun.gd" id="1_1dle0"]
 [ext_resource type="PackedScene" uid="uid://dwkd8axprygf0" path="res://scenes/sokoban/bullet.tscn" id="2_3vowl"]
@@ -145,6 +145,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_syubq"]
 size = Vector2(7, 13.75)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kl6ir"]
+radius = 100.0
+
 [node name="player_with_gravity" type="CharacterBody2D" groups=["teleport_enable"]]
 z_index = 5
 collision_layer = 128
@@ -174,5 +177,10 @@ one_shot = true
 stream = ExtResource("5_rl8ln")
 
 [node name="shadow" parent="." instance=ExtResource("3_3y0ti")]
+
+[node name="HookableDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HookableDetector"]
+shape = SubResource("CircleShape2D_kl6ir")
 
 [connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]
