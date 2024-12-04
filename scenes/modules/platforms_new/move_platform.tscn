@@ -14,12 +14,14 @@ collision_layer = 2
 script = ExtResource("1_7fwc6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 1)
 texture = ExtResource("2_3wwh2")
 region_enabled = true
 region_rect = Rect2(0, 1, 31, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
+scale = Vector2(3, 1)
 shape = SubResource("RectangleShape2D_aii1e")
 one_way_collision = true
 

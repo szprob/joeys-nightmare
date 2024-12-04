@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=4 uid="uid://burxykvkyw21f"]
+
+[ext_resource type="Script" path="res://scripts/modules/traps/falling_block_tgt.gd" id="1_mq0ba"]
+[ext_resource type="TileSet" uid="uid://eahum84lpc4q" path="res://tiles/cave.tres" id="2_ybcqp"]
+
+[node name="FallingBlockTgt" type="Area2D"]
+collision_mask = 128
+script = ExtResource("1_mq0ba")
+speed = null
+invisible_before_launch = null
+idle_shake_strength = null
+alert_shake_strength = null
+shake_duration = null
+alert_duration = null
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAD+/wEAAgAAAAAAAQD//wEAAgAAAAAAAQAAAAEAAgAAAAAAAQABAAEAAgAAAAAAAQA=")
+tile_set = ExtResource("2_ybcqp")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
