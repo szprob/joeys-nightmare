@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=4 uid="uid://bnd1fbpu3ri65"]
+
+[ext_resource type="Texture2D" uid="uid://dbjs644uj77br" path="res://assets/sprites/bricks/bricks.png" id="1_qtoav"]
+[ext_resource type="Script" path="res://scripts/sokoban/move_tiles.gd" id="2_tn1ro"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fwi4f"]
+texture = ExtResource("1_qtoav")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_jian4"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_fwi4f")
+
+[node name="move_tiles" type="TileMapLayer"]
+position = Vector2(2, 0)
+tile_map_data = PackedByteArray("AAAHAA4AAAAAAAMAAAAIAA4AAAAAAAMAAAAJAA4AAAAAAAMAAAAKAA4AAAAAAAMAAAALAA4AAAAAAAMAAAAMAA4AAAAAAAMAAAANAA4AAAAAAAMAAAAOAA4AAAAAAAMAAAAPAA4AAAAAAAMAAAAQAA4AAAAAAAMAAAARAA4AAAAAAAMAAAASAA4AAAAAAAMAAAATAA4AAAAAAAMAAAAUAA4AAAAAAAMAAAAVAA4AAAAAAAMAAAAWAA4AAAAAAAMAAAAXAA4AAAAAAAMAAAAYAA4AAAAAAAMAAAAZAA4AAAAAAAMAAAAaAA4AAAAAAAMAAAAbAA4AAAAAAAMAAAAcAA4AAAAAAAMAAAAdAA4AAAAAAAMAAAAeAA4AAAAAAAMAAAAfAA4AAAAAAAMAAAAgAA4AAAAAAAMAAAAhAA4AAAAAAAMAAAAiAA4AAAAAAAMAAAAFAA4AAAAAAAMAAAAGAA4AAAAAAAMAAAA=")
+tile_set = SubResource("TileSet_jian4")
+script = ExtResource("2_tn1ro")
