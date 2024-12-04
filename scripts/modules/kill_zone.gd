@@ -50,28 +50,41 @@ func cleanup_dynamic_nodes() -> void:
 
 
 
-# 添加新的碰撞效果函数
 func create_collision_effect(pos: Vector2):
-	# 创建一个 CPUParticles2D 节点来显示碰撞效果
 	particles = CPUParticles2D.new()
 	add_child(particles)
 	particles.global_position = pos
-	
-	# 设置粒子效果参数
+    
+	# 基础设置
 	particles.emitting = true
 	particles.one_shot = true
-	particles.explosiveness = 1.0
-	particles.amount = 50
-	particles.lifetime = 1.0
+	particles.explosiveness = 1.0  # 增加爆发性
+	particles.amount = 100
+	particles.lifetime = 1  # 缩短生命周期
 	particles.direction = Vector2.UP
-	particles.spread = 180
-	particles.initial_velocity_min = 200
-	particles.initial_velocity_max = 400
-	particles.scale_amount_min = 5
-	particles.scale_amount_max = 8
-	particles.color = Color(1, 0.2, 0, 1)  # 更鲜艳的橙色
-	
+	particles.spread = 180  # 减小扩散角度，主要向上飞溅
+	particles.initial_velocity_min = 150
+	particles.initial_velocity_max = 250
+	particles.scale_amount_min = 2
+	particles.scale_amount_max = 4
+	# 血液颜色渐变
+	var color_ramp = Gradient.new()
+	color_ramp.add_point(0.0, Color(0.8, 0.0, 0.0, 1.0))  # 鲜红色
+	color_ramp.add_point(0.6, Color(0.6, 0.0, 0.0, 0.8))  # 暗红色
+	color_ramp.add_point(1.0, Color(0.4, 0.0, 0.0, 0))    # 褐红色渐隐
+	particles.color_ramp = color_ramp
+    
+	# 增强重力效果
+	particles.gravity = Vector2(0, 980)  # 增加重力
+	particles.damping_min = 0.5  # 增加阻尼
+	particles.damping_max = 1.0
+    
+	# 角度设置
+	particles.angle_min = -45
+	particles.angle_max = 45
+    
 	# 设置粒子自动销毁
-	await get_tree().create_timer(particles.lifetime).timeout
+	await get_tree().create_timer(particles.lifetime + 0.1).timeout
 	particles.queue_free()
 	timer.start()
+	
