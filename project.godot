@@ -50,6 +50,7 @@ teleport_enable=""
 player=""
 no_pause=""
 camera=""
+camera_area=""
 
 [input]
 

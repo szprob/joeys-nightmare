@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/sokoban/player_with_gravity_gun.gd" id="1_1dle0"]
 [ext_resource type="PackedScene" uid="uid://dwkd8axprygf0" path="res://scenes/sokoban/bullet.tscn" id="2_3vowl"]
-[ext_resource type="PackedScene" path="res://scenes/sokoban/shadow.tscn" id="3_3y0ti"]
+[ext_resource type="PackedScene" uid="uid://niv7kyal3axp" path="res://scenes/sokoban/shadow.tscn" id="3_3y0ti"]
 [ext_resource type="Texture2D" uid="uid://0mwdr7djeqhh" path="res://assets/sprites/human/joey.png" id="3_yodxx"]
 [ext_resource type="Texture2D" uid="uid://ivexiot7363h" path="res://assets/sprites/human/joey_full.png" id="5_8ebi1"]
 [ext_resource type="AudioStream" uid="uid://c8n5qm0wdo23u" path="res://assets/sounds/player/jump.wav" id="5_rl8ln"]

@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cootft3ha6veu" path="res://scenes/sokoban/gravity_tile/gravity_left.tscn" id="12_5mic2"]
 [ext_resource type="PackedScene" uid="uid://bgtv7blulem34" path="res://scenes/modules/trap_tile/trap_left.tscn" id="12_tyut1"]
 [ext_resource type="PackedScene" uid="uid://dlv4fqe1sg0dm" path="res://scenes/sokoban/gravity_tile/gravity_right.tscn" id="13_533m8"]
-[ext_resource type="PackedScene" uid="uid://8qshk6ynrxhj" path="res://scenes/modules/trap_tile/trap_up.tscn" id="13_a8p4g"]
+[ext_resource type="PackedScene" uid="uid://b67w4ct47vhpw" path="res://scenes/modules/trap_tile/trap_up.tscn" id="13_a8p4g"]
 [ext_resource type="PackedScene" uid="uid://bh3778qpcat7y" path="res://scenes/sokoban/gravity_tile/gravity_up.tscn" id="14_5ikof"]
 [ext_resource type="PackedScene" uid="uid://deu5vht28g1ac" path="res://scenes/enemy/chase.tscn" id="14_vk0gg"]
 [ext_resource type="PackedScene" uid="uid://b6pq8l7ym5nuh" path="res://scenes/modules/checkpoints/teleport.tscn" id="15_fkl7m"]
@@ -85,7 +85,6 @@ sources/0 = SubResource("TileSetAtlasSource_eniy7")
 
 [node name="Monster" parent="." node_paths=PackedStringArray("player") instance=ExtResource("14_vk0gg")]
 position = Vector2(552, -208)
-speed = 30
 player = NodePath("../player_with_gravity")
 
 [node name="player_with_gravity" parent="." groups=["player"] instance=ExtResource("1_wwfw3")]
