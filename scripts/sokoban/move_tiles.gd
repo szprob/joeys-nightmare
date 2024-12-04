@@ -16,11 +16,15 @@ func _ready():
 	for cell in get_used_cells():
 		var cell_data = get_cell_tile_data(cell)
 		if cell_data:
+			var source_id = get_cell_source_id(cell)
+			var atlas_coords = get_cell_atlas_coords(cell)
 			animated_tiles[cell] = {
 				"cell_data": cell_data,
+				"source_id": source_id,
+				"atlas_coords": atlas_coords,
 				"animated": false
 			}
-			print('cell', cell_data)
+			
 			set_cell(cell, -1) # 隐藏所有瓦片
 
 func _physics_process(_delta):
@@ -42,61 +46,58 @@ func _physics_process(_delta):
 			# 如果瓦片在范围内且未被动画
 			if not animated_tiles[cell]["animated"]:
 				print('try animate tile', cell)
+				print('tile info', animated_tiles[cell])
+				print('tile info', animated_tiles[cell]['cell_data'])
 				# animate_tile(cell)
 				animated_tiles[cell]["animated"] = true
 
 func animate_tile(cell: Vector2i):
-	print('animate_tile', cell)
-	var tile_info = animated_tiles[cell]
-	var cell_data = tile_info["cell_data"]
-	var tile_pos = map_to_local(cell)
-	# print('tile_pos', tile_pos)
+	print("Animating tile", cell)
+	print('tile info', animated_tiles)
+	var tile_info = animated_tiles[cell]['cell_data']
+	var cell_id = tile_info["cell_id"]
 
-	# 创建精灵节点
-	var sprite = Sprite2D.new()
-
-	# 获取瓦片的纹理和区域
-	var source_id = cell_data.get_custom_data("source_id")
-	var tileset_source = tile_set.get_source(source_id)
-
-	if tileset_source is TileSetAtlasSource:
-		var coords = cell_data.get_custom_data("atlas_coords")
-		var alternative_tile = cell_data.get_custom_data("alternative_tile")
-		
-		# 获取瓦片的具体信息
-		var tile_data = tileset_source.get_tile_data(coords, alternative_tile)
-		var texture_region = tileset_source.get_tile_texture_region(coords, alternative_tile)
-		
-		sprite.texture = tileset_source.get_texture()
-		sprite.region_enabled = true
-		sprite.region_rect = texture_region
-	else:
+	# 获取瓦片的纹理和信息
+	var tile_texture = tile_set.tile_get_texture(cell_id)
+	if not tile_texture:
+		print("No texture found for cell", cell)
 		return
 
-	sprite.global_position = tile_pos
+	var tile_position = tile_map.map_to_world(cell) + tile_map.cell_size / 2 # 中心位置
+	print('tile_position', tile_position)
+	# 创建精灵节点
+	var sprite = Sprite2D.new()
+	sprite.texture = tile_texture
+	sprite.position = tile_map.map_to_world(cell) # 使用相对位置
 
-	add_child(sprite)
+	tile_map.add_child(sprite)
 
-	var tween = create_tween()
+	# 决定动画方向
+	var player_cell = tile_map.world_to_map(player.global_position)
+	var is_ahead = (cell.y - player_cell.y) <= 0
 
-	# 修改判断逻辑：根据与玩家的相对位置来决定动画效果
-	var player_cell_y = local_to_map(player.global_position).y
-	var is_ahead = (cell.y - player_cell_y) <= 0
+	var tween = Tween.new()
+	sprite.add_child(tween)
+	tween.active = true
 
 	if is_ahead:
-		# 玩家前方和周围的瓦片从上方降落
-		print('ahead')
-		sprite.global_position.y -= spawn_distance
-		tween.tween_property(sprite, "global_position:y", tile_pos.y, spawn_duration) \
-			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
-		tween.parallel().tween_property(sprite, "rotation", 0, spawn_duration) \
-			.from(randf_range(-0.2, 0.2))
+		# 玩家前方和周围的瓦片从上方飞入
+		sprite.position.y -= spawn_distance
+		tween.tween_property(sprite, "position:y", tile_map.map_to_world(cell).y, spawn_duration).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+		tween.tween_property(sprite, "rotation", 0, spawn_duration).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
 	else:
 		# 玩家后方的瓦片掉落
-		sprite.global_position.y = tile_pos.y
-		tween.tween_property(sprite, "global_position:y", tile_pos.y + fall_distance, fall_duration) \
-			.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
-		tween.parallel().tween_property(sprite, "rotation", randf_range(-PI, PI), fall_duration)
+		tween.tween_property(sprite, "position:y", tile_map.map_to_world(cell).y + fall_distance, fall_duration) \
+			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+		tween.tween_property(sprite, "rotation", randf_range(-PI, PI), fall_duration) \
+			.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
 
-	# 动画结束后删除精灵
-	tween.tween_callback(Callable(sprite, "queue_free"))
+	# 动画结束后删除精灵并还原 TileMap 中的瓦片
+	tween.tween_callback(func(): _on_tween_completed(sprite, cell))
+
+func _on_tween_completed(sprite: Sprite2D, cell: Vector2i):
+	# 删除动画精灵
+	sprite.queue_free()
+
+	# 重新设置 TileMap 中的瓦片
+	tile_map.set_cellv(cell, animated_tiles[cell]["cell_id"])
