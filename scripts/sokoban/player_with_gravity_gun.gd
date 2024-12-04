@@ -34,7 +34,7 @@ var hook_speed = 500.0
 var hook_strength = 20.0
 var hook_duration = 5  # 钩爪最大持续时间(秒)
 var hook_timer = 0.0    # 计时器
-
+var player_state = 'idle' # 玩家状态(can move or not)
 var can_shoot = true
 var has_double_jumped = false
 var second_jump_gravity_timer: float = 0.2
@@ -114,8 +114,9 @@ func start_jump() -> void:
 	if jump_audio and jump_audio.stream:
 		jump_audio.play()
 
-func set_can_move(value: bool) -> void:
+func set_can_move(value: bool,state='idle') -> void:
 	can_move = value
+	player_state = state 
 	
 func shoot(Input) -> void:
 	# print("shoot trigger: ", GameManager.game_state)
@@ -163,7 +164,17 @@ func shoot(Input) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	can_move = true
+	if not can_move:
+		if player_state == 'death':
+			animated_sprite_2d.play('death')
+			# 死亡状态下仍然受到重力和惯性影响
+			var gravity = get_gravity()
+			velocity += gravity * delta
+			move_and_slide()
+		else:
+			velocity = Vector2.ZERO
+			animated_sprite_2d.play('idle')
+		return
 	# print('can shoot', can_shoot)
 	# logging
 	# print('second jump enabled', can_second_jump())
@@ -184,11 +195,7 @@ func _physics_process(delta: float) -> void:
 		# print('jump pressed')
 	# 在函数开始时就检查 can_move
 
-	if not can_move:
-		# 如果不能移动，将速度设为0并直接返回
-		velocity = Vector2.ZERO
-		animated_sprite_2d.play('idle')
-		return
+
 		
 	if Input.is_action_just_pressed("reload"):
 		respawn()
@@ -746,3 +753,8 @@ func spawn_after_image():
 	after_image.rotation = animated_sprite_2d.rotation
 	after_image.flip_h = animated_sprite_2d.flip_h
 	after_image.scale = animated_sprite_2d.scale
+
+
+func apply_force(collision_direction):
+	# 反向作用力
+	velocity += collision_direction

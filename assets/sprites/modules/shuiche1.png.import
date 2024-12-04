@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q1ucjxwxlmsd"
-path="res://.godot/imported/deng2.png-73dcfe0c8644621570a1777c7528d86f.ctex"
+uid="uid://cbbeq3owr4vsp"
+path="res://.godot/imported/shuiche1.png-0063ffd67d7719d068468546dfc88c9f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/modules/deng2.png"
-dest_files=["res://.godot/imported/deng2.png-73dcfe0c8644621570a1777c7528d86f.ctex"]
+source_file="res://assets/sprites/modules/shuiche1.png"
+dest_files=["res://.godot/imported/shuiche1.png-0063ffd67d7719d068468546dfc88c9f.ctex"]
 
 [params]
 

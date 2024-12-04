@@ -44,7 +44,7 @@ collision_mask = 128
 script = ExtResource("1_wmyar")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.6
+wait_time = 0.4
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

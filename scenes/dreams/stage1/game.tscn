@@ -506,7 +506,6 @@ paired_portal = NodePath("../bi-teleport")
 
 [node name="box" parent="." instance=ExtResource("7_igw1q")]
 position = Vector2(-418.287, -31.8219)
-collision_mask = 131
 
 [node name="target" type="Area2D" parent="."]
 position = Vector2(91.6711, -11.789)
