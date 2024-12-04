@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dqfvrvtpe1a80"]
+[gd_scene load_steps=13 format=4 uid="uid://dqfvrvtpe1a80"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_tqqs5"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="2_gmqmk"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="5_kmimm"]
 [ext_resource type="PackedScene" uid="uid://c7tkc43k3y7u6" path="res://scenes/modules/traps/fires/fires6.tscn" id="6_hleku"]
 [ext_resource type="PackedScene" uid="uid://be4tvkuckghc4" path="res://scenes/modules/platforms/swing.tscn" id="6_i4wv8"]
+[ext_resource type="PackedScene" uid="uid://berhy2v7l8ihk" path="res://scenes/enemy/boss1.tscn" id="7_d7kh0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8553"]
 distance = -68.0
@@ -344,7 +345,7 @@ tile_set = SubResource("TileSet_rvt4p")
 [node name="player" parent="." groups=["player"] instance=ExtResource("5_kmimm")]
 position = Vector2(-1455.69, -34.0674)
 
-[node name="Camera2D" type="Camera2D" parent="player"]
+[node name="Camera2D" type="Camera2D" parent="player" groups=["camera"]]
 position = Vector2(0, -5)
 process_callback = 0
 limit_bottom = 150
@@ -362,3 +363,12 @@ position = Vector2(-5.72644, -129.738)
 [node name="Fires" parent="." instance=ExtResource("6_hleku")]
 position = Vector2(-1066, -77)
 rotation_angular_velocity = 1.0
+
+[node name="Boss1" parent="." instance=ExtResource("7_d7kh0")]
+position = Vector2(-1587, -41)
+
+[node name="Area2D" type="Area2D" parent="Boss1"]
+position = Vector2(-94.7754, 2.08257)
+
+[node name="Area2D2" type="Area2D" parent="Boss1"]
+position = Vector2(-184.208, 5.41966)
