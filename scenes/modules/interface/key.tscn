@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cx0dlu782dwi5"]
 
 [ext_resource type="Script" path="res://scripts/modules/interface/key.gd" id="1_av0vg"]
-[ext_resource type="Texture2D" uid="uid://78w4owvufdht" path="res://icon.svg" id="2_hxl3j"]
+[ext_resource type="Texture2D" uid="uid://cfv87qfw0bh3a" path="res://assets/sprites/modules/key_b.png" id="2_d2tcl"]
 [ext_resource type="AudioStream" uid="uid://j1hk7cjwtvxj" path="res://assets/sounds/coin.wav" id="3_jvbkn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xdmr8"]
@@ -14,9 +14,9 @@ script = ExtResource("1_av0vg")
 key_name = "彩色钥匙1"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(50, 57)
-scale = Vector2(0.476563, 0.460938)
-texture = ExtResource("2_hxl3j")
+position = Vector2(51, 57)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("2_d2tcl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(51, 57)
