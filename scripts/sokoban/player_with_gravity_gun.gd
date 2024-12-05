@@ -178,6 +178,11 @@ func _physics_process(delta: float) -> void:
 			var gravity = get_gravity()
 			velocity += gravity * delta
 			move_and_slide()
+		elif player_state == 'jump':
+			animated_sprite_2d.play('jump')
+			var gravity = get_gravity()
+			velocity += gravity * delta
+			move_and_slide()
 		else:
 			velocity = Vector2.ZERO
 			animated_sprite_2d.play('idle')

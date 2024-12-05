@@ -52,6 +52,7 @@ player=""
 no_pause=""
 camera=""
 camera_area=""
+dynamic=""
 
 [input]
 

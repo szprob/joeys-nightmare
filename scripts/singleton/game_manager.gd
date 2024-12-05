@@ -160,7 +160,6 @@ func add_scan_lines_to_node(node: Node) -> void:
 			scan_lines_instance.layer = 100
 			
 		node.add_child(scan_lines_instance)
-		print("已添加扫描线到节点: ", node.name)
 
 func _on_node_added(node: Node) -> void:
 	# 当新节点被添加到场景树时，自动检查并添加扫描线
@@ -223,9 +222,6 @@ func save_game_state():
 	if file:
 		file.store_string(JSON.stringify(save_data))
 		file.close()
-		print("游戏已成功保存")
-	else:
-		push_error("保存游戏失败：无法创建存档文件")
 
 func load_game_state():
 	var archive_index = str(game_state['archive_index'])
@@ -239,13 +235,11 @@ func load_game_state():
 			game_state = json.data
 			# pipeline_manager.sync_game_state(game_state)
 		else:
-			print("JSON Parse Error at line ", json.get_error_line())
 			# 加载失败时初始化默认状态
 			init_default_state()
 		file.close()
 		_skill_cache.clear()
 	else:
-		print("无法打开存档文件")
 		init_default_state()
 
 
@@ -301,9 +295,7 @@ func _input(event: InputEvent) -> void:
 	# 确保只在按键事件时调用 is_action_just_pressed
 	if event is InputEventKey and event.is_pressed():
 		if Input.is_action_just_pressed("esc"):
-			print("ESC 键被按下")
 			if not get_tree().current_scene.is_in_group("no_pause"):
-				print("当前场景允许暂停")
 				toggle_pause_menu()
 			else:
 				print("当前场景不允许暂停")
@@ -318,8 +310,7 @@ func toggle_pause_menu() -> void:
 		pause_game()
 
 func pause_game() -> void:
-	print("正在暂停游戏...")
-	
+
 	# 先检查是否已经存在暂停菜单
 	var current_scene = get_tree().current_scene
 	var existing_pause = current_scene.get_node_or_null("PauseMenu")

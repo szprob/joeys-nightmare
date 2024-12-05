@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://scripts/modules/ui/death_particles.gd" id="1_56bq6"]
 
-[node name="DeathParticles" type="GPUParticles2D"]
+[node name="DeathParticles" type="GPUParticles2D" groups=["dynamic"]]
 script = ExtResource("1_56bq6")
