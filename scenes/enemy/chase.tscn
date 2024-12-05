@@ -126,8 +126,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dvqdh")
 }],
-"loop": true,
-"name": &"attack",
+"loop": false,
+"name": &"attacking",
 "speed": 8.0
 }, {
 "frames": [{
@@ -179,27 +179,30 @@ height = 59.0149
 size = Vector2(49.2507, 53.9018)
 
 [node name="Monster" type="CharacterBody2D"]
+scale = Vector2(0.2, 0.2)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_nbhrx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-520, -460)
 scale = Vector2(4.72, 4.72)
 sprite_frames = SubResource("SpriteFrames_scbdh")
-animation = &"attack"
+animation = &"attacking"
 autoplay = "idle"
-frame_progress = 0.259667
+frame = 10
+frame_progress = 1.0
+flip_h = true
 
 [node name="kill_zone" parent="." instance=ExtResource("3_1ct2n")]
+position = Vector2(442, -391)
 scale = Vector2(8.81513, 8.81513)
-collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
-position = Vector2(-9.52907, 34.713)
+position = Vector2(-93.816, 31.877)
 scale = Vector2(1.06877, 1.06877)
 shape = SubResource("CapsuleShape2D_wt7tk")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="kill_zone"]
-position = Vector2(-51.6244, 36.009)
-scale = Vector2(1, 1)
+position = Vector2(-51.8427, 34.1458)
 shape = SubResource("RectangleShape2D_2v4ro")
