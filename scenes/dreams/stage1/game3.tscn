@@ -376,5 +376,8 @@ position = Vector2(-94.7754, 2.08257)
 [node name="Area2D2" type="Area2D" parent="Boss1"]
 position = Vector2(-184.208, 5.41966)
 
+[node name="Area2D3" type="Area2D" parent="Boss1"]
+position = Vector2(-293.97, 12.3095)
+
 [node name="FerrisWheel" parent="." instance=ExtResource("9_5q23d")]
 position = Vector2(-751, -156)

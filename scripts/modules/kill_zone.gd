@@ -3,6 +3,7 @@ extends Area2D
 var death_particles_scene = preload("res://scenes/modules/ui/death_particles.tscn")
 var current_particles: GPUParticles2D = null
 var player 
+# var camera 
 
 @onready var timer: Timer = $Timer
 
@@ -12,6 +13,7 @@ func _ready():
 	# 获取玩家节点
 	player = get_tree().get_first_node_in_group("player")
 	player.set_can_move(true)
+	# camera = get_tree().get_first_node_in_group("camera") 
 	current_particles = death_particles_scene.instantiate()
 	current_particles.emitting = false
 	add_child(current_particles)
@@ -22,11 +24,14 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	if not body.is_in_group("player"):
 		return 
-
-	player.set_can_move(false, 'death')
-
 	GameManager.game_state_cache['can_detect_kill_zone'] = false
 	GameManager.game_state['number_deaths'] += 1
+
+	player.set_can_move(false, 'death')
+	GameManager.camera_shake_requested.emit(5, 0.2)
+
+	
+	
 	print('number_deaths : ', GameManager.game_state['number_deaths'])
 	# Engine.time_scale = 0.5
 	# if body.has_method("respawn"):

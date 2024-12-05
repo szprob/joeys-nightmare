@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bf6bkyn0up2y4"
+path="res://.godot/imported/LASRGun_Lazer Zap 04_PSE_CLACK_90gyP.wav-cfc5a625f6d3a70d107fb75e923a6fda.sample"
+
+[deps]
+
+source_file="res://assets/sounds/traps/LASRGun_Lazer Zap 04_PSE_CLACK_90gyP.wav"
+dest_files=["res://.godot/imported/LASRGun_Lazer Zap 04_PSE_CLACK_90gyP.wav-cfc5a625f6d3a70d107fb75e923a6fda.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

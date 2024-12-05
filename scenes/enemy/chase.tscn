@@ -188,10 +188,8 @@ script = ExtResource("1_nbhrx")
 position = Vector2(-520, -460)
 scale = Vector2(4.72, 4.72)
 sprite_frames = SubResource("SpriteFrames_scbdh")
-animation = &"attacking"
+animation = &"idle"
 autoplay = "idle"
-frame = 10
-frame_progress = 1.0
 flip_h = true
 
 [node name="kill_zone" parent="." instance=ExtResource("3_1ct2n")]
