@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://mxcy0w840g3a"]
+
+[ext_resource type="Script" path="res://scripts/modules/ui/death_particles.gd" id="1_56bq6"]
+
+[node name="DeathParticles" type="GPUParticles2D"]
+script = ExtResource("1_56bq6")
