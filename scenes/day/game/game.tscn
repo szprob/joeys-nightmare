@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b5t052kpld60e"]
+[gd_scene load_steps=18 format=3 uid="uid://b5t052kpld60e"]
 
 [ext_resource type="PackedScene" uid="uid://blydc865qnepa" path="res://scenes/player/player_day.tscn" id="1_3un87"]
 [ext_resource type="PackedScene" uid="uid://bmq25pi5e8wan" path="res://scenes/day/room1/room1.tscn" id="1_fv2j8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/day/enter_animation.gd" id="3_v5xrb"]
 [ext_resource type="PackedScene" uid="uid://byljde6sgcfrv" path="res://scenes/player/actionable.tscn" id="4_epc0u"]
 [ext_resource type="Resource" uid="uid://bvjxsl5w8bm2m" path="res://scenes/day/dialogues/room2.dialogue" id="5_m6frk"]
+[ext_resource type="PackedScene" uid="uid://cydw848ah3caw" path="res://scenes/day/room2/mirror.tscn" id="6_imkld"]
 [ext_resource type="Resource" uid="uid://6a0f0mm58veq" path="res://scenes/day/dialogues/openning.dialogue" id="7_oohak"]
 [ext_resource type="PackedScene" uid="uid://67xd1lwqas7a" path="res://scenes/day/introduction/introduction.tscn" id="9_rumt0"]
 [ext_resource type="PackedScene" uid="uid://c40qc8gq3f3g3" path="res://scenes/day/room3/room3.tscn" id="10_lkum6"]
@@ -258,6 +259,10 @@ dialogue_start = "begin"
 position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_rl6hv")
 
+[node name="Mirror" parent="Room2" node_paths=PackedStringArray("character") instance=ExtResource("6_imkld")]
+position = Vector2(391, 105)
+character = NodePath("../../PlayerDay")
+
 [node name="Room3" parent="." instance=ExtResource("10_lkum6")]
 position = Vector2(-480, 272)
 
@@ -268,6 +273,9 @@ position = Vector2(120, 146)
 scale = Vector2(0.75, 0.75)
 dialog_resource = ExtResource("7_oohak")
 dialog_start = "title"
+
+[node name="AnimatedSprite2D" parent="PlayerDay" index="1"]
+animation = &"idle_back"
 
 [node name="Finder" parent="PlayerDay/Direction" index="0"]
 scale = Vector2(1.37784, 1.37784)

@@ -105,20 +105,25 @@ func _unhandled_input(event: InputEvent) -> void:
 		#GameManager.start_dialogue()
 		#GameManager.show_dialogue(load("res://scenes/day/dialogues/pick_up_gun.dialogue"), "title")
 
+func get_mirrored_animation() -> String:
+	var name_parts = animated_sprite_2d.animation.split("_")
+	var animation = name_parts[0]
+	var direction = ""
+	match name_parts[1]:
+		"front":
+			direction = "back"
+		"back":
+			direction = "front"
+		"left":
+			direction = "right"
+		"right":
+			direction = "left"
+		_:
+			direction = "front"
+	return animation + "_" + direction
 
-#func _on_area_2d_area_entered(area: Area2D) -> void:
-	#print("found player!")
-	#if Input.is_action_pressed("shoot"):
-		#GameManager.start_dialogue()
-		#GameManager.show_dialogue(load("res://scenes/day/dialogues/pick_up_gun.dialogue"), "title")
-#
-#
-#func _on_entrance_area_entered(area: Area2D) -> void:
-	#print("found player!")
-	#if Input.is_action_pressed("shoot"):
-		#GameManager.start_dialogue()
-		#GameManager.show_dialogue(load("res://scenes/day/dialogues/entrance_check.dialogue"), "title")
-		## TODO enter the dream stage
+func get_mirrored_frame():
+	return animated_sprite_2d.frame
 
 
 func _on_finder_area_entered(area: Area2D) -> void:
