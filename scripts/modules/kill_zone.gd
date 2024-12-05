@@ -1,6 +1,7 @@
 extends Area2D
 
-var particles
+var death_particles_scene = preload("res://scenes/modules/ui/death_particles.tscn")
+var current_particles: GPUParticles2D = null
 var player 
 
 @onready var timer: Timer = $Timer
@@ -11,7 +12,9 @@ func _ready():
 	# 获取玩家节点
 	player = get_tree().get_first_node_in_group("player")
 	player.set_can_move(true)
-
+	current_particles = death_particles_scene.instantiate()
+	current_particles.emitting = false
+	add_child(current_particles)
 
 func _on_body_entered(body: Node2D) -> void:
 	if not GameManager.game_state_cache['can_detect_kill_zone']:
@@ -52,40 +55,11 @@ func cleanup_dynamic_nodes() -> void:
 
 
 func create_collision_effect(pos: Vector2):
-	particles = CPUParticles2D.new()
-	add_child(particles)
-	particles.global_position = pos
-	
-	# 基础设置
-	particles.emitting = true
-	particles.one_shot = true
-	particles.explosiveness = 1.0  # 增加爆发性
-	particles.amount = 100
-	particles.lifetime = 1  # 缩短生命周期
-	particles.direction = Vector2.UP
-	particles.spread = 180  # 减小扩散角度，主要向上飞溅
-	particles.initial_velocity_min = 150
-	particles.initial_velocity_max = 250
-	particles.scale_amount_min = 2
-	particles.scale_amount_max = 4
-	# 血液颜色渐变
-	var color_ramp = Gradient.new()
-	color_ramp.add_point(0.0, Color(0.8, 0.0, 0.0, 1.0))  # 鲜红色
-	color_ramp.add_point(0.6, Color(0.6, 0.0, 0.0, 0.8))  # 暗红色
-	color_ramp.add_point(1.0, Color(0.4, 0.0, 0.0, 0))    # 褐红色渐隐
-	particles.color_ramp = color_ramp
-	
-	# 增强重力效果
-	particles.gravity = Vector2(0, 980)  # 增加重力
-	particles.damping_min = 0.5  # 增加阻尼
-	particles.damping_max = 1.0
-	
-	# 角度设置
-	particles.angle_min = -45
-	particles.angle_max = 45
-	
-	# 设置粒子自动销毁
-	await get_tree().create_timer(particles.lifetime + 0.1).timeout
-	particles.queue_free()
-	timer.start()
-	
+	if current_particles:
+		current_particles.global_position = pos
+		current_particles.restart()
+		current_particles.emitting = true
+		# 等待粒子效果完成后再启动计时器
+		await get_tree().create_timer(current_particles.lifetime).timeout
+		timer.start()
+
