@@ -62,4 +62,3 @@ func create_collision_effect(pos: Vector2):
 		# 等待粒子效果完成后再启动计时器
 		await get_tree().create_timer(current_particles.lifetime).timeout
 		timer.start()
-
