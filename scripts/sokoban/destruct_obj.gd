@@ -170,31 +170,36 @@ func _ready():
 
 	print('texture_size: ', texture_size)
 	
-	# 计算合适的分割数量，确保块的大小是整数
-	var optimal_h_blocks = int(texture_size.x / 4) # 假设最小块宽度为16
-	var optimal_v_blocks = int(texture_size.y / 4) # 假设最小块高度为16
-	print('optimal_h_blocks: ', optimal_h_blocks)
-	print('optimal_v_blocks: ', optimal_v_blocks)
-	# 确保分割数量是偶数
-	optimal_h_blocks = optimal_h_blocks - (optimal_h_blocks % 2)
-	optimal_v_blocks = optimal_v_blocks - (optimal_v_blocks % 2)
+	# get blocks
+	get_node(object.sprite_name).vframes = object.blocks_per_side
+	get_node(object.sprite_name).hframes = object.blocks_per_side
+	object.vframes = get_node(object.sprite_name).vframes
+	object.hframes = get_node(object.sprite_name).hframes
+	# # 计算合适的分割数量，确保块的大小是整数
+	# var optimal_h_blocks = int(texture_size.x / 4) # 假设最小块宽度为16
+	# var optimal_v_blocks = int(texture_size.y / 4) # 假设最小块高度为16
+	# print('optimal_h_blocks: ', optimal_h_blocks)
+	# print('optimal_v_blocks: ', optimal_v_blocks)
+	# # 确保分割数量是偶数
+	# optimal_h_blocks = optimal_h_blocks - (optimal_h_blocks % 2)
+	# optimal_v_blocks = optimal_v_blocks - (optimal_v_blocks % 2)
 	
-	# 设置分割
-	sprite.frame = 0
-	sprite.vframes = optimal_v_blocks
-	sprite.hframes = optimal_h_blocks
-	object.vframes = sprite.vframes
-	object.hframes = sprite.hframes
+	# # 设置分割
+	# sprite.frame = 0
+	# sprite.vframes = optimal_v_blocks
+	# sprite.hframes = optimal_h_blocks
+	# object.vframes = sprite.vframes
+	# object.hframes = sprite.hframes
 	
-	# 计算每个块的大小
-	object.width = texture_size.x
-	object.height = texture_size.y
+	# # 计算每个块的大小
+	# object.width = texture_size.x
+	# object.height = texture_size.y
 	
-	if debug_mode:
-		print("Sprite size: ", texture_size)
-		print("Blocks: ", Vector2(optimal_h_blocks, optimal_v_blocks))
-		print("Block size: ", Vector2(texture_size.x / optimal_h_blocks, texture_size.y / optimal_v_blocks))
-		print("Current frame: ", sprite.frame)
+	# if debug_mode:
+	# 	print("Sprite size: ", texture_size)
+	# 	print("Blocks: ", Vector2(optimal_h_blocks, optimal_v_blocks))
+	# 	print("Block size: ", Vector2(texture_size.x / optimal_h_blocks, texture_size.y / optimal_v_blocks))
+	# 	print("Current frame: ", sprite.frame)
 
 	if debug_mode: print("object's blocks per side: ", object.blocks_per_side)
 	if debug_mode: print("object's total blocks: ", object.blocks_per_side * object.blocks_per_side)
@@ -248,20 +253,27 @@ func _ready():
 
 		var shape = RectangleShape2D.new()
 		shape.extents = object.collision_extents
+		print('shape.extents: ', shape.extents)
+		# duplicated_object.freeze = true
 
-		duplicated_object.freeze = true
+		# var this_sprite_node = duplicated_object.get_node(object.sprite_name) as Sprite2D
+		# # this_sprite_node.scale = sprite_node.scale
+		# this_sprite_node.vframes = object.vframes
+		# this_sprite_node.hframes = object.hframes
+		# this_sprite_node.frame = n
+		# duplicated_object.get_node(object.collision_name).shape = shape
+		# duplicated_object.get_node(object.collision_name).position = object.collision_position
 
-		var this_sprite_node = duplicated_object.get_node(object.sprite_name) as Sprite2D
-		# this_sprite_node.scale = sprite_node.scale
-		this_sprite_node.vframes = object.vframes
-		this_sprite_node.hframes = object.hframes
-		this_sprite_node.frame = n
-		duplicated_object.get_node(object.collision_name).shape = shape
-		duplicated_object.get_node(object.collision_name).position = object.collision_position
+		object.blocks[n].freeze = true
+		object.blocks[n].get_node(object.sprite_name).vframes = object.vframes
+		object.blocks[n].get_node(object.sprite_name).hframes = object.hframes
+		object.blocks[n].get_node(object.sprite_name).frame = n
+		object.blocks[n].get_node(object.collision_name).shape = shape
+		object.blocks[n].get_node(object.collision_name).position = object.collision_position
 	
 
 		if object.collision_one_way:
-			duplicated_object.get_node(object.collision_name).one_way_collision = true
+			object.blocks[n].get_node(object.collision_name).one_way_collision = true
 
 		if debug_mode:
 			# duplicated_object.modulate = Color(randf_range(0, 1), randf_range(0, 1), randf_range(0, 1), 0.9)
@@ -398,27 +410,27 @@ func detonate():
 		var child_gravity_scale = blocks_gravity_scale
 		child.gravity_scale = child_gravity_scale
 
-		# var child_scale = randf_range(0.5, 1.5)
-		var child_scale = 1
-		child.get_node(object.sprite_name).scale = Vector2(child_scale, child_scale)
-		child.get_node(object.collision_name).scale = Vector2(child_scale, child_scale)
+		var child_scale = randf_range(0.5, 1.5)
+		# var child_scale = 1
+		child.get_node(object.sprite_name).scale *= Vector2(child_scale, child_scale)
+		child.get_node(object.collision_name).scale *= Vector2(child_scale, child_scale)
 
-		child.mass = child_scale
+		# child.mass = child_scale
 
 		child.set_collision_layer(0 if randf() < 0.5 else object.collision_layers)
 		child.set_collision_mask(0 if randf() < 0.5 else object.collision_masks)
 
-		# child.z_index = 0 if randf() < 0.5 else -1
-		child.z_index = -1
+		child.z_index = 0 if randf() < 0.5 else -1
+		# child.z_index = -1
 
-		var child_color = randf_range(100, 255) / 255
-		var tween = create_tween()
-		tween.tween_property(
-			child,
-			"modulate",
-			Color(child_color, child_color, child_color, 1.0),
-			0.25
-		)
+		# var child_color = randf_range(100, 255) / 255
+		# var tween = create_tween()
+		# tween.tween_property(
+		# 	child,
+		# 	"modulate",
+		# 	Color(child_color, child_color, child_color, 1.0),
+		# 	0.25
+		# )
 
 
 		child.freeze = false
