@@ -89,7 +89,7 @@ func _ready() -> void:
 
 func _on_timer_timeout():
 	if player and player.has_method("set_can_move"):
-		player.set_can_move(false)
+		player.set_can_move(false,'idle')
 	create_bubble()
 
 
@@ -183,6 +183,8 @@ func create_bubble() -> void:
 	# 然后创建气泡实例并使用处理后的文本
 	var bubble_instance = BubbleScene.instantiate()
 	bubble_instance.text = current_text
+	bubble_instance.z_index = 99
+	bubble_instance.visible = true
 	bubble_instance.t = bubble_delay
 	bubble_instance.text_speed = bubble_speed
 	bubble_instance.global_position = bubble_position

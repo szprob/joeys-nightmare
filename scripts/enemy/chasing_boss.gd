@@ -2,29 +2,41 @@ extends CharacterBody2D
 
 # 添加计时器和目标位置变量
 @export var state_timer: float = 0.0
-@export var idle_duration: float = 3.0
-@export var dash_speed: float = 180.0
+@export var init_wait_time: float = 1.5
+@export var idle_duration: float = 0.3
+@export var dash_speed: float = 200.0
 @export var player: Node2D
 @export var time_enable_attack_collision: float = 0.8
+@export var limit_y_offset_top: int = 20
+@export var limit_y_offset_bottom: int = 20
 
 # 添加状态枚举
 enum State {IDLE, ATTACKING, DASH}
 var current_state = State.IDLE
 var target_position: Vector2
-var timer: Timer
+var timer: Timer # 攻击碰撞启用计时器
+var init_timer: Timer # 初始化计时器
 var origin_scale_x 
 var idle_direction: Vector2
 var dash_direction: Vector2
 var attack_direction: Vector2
 var direction2player
+var current_camera: Camera2D
+var limit_top: int
+var limit_bottom: int
+
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var attack_collision: CollisionShape2D = $kill_zone/CollisionShape2D2
 
 func _ready():
+	# player
 	player = get_tree().get_first_node_in_group("player")
-	global_position = player.global_position + Vector2(-200, -100)
-	
-	
+	global_position = player.global_position + Vector2(-50, -50)
+	# camera
+	current_camera = get_tree().get_first_node_in_group("camera")
+	limit_top = current_camera.limit_top + limit_y_offset_top 
+	limit_bottom = current_camera.limit_bottom - limit_y_offset_bottom
+
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	timer = Timer.new()
 	add_child(timer)
@@ -32,9 +44,19 @@ func _ready():
 	timer.wait_time = time_enable_attack_collision
 	timer.one_shot = true
 
+	init_timer = Timer.new()
+	add_child(init_timer)
+	init_timer.timeout.connect(_on_init_timeout)
+	init_timer.wait_time = init_wait_time
+	init_timer.one_shot = true
+	init_timer.start()
+
 	origin_scale_x = scale.x
 	# idle_direction = (player.global_position - global_position).normalized()
 	# scale.x = origin_scale_x if idle_direction.x < 0 else -origin_scale_x
+	
+
+func _on_init_timeout():
 	change_state(State.IDLE)
 
 func _on_timeout():
@@ -52,7 +74,8 @@ func _physics_process(delta: float) -> void:
 			if not animated_sprite.is_playing():
 				animated_sprite.play("idle")
 			if state_timer >= idle_duration:
-				change_state(State.DASH)
+				if player.global_position.y < limit_top or player.global_position.y > limit_bottom:
+					change_state(State.DASH)
 		State.ATTACKING:
 			pass
 		State.DASH:
