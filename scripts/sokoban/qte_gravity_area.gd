@@ -30,7 +30,7 @@ func _draw() -> void:
 		
 	var radius: float
 	if collision_shape.shape is CircleShape2D:
-		radius = collision_shape.shape.radius
+		radius = collision_shape.shape.radius * 0.8
 	elif collision_shape.shape is RectangleShape2D:
 		var shape_size = collision_shape.shape.size
 		radius = min(shape_size.x, shape_size.y) / 2

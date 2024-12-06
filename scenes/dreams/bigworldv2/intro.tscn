@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=4 uid="uid://bl4teyqpcnntr"]
+[gd_scene load_steps=59 format=4 uid="uid://bl4teyqpcnntr"]
 
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="1_e7g7y"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="2_326va"]
@@ -36,7 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://cyp6s0hn0oacu" path="res://scenes/modules/auto_invisible_label.tscn" id="31_t7bi6"]
 [ext_resource type="Script" path="res://scripts/camera_area.gd" id="35_ix8v8"]
 [ext_resource type="PackedScene" uid="uid://c5x12p3650b3l" path="res://scenes/player/npc.tscn" id="36_nx2ii"]
-[ext_resource type="PackedScene" uid="uid://yan3jqnet7ud" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="37_ij3kw"]
+[ext_resource type="PackedScene" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="37_ij3kw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ogtr0"]
 texture = ExtResource("10_efx6i")
@@ -507,7 +507,7 @@ position = Vector2(144, 120)
 curve = SubResource("Curve2D_rtoo5")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="maps/map1-2/Path2D5"]
-position = Vector2(24, 0)
+position = Vector2(22.1353, 0)
 progress = 105.856
 rotates = false
 
@@ -529,7 +529,7 @@ position = Vector2(232, 56)
 curve = SubResource("Curve2D_rtoo5")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="maps/map1-2/Path2D4"]
-position = Vector2(27.4772, 0)
+position = Vector2(27.4776, 0)
 progress = 100.518
 rotates = false
 
@@ -885,6 +885,7 @@ disabled = true
 debug_color = Color(0.866667, 0.282353, 0.552941, 0.419608)
 
 [node name="camera_area4" type="Area2D" parent="camera_limit" groups=["camera_area"]]
+visible = false
 position = Vector2(-440, -760)
 collision_mask = 129
 script = ExtResource("35_ix8v8")
@@ -920,6 +921,7 @@ position = Vector2(1728, 315)
 shape = SubResource("RectangleShape2D_3p4ps")
 
 [node name="camera_area6" type="Area2D" parent="camera_limit" groups=["camera_area"]]
+visible = false
 position = Vector2(-440, -760)
 collision_mask = 129
 script = ExtResource("35_ix8v8")
@@ -935,8 +937,10 @@ disabled = true
 debug_color = Color(0.866667, 0.282353, 0.552941, 0.419608)
 
 [node name="Npc" parent="." node_paths=PackedStringArray("teleport") instance=ExtResource("36_nx2ii")]
+visible = false
 position = Vector2(-250, -283)
 teleport = NodePath("../empty-teleport")
 
 [node name="empty-teleport" parent="." instance=ExtResource("37_ij3kw")]
+visible = false
 position = Vector2(-211, -279)
