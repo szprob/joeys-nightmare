@@ -557,19 +557,21 @@ func _on_debris_timer_timeout():
 
 
 func _on_trigger_entered(body: Node2D) -> void:
-	if debug_mode:
-		print("Area detected body: ", body.name)
-		if body is TileMapLayer:
-			print('tilemaplayer')
-	
-	if body.get_parent():
+
+	print("Area detected body: ", body.name)
+	if body is TileMapLayer:
+		print('tilemaplayer')
+	if body.get("can_destroy") != null and body.can_destroy and object.can_detonate:
+		print("Triggering explosion from area detection")
+		object.detonate = true
+	elif body.get_parent():
 		var parent = body.get_parent()
 		if parent.get("can_destroy") != null and parent.can_destroy and object.can_detonate:
-			if debug_mode:
-				print("Triggering explosion from area detection")
-				object.detonate = true
+			print("Triggering explosion from area detection")
+			object.detonate = true
 		else:
-			print('not trigger destroy by ', body.name)
+			# print('not trigger destroy by ', body.name)
+			pass
 
 
 func debug_print_object() -> void:
