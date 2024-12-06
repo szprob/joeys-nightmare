@@ -12,7 +12,8 @@ extends RigidBody2D
 @export var fake_explosions_group: String = "fake_explosion_particles"
 @export var randomize_seed: bool = false
 @export var debug_mode: bool = true
-
+@export var trigger_path = '../Trigger'
+@export var trigger_node_name: String = "Trigger"
 # var object = DestructObject.new()
 
 var explosion_delay_timer = 0
@@ -20,6 +21,8 @@ var explosion_delay_timer_limit = 0
 var _initialization_complete: bool = false
 # var object: DestructObject.new()
 var _debug_printed: bool = false
+var explosion_detector: Area2D
+
 
 # var params = {
 # 		"blocks_gravity_scale": blocks_gravity_scale,
@@ -78,7 +81,12 @@ class DestructObject:
 
 
 func _ready():
-
+	# print("Script is running, debug_mode is: ", debug_mode)
+	if debug_mode:
+		print("My collision layer: ", collision_layer)
+		print("My collision mask: ", collision_mask)
+		print("Can detect static bodies: ", collision_mask & 1)
+	
 	var params = {
 		"blocks_gravity_scale": blocks_gravity_scale,
 		"blocks_impulse": blocks_impulse,
@@ -92,6 +100,18 @@ func _ready():
 	}
 	object = DestructObject.new(params)
 
+	explosion_detector = get_parent().get_node(trigger_node_name)
+	#explosion_detector = get_node(trigger_path)
+	if explosion_detector:
+		explosion_detector.collision_layer = 0
+		explosion_detector.collision_mask = 1
+		print('detector found')
+		explosion_detector.area_entered.connect(_on_trigger_entered)
+		print('connected explosion_detector', explosion_detector.name)
+
+	# 连接区域进入信号
+	
+	# explosion_detector.area_entered.connect(_on_area_area_entered)
 
 	if _initialization_complete:
 		return
@@ -164,11 +184,12 @@ func _ready():
 	# 先获取原始尺寸
 	var texture_size: Vector2
 	if sprite.region_enabled:
-		texture_size = sprite.region_rect.size * sprite.scale
+		texture_size = sprite.region_rect.size * sprite.scale * 0.9 # FIXME
 	else:
-		texture_size = sprite.texture.get_size() * sprite.scale
+		texture_size = sprite.texture.get_size() * sprite.scale * 0.9
 
-	print('texture_size: ', texture_size)
+	if debug_mode:
+		print('texture_size: ', texture_size)
 	
 	# get blocks
 	get_node(object.sprite_name).vframes = object.blocks_per_side
@@ -233,7 +254,8 @@ func _ready():
 	object.collision_extents = Vector2((object.width / 2) / object.hframes,
 									(object.height / 2) / object.vframes)
 
-	print('collision_extents: ', object.collision_extents)
+	if debug_mode:
+		print('collision_extents: ', object.collision_extents)
 
 	if debug_mode:
 		print("object's collision_extents: ", object.collision_extents)
@@ -253,7 +275,8 @@ func _ready():
 
 		var shape = RectangleShape2D.new()
 		shape.extents = object.collision_extents
-		print('shape.extents: ', shape.extents)
+		if debug_mode:
+			print('shape.extents: ', shape.extents)
 		# duplicated_object.freeze = true
 
 		# var this_sprite_node = duplicated_object.get_node(object.sprite_name) as Sprite2D
@@ -279,6 +302,7 @@ func _ready():
 			# duplicated_object.modulate = Color(randf_range(0, 1), randf_range(0, 1), randf_range(0, 1), 0.9)
 			print('append object size:', duplicated_object.get_node(object.collision_name).shape.extents)
 
+		
 	# 初始化块索引
 	var block_index = 0
 
@@ -309,21 +333,30 @@ func _ready():
 	# add_children(object)
 	_initialization_complete = true
 
+
 	if debug_mode: print("--------------------------------")
 	if debug_mode: debug_print_object()
 	if debug_mode: print('object.parent: ', object.parent.name)
+
+	contact_monitor = true
+	max_contacts_reported = 4 # Set this according to your needs
+	# body_entered.connect(_on_body_entered)
 #
+	
+	add_to_group("destructible")
 func _physics_process(delta):
 	# if object.parent:
 	# 	print('object.parent: ', object.parent.name)
-	if Input.is_action_pressed('explode') and object.can_detonate:
-		# Input.is_mouse_button_pressed(MouseButton.LEFT) and object.can_detonate:
-		# This is what triggers the explosion, setting 'object.detonate' to 'true'.
-		# print('explode')
-		# if debug_mode and not _debug_printed:
-		# 	debug_print_object()
-		# 	_debug_printed = true
-		object.detonate = true
+	# if object.can_detonate and object.detonate:
+	# 	# Input.is_mouse_button_pressed(MouseButton.LEFT) and object.can_detonate:
+	# 	# This is what triggers the explosion, setting 'object.detonate' to 'true'.
+	# 	# print('explode')
+	# 	# if debug_mode and not _debug_printed:
+	# 	# 	debug_print_object()
+	# 	# 	_debug_printed = true
+	# 	object.detonate = true
+
+	# print('global_position: ', global_position)
 
 	if object.can_detonate and object.detonate:
 		detonate()
@@ -365,11 +398,17 @@ func _integrate_forces(state):
 
 func add_children(child_object):
 	for i in range(child_object.blocks.size()):
-		print('add block of size: ', child_object.blocks[i].get_node(child_object.collision_name).shape.extents)
+		if debug_mode:
+			print('add block of size: ', child_object.blocks[i].get_node(child_object.collision_name).shape.extents)
+		var block = child_object.blocks[i]
+		# 确保碎片不会干扰主体的碰撞检测
+		block.contact_monitor = false
+		block.collision_layer = 1
 		child_object.blocks_container.add_child(child_object.blocks[i], true)
 	# print('child_object: ', child_object)
 	# print('parent: ', child_object.parent.name)
-	print('blocks_container: ', child_object.blocks_container)
+	if debug_mode:
+		print('blocks_container: ', child_object.blocks_container)
 	child_object.parent.add_child(child_object.blocks_container, true)
 
 	# Move the self element faaaar away, instead of removing it,
@@ -382,7 +421,7 @@ func detonate():
 	# if not is_instance_valid(object.parent):
 	# 	print("Warning: parent reference is invalid!")
 	# 	return
-
+	print('detonating ', self.name)
 
 	object.can_detonate = false
 	object.has_detonated = true
@@ -434,7 +473,7 @@ func detonate():
 
 
 		child.freeze = false
-# 	object.debris_timer.start()
+	object.debris_timer.start()
 
 #
 func explosion(delta):
@@ -493,6 +532,45 @@ func _on_debris_timer_timeout():
 #
 #func _on_opacity_tween_completed(obj, _key):
 	#obj.queue_free()
+
+# func _on_body_entered(body: Node2D) -> void:
+# 	# if debug_mode:
+# 	# 	print("Collision detected with: ", body.name)
+# 	# 	print("Collider type: ", body.get_class())
+# 	# print('body enter name: ', body.name)
+# 	# if body.get_parent():
+# 	# 	print('body parent name: ', body.get_parent().name)
+# 	# if body.owner:
+# 	# 	print('body owner name: ', body.owner.name)
+# 	print('self: detecting ', self.name)
+# 	print('body: ', body.name)
+# 	if body.get_parent():
+# 		var parent = body.get_parent()
+		
+# 		# if parent:
+# 		# 	print('parent name: ', parent.name)
+# 		# 	print('parent has can_destroy: ', parent.get("can_destroy") != null)
+# 		if parent.get("can_destroy") != null and parent.can_destroy and object.can_detonate:
+# 			print('detonate', self.name)
+# 			object.detonate = true
+# 			global_position = Vector2(-999999, -999999)
+
+
+func _on_trigger_entered(body: Node2D) -> void:
+	if debug_mode:
+		print("Area detected body: ", body.name)
+		if body is TileMapLayer:
+			print('tilemaplayer')
+	
+	if body.get_parent():
+		var parent = body.get_parent()
+		if parent.get("can_destroy") != null and parent.can_destroy and object.can_detonate:
+			if debug_mode:
+				print("Triggering explosion from area detection")
+				object.detonate = true
+		else:
+			print('not trigger destroy by ', body.name)
+
 
 func debug_print_object() -> void:
 	print("\n=== Debug Object Info ===")

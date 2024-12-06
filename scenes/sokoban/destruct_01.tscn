@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2etrpsid6wwh"]
+
+[ext_resource type="Script" path="res://scripts/sokoban/destruct_01.gd" id="1_5gctw"]
+[ext_resource type="PackedScene" uid="uid://uameo0xhgfwd" path="res://scenes/sokoban/destruct_obj.tscn" id="1_ngb1o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_545ob"]
+size = Vector2(20, 61)
+
+[node name="destruct-01" type="Node2D"]
+script = ExtResource("1_5gctw")
+
+[node name="destruct-obj" parent="." instance=ExtResource("1_ngb1o")]
+collision_layer = 129
+blocks_per_side = 4
+blocks_gravity_scale = 1.0
+
+[node name="detector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detector"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_545ob")
