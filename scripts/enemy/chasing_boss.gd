@@ -11,8 +11,8 @@ extends CharacterBody2D
 @export var limit_y_offset_bottom: int = 20
 
 # 添加状态枚举
-enum State {IDLE, ATTACKING, DASH}
-var current_state = State.IDLE
+enum State {IDLE, ATTACKING, DASH, INIT}
+var current_state = State.INIT
 var target_position: Vector2
 var timer: Timer # 攻击碰撞启用计时器
 var init_timer: Timer # 初始化计时器
@@ -34,8 +34,6 @@ func _ready():
 	global_position = player.global_position + Vector2(-50, -50)
 	# camera
 	current_camera = get_tree().get_first_node_in_group("camera")
-	limit_top = current_camera.limit_top + limit_y_offset_top 
-	limit_bottom = current_camera.limit_bottom - limit_y_offset_bottom
 
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	timer = Timer.new()
@@ -68,13 +66,19 @@ func _on_animation_finished():
 		change_state(State.IDLE)
 
 func _physics_process(delta: float) -> void:
+	limit_top = current_camera.limit_top + limit_y_offset_top
+	print('limit_top',limit_top)
+	limit_bottom = current_camera.limit_bottom - limit_y_offset_bottom
+	print('limit_bottom',limit_bottom)
+	print('player.global_position',player.global_position)
+	
 	state_timer += delta
 	match current_state:
 		State.IDLE:
 			if not animated_sprite.is_playing():
 				animated_sprite.play("idle")
 			if state_timer >= idle_duration:
-				if player.global_position.y < limit_top or player.global_position.y > limit_bottom:
+				if player.global_position.y > limit_top or player.global_position.y < limit_bottom:
 					change_state(State.DASH)
 		State.ATTACKING:
 			pass
