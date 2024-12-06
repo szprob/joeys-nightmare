@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var idle_duration: float = 3.0
 @export var dash_speed: float = 180.0
 @export var player: Node2D
-@export var time_enable_attack_collision: float = 0.4
+@export var time_enable_attack_collision: float = 0.8
 
 # 添加状态枚举
 enum State {IDLE, ATTACKING, DASH}
@@ -16,7 +16,7 @@ var origin_scale_x
 var idle_direction: Vector2
 var dash_direction: Vector2
 var attack_direction: Vector2
-
+var direction2player
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var attack_collision: CollisionShape2D = $kill_zone/CollisionShape2D2
 
@@ -24,7 +24,7 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	global_position = player.global_position + Vector2(-200, -100)
 	
-	change_state(State.IDLE)
+	
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	timer = Timer.new()
 	add_child(timer)
@@ -35,6 +35,7 @@ func _ready():
 	origin_scale_x = scale.x
 	# idle_direction = (player.global_position - global_position).normalized()
 	# scale.x = origin_scale_x if idle_direction.x < 0 else -origin_scale_x
+	change_state(State.IDLE)
 
 func _on_timeout():
 	attack_collision.disabled = false
@@ -46,9 +47,6 @@ func _on_animation_finished():
 
 func _physics_process(delta: float) -> void:
 	state_timer += delta
-	var direction2player = (player.global_position - global_position).normalized()
-	scale.x = origin_scale_x if direction2player.x > 0 else -origin_scale_x
-
 	match current_state:
 		State.IDLE:
 			if not animated_sprite.is_playing():
@@ -73,7 +71,7 @@ func change_state(new_state: State) -> void:
 	current_state = new_state
 	state_timer = 0.0
 	attack_collision.disabled = true
-	
+
 	match new_state:
 		State.IDLE:
 			velocity = Vector2.ZERO
@@ -82,8 +80,9 @@ func change_state(new_state: State) -> void:
 			animated_sprite.play("attacking")
 			timer.start()
 		State.DASH:
+			direction2player = (player.global_position - global_position).normalized()
+			scale.x = origin_scale_x if direction2player.x > 0 else -origin_scale_x
 			target_position = player.global_position
 			dash_direction = (target_position - global_position).normalized()
 			# scale.x = origin_scale_x if dash_direction.x > 0 else -origin_scale_x
 			velocity = dash_direction * dash_speed
-
