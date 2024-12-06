@@ -22,7 +22,7 @@ func _ready() -> void:
 	final_position = target.global_position
 	if invisible_before_launch:
 		modulate.a = 0
-	
+	kill_zone_collision.disabled = true
 	# 设置整个 Area2D 的旋转
 	fly_direction = (final_position - global_position).normalized()
 	var angle_to_target = fly_direction.angle()
@@ -54,5 +54,6 @@ func _on_detection_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D and do_detect:
 		timer.start()
 		do_detect=false
+		kill_zone_collision.disabled = false
 		if sfx_player:
 			sfx_player.play()
