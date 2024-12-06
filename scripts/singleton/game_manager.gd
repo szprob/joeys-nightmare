@@ -56,6 +56,7 @@ func init_default_state():
 		'skills': {
 			'second_jump_enabled': false
 		},
+		'boss':{'boos1':{'current_area_index':0}},
 		'npc_dialogue_list': [],
 		'laji': '',
 		'number_deaths': 0,
@@ -295,6 +296,8 @@ func _input(event: InputEvent) -> void:
 	# 确保只在按键事件时调用 is_action_just_pressed
 	if event is InputEventKey and event.is_pressed():
 		if Input.is_action_just_pressed("esc"):
+			if is_chatting() :
+				return 
 			if not get_tree().current_scene.is_in_group("no_pause"):
 				toggle_pause_menu()
 			else:

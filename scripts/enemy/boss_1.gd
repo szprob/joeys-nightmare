@@ -2,7 +2,7 @@ extends Area2D
 
 var player
 var areas: Array[Area2D] = []
-var current_area_index = 0
+var current_area_index
 var ball 
 var particles_scene
 var current_particles
@@ -37,6 +37,7 @@ var can_move_timer
 
 
 func _ready():
+	
 	particles_scene = preload("res://scenes/modules/ui/collision_particles.tscn")
 	current_particles = particles_scene.instantiate()
 	current_particles.emitting = false
@@ -46,6 +47,11 @@ func _ready():
 	for child in get_children():
 		if child is Area2D:
 			areas.append(child)
+	
+	# 加载当前区域
+	current_area_index = GameManager.game_state['boss']['boos1']['current_area_index']
+	global_position = areas[current_area_index].global_position
+
 	body_entered.connect(on_body_entered)
 	origin_scale_x = scale.x
 	change_state(State.IDLE)

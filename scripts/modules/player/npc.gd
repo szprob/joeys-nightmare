@@ -14,6 +14,7 @@ enum NPCState {
 var current_state: NPCState = NPCState.IDLE
 var movement_speed: float = 100.0
 var dialogue_data: Dictionary = {}
+var dialogue_file
 var can_interact: bool = true
 var player_in_range: bool = false
 var is_dialogue_active: bool = false
@@ -24,31 +25,30 @@ var bubble_texts: Array = []
 var player : CharacterBody2D
 
 # 添加新的导入
-const DialogueResourceFile = preload("res://addons/dialogue_manager/dialogue_resource.gd")
-const DialogueManagerFile = preload("res://addons/dialogue_manager/dialogue_manager.gd")
 const PortalScene = preload("res://scenes/modules/checkpoints/empty-teleport.tscn")
 const BubbleScene = preload("res://scenes/modules/ui/bubble.tscn")
+
+const DialogueFile = preload("res://scenes/dreams/dialogue/dialogue.gd")
 
 # 添加新的变量
 @export var bubble_delay: float = 1.2
 @export var bubble_speed: float = 0.06
-@export var bubble_file: String = "res://assets/dialogue/start.txt"
+@export var bubble_title: String = "stage1_begin"
 @export var bubble_index: int = 0
 @export var teleport: Node2D
 @export var disappear_delay: float = 1.5
 
 
 func _ready() -> void:
+	dialogue_file = DialogueFile.new()
 	# 检查对话文件是否在已完成列表中
-	print(GameManager.game_state['npc_dialogue_list'])
-	print(typeof(GameManager.game_state['npc_dialogue_list']))
-	if GameManager.game_state.has('npc_dialogue_list') and bubble_file in GameManager.game_state['npc_dialogue_list']:
-		print('该NPC对话已完成，将被移除: ', bubble_file)
+	if GameManager.game_state.has('npc_dialogue_list') and bubble_title in GameManager.game_state['npc_dialogue_list']:
+		print('该NPC对话已完成，将被移除: ', bubble_title)
 		if teleport:
 			teleport.queue_free()
 		queue_free()
 		return
-
+	bubble_texts = dialogue_file.dialogue_data[bubble_title]
 	player = get_tree().get_first_node_in_group("player")
 	teleport.visible = false
 	# 初始化对话区域信号
@@ -69,13 +69,6 @@ func _ready() -> void:
 	disappear_timer.timeout.connect(_on_disappear_timer_timeout)
 	disappear_timer.one_shot = true
 	disappear_timer.wait_time = disappear_delay
-
-
-	bubble_texts = GameManager.read_txt_to_list(bubble_file)
-	if bubble_texts.is_empty():
-		print("警告: 无法读取对话文件 ", bubble_file)
-		queue_free()
-		return
 
 
 # 	var player = get_tree().get_first_node_in_group("player")
@@ -119,13 +112,13 @@ func _process_idle_state() -> void:
 
 func _process_walking_state(_delta: float):
 	# 添加调试信息
-	var distance = position.distance_to(target_position)
+	var distance = global_position.distance_to(target_position)
 	if distance < 5.0:
 		current_state = NPCState.IDLE
-		position = target_position
+		global_position = target_position
 		disappear()
 	else:
-		var direction = position.direction_to(target_position)
+		var direction = global_position.direction_to(target_position)
 		velocity = direction * movement_speed
 		
 		if velocity.length() > 0:
@@ -160,8 +153,6 @@ func create_portal() -> void:
 	# 添加调试信息
 	print("Teleport global position:", teleport.global_position)
 	target_position = teleport.global_position
-	print("Target position (local):", target_position)
-	print("Current position:", position)
 	current_state = NPCState.WALKING
 
 func disappear() -> void:
@@ -197,6 +188,7 @@ func create_bubble() -> void:
 	bubble_instance.global_position = bubble_position
 	bubble_instance.tree_exited.connect(_on_bubble_destroyed)
 	get_parent().add_child(bubble_instance)
+	print(current_text)
 
 func _on_bubble_destroyed() -> void:
 	bubble_index += 1
@@ -204,7 +196,7 @@ func _on_bubble_destroyed() -> void:
 		create_bubble()
 	else:
 		print('save dialogue')
-		GameManager.game_state['npc_dialogue_list'].append(bubble_file)
+		GameManager.game_state['npc_dialogue_list'].append(bubble_title)
 		GameManager.save_game_state()
 		print('create portal')
 		create_portal()

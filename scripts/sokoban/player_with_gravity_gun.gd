@@ -177,6 +177,7 @@ func _physics_process(delta: float) -> void:
 			# 死亡状态下仍然受到重力和惯性影响
 			var gravity = get_gravity()
 			velocity += gravity * delta
+			velocity.x = velocity.x * 0.98
 			move_and_slide()
 		elif player_state == 'jump':
 			animated_sprite_2d.play('jump')

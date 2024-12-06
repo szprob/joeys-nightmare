@@ -22,6 +22,9 @@ enum DoorColor {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if door_name in GameManager.game_state['doors_opened']:
+		queue_free()
+
 	label.visible = false
 	# 根据颜色加载相应的sprite
 	match door_color:
