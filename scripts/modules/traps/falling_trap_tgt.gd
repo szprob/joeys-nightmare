@@ -9,7 +9,7 @@ var is_flying_forward: bool = false
 var fly_direction: Vector2 = Vector2.ZERO
 var init_position: Vector2 = Vector2.ZERO
 var final_position : Vector2 = Vector2.ZERO
-var do_detect = true 
+var do_detect 
 
 @onready var falling_trap: Area2D = $"."
 @onready var timer: Timer = $Timer
@@ -18,6 +18,7 @@ var do_detect = true
 @onready var kill_zone_collision: CollisionShape2D = $kill_zone/CollisionShape2D
 
 func _ready() -> void:
+	do_detect = true 
 	init_position = global_position
 	final_position = target.global_position
 	if invisible_before_launch:
@@ -46,6 +47,7 @@ func _on_timer_timeout() -> void:
 	if invisible_before_launch:
 		modulate.a = 1  # 发射时显示
 	fly_direction = (final_position  - global_position).normalized()
+	kill_zone_collision.disabled = false
 
 
 
@@ -54,6 +56,5 @@ func _on_detection_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D and do_detect:
 		timer.start()
 		do_detect=false
-		kill_zone_collision.disabled = false
 		if sfx_player:
 			sfx_player.play()
