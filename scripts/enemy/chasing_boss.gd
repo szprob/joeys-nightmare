@@ -7,8 +7,8 @@ extends CharacterBody2D
 @export var dash_speed: float = 200.0
 @export var player: Node2D
 @export var time_enable_attack_collision: float = 0.8
-@export var limit_y_offset_top: int = 20
-@export var limit_y_offset_bottom: int = 20
+@export var limit_y_offset_top: int = 50
+@export var limit_y_offset_bottom: int = 5
 
 # 添加状态枚举
 enum State {IDLE, ATTACKING, DASH, INIT}
@@ -78,8 +78,8 @@ func _physics_process(delta: float) -> void:
 			if not animated_sprite.is_playing():
 				animated_sprite.play("idle")
 			if state_timer >= idle_duration:
-				if player.global_position.y > limit_top or player.global_position.y < limit_bottom:
-					change_state(State.DASH)
+				# if player.global_position.y > limit_top and player.global_position.y < limit_bottom:
+				change_state(State.DASH)
 		State.ATTACKING:
 			pass
 		State.DASH:
@@ -110,6 +110,9 @@ func change_state(new_state: State) -> void:
 			direction2player = (player.global_position - global_position).normalized()
 			scale.x = origin_scale_x if direction2player.x > 0 else -origin_scale_x
 			target_position = player.global_position
+			if target_position.y > limit_top :
+				target_position.y = limit_top
+
 			dash_direction = (target_position - global_position).normalized()
 			# scale.x = origin_scale_x if dash_direction.x > 0 else -origin_scale_x
 			velocity = dash_direction * dash_speed

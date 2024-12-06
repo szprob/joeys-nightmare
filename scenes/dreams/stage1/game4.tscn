@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cfd32uhmfjkj8"]
+[gd_scene load_steps=15 format=4 uid="uid://cfd32uhmfjkj8"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_pncfk"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="2_p4c2u"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="4_3j06h"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="5_k685k"]
 [ext_resource type="PackedScene" uid="uid://deu5vht28g1ac" path="res://scenes/enemy/chase.tscn" id="7_1h1u3"]
+[ext_resource type="Script" path="res://scripts/camera_area.gd" id="7_hijyu"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8553"]
 distance = -68.0
@@ -320,6 +321,12 @@ texture = ExtResource("3_3a0h1")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_pwg2v")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ko8da"]
+size = Vector2(473, 264.714)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhsbb"]
+size = Vector2(1282, 270)
+
 [node name="Game2" type="Node2D" groups=["scan_lines"]]
 script = ExtResource("1_pncfk")
 
@@ -354,3 +361,18 @@ script = ExtResource("5_k685k")
 
 [node name="Monster" parent="." instance=ExtResource("7_1h1u3")]
 position = Vector2(-1628, -63)
+
+[node name="camera_area2" type="Area2D" parent="." groups=["camera_area"]]
+position = Vector2(-2701, -497)
+collision_mask = 129
+script = ExtResource("7_hijyu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="camera_area2"]
+position = Vector2(1128.5, 363.643)
+shape = SubResource("RectangleShape2D_ko8da")
+
+[node name="LimitShape2D" type="CollisionShape2D" parent="camera_area2"]
+position = Vector2(1529, 368)
+shape = SubResource("RectangleShape2D_lhsbb")
+disabled = true
+debug_color = Color(0.866576, 0.28232, 0.553243, 0.42)
