@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b5t052kpld60e"]
+[gd_scene load_steps=19 format=3 uid="uid://b5t052kpld60e"]
 
 [ext_resource type="PackedScene" uid="uid://blydc865qnepa" path="res://scenes/player/player_day.tscn" id="1_3un87"]
 [ext_resource type="PackedScene" uid="uid://bmq25pi5e8wan" path="res://scenes/day/room1/room1.tscn" id="1_fv2j8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://bvjxsl5w8bm2m" path="res://scenes/day/dialogues/room2.dialogue" id="5_m6frk"]
 [ext_resource type="PackedScene" uid="uid://cydw848ah3caw" path="res://scenes/day/room2/mirror.tscn" id="6_imkld"]
 [ext_resource type="Resource" uid="uid://6a0f0mm58veq" path="res://scenes/day/dialogues/openning.dialogue" id="7_oohak"]
+[ext_resource type="PackedScene" uid="uid://dodqd8727m8io" path="res://scenes/day/display_room/display_room.tscn" id="8_8db2n"]
 [ext_resource type="PackedScene" uid="uid://67xd1lwqas7a" path="res://scenes/day/introduction/introduction.tscn" id="9_rumt0"]
 [ext_resource type="PackedScene" uid="uid://c40qc8gq3f3g3" path="res://scenes/day/room3/room3.tscn" id="10_lkum6"]
 [ext_resource type="PackedScene" uid="uid://c8flj66fr2ymi" path="res://scenes/day/inventory/inventory.tscn" id="11_15jyv"]
@@ -265,6 +266,9 @@ character = NodePath("../../PlayerDay")
 
 [node name="Room3" parent="." instance=ExtResource("10_lkum6")]
 position = Vector2(-480, 272)
+
+[node name="DisplayRoom" parent="." instance=ExtResource("8_8db2n")]
+position = Vector2(480, 272)
 
 [node name="PlayerDay" parent="." instance=ExtResource("1_3un87")]
 z_index = 1
