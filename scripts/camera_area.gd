@@ -3,6 +3,9 @@ extends Area2D
 var is_active := false  # Track if this area is currently affecting the camera
 var last_entered_area: Area2D = null  # Track the last entered camera area
 
+# Add reference to limit shape
+@onready var limit_shape: CollisionShape2D = $LimitShape2D
+
 func _ready() -> void:
 	print("Camera area _ready called")
 	if !body_entered.is_connected(_on_body_entered):
@@ -25,10 +28,10 @@ func calculate_camera_limits() -> Dictionary:
 	}
 	
 	if is_active:
-		var shape = get_node("CollisionShape2D")
-		var rect = shape.shape as RectangleShape2D
-		var size = rect.size * shape.scale
-		var pos = shape.global_position
+		# Use limit_shape instead of trigger shape
+		var rect = limit_shape.shape as RectangleShape2D
+		var size = rect.size * limit_shape.scale
+		var pos = limit_shape.global_position
 		
 		limits.left = pos.x - size.x / 2
 		limits.right = pos.x + size.x / 2

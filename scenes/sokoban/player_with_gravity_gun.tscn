@@ -179,6 +179,7 @@ stream = ExtResource("5_rl8ln")
 [node name="HookableDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HookableDetector"]
+visible = false
 shape = SubResource("CircleShape2D_kl6ir")
 
 [connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]

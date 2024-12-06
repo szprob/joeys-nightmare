@@ -202,7 +202,7 @@ collision_mask = 128
 script = ExtResource("1_4m5pv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(0, -16)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_7bjxk")
 autoplay = "default"
@@ -210,7 +210,6 @@ autoplay = "default"
 [node name="kill_zone" parent="." instance=ExtResource("3_1gqju")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
-position = Vector2(-1, 9)
 shape = SubResource("CircleShape2D_w0qlj")
 
 [node name="Timer" type="Timer" parent="."]
