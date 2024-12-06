@@ -20,11 +20,15 @@ var do_detect = true
 func _ready() -> void:
 	init_position = global_position
 	final_position = target.global_position
-	if invisible_before_launch:  # 根据配置设置初始可见性
-		modulate.a = 0  # 完全透明
-	# 添加 detection 区域的信号连接
+	if invisible_before_launch:
+		modulate.a = 0
+	
+	# 设置整个 Area2D 的旋转
+	fly_direction = (final_position - global_position).normalized()
+	var angle_to_target = fly_direction.angle()
+	rotation = angle_to_target - PI/2  # 旋转整个节点
+	
 	detection.body_entered.connect(_on_detection_body_entered)
-	# 添加默认动画播放
 	animated_sprited_2d.play("default")
 
 func _physics_process(delta):
