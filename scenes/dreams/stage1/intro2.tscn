@@ -1,0 +1,1217 @@
+[gd_scene load_steps=58 format=4 uid="uid://bbaiwigro7455"]
+
+[ext_resource type="Script" path="res://scripts/camera_2d.gd" id="1_h02qo"]
+[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_5xg65"]
+[ext_resource type="Texture2D" uid="uid://b5jfcv0uem5wb" path="res://assets/sprites/background/multi3/back2.png" id="4_kwbn5"]
+[ext_resource type="Texture2D" uid="uid://7joprmnjucj5" path="res://assets/sprites/background/multi3/moon2.png" id="5_c0jt6"]
+[ext_resource type="Texture2D" uid="uid://bl1rxkn33ywhl" path="res://assets/sprites/background/multi3/cloud.png" id="6_sgtl0"]
+[ext_resource type="Texture2D" uid="uid://bc3luaoy48sp7" path="res://assets/sprites/background/multi3/bird.png" id="7_f2ouq"]
+[ext_resource type="Texture2D" uid="uid://gvyrlttwr2dn" path="res://assets/sprites/background/multi3/people.png" id="8_lhkcr"]
+[ext_resource type="Texture2D" uid="uid://c8ktpt687sgsd" path="res://assets/sprites/background/multi3/frontv2_1.png" id="9_dqg8w"]
+[ext_resource type="Texture2D" uid="uid://cc213l304x8tw" path="res://assets/sprites/map/med3.png" id="10_y8x1l"]
+[ext_resource type="Texture2D" uid="uid://pv0iwkpm3tyv" path="res://assets/sprites/human/brick2.1.png" id="11_2s3ra"]
+[ext_resource type="PackedScene" uid="uid://bi3000vv4vu3x" path="res://scenes/sokoban/gravity_tile/gravity_down.tscn" id="12_ugkc1"]
+[ext_resource type="PackedScene" uid="uid://cootft3ha6veu" path="res://scenes/sokoban/gravity_tile/gravity_left.tscn" id="13_17ww4"]
+[ext_resource type="PackedScene" uid="uid://dlv4fqe1sg0dm" path="res://scenes/sokoban/gravity_tile/gravity_right.tscn" id="14_rto2w"]
+[ext_resource type="PackedScene" uid="uid://bh3778qpcat7y" path="res://scenes/sokoban/gravity_tile/gravity_up.tscn" id="15_l7d34"]
+[ext_resource type="PackedScene" uid="uid://mx3jx68fdgqm" path="res://scenes/modules/trap_tile/trap_down.tscn" id="16_kn51t"]
+[ext_resource type="PackedScene" uid="uid://bgtv7blulem34" path="res://scenes/modules/trap_tile/trap_left.tscn" id="17_7jhvf"]
+[ext_resource type="PackedScene" uid="uid://6motl652kpn3" path="res://scenes/modules/trap_tile/trap_right.tscn" id="18_k3y8w"]
+[ext_resource type="PackedScene" uid="uid://b67w4ct47vhpw" path="res://scenes/modules/trap_tile/trap_up.tscn" id="19_4a2lm"]
+[ext_resource type="PackedScene" uid="uid://dtn6bt0ark3is" path="res://scenes/enemy/monster.tscn" id="20_o2o3d"]
+[ext_resource type="PackedScene" uid="uid://kfdbq76ixwrq" path="res://scenes/modules/checkpoints/save_point.tscn" id="21_joi33"]
+[ext_resource type="PackedScene" uid="uid://burxykvkyw21f" path="res://scenes/modules/v2/falling_block_tgt.tscn" id="22_0nxh6"]
+[ext_resource type="TileSet" uid="uid://eahum84lpc4q" path="res://tiles/cave.tres" id="23_xt5mf"]
+[ext_resource type="PackedScene" uid="uid://pe8srikvnre3" path="res://scenes/modules/traps/fires/fires4.tscn" id="24_upf2l"]
+[ext_resource type="PackedScene" uid="uid://c8q6wa4cofe21" path="res://scenes/modules/traps/falling_trap_tgt.tscn" id="25_ua7q2"]
+[ext_resource type="PackedScene" uid="uid://bhgixpqr8klwj" path="res://scenes/sokoban/box.tscn" id="26_yyhk7"]
+[ext_resource type="PackedScene" uid="uid://8gajxily3trj" path="res://scenes/sokoban/door_1.tscn" id="27_5vca8"]
+[ext_resource type="PackedScene" uid="uid://cpqr3oauheogh" path="res://scenes/sokoban/button-1.tscn" id="28_ichf1"]
+[ext_resource type="PackedScene" uid="uid://b4l0s4mgeuqyq" path="res://scenes/modules/checkpoints/bi-teleport.tscn" id="29_70akh"]
+[ext_resource type="PackedScene" uid="uid://cair83ouq2qd0" path="res://scenes/modules/checkpoints/target.tscn" id="30_g5rvd"]
+[ext_resource type="PackedScene" uid="uid://cv3nrtrevxkyu" path="res://scenes/sokoban/gravity_1.tscn" id="31_y6f3l"]
+[ext_resource type="TileSet" uid="uid://ch8e8ygmw6bpr" path="res://tiles/intro.tres" id="32_ketsb"]
+[ext_resource type="PackedScene" uid="uid://ck4p24ug1b88b" path="res://scenes/sokoban/season-2-examples/qte_gravity_area.tscn" id="33_ca0up"]
+[ext_resource type="PackedScene" uid="uid://b6pq8l7ym5nuh" path="res://scenes/modules/checkpoints/teleport.tscn" id="34_10wy6"]
+[ext_resource type="Script" path="res://scripts/camera_area.gd" id="35_7o587"]
+[ext_resource type="PackedScene" uid="uid://c5x12p3650b3l" path="res://scenes/player/npc.tscn" id="36_kkcc1"]
+[ext_resource type="PackedScene" uid="uid://yan3jqnet7ud" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="37_v7ktf"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ogtr0"]
+texture = ExtResource("11_2s3ra")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_q5dgm"]
+resource_name = "gravity"
+scenes/1/scene = ExtResource("12_ugkc1")
+scenes/2/scene = ExtResource("13_17ww4")
+scenes/3/scene = ExtResource("14_rto2w")
+scenes/4/scene = ExtResource("15_l7d34")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ixvcl"]
+resource_name = "trap"
+scenes/1/scene = ExtResource("16_kn51t")
+scenes/2/scene = ExtResource("17_7jhvf")
+scenes/3/scene = ExtResource("18_k3y8w")
+scenes/4/scene = ExtResource("19_4a2lm")
+
+[sub_resource type="TileSet" id="TileSet_rvt4p"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ogtr0")
+sources/2 = SubResource("TileSetScenesCollectionSource_ixvcl")
+sources/1 = SubResource("TileSetScenesCollectionSource_q5dgm")
+
+[sub_resource type="Curve2D" id="Curve2D_rtoo5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 64, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xrsk"]
+size = Vector2(64, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ub4gl"]
+size = Vector2(64, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q04tl"]
+size = Vector2(64, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2o6t"]
+size = Vector2(469.333, 270)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q85ss"]
+size = Vector2(469.333, 270)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_31egl"]
+size = Vector2(464, 72.714)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8owt"]
+size = Vector2(480, 270)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbje2"]
+size = Vector2(684, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24fro"]
+size = Vector2(928, 270)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsw2m"]
+size = Vector2(234, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0chv"]
+size = Vector2(480, 270)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hc13l"]
+size = Vector2(544, 108)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rj6ad"]
+size = Vector2(560, 270)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3p4ps"]
+size = Vector2(208, 134)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isxwo"]
+size = Vector2(480, 255)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7k0d"]
+size = Vector2(480, 270)
+
+[node name="Game" type="Node2D" groups=["scan_lines"]]
+position = Vector2(0, -272)
+
+[node name="Camera2DRef" type="Camera2D" parent="."]
+z_index = 10
+position = Vector2(-224, -376)
+enabled = false
+zoom = Vector2(4, 4)
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_left_margin = 0.1
+drag_right_margin = 0.1
+script = ExtResource("1_h02qo")
+
+[node name="player_with_gravity" parent="." groups=["player"] instance=ExtResource("2_5xg65")]
+position = Vector2(-357.112, -300.928)
+
+[node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
+position = Vector2(-2.76688, -3.00732)
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_left_margin = 0.1
+drag_right_margin = 0.1
+script = ExtResource("1_h02qo")
+
+[node name="backgroud" type="Node2D" parent="."]
+visible = false
+z_index = -2
+position = Vector2(64, 8)
+
+[node name="back" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/back"]
+position = Vector2(-179.325, -91)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_kwbn5")
+centered = false
+
+[node name="moon" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.05, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/moon"]
+position = Vector2(-179, -45.22)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_c0jt6")
+centered = false
+
+[node name="cloud" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(859.12, 0)
+autoscroll = Vector2(16, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/cloud"]
+position = Vector2(-8, -52.445)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_sgtl0")
+centered = false
+
+[node name="bird" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.15, 0)
+repeat_size = Vector2(768, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/bird"]
+position = Vector2(-68, -72)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_f2ouq")
+centered = false
+
+[node name="people" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.2, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/people"]
+position = Vector2(-0.999992, -72)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_lhkcr")
+centered = false
+
+[node name="front" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.3, 0)
+scroll_offset = Vector2(-10, -8.19)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/front"]
+position = Vector2(90, -40.545)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_dqg8w")
+centered = false
+
+[node name="backgroud2" type="Node2D" parent="."]
+z_index = -2
+position = Vector2(88, 216)
+
+[node name="back" type="Parallax2D" parent="backgroud2"]
+z_index = -1
+scroll_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud2/back"]
+position = Vector2(-179.325, -91)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_kwbn5")
+centered = false
+
+[node name="moon" type="Parallax2D" parent="backgroud2"]
+z_index = -1
+scroll_scale = Vector2(0.05, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud2/moon"]
+position = Vector2(-179, -45.22)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_c0jt6")
+centered = false
+
+[node name="cloud" type="Parallax2D" parent="backgroud2"]
+visible = false
+z_index = -1
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(859.12, 0)
+autoscroll = Vector2(16, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud2/cloud"]
+position = Vector2(-8, -52.445)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_sgtl0")
+centered = false
+
+[node name="bird" type="Parallax2D" parent="backgroud2"]
+z_index = -1
+scroll_scale = Vector2(0.15, 0)
+repeat_size = Vector2(768, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud2/bird"]
+position = Vector2(-68, -72)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("10_y8x1l")
+centered = false
+
+[node name="people" type="Parallax2D" parent="backgroud2"]
+visible = false
+z_index = -1
+scroll_scale = Vector2(0.2, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud2/people"]
+position = Vector2(-0.999992, -72)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_lhkcr")
+centered = false
+
+[node name="front" type="Parallax2D" parent="backgroud2"]
+visible = false
+z_index = -1
+scroll_scale = Vector2(0.3, 0)
+scroll_offset = Vector2(-10, -8.19)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud2/front"]
+position = Vector2(90, -40.545)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_dqg8w")
+centered = false
+
+[node name="maps" type="Node2D" parent="."]
+
+[node name="map1-1" type="Node2D" parent="maps"]
+position = Vector2(-464, -512)
+
+[node name="map" type="TileMapLayer" parent="maps/map1-1"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAAAAAAAAAARABAAAAAAAAAAAAASABAAAAAAAAAAAAAYABAAAAAAAAAAAAAZABAAAAAAAAAAAAAaABAAAAAAAAAAAAAbABAAAAAAAAAAAAAcABAAAAAAAAAAAAAdABAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA0AAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAoAAAAAAAAAAAABAAsAAAAAAAAAAAABAAwAAAAAAAAAAAABAA0AAAAAAAAAAAABAA4AAAAAAAAAAAABAA8AAAAAAAAAAAADAA8AAAAAAAAAAAADAA4AAAAAAAAAAAACAA4AAAAAAAAAAAACAA0AAAAAAAAAAAACAAwAAAAAAAAAAAACAA8AAAAAAAAAAAADAA0AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAkAAAAAAAAAAAABAAgAAAAAAAAAAAACAAsAAgAAAAAAAwACAAoAAgAAAAAAAwACAAkAAgAAAAAAAwACAAgAAgAAAAAAAwABAAcAAgAAAAAAAwABAAYAAgAAAAAAAwADAAwAAgAAAAAAAwAAAAUAAgAAAAAABAASAA8AAAAAAAAAAAAXABAAAAAAAAAAAAAVABAAAAAAAAAAAAAWABAAAAAAAAAAAAARAA8AAAAAAAAAAAAEAA8AAAAAAAAAAAAFAA8AAAAAAAAAAAAGAA8AAAAAAAAAAAAHAA8AAAAAAAAAAAAIAA8AAAAAAAAAAAAJAA8AAAAAAAAAAAAKAA8AAAAAAAAAAAALAA8AAAAAAAAAAAAMAA8AAAAAAAAAAAANAA8AAAAAAAAAAAAOAA8AAAAAAAAAAAAPAA8AAAAAAAAAAAAQAA8AAAAAAAAAAAAVAA8AAAAAAAAAAAAWAA8AAAAAAAAAAAAXAA8AAAAAAAAAAAAYAA8AAAAAAAAAAAAZAA8AAAAAAAAAAAAaAA8AAAAAAAAAAAAbAA8AAAAAAAAAAAAcAA8AAAAAAAAAAAAbAAwAAAAAAAAAAAAbAA0AAAAAAAAAAAAbAA4AAAAAAAAAAAAcAA4AAAAAAAAAAAAcAA0AAAAAAAAAAAAcAAwAAAAAAAAAAAAgAAoAAAAAAAAAAAAhAAoAAAAAAAAAAAAiAAoAAAAAAAAAAAAjAAoAAAAAAAAAAAAgAAsAAAAAAAAAAAAhAAsAAAAAAAAAAAAiAAsAAAAAAAAAAAAjAAsAAAAAAAAAAAAdAA8AAAAAAAAAAAAeAA8AAAAAAAAAAAAfAA8AAAAAAAAAAAAgAA8AAAAAAAAAAAAhAA8AAAAAAAAAAAAiAA8AAAAAAAAAAAAjAA8AAAAAAAAAAAAmAA8AAAAAAAAAAAAeABAAAAAAAAAAAAAfABAAAAAAAAAAAAAgABAAAAAAAAAAAAAhABAAAAAAAAAAAAAiABAAAAAAAAAAAAAjABAAAAAAAAAAAAAmABAAAAAAAAAAAAAnABAAAAAAAAAAAAAnAA8AAAAAAAAAAAAoAA8AAAAAAAAAAAApAA8AAAAAAAAAAAAqAA8AAAAAAAAAAAArAA8AAAAAAAAAAAAsAA8AAAAAAAAAAAAtAA8AAAAAAAAAAAAuAA8AAAAAAAAAAAAvAA8AAAAAAAAAAAAwAA8AAAAAAAAAAAAxAA8AAAAAAAAAAAAyAA8AAAAAAAAAAAAoABAAAAAAAAAAAAApABAAAAAAAAAAAAAqABAAAAAAAAAAAAArABAAAAAAAAAAAAAsABAAAAAAAAAAAAAtABAAAAAAAAAAAAAuABAAAAAAAAAAAAAvABAAAAAAAAAAAAAwABAAAAAAAAAAAAAxABAAAAAAAAAAAAAyABAAAAAAAAAAAAAzABAAAAAAAAAAAAAkABAAAAAAAAAAAAAlABAAAAAAAAAAAAAkAA8AAAAAAAAAAAAlAA8AAAAAAAAAAAAkAA4AAgAAAAAABAAlAA4AAgAAAAAABAATABAAAAAAAAAAAAAUABAAAAAAAAAAAAAUAA8AAAAAAAAAAAATAA8AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA0AAAAAAAAAAAAdAAwAAAAAAAAAAAAeAA4AAgAAAAAABAAfAA4AAgAAAAAABAAgAA4AAgAAAAAABAAhAA4AAgAAAAAABAAiAA4AAgAAAAAABAAjAA4AAgAAAAAABAAzAA8AAAAAAAAAAAA0AA8AAAAAAAAAAAA0ABAAAAAAAAAAAAA1AA8AAAAAAAAAAAA1ABAAAAAAAAAAAAA2AA8AAAAAAAAAAAA2ABAAAAAAAAAAAAA3AA8AAAAAAAAAAAA3ABAAAAAAAAAAAAA4AA8AAAAAAAAAAAA4ABAAAAAAAAAAAABXAA8AAAAAAAAAAABXAA4AAAAAAAAAAABXAA0AAAAAAAAAAABXAAAAAAAAAAAAAABXAP//AAAAAAAAAABUAP//AAAAAAAAAABUAAAAAAAAAAAAAABVAP//AAAAAAAAAABVAAAAAAAAAAAAAABWAP//AAAAAAAAAABWAAAAAAAAAAAAAAA5AA8AAAAAAAAAAAA5ABAAAAAAAAAAAAA6AA8AAAAAAAAAAAA6ABAAAAAAAAAAAAA7AA8AAAAAAAAAAAA7ABAAAAAAAAAAAAA8AA8AAAAAAAAAAAA8ABAAAAAAAAAAAAA9AA8AAAAAAAAAAAA9ABAAAAAAAAAAAAA+AA8AAAAAAAAAAAA+ABAAAAAAAAAAAAA/AA8AAAAAAAAAAAA/ABAAAAAAAAAAAABAAA8AAAAAAAAAAABAABAAAAAAAAAAAABBAA8AAAAAAAAAAABBABAAAAAAAAAAAABCAA8AAAAAAAAAAABCABAAAAAAAAAAAABDAA8AAAAAAAAAAABDABAAAAAAAAAAAABEAA8AAAAAAAAAAABEABAAAAAAAAAAAABFAA8AAAAAAAAAAABFABAAAAAAAAAAAABGAA8AAAAAAAAAAABGABAAAAAAAAAAAABHAA8AAAAAAAAAAABHABAAAAAAAAAAAABIAA8AAAAAAAAAAABIABAAAAAAAAAAAABJAA8AAAAAAAAAAABJABAAAAAAAAAAAABKAA8AAAAAAAAAAABKABAAAAAAAAAAAABLAA8AAAAAAAAAAABLABAAAAAAAAAAAABMAA8AAAAAAAAAAABMABAAAAAAAAAAAABNAA8AAAAAAAAAAABNABAAAAAAAAAAAABOAA8AAAAAAAAAAABOABAAAAAAAAAAAABTAA8AAAAAAAAAAABTABAAAAAAAAAAAABUAA8AAAAAAAAAAABUABAAAAAAAAAAAABVAA8AAAAAAAAAAABVABAAAAAAAAAAAABWAA8AAAAAAAAAAABWABAAAAAAAAAAAABUAAcAAAAAAAAAAABUAAgAAAAAAAAAAABUAAkAAAAAAAAAAABUAAoAAAAAAAAAAABUAAsAAAAAAAAAAABVAAcAAAAAAAAAAABVAAgAAAAAAAAAAABVAAkAAAAAAAAAAABVAAoAAAAAAAAAAABVAAsAAAAAAAAAAABWAAcAAAAAAAAAAABWAAgAAAAAAAAAAABWAAkAAAAAAAAAAABWAAoAAAAAAAAAAABWAAsAAAAAAAAAAABVAAwAAAAAAAAAAABVAA0AAAAAAAAAAABVAA4AAAAAAAAAAABWAAwAAAAAAAAAAABWAA0AAAAAAAAAAABWAA4AAAAAAAAAAAAmAA4AAgAAAAAABAAnAA4AAgAAAAAABAAoAA4AAgAAAAAABAApAA4AAgAAAAAABAAqAA4AAgAAAAAABAArAA4AAgAAAAAABAA7AAsAAQAAAAAABAA7AAwAAQAAAAAABAA7AA4AAQAAAAAABAA8AAsAAQAAAAAABAA8AAwAAQAAAAAABAA8AA4AAQAAAAAABAA9AAsAAQAAAAAABAA9AAwAAQAAAAAABAA+AAsAAQAAAAAABAA/AAcAAAAAAAAAAAA/AAgAAAAAAAAAAAA/AAkAAAAAAAAAAAA/AAoAAAAAAAAAAAA/AAsAAAAAAAAAAABAAAcAAAAAAAAAAABAAAgAAAAAAAAAAABAAAkAAAAAAAAAAABAAAoAAAAAAAAAAABAAAsAAAAAAAAAAABHAP//AAAAAAAAAABHAAAAAAAAAAAAAABHAAoAAAAAAAAAAABHAAsAAAAAAAAAAABIAP//AAAAAAAAAABIAAAAAAAAAAAAAABIAAoAAAAAAAAAAABIAAsAAAAAAAAAAABIAAwAAQAAAAAABABJAP//AAAAAAAAAABJAAAAAAAAAAAAAABJAAoAAAAAAAAAAABJAAsAAAAAAAAAAABJAAwAAQAAAAAABABKAP//AAAAAAAAAABKAAAAAAAAAAAAAABKAAoAAAAAAAAAAABKAAsAAAAAAAAAAABKAAwAAQAAAAAABABLAP//AAAAAAAAAABLAAAAAAAAAAAAAABLAAoAAAAAAAAAAABLAAsAAAAAAAAAAABLAAwAAQAAAAAABABMAP//AAAAAAAAAABMAAAAAAAAAAAAAABMAAoAAAAAAAAAAABMAAsAAAAAAAAAAABNAP//AAAAAAAAAABNAAAAAAAAAAAAAABNAAoAAAAAAAAAAABNAAsAAAAAAAAAAABOAP//AAAAAAAAAABOAAAAAAAAAAAAAABPAP//AAAAAAAAAABPAAAAAAAAAAAAAABQAP//AAAAAAAAAABQAAAAAAAAAAAAAABRAP//AAAAAAAAAABRAAAAAAAAAAAAAABSAP//AAAAAAAAAABSAAAAAAAAAAAAAABTAP//AAAAAAAAAABTAAAAAAAAAAAAAAA6AA4AAgAAAAAABAA7AA0AAQAAAAAABAA8AA0AAQAAAAAABAA9AA0AAQAAAAAABAA9AA4AAQAAAAAABAA+AAwAAQAAAAAABAA+AA0AAQAAAAAABAA+AA4AAQAAAAAABAA/AAwAAAAAAAAAAAA/AA0AAAAAAAAAAAA/AA4AAAAAAAAAAABAAAwAAAAAAAAAAABAAA0AAAAAAAAAAABAAA4AAAAAAAAAAABYAP//AAAAAAAAAABYAAAAAAAAAAAAAABZAP//AAAAAAAAAABZAAAAAAAAAAAAAABaAP//AAAAAAAAAABaAAAAAAAAAAAAAABbAP//AAAAAAAAAABbAAAAAAAAAAAAAABcAP//AAAAAAAAAABcAAAAAAAAAAAAAABdAP//AAAAAAAAAABdAAAAAAAAAAAAAABeAP//AAAAAAAAAABeAAAAAAAAAAAAAABfAP//AAAAAAAAAABfAAAAAAAAAAAAAABgAP//AAAAAAAAAABgAAAAAAAAAAAAAABhAP//AAAAAAAAAABhAAAAAAAAAAAAAAAuAAoAAAAAAAAAAAAuAAsAAAAAAAAAAAAvAAoAAAAAAAAAAAAvAAsAAAAAAAAAAAAwAAoAAAAAAAAAAAAwAAsAAAAAAAAAAAAxAAoAAAAAAAAAAAAxAAsAAAAAAAAAAAAnAAsAAAAAAAAAAAAoAAsAAAAAAAAAAAApAAsAAAAAAAAAAAAqAAsAAAAAAAAAAAAnAAwAAAAAAAAAAAAoAAwAAAAAAAAAAAApAAwAAAAAAAAAAAAqAAwAAAAAAAAAAAA1AAoAAAAAAAAAAAA2AAoAAAAAAAAAAAA3AAoAAAAAAAAAAAA4AAoAAAAAAAAAAAA1AAkAAAAAAAAAAAA2AAkAAAAAAAAAAAA3AAkAAAAAAAAAAAA4AAkAAAAAAAAAAAAsAA4AAgAAAAAABAAtAA4AAgAAAAAABAAuAA4AAgAAAAAABAAvAA4AAgAAAAAABAAwAA4AAgAAAAAABAAxAA4AAgAAAAAABAAyAA4AAgAAAAAABAAzAA4AAgAAAAAABAA0AA4AAgAAAAAABAA1AA4AAgAAAAAABAA2AA4AAgAAAAAABAA3AA4AAgAAAAAABAA4AA4AAgAAAAAABAA5AA4AAgAAAAAABABEAP//AAAAAAAAAABEAAAAAAAAAAAAAABEAAoAAAAAAAAAAABEAAsAAAAAAAAAAABFAP//AAAAAAAAAABFAAAAAAAAAAAAAABFAAoAAAAAAAAAAABFAAsAAAAAAAAAAABGAP//AAAAAAAAAABGAAAAAAAAAAAAAABGAAoAAAAAAAAAAABGAAsAAAAAAAAAAAA/AAYAAAAAAAAAAABAAAYAAAAAAAAAAABOAA4AAAAAAAAAAABTAA4AAAAAAAAAAABUAA4AAAAAAAAAAABTAA0AAgAAAAAABABUAA0AAgAAAAAABABHAAwAAQAAAAAABABMAAwAAQAAAAAABABGAAwAAQAAAAAABABIABEAAQAAAAAABABHABEAAQAAAAAABABKABEAAQAAAAAABABJABEAAQAAAAAABABLABEAAQAAAAAABABOAAoAAAAAAAAAAABOAAsAAAAAAAAAAABPAAoAAAABAAAAAABPAAsAAAABAAAAAABQAAoAAAABAAAAAABQAAsAAAABAAAAAABRAAoAAAABAAAAAABRAAsAAAABAAAAAABSAAoAAAABAAAAAABSAAsAAAABAAAAAABTAAoAAAAAAAAAAABTAAsAAAAAAAAAAABMAAEAAAAAAAAAAABMAAIAAAAAAAAAAABMAAMAAAAAAAAAAABMAAQAAAAAAAAAAABMAAUAAAAAAAAAAABMAAYAAAAAAAAAAABMAAcAAAAAAAAAAABMAAgAAAAAAAAAAABMAAkAAAAAAAAAAABLAAkAAAAAAAAAAABLAAgAAAAAAAAAAABLAAcAAAAAAAAAAABLAAYAAAAAAAAAAABLAAUAAAAAAAAAAABLAAQAAAAAAAAAAABLAAMAAAAAAAAAAABLAAIAAAAAAAAAAABLAAEAAAAAAAAAAABEAAkAAgAAAAAABABFAAkAAgAAAAAABABGAAkAAgAAAAAABABHAAkAAgAAAAAABABIAAkAAgAAAAAABABJAAkAAgAAAAAABABKAAkAAgAAAAAABABEAP7/AgAAAAAABABFAP7/AgAAAAAABABGAP7/AgAAAAAABABHAP7/AgAAAAAABABWAAYAAAAAAAAAAABVAAYAAAAAAAAAAABUAAYAAAAAAAAAAABWAAUAAAAAAAAAAABVAAUAAAAAAAAAAABUAAUAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="Path2D" type="Path2D" parent="maps/map1-1"]
+position = Vector2(304, 232)
+curve = SubResource("Curve2D_rtoo5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="maps/map1-1/Path2D"]
+rotates = false
+
+[node name="MonsterByPath2" parent="maps/map1-1/Path2D/PathFollow2D" instance=ExtResource("20_o2o3d")]
+
+[node name="monster" type="Node2D" parent="maps/map1-1"]
+position = Vector2(1168, 224)
+
+[node name="Path2D2" type="Path2D" parent="maps/map1-1/monster"]
+position = Vector2(-32.0045, 7.50531)
+curve = SubResource("Curve2D_rtoo5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="maps/map1-1/monster/Path2D2"]
+rotates = false
+
+[node name="MonsterByPath2" parent="maps/map1-1/monster/Path2D2/PathFollow2D" instance=ExtResource("20_o2o3d")]
+
+[node name="Path2D3" type="Path2D" parent="maps/map1-1/monster"]
+position = Vector2(9.66547, 7.50531)
+curve = SubResource("Curve2D_rtoo5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="maps/map1-1/monster/Path2D3"]
+rotates = false
+
+[node name="MonsterByPath3" parent="maps/map1-1/monster/Path2D3/PathFollow2D" instance=ExtResource("20_o2o3d")]
+
+[node name="save_point_1" parent="maps/map1-1" instance=ExtResource("21_joi33")]
+position = Vector2(1064, 232)
+
+[node name="FallingBlockTgt5" parent="maps/map1-1" node_paths=PackedStringArray("target", "detection") instance=ExtResource("22_0nxh6")]
+position = Vector2(1296, 96)
+speed = 150.0
+invisible_before_launch = false
+target = NodePath("target")
+detection = NodePath("detection")
+should_reset = false
+acceleration = 100.0
+
+[node name="target" type="Area2D" parent="maps/map1-1/FallingBlockTgt5"]
+position = Vector2(0, 696)
+
+[node name="detection" type="Area2D" parent="maps/map1-1/FallingBlockTgt5"]
+collision_mask = 129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map1-1/FallingBlockTgt5/detection"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_6xrsk")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="maps/map1-1/FallingBlockTgt5"]
+tile_map_data = PackedByteArray("AAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAD+/wEAAgAAAAAAAQD//wEAAgAAAAAAAQAAAAEAAgAAAAAAAQABAAEAAgAAAAAAAQA=")
+tile_set = ExtResource("23_xt5mf")
+
+[node name="Fires8" parent="maps/map1-1" instance=ExtResource("24_upf2l")]
+position = Vector2(1120, 88)
+rotation_angular_velocity = 2.0
+
+[node name="fire" type="Node2D" parent="maps/map1-1"]
+
+[node name="FallingTrapTgt2" parent="maps/map1-1/fire" node_paths=PackedStringArray("target", "detection") instance=ExtResource("25_ua7q2")]
+position = Vector2(712, 8)
+target = NodePath("../target")
+detection = NodePath("../detection")
+
+[node name="target" type="Area2D" parent="maps/map1-1/fire"]
+position = Vector2(709.61, 256)
+
+[node name="detection" type="Area2D" parent="maps/map1-1/fire"]
+position = Vector2(712, 104)
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map1-1/fire/detection"]
+shape = SubResource("RectangleShape2D_ub4gl")
+
+[node name="fire2" type="Node2D" parent="maps/map1-1"]
+
+[node name="target" type="Area2D" parent="maps/map1-1/fire2"]
+position = Vector2(816, -72)
+
+[node name="detection" type="Area2D" parent="maps/map1-1/fire2"]
+position = Vector2(816, 40)
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map1-1/fire2/detection"]
+position = Vector2(0, 56)
+shape = SubResource("RectangleShape2D_ub4gl")
+
+[node name="FallingTrapTgt3" parent="maps/map1-1/fire2" node_paths=PackedStringArray("target", "detection") instance=ExtResource("25_ua7q2")]
+position = Vector2(816, 240)
+target = NodePath("../target")
+detection = NodePath("../detection")
+
+[node name="map1-2" type="Node2D" parent="maps"]
+position = Vector2(464, -256)
+
+[node name="box" parent="maps/map1-2" instance=ExtResource("26_yyhk7")]
+position = Vector2(520, 176)
+
+[node name="box5" parent="maps/map1-2" instance=ExtResource("26_yyhk7")]
+position = Vector2(432, 176)
+
+[node name="box4" parent="maps/map1-2" instance=ExtResource("26_yyhk7")]
+position = Vector2(848, 240)
+
+[node name="box3" parent="maps/map1-2" instance=ExtResource("26_yyhk7")]
+position = Vector2(880, 240)
+
+[node name="box2" parent="maps/map1-2" instance=ExtResource("26_yyhk7")]
+position = Vector2(912, 240)
+
+[node name="map" type="TileMapLayer" parent="maps/map1-2"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAAAAAAAAAARABAAAAAAAAAAAAASABAAAAAAAAAAAAATABAAAAAAAAAAAAAUABAAAAAAAAAAAAAVABAAAAAAAAAAAAAWABAAAAAAAAAAAAAXABAAAAAAAAAAAAAYABAAAAAAAAAAAAAZABAAAAAAAAAAAAAaABAAAAAAAAAAAAAbABAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAEAAAABAAAAAAAdAAIAAAABAAAAAAAdAAMAAAABAAAAAAAdAAQAAAAAAAAAAAAdABAAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAAAAAAAAAAAPAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAARAAQAAAAAAAAAAAASAAQAAAAAAAAAAAATAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAVAAQAAAABAAAAAAAWAAQAAAABAAAAAAAXAAQAAAABAAAAAAAYAAQAAAABAAAAAAAZAAQAAAAAAAAAAAALAA8AAAAAAAAAAAAcAAQAAAAAAAAAAAAbAAQAAAAAAAAAAAAaAAQAAAAAAAAAAAAGAAUAAQAAAAAABAAHAAUAAQAAAAAABAAIAAUAAQAAAAAABAAJAAUAAQAAAAAABAAKAAUAAQAAAAAABAALAAUAAQAAAAAABAAMAAUAAQAAAAAABAAeAAQAAAAAAAAAAAAfAAQAAAAAAAAAAAAgAAQAAAAAAAAAAAAhAAQAAAAAAAAAAAAiAAQAAAAAAAAAAAAjAAQAAAAAAAAAAAAkAAQAAAAAAAAAAAAlAAQAAAAAAAAAAAAmAAQAAAAAAAAAAAAnAAQAAAAAAAAAAAAsAAwAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAAVAAgAAAABAAAAAAA6AA8AAAAAAAAAAAA6AA4AAAAAAAAAAAA6AA0AAAAAAAAAAAA6AAwAAAAAAAAAAAA6AAsAAAAAAAAAAAA6AAoAAAAAAAAAAAA6AAkAAAAAAAAAAAA6AAgAAAAAAAAAAAA6AAcAAAAAAAAAAAA6AAYAAAAAAAAAAAA6AAUAAAAAAAAAAAA6AAQAAAAAAAAAAAA6AAMAAAAAAAAAAAA6AAIAAAAAAAAAAAA6AAEAAAAAAAAAAAA6AAAAAAAAAAAAAAArAAwAAAAAAAAAAAAqAAwAAAAAAAAAAAApAAwAAAAAAAAAAAAoAAwAAAAAAAAAAAAnAAwAAAAAAAAAAAAhAAwAAAAAAAAAAAAPAAgAAAAAAAAAAAARAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAASAAgAAAAAAAAAAAATAAgAAAAAAAAAAAAUAAgAAAAAAAAAAAAWAAgAAAABAAAAAAAXAAgAAAABAAAAAAAYAAgAAAABAAAAAAAZAAgAAAAAAAAAAAAaAAgAAAAAAAAAAAAbAAgAAAAAAAAAAAAcAAgAAAAAAAAAAAAdAAgAAAAAAAAAAAAeAAgAAAAAAAAAAAAfAAgAAAAAAAAAAAAgAAgAAAAAAAAAAAAmAAwAAAAAAAAAAAAgAAwAAAAAAAAAAAAfAAwAAAAAAAAAAAAeAAwAAAAAAAAAAAAdAAwAAAAAAAAAAAAcAAwAAAAAAAAAAAAiAAwAAAAAAAAAAAAjAAwAAAAAAAAAAAAZAA8AAQAAAAAAAwAaAA8AAQAAAAAAAwAbAA8AAQAAAAAAAwAcAA8AAQAAAAAAAwAdAA8AAQAAAAAAAwAeAA8AAQAAAAAAAwAfAA8AAQAAAAAAAwAgAA8AAQAAAAAAAwAhAA8AAQAAAAAAAwAiAA8AAQAAAAAAAwAjAA8AAQAAAAAAAwAmAA8AAQAAAAAAAwAnAA8AAQAAAAAAAwAeABAAAAAAAAAAAAAfABAAAAAAAAAAAAAgABAAAAAAAAAAAAAhABAAAAAAAAAAAAAiABAAAAAAAAAAAAAjABAAAAAAAAAAAAAkABAAAAAAAAAAAAAlABAAAAAAAAAAAAAmABAAAAAAAAAAAAAnABAAAAAAAAAAAAAoABAAAAAAAAAAAAApABAAAAAAAAAAAAAqABAAAAAAAAAAAAArABAAAAAAAAAAAAA0AA0AAAAAAAAAAAA1AA0AAAAAAAAAAAA2AA0AAAAAAAAAAAA3AA0AAAAAAAAAAAA4AA0AAAAAAAAAAAA5AA0AAAAAAAAAAAAkAA8AAQAAAAAAAwAlAA8AAQAAAAAAAwAYAA8AAAABAAAAAAAoAA8AAQAAAAAAAwApAA8AAQAAAAAAAwAqAA8AAQAAAAAAAwArAA8AAQAAAAAAAwAsAA8AAQAAAAAAAwAtAA8AAQAAAAAAAwAuAA8AAQAAAAAAAwAvAA8AAQAAAAAAAwAwAA8AAQAAAAAAAwAxAA8AAQAAAAAAAwAyAA8AAQAAAAAAAwAzAA8AAQAAAAAAAwAaAA4AAgAAAAAABAAbAA4AAgAAAAAABAAcAA4AAgAAAAAABAAdAA4AAgAAAAAABAAeAA4AAgAAAAAABAAfAA4AAgAAAAAABAAgAA4AAgAAAAAABAAhAA4AAgAAAAAABAAiAA4AAgAAAAAABAAjAA4AAgAAAAAABAAkAA4AAgAAAAAABAAlAA4AAgAAAAAABAAmAA4AAgAAAAAABAAnAA4AAgAAAAAABAAoAA4AAgAAAAAABAApAA4AAgAAAAAABAAqAA4AAgAAAAAABAArAA4AAgAAAAAABAAsAA4AAgAAAAAABAAtAA4AAgAAAAAABAAuAA4AAgAAAAAABAAvAA4AAgAAAAAABAAwAA4AAgAAAAAABAAxAA4AAgAAAAAABAAlAAgAAAAAAAAAAAAkAAgAAAAAAAAAAAAjAAgAAAAAAAAAAAAiAAgAAAAAAAAAAAAhAAgAAAAAAAAAAAAsAAYAAAAAAAAAAAAsAAUAAAAAAAAAAAAsAAQAAAAAAAAAAAArAAQAAAAAAAAAAAAqAAQAAAAAAAAAAAApAAQAAAAAAAAAAAAoAAQAAAAAAAAAAAAYAAwAAAABAAAAAAAYAAsAAAABAAAAAAAYAAoAAAABAAAAAAAYAAkAAAABAAAAAAAYAA0AAAABAAAAAAAYAA4AAAABAAAAAAAyAAYAAAAAAAAAAAAzAAYAAAAAAAAAAAA0AAYAAAAAAAAAAAA0AAcAAAAAAAAAAAAzAAcAAAAAAAAAAAAyAAcAAAAAAAAAAAAzAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAcAAMAAAABAAAAAAAcAAIAAAABAAAAAAAcAAEAAAABAAAAAAALAA4AAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAgAAAAAAAAAAAABAAsAAQAAAAAABAACAAsAAQAAAAAABAADAAsAAQAAAAAABAAEAAsAAQAAAAAABAAEAAoAAQAAAAAABAADAAoAAQAAAAAABAACAAoAAQAAAAAABAABAAoAAQAAAAAABAABAAkAAQAAAAAABAACAAkAAQAAAAAABAADAAkAAQAAAAAABAAEAAkAAQAAAAAABAAOAAkAAQAAAAAABAANAAkAAQAAAAAABAAMAAkAAQAAAAAABAAPAAkAAQAAAAAABAALAAkAAQAAAAAABAAyAA4AAgAAAAAABAAzAA4AAgAAAAAABAAZAAwAAAAAAAAAAAAaAAwAAAAAAAAAAAAbAAwAAAAAAAAAAAAdAAsAAAAAAAAAAAAZAA4AAgAAAAAABAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="box-door" type="Node2D" parent="maps/map1-2"]
+position = Vector2(-464, 256)
+
+[node name="door-1" parent="maps/map1-2/box-door" instance=ExtResource("27_5vca8")]
+position = Vector2(536, -24)
+
+[node name="button-1" parent="maps/map1-2/box-door" instance=ExtResource("28_ichf1")]
+position = Vector2(680, -104)
+rotation = 3.14159
+doors = Array[NodePath]([NodePath("../door-1")])
+
+[node name="save_point_1" parent="maps/map1-2" instance=ExtResource("21_joi33")]
+position = Vector2(416, 56)
+
+[node name="fireTrap" type="Node2D" parent="maps/map1-2"]
+position = Vector2(24, 48)
+
+[node name="fire" parent="maps/map1-2/fireTrap" node_paths=PackedStringArray("target", "detection") instance=ExtResource("25_ua7q2")]
+target = NodePath("../target")
+detection = NodePath("../detection")
+
+[node name="target" type="Area2D" parent="maps/map1-2/fireTrap"]
+position = Vector2(432, 0)
+
+[node name="detection" type="Area2D" parent="maps/map1-2/fireTrap"]
+position = Vector2(184, 0)
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map1-2/fireTrap/detection"]
+position = Vector2(72, -8)
+shape = SubResource("RectangleShape2D_q04tl")
+
+[node name="fireTrap2" type="Node2D" parent="maps/map1-2"]
+position = Vector2(680, 112)
+
+[node name="fire" parent="maps/map1-2/fireTrap2" node_paths=PackedStringArray("target", "detection") instance=ExtResource("25_ua7q2")]
+speed = 120.0
+target = NodePath("../target")
+detection = NodePath("../detection")
+
+[node name="target" type="Area2D" parent="maps/map1-2/fireTrap2"]
+position = Vector2(-704, 3.8147e-06)
+
+[node name="detection" type="Area2D" parent="maps/map1-2/fireTrap2"]
+position = Vector2(-144, -8)
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map1-2/fireTrap2/detection"]
+shape = SubResource("RectangleShape2D_q04tl")
+
+[node name="Path2D2" type="Path2D" parent="maps/map1-2"]
+position = Vector2(112, 120)
+curve = SubResource("Curve2D_rtoo5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="maps/map1-2/Path2D2"]
+rotates = false
+
+[node name="MonsterByPath2" parent="maps/map1-2/Path2D2/PathFollow2D" instance=ExtResource("20_o2o3d")]
+
+[node name="MonsterByPath3" parent="maps/map1-2/Path2D2/PathFollow2D" instance=ExtResource("20_o2o3d")]
+
+[node name="Path2D5" type="Path2D" parent="maps/map1-2"]
+position = Vector2(144, 120)
+curve = SubResource("Curve2D_rtoo5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="maps/map1-2/Path2D5"]
+position = Vector2(22.1353, 0)
+progress = 105.856
+rotates = false
+
+[node name="MonsterByPath2" parent="maps/map1-2/Path2D5/PathFollow2D" instance=ExtResource("20_o2o3d")]
+
+[node name="MonsterByPath3" parent="maps/map1-2/Path2D5/PathFollow2D" instance=ExtResource("20_o2o3d")]
+
+[node name="Path2D3" type="Path2D" parent="maps/map1-2"]
+position = Vector2(208, 56)
+curve = SubResource("Curve2D_rtoo5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="maps/map1-2/Path2D3"]
+rotates = false
+
+[node name="MonsterByPath2" parent="maps/map1-2/Path2D3/PathFollow2D" instance=ExtResource("20_o2o3d")]
+
+[node name="Path2D4" type="Path2D" parent="maps/map1-2"]
+position = Vector2(232, 56)
+curve = SubResource("Curve2D_rtoo5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="maps/map1-2/Path2D4"]
+position = Vector2(27.4776, 0)
+progress = 100.518
+rotates = false
+
+[node name="MonsterByPath2" parent="maps/map1-2/Path2D4/PathFollow2D" instance=ExtResource("20_o2o3d")]
+
+[node name="map1-3" type="Node2D" parent="maps"]
+position = Vector2(928, -512)
+
+[node name="swap1" type="Node2D" parent="maps/map1-3"]
+position = Vector2(-928, 256)
+
+[node name="bi-teleport" parent="maps/map1-3/swap1" node_paths=PackedStringArray("target") instance=ExtResource("29_70akh")]
+position = Vector2(1352, -16)
+target = NodePath("../Target")
+
+[node name="Target" parent="maps/map1-3/swap1" instance=ExtResource("30_g5rvd")]
+position = Vector2(1048, -200)
+
+[node name="bi-teleport2" parent="maps/map1-3/swap1" node_paths=PackedStringArray("target") instance=ExtResource("29_70akh")]
+position = Vector2(1152, -160)
+target = NodePath("../Target2")
+
+[node name="Target2" parent="maps/map1-3/swap1" instance=ExtResource("30_g5rvd")]
+position = Vector2(1280, -32)
+
+[node name="box-door3" type="Node2D" parent="maps/map1-3"]
+position = Vector2(-928, 256)
+
+[node name="box" parent="maps/map1-3/box-door3" instance=ExtResource("26_yyhk7")]
+position = Vector2(1336, -112)
+
+[node name="box2" parent="maps/map1-3/box-door3" instance=ExtResource("26_yyhk7")]
+position = Vector2(1088, -160)
+
+[node name="door-1" parent="maps/map1-3/box-door3" instance=ExtResource("27_5vca8")]
+position = Vector2(976, -208)
+
+[node name="button-1" parent="maps/map1-3/box-door3" instance=ExtResource("28_ichf1")]
+position = Vector2(1336, -240)
+rotation = 3.14159
+doors = Array[NodePath]([NodePath("../door-1")])
+
+[node name="box-door4" type="Node2D" parent="maps/map1-3"]
+position = Vector2(-928, 256)
+
+[node name="gravity3" parent="maps/map1-3/box-door4" instance=ExtResource("31_y6f3l")]
+position = Vector2(1336, -112)
+enabled_at_start = false
+
+[node name="gravity4" parent="maps/map1-3/box-door4" instance=ExtResource("31_y6f3l")]
+position = Vector2(1336, -144)
+enabled_at_start = false
+
+[node name="gravity5" parent="maps/map1-3/box-door4" instance=ExtResource("31_y6f3l")]
+position = Vector2(1336, -176)
+enabled_at_start = false
+
+[node name="gravity6" parent="maps/map1-3/box-door4" instance=ExtResource("31_y6f3l")]
+position = Vector2(1336, -208)
+enabled_at_start = false
+
+[node name="button-1" parent="maps/map1-3/box-door4" instance=ExtResource("28_ichf1")]
+position = Vector2(1112, -8)
+doors = Array[NodePath]([NodePath("../gravity3"), NodePath("../gravity4"), NodePath("../gravity5"), NodePath("../gravity6")])
+
+[node name="gravity" type="Node2D" parent="maps/map1-3"]
+position = Vector2(-928, 256)
+
+[node name="map" type="TileMapLayer" parent="maps/map1-3"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUABAAAAAAAAAAAAAVABAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAbABAAAAAAAAAAAAAcAAAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdABAAAAAAAAAAAAANAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAcAAAAAAAAAAAAaABAAAAAAAAAAAAAdAA8AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA0AAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVAAEAAgAAAAAAAgAVAAIAAgAAAAAAAgAVAAMAAgAAAAAAAgAVAAQAAgAAAAAAAgAVAAUAAgAAAAAAAgAVAAYAAgAAAAAAAgAVAAcAAgAAAAAAAgAVAAgAAgAAAAAAAgAVAAkAAgAAAAAAAgAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAVAAoAAAAAAAAAAAAWAAoAAAAAAAAAAAAWAAsAAAAAAAAAAAAXAAoAAAAAAAAAAAAXAAsAAAAAAAAAAAAYAAoAAAAAAAAAAAAYAAsAAAAAAAAAAAAZAAoAAAAAAAAAAAAZAAsAAAAAAAAAAAAZAAwAAAAAAAAAAAAaAAoAAAAAAAAAAAAaAAsAAAAAAAAAAAAaAAwAAAAAAAAAAAAbAAoAAAAAAAAAAAAbAAsAAAAAAAAAAAAbAAwAAAAAAAAAAAAcAAoAAAAAAAAAAAAcAAsAAAAAAAAAAAAcAAwAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAABAAgAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAcAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAcAAAAAAAAAAAAKAAgAAAAAAAAAAAALAAcAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAgAAAAAAAAAAAANAAcAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAcAAAAAAAAAAAAOAAgAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAQAAYAAAAAAAAAAAAQAAcAAAAAAAAAAAAQAAgAAAAAAAAAAAARAAYAAAAAAAAAAAARAAcAAAAAAAAAAAARAAgAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAAAAAAAAAARABAAAAAAAAAAAAASABAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="map3" type="Node2D" parent="maps"]
+position = Vector2(464, -512)
+
+[node name="map" type="TileMapLayer" parent="maps/map3"]
+use_parent_material = true
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="trap" type="TileMapLayer" parent="maps/map3"]
+tile_set = ExtResource("32_ketsb")
+
+[node name="map" type="Node2D" parent="maps"]
+position = Vector2(-464, 0)
+
+[node name="map" type="TileMapLayer" parent="maps/map"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABAAAAAAAAAAAAAAABABAAAAAAAAAAAAACAAAAAAAAAAAAAAACABAAAAAAAAAAAAADAAAAAAAAAAAAAAADABAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEABAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFABAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGABAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHABAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIABAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJABAAAAAAAAAAAAAKAAAAAAAAAAAAAAAKABAAAAAAAAAAAAALAAAAAAAAAAAAAAALABAAAAAAAAAAAAAMAAAAAAAAAAAAAAAMABAAAAAAAAAAAAANAAAAAAAAAAAAAAANABAAAAAAAAAAAAAOAAAAAAAAAAAAAAAOABAAAAAAAAAAAAAPAAAAAAAAAAAAAAAPABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWAAAAAAAAAAAAAAAWABAAAAAAAAAAAAAXAAAAAAAAAAAAAAAXABAAAAAAAAAAAAAYAAAAAAAAAAAAAAAYABAAAAAAAAAAAAAZAAAAAAAAAAAAAAAZABAAAAAAAAAAAAAaAAAAAAAAAAAAAAAaABAAAAAAAAAAAAAbAAAAAAAAAAAAAAAbABAAAAAAAAAAAAAcAAAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="map10" type="Node2D" parent="maps"]
+position = Vector2(928, -256)
+
+[node name="map" type="TileMapLayer" parent="maps/map10"]
+use_parent_material = true
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="qte_gravity_area4" parent="maps/map10" instance=ExtResource("33_ca0up")]
+position = Vector2(424, 152)
+
+[node name="qte_gravity_area5" parent="maps/map10" instance=ExtResource("33_ca0up")]
+position = Vector2(296, 88)
+
+[node name="save_point_0" parent="maps/map10" instance=ExtResource("21_joi33")]
+position = Vector2(208, 184)
+
+[node name="save_point_1" parent="maps/map10" instance=ExtResource("21_joi33")]
+position = Vector2(408, 200)
+
+[node name="map9" type="Node2D" parent="maps"]
+
+[node name="map" type="TileMapLayer" parent="maps/map9"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALAAAAAAAAAAAAAAALABAAAAAAAAAAAAAMAAAAAAAAAAAAAAAMABAAAAAAAAAAAAANAAAAAAAAAAAAAAANABAAAAAAAAAAAAAOAAAAAAAAAAAAAAAOABAAAAAAAAAAAAAPAAAAAAAAAAAAAAAPABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWAAAAAAAAAAAAAAAWABAAAAAAAAAAAAAXAAAAAAAAAAAAAAAXABAAAAAAAAAAAAAYAAAAAAAAAAAAAAAYABAAAAAAAAAAAAAZAAAAAAAAAAAAAAAZABAAAAAAAAAAAAAaAAAAAAAAAAAAAAAaABAAAAAAAAAAAAAbAAAAAAAAAAAAAAAbABAAAAAAAAAAAAAcAAAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAALAAUAAAAAAAAAAAASAA0AAAAAAAAAAAARAA0AAAAAAAAAAAAQAA0AAAAAAAAAAAAPAA0AAAAAAAAAAAAQAAwAAAAAAAAAAAAPAAwAAAAAAAAAAAARAAwAAAAAAAAAAAASAAwAAAAAAAAAAAAVAAkAAAAAAAAAAAAWAAkAAAAAAAAAAAAXAAkAAAAAAAAAAAAYAAkAAAAAAAAAAAAYAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAWAAoAAAAAAAAAAAAVAAoAAAAAAAAAAAAZAAQAAAAAAAAAAAAaAAQAAAAAAAAAAAAbAAQAAAAAAAAAAAAcAAQAAAAAAAAAAAAdAAQAAAAAAAAAAAAcAAUAAAAAAAAAAAAbAAUAAAAAAAAAAAAaAAUAAAAAAAAAAAAZAAUAAAAAAAAAAAAPAAEAAQAAAAAABAAQAAEAAQAAAAAABAARAAEAAQAAAAAABAASAAEAAQAAAAAABAATAAEAAQAAAAAABAAUAAEAAQAAAAAABAAZAAEAAQAAAAAABAAaAAEAAQAAAAAABAAYAAEAAQAAAAAABAAXAAEAAQAAAAAABAAWAAEAAQAAAAAABAAVAAEAAQAAAAAABAAOAAEAAQAAAAAABAANAAEAAQAAAAAABAAUAAkAAQAAAAAAAwAOAAwAAQAAAAAAAwAUAAoAAQAAAAAAAwAOAA0AAQAAAAAAAwAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAgAAAAAAAAAAAAGAAkAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAgAAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAoAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAgAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAADAAEAAgAAAAAAAwADAAIAAgAAAAAAAwACAAMAAgAAAAAAAwABAAQAAgAAAAAAAwABAAUAAgAAAAAAAwABAAYAAgAAAAAAAwAGAA8AAAAAAAAAAAAHAA8AAAAAAAAAAAAIAA8AAAAAAAAAAAAJAA8AAAAAAAAAAAAKAA8AAAAAAAAAAAALAA8AAAAAAAAAAAAMAA8AAAAAAAAAAAANAA8AAAAAAAAAAAAOAA8AAAAAAAAAAAAFAA8AAAAAAAAAAAAEAA8AAAAAAAAAAAADAA8AAAAAAAAAAAACAA8AAAAAAAAAAAABAA8AAAAAAAAAAAABAA4AAAAAAAAAAAABAA0AAAAAAAAAAAABAAwAAAAAAAAAAAABAAsAAAAAAAAAAAAcAA8AAgAAAAAABAAbAA8AAgAAAAAABAAaAA8AAgAAAAAABAAZAA8AAgAAAAAABAAYAA8AAgAAAAAABAAXAA8AAgAAAAAABAAWAA8AAgAAAAAABAAVAA8AAgAAAAAABAAUAA8AAgAAAAAABAATAA8AAgAAAAAABAASAA8AAgAAAAAABAARAA8AAgAAAAAABAAQAA8AAgAAAAAABAAPAA8AAgAAAAAABAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="trap" type="TileMapLayer" parent="maps/map9"]
+tile_set = ExtResource("32_ketsb")
+
+[node name="qte_gravity_area3" parent="maps/map9" instance=ExtResource("33_ca0up")]
+position = Vector2(272, 104)
+
+[node name="map8" type="Node2D" parent="maps"]
+position = Vector2(0, -256)
+
+[node name="map" type="TileMapLayer" parent="maps/map8"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAANABAAAAAAAAAAAAAOAAAAAAAAAAAAAAAOABAAAAAAAAAAAAAPAAAAAAAAAAAAAAAPABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWAAAAAAAAAAAAAAAWABAAAAAAAAAAAAAXAAAAAAAAAAAAAAAXABAAAAAAAAAAAAAYAAAAAAAAAAAAAAAYABAAAAAAAAAAAAAZAAAAAAAAAAAAAAAZABAAAAAAAAAAAAAaAAAAAAAAAAAAAAAaABAAAAAAAAAAAAAbAAAAAAAAAAAAAAAbABAAAAAAAAAAAAAcAAAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdABAAAAAAAAAAAAAUAA8AAAAAAAAAAAAUAA4AAAAAAAAAAAAUAA0AAAAAAAAAAAAUAAwAAAAAAAAAAAAUAAsAAAAAAAAAAAAUAAoAAAAAAAAAAAAUAAkAAAAAAAAAAAATAAkAAAAAAAAAAAASAAkAAAAAAAAAAAASAAoAAAAAAAAAAAASAAsAAAAAAAAAAAATAAwAAAAAAAAAAAATAA0AAAAAAAAAAAATAA4AAAAAAAAAAAATAA8AAAAAAAAAAAATAAsAAAAAAAAAAAATAAoAAAAAAAAAAAASAAwAAAAAAAAAAAASAA0AAAAAAAAAAAASAA4AAAAAAAAAAAASAA8AAAAAAAAAAAAHAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAJAAkAAAAAAAAAAAAJAAoAAAAAAAAAAAAVAAkAAAAAAAAAAAAVAAoAAAAAAAAAAAAVAA4AAAAAAAAAAAAVAA8AAAAAAAAAAAAVAA0AAAAAAAAAAAAVAAwAAAAAAAAAAAAVAAsAAAAAAAAAAAAMABAAAAAAAAAAAAALABAAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAALAAkAAAAAAAAAAAALAAoAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAALAA0AAAAAAAAAAAALAA4AAAAAAAAAAAALAA8AAAAAAAAAAAAWAA8AAQAAAAAAAgAWAA4AAQAAAAAAAgAWAA0AAQAAAAAAAgAWAAwAAQAAAAAAAgAWAAsAAQAAAAAAAgAWAAoAAQAAAAAAAgAWAAkAAQAAAAAAAgAXAA8AAQAAAAAAAgAXAA4AAQAAAAAAAgAXAA0AAQAAAAAAAgAXAAwAAQAAAAAAAgAXAAsAAQAAAAAAAgAXAAoAAQAAAAAAAgAXAAkAAQAAAAAAAgAMAA8AAgAAAAAABAANAA8AAgAAAAAABAAOAA8AAgAAAAAABAAPAA8AAgAAAAAABAAQAA8AAgAAAAAABAARAA8AAgAAAAAABAARAA4AAgAAAAAAAgARAA0AAgAAAAAAAgARAAwAAgAAAAAAAgARAAsAAgAAAAAAAgARAAoAAgAAAAAAAgAMAA4AAgAAAAAAAwAMAA0AAgAAAAAAAwAMAAwAAgAAAAAAAwAMAAoAAgAAAAAAAwAMAAsAAgAAAAAAAwAXAAgAAQAAAAAAAgAWAAgAAQAAAAAAAgALAAgAAgAAAAAABAAKAAgAAgAAAAAABAAJAAgAAgAAAAAABAAIAAgAAgAAAAAABAAHAAgAAgAAAAAABAAMAAkAAgAAAAAAAwARAAkAAgAAAAAAAgAHAAEAAQAAAAAAAgAHAAIAAQAAAAAAAgAHAAMAAQAAAAAAAgAHAAQAAQAAAAAAAgAHAAUAAQAAAAAAAgAHAAYAAQAAAAAAAgAHAAcAAQAAAAAAAgAIAAEAAQAAAAAAAgAIAAIAAQAAAAAAAgAIAAMAAQAAAAAAAgAIAAQAAQAAAAAAAgAIAAUAAQAAAAAAAgAIAAYAAQAAAAAAAgAIAAcAAQAAAAAAAgAJAAEAAQAAAAAAAgAJAAIAAQAAAAAAAgAJAAMAAQAAAAAAAgAJAAQAAQAAAAAAAgAJAAUAAQAAAAAAAgAJAAYAAQAAAAAAAgAJAAcAAQAAAAAAAgAKAAEAAQAAAAAAAgAKAAIAAQAAAAAAAgAKAAMAAQAAAAAAAgAKAAQAAQAAAAAAAgAKAAUAAQAAAAAAAgAKAAYAAQAAAAAAAgAKAAcAAQAAAAAAAgALAAEAAQAAAAAAAgALAAIAAQAAAAAAAgALAAMAAQAAAAAAAgALAAQAAQAAAAAAAgALAAUAAQAAAAAAAgALAAYAAQAAAAAAAgALAAcAAQAAAAAAAgAHAAsAAAAAAAAAAAAHAAwAAAAAAAAAAAAHAA0AAAAAAAAAAAAHAA4AAAAAAAAAAAAHAA8AAAAAAAAAAAAHABAAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAAAAAAIAA0AAAAAAAAAAAAIAA4AAAAAAAAAAAAIAA8AAAAAAAAAAAAIABAAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAJAA0AAAAAAAAAAAAJAA4AAAAAAAAAAAAJAA8AAAAAAAAAAAAJABAAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAAKAA0AAAAAAAAAAAAKAA4AAAAAAAAAAAAKAA8AAAAAAAAAAAAKABAAAAAAAAAAAAAGAAEAAQAAAAAAAgAGAAIAAQAAAAAAAgAGAAMAAQAAAAAAAgAGAAQAAQAAAAAAAgAGAAUAAQAAAAAAAgAGAAYAAQAAAAAAAgAGAAcAAQAAAAAAAgAGAAgAAgAAAAAABAAGAAkAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAwAAAAAAAAAAAAGAA0AAAAAAAAAAAAGAA4AAAAAAAAAAAAGAA8AAAAAAAAAAAAGABAAAAAAAAAAAAABAAkAAgAAAAAAAwABAAoAAgAAAAAAAwABAAsAAgAAAAAAAwABAAwAAgAAAAAAAwACAA0AAgAAAAAAAwACAA4AAgAAAAAAAwADAA8AAgAAAAAAAwADABAAAgAAAAAAAwABAA0AAAAAAAAAAAABAA4AAAAAAAAAAAABAA8AAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAACAA8AAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAeAAwAAAAAAAAAAAAfAAwAAAAAAAAAAAAgAAwAAAAAAAAAAAAhAAwAAAAAAAAAAAAiAAwAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="trap" type="TileMapLayer" parent="maps/map8"]
+position = Vector2(0, -32)
+tile_set = ExtResource("32_ketsb")
+
+[node name="save_point_0" parent="maps/map8" instance=ExtResource("21_joi33")]
+position = Vector2(424, 248)
+
+[node name="qte_gravity_area3" parent="maps/map8" instance=ExtResource("33_ca0up")]
+position = Vector2(240, 200)
+
+[node name="map7" type="Node2D" parent="maps"]
+position = Vector2(464, 0)
+
+[node name="map" type="TileMapLayer" parent="maps/map7"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABAAAAAAAAAAAAAAABABAAAAAAAAAAAAACAAAAAAAAAAAAAAACABAAAAAAAAAAAAADAAAAAAAAAAAAAAADABAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEABAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFABAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGABAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHABAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIABAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJABAAAAAAAAAAAAAKAAAAAAAAAAAAAAAKABAAAAAAAAAAAAALAAAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPAAAAAAAAAAAAAAAPABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWAAAAAAAAAAAAAAAWABAAAAAAAAAAAAAXAAAAAAAAAAAAAAAXABAAAAAAAAAAAAAYAAAAAAAAAAAAAAAYABAAAAAAAAAAAAAZAAAAAAAAAAAAAAAZABAAAAAAAAAAAAAaAAAAAAAAAAAAAAAaABAAAAAAAAAAAAAbAAAAAAAAAAAAAAAbABAAAAAAAAAAAAAcAAAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdABAAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAALAAgAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAALAAkAAAAAAAAAAAALAAoAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAADAAsAAAAAAAAAAAADAAwAAAAAAAAAAAAEAAsAAAAAAAAAAAAEAAwAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAwAAAAAAAAAAAAHAAsAAAAAAAAAAAAHAAwAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAEAAAAAAAAAAAAMAAAAAQAAAAAABAAMAAEAAQAAAAAABAAMAAIAAQAAAAAABAAMAAMAAQAAAAAABAAMAAQAAQAAAAAABAAMAAUAAQAAAAAABAAMAAYAAQAAAAAABAAMAAcAAQAAAAAABAAMAAgAAQAAAAAABAAMAAkAAQAAAAAABAANAAAAAQAAAAAABAANAAEAAQAAAAAABAANAAIAAQAAAAAABAANAAMAAQAAAAAABAANAAQAAQAAAAAABAANAAUAAQAAAAAABAANAAYAAQAAAAAABAANAAcAAQAAAAAABAANAAgAAQAAAAAABAANAAkAAQAAAAAABAAOAAAAAQAAAAAABAAOAAEAAQAAAAAABAAOAAIAAQAAAAAABAAOAAMAAQAAAAAABAAOAAQAAQAAAAAABAAOAAUAAQAAAAAABAAOAAYAAQAAAAAABAAOAAcAAQAAAAAABAAOAAgAAQAAAAAABAAOAAkAAQAAAAAABAAdAA8AAAAAAAAAAAAPAAwAAAAAAAAAAAAPAAsAAAAAAAAAAAAMAAwAAAAAAAAAAAANAAwAAAAAAAAAAAAOAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAARAAwAAAAAAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAVAAwAAAAAAAAAAAAWAAwAAAAAAAAAAAAWAAsAAAAAAAAAAAAWAAoAAAAAAAAAAAAWAAkAAAAAAAAAAAAWAAgAAAAAAAAAAAAWAAcAAAAAAAAAAAAWAAYAAAAAAAAAAAAWAAUAAAAAAAAAAAAVAAUAAAAAAAAAAAAUAAUAAAAAAAAAAAATAAUAAAAAAAAAAAAMAAoAAQAAAAAABAANAAoAAQAAAAAABAAOAAoAAQAAAAAABAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAPAAcAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAADAAgAAQAAAAAAAgADAAkAAQAAAAAAAgADAAoAAQAAAAAAAgAEAAgAAQAAAAAAAgAEAAkAAQAAAAAAAgAEAAoAAQAAAAAAAgAFAAgAAQAAAAAAAgAFAAkAAQAAAAAAAgAFAAoAAQAAAAAAAgAGAAgAAQAAAAAAAgAGAAkAAQAAAAAAAgAGAAoAAQAAAAAAAgAHAAgAAQAAAAAAAgAHAAkAAQAAAAAAAgAHAAoAAQAAAAAAAgAIAAgAAQAAAAAAAgAIAAkAAQAAAAAAAgAIAAoAAQAAAAAAAgAJAAgAAQAAAAAAAgAJAAkAAQAAAAAAAgAJAAoAAQAAAAAAAgAKAAgAAQAAAAAAAgAKAAkAAQAAAAAAAgAKAAoAAQAAAAAAAgABAA0AAQAAAAAAAwABAA4AAQAAAAAAAwABAA8AAQAAAAAAAwACAA0AAQAAAAAAAwACAA4AAQAAAAAAAwACAA8AAQAAAAAAAwADAA0AAQAAAAAAAwADAA4AAQAAAAAAAwADAA8AAQAAAAAAAwAEAA0AAQAAAAAAAwAEAA4AAQAAAAAAAwAEAA8AAQAAAAAAAwAFAA0AAQAAAAAAAwAFAA4AAQAAAAAAAwAFAA8AAQAAAAAAAwAGAA0AAQAAAAAAAwAGAA4AAQAAAAAAAwAGAA8AAQAAAAAAAwAHAA0AAQAAAAAAAwAHAA4AAQAAAAAAAwAHAA8AAQAAAAAAAwAIAA0AAQAAAAAAAwAIAA4AAQAAAAAAAwAIAA8AAQAAAAAAAwAJAA0AAQAAAAAAAwAJAA4AAQAAAAAAAwAJAA8AAQAAAAAAAwAKAA0AAQAAAAAAAwAKAA4AAQAAAAAAAwAKAA8AAQAAAAAAAwALAA0AAQAAAAAAAwALAA4AAQAAAAAAAwALAA8AAQAAAAAAAwAMAA0AAQAAAAAAAwAMAA4AAQAAAAAAAwAMAA8AAQAAAAAAAwANAA0AAQAAAAAAAwANAA4AAQAAAAAAAwANAA8AAQAAAAAAAwAOAA0AAQAAAAAAAwAOAA4AAQAAAAAAAwAOAA8AAQAAAAAAAwAPAA0AAQAAAAAAAwAPAA4AAQAAAAAAAwAPAA8AAQAAAAAAAwAQAA0AAQAAAAAAAwAQAA4AAQAAAAAAAwAQAA8AAQAAAAAAAwARAA0AAQAAAAAAAwARAA4AAQAAAAAAAwARAA8AAQAAAAAAAwASAA0AAQAAAAAAAwASAA4AAQAAAAAAAwASAA8AAQAAAAAAAwATAA0AAQAAAAAAAwATAA4AAQAAAAAAAwATAA8AAQAAAAAAAwAUAA0AAQAAAAAAAwAUAA4AAQAAAAAAAwAUAA8AAQAAAAAAAwAVAA0AAQAAAAAAAwAVAA4AAQAAAAAAAwAVAA8AAQAAAAAAAwAWAA0AAQAAAAAAAwAWAA4AAQAAAAAAAwAWAA8AAQAAAAAAAwAPAAgAAAABAAAAAAAPAAkAAAABAAAAAAAPAAoAAAABAAAAAAAUAP7/AAAAAAAAAAAUAP//AAAAAAAAAAATAP//AAAAAAAAAAATAP7/AAAAAAAAAAASAP7/AAAAAAAAAAASAP//AAAAAAAAAAARAP//AAAAAAAAAAAQAP//AAAAAAAAAAAPAP//AAAAAAAAAAAPAP7/AAAAAAAAAAARAP7/AAAAAAAAAAAQAP7/AAAAAAAAAAAKAP//AAAAAAAAAAAKAP7/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="qte_gravity_area4" parent="maps/map7" instance=ExtResource("33_ca0up")]
+position = Vector2(416, 104)
+
+[node name="map5" type="Node2D" parent="maps"]
+position = Vector2(928, 0)
+
+[node name="gravity" type="Node2D" parent="maps/map5"]
+position = Vector2(-1392, 256)
+
+[node name="gravity_0_31" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1424, -192)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_32" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1424, -160)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_33" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1424, -128)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_34" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1424, -96)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_36" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1456, -192)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_37" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1456, -160)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_38" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1456, -128)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_39" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1456, -96)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity_0_11" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1456, -224)
+
+[node name="gravity_0_35" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1488, -224)
+
+[node name="gravity_0_12" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1424, -224)
+
+[node name="gravity_0_13" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1520, -224)
+
+[node name="gravity_0_16" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1664, -72)
+
+[node name="gravity_0_17" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1664, -40)
+
+[node name="gravity_0_18" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1696, -72)
+
+[node name="gravity_0_19" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1696, -40)
+
+[node name="gravity_0_20" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1664, -104)
+
+[node name="gravity_0_21" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1696, -104)
+
+[node name="gravity_0_22" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1664, -136)
+
+[node name="gravity_0_23" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1696, -136)
+
+[node name="gravity_0_24" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1664, -168)
+
+[node name="gravity_0_25" parent="maps/map5/gravity" instance=ExtResource("31_y6f3l")]
+position = Vector2(1696, -168)
+
+[node name="box-door" type="Node2D" parent="maps/map5"]
+position = Vector2(-1392, 256)
+
+[node name="box" parent="maps/map5/box-door" instance=ExtResource("26_yyhk7")]
+position = Vector2(1507, -223)
+
+[node name="door-1" parent="maps/map5/box-door" instance=ExtResource("27_5vca8")]
+position = Vector2(1656, -184)
+rotation = 1.5708
+
+[node name="door-2" parent="maps/map5/box-door" instance=ExtResource("27_5vca8")]
+position = Vector2(1704, -184)
+rotation = 1.5708
+
+[node name="button-1" parent="maps/map5/box-door" instance=ExtResource("28_ichf1")]
+position = Vector2(1552, 0)
+doors = Array[NodePath]([NodePath("../door-1"), NodePath("../door-2"), NodePath("")])
+
+[node name="box-door2" type="Node2D" parent="maps/map5"]
+position = Vector2(-1392, 256)
+
+[node name="box" parent="maps/map5/box-door2" instance=ExtResource("26_yyhk7")]
+position = Vector2(1680, -208)
+
+[node name="door-1" parent="maps/map5/box-door2" instance=ExtResource("27_5vca8")]
+position = Vector2(1768, -40)
+
+[node name="button-1" parent="maps/map5/box-door2" instance=ExtResource("28_ichf1")]
+position = Vector2(1680, -240)
+rotation = 3.14159
+doors = Array[NodePath]([NodePath("../door-1")])
+
+[node name="save_point_0" parent="maps/map5" instance=ExtResource("21_joi33")]
+position = Vector2(48, 232)
+
+[node name="map" type="TileMapLayer" parent="maps/map5"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFABAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGABAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHABAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIABAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANAAAAAAAAAAAAAAANABAAAAAAAAAAAAAOAAAAAAAAAAAAAAAOABAAAAAAAAAAAAAPAAAAAAAAAAAAAAAPABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWAAAAAAAAAAAAAAAWABAAAAAAAAAAAAAXAAAAAAAAAAAAAAAXABAAAAAAAAAAAAAYABAAAAAAAAAAAAAZABAAAAAAAAAAAAAaABAAAAAAAAAAAAAbABAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAAbAA8AAAAAAAAAAAAcAA8AAAAAAAAAAAAEAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAACAA8AAAAAAAAAAAADAA8AAAAAAAAAAAABAA8AAAAAAAAAAAAEAA8AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA0AAAAAAAAAAAAdAAwAAAAAAAAAAAAaAA8AAAAAAAAAAAAZAA8AAAAAAAAAAAAYAA8AAAAAAAAAAAAXAA8AAAAAAAAAAAAcAAkAAQAAAAAAAgAcAAoAAQAAAAAAAgAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAXAAsAAAAAAAAAAAAZAAsAAAAAAAAAAAAaAAsAAAAAAAAAAAAbAAsAAAAAAAAAAAAcAAsAAAAAAAAAAAAYAAsAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="teleport" parent="maps/map5" instance=ExtResource("34_10wy6")]
+position = Vector2(424, 224)
+target_scene = "res://scenes/dreams/bigworld/chase_stage.tscn"
+teleport_type = 2
+
+[node name="map1" type="Node2D" parent="maps"]
+position = Vector2(0, -512)
+
+[node name="map" type="TileMapLayer" parent="maps/map1"]
+use_parent_material = true
+tile_set = SubResource("TileSet_rvt4p")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 232.0
+offset_top = -200.0
+offset_right = 363.0
+offset_bottom = -177.0
+text = "Press [Space]  [K]"
+
+[node name="camera_limit" type="Node2D" parent="."]
+position = Vector2(0, 272)
+
+[node name="camera_area" type="Area2D" parent="camera_limit" groups=["camera_area"]]
+visible = false
+position = Vector2(-424.356, -758.286)
+collision_mask = 129
+script = ExtResource("35_7o587")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="camera_limit/camera_area"]
+position = Vector2(664.356, 110.286)
+scale = Vector2(3, 1)
+shape = SubResource("RectangleShape2D_u2o6t")
+
+[node name="LimitShape2D" type="CollisionShape2D" parent="camera_limit/camera_area"]
+position = Vector2(664.356, 110.286)
+scale = Vector2(3, 1)
+shape = SubResource("RectangleShape2D_q85ss")
+disabled = true
+debug_color = Color(0.866667, 0.282353, 0.552941, 0.419608)
+
+[node name="camera_area2" type="Area2D" parent="camera_limit" groups=["camera_area"]]
+visible = false
+position = Vector2(-424, -760)
+collision_mask = 129
+script = ExtResource("35_7o587")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="camera_limit/camera_area2"]
+position = Vector2(1128, 267.643)
+shape = SubResource("RectangleShape2D_31egl")
+
+[node name="LimitShape2D" type="CollisionShape2D" parent="camera_limit/camera_area2"]
+visible = false
+position = Vector2(1128, 368)
+shape = SubResource("RectangleShape2D_p8owt")
+disabled = true
+debug_color = Color(0.866576, 0.28232, 0.553243, 0.42)
+
+[node name="camera_area3" type="Area2D" parent="camera_limit" groups=["camera_area"]]
+visible = false
+position = Vector2(-440, -760)
+collision_mask = 129
+script = ExtResource("35_7o587")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="camera_limit/camera_area3"]
+position = Vector2(1258, 336)
+shape = SubResource("RectangleShape2D_dbje2")
+
+[node name="LimitShape2D" type="CollisionShape2D" parent="camera_limit/camera_area3"]
+visible = false
+position = Vector2(1368, 368)
+shape = SubResource("RectangleShape2D_24fro")
+disabled = true
+debug_color = Color(0.866667, 0.282353, 0.552941, 0.419608)
+
+[node name="camera_area4" type="Area2D" parent="camera_limit" groups=["camera_area"]]
+position = Vector2(-440, -760)
+collision_mask = 129
+script = ExtResource("35_7o587")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="camera_limit/camera_area4"]
+position = Vector2(1499, 272)
+shape = SubResource("RectangleShape2D_vsw2m")
+
+[node name="LimitShape2D" type="CollisionShape2D" parent="camera_limit/camera_area4"]
+position = Vector2(1608, 368)
+shape = SubResource("RectangleShape2D_m0chv")
+disabled = true
+debug_color = Color(0.866667, 0.282353, 0.552941, 0.419608)
+
+[node name="camera_area5" type="Area2D" parent="camera_limit" groups=["camera_area"]]
+visible = false
+position = Vector2(-440, -760)
+collision_mask = 129
+script = ExtResource("35_7o587")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="camera_limit/camera_area5"]
+position = Vector2(1560, 434)
+shape = SubResource("RectangleShape2D_hc13l")
+
+[node name="LimitShape2D" type="CollisionShape2D" parent="camera_limit/camera_area5"]
+position = Vector2(1568, 368)
+shape = SubResource("RectangleShape2D_rj6ad")
+disabled = true
+debug_color = Color(0.866667, 0.282353, 0.552941, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="camera_limit/camera_area5"]
+position = Vector2(1728, 315)
+shape = SubResource("RectangleShape2D_3p4ps")
+
+[node name="camera_area6" type="Area2D" parent="camera_limit" groups=["camera_area"]]
+position = Vector2(-440, -760)
+collision_mask = 129
+script = ExtResource("35_7o587")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="camera_limit/camera_area6"]
+position = Vector2(1608, 119.5)
+shape = SubResource("RectangleShape2D_isxwo")
+
+[node name="LimitShape2D" type="CollisionShape2D" parent="camera_limit/camera_area6"]
+position = Vector2(1608, 112)
+shape = SubResource("RectangleShape2D_w7k0d")
+disabled = true
+debug_color = Color(0.866667, 0.282353, 0.552941, 0.419608)
+
+[node name="Npc" parent="." node_paths=PackedStringArray("teleport") instance=ExtResource("36_kkcc1")]
+position = Vector2(-250, -283)
+teleport = NodePath("../empty-teleport")
+
+[node name="empty-teleport" parent="." instance=ExtResource("37_v7ktf")]
+position = Vector2(-211, -279)
+
+[connection signal="body_entered" from="maps/map1-1/map/BlockTrap" to="maps/map1-1/map/BlockTrap" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/BlockTrap" to="maps/map1-1/map/BlockTrap" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19811" to="maps/map1-1/map/@Area2D@19811" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19811" to="maps/map1-1/map/@Area2D@19811" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19812" to="maps/map1-1/map/@Area2D@19812" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19812" to="maps/map1-1/map/@Area2D@19812" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19813" to="maps/map1-1/map/@Area2D@19813" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19813" to="maps/map1-1/map/@Area2D@19813" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19814" to="maps/map1-1/map/@Area2D@19814" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19814" to="maps/map1-1/map/@Area2D@19814" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19815" to="maps/map1-1/map/@Area2D@19815" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19815" to="maps/map1-1/map/@Area2D@19815" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19816" to="maps/map1-1/map/@Area2D@19816" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19816" to="maps/map1-1/map/@Area2D@19816" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19817" to="maps/map1-1/map/@Area2D@19817" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19817" to="maps/map1-1/map/@Area2D@19817" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19818" to="maps/map1-1/map/@Area2D@19818" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19818" to="maps/map1-1/map/@Area2D@19818" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19819" to="maps/map1-1/map/@Area2D@19819" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19819" to="maps/map1-1/map/@Area2D@19819" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19820" to="maps/map1-1/map/@Area2D@19820" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19820" to="maps/map1-1/map/@Area2D@19820" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19821" to="maps/map1-1/map/@Area2D@19821" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19821" to="maps/map1-1/map/@Area2D@19821" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19822" to="maps/map1-1/map/@Area2D@19822" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19822" to="maps/map1-1/map/@Area2D@19822" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19823" to="maps/map1-1/map/@Area2D@19823" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19823" to="maps/map1-1/map/@Area2D@19823" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19824" to="maps/map1-1/map/@Area2D@19824" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19824" to="maps/map1-1/map/@Area2D@19824" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19825" to="maps/map1-1/map/@Area2D@19825" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19825" to="maps/map1-1/map/@Area2D@19825" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19826" to="maps/map1-1/map/@Area2D@19826" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19826" to="maps/map1-1/map/@Area2D@19826" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19827" to="maps/map1-1/map/@Area2D@19827" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19827" to="maps/map1-1/map/@Area2D@19827" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19828" to="maps/map1-1/map/@Area2D@19828" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19828" to="maps/map1-1/map/@Area2D@19828" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19829" to="maps/map1-1/map/@Area2D@19829" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19829" to="maps/map1-1/map/@Area2D@19829" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19830" to="maps/map1-1/map/@Area2D@19830" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19830" to="maps/map1-1/map/@Area2D@19830" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19831" to="maps/map1-1/map/@Area2D@19831" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19831" to="maps/map1-1/map/@Area2D@19831" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19844" to="maps/map1-1/map/@Area2D@19844" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19844" to="maps/map1-1/map/@Area2D@19844" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19852" to="maps/map1-1/map/@Area2D@19852" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19852" to="maps/map1-1/map/@Area2D@19852" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19853" to="maps/map1-1/map/@Area2D@19853" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19853" to="maps/map1-1/map/@Area2D@19853" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19854" to="maps/map1-1/map/@Area2D@19854" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19854" to="maps/map1-1/map/@Area2D@19854" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19855" to="maps/map1-1/map/@Area2D@19855" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19855" to="maps/map1-1/map/@Area2D@19855" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19856" to="maps/map1-1/map/@Area2D@19856" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19856" to="maps/map1-1/map/@Area2D@19856" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19857" to="maps/map1-1/map/@Area2D@19857" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19857" to="maps/map1-1/map/@Area2D@19857" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19858" to="maps/map1-1/map/@Area2D@19858" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19858" to="maps/map1-1/map/@Area2D@19858" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19859" to="maps/map1-1/map/@Area2D@19859" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19859" to="maps/map1-1/map/@Area2D@19859" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19860" to="maps/map1-1/map/@Area2D@19860" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19860" to="maps/map1-1/map/@Area2D@19860" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19861" to="maps/map1-1/map/@Area2D@19861" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19861" to="maps/map1-1/map/@Area2D@19861" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19862" to="maps/map1-1/map/@Area2D@19862" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19862" to="maps/map1-1/map/@Area2D@19862" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19863" to="maps/map1-1/map/@Area2D@19863" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19863" to="maps/map1-1/map/@Area2D@19863" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19864" to="maps/map1-1/map/@Area2D@19864" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19864" to="maps/map1-1/map/@Area2D@19864" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19865" to="maps/map1-1/map/@Area2D@19865" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19865" to="maps/map1-1/map/@Area2D@19865" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19866" to="maps/map1-1/map/@Area2D@19866" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19866" to="maps/map1-1/map/@Area2D@19866" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19867" to="maps/map1-1/map/@Area2D@19867" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19867" to="maps/map1-1/map/@Area2D@19867" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19876" to="maps/map1-1/map/@Area2D@19876" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19876" to="maps/map1-1/map/@Area2D@19876" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19877" to="maps/map1-1/map/@Area2D@19877" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19877" to="maps/map1-1/map/@Area2D@19877" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19878" to="maps/map1-1/map/@Area2D@19878" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19878" to="maps/map1-1/map/@Area2D@19878" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19879" to="maps/map1-1/map/@Area2D@19879" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19879" to="maps/map1-1/map/@Area2D@19879" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19880" to="maps/map1-1/map/@Area2D@19880" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19880" to="maps/map1-1/map/@Area2D@19880" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19881" to="maps/map1-1/map/@Area2D@19881" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19881" to="maps/map1-1/map/@Area2D@19881" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19882" to="maps/map1-1/map/@Area2D@19882" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19882" to="maps/map1-1/map/@Area2D@19882" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19883" to="maps/map1-1/map/@Area2D@19883" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19883" to="maps/map1-1/map/@Area2D@19883" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19884" to="maps/map1-1/map/@Area2D@19884" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19884" to="maps/map1-1/map/@Area2D@19884" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19885" to="maps/map1-1/map/@Area2D@19885" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19885" to="maps/map1-1/map/@Area2D@19885" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@19886" to="maps/map1-1/map/@Area2D@19886" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@19886" to="maps/map1-1/map/@Area2D@19886" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/FallingBlockTgt5/TileMapLayer/BlockTrap" to="maps/map1-1/FallingBlockTgt5/TileMapLayer/BlockTrap" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/FallingBlockTgt5/TileMapLayer/BlockTrap" to="maps/map1-1/FallingBlockTgt5/TileMapLayer/BlockTrap" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/FallingBlockTgt5/TileMapLayer/@Area2D@19887" to="maps/map1-1/FallingBlockTgt5/TileMapLayer/@Area2D@19887" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/FallingBlockTgt5/TileMapLayer/@Area2D@19887" to="maps/map1-1/FallingBlockTgt5/TileMapLayer/@Area2D@19887" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/FallingBlockTgt5/TileMapLayer/@Area2D@19888" to="maps/map1-1/FallingBlockTgt5/TileMapLayer/@Area2D@19888" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/FallingBlockTgt5/TileMapLayer/@Area2D@19888" to="maps/map1-1/FallingBlockTgt5/TileMapLayer/@Area2D@19888" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/FallingBlockTgt5/TileMapLayer/@Area2D@19889" to="maps/map1-1/FallingBlockTgt5/TileMapLayer/@Area2D@19889" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/FallingBlockTgt5/TileMapLayer/@Area2D@19889" to="maps/map1-1/FallingBlockTgt5/TileMapLayer/@Area2D@19889" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/BlockTrap" to="maps/map1-2/map/BlockTrap" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/BlockTrap" to="maps/map1-2/map/BlockTrap" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19922" to="maps/map1-2/map/@Area2D@19922" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19922" to="maps/map1-2/map/@Area2D@19922" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19923" to="maps/map1-2/map/@Area2D@19923" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19923" to="maps/map1-2/map/@Area2D@19923" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19924" to="maps/map1-2/map/@Area2D@19924" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19924" to="maps/map1-2/map/@Area2D@19924" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19925" to="maps/map1-2/map/@Area2D@19925" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19925" to="maps/map1-2/map/@Area2D@19925" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19926" to="maps/map1-2/map/@Area2D@19926" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19926" to="maps/map1-2/map/@Area2D@19926" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19927" to="maps/map1-2/map/@Area2D@19927" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19927" to="maps/map1-2/map/@Area2D@19927" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19928" to="maps/map1-2/map/@Area2D@19928" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19928" to="maps/map1-2/map/@Area2D@19928" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19929" to="maps/map1-2/map/@Area2D@19929" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19929" to="maps/map1-2/map/@Area2D@19929" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19930" to="maps/map1-2/map/@Area2D@19930" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19930" to="maps/map1-2/map/@Area2D@19930" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19931" to="maps/map1-2/map/@Area2D@19931" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19931" to="maps/map1-2/map/@Area2D@19931" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19932" to="maps/map1-2/map/@Area2D@19932" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19932" to="maps/map1-2/map/@Area2D@19932" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19933" to="maps/map1-2/map/@Area2D@19933" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19933" to="maps/map1-2/map/@Area2D@19933" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19934" to="maps/map1-2/map/@Area2D@19934" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19934" to="maps/map1-2/map/@Area2D@19934" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19935" to="maps/map1-2/map/@Area2D@19935" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19935" to="maps/map1-2/map/@Area2D@19935" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19936" to="maps/map1-2/map/@Area2D@19936" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19936" to="maps/map1-2/map/@Area2D@19936" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19937" to="maps/map1-2/map/@Area2D@19937" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19937" to="maps/map1-2/map/@Area2D@19937" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19938" to="maps/map1-2/map/@Area2D@19938" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19938" to="maps/map1-2/map/@Area2D@19938" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19939" to="maps/map1-2/map/@Area2D@19939" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19939" to="maps/map1-2/map/@Area2D@19939" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19940" to="maps/map1-2/map/@Area2D@19940" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19940" to="maps/map1-2/map/@Area2D@19940" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19941" to="maps/map1-2/map/@Area2D@19941" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19941" to="maps/map1-2/map/@Area2D@19941" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19942" to="maps/map1-2/map/@Area2D@19942" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19942" to="maps/map1-2/map/@Area2D@19942" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19943" to="maps/map1-2/map/@Area2D@19943" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19943" to="maps/map1-2/map/@Area2D@19943" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19944" to="maps/map1-2/map/@Area2D@19944" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19944" to="maps/map1-2/map/@Area2D@19944" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19962" to="maps/map1-2/map/@Area2D@19962" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19962" to="maps/map1-2/map/@Area2D@19962" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19963" to="maps/map1-2/map/@Area2D@19963" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19963" to="maps/map1-2/map/@Area2D@19963" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-2/map/@Area2D@19964" to="maps/map1-2/map/@Area2D@19964" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-2/map/@Area2D@19964" to="maps/map1-2/map/@Area2D@19964" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-3/map/BlockTrap" to="maps/map1-3/map/BlockTrap" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-3/map/BlockTrap" to="maps/map1-3/map/BlockTrap" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-3/map/@Area2D@19965" to="maps/map1-3/map/@Area2D@19965" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-3/map/@Area2D@19965" to="maps/map1-3/map/@Area2D@19965" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-3/map/@Area2D@19966" to="maps/map1-3/map/@Area2D@19966" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-3/map/@Area2D@19966" to="maps/map1-3/map/@Area2D@19966" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-3/map/@Area2D@19967" to="maps/map1-3/map/@Area2D@19967" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-3/map/@Area2D@19967" to="maps/map1-3/map/@Area2D@19967" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-3/map/@Area2D@19968" to="maps/map1-3/map/@Area2D@19968" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-3/map/@Area2D@19968" to="maps/map1-3/map/@Area2D@19968" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-3/map/@Area2D@19969" to="maps/map1-3/map/@Area2D@19969" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-3/map/@Area2D@19969" to="maps/map1-3/map/@Area2D@19969" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-3/map/@Area2D@19970" to="maps/map1-3/map/@Area2D@19970" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-3/map/@Area2D@19970" to="maps/map1-3/map/@Area2D@19970" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-3/map/@Area2D@19971" to="maps/map1-3/map/@Area2D@19971" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-3/map/@Area2D@19971" to="maps/map1-3/map/@Area2D@19971" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-3/map/@Area2D@19972" to="maps/map1-3/map/@Area2D@19972" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-3/map/@Area2D@19972" to="maps/map1-3/map/@Area2D@19972" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/BlockTrap" to="maps/map9/map/BlockTrap" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/BlockTrap" to="maps/map9/map/BlockTrap" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@19989" to="maps/map9/map/@Area2D@19989" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@19989" to="maps/map9/map/@Area2D@19989" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@19990" to="maps/map9/map/@Area2D@19990" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@19990" to="maps/map9/map/@Area2D@19990" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@19991" to="maps/map9/map/@Area2D@19991" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@19991" to="maps/map9/map/@Area2D@19991" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@19992" to="maps/map9/map/@Area2D@19992" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@19992" to="maps/map9/map/@Area2D@19992" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@19993" to="maps/map9/map/@Area2D@19993" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@19993" to="maps/map9/map/@Area2D@19993" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@19994" to="maps/map9/map/@Area2D@19994" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@19994" to="maps/map9/map/@Area2D@19994" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@19995" to="maps/map9/map/@Area2D@19995" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@19995" to="maps/map9/map/@Area2D@19995" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@19996" to="maps/map9/map/@Area2D@19996" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@19996" to="maps/map9/map/@Area2D@19996" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@19997" to="maps/map9/map/@Area2D@19997" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@19997" to="maps/map9/map/@Area2D@19997" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@19998" to="maps/map9/map/@Area2D@19998" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@19998" to="maps/map9/map/@Area2D@19998" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@19999" to="maps/map9/map/@Area2D@19999" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@19999" to="maps/map9/map/@Area2D@19999" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@20000" to="maps/map9/map/@Area2D@20000" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@20000" to="maps/map9/map/@Area2D@20000" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@20001" to="maps/map9/map/@Area2D@20001" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@20001" to="maps/map9/map/@Area2D@20001" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@20002" to="maps/map9/map/@Area2D@20002" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@20002" to="maps/map9/map/@Area2D@20002" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@20003" to="maps/map9/map/@Area2D@20003" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@20003" to="maps/map9/map/@Area2D@20003" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@20004" to="maps/map9/map/@Area2D@20004" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@20004" to="maps/map9/map/@Area2D@20004" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@20005" to="maps/map9/map/@Area2D@20005" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@20005" to="maps/map9/map/@Area2D@20005" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@20006" to="maps/map9/map/@Area2D@20006" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@20006" to="maps/map9/map/@Area2D@20006" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@20007" to="maps/map9/map/@Area2D@20007" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@20007" to="maps/map9/map/@Area2D@20007" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/BlockTrap" to="maps/map8/map/BlockTrap" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/BlockTrap" to="maps/map8/map/BlockTrap" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20021" to="maps/map8/map/@Area2D@20021" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20021" to="maps/map8/map/@Area2D@20021" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20022" to="maps/map8/map/@Area2D@20022" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20022" to="maps/map8/map/@Area2D@20022" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20023" to="maps/map8/map/@Area2D@20023" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20023" to="maps/map8/map/@Area2D@20023" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20024" to="maps/map8/map/@Area2D@20024" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20024" to="maps/map8/map/@Area2D@20024" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20025" to="maps/map8/map/@Area2D@20025" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20025" to="maps/map8/map/@Area2D@20025" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20026" to="maps/map8/map/@Area2D@20026" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20026" to="maps/map8/map/@Area2D@20026" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20027" to="maps/map8/map/@Area2D@20027" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20027" to="maps/map8/map/@Area2D@20027" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20028" to="maps/map8/map/@Area2D@20028" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20028" to="maps/map8/map/@Area2D@20028" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20029" to="maps/map8/map/@Area2D@20029" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20029" to="maps/map8/map/@Area2D@20029" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20030" to="maps/map8/map/@Area2D@20030" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20030" to="maps/map8/map/@Area2D@20030" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20031" to="maps/map8/map/@Area2D@20031" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20031" to="maps/map8/map/@Area2D@20031" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20032" to="maps/map8/map/@Area2D@20032" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20032" to="maps/map8/map/@Area2D@20032" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20033" to="maps/map8/map/@Area2D@20033" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20033" to="maps/map8/map/@Area2D@20033" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20034" to="maps/map8/map/@Area2D@20034" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20034" to="maps/map8/map/@Area2D@20034" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20035" to="maps/map8/map/@Area2D@20035" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20035" to="maps/map8/map/@Area2D@20035" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20038" to="maps/map8/map/@Area2D@20038" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20038" to="maps/map8/map/@Area2D@20038" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20039" to="maps/map8/map/@Area2D@20039" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20039" to="maps/map8/map/@Area2D@20039" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20040" to="maps/map8/map/@Area2D@20040" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20040" to="maps/map8/map/@Area2D@20040" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20041" to="maps/map8/map/@Area2D@20041" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20041" to="maps/map8/map/@Area2D@20041" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20042" to="maps/map8/map/@Area2D@20042" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20042" to="maps/map8/map/@Area2D@20042" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20043" to="maps/map8/map/@Area2D@20043" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20043" to="maps/map8/map/@Area2D@20043" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20044" to="maps/map8/map/@Area2D@20044" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20044" to="maps/map8/map/@Area2D@20044" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20087" to="maps/map8/map/@Area2D@20087" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20087" to="maps/map8/map/@Area2D@20087" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20088" to="maps/map8/map/@Area2D@20088" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20088" to="maps/map8/map/@Area2D@20088" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20089" to="maps/map8/map/@Area2D@20089" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20089" to="maps/map8/map/@Area2D@20089" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20090" to="maps/map8/map/@Area2D@20090" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20090" to="maps/map8/map/@Area2D@20090" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20091" to="maps/map8/map/@Area2D@20091" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20091" to="maps/map8/map/@Area2D@20091" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20092" to="maps/map8/map/@Area2D@20092" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20092" to="maps/map8/map/@Area2D@20092" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20093" to="maps/map8/map/@Area2D@20093" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20093" to="maps/map8/map/@Area2D@20093" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20094" to="maps/map8/map/@Area2D@20094" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20094" to="maps/map8/map/@Area2D@20094" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@20095" to="maps/map8/map/@Area2D@20095" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@20095" to="maps/map8/map/@Area2D@20095" method="_on_ready"]

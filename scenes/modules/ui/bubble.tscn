@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/modules/ui/bubble.gd" id="1_wgqlx"]
 
-[node name="Bubble" type="Node2D"]
+[node name="Bubble" type="Node2D" groups=["dynamic"]]
 z_index = 4
 script = ExtResource("1_wgqlx")
 
