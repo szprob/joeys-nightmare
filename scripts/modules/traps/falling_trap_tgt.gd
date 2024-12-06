@@ -15,6 +15,7 @@ var do_detect = true
 @onready var timer: Timer = $Timer
 @onready var animated_sprited_2d:  AnimatedSprite2D = $AnimatedSprite2D
 @onready var sfx_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var kill_zone_collision: CollisionShape2D = $kill_zone/CollisionShape2D
 
 func _ready() -> void:
 	init_position = global_position
@@ -31,7 +32,8 @@ func _physics_process(delta):
 		global_position += fly_direction * speed * delta
 		if global_position.distance_to(final_position) < 5:
 			global_position = final_position
-			queue_free()
+			kill_zone_collision.disabled = true
+			modulate.a = 0
 		
 		
 
