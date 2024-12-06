@@ -110,7 +110,7 @@ func change_state(new_state: State) -> void:
 			direction2player = (player.global_position - global_position).normalized()
 			scale.x = origin_scale_x if direction2player.x > 0 else -origin_scale_x
 			target_position = player.global_position
-			if target_position.y > limit_top :
+			if target_position.y < limit_top :
 				target_position.y = limit_top
 
 			dash_direction = (target_position - global_position).normalized()
