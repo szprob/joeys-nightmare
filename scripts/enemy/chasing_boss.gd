@@ -67,10 +67,7 @@ func _on_animation_finished():
 
 func _physics_process(delta: float) -> void:
 	limit_top = current_camera.limit_top + limit_y_offset_top
-	print('limit_top',limit_top)
 	limit_bottom = current_camera.limit_bottom - limit_y_offset_bottom
-	print('limit_bottom',limit_bottom)
-	print('player.global_position',player.global_position)
 	
 	state_timer += delta
 	match current_state:

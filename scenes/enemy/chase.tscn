@@ -200,6 +200,7 @@ scale = Vector2(8.81513, 8.81513)
 position = Vector2(-93.816, 31.877)
 scale = Vector2(1.06877, 1.06877)
 shape = SubResource("CapsuleShape2D_wt7tk")
+disabled = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="kill_zone"]
 position = Vector2(-51.8427, 34.1458)

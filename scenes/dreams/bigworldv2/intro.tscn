@@ -356,6 +356,9 @@ rotates = false
 [node name="save_point_1" parent="maps/map1-1" instance=ExtResource("22_tqmij")]
 position = Vector2(1064, 232)
 
+[node name="save_point_2" parent="maps/map1-1" instance=ExtResource("22_tqmij")]
+position = Vector2(136, 232)
+
 [node name="FallingBlockTgt5" parent="maps/map1-1" node_paths=PackedStringArray("target", "detection") instance=ExtResource("23_7134v")]
 position = Vector2(1296, 96)
 speed = 150.0
@@ -697,7 +700,7 @@ position = Vector2(424, 152)
 position = Vector2(296, 88)
 
 [node name="save_point_0" parent="maps/map10" instance=ExtResource("22_tqmij")]
-position = Vector2(208, 184)
+position = Vector2(160, 184)
 
 [node name="save_point_1" parent="maps/map10" instance=ExtResource("22_tqmij")]
 position = Vector2(408, 200)
