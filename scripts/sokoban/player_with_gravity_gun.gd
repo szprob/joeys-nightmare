@@ -22,13 +22,14 @@ extends CharacterBody2D
 @export var after_image_scene: PackedScene
 var after_image_timer: float = 0.0
 var after_image_interval: float = 0.05
+var can_destroy = false
 
 
 # hook variables
 var is_hooking = false
 var hook_target = null
-var hook_speed = 500.0
-var hook_strength = 20.0
+@export var hook_speed = 500.0 # 钩爪速度
+var hook_strength = 20.0 # 钩爪强度
 var hook_duration = 5  # 钩爪最大持续时间(秒)
 var hook_timer = 0.0    # 计时器
 var hookable_areas: Array = []
@@ -637,6 +638,7 @@ func hook(field: Node2D) -> void:
 	hook_timer = 0.0
 	stuck_check_timer = 0.0
 	last_hook_position = global_position  # 记录初始位置
+	can_destroy = true
 
 func end_hook() -> void:
 	is_hooking = false
@@ -644,6 +646,7 @@ func end_hook() -> void:
 	# can_move = true
 	# 保持一定的动量
 	velocity = velocity * 0.5
+	can_destroy = false
 	# print('hook end')
 
 
