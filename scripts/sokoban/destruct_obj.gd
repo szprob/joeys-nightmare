@@ -192,26 +192,26 @@ func _ready():
 	if debug_mode:
 		print('texture_size: ', texture_size)
 	
-	# get blocks
-	get_node(object.sprite_name).vframes = object.blocks_per_side
-	get_node(object.sprite_name).hframes = object.blocks_per_side
-	object.vframes = get_node(object.sprite_name).vframes
-	object.hframes = get_node(object.sprite_name).hframes
+	# get blocks v1
+	# get_node(object.sprite_name).vframes = object.blocks_per_side
+	# get_node(object.sprite_name).hframes = object.blocks_per_side
+	# object.vframes = get_node(object.sprite_name).vframes
+	# object.hframes = get_node(object.sprite_name).hframes
 	# # 计算合适的分割数量，确保块的大小是整数
-	# var optimal_h_blocks = int(texture_size.x / 4) # 假设最小块宽度为16
-	# var optimal_v_blocks = int(texture_size.y / 4) # 假设最小块高度为16
+	var optimal_h_blocks = int(texture_size.x / 4) # 假设最小块宽度为16
+	var optimal_v_blocks = int(texture_size.y / 4) # 假设最小块高度为16
 	# print('optimal_h_blocks: ', optimal_h_blocks)
 	# print('optimal_v_blocks: ', optimal_v_blocks)
 	# # 确保分割数量是偶数
-	# optimal_h_blocks = optimal_h_blocks - (optimal_h_blocks % 2)
-	# optimal_v_blocks = optimal_v_blocks - (optimal_v_blocks % 2)
+	optimal_h_blocks = optimal_h_blocks - (optimal_h_blocks % 2)
+	optimal_v_blocks = optimal_v_blocks - (optimal_v_blocks % 2)
 	
 	# # 设置分割
 	# sprite.frame = 0
 	# sprite.vframes = optimal_v_blocks
 	# sprite.hframes = optimal_h_blocks
-	# object.vframes = sprite.vframes
-	# object.hframes = sprite.hframes
+	object.vframes = optimal_v_blocks
+	object.hframes = optimal_h_blocks
 	
 	# # 计算每个块的大小
 	# object.width = texture_size.x
@@ -450,7 +450,7 @@ func detonate():
 		var child_gravity_scale = blocks_gravity_scale
 		child.gravity_scale = child_gravity_scale
 
-		var child_scale = randf_range(0.5, 1.5)
+		var child_scale = randf_range(0.7, 2)
 		# var child_scale = 1
 		child.get_node(object.sprite_name).scale *= Vector2(child_scale, child_scale)
 		child.get_node(object.collision_name).scale *= Vector2(child_scale, child_scale)
