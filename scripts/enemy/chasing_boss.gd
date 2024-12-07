@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var time_enable_attack_collision: float = 0.75
 @export var limit_y_offset_top: int = 50
 @export var limit_y_offset_bottom: int = 5
+@export var can_destroy: bool = true
 
 # 添加状态枚举
 enum State {IDLE, ATTACKING, DASH, INIT}

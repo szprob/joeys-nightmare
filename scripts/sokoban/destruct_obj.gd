@@ -107,6 +107,7 @@ func _ready():
 		explosion_detector.collision_mask = 1
 		print('detector found')
 		explosion_detector.area_entered.connect(_on_trigger_entered)
+		explosion_detector.body_entered.connect(_on_trigger_entered)
 		print('connected explosion_detector', explosion_detector.name)
 
 	# 连接区域进入信号
