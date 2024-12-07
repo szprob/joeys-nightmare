@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjqyka41uaubj"]
+
+[ext_resource type="Script" path="res://scripts/day/day_bubble.gd" id="1_pjien"]
+
+[node name="DayBubble" type="Node2D"]
+script = ExtResource("1_pjien")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

@@ -38,6 +38,7 @@ signal finished_typing()
 
 ## The amount of time to pause when exposing a character present in `pause_at_characters`.
 @export var seconds_per_pause_step: float = 0.3
+@export var pause_after_finished: float = 0.6
 
 var _already_mutated_indices: PackedInt32Array = []
 
@@ -57,7 +58,11 @@ var is_typing: bool = false:
 		var is_finished: bool = is_typing != value and value == false
 		is_typing = value
 		if is_finished:
-			finished_typing.emit()
+			# sleep fixed timeout to avoid skipping key information
+			var timer = get_tree().create_timer(pause_after_finished)
+			timer.timeout.connect(func():
+				finished_typing.emit()
+			)
 	get:
 		return is_typing
 

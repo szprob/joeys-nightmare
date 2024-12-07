@@ -1,18 +1,80 @@
 ~ title
-????[#joey_normal]: 刚才是在做梦吗，好真实的梦境
-????[#joey_normal]: 还以为自己被怪物吃了
-????[#joey_normal]: 等等，我是谁，这是哪里
-
-~ part1
-????: 先四处看看吧，这个房间有一种熟悉的感觉
+????[#joey_normal]: 又做恶梦了吗...这是哪里?
 => END
 
+~ mirror1
+if GameManager.get_day_phase() < 3:
+	????: 镜子里能看到我帅气的容貌[wait=0.5],我真帅啊!
+	=> END
+else:
+	Joey[#joey_normal]: 镜子里能看到我帅气的容貌[wait=0.5],我可太帅了!
+	=> END
+
 ~ radio
-????[#radio]: *&#听@@*得见*^!吗？
+if GameManager.get_day_phase() < 2:
+	=> radio_untriggered
+elif GameManager.get_day_phase() == 2:
+	=> radio_title
+elif GameManager.get_day_phase() <= 4:
+	=> radio_options
+else:
+	=> radio_finished
+=> END
+
+~ radio_untriggered
+收音机[#radio]: 看起来是一台普通的收音机
+=> END
+
+~ radio_title
+????[#radio]: 听得见吗Joey?
 Joey[#joey_normal] : ?谁在说话
 ????[#radio]: 看来你已经醒了Joey
-Joey[#joey_normal] : 你怎么知道我的名字？你是谁？
-????[#radio] : 你一下子问太多问题了，我当然知道你的名字了，我想你现在是被困在这里了
+Joey[#joey_normal] : 你怎么知道我的名字?你是谁?
+????[#radio] : 嗯看来你的症状越来越严重了,怎么说呢[wait=0.5 speed=0.3],我是来救你的,你现在应该被关在这个房间里了
+	至于我是谁,你就叫我Miss T吧
+- 你就不能说自己的名字吗
+	Miss T[#radio]: 从你现在的症状来看你在这里的记忆有点混乱,等到机会合适我会告诉你的
+- 好吧
+	Miss T[#radio]: 很好,你只要记得我是来救你的就好
+Miss T[#radio]: 你刚才做的恶梦其实不仅仅只是个梦,[wait=0.5 speed=0.3]直观地说你现在的梦已经连接到[b]另一个世界[/b]了
+Joey[#joey_normal] : 另一个世界?所以刚才我做的梦是真实的吗?
+Miss T[#radio]: 是真实的,但是那个世界并不会真正地杀死你,就像刚才你在恶梦中死去后也只是从这个房间醒来了。[wait=0.5 speed=0.3]
+	但是刚才梦里的女孩可就不一定了
+- 为什么?
+	Miss T[#radio]: 因为她是真正属于那个世界的人,那个世界对她的影响是真实的
+		也就是说刚才追着你的死神会真正地将她砍死,如果她被追上的话
+- 她也会被举着镰刀的死神追着跑吗?
+	Miss T[#radio]: 是的,我想那个死神正在满世界地找你和那个女孩吧
+Miss T[#radio]: 总之你得先从这个房间出去,因为两个世界是相连的我想你应该可以从那个世界获取从这出去的线索吧
+Joey[#joey_normal] : 我应该怎么做?我感觉我无法逃过那个死神的追杀
+Miss T[#radio]: 刚才我也说了[wait=0.5]那个世界并不会真正地杀死你,但是你在这个世界的变化会影响到那个世界
+	你得想办法利用一些道具帮助你自己在那个世界探索
+Joey[#joey_normal] : 道具?比如说?
+Miss T[#radio]: 看到火炉旁的那双鞋了吗,它有能帮助逃离死神追杀的能力,先拿起它回那个世界吧,只要你能入睡
+do GameManager.set_day_phase(3)
+=> END
+
+~ radio_options
+Miss T[#radio]: 还有什么要确认的吗?
+- 这里是哪里
+	Miss T[#radio]: 暂时很难和你说清楚,但是首要任务是你得从这个房间出去
+	=> radio_options
+- 我现在应该去哪
+	if GameManager.get_day_phase() < 4:
+		Miss T[#radio]: 火炉旁边的鞋看到了吗[wait=0.3],拿起它回梦中吧,至少你可以利用它进入到城堡内了
+	else:
+		Miss T[#radio]: 回到梦里吧,用这双鞋的能力先进入城堡内
+	=> radio_options
+- 你到底是谁
+	Miss T[#radio]: [[等你的症状稳定了我会告诉你的|先叫我Miss T吧]]
+	=> radio_options
+- 没什么想问的了
+	Miss T[#radio]: 如果还有不清楚的可以打开你的背包看看,那么快点出发吧
+		另外要补充,这个收音机似乎不太稳定,如果它没声音了想办法通过其他东西联系上我吧,祝你好运
+=> END
+
+~ radio_finished
+收音机[#radio]: 无论按什么都没有任何声音了,看来是不能通过它联系到T小姐了
 => END
 
 ~ test

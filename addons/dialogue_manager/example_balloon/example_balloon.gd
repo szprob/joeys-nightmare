@@ -14,7 +14,12 @@ var resource: DialogueResource
 var temporary_game_states: Array = []
 
 ## See if we are waiting for the player
-var is_waiting_for_input: bool = false
+var is_waiting_for_input: bool = false:
+	set(value):
+		is_waiting_for_input = value
+		indicator.visible = value
+	get:
+		return is_waiting_for_input
 
 ## See if we are running a long mutation and should hide the balloon
 var will_hide_balloon: bool = false
@@ -61,6 +66,8 @@ var dialogue_line: DialogueLine:
 				if tag in GameManager.dialogue_image_storage.keys():
 					image_box.show()
 					image_box.texture = load(GameManager.dialogue_image_storage[tag])
+				else:
+					image_box.hide()
 			dialogue_label.type_out()
 			await dialogue_label.finished_typing
 		
@@ -96,9 +103,11 @@ var dialogue_line: DialogueLine:
 
 @onready var image_box: TextureRect = $Balloon/Panel/TextureRect
 @onready var talk_sound: AudioStreamPlayer = $TalkSound
+@onready var indicator: TextureRect = $Balloon/Panel/Indicator
 
 func _ready() -> void:
 	balloon.hide()
+	indicator.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
 
 	# If the responses menu doesn't have a next action set, use this one

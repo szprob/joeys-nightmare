@@ -5,6 +5,8 @@ extends Sprite2D
 var audio_finished: bool = false
 
 func _ready() -> void:
+	if GameManager.game_state['is_door_open']:
+		queue_free()
 	audio_player.connect("finished", _on_AudioStreamPlayer_finished)
 
 func _process(delta: float) -> void:

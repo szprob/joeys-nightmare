@@ -22,5 +22,6 @@ func _on_actionable_body_entered(body: Node2D) -> void:
 			triggered = true
 			actionable.action()
 			GameManager.set_skill_enabled("second_jump_enabled", true)
+			queue_free()
 	else:
 		print(typeof(body))
