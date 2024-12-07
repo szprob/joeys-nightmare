@@ -190,11 +190,15 @@ func on_scan_lines_toggled(toggled_on: bool) -> void:
 	apply_settings()
 
 func apply_settings() -> void:
+	get_tree().paused = true
+	
 	# 应用全屏设置
 	if game_state['settings']['full_screen']:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	
+	get_tree().paused = false
 	
 	# 应用扫描线设置
 	var scanline_nodes = get_tree().get_nodes_in_group("scan_lines")
