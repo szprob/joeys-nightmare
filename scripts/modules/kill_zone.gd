@@ -24,6 +24,8 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	if not body.is_in_group("player"):
 		return 
+	
+	GameManager.die_requested.emit()
 	GameManager.game_state_cache['can_detect_kill_zone'] = false
 	GameManager.game_state['number_deaths'] += 1
 
