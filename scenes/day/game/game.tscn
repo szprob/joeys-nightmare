@@ -245,6 +245,10 @@ _data = {
 
 [node name="Room1" parent="." instance=ExtResource("1_fv2j8")]
 
+[node name="Mirror" parent="Room1" node_paths=PackedStringArray("character") instance=ExtResource("6_imkld")]
+position = Vector2(188, 148)
+character = NodePath("../../PlayerDay")
+
 [node name="Room2" parent="." instance=ExtResource("2_07116")]
 position = Vector2(0, 272)
 

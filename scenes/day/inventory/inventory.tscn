@@ -1,9 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8flj66fr2ymi"]
+[gd_scene load_steps=9 format=3 uid="uid://c8flj66fr2ymi"]
 
 [ext_resource type="Script" path="res://scripts/day/inventory.gd" id="2_8aj81"]
+[ext_resource type="Texture2D" uid="uid://cyw6q2u3qx17v" path="res://assets/sprites/day/inventory/inventory_left_side.png" id="2_8uttw"]
+[ext_resource type="Texture2D" uid="uid://4w040n4bcc1j" path="res://assets/sprites/day/inventory/inventory_label.png" id="2_gsk4u"]
+[ext_resource type="FontFile" uid="uid://5btxwrwd804s" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_e34pc"]
+[ext_resource type="Texture2D" uid="uid://bs60h1v7q871j" path="res://assets/sprites/day/inventory/inventory_right_side.png" id="3_w00qa"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vq7sa"]
+font = ExtResource("3_e34pc")
 font_size = 37
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_in1gc"]
+texture = ExtResource("2_8uttw")
+texture_margin_left = 7.0
+texture_margin_top = 5.0
+texture_margin_right = 7.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uc2x1"]
+texture = ExtResource("3_w00qa")
 
 [node name="InventoryUI" type="Control"]
 z_index = 5
@@ -28,7 +43,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -666.0
 offset_top = -440.0
-offset_right = 666.0
+offset_right = 568.0
 offset_bottom = 440.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -47,11 +62,21 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+texture = ExtResource("2_gsk4u")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect"]
+layout_mode = 2
+offset_left = 297.0
+offset_top = -1.0
+offset_right = 907.0
+offset_bottom = 59.0
+size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "背包"
+text = "Inventory"
 label_settings = SubResource("LabelSettings_vq7sa")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -64,6 +89,10 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/panel = SubResource("StyleBoxTexture_in1gc")
 max_columns = 4
 icon_mode = 0
 
@@ -71,27 +100,36 @@ icon_mode = 0
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_uc2x1")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ItemPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = 24.0
-offset_right = -19.0
-offset_bottom = -28.0
+offset_left = 105.0
+offset_top = 43.0
+offset_right = -47.0
+offset_bottom = -47.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 33
 
 [node name="ItemTitle" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/ItemPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
 
 [node name="ItemDetail" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/ItemPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/mono_font_size = 32
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
 
 [connection signal="item_clicked" from="MarginContainer/VBoxContainer/HBoxContainer/ItemList" to="." method="_on_item_list_item_clicked"]

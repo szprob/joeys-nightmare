@@ -1,26 +1,27 @@
 ~ id_card
-身份证[#thing]: (一张身份证，上面印着我的照片)
-????: 上面写着Joey Belmont
-Joey: Joey是我的名字，我叫Joey[speed=0.3]...
-set GameManager.set_day_phase(2)
+身份证[#id_card]: 姓名：Joey Belmont
+	出生日期：199X-01-01
+Joey[#joey_normal]: 这是我的身份证
+do GameManager.set_day_phase(2)
 => END
 
 ~ gun
-if GameManager.get_day_phase() < 2:
-	????: [[一把玩具手枪，有一种熟悉的感觉|总感觉见过这把玩具手枪]]
+if GameManager.get_day_phase() < 3:
+	????: [[一双看起来有点奇怪的鞋|火炉旁边为什么要放鞋?]]
 	=> END
 else:
-	Joey: 这好像是我小时候玩的枪
-	Joey: 小时候总是在奶奶家拿着这把枪扮演太空牛仔，利用它的重力子弹在复杂的太空峡谷中飞檐走壁
-	Joey[#joey_happy]: 我就是最英勇的太空牛仔！[shake rate=20 level=10]泰酷辣![/shake]
-	Joey[#joey_normal]: ...刚才的梦里好像也有类似的重力场，[wait=0.5][speed=0.3]要不把它拿走吧？
+	Joey: 鞋上好像写了什么
+	鞋[#shoe]: SpaceX生产![wave amp=25 freq=5]2024最新科技重力鞋![/wave]
+		Designed By Donald Trump, Made in China 
+	鞋[#shoe]: 按两下跳跃键就能使用E使用.
+	Joey[#joey_normal]: 虽然没看懂是什么意思,但是还是拿走吧?
+	# Joey[#joey_happy]: 我就是最英勇的太空牛仔！[shake rate=20 level=10]泰酷辣![/shake]
 	- 是
-		Joey: 天好像还没亮，有点困了[wait=0.4][speed=0.3]，去睡会儿吧
-		set GameManager.game_state['day_phase'] = 3
+		Joey: 天好像还没亮，有点困了[wait=0.4][speed=0.3],去睡觉吧
+		do GameManager.set_day_phase(4)
 		=> END
 	- 否
-		Joey: 我好歹也是个成年人了，拿着有点奇怪是吧
-		# Joey: [wave amp=25 freq=5]拿个勾八![/wave]
+		Joey: 还是算了吧
 	=> END
 	
 ~ toilet

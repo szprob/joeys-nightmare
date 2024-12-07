@@ -5,8 +5,7 @@ var t: float = 1
 var text_speed: float = 0.04
 var font_size = 12  # 每个字符显示的间隔时间
 
-@onready var bubble_panel: Panel = $Panel
-@onready var label: Label = $Panel/Label
+@onready var label: Label = $Label
 
 
 func _ready() -> void:
@@ -39,7 +38,6 @@ func show_bubble() -> void:
 	
 	# # 设置面板尺寸和样式，使用固定的三行高度
 	# bubble_panel.custom_minimum_size = Vector2(min_width, 40)
-	bubble_panel.visible = true
 	
 	# 逐字显示文本
 	for i in range(full_text.length()):

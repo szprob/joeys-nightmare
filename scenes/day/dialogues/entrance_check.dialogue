@@ -3,7 +3,7 @@ if GameManager.get_day_phase() == 1:
 	????: 一张普通的床，我好像睡了很久，感觉躺上去就能轻易睡着。
 	????: 先四处看看吧。
 	=> END
-if GameManager.get_day_phase() < 3:
+if GameManager.get_day_phase() < 4:
 	Joey: [[我得先找找有没有其他线索。|先四处看看吧，肯定能找到些什么]]
 	=> END
 else:
@@ -11,12 +11,10 @@ else:
 		if GameManager.is_skill_enabled("second_jump_enabled"):
 			空床[#thing]: (准备好睡觉了吗？)
 			- 是
-				Joey: 玩累了就直接睡觉，没问题的[wait=0.3 speed=0.3]...
 				set GameManager.set_skill_enabled("second_jump_enabled", true)
 				set GameManager.switch_day_to_dream("res://scenes/dreams/stage1/game.tscn")
 				=> END
 			- 否
-				Joey: 好像还不困
 				=> END
 		else:
 			Joey: 才刚睡醒，去检查一下柜子吧
@@ -24,11 +22,10 @@ else:
 	else:
 		空床[#thing]: (准备好睡觉了吗？)
 		- 是
-			Joey: 感觉好困 [wait=0.3 speed=0.3]...
 			set GameManager.game_state['has_slept'] = true
-			set GameManager.switch_day_to_dream("res://scenes/dreams/bigworldv2/stage1.tscn")
+			do GameManager.set_day_phase(5)
+			do GameManager.switch_day_to_dream("res://scenes/dreams/bigworldv2/stage1.tscn")
 			=> END
 		- 否
-			Joey: 好像还不困
 			=> END
 		=> END

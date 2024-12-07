@@ -149,6 +149,7 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue..."
 seconds_per_step = 0.06
+pause_at_characters = ".?!,"
 
 [node name="TextureRect" type="TextureRect" parent="Balloon/Panel"]
 layout_mode = 0
@@ -157,6 +158,7 @@ offset_top = -7.0
 offset_right = 65.0
 offset_bottom = 57.0
 texture = ExtResource("3_bdtls")
+stretch_mode = 6
 
 [node name="Responses" type="MarginContainer" parent="Balloon"]
 layout_mode = 1

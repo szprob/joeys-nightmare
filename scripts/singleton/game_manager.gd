@@ -24,7 +24,11 @@ var bgm_resources = {
 var dialogue_image_storage = {
 	"joey_normal": "res://assets/sprites/day/character/JOEY帅气版.png",
 	"joey_happy": "res://assets/sprites/day/character/joey帅气版2.png",
-	"radio": "res://assets/sprites/day/enrich/收音机1.png"
+	"radio": "res://assets/sprites/day/enrich/收音机1.png",
+	"id_card": "res://assets/sprites/day/room/身份证.png",
+	"shoe": "res://assets/sprites/day/buttons/S.png",
+	"door": "res://assets/sprites/day/buttons/D.png",
+	"draw": "res://assets/sprites/day/buttons/D.png"
 }
 var game_state = {}
 var game_state_cache = {'can_detect_kill_zone': true, 'do_detect_teleport': true}

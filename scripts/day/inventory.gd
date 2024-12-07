@@ -87,4 +87,4 @@ func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_i
 	item_title.text = item_name
 	if not inventory_dict.has(item_name):
 		printerr("\"%s\"未定义，请在 inventory_meta.json 中进行定义。" % item_name)
-	item_detail.text = inventory_dict.get(item_name, {}).get('description', "\"%s\"未定义，请在 inventory_meta.json 中进行定义。" % item_name)
+	item_detail.text = inventory_dict.get(item_name, {}).get('description', "\"%s\"未定义，请在背包索引文件中进行定义。撒的阿斯顿撒的阿斯顿撒的阿斯顿爱上阿斯顿爱上打算爱上爱上打算阿斯顿撒打算撒的爱上爱上撒的" % item_name)

@@ -267,7 +267,7 @@ texture = ExtResource("3_ysmse")
 
 [node name="Refelection_Animated" type="AnimatedSprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_x4wa0")
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_aehm0")
 animation = &"idle_front"
 flip_h = true
