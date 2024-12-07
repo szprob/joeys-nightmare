@@ -197,6 +197,7 @@ flip_h = true
 [node name="kill_zone" parent="." instance=ExtResource("3_1ct2n")]
 position = Vector2(442, -391)
 scale = Vector2(8.81513, 8.81513)
+collision_layer = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
 position = Vector2(-93.816, 31.877)
