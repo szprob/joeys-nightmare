@@ -80,7 +80,7 @@ position = Vector2(0, -256)
 script = ExtResource("1_ttyrc")
 
 [node name="player_with_gravity" parent="." groups=["player"] instance=ExtResource("1_oqshb")]
-position = Vector2(2400, -320)
+position = Vector2(1464, -376)
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
 limit_smoothed = true
@@ -301,7 +301,7 @@ position = Vector2(96, 208)
 position = Vector2(144, 176)
 
 [node name="box4" parent="maps/map11" instance=ExtResource("27_0x2q3")]
-position = Vector2(640, 208)
+position = Vector2(528, 224)
 scale = Vector2(3, 1)
 
 [node name="box6" parent="maps/map11" instance=ExtResource("27_0x2q3")]
