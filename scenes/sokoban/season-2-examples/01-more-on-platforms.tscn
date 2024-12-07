@@ -853,7 +853,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_6s4tv")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f53wo"]
-size = Vector2(117, 36)
+size = Vector2(117, 13)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_vnshk"]
 scenes/2/scene = ExtResource("6_ur1gp")
@@ -864,7 +864,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetScenesCollectionSource_vnshk")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uwvou"]
-size = Vector2(64, 16)
+size = Vector2(64, 218)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_urmok"]
 size = Vector2(63, 20)
@@ -876,7 +876,7 @@ tile_map_data = PackedByteArray("AAACAAEAAAAFAAUAAAADAAEAAAAGAAUAAAAEAAEAAAAHAAU
 tile_set = SubResource("TileSet_kvgyk")
 
 [node name="player_with_gravity" parent="." instance=ExtResource("2_o161p")]
-position = Vector2(600.956, -580.906)
+position = Vector2(602, -571)
 after_image_scene = ExtResource("3_73xlf")
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
@@ -936,7 +936,6 @@ position = Vector2(667, -19)
 [node name="destruct-obj-01" parent="destructibles/destruct-01" instance=ExtResource("5_dedth")]
 position = Vector2(-68, -21)
 blocks_gravity_scale = 2.0
-debug_mode = false
 
 [node name="Trigger" type="Area2D" parent="destructibles/destruct-01"]
 
@@ -945,17 +944,17 @@ position = Vector2(-67.5, -29)
 shape = SubResource("RectangleShape2D_f53wo")
 
 [node name="destruct-04" type="Node2D" parent="destructibles"]
-position = Vector2(-13, -236)
+position = Vector2(-146, 32)
 
 [node name="destruct-obj-01" parent="destructibles/destruct-04" instance=ExtResource("5_dedth")]
 position = Vector2(-68, -21)
 blocks_gravity_scale = 2.0
-debug_mode = false
 
 [node name="Trigger" type="Area2D" parent="destructibles/destruct-04"]
+collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="destructibles/destruct-04/Trigger"]
-position = Vector2(-67.5, -29)
+position = Vector2(-67.5, -17.5)
 shape = SubResource("RectangleShape2D_f53wo")
 
 [node name="destruct-02" type="Node2D" parent="destructibles"]
@@ -964,7 +963,6 @@ position = Vector2(-8, -164)
 [node name="destruct-obj-01" parent="destructibles/destruct-02" instance=ExtResource("5_dedth")]
 position = Vector2(-68, -21)
 blocks_gravity_scale = 2.0
-debug_mode = false
 
 [node name="Trigger" type="Area2D" parent="destructibles/destruct-02"]
 
@@ -978,7 +976,6 @@ position = Vector2(1, -74)
 [node name="destruct-obj-01" parent="destructibles/destruct-03" instance=ExtResource("5_dedth")]
 position = Vector2(-68, -21)
 blocks_gravity_scale = 2.0
-debug_mode = false
 
 [node name="Trigger" type="Area2D" parent="destructibles/destruct-03"]
 
@@ -996,7 +993,7 @@ position = Vector2(708, 4)
 scale = Vector2(0.25, 0.25)
 
 [node name="FallingBlockTgt5" parent="." node_paths=PackedStringArray("target", "detection") instance=ExtResource("7_g3umf")]
-position = Vector2(598, -514)
+position = Vector2(463, -200)
 collision_mask = 3
 speed = 150.0
 invisible_before_launch = false
@@ -1009,10 +1006,11 @@ acceleration = 100.0
 position = Vector2(0, 696)
 
 [node name="detection" type="Area2D" parent="FallingBlockTgt5"]
+collision_layer = 0
 collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingBlockTgt5/detection"]
-position = Vector2(0, -32)
+position = Vector2(0, 69)
 shape = SubResource("RectangleShape2D_uwvou")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="FallingBlockTgt5"]
