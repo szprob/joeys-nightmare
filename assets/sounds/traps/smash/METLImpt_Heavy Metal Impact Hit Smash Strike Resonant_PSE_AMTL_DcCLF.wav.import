@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dyeeqa0p82pn5"
+path="res://.godot/imported/METLImpt_Heavy Metal Impact Hit Smash Strike Resonant_PSE_AMTL_DcCLF.wav-e123a977e5c7983032e59366c0e48f56.sample"
+
+[deps]
+
+source_file="res://assets/sounds/traps/smash/METLImpt_Heavy Metal Impact Hit Smash Strike Resonant_PSE_AMTL_DcCLF.wav"
+dest_files=["res://.godot/imported/METLImpt_Heavy Metal Impact Hit Smash Strike Resonant_PSE_AMTL_DcCLF.wav-e123a977e5c7983032e59366c0e48f56.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
