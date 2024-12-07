@@ -28,7 +28,7 @@ var dialogue_image_storage = {
 	"radio": "res://assets/sprites/day/enrich/收音机1.png"
 }
 var game_state = {}
-var game_state_cache = {'can_detect_kill_zone': true, 'do_detect_teleport': true}
+var game_state_cache = {'can_detect_kill_zone': true, 'do_detect_teleport': true,'should_die': true,}
 
 func init_default_state():
 	var game_state2 = {
@@ -62,6 +62,7 @@ func init_default_state():
 		'laji': '',
 		'number_deaths': 0,
 		'doors_opened': [],
+		
 		'play_time_seconds': 0  # 添加游戏时间记录（秒）
 	}
 	game_state = game_state2.duplicate(true) # 深度复制默认状态

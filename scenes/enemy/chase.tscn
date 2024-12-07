@@ -312,13 +312,6 @@ scale = Vector2(0.2, 0.2)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_nbhrx")
-state_timer = null
-init_wait_time = null
-idle_duration = null
-dash_speed = null
-time_enable_attack_collision = null
-limit_y_offset_top = null
-limit_y_offset_bottom = null
 after_image_scene = ExtResource("9_7k6qq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -347,7 +340,6 @@ shape = SubResource("RectangleShape2D_2v4ro")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="kill_zone"]
 position = Vector2(-66.7318, 48.4678)
 rotation = -0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_q5qo6")
 
 [node name="audio_hit" type="AudioStreamPlayer2D" parent="."]
