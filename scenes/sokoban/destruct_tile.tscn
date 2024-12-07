@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://drgggiqarpk0n"]
+
+[ext_resource type="Script" path="res://scripts/sokoban/destruct_obj.gd" id="1_11lg3"]
+[ext_resource type="Texture2D" uid="uid://cagm6us4nj1pm" path="res://assets/sprites/background/intro/412.png" id="2_0vtml"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wdvi"]
+size = Vector2(476, 84)
+
+[node name="destruct-obj" type="RigidBody2D"]
+script = ExtResource("1_11lg3")
+debug_mode = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1.5)
+scale = Vector2(0.12, 0.12)
+shape = SubResource("RectangleShape2D_0wdvi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_0vtml")

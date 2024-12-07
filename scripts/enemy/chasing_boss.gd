@@ -43,7 +43,7 @@ var is_init: bool = false
 var sign_scale_x: int = 1
 
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var attack_collision: CollisionShape2D = $kill_zone/CollisionShape2D2
+@onready var attack_collision: CollisionPolygon2D = $kill_zone/CollisionPolygon2D
 @onready var attack_collision_att_dash: CollisionShape2D = $kill_zone/CollisionShape2D3
 @onready var audio_non_hit: AudioStreamPlayer2D = $audio_non_hit
 @onready var audio_hit: AudioStreamPlayer2D = $audio_hit
@@ -54,7 +54,7 @@ func _ready():
 	# player
 	await get_tree().create_timer(0.1).timeout
 	player = get_tree().get_first_node_in_group("player")
-	global_position = player.global_position + Vector2(-150, -150)
+	global_position = player.global_position + Vector2(-50, -50)
 	# camera
 	current_camera = get_tree().get_first_node_in_group("camera")
 	# die 
@@ -178,7 +178,7 @@ func _physics_process(delta: float) -> void:
 				animated_sprite.play("att_dash")
 			
 			att_dash_t += delta
-			if att_dash_t >= 0.7 and prepare_dash:
+			if att_dash_t >= 1.2 and prepare_dash:
 				att_dash_t = 0.0
 				prepare_dash = false
 				audio_non_hit.play()

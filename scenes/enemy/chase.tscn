@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://deu5vht28g1ac"]
+[gd_scene load_steps=50 format=3 uid="uid://deu5vht28g1ac"]
 
 [ext_resource type="Script" path="res://scripts/enemy/chasing_boss.gd" id="1_nbhrx"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_1ct2n"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cx3o8x8uyvvi2" path="res://assets/sprites/enemy/chase/boss1/idle.png" id="5_d42ib"]
 [ext_resource type="AudioStream" uid="uid://dsjbow3x6dnt" path="res://assets/sounds/enemy/GOREMisc_Flesh Sword Slash 03_PSE_SR-COM_V3FfX.wav" id="6_cb4cc"]
 [ext_resource type="AudioStream" uid="uid://f6dgr4mgs733" path="res://assets/sounds/enemy/GOREMisc_Flesh Sword Slash 02_PSE_SR-COM_LzdtX.wav" id="7_18cqj"]
-[ext_resource type="PackedScene" path="res://scenes/enemy/shadow.tscn" id="9_7k6qq"]
+[ext_resource type="PackedScene" uid="uid://b3en2onoukpwt" path="res://scenes/enemy/shadow.tscn" id="9_7k6qq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ja78p"]
 atlas = ExtResource("3_dci4n")
@@ -301,11 +301,8 @@ animations = [{
 radius = 11.994
 height = 59.0149
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2v4ro"]
-size = Vector2(49.2507, 53.9018)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5qo6"]
-size = Vector2(19.6527, 29.7543)
+size = Vector2(9.68848, 28.7667)
 
 [node name="Monster" type="CharacterBody2D"]
 collision_layer = 0
@@ -326,18 +323,18 @@ position = Vector2(-88, -56)
 scale = Vector2(2, 2)
 collision_layer = 1
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="kill_zone"]
+position = Vector2(40, -8)
+polygon = PackedVector2Array(32, 8, 20, 28, 12, 40, -11.02, 20.85, 4, -4, 4, -20, 4, -32, 0, -52, -20, -76, -44, -84, -64, -84, -88, -76, -60, -92, -32, -96, -8, -88, 20, -68, 36, -36, 36, -8)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
 position = Vector2(16, 8)
 scale = Vector2(1.06877, 1.06877)
 shape = SubResource("CapsuleShape2D_wt7tk")
 disabled = true
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="kill_zone"]
-position = Vector2(57.9733, 10.2688)
-shape = SubResource("RectangleShape2D_2v4ro")
-
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="kill_zone"]
-position = Vector2(43.0842, 24.5908)
+position = Vector2(36.7452, 23.596)
 rotation = -0.785398
 shape = SubResource("RectangleShape2D_q5qo6")
 
