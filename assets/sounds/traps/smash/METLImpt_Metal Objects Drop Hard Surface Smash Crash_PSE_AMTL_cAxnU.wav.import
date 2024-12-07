@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b4x2er0dmm7kc"
+path="res://.godot/imported/METLImpt_Metal Objects Drop Hard Surface Smash Crash_PSE_AMTL_cAxnU.wav-41912401642744447d0692b942632ccb.sample"
+
+[deps]
+
+source_file="res://assets/sounds/traps/smash/METLImpt_Metal Objects Drop Hard Surface Smash Crash_PSE_AMTL_cAxnU.wav"
+dest_files=["res://.godot/imported/METLImpt_Metal Objects Drop Hard Surface Smash Crash_PSE_AMTL_cAxnU.wav-41912401642744447d0692b942632ccb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

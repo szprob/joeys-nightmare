@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dsjbow3x6dnt"
+path="res://.godot/imported/GOREMisc_Flesh Sword Slash 03_PSE_SR-COM_V3FfX.wav-4efe3fc0a24ad06db39e94ee7040c79c.sample"
+
+[deps]
+
+source_file="res://assets/sounds/enemy/GOREMisc_Flesh Sword Slash 03_PSE_SR-COM_V3FfX.wav"
+dest_files=["res://.godot/imported/GOREMisc_Flesh Sword Slash 03_PSE_SR-COM_V3FfX.wav-4efe3fc0a24ad06db39e94ee7040c79c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

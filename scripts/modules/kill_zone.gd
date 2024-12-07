@@ -11,6 +11,7 @@ var player
 func _ready():
 	# Engine.time_scale = 1
 	# 获取玩家节点
+	await get_tree().create_timer(0.1).timeout
 	player = get_tree().get_first_node_in_group("player")
 	player.set_can_move(true)
 	# camera = get_tree().get_first_node_in_group("camera") 
@@ -24,6 +25,8 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	if not body.is_in_group("player"):
 		return 
+	
+	GameManager.die_requested.emit()
 	GameManager.game_state_cache['can_detect_kill_zone'] = false
 	GameManager.game_state['number_deaths'] += 1
 
@@ -38,6 +41,7 @@ func _on_body_entered(body: Node2D) -> void:
 	# 	body.respawn()
 	
 	create_collision_effect(body.global_position)
+	timer.start()
 	
 	
 
@@ -48,7 +52,8 @@ func _on_timer_timeout() -> void:
 	# var root_node = get_tree().get_root()
 	var root_node = get_tree().current_scene
 	cleanup_dynamic_nodes()
-	get_tree().change_scene_to_file(root_node.scene_file_path)
+	if GameManager.game_state_cache['should_die']:
+		get_tree().change_scene_to_file(root_node.scene_file_path)
 
 
 func cleanup_dynamic_nodes() -> void:
@@ -64,6 +69,3 @@ func create_collision_effect(pos: Vector2):
 		current_particles.global_position = pos
 		current_particles.restart()
 		current_particles.emitting = true
-		# 等待粒子效果完成后再启动计时器
-		await get_tree().create_timer(current_particles.lifetime).timeout
-		timer.start()

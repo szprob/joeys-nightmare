@@ -15,6 +15,7 @@ extends Area2D
 @export var trigger_interval: float = 3.0  # Time between auto triggers
 @export var initial_delay: float = 0.0     # Delay before first trigger
 @export var reset_delay: float = 1.0  # Time before trap resets
+@export var can_destroy: bool = true
 
 var is_flying_forward: bool = false
 var fly_direction: Vector2 = Vector2.ZERO

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://lpiy153isqai"]
+
+[ext_resource type="Texture2D" uid="uid://bdtsy0ghvxicq" path="res://assets/sprites/background/intro/dizuan1.png" id="1_d4fqh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ndwi"]
+size = Vector2(78, 78)
+
+[node name="brick-v2" type="StaticBody2D"]
+collision_mask = 129
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("1_d4fqh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_4ndwi")

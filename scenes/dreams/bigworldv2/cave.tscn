@@ -1108,7 +1108,7 @@ size = Vector2(64, 16)
 script = ExtResource("1_jsqe7")
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("2_i455q")]
-position = Vector2(597.275, -226.136)
+position = Vector2(371.524, -52.0331)
 
 [node name="Camera2D" type="Camera2D" parent="player" groups=["camera"]]
 limit_smoothed = true

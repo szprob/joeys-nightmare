@@ -9,3 +9,4 @@
 /addons/godot-git-plugin/linux/*
 export_presets.cfg
 .DS_Store
+*.import

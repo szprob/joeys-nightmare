@@ -32,6 +32,7 @@ scale = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
 rotation = 4.71239
+scale = Vector2(0.8, 0.8)
 shape = SubResource("ConvexPolygonShape2D_18lyn")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

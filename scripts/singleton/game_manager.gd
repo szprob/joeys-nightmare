@@ -13,6 +13,7 @@ var pause_scene = preload("res://scenes/main/pause.tscn")
 var bgm_player: AudioStreamPlayer
 
 signal camera_shake_requested(strength: float, duration: float)
+signal die_requested()
 
 # 在文件开头添加 BGM 资源预加载
 var bgm_resources = {
@@ -31,7 +32,7 @@ var dialogue_image_storage = {
 	"draw": "res://assets/sprites/day/buttons/D.png"
 }
 var game_state = {}
-var game_state_cache = {'can_detect_kill_zone': true, 'do_detect_teleport': true}
+var game_state_cache = {'can_detect_kill_zone': true, 'do_detect_teleport': true,'should_die': true,}
 
 func init_default_state():
 	var game_state2 = {
@@ -60,10 +61,12 @@ func init_default_state():
 		'skills': {
 			'second_jump_enabled': false
 		},
+		'boss':{'boos1':{'current_area_index':0}},
 		'npc_dialogue_list': [],
 		'laji': '',
 		'number_deaths': 0,
 		'doors_opened': [],
+		
 		'play_time_seconds': 0  # 添加游戏时间记录（秒）
 	}
 	game_state = game_state2.duplicate(true) # 深度复制默认状态
@@ -192,11 +195,15 @@ func on_scan_lines_toggled(toggled_on: bool) -> void:
 	apply_settings()
 
 func apply_settings() -> void:
+	get_tree().paused = true
+	
 	# 应用全屏设置
 	if game_state['settings']['full_screen']:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	
+	get_tree().paused = false
 	
 	# 应用扫描线设置
 	var scanline_nodes = get_tree().get_nodes_in_group("scan_lines")
@@ -299,6 +306,8 @@ func _input(event: InputEvent) -> void:
 	# 确保只在按键事件时调用 is_action_just_pressed
 	if event is InputEventKey and event.is_pressed():
 		if Input.is_action_just_pressed("esc"):
+			if is_chatting() :
+				return 
 			if not get_tree().current_scene.is_in_group("no_pause"):
 				toggle_pause_menu()
 			else:

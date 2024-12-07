@@ -20,6 +20,9 @@ enum KeyColor {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if GameManager.has_item(key_name):
+		queue_free()
+
 	# 绑定进入信号
 	body_entered.connect(_on_body_entered)
 	# label 

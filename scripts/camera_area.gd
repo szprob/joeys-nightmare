@@ -52,6 +52,7 @@ func _on_body_entered(body: Node2D) -> void:
 		var limits = calculate_camera_limits()
 		
 		camera.limit_left = limits.left
+		print('camera.limit_left',camera.limit_left)
 		
 		camera.limit_right = limits.right
 		camera.limit_top = limits.top

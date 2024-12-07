@@ -5,9 +5,6 @@ extends CharacterBody2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var jump_audio: AudioStreamPlayer2D = $jump_audio
-# shooting
-@export var cooldown = 2
-@export var bullet_scene: PackedScene
 @export var mass: float = 1.0
 @export var second_jump_enabled = true
 @export var ammo_count = 1 # 子弹数量
@@ -25,20 +22,20 @@ extends CharacterBody2D
 @export var after_image_scene: PackedScene
 var after_image_timer: float = 0.0
 var after_image_interval: float = 0.05
+var can_destroy = false
 
 
 # hook variables
 var is_hooking = false
 var hook_target = null
-var hook_speed = 500.0
-var hook_strength = 20.0
+@export var hook_speed = 500.0 # 钩爪速度
+var hook_strength = 20.0 # 钩爪强度
 var hook_duration = 5  # 钩爪最大持续时间(秒)
 var hook_timer = 0.0    # 计时器
 var hookable_areas: Array = []
 
 
 var player_state = 'idle' # 玩家状态(can move or not)
-var can_shoot = false
 var has_double_jumped = false
 var second_jump_gravity_timer: float = 0.2
 var second_jump_gravity_value: float = 1
@@ -125,50 +122,6 @@ func set_can_move(value: bool,state='idle') -> void:
 	can_move = value
 	player_state = state 
 	
-func shoot(Input) -> void:
-	# print("shoot trigger: ", GameManager.game_state)
-	#if not GameManager.has_item(&"玩具手枪"):
-		#return
-	#if not can_move:
-		#return
-	#if not can_shoot:
-		#return
-		
-	# 清理无效的重力场，同时从场景树中删除
-	active_gravity_gun_fields = active_gravity_gun_fields.filter(func(field):
-		return is_instance_valid(field) and not field.is_queued_for_deletion())
-	
-	# 如果达到上限，删除最旧的重力场
-	if active_gravity_gun_fields.size() >= ammo_count:
-		var oldest_field = active_gravity_gun_fields.pop_front()
-		# if is_instance_valid(oldest_field) and not oldest_field.is_queued_for_deletion():
-		if is_instance_valid(oldest_field):
-			# 如果重力场在GravityContainer中，需要从父节点中移除
-			if oldest_field.get_parent() != null:
-				oldest_field.get_parent().remove_child(oldest_field)
-			oldest_field.queue_free()
-	
-	can_shoot = false
-	$GunCooldown.start()
-	var b = bullet_scene.instantiate()
-	get_tree().root.add_child(b)
-	
-	var shoot_direction = Vector2(facing_direction, 0)
-	if not (Input.is_action_pressed('up') or Input.is_action_pressed('down') or
-			Input.is_action_pressed('left') or Input.is_action_pressed('right')):
-		b.start(global_position + Vector2(0, -8), shoot_direction)
-	else:
-		shoot_direction = Vector2(0, 0)
-		if Input.is_action_pressed("up"):
-			shoot_direction.y = -1
-		if Input.is_action_pressed("down"):
-			shoot_direction.y = 1
-		if Input.is_action_pressed("left"):
-			shoot_direction.x = -1
-		if Input.is_action_pressed("right"):
-			shoot_direction.x = 1
-		b.start(global_position + Vector2(0, -8), shoot_direction)
-
 
 func _physics_process(delta: float) -> void:
 	if not can_move:
@@ -177,6 +130,7 @@ func _physics_process(delta: float) -> void:
 			# 死亡状态下仍然受到重力和惯性影响
 			var gravity = get_gravity()
 			velocity += gravity * delta
+			velocity.x = velocity.x * 0.95
 			move_and_slide()
 		elif player_state == 'jump':
 			animated_sprite_2d.play('jump')
@@ -187,11 +141,6 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector2.ZERO
 			animated_sprite_2d.play('idle')
 		return
-	# print('can shoot', can_shoot)
-	# logging
-	# print('second jump enabled', can_second_jump())
-	# print('coyote timer', coyote_timer)
-	# print("Current animation: ", animated_sprite_2d.animation)
 	var player_height = 16.0  # 角色高度为16像素
 	if is_jumping:
 		# 计算当前位置与起跳位置的距离(考虑重力方向)
@@ -331,9 +280,6 @@ func _physics_process(delta: float) -> void:
 	)
 	
 	update_face_direction(direction.x)
-	if Input.is_action_just_pressed("shoot"):
-		print('shooting')
-		shoot(Input)
 
 	# hook
 
@@ -533,59 +479,6 @@ func update_face_direction(direction):
 		facing_direction = direction
 
 
-func _on_gun_cooldown_timeout() -> void:
-	can_shoot = true
-	pass # Replace with function body.
-
-
-# func is_on_terrain() -> bool:
-# 	var gravity_dir = get_gravity().normalized()
-# 	var collision_width = collision_shape_2d.shape.size.x
-# 	var collision_height = collision_shape_2d.shape.size.y
-# 	# print('collision height', collision_height)
-# 	# 创建3条射线：左、中、右
-# 	var offsets = [-collision_width * 0.4, 0, collision_width * 0.4]
-	
-# 	for offset in offsets:
-# 		# 计算射线起点的偏移量
-# 		var offset_vector = Vector2(-gravity_dir.y, gravity_dir.x) * offset
-# 		ray_cast_2d.position = offset_vector
-# 		ray_cast_2d.target_position = gravity_dir * (collision_height/2 + 1.0)
-# 		ray_cast_2d.force_raycast_update()
-		
-# 		if ray_cast_2d.is_colliding():
-# 			var collider = ray_cast_2d.get_collider()
-# 			if collider is TileMapLayer or collider is StaticBody2D or collider is AnimatableBody2D or collider is CharacterBody2D:
-# 				ray_cast_2d.position = Vector2.ZERO # 重置射线位置
-# 				return true
-	
-# 	ray_cast_2d.position = Vector2.ZERO # 重置射线位置
-# 	return false
-
-# func is_on_terrain() -> bool:
-# 	var gravity_dir = get_gravity().normalized()
-# 	var is_touching_ground = false
-	
-# 	# 检查当前帧的碰撞
-# 	for i in get_slide_collision_count():
-# 		var collision = get_slide_collision(i)
-# 		var normal = collision.get_normal()
-		
-# 		if normal.dot(-gravity_dir) > 0.5:
-# 			var collider = collision.get_collider()
-# 			if collider is TileMapLayer or collider is StaticBody2D or collider is AnimatableBody2D or collider is CharacterBody2D:
-# 				is_touching_ground = true
-# 				break
-	
-# 	# 更新接触帧数
-# 	if is_touching_ground:
-# 		ground_contact_frames = GROUND_CONTACT_THRESHOLD
-# 	elif ground_contact_frames > 0:
-# 		ground_contact_frames -= 1
-	
-# 	# 只有当完全没有接触帧数时才认为离开地面
-# 	return ground_contact_frames > 0
-
 func is_on_terrain() -> bool:
 	set_up_direction(-get_gravity().normalized())
 	var is_touching_ground = is_on_floor()
@@ -745,6 +638,7 @@ func hook(field: Node2D) -> void:
 	hook_timer = 0.0
 	stuck_check_timer = 0.0
 	last_hook_position = global_position  # 记录初始位置
+	can_destroy = true
 
 func end_hook() -> void:
 	is_hooking = false
@@ -752,6 +646,7 @@ func end_hook() -> void:
 	# can_move = true
 	# 保持一定的动量
 	velocity = velocity * 0.5
+	can_destroy = false
 	# print('hook end')
 
 

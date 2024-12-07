@@ -555,7 +555,7 @@ position = Vector2(-1332, -39)
 scale = Vector2(0.7, 0.7)
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("15_rx0vs")]
-position = Vector2(-1455.69, -34.0674)
+position = Vector2(-1123.8, -27.6931)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(0, -5)
