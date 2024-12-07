@@ -72,7 +72,7 @@ class DestructObject:
 		blocks_impulse = params.get("blocks_impulse", 600.0)
 		blocks_per_side = params.get("blocks_per_side", 6)
 		collision_layers = params.get("collision_layers", 1)
-		collision_masks = params.get("collision_masks", 1)
+		collision_masks = params.get("collision_masks", 7)
 		collision_one_way = params.get("collision_one_way", false)
 		debris_max_time = params.get("debris_max_time", 5.0)
 		remove_debris = params.get("remove_debris", false)
@@ -82,10 +82,10 @@ class DestructObject:
 
 func _ready():
 	# print("Script is running, debug_mode is: ", debug_mode)
-	if debug_mode:
-		print("My collision layer: ", collision_layer)
-		print("My collision mask: ", collision_mask)
-		print("Can detect static bodies: ", collision_mask & 1)
+	# if debug_mode:
+	# 	print("My collision layer: ", collision_layer)
+	# 	print("My collision mask: ", collision_mask)
+	# 	print("Can detect static bodies: ", collision_mask & 1)
 	
 	var params = {
 		"blocks_gravity_scale": blocks_gravity_scale,
@@ -104,7 +104,7 @@ func _ready():
 	#explosion_detector = get_node(trigger_path)
 	if explosion_detector:
 		explosion_detector.collision_layer = 0
-		explosion_detector.collision_mask = 7
+		explosion_detector.set_collision_mask_value(7, true)
 		print('detector found')
 		explosion_detector.area_entered.connect(_on_trigger_entered)
 		explosion_detector.body_entered.connect(_on_trigger_entered)

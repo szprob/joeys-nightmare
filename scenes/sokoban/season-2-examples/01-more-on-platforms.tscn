@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bftt1cwa2gv6r"]
+[gd_scene load_steps=19 format=4 uid="uid://bftt1cwa2gv6r"]
 
 [ext_resource type="Texture2D" uid="uid://pgab2lroat46" path="res://assets/sprites/brick_64_2.png" id="1_2pc16"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_o161p"]
@@ -869,6 +869,9 @@ size = Vector2(64, 218)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_urmok"]
 size = Vector2(63, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rh77n"]
+size = Vector2(57, 35.4995)
+
 [node name="01-more-on-platforms" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -876,7 +879,8 @@ tile_map_data = PackedByteArray("AAACAAEAAAAFAAUAAAADAAEAAAAGAAUAAAAEAAEAAAAHAAU
 tile_set = SubResource("TileSet_kvgyk")
 
 [node name="player_with_gravity" parent="." instance=ExtResource("2_o161p")]
-position = Vector2(602, -571)
+position = Vector2(768.5, -17)
+collision_layer = 192
 after_image_scene = ExtResource("3_73xlf")
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
@@ -1023,3 +1027,32 @@ shape = SubResource("RectangleShape2D_urmok")
 
 [node name="hook1" parent="." instance=ExtResource("9_crk8t")]
 position = Vector2(280, -24)
+
+[node name="destruct-04" type="Node2D" parent="."]
+position = Vector2(752, -154)
+rotation = 1.5708
+
+[node name="destruct-obj-01" parent="destruct-04" instance=ExtResource("5_dedth")]
+position = Vector2(136, -73.5)
+collision_mask = 65
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="destruct-04"]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="destruct-04/Trigger"]
+position = Vector2(136.5, -60.7502)
+shape = SubResource("RectangleShape2D_rh77n")
+
+[node name="hook2" parent="." instance=ExtResource("9_crk8t")]
+position = Vector2(815, -19)
+
+[connection signal="body_entered" from="FallingBlockTgt5/TileMapLayer/BlockTrap" to="FallingBlockTgt5/TileMapLayer/BlockTrap" method="_on_body_entered"]
+[connection signal="ready" from="FallingBlockTgt5/TileMapLayer/BlockTrap" to="FallingBlockTgt5/TileMapLayer/BlockTrap" method="_on_ready"]
+[connection signal="body_entered" from="FallingBlockTgt5/TileMapLayer/@Area2D@43313" to="FallingBlockTgt5/TileMapLayer/@Area2D@43313" method="_on_body_entered"]
+[connection signal="ready" from="FallingBlockTgt5/TileMapLayer/@Area2D@43313" to="FallingBlockTgt5/TileMapLayer/@Area2D@43313" method="_on_ready"]
+[connection signal="body_entered" from="FallingBlockTgt5/TileMapLayer/@Area2D@43314" to="FallingBlockTgt5/TileMapLayer/@Area2D@43314" method="_on_body_entered"]
+[connection signal="ready" from="FallingBlockTgt5/TileMapLayer/@Area2D@43314" to="FallingBlockTgt5/TileMapLayer/@Area2D@43314" method="_on_ready"]
+[connection signal="body_entered" from="FallingBlockTgt5/TileMapLayer/@Area2D@43315" to="FallingBlockTgt5/TileMapLayer/@Area2D@43315" method="_on_body_entered"]
+[connection signal="ready" from="FallingBlockTgt5/TileMapLayer/@Area2D@43315" to="FallingBlockTgt5/TileMapLayer/@Area2D@43315" method="_on_ready"]
