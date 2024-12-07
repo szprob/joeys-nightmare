@@ -100,7 +100,7 @@ func spawn_after_image(delta):
 			after_image.flip_h=true
 		else:
 			after_image.flip_h=false
-		after_image.global_position = animated_sprite.global_position + Vector2(-28, -54)
+		after_image.global_position = animated_sprite.global_position + Vector2(-11, -56)
 		#else:
 			#after_image.texture = animated_sprite.sprite_frames.get_frame_texture(animated_sprite.animation, animated_sprite.frame)
 			#after_image.rotation = animated_sprite.rotation
@@ -159,7 +159,7 @@ func _physics_process(delta: float) -> void:
 				animated_sprite.play("idle")
 			if state_timer >= idle_duration:
 				# if player.global_position.y > limit_top and player.global_position.y < limit_bottom:
-				if idx % 4 > 4:
+				if idx % 4 > 1:
 					change_state(State.DASH)
 				else:
 					change_state(State.ATT_DASH)
@@ -216,12 +216,11 @@ func change_face_direction_and_position():
 			target_position.y +=7
 	dash_direction = (target_position - global_position).normalized()
 	dash_vec = (target_position - global_position)
-	if dash_direction.x >0 :
-		scale.x = origin_scale_x 
-		sign_scale_x=1
-	else:
-		scale.x = -origin_scale_x
-		sign_scale_x=-1
+
+
+	if sign(dash_direction.x) != sign(sign_scale_x):
+		scale.x = -scale.x
+		sign_scale_x = -sign_scale_x
 
 	# print("scale.x",scale.x)
 	# if target_position.y < limit_top :
