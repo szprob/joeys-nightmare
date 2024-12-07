@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cx3o8x8uyvvi2" path="res://assets/sprites/enemy/chase/boss1/idle.png" id="5_d42ib"]
 [ext_resource type="AudioStream" uid="uid://dsjbow3x6dnt" path="res://assets/sounds/enemy/GOREMisc_Flesh Sword Slash 03_PSE_SR-COM_V3FfX.wav" id="6_cb4cc"]
 [ext_resource type="AudioStream" uid="uid://f6dgr4mgs733" path="res://assets/sounds/enemy/GOREMisc_Flesh Sword Slash 02_PSE_SR-COM_LzdtX.wav" id="7_18cqj"]
-[ext_resource type="PackedScene" uid="uid://b3en2onoukpwt" path="res://scenes/enemy/shadow.tscn" id="9_7k6qq"]
+[ext_resource type="PackedScene" path="res://scenes/enemy/shadow.tscn" id="9_7k6qq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ja78p"]
 atlas = ExtResource("3_dci4n")
@@ -308,37 +308,36 @@ size = Vector2(49.2507, 53.9018)
 size = Vector2(19.6527, 29.7543)
 
 [node name="Monster" type="CharacterBody2D"]
-scale = Vector2(0.2, 0.2)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_nbhrx")
 after_image_scene = ExtResource("9_7k6qq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-520, -460)
-scale = Vector2(4.72, 4.72)
+position = Vector2(-88, -56)
 sprite_frames = SubResource("SpriteFrames_scbdh")
 animation = &"att_dash"
 autoplay = "idle"
+offset = Vector2(0, -60)
 flip_h = true
 
 [node name="kill_zone" parent="." instance=ExtResource("3_1ct2n")]
-position = Vector2(442, -391)
-scale = Vector2(8.81513, 8.81513)
+position = Vector2(-88, -56)
+scale = Vector2(2, 2)
 collision_layer = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
-position = Vector2(-93.816, 31.877)
+position = Vector2(16, 8)
 scale = Vector2(1.06877, 1.06877)
 shape = SubResource("CapsuleShape2D_wt7tk")
 disabled = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="kill_zone"]
-position = Vector2(-51.8427, 34.1458)
+position = Vector2(57.9733, 10.2688)
 shape = SubResource("RectangleShape2D_2v4ro")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="kill_zone"]
-position = Vector2(-66.7318, 48.4678)
+position = Vector2(43.0842, 24.5908)
 rotation = -0.785398
 shape = SubResource("RectangleShape2D_q5qo6")
 
@@ -349,3 +348,5 @@ stream = ExtResource("6_cb4cc")
 stream = ExtResource("7_18cqj")
 
 [node name="Shadow" parent="." instance=ExtResource("9_7k6qq")]
+offset = Vector2(-28.47, -54.38)
+flip_h = true
