@@ -186,10 +186,10 @@ func _physics_process(delta: float) -> void:
 				velocity += dash_direction * delta * dash_speed * 2
 				spawn_after_image(delta)
 			
-			if velocity.length() > dash_speed*1.3:
+			if velocity.length() > dash_speed*1.3 and not decelerate:
 				velocity = velocity.normalized() * dash_speed * 1.3
 
-			if global_position.distance_to(target_position)<10 :
+			if global_position.distance_to(target_position)<10 and not decelerate:
 				decelerate = true
 
 			if decelerate:
@@ -222,9 +222,9 @@ func change_face_direction_and_position():
 		scale.x = -origin_scale_x
 		sign_scale_x=-1
 
-	print("scale.x",scale.x)
-	if target_position.y < limit_top :
-		target_position.y = limit_top
+	# print("scale.x",scale.x)
+	# if target_position.y < limit_top :
+	# 	target_position.y = limit_top
 	
 	
 

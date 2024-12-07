@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://0j0hh5bs6yjc"]
+
+[ext_resource type="Script" path="res://scripts/modules/interface/chang_scene_area.gd" id="1_w5lge"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ws7si"]
+size = Vector2(244, 207)
+
+[node name="ChangSceneArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("1_w5lge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 3)
+shape = SubResource("RectangleShape2D_ws7si")

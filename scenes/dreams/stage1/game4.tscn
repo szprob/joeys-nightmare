@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://cfd32uhmfjkj8"]
+[gd_scene load_steps=14 format=4 uid="uid://cfd32uhmfjkj8"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_pncfk"]
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="3_3a0h1"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="4_3j06h"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="5_k685k"]
 [ext_resource type="PackedScene" uid="uid://deu5vht28g1ac" path="res://scenes/enemy/chase.tscn" id="7_1h1u3"]
+[ext_resource type="PackedScene" uid="uid://0j0hh5bs6yjc" path="res://scenes/modules/interface/chang_scene_area.tscn" id="7_276oq"]
 [ext_resource type="Script" path="res://scripts/camera_area.gd" id="7_hijyu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ko8da"]
@@ -367,3 +368,10 @@ tile_set = SubResource("TileSet_rvt4p")
 
 [node name="Monster" parent="." instance=ExtResource("7_1h1u3")]
 position = Vector2(-1628, -63)
+
+[node name="ChangSceneArea" parent="." instance=ExtResource("7_276oq")]
+position = Vector2(-1324, -98)
+next_scene_file_path = "res://scenes/dreams/stage1/game2.tscn"
+teleport_type = "day2dream"
+time_scale = 5.0
+transition_scene = "res://scenes/modules/checkpoints/transition.tscn"

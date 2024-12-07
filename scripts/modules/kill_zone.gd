@@ -41,6 +41,7 @@ func _on_body_entered(body: Node2D) -> void:
 	# 	body.respawn()
 	
 	create_collision_effect(body.global_position)
+	timer.start()
 	
 	
 
@@ -51,7 +52,8 @@ func _on_timer_timeout() -> void:
 	# var root_node = get_tree().get_root()
 	var root_node = get_tree().current_scene
 	cleanup_dynamic_nodes()
-	get_tree().change_scene_to_file(root_node.scene_file_path)
+	if GameManager.game_state_cache['should_die']:
+		get_tree().change_scene_to_file(root_node.scene_file_path)
 
 
 func cleanup_dynamic_nodes() -> void:
@@ -67,6 +69,3 @@ func create_collision_effect(pos: Vector2):
 		current_particles.global_position = pos
 		current_particles.restart()
 		current_particles.emitting = true
-		# 等待粒子效果完成后再启动计时器
-		await get_tree().create_timer(current_particles.lifetime).timeout
-		timer.start()
