@@ -2,6 +2,14 @@
 ????[#joey_normal]: 又做恶梦了吗...这是哪里?
 => END
 
+~ mirror1
+if GameManager.get_day_phase() < 3:
+	????: 镜子里能看到我帅气的容貌[wait=0.5],我真帅啊!
+	=> END
+else:
+	Joey[#joey_normal]: 镜子里能看到我帅气的容貌[wait=0.5],我可太帅了!
+	=> END
+
 ~ radio
 if GameManager.get_day_phase() < 2:
 	=> radio_untriggered
@@ -56,7 +64,7 @@ Miss T[#radio]: 还有什么要确认的吗?
 		Miss T[#radio]: 火炉旁边的鞋看到了吗[wait=0.3],拿起它回梦中吧,至少你可以利用它进入到城堡内了
 	else:
 		Miss T[#radio]: 回到梦里吧,用这双鞋的能力先进入城堡内
-		=> radio_options
+	=> radio_options
 - 你到底是谁
 	Miss T[#radio]: [[等你的症状稳定了我会告诉你的|先叫我Miss T吧]]
 	=> radio_options

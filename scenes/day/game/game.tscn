@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b5t052kpld60e"]
+[gd_scene load_steps=21 format=3 uid="uid://b5t052kpld60e"]
 
 [ext_resource type="PackedScene" uid="uid://blydc865qnepa" path="res://scenes/player/player_day.tscn" id="1_3un87"]
 [ext_resource type="PackedScene" uid="uid://bmq25pi5e8wan" path="res://scenes/day/room1/room1.tscn" id="1_fv2j8"]
@@ -13,6 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://67xd1lwqas7a" path="res://scenes/day/introduction/introduction.tscn" id="9_rumt0"]
 [ext_resource type="PackedScene" uid="uid://c40qc8gq3f3g3" path="res://scenes/day/room3/room3.tscn" id="10_lkum6"]
 [ext_resource type="PackedScene" uid="uid://c8flj66fr2ymi" path="res://scenes/day/inventory/inventory.tscn" id="11_15jyv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_igu4s"]
+size = Vector2(28, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpaul"]
+size = Vector2(20, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rl6hv"]
 size = Vector2(35, 20)
@@ -246,8 +252,23 @@ _data = {
 [node name="Room1" parent="." instance=ExtResource("1_fv2j8")]
 
 [node name="Mirror" parent="Room1" node_paths=PackedStringArray("character") instance=ExtResource("6_imkld")]
+z_index = 1
 position = Vector2(188, 148)
 character = NodePath("../../PlayerDay")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Room1/Mirror"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room1/Mirror/StaticBody2D"]
+position = Vector2(2, -5)
+shape = SubResource("RectangleShape2D_igu4s")
+
+[node name="Actionable" parent="Room1/Mirror" instance=ExtResource("4_epc0u")]
+dialogue_resource = ExtResource("7_oohak")
+dialogue_start = "mirror1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room1/Mirror/Actionable"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_tpaul")
 
 [node name="Room2" parent="." instance=ExtResource("2_07116")]
 position = Vector2(0, 272)
