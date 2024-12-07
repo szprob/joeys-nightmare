@@ -32,7 +32,7 @@ var can_move_timer
 @export var idle_time = 2 
 @export var can_move_time = 0.5
 @export var dash_speed: float = 200.0
-
+@export var do_attack:bool = true
 
 
 
@@ -75,7 +75,7 @@ func _physics_process(delta):
 
 func handle_idle_state(delta):
 	idle_timer += delta
-	if idle_timer >= idle_time:
+	if idle_timer >= idle_time and do_attack:
 		change_state(State.SHOOT)
 
 # shoot

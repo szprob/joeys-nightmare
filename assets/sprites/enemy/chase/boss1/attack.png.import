@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb5tfmmes00tf"
-path="res://.godot/imported/hit.png-d8a7643b82957a5e01e9a19f0a00e592.ctex"
+uid="uid://y6rr858c5hci"
+path="res://.godot/imported/attack.png-e79c9eabfdde41b3da3ba99e50a2e8a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemy/chase/hit.png"
-dest_files=["res://.godot/imported/hit.png-d8a7643b82957a5e01e9a19f0a00e592.ctex"]
+source_file="res://assets/sprites/enemy/chase/boss1/attack.png"
+dest_files=["res://.godot/imported/attack.png-e79c9eabfdde41b3da3ba99e50a2e8a3.ctex"]
 
 [params]
 

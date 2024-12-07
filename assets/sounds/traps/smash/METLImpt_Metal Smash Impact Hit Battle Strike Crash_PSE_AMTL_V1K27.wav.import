@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dqgx13rcah3kc"
+path="res://.godot/imported/METLImpt_Metal Smash Impact Hit Battle Strike Crash_PSE_AMTL_V1K27.wav-3eec69a9c6a093e242927c13d634f183.sample"
+
+[deps]
+
+source_file="res://assets/sounds/traps/smash/METLImpt_Metal Smash Impact Hit Battle Strike Crash_PSE_AMTL_V1K27.wav"
+dest_files=["res://.godot/imported/METLImpt_Metal Smash Impact Hit Battle Strike Crash_PSE_AMTL_V1K27.wav-3eec69a9c6a093e242927c13d634f183.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

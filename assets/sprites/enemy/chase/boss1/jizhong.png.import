@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cir1r1uuw655u"
-path="res://.godot/imported/attack.png-580a3bb4feb0d16e607c1ff54c13cf6d.ctex"
+uid="uid://c1e8pyasgl48o"
+path="res://.godot/imported/jizhong.png-28c91c5d70be4a13e5ace4122e8aef55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemy/chase/attack.png"
-dest_files=["res://.godot/imported/attack.png-580a3bb4feb0d16e607c1ff54c13cf6d.ctex"]
+source_file="res://assets/sprites/enemy/chase/boss1/jizhong.png"
+dest_files=["res://.godot/imported/jizhong.png-28c91c5d70be4a13e5ace4122e8aef55.ctex"]
 
 [params]
 

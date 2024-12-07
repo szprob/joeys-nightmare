@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp3u2sh8t0ma0"
-path="res://.godot/imported/fly.png-bd63a83b6a9078f132caf29a9e80e7ca.ctex"
+uid="uid://c327hmt0mh0i1"
+path="res://.godot/imported/death.png-06472fd3007691ca0ca8bc5d3bbd2d53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemy/chase/fly.png"
-dest_files=["res://.godot/imported/fly.png-bd63a83b6a9078f132caf29a9e80e7ca.ctex"]
+source_file="res://assets/sprites/enemy/chase/boss1/death.png"
+dest_files=["res://.godot/imported/death.png-06472fd3007691ca0ca8bc5d3bbd2d53.ctex"]
 
 [params]
 

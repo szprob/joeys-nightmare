@@ -11,6 +11,7 @@ var player
 func _ready():
 	# Engine.time_scale = 1
 	# 获取玩家节点
+	await get_tree().create_timer(0.1).timeout
 	player = get_tree().get_first_node_in_group("player")
 	player.set_can_move(true)
 	# camera = get_tree().get_first_node_in_group("camera") 
