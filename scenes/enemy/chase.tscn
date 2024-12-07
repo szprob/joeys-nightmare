@@ -1,10 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://deu5vht28g1ac"]
+[gd_scene load_steps=32 format=3 uid="uid://deu5vht28g1ac"]
 
 [ext_resource type="Script" path="res://scripts/enemy/chasing_boss.gd" id="1_nbhrx"]
 [ext_resource type="Texture2D" uid="uid://cir1r1uuw655u" path="res://assets/sprites/enemy/chase/attack.png" id="2_vtehw"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_1ct2n"]
 [ext_resource type="Texture2D" uid="uid://buxapkpo2lh4g" path="res://assets/sprites/enemy/chase/idle.png" id="3_gvdpt"]
 [ext_resource type="Texture2D" uid="uid://bp3u2sh8t0ma0" path="res://assets/sprites/enemy/chase/fly.png" id="3_o4ocq"]
+[ext_resource type="AudioStream" uid="uid://dsjbow3x6dnt" path="res://assets/sounds/enemy/GOREMisc_Flesh Sword Slash 03_PSE_SR-COM_V3FfX.wav" id="6_cb4cc"]
+[ext_resource type="AudioStream" uid="uid://f6dgr4mgs733" path="res://assets/sounds/enemy/GOREMisc_Flesh Sword Slash 02_PSE_SR-COM_LzdtX.wav" id="7_18cqj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p14np"]
 atlas = ExtResource("2_vtehw")
@@ -205,3 +207,9 @@ disabled = true
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="kill_zone"]
 position = Vector2(-51.8427, 34.1458)
 shape = SubResource("RectangleShape2D_2v4ro")
+
+[node name="audio_hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_cb4cc")
+
+[node name="audio_non_hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_18cqj")

@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var idle_duration: float = 0.3
 @export var dash_speed: float = 200.0
 @export var player: Node2D
-@export var time_enable_attack_collision: float = 0.8
+@export var time_enable_attack_collision: float = 0.75
 @export var limit_y_offset_top: int = 50
 @export var limit_y_offset_bottom: int = 5
 
@@ -15,6 +15,7 @@ enum State {IDLE, ATTACKING, DASH, INIT}
 var current_state = State.INIT
 var target_position: Vector2
 var timer: Timer # 攻击碰撞启用计时器
+var timer_audio: Timer # audio 
 var init_timer: Timer # 初始化计时器
 var origin_scale_x 
 var idle_direction: Vector2
@@ -24,9 +25,14 @@ var direction2player
 var current_camera: Camera2D
 var limit_top: int
 var limit_bottom: int
+var is_die: bool = false
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var attack_collision: CollisionShape2D = $kill_zone/CollisionShape2D2
+@onready var audio_non_hit: AudioStreamPlayer2D = $audio_non_hit
+@onready var audio_hit: AudioStreamPlayer2D = $audio_hit
+
+
 
 func _ready():
 	# player
@@ -34,6 +40,8 @@ func _ready():
 	global_position = player.global_position + Vector2(-50, -50)
 	# camera
 	current_camera = get_tree().get_first_node_in_group("camera")
+	# die 
+	GameManager.die_requested.connect(_on_die_requested)
 
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	timer = Timer.new()
@@ -41,6 +49,12 @@ func _ready():
 	timer.timeout.connect(_on_timeout)
 	timer.wait_time = time_enable_attack_collision
 	timer.one_shot = true
+
+	timer_audio = Timer.new()
+	add_child(timer_audio)
+	timer_audio.timeout.connect(_on_timeout_audio)
+	timer_audio.wait_time = time_enable_attack_collision+0.05
+	timer_audio.one_shot = true
 
 	init_timer = Timer.new()
 	add_child(init_timer)
@@ -54,11 +68,20 @@ func _ready():
 	# scale.x = origin_scale_x if idle_direction.x < 0 else -origin_scale_x
 	
 
+func _on_die_requested():
+	is_die = true
+
 func _on_init_timeout():
 	change_state(State.IDLE)
 
 func _on_timeout():
 	attack_collision.disabled = false
+
+func _on_timeout_audio():
+	if not is_die:
+		audio_non_hit.play()
+	else:
+		audio_hit.play()
 
 # 添加动画完成的回调函数
 func _on_animation_finished():
@@ -103,6 +126,7 @@ func change_state(new_state: State) -> void:
 			velocity = Vector2.ZERO
 			animated_sprite.play("attacking")
 			timer.start()
+			timer_audio.start()
 		State.DASH:
 			direction2player = (player.global_position - global_position).normalized()
 			scale.x = origin_scale_x if direction2player.x > 0 else -origin_scale_x
