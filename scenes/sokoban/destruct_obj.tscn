@@ -8,6 +8,7 @@ size = Vector2(476, 84)
 
 [node name="destruct-obj" type="RigidBody2D"]
 script = ExtResource("1_bbo7f")
+debug_mode = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 1.5)

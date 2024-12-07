@@ -6,7 +6,7 @@ extends RigidBody2D
 @export var debris_max_time: float = 5
 @export var remove_debris: bool = false
 @export var collision_layers: int = 1
-@export var collision_masks: int = 1
+@export var collision_masks: int = 7
 @export var collision_one_way: bool = false
 @export var explosion_delay: bool = false
 @export var fake_explosions_group: String = "fake_explosion_particles"
@@ -104,11 +104,12 @@ func _ready():
 	#explosion_detector = get_node(trigger_path)
 	if explosion_detector:
 		explosion_detector.collision_layer = 0
-		explosion_detector.collision_mask = 1
+		explosion_detector.collision_mask = 7
 		print('detector found')
 		explosion_detector.area_entered.connect(_on_trigger_entered)
 		explosion_detector.body_entered.connect(_on_trigger_entered)
 		print('connected explosion_detector', explosion_detector.name)
+		print('detector collision_mask: ', explosion_detector.collision_mask)
 
 	# 连接区域进入信号
 	
@@ -343,7 +344,8 @@ func _ready():
 	max_contacts_reported = 4 # Set this according to your needs
 	# body_entered.connect(_on_body_entered)
 #
-	
+	if explosion_detector:
+		print('detector collsion mask: ', explosion_detector.collision_mask)
 	add_to_group("destructible")
 func _physics_process(delta):
 	# if object.parent:
@@ -404,7 +406,7 @@ func add_children(child_object):
 		var block = child_object.blocks[i]
 		# 确保碎片不会干扰主体的碰撞检测
 		block.contact_monitor = false
-		block.collision_layer = 1
+		block.collision_layer = 7
 		child_object.blocks_container.add_child(child_object.blocks[i], true)
 	# print('child_object: ', child_object)
 	# print('parent: ', child_object.parent.name)
@@ -559,16 +561,18 @@ func _on_debris_timer_timeout():
 
 func _on_trigger_entered(body: Node2D) -> void:
 
-	print("Area detected body: ", body.name)
-	if body is TileMapLayer:
-		print('tilemaplayer')
+	# print('destruct_obj trigger', explosion_detector.collision_mask)
+	# print("Area detected body: ", body.name)
+		# print('body collision layer: ', body.tile_set.get_physics_layer_collision_layer()
 	if body.get("can_destroy") != null and body.can_destroy and object.can_detonate:
-		print("Triggering explosion from area detection")
+		print('destoryed', self.name)
+		print("Triggering explosion from area detection by", body.name)
 		object.detonate = true
 	elif body.get_parent():
 		var parent = body.get_parent()
 		if parent.get("can_destroy") != null and parent.can_destroy and object.can_detonate:
-			print("Triggering explosion from area detection")
+			print('destoryed', self.name)
+			print("Triggering explosion from area detection by", body.name)
 			object.detonate = true
 		else:
 			# print('not trigger destroy by ', body.name)
