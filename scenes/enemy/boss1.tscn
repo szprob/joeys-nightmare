@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://berhy2v7l8ihk"]
+[gd_scene load_steps=58 format=3 uid="uid://berhy2v7l8ihk"]
 
 [ext_resource type="Script" path="res://scripts/enemy/boss_1.gd" id="1_edpoa"]
 [ext_resource type="Texture2D" uid="uid://bwj6yst7tjl4e" path="res://assets/sprites/enemy/achase/Jump.png" id="2_wqjeo"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dwon3ombh26jc" path="res://assets/sprites/enemy/achase/Attack.png" id="5_mjkq0"]
 [ext_resource type="Texture2D" uid="uid://dilhc6i5slfd3" path="res://assets/sprites/enemy/achase/Get hit.png" id="6_7ynb8"]
 [ext_resource type="AudioStream" uid="uid://bf6bkyn0up2y4" path="res://assets/sounds/traps/LASRGun_Lazer Zap 04_PSE_CLACK_90gyP.wav" id="7_dun50"]
+[ext_resource type="PackedScene" uid="uid://b3en2onoukpwt" path="res://scenes/enemy/shadow.tscn" id="8_tucx5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r6nbh"]
 atlas = ExtResource("2_wqjeo")
@@ -369,9 +370,11 @@ animations = [{
 size = Vector2(28.5, 51)
 
 [node name="Boss1" type="Area2D"]
+scale = Vector2(1.3, 1.3)
 collision_layer = 0
 collision_mask = 128
 script = ExtResource("1_edpoa")
+after_image_scene = ExtResource("8_tucx5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 12)
@@ -385,3 +388,5 @@ shape = SubResource("RectangleShape2D_cn6r0")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_dun50")
+
+[node name="Shadow" parent="." instance=ExtResource("8_tucx5")]

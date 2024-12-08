@@ -1,15 +1,16 @@
-[gd_scene load_steps=16 format=4 uid="uid://dqfvrvtpe1a80"]
+[gd_scene load_steps=17 format=4 uid="uid://dqfvrvtpe1a80"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_tqqs5"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="2_gmqmk"]
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="3_lojxw"]
-[ext_resource type="Script" path="res://scripts/camera_2d.gd" id="5_3fsmk"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="5_kmimm"]
 [ext_resource type="PackedScene" uid="uid://c7tkc43k3y7u6" path="res://scenes/modules/traps/fires/fires6.tscn" id="6_hleku"]
 [ext_resource type="PackedScene" uid="uid://be4tvkuckghc4" path="res://scenes/modules/platforms/swing.tscn" id="6_i4wv8"]
 [ext_resource type="PackedScene" uid="uid://berhy2v7l8ihk" path="res://scenes/enemy/boss1.tscn" id="7_d7kh0"]
 [ext_resource type="PackedScene" uid="uid://bn5no8n8sl8p8" path="res://scenes/modules/platforms/ferris_wheel.tscn" id="9_5q23d"]
 [ext_resource type="PackedScene" uid="uid://5ke66hnjv6ab" path="res://scenes/modules/traps/lazer.tscn" id="10_mf6cd"]
+[ext_resource type="PackedScene" uid="uid://yan3jqnet7ud" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="11_vosd0"]
+[ext_resource type="PackedScene" uid="uid://c5x12p3650b3l" path="res://scenes/player/npc.tscn" id="12_yvckx"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8553"]
 distance = -68.0
@@ -354,7 +355,6 @@ process_callback = 0
 limit_bottom = 150
 limit_smoothed = true
 position_smoothing_enabled = true
-script = ExtResource("5_3fsmk")
 
 [node name="Swing" parent="." node_paths=PackedStringArray("pivot_target") instance=ExtResource("6_i4wv8")]
 position = Vector2(-1337, -46)
@@ -369,7 +369,7 @@ position = Vector2(-1066, -77)
 rotation_angular_velocity = 1.0
 
 [node name="Boss1" parent="." instance=ExtResource("7_d7kh0")]
-position = Vector2(-1587, -41)
+position = Vector2(-1602, -52)
 do_attack = false
 
 [node name="Area2D" type="Area2D" parent="Boss1"]
@@ -395,3 +395,10 @@ position = Vector2(-4.36536, -27.7795)
 
 [node name="Area2D2" type="Area2D" parent="Lazer"]
 position = Vector2(-6.34094, 96.8478)
+
+[node name="empty-teleport" parent="." instance=ExtResource("11_vosd0")]
+position = Vector2(-1175, -15)
+
+[node name="Npc" parent="." node_paths=PackedStringArray("teleport") instance=ExtResource("12_yvckx")]
+position = Vector2(-1359, -12)
+teleport = NodePath("../empty-teleport")

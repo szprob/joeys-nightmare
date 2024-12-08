@@ -1,59 +1,59 @@
-[gd_scene load_steps=20 format=3 uid="uid://c5x12p3650b3l"]
+[gd_scene load_steps=20 format=3 uid="uid://b2a31xnvry6r1"]
 
-[ext_resource type="Script" path="res://scripts/modules/player/npc.gd" id="1_drs2f"]
-[ext_resource type="Texture2D" uid="uid://dwxlif2i2u5ru" path="res://assets/sprites/npc/npc.png" id="2_epvom"]
-[ext_resource type="Texture2D" uid="uid://hqdavyunyd7e" path="res://assets/sprites/npc/npc2.png" id="2_tl1du"]
-[ext_resource type="AudioStream" uid="uid://ttiw5wfipt7v" path="res://assets/sounds/checkpoints/teleport.wav" id="3_g2b3r"]
+[ext_resource type="Script" path="res://scripts/modules/player/npc_2.gd" id="1_08s4a"]
+[ext_resource type="Texture2D" uid="uid://hqdavyunyd7e" path="res://assets/sprites/npc/npc2.png" id="2_6w1w1"]
+[ext_resource type="Texture2D" uid="uid://dwxlif2i2u5ru" path="res://assets/sprites/npc/npc.png" id="3_2rofc"]
+[ext_resource type="AudioStream" uid="uid://ttiw5wfipt7v" path="res://assets/sounds/checkpoints/teleport.wav" id="4_yd7cf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpe17"]
 size = Vector2(10, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nf51p"]
-atlas = ExtResource("2_tl1du")
+atlas = ExtResource("2_6w1w1")
 region = Rect2(0, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ul6s0"]
-atlas = ExtResource("2_tl1du")
+atlas = ExtResource("2_6w1w1")
 region = Rect2(32, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ulhnt"]
-atlas = ExtResource("2_tl1du")
+atlas = ExtResource("2_6w1w1")
 region = Rect2(64, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7hgtd"]
-atlas = ExtResource("2_tl1du")
+atlas = ExtResource("2_6w1w1")
 region = Rect2(96, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uxxtk"]
-atlas = ExtResource("2_epvom")
+atlas = ExtResource("3_2rofc")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhcnm"]
-atlas = ExtResource("2_epvom")
+atlas = ExtResource("3_2rofc")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2gokr"]
-atlas = ExtResource("2_epvom")
+atlas = ExtResource("3_2rofc")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n6m6v"]
-atlas = ExtResource("2_epvom")
+atlas = ExtResource("3_2rofc")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0d8xu"]
-atlas = ExtResource("2_epvom")
+atlas = ExtResource("3_2rofc")
 region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3qg18"]
-atlas = ExtResource("2_epvom")
+atlas = ExtResource("3_2rofc")
 region = Rect2(32, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sr0on"]
-atlas = ExtResource("2_epvom")
+atlas = ExtResource("3_2rofc")
 region = Rect2(64, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jmnnu"]
-atlas = ExtResource("2_epvom")
+atlas = ExtResource("3_2rofc")
 region = Rect2(96, 64, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_spw7t"]
@@ -68,7 +68,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ulhnt")
 }, {
-"duration": 1.0,
+"duration": 100.0,
 "texture": SubResource("AtlasTexture_7hgtd")
 }],
 "loop": false,
@@ -116,7 +116,7 @@ size = Vector2(34, 19)
 [node name="Npc" type="CharacterBody2D" groups=["teleport_enable"]]
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("1_drs2f")
+script = ExtResource("1_08s4a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6.5)
@@ -124,9 +124,10 @@ shape = SubResource("RectangleShape2D_tpe17")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_spw7t")
-animation = &"move"
+animation = &"death"
 autoplay = "idle"
-frame_progress = 0.10027
+frame = 3
+frame_progress = 1.0
 flip_h = true
 
 [node name="DialogueArea" type="Area2D" parent="."]
@@ -134,7 +135,8 @@ collision_layer = 0
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueArea"]
+position = Vector2(-85, 4)
 shape = SubResource("RectangleShape2D_a2kjh")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_g2b3r")
+stream = ExtResource("4_yd7cf")

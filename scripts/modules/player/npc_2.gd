@@ -154,8 +154,20 @@ func create_bubble() -> void:
 	bubble_instance.global_position = bubble_position
 	bubble_instance.tree_exited.connect(_on_bubble_destroyed)
 
-	get_parent().add_child(bubble_instance)
 
+	# var canvas_layer = CanvasLayer.new()
+	# canvas_layer.layer = 100  # 确保在最上层
+	# get_tree().root.add_child(canvas_layer)
+	# canvas_layer.add_child(bubble_instance)
+	get_parent().add_child(bubble_instance)
+	# if owner:	
+	# 	owner.add_child(bubble_instance)
+	# else:
+	# 	get_parent().add_child(bubble_instance)
+	print('npc bubble text: ', current_text)
+	print('npc bubble visible: ', bubble_instance.visible)
+	print('npc bubble position: ', bubble_instance.global_position)
+	print('npc global position: ', global_position)
 func _on_bubble_destroyed() -> void:
 	bubble_index += 1
 	if bubble_index < bubble_texts.size():
