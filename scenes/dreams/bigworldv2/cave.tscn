@@ -1339,7 +1339,7 @@ target = NodePath("target")
 metadata/_edit_group_ = true
 
 [node name="target" type="Area2D" parent="map/platform/move_platform"]
-position = Vector2(776, 0)
+position = Vector2(944, 0)
 
 [node name="map" type="TileMapLayer" parent="map"]
 use_parent_material = true
