@@ -3,9 +3,11 @@ extends Node2D
 var lazer_particles_scene = preload("res://scenes/modules/ui/lazer_particles.tscn")
 var current_particles: GPUParticles2D = null
 var end_particles: GPUParticles2D = null
+var player
 
 @onready var line2d: Line2D = $Line2D
 @onready var kill_zone_shape: CollisionShape2D = $kill_zone/CollisionShape2D
+@onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @export var area1: Area2D = null
 @export var area2: Area2D = null
@@ -45,6 +47,11 @@ func _ready() -> void:
 	
 	# 添加额外的发光效果
 	#line2d.set_meta("glow_enabled", true)
+	player = get_tree().get_first_node_in_group("player")
+
+	# 设置音频为循环播放
+	audio_player.stream.loop = true
+	audio_player.play()
 
 
 func draw_kill_zone_shape() -> void:
@@ -63,6 +70,7 @@ func draw_kill_zone_shape() -> void:
 	(kill_zone_shape.shape as RectangleShape2D).size = Vector2(length, 2)
 
 func _process(delta: float) -> void:
+
 	time += delta
 	if is_blink:
 		blink_timer += delta
@@ -103,3 +111,19 @@ func _process(delta: float) -> void:
 	
 	end_particles.global_position = end_pos
 	end_particles.emitting = true
+
+	# 获取玩家节点
+	if player:
+		# 计算与玩家的距离
+		var distance = global_position.distance_to(player.global_position)
+		
+		# 根据距离调整音量
+		if distance < 50:
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -10)
+		elif distance < 300:
+			# 在200-400范围内线性插值音量，从-5db到-80db(静音)
+			var t = (distance - 50) / 250  # 归一化到0-1范围
+			var volume_db = lerp(-10.0, -80.0, t)
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), volume_db)
+		else:
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -80.0)
