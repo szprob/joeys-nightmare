@@ -444,7 +444,6 @@ position = Vector2(1363, 348)
 [node name="destruct-obj-01" parent="maps/map1-1/destructibles/destruct-02" instance=ExtResource("26_738g1")]
 position = Vector2(-68, -21)
 blocks_gravity_scale = 2.0
-debug_mode = false
 
 [node name="Trigger" type="Area2D" parent="maps/map1-1/destructibles/destruct-02"]
 
@@ -458,7 +457,6 @@ position = Vector2(1365, 265)
 [node name="destruct-obj-01" parent="maps/map1-1/destructibles/destruct-03" instance=ExtResource("26_738g1")]
 position = Vector2(-68, -21)
 blocks_gravity_scale = 2.0
-debug_mode = false
 
 [node name="Trigger" type="Area2D" parent="maps/map1-1/destructibles/destruct-03"]
 
@@ -472,7 +470,6 @@ position = Vector2(1363, 410)
 [node name="destruct-obj-01" parent="maps/map1-1/destructibles/destruct-04" instance=ExtResource("26_738g1")]
 position = Vector2(-68, -21)
 blocks_gravity_scale = 2.0
-debug_mode = false
 
 [node name="Trigger" type="Area2D" parent="maps/map1-1/destructibles/destruct-04"]
 

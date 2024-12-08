@@ -87,6 +87,7 @@ func _ready():
 	$HookableDetector.area_exited.connect(_on_hookable_area_exited)
 
 	add_to_group("player")
+	set_can_move(true)
 
 
 func respawn():
