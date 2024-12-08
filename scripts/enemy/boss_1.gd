@@ -66,6 +66,7 @@ func _ready():
 	timer.one_shot = true
 	add_child(timer)
 	timer.timeout.connect(_on_timer_timeout)
+	
 	can_move_timer = Timer.new()
 	can_move_timer.one_shot = true
 	add_child(can_move_timer)

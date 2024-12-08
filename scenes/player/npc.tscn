@@ -1,12 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://c5x12p3650b3l"]
+[gd_scene load_steps=19 format=3 uid="uid://c5x12p3650b3l"]
 
 [ext_resource type="Script" path="res://scripts/modules/player/npc.gd" id="1_drs2f"]
 [ext_resource type="Texture2D" uid="uid://dwxlif2i2u5ru" path="res://assets/sprites/npc/npc.png" id="2_epvom"]
 [ext_resource type="Texture2D" uid="uid://hqdavyunyd7e" path="res://assets/sprites/npc/npc2.png" id="2_tl1du"]
 [ext_resource type="AudioStream" uid="uid://ttiw5wfipt7v" path="res://assets/sounds/checkpoints/teleport.wav" id="3_g2b3r"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpe17"]
-size = Vector2(10, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nf51p"]
 atlas = ExtResource("2_tl1du")
@@ -110,17 +107,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a2kjh"]
-size = Vector2(34, 19)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpe17"]
+size = Vector2(42, 9)
 
 [node name="Npc" type="CharacterBody2D" groups=["teleport_enable"]]
 collision_layer = 0
-collision_mask = 0
+collision_mask = 128
 script = ExtResource("1_drs2f")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6.5)
-shape = SubResource("RectangleShape2D_tpe17")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_spw7t")
@@ -129,12 +122,11 @@ autoplay = "idle"
 frame_progress = 0.10027
 flip_h = true
 
-[node name="DialogueArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueArea"]
-shape = SubResource("RectangleShape2D_a2kjh")
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_g2b3r")
+
+[node name="detection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+position = Vector2(-94, 5)
+shape = SubResource("RectangleShape2D_tpe17")

@@ -6,7 +6,7 @@ var player
 # var camera 
 
 @onready var timer: Timer = $Timer
-
+@onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready():
 	# Engine.time_scale = 1
@@ -25,7 +25,7 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	if not body.is_in_group("player"):
 		return 
-	
+	audio_player.play()
 	GameManager.die_requested.emit()
 	GameManager.game_state_cache['can_detect_kill_zone'] = false
 	GameManager.game_state['number_deaths'] += 1

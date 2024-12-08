@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var dialogue_area: Area2D = $DialogueArea
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var detection_area: Area2D = $detection
 
 enum NPCState {
 	IDLE,
@@ -21,11 +21,10 @@ var player : CharacterBody2D
 # 添加新的导入
 const PortalScene = preload("res://scenes/modules/checkpoints/empty-teleport.tscn")
 const BubbleScene = preload("res://scenes/modules/ui/bubble.tscn")
-
 const DialogueFile = preload("res://scenes/dreams/dialogue/dialogue.gd")
 
 # 添加新的变量
-@export var bubble_delay: float = 0.8
+@export var bubble_delay: float = 0.2
 @export var bubble_speed: float = 0.06
 @export var bubble_title: String = "stage1_begin"
 @export var bubble_index: int = 0
@@ -43,6 +42,8 @@ func _ready() -> void:
 			teleport.queue_free()
 		queue_free()
 		return
+
+	detection_area.body_entered.connect(_on_body_entered)
 	bubble_texts = dialogue_file.dialogue_data[bubble_title]
 	player = get_tree().get_first_node_in_group("player")
 	teleport.visible = false
@@ -54,7 +55,7 @@ func _ready() -> void:
 	timer.timeout.connect(_on_timer_timeout)
 	timer.one_shot = true
 	timer.wait_time = bubble_delay
-	timer.start()
+	
 
 	disappear_timer = Timer.new()
 	add_child(disappear_timer)
@@ -63,6 +64,10 @@ func _ready() -> void:
 	disappear_timer.wait_time = disappear_delay
 
 
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is CharacterBody2D:
+		timer.start()
 
 func _on_timer_timeout():
 	if player and player.has_method("set_can_move"):
