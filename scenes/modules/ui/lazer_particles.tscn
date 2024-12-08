@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://llj7ojqewhsm"]
+
+[ext_resource type="Script" path="res://scripts/modules/ui/lazer_particles.gd" id="1_et1at"]
+
+[node name="LazerParticles" type="GPUParticles2D"]
+script = ExtResource("1_et1at")

@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var jump_audio: AudioStreamPlayer2D = $jump_audio
+@onready var hook_audio: AudioStreamPlayer2D = $hook_audio
 @export var mass: float = 1.0
 @export var second_jump_enabled = true
 @export var ammo_count = 1 # 子弹数量
@@ -87,6 +88,7 @@ func _ready():
 	$HookableDetector.area_exited.connect(_on_hookable_area_exited)
 
 	add_to_group("player")
+	set_can_move(true)
 
 
 func respawn():
@@ -138,9 +140,14 @@ func _physics_process(delta: float) -> void:
 			velocity += gravity * delta
 			move_and_slide()
 		else:
-			velocity = Vector2.ZERO
+			var gravity = get_gravity()
+			velocity += gravity * delta
+			velocity.x = velocity.x * 0.5
+			move_and_slide()
 			animated_sprite_2d.play('idle')
 		return
+
+	update_hookable_areas_status()
 	var player_height = 16.0  # 角色高度为16像素
 	if is_jumping:
 		# 计算当前位置与起跳位置的距离(考虑重力方向)
@@ -530,20 +537,27 @@ func filp_player_sprite(direction):
 				animated_sprite_2d.flip_h = true
 
 func free_player_from_box(box: CharacterBody2D) -> void:
+	# var gravity_dir = get_gravity().normalized()
+	
+	# # 给箱子一个向上的力
+	# var push_force = -gravity_dir * Consts.SPEED * 0.5
+	# box.velocity = push_force
+	
+	# # 计算安全位置（将箱子推离玩家）
+	# var safe_distance = collision_shape_2d.shape.size.y + box.get_node("CollisionShape2D").shape.size.y
+	# var desired_box_pos = position - gravity_dir * safe_distance
+	
+	# box.global_position = box.global_position.lerp(desired_box_pos, 0.3)
+	
+	# velocity += gravity_dir * Consts.SPEED * 0.5
 	var gravity_dir = get_gravity().normalized()
 	
-	# 给箱子一个向上的力
-	var push_force = -gravity_dir * Consts.SPEED * 0.5
+	# 给箱子一个向上的推力，而不是直接改变位置
+	var push_force = -gravity_dir * Consts.SPEED * 0.8
 	box.velocity = push_force
 	
-	# 计算安全位置（将箱子推离玩家）
-	var safe_distance = collision_shape_2d.shape.size.y + box.get_node("CollisionShape2D").shape.size.y
-	var desired_box_pos = position - gravity_dir * safe_distance
-	
-	box.position = box.position.lerp(desired_box_pos, 0.3)
-	
+	# 给玩家一个向下的力，帮助分离
 	velocity += gravity_dir * Consts.SPEED * 0.5
-
 
 func check_box_on_head() -> void:
 	var space_state = get_world_2d().direct_space_state
@@ -563,6 +577,7 @@ func check_box_on_head() -> void:
 
 func set_gravity(new_gravity_direction: Vector2) -> void:
 	print('set gravity')
+	jump_audio.play()
 	var gravity_instance = gravity_scene.instantiate()
 	# gravity_instance.global_position = global_position
 	gravity_instance.position = Vector2.ZERO
@@ -639,7 +654,8 @@ func hook(field: Node2D) -> void:
 	stuck_check_timer = 0.0
 	last_hook_position = global_position  # 记录初始位置
 	can_destroy = true
-
+	has_double_jumped = false
+	hook_audio.play()
 func end_hook() -> void:
 	is_hooking = false
 	hook_target = null
@@ -667,6 +683,39 @@ func apply_force(collision_direction):
 	velocity += collision_direction
 
 # 添加这个新函数来查找最近的重力场
+func update_hookable_areas_status() -> void:
+	if hookable_areas.is_empty():
+		return
+		
+	var nearest = null
+	var shortest_distance = 200
+	
+	# 第一次遍历找出最近的可用钩爪点
+	for area in hookable_areas:
+		if not is_instance_valid(area):
+			continue
+			
+		var distance = global_position.distance_to(area.global_position)
+		if distance < shortest_distance:
+			# 进行视线检测
+			var space_state = get_world_2d().direct_space_state
+			var query = PhysicsRayQueryParameters2D.create(
+				global_position,
+				area.global_position
+			)
+			query.exclude = [self]
+			
+			var result = space_state.intersect_ray(query)
+			if not result:
+				shortest_distance = distance
+				nearest = area
+	
+	# 更新所有钩爪点的状态
+	for area in hookable_areas:
+		if is_instance_valid(area):
+			area.set_available(area == nearest)
+
+# 修改原有函数，只返回最近的钩爪点
 func find_nearest_hookable_area() -> Node2D:
 	if hookable_areas.is_empty():
 		return null
@@ -680,7 +729,6 @@ func find_nearest_hookable_area() -> Node2D:
 			
 		var distance = global_position.distance_to(area.global_position)
 		if distance < shortest_distance:
-			# 进行视线检测
 			var space_state = get_world_2d().direct_space_state
 			var query = PhysicsRayQueryParameters2D.create(
 				global_position,

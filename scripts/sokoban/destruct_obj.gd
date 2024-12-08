@@ -6,7 +6,7 @@ extends RigidBody2D
 @export var debris_max_time: float = 5
 @export var remove_debris: bool = false
 @export var collision_layers: int = 1
-@export var collision_masks: int = 7
+@export var collision_masks: int = 1
 @export var collision_one_way: bool = false
 @export var explosion_delay: bool = false
 @export var fake_explosions_group: String = "fake_explosion_particles"
@@ -14,6 +14,9 @@ extends RigidBody2D
 @export var debug_mode: bool = true
 @export var trigger_path = '../Trigger'
 @export var trigger_node_name: String = "Trigger"
+@export var node_to_explode: Node2D
+# @export var tilemap_to_explode: TileMapLayer
+
 # var object = DestructObject.new()
 
 var explosion_delay_timer = 0
@@ -86,7 +89,9 @@ func _ready():
 	# 	print("My collision layer: ", collision_layer)
 	# 	print("My collision mask: ", collision_mask)
 	# 	print("Can detect static bodies: ", collision_mask & 1)
-	
+	# print('node_to_explode: ', node_to_explode.name)
+	print('self name: ', self.name)
+	# print('tilemap_to_explode: ', tilemap_to_explode.name)
 	var params = {
 		"blocks_gravity_scale": blocks_gravity_scale,
 		"blocks_impulse": blocks_impulse,
@@ -103,7 +108,7 @@ func _ready():
 	explosion_detector = get_parent().get_node(trigger_node_name)
 	#explosion_detector = get_node(trigger_path)
 	if explosion_detector:
-		explosion_detector.collision_layer = 0
+		explosion_detector.set_collision_layer_value(0, true)
 		explosion_detector.set_collision_mask_value(7, true)
 		print('detector found')
 		explosion_detector.area_entered.connect(_on_trigger_entered)
@@ -143,14 +148,22 @@ func _ready():
 		print("ERROR: The '%s' node must be a 'RigidBody2D'" % self.name)
 		object.can_detonate = false
 		return
-
-	for child in get_children():
+	print('node_to_explode', node_to_explode)
+	print('node_to_explode: ', node_to_explode.name)
+	## deal with if into a tilemap to explode
+	for child in node_to_explode.get_children():
 		if is_instance_of(child, Sprite2D):
 			object.sprite_name = child.name
+			var sprite_copy = child.duplicate()
+			add_child(sprite_copy)
+			child.queue_free()
 
 		if child is CollisionShape2D:
 			object.collision_name = child.name
-
+			var collision_copy = child.duplicate()
+			add_child(collision_copy)
+			child.queue_free()
+			
 	if not object.sprite_name and not object.collision_name:
 		print("ERROR: The 'RigidBody2D' (%s) must contain at least a 'Sprite' and a 'CollisionShape2D'." % self.name)
 		object.can_detonate = false
@@ -178,8 +191,9 @@ func _ready():
 	if debug_mode: print("--------------------------------")
 
 	# Use vframes and hframes to divide the sprite.
-	var sprite = get_node(object.sprite_name) as Sprite2D
-	
+	# var sprite = get_node(object.sprite_name) as Sprite2D
+	var sprite = get_node(object.sprite_name)
+	print('sprite ', sprite.name)
 	# 保存原始的 frame 设置
 	var original_frame = sprite.frame
 	
@@ -347,6 +361,10 @@ func _ready():
 	if explosion_detector:
 		print('detector collsion mask: ', explosion_detector.collision_mask)
 	add_to_group("destructible")
+
+	if node_to_explode is TileMap:
+		print('load explode tilemap succeed')
+
 func _physics_process(delta):
 	# if object.parent:
 	# 	print('object.parent: ', object.parent.name)
@@ -406,7 +424,7 @@ func add_children(child_object):
 		var block = child_object.blocks[i]
 		# 确保碎片不会干扰主体的碰撞检测
 		block.contact_monitor = false
-		block.collision_layer = 7
+		block.set_collision_layer_value(0, true)
 		child_object.blocks_container.add_child(child_object.blocks[i], true)
 	# print('child_object: ', child_object)
 	# print('parent: ', child_object.parent.name)
@@ -452,14 +470,16 @@ func detonate():
 		var child_gravity_scale = blocks_gravity_scale
 		child.gravity_scale = child_gravity_scale
 
-		var child_scale = randf_range(0.7, 2)
+		var child_scale = randf_range(0.5, 1.5)
 		# var child_scale = 1
 		child.get_node(object.sprite_name).scale *= Vector2(child_scale, child_scale)
 		child.get_node(object.collision_name).scale *= Vector2(child_scale, child_scale)
 
 		# child.mass = child_scale
 
-		child.set_collision_layer(0 if randf() < 0.5 else object.collision_layers)
+		# child.set_collision_layer(0 if randf() < 0.5 else object.collision_layers)
+		child.set_collision_layer_value(0, true)
+		child.set_collision_layer_value(1, false)
 		child.set_collision_mask(0 if randf() < 0.5 else object.collision_masks)
 
 		child.z_index = 0 if randf() < 0.5 else -1

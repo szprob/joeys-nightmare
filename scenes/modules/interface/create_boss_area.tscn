@@ -1,0 +1,109 @@
+[gd_scene load_steps=17 format=3 uid="uid://v40npfg65xlt"]
+
+[ext_resource type="Script" path="res://scripts/modules/interface/create_boss_area.gd" id="1_xhucc"]
+[ext_resource type="AudioStream" uid="uid://f6dgr4mgs733" path="res://assets/sounds/enemy/GOREMisc_Flesh Sword Slash 02_PSE_SR-COM_LzdtX.wav" id="2_nbjrp"]
+[ext_resource type="Texture2D" uid="uid://y6rr858c5hci" path="res://assets/sprites/enemy/chase/boss1/attack.png" id="3_ic3c3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n0mu0"]
+size = Vector2(88, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gg53j"]
+atlas = ExtResource("3_ic3c3")
+region = Rect2(0, 0, 315, 307)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ob1h"]
+atlas = ExtResource("3_ic3c3")
+region = Rect2(315, 0, 315, 307)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtb6x"]
+atlas = ExtResource("3_ic3c3")
+region = Rect2(630, 0, 315, 307)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7w1k"]
+atlas = ExtResource("3_ic3c3")
+region = Rect2(945, 0, 315, 307)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3ind"]
+atlas = ExtResource("3_ic3c3")
+region = Rect2(1260, 0, 315, 307)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15tf2"]
+atlas = ExtResource("3_ic3c3")
+region = Rect2(1575, 0, 315, 307)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqee8"]
+atlas = ExtResource("3_ic3c3")
+region = Rect2(1890, 0, 315, 307)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3sfv"]
+atlas = ExtResource("3_ic3c3")
+region = Rect2(2205, 0, 315, 307)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x74ky"]
+atlas = ExtResource("3_ic3c3")
+region = Rect2(2520, 0, 315, 307)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srib8"]
+atlas = ExtResource("3_ic3c3")
+region = Rect2(2835, 0, 315, 307)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa4i3"]
+atlas = ExtResource("3_ic3c3")
+region = Rect2(3150, 0, 315, 307)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qoott"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gg53j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ob1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtb6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7w1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3ind")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15tf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqee8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3sfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x74ky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srib8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sa4i3")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CreateBossArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("1_xhucc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7.5, 3)
+shape = SubResource("RectangleShape2D_n0mu0")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_nbjrp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(138, -140)
+sprite_frames = SubResource("SpriteFrames_qoott")

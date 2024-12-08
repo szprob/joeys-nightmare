@@ -24,6 +24,9 @@ var velocity = Vector2.ZERO  # 声明 velocity 变量
 var origin_scale_x
 var timer  # 射击之后创建ball的时间
 var can_move_timer
+var dash_direction
+var sign_scale_x
+var is_init: bool = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
@@ -31,10 +34,13 @@ var can_move_timer
 
 @export var idle_time = 2 
 @export var can_move_time = 0.5
-@export var dash_speed: float = 200.0
+@export var dash_speed: float = 400.0
 @export var do_attack:bool = true
 
-
+# 残影
+@export var after_image_scene: PackedScene
+@export var after_image_interval: float = 0.1
+var after_image_timer: float = 0.0
 
 func _ready():
 	
@@ -54,19 +60,46 @@ func _ready():
 
 	body_entered.connect(on_body_entered)
 	origin_scale_x = scale.x
-	change_state(State.IDLE)
+	
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	timer = Timer.new()
 	timer.one_shot = true
 	add_child(timer)
 	timer.timeout.connect(_on_timer_timeout)
+	
 	can_move_timer = Timer.new()
 	can_move_timer.one_shot = true
 	add_child(can_move_timer)
 	can_move_timer.timeout.connect(_on_can_move_timeout)
 
+	origin_scale_x = 1
+	sign_scale_x = 1
+	is_init = true
+	change_state(State.IDLE)
+
+
+func spawn_after_image(delta):
+	after_image_timer += delta
+	if after_image_timer>=after_image_interval:	
+		after_image_timer = 0.0
+		
+		# 设置残影的属性
+		var after_image = after_image_scene.instantiate()
+	#if sign_scale_x == 1:
+		after_image.texture = animated_sprite.sprite_frames.get_frame_texture(animated_sprite.animation, animated_sprite.frame)
+		after_image.rotation = animated_sprite.rotation
+		after_image.scale.x = scale.x * 1.5
+		after_image.scale.y = scale.y * 1.5
+		if sign_scale_x == 1:
+			after_image.flip_h=true
+		else:
+			after_image.flip_h=false
+		after_image.global_position = animated_sprite.global_position
+		get_parent().add_child(after_image)
 
 func _physics_process(delta):
+	if !is_init:
+		return
 	match state:
 		State.IDLE:
 			handle_idle_state(delta)
@@ -92,22 +125,24 @@ func _on_can_move_timeout():
 
 
 func handle_dash_state(delta):
-	var dash_direction = (next_position - global_position).normalized()
+	dash_direction = (next_position - global_position).normalized()
 	velocity += dash_direction * dash_speed * delta
 	if velocity.length() > dash_speed:
 		velocity = dash_direction * dash_speed
 
 	global_position += velocity * delta
-	
+	spawn_after_image(delta)
 	if global_position.distance_to(next_position) < 10:
 		global_position = next_position
 		change_state(State.IDLE)
 
-func change_scale(face_position):
-	if face_position.x > global_position.x:
-		scale.x = origin_scale_x
-	else:
-		scale.x = -origin_scale_x
+func change_face_direction_and_position(pos):
+	dash_direction = (pos - global_position).normalized()
+
+
+	if sign(dash_direction.x) != sign(sign_scale_x):
+		scale.x = -scale.x
+		sign_scale_x = -sign_scale_x
 
 
 
@@ -118,10 +153,10 @@ func change_state(new_state):
 
 	match new_state:
 		State.IDLE:
-			change_scale(player.global_position)
+			change_face_direction_and_position(player.global_position)
 			animated_sprite.play("idle")
 		State.SHOOT:
-			change_scale(player.global_position)
+			change_face_direction_and_position(player.global_position)
 			animated_sprite.play("shoot")
 			audio_player.play()
 			timer.start()
@@ -131,7 +166,7 @@ func change_state(new_state):
 				return
 			current_area_index += 1
 			next_position = areas[current_area_index].global_position
-			change_scale(next_position)
+			change_face_direction_and_position(next_position)
 			animated_sprite.play("dash")
 		State.STUN:
 			animated_sprite.play("stun")
@@ -148,7 +183,7 @@ func on_body_entered(body):
 		# 给玩家一个反向作用力
 		if body.has_method("apply_force"):
 			var collision_direction = (body.global_position - global_position).normalized()
-			body.apply_force(collision_direction * 700)
+			body.apply_force(collision_direction * 400)
 			body.set_can_move(false,'jump')
 			can_move_timer.start(can_move_time)
 		change_state(State.STUN)

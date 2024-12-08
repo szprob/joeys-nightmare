@@ -9,6 +9,10 @@ size = Vector2(244, 207)
 collision_layer = 0
 collision_mask = 128
 script = ExtResource("1_w5lge")
+next_scene_file_path = null
+teleport_type = null
+time_scale = null
+transition_scene = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 3)

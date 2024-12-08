@@ -36,5 +36,5 @@ func _physics_process(delta):
 	
 	# 让fire始终朝向around_sth
 	var direction_to_around = (global_position - around_position).normalized()
-	rotation = -direction_to_around.angle() 
+	rotation = direction_to_around.angle() 
 	

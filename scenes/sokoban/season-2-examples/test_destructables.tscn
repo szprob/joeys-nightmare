@@ -1,0 +1,234 @@
+[gd_scene load_steps=25 format=4 uid="uid://yukpdyc34t7m"]
+
+[ext_resource type="Texture2D" uid="uid://o4smuqnhel41" path="res://assets/sprites/background/intro/brick_ultra.png" id="1_iaw7s"]
+[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_mnfc1"]
+[ext_resource type="PackedScene" uid="uid://burxykvkyw21f" path="res://scenes/modules/v2/falling_block_tgt.tscn" id="4_xmsyl"]
+[ext_resource type="TileSet" uid="uid://eahum84lpc4q" path="res://tiles/cave.tres" id="5_42tcg"]
+[ext_resource type="PackedScene" uid="uid://ei2u00xxme8q" path="res://scenes/sokoban/destruct_02.tscn" id="5_vsbj0"]
+[ext_resource type="Texture2D" uid="uid://cslqs5no75qc8" path="res://assets/sprites/bricks/yun1.png" id="6_uvee1"]
+[ext_resource type="Texture2D" uid="uid://b5jfcv0uem5wb" path="res://assets/sprites/background/multi3/back2.png" id="7_t03j1"]
+[ext_resource type="Texture2D" uid="uid://7joprmnjucj5" path="res://assets/sprites/background/multi3/moon2.png" id="8_jnuvr"]
+[ext_resource type="Texture2D" uid="uid://bl1rxkn33ywhl" path="res://assets/sprites/background/multi3/cloud.png" id="9_cm27f"]
+[ext_resource type="Texture2D" uid="uid://bc3luaoy48sp7" path="res://assets/sprites/background/multi3/bird.png" id="10_so6y4"]
+[ext_resource type="Texture2D" uid="uid://gvyrlttwr2dn" path="res://assets/sprites/background/multi3/people.png" id="11_jafoq"]
+[ext_resource type="Texture2D" uid="uid://c8ktpt687sgsd" path="res://assets/sprites/background/multi3/frontv2_1.png" id="12_wryaf"]
+[ext_resource type="Texture2D" uid="uid://b04fk8bnvxnu4" path="res://assets/sprites/bricks/yun2.png" id="13_qjghx"]
+[ext_resource type="Texture2D" uid="uid://c35jq1vqm5i2j" path="res://assets/sprites/background/v2/diaosu.png" id="14_6seiy"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2u2fg"]
+texture = ExtResource("1_iaw7s")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_mxlu6"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_2u2fg")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgpbi"]
+size = Vector2(64, 218)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x683w"]
+size = Vector2(63, 20)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_saw64"]
+texture = ExtResource("6_uvee1")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_8ptmr"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_saw64")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1w1r"]
+texture = ExtResource("13_qjghx")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_rxnwv"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_g1w1r")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_hhq60"]
+scenes/1/scene = ExtResource("5_vsbj0")
+
+[sub_resource type="TileSet" id="TileSet_bw8gf"]
+sources/0 = SubResource("TileSetScenesCollectionSource_hhq60")
+
+[node name="TestDestructables" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAIAAAAAAAEAAAABAAIAAAAAAAEAAAACAAIAAAAAAAEAAAADAAIAAAAAAAEAAAAEAAIAAAAAAAEAAAAFAAIAAAAAAAEAAAAGAAIAAAAAAAEAAAAHAAIAAAAAAAEAAAAIAAIAAAAAAAEAAAAJAAIAAAAAAAEAAAAKAAIAAAAAAAEAAAALAAIAAAAAAAEAAAAMAAIAAAAAAAEAAAANAAIAAAAAAAEAAAAOAAIAAAAAAAEAAAAPAAIAAAAAAAEAAAAQAAIAAAAAAAEAAAARAAIAAAAAAAEAAAASAAIAAAAAAAEAAAATAAIAAAAAAAEAAAAUAAIAAAAAAAEAAAAVAAIAAAAAAAEAAAAWAAIAAAAAAAEAAAAXAAIAAAAAAAEAAAAYAAIAAAAAAAEAAAAZAAIAAAAAAAEAAAAaAAIAAAAAAAEAAAAbAAIAAAAAAAEAAAAcAAIAAAAAAAEAAAAdAAIAAAAAAAEAAAAeAAIAAAAAAAEAAAAfAAIAAAAAAAEAAAAgAAIAAAAAAAEAAAAAAP7/AAAAAAEAAAABAP7/AAAAAAEAAAACAP7/AAAAAAEAAAADAP7/AAAAAAEAAAAEAP7/AAAAAAEAAAAFAP7/AAAAAAEAAAAGAP7/AAAAAAEAAAAHAP7/AAAAAAEAAAAIAP7/AAAAAAEAAAAJAP7/AAAAAAEAAAAKAP7/AAAAAAEAAAALAP7/AAAAAAEAAAAMAP7/AAAAAAEAAAANAP7/AAAAAAEAAAAOAP7/AAAAAAEAAAAPAP7/AAAAAAEAAAAQAP7/AAAAAAEAAAAFAPf/AAAAAAAAAAAFAPb/AAAAAAAAAAAFAPX/AAAAAAAAAAAFAPT/AAAAAAAAAAAFAPP/AAAAAAAAAAAFAPL/AAAAAAAAAAAFAPH/AAAAAAAAAAAFAPD/AAAAAAAAAAALAPf/AAAAAAAAAAALAPb/AAAAAAAAAAALAPX/AAAAAAAAAAALAPT/AAAAAAAAAAALAPP/AAAAAAAAAAALAPL/AAAAAAAAAAALAPH/AAAAAAAAAAALAPD/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_mxlu6")
+
+[node name="player_with_gravity" parent="." instance=ExtResource("2_mnfc1")]
+position = Vector2(68.6467, -154.792)
+collision_layer = 192
+
+[node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
+position = Vector2(1, 2)
+position_smoothing_enabled = true
+
+[node name="FallingBlockTgt5" parent="." node_paths=PackedStringArray("target", "detection") instance=ExtResource("4_xmsyl")]
+position = Vector2(138, -397)
+collision_layer = 65
+collision_mask = 3
+speed = 150.0
+invisible_before_launch = false
+target = NodePath("target")
+detection = NodePath("detection")
+should_reset = false
+acceleration = 100.0
+metadata/_edit_group_ = true
+
+[node name="target" type="Area2D" parent="FallingBlockTgt5"]
+position = Vector2(0, 696)
+
+[node name="detection" type="Area2D" parent="FallingBlockTgt5"]
+collision_layer = 0
+collision_mask = 129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingBlockTgt5/detection"]
+position = Vector2(0, 69)
+shape = SubResource("RectangleShape2D_sgpbi")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="FallingBlockTgt5"]
+tile_map_data = PackedByteArray("AAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAD+/wEAAgAAAAAAAQD//wEAAgAAAAAAAQAAAAEAAgAAAAAAAQABAAEAAgAAAAAAAQA=")
+tile_set = ExtResource("5_42tcg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingBlockTgt5"]
+position = Vector2(-0.35907, 20.5442)
+shape = SubResource("RectangleShape2D_x683w")
+
+[node name="destructibles" type="Node2D" parent="."]
+
+[node name="destruct-02" parent="destructibles" instance=ExtResource("5_vsbj0")]
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAPj/AAAAAAAAAAABAPj/AAABAAAAAAACAPj/AAABAAAAAAADAPj/AAABAAAAAAAEAPj/AAABAAAAAAAFAPj/AAABAAAAAAAGAPj/AAACAAAAAAA=")
+tile_set = SubResource("TileSet_8ptmr")
+
+[node name="backgroud" type="Node2D" parent="."]
+z_index = -2
+position = Vector2(64, 8)
+
+[node name="back" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/back"]
+position = Vector2(-179.325, -91)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_t03j1")
+centered = false
+
+[node name="moon" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.05, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/moon"]
+position = Vector2(-179, -45.22)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_jnuvr")
+centered = false
+
+[node name="cloud" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(859.12, 0)
+autoscroll = Vector2(16, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/cloud"]
+position = Vector2(-8, -52.445)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_cm27f")
+centered = false
+
+[node name="bird" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.15, 0)
+repeat_size = Vector2(768, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/bird"]
+position = Vector2(-68, -72)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("10_so6y4")
+centered = false
+
+[node name="people" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.2, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/people"]
+position = Vector2(-0.999992, -72)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("11_jafoq")
+centered = false
+
+[node name="front" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.3, 0)
+scroll_offset = Vector2(-10, -8.19)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/front"]
+position = Vector2(90, -40.545)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("12_wryaf")
+centered = false
+
+[node name="TileMapLayer3" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAHAPr/AAAAAAAAAAAIAPr/AAABAAAAAAAJAPr/AAABAAAAAAAKAPr/AAABAAAAAAALAPr/AAABAAAAAAAMAPr/AAABAAAAAAANAPr/AAACAAAAAAA=")
+tile_set = SubResource("TileSet_rxnwv")
+
+[node name="destruct-tiles" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAGAPL/AAAAAAAAAQAHAPL/AAAAAAAAAQAIAPL/AAAAAAAAAQAJAPL/AAAAAAAAAQAKAPL/AAAAAAAAAQAGAPP/AAAAAAAAAQAHAPP/AAAAAAAAAQAIAPP/AAAAAAAAAQAJAPP/AAAAAAAAAQAKAPP/AAAAAAAAAQAKAPf/AAAAAAAAAQAJAPf/AAAAAAAAAQAIAPf/AAAAAAAAAQAHAPf/AAAAAAAAAQAGAPf/AAAAAAAAAQAGAPT/AAAAAAAAAQAHAPT/AAAAAAAAAQAIAPT/AAAAAAAAAQAJAPT/AAAAAAAAAQAKAPT/AAAAAAAAAQAKAPX/AAAAAAAAAQAKAPb/AAAAAAAAAQAJAPb/AAAAAAAAAQAIAPb/AAAAAAAAAQAHAPb/AAAAAAAAAQAGAPb/AAAAAAAAAQAGAPX/AAAAAAAAAQAHAPX/AAAAAAAAAQAIAPX/AAAAAAAAAQAJAPX/AAAAAAAAAQA=")
+tile_set = SubResource("TileSet_bw8gf")
+
+[node name="diaosu" type="Sprite2D" parent="."]
+position = Vector2(33, -176)
+texture = ExtResource("14_6seiy")
+
+[connection signal="body_entered" from="FallingBlockTgt5/TileMapLayer/BlockTrap" to="FallingBlockTgt5/TileMapLayer/BlockTrap" method="_on_body_entered"]
+[connection signal="ready" from="FallingBlockTgt5/TileMapLayer/BlockTrap" to="FallingBlockTgt5/TileMapLayer/BlockTrap" method="_on_ready"]
+[connection signal="body_entered" from="FallingBlockTgt5/TileMapLayer/@Area2D@38377" to="FallingBlockTgt5/TileMapLayer/@Area2D@38377" method="_on_body_entered"]
+[connection signal="ready" from="FallingBlockTgt5/TileMapLayer/@Area2D@38377" to="FallingBlockTgt5/TileMapLayer/@Area2D@38377" method="_on_ready"]
+[connection signal="body_entered" from="FallingBlockTgt5/TileMapLayer/@Area2D@38378" to="FallingBlockTgt5/TileMapLayer/@Area2D@38378" method="_on_body_entered"]
+[connection signal="ready" from="FallingBlockTgt5/TileMapLayer/@Area2D@38378" to="FallingBlockTgt5/TileMapLayer/@Area2D@38378" method="_on_ready"]
+[connection signal="body_entered" from="FallingBlockTgt5/TileMapLayer/@Area2D@38379" to="FallingBlockTgt5/TileMapLayer/@Area2D@38379" method="_on_body_entered"]
+[connection signal="ready" from="FallingBlockTgt5/TileMapLayer/@Area2D@38379" to="FallingBlockTgt5/TileMapLayer/@Area2D@38379" method="_on_ready"]

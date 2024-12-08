@@ -1,0 +1,2285 @@
+[gd_scene load_steps=57 format=4 uid="uid://lw2yxxpp7ff3"]
+
+[ext_resource type="Script" path="res://scripts/dreams/chase_fake.gd" id="1_rebj1"]
+[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_vg46d"]
+[ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_87tsk"]
+[ext_resource type="Texture2D" uid="uid://c57fo0smy156u" path="res://assets/sprites/background/multi3/back.png" id="5_y3mqv"]
+[ext_resource type="Texture2D" uid="uid://7joprmnjucj5" path="res://assets/sprites/background/multi3/moon2.png" id="6_c21ui"]
+[ext_resource type="Texture2D" uid="uid://bl1rxkn33ywhl" path="res://assets/sprites/background/multi3/cloud.png" id="7_td67e"]
+[ext_resource type="Texture2D" uid="uid://bc3luaoy48sp7" path="res://assets/sprites/background/multi3/bird.png" id="8_dyw8i"]
+[ext_resource type="Texture2D" uid="uid://gvyrlttwr2dn" path="res://assets/sprites/background/multi3/people.png" id="9_kknbn"]
+[ext_resource type="Texture2D" uid="uid://d027a6hxvbtaj" path="res://assets/sprites/background/multi3/front4.png" id="10_bfrcg"]
+[ext_resource type="Texture2D" uid="uid://pv0iwkpm3tyv" path="res://assets/sprites/human/brick2.1.png" id="11_ivpvr"]
+[ext_resource type="PackedScene" uid="uid://bi3000vv4vu3x" path="res://scenes/sokoban/gravity_tile/gravity_down.tscn" id="12_2og20"]
+[ext_resource type="PackedScene" uid="uid://cootft3ha6veu" path="res://scenes/sokoban/gravity_tile/gravity_left.tscn" id="13_27g6y"]
+[ext_resource type="PackedScene" uid="uid://dlv4fqe1sg0dm" path="res://scenes/sokoban/gravity_tile/gravity_right.tscn" id="14_y1mvp"]
+[ext_resource type="PackedScene" uid="uid://bh3778qpcat7y" path="res://scenes/sokoban/gravity_tile/gravity_up.tscn" id="15_yo7sj"]
+[ext_resource type="PackedScene" uid="uid://mx3jx68fdgqm" path="res://scenes/modules/trap_tile/trap_down.tscn" id="16_ta7ms"]
+[ext_resource type="PackedScene" uid="uid://bgtv7blulem34" path="res://scenes/modules/trap_tile/trap_left.tscn" id="17_8iqpc"]
+[ext_resource type="PackedScene" uid="uid://6motl652kpn3" path="res://scenes/modules/trap_tile/trap_right.tscn" id="18_tgn15"]
+[ext_resource type="PackedScene" uid="uid://b67w4ct47vhpw" path="res://scenes/modules/trap_tile/trap_up.tscn" id="19_s7cd2"]
+[ext_resource type="PackedScene" uid="uid://ck4p24ug1b88b" path="res://scenes/sokoban/season-2-examples/qte_gravity_area.tscn" id="20_2qgil"]
+[ext_resource type="PackedScene" uid="uid://c8q6wa4cofe21" path="res://scenes/modules/traps/falling_trap_tgt.tscn" id="21_e55bb"]
+[ext_resource type="PackedScene" uid="uid://kfdbq76ixwrq" path="res://scenes/modules/checkpoints/save_point.tscn" id="22_o5wmi"]
+[ext_resource type="PackedScene" uid="uid://uameo0xhgfwd" path="res://scenes/sokoban/destruct_obj.tscn" id="23_lyvma"]
+[ext_resource type="PackedScene" uid="uid://b6pq8l7ym5nuh" path="res://scenes/modules/checkpoints/teleport.tscn" id="24_u3jgo"]
+[ext_resource type="PackedScene" uid="uid://cv3nrtrevxkyu" path="res://scenes/sokoban/gravity_1.tscn" id="25_7ig1b"]
+[ext_resource type="PackedScene" uid="uid://cwkmgqe4mxp28" path="res://scenes/modules/platforms_new/move_platform.tscn" id="26_avxul"]
+[ext_resource type="PackedScene" uid="uid://bvruyxf2kytoc" path="res://scenes/modules/platforms_new/platform.tscn" id="27_35gsb"]
+[ext_resource type="PackedScene" uid="uid://d0rdt0oel663m" path="res://scenes/modules/platforms_new/blink_platform.tscn" id="28_hvg2a"]
+[ext_resource type="PackedScene" uid="uid://qpnvkhf0vtv1" path="res://scenes/modules/platforms_new/unvisible_platform.tscn" id="29_klp16"]
+[ext_resource type="PackedScene" uid="uid://burxykvkyw21f" path="res://scenes/modules/v2/falling_block_tgt.tscn" id="30_d1ceq"]
+[ext_resource type="TileSet" uid="uid://eahum84lpc4q" path="res://tiles/cave.tres" id="31_7mbra"]
+[ext_resource type="PackedScene" uid="uid://c5x12p3650b3l" path="res://scenes/player/npc.tscn" id="32_ljlfb"]
+[ext_resource type="Script" path="res://scripts/camera_area.gd" id="32_o5jts"]
+[ext_resource type="PackedScene" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="33_whj8i"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52wgx"]
+texture = ExtResource("11_ivpvr")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_csel4"]
+resource_name = "gravity"
+scenes/1/scene = ExtResource("12_2og20")
+scenes/2/scene = ExtResource("13_27g6y")
+scenes/3/scene = ExtResource("14_y1mvp")
+scenes/4/scene = ExtResource("15_yo7sj")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6c7m3"]
+resource_name = "trap"
+scenes/1/scene = ExtResource("16_ta7ms")
+scenes/2/scene = ExtResource("17_8iqpc")
+scenes/3/scene = ExtResource("18_tgn15")
+scenes/4/scene = ExtResource("19_s7cd2")
+
+[sub_resource type="TileSet" id="TileSet_kxh03"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_52wgx")
+sources/2 = SubResource("TileSetScenesCollectionSource_6c7m3")
+sources/1 = SubResource("TileSetScenesCollectionSource_csel4")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7yvb7"]
+size = Vector2(64, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdd1t"]
+size = Vector2(57, 15.25)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ogih7"]
+texture = ExtResource("11_ivpvr")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_m3qmj"]
+scenes/1/scene = ExtResource("18_tgn15")
+scenes/2/scene = ExtResource("16_ta7ms")
+scenes/3/scene = ExtResource("17_8iqpc")
+scenes/4/scene = ExtResource("19_s7cd2")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ix5gx"]
+scenes/1/scene = ExtResource("12_2og20")
+scenes/2/scene = ExtResource("13_27g6y")
+scenes/3/scene = ExtResource("14_y1mvp")
+scenes/4/scene = ExtResource("15_yo7sj")
+
+[sub_resource type="TileSet" id="TileSet_1sow4"]
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetScenesCollectionSource_m3qmj")
+sources/0 = SubResource("TileSetAtlasSource_ogih7")
+sources/2 = SubResource("TileSetScenesCollectionSource_ix5gx")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omrw1"]
+size = Vector2(57, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mux5l"]
+size = Vector2(64, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xk0f5"]
+size = Vector2(20, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdwis"]
+size = Vector2(64, 218)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgl4p"]
+size = Vector2(63, 20)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yjrfp"]
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ktcvm"]
+sources/0 = SubResource("TileSetAtlasSource_yjrfp")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22xq7"]
+size = Vector2(690.548, 270)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7w6oq"]
+size = Vector2(690.668, 270)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uw4hd"]
+size = Vector2(2832, 375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vbsu"]
+size = Vector2(2832, 375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4tf2"]
+size = Vector2(480, 1103)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wh8f5"]
+size = Vector2(480, 832)
+
+[node name="Chase" type="Node2D" groups=["scan_lines"]]
+script = ExtResource("1_rebj1")
+
+[node name="player_with_gravity" parent="." groups=["player"] instance=ExtResource("2_vg46d")]
+position = Vector2(382.616, -78.0061)
+
+[node name="Camera2D" type="Camera2D" parent="player_with_gravity" groups=["camera"]]
+position = Vector2(3.05176e-05, 0)
+process_callback = 0
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_left_margin = 0.1
+drag_right_margin = 0.1
+script = ExtResource("3_87tsk")
+
+[node name="backgroud" type="Node2D" parent="."]
+z_index = -2
+position = Vector2(64, 8)
+
+[node name="back" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/back"]
+position = Vector2(-179.325, -91)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_y3mqv")
+centered = false
+
+[node name="moon" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.05, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/moon"]
+position = Vector2(-179, -45.22)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_c21ui")
+centered = false
+
+[node name="cloud" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(859.12, 0)
+autoscroll = Vector2(16, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/cloud"]
+position = Vector2(-8, -52.445)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_td67e")
+centered = false
+
+[node name="bird" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.15, 0)
+repeat_size = Vector2(768, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/bird"]
+position = Vector2(-68, -72)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_dyw8i")
+centered = false
+
+[node name="people" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.2, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/people"]
+position = Vector2(-0.999992, -72)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_kknbn")
+centered = false
+
+[node name="front" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.3, 0)
+scroll_offset = Vector2(-10, -8)
+repeat_size = Vector2(768, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/front"]
+position = Vector2(90, -40.545)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("10_bfrcg")
+centered = false
+
+[node name="maps" type="Node2D" parent="."]
+
+[node name="map1" type="Node2D" parent="maps"]
+position = Vector2(288, -256)
+
+[node name="map" type="TileMapLayer" parent="maps/map1"]
+use_parent_material = true
+tile_map_data = PackedByteArray("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AABVABAAAAAAAAAAAABWABAAAAAAAAAAAABXABAAAAAAAAAAAABYABAAAAAAAAAAAABZABAAAAAAAAAAAAA6AA8AAgAAAAAABAA7AA8AAgAAAAAABAA8AA8AAgAAAAAABAA9AA8AAgAAAAAABAA+AA8AAgAAAAAABAA/AA8AAgAAAAAABABAAA8AAgAAAAAABABBAA8AAgAAAAAABABCAA8AAgAAAAAABABDAA8AAgAAAAAABABEAA8AAgAAAAAABABFAA8AAgAAAAAABABGAA8AAgAAAAAABABHAA8AAgAAAAAABABIAA8AAgAAAAAABABJAA8AAgAAAAAABABKAA8AAgAAAAAABABLAA8AAgAAAAAABABMAA8AAgAAAAAABABNAA8AAgAAAAAABABOAA8AAgAAAAAABABPAA8AAgAAAAAABABQAA8AAgAAAAAABABRAA8AAgAAAAAABABSAA8AAgAAAAAABABTAA8AAgAAAAAABABUAA8AAgAAAAAABABVAA8AAgAAAAAABABWAA8AAgAAAAAABABXAA8AAgAAAAAABABYAA8AAgAAAAAABABaABAAAAAAAAAAAABbABAAAAAAAAAAAABcABAAAAAAAAAAAABdABAAAAAAAAAAAABeABAAAAAAAAAAAABfABAAAAAAAAAAAABgABAAAAAAAAAAAABhABAAAAAAAAAAAABiABAAAAAAAAAAAABjABAAAAAAAAAAAABkABAAAAAAAAAAAABlABAAAAAAAAAAAABmABAAAAAAAAAAAABnABAAAAAAAAAAAABoABAAAAAAAAAAAABpABAAAAAAAAAAAABqABAAAAAAAAAAAABrABAAAAAAAAAAAABsABAAAAAAAAAAAABtABAAAAAAAAAAAABuABAAAAAAAAAAAABvABAAAAAAAAAAAABwABAAAAAAAAAAAABxABAAAAAAAAAAAAByABAAAAAAAAAAAABzABAAAAAAAAAAAAB0ABAAAAAAAAAAAABZAA8AAgAAAAAABABaAA8AAgAAAAAABABbAA8AAgAAAAAABABcAA8AAgAAAAAABABdAA8AAgAAAAAABABeAA8AAgAAAAAABABfAA8AAgAAAAAABABgAA8AAgAAAAAABABhAA8AAgAAAAAABABiAA8AAgAAAAAABABjAA8AAgAAAAAABABkAA8AAgAAAAAABABlAA8AAgAAAAAABABmAA8AAgAAAAAABABnAA8AAgAAAAAABABoAA8AAgAAAAAABABpAA8AAgAAAAAABABqAA8AAgAAAAAABABrAA8AAgAAAAAABABsAA8AAgAAAAAABABtAA8AAgAAAAAABABuAA8AAgAAAAAABABvAA8AAgAAAAAABABwAA8AAgAAAAAABABxAA8AAgAAAAAABAByAA8AAgAAAAAABABzAA8AAgAAAAAABAB0AA8AAgAAAAAABAA=")
+tile_set = SubResource("TileSet_kxh03")
+
+[node name="qte" type="Node2D" parent="maps/map1"]
+position = Vector2(-464, 256)
+
+[node name="qte_gravity_area4" parent="maps/map1/qte" instance=ExtResource("20_2qgil")]
+position = Vector2(1072, -104)
+
+[node name="qte_gravity_area5" parent="maps/map1/qte" instance=ExtResource("20_2qgil")]
+position = Vector2(1280, -104)
+
+[node name="fire" type="Node2D" parent="maps/map1"]
+position = Vector2(264, 8)
+
+[node name="FallingTrapTgt2" parent="maps/map1/fire" node_paths=PackedStringArray("target", "detection") instance=ExtResource("21_e55bb")]
+position = Vector2(3.66644, -1.8795)
+target = NodePath("../target")
+detection = NodePath("../detection")
+
+[node name="target" type="Area2D" parent="maps/map1/fire"]
+position = Vector2(1.27643, 246.12)
+
+[node name="detection" type="Area2D" parent="maps/map1/fire"]
+position = Vector2(3.66644, 94.1205)
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map1/fire/detection"]
+shape = SubResource("RectangleShape2D_7yvb7")
+
+[node name="fire3" type="Node2D" parent="maps/map1"]
+position = Vector2(608, 0)
+
+[node name="FallingTrapTgt2" parent="maps/map1/fire3" node_paths=PackedStringArray("target", "detection") instance=ExtResource("21_e55bb")]
+position = Vector2(3.66644, -1.8795)
+target = NodePath("../target")
+detection = NodePath("../detection")
+
+[node name="target" type="Area2D" parent="maps/map1/fire3"]
+position = Vector2(1.27643, 246.12)
+
+[node name="detection" type="Area2D" parent="maps/map1/fire3"]
+position = Vector2(3.66644, 94.1205)
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map1/fire3/detection"]
+shape = SubResource("RectangleShape2D_7yvb7")
+
+[node name="fire2" type="Node2D" parent="maps/map1"]
+position = Vector2(512, -8)
+
+[node name="FallingTrapTgt2" parent="maps/map1/fire2" node_paths=PackedStringArray("target", "detection") instance=ExtResource("21_e55bb")]
+position = Vector2(3.66644, -1.8795)
+target = NodePath("../target")
+detection = NodePath("../detection")
+
+[node name="target" type="Area2D" parent="maps/map1/fire2"]
+position = Vector2(1.27643, 246.12)
+
+[node name="detection" type="Area2D" parent="maps/map1/fire2"]
+position = Vector2(-104, 96)
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map1/fire2/detection"]
+shape = SubResource("RectangleShape2D_7yvb7")
+
+[node name="fire4" type="Node2D" parent="maps/map1"]
+position = Vector2(808, 0)
+
+[node name="FallingTrapTgt2" parent="maps/map1/fire4" node_paths=PackedStringArray("target", "detection") instance=ExtResource("21_e55bb")]
+position = Vector2(7.99994, 256)
+target = NodePath("../target")
+detection = NodePath("../detection")
+
+[node name="target" type="Area2D" parent="maps/map1/fire4"]
+position = Vector2(6.10352e-05, -16)
+
+[node name="detection" type="Area2D" parent="maps/map1/fire4"]
+position = Vector2(3.66644, 94.1205)
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map1/fire4/detection"]
+shape = SubResource("RectangleShape2D_7yvb7")
+
+[node name="save_point_3" parent="maps/map1" instance=ExtResource("22_o5wmi")]
+position = Vector2(216, 184)
+
+[node name="destructibles" type="Node2D" parent="maps/map1"]
+position = Vector2(-222, 98)
+
+[node name="destruct-01" type="Node2D" parent="maps/map1/destructibles"]
+position = Vector2(319, 116)
+
+[node name="destruct-obj-01" parent="maps/map1/destructibles/destruct-01" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map1/destructibles/destruct-01"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map1/destructibles/destruct-01/Trigger"]
+shape = SubResource("RectangleShape2D_vdd1t")
+
+[node name="destruct-02" type="Node2D" parent="maps/map1/destructibles"]
+position = Vector2(432, 101)
+
+[node name="destruct-obj-01" parent="maps/map1/destructibles/destruct-02" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map1/destructibles/destruct-02"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map1/destructibles/destruct-02/Trigger"]
+shape = SubResource("RectangleShape2D_vdd1t")
+
+[node name="destruct-03" type="Node2D" parent="maps/map1/destructibles"]
+position = Vector2(544, 101)
+
+[node name="destruct-obj-01" parent="maps/map1/destructibles/destruct-03" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map1/destructibles/destruct-03"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map1/destructibles/destruct-03/Trigger"]
+shape = SubResource("RectangleShape2D_vdd1t")
+
+[node name="destruct-04" type="Node2D" parent="maps/map1/destructibles"]
+position = Vector2(632, 69)
+
+[node name="destruct-obj-01" parent="maps/map1/destructibles/destruct-04" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map1/destructibles/destruct-04"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map1/destructibles/destruct-04/Trigger"]
+shape = SubResource("RectangleShape2D_vdd1t")
+
+[node name="destruct-05" type="Node2D" parent="maps/map1/destructibles"]
+position = Vector2(735, 116)
+
+[node name="destruct-obj-01" parent="maps/map1/destructibles/destruct-05" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map1/destructibles/destruct-05"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map1/destructibles/destruct-05/Trigger"]
+shape = SubResource("RectangleShape2D_vdd1t")
+
+[node name="destruct-06" type="Node2D" parent="maps/map1/destructibles"]
+position = Vector2(960, 116)
+
+[node name="destruct-obj-01" parent="maps/map1/destructibles/destruct-06" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map1/destructibles/destruct-06"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map1/destructibles/destruct-06/Trigger"]
+shape = SubResource("RectangleShape2D_vdd1t")
+
+[node name="destruct-07" type="Node2D" parent="maps/map1/destructibles"]
+position = Vector2(1184, 116)
+
+[node name="destruct-obj-01" parent="maps/map1/destructibles/destruct-07" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map1/destructibles/destruct-07"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map1/destructibles/destruct-07/Trigger"]
+shape = SubResource("RectangleShape2D_vdd1t")
+
+[node name="map2" type="Node2D" parent="maps"]
+position = Vector2(1448, 16)
+
+[node name="tile" type="TileMapLayer" parent="maps/map2"]
+position = Vector2(-912, -16)
+tile_map_data = PackedByteArray("AAA/AP//AQAAAAAABABAAP//AQAAAAAABAA9AP//AQAAAAAABAA+AP//AQAAAAAABABBAP//AQAAAAAABABCAP//AQAAAAAABABDAP//AQAAAAAABABEAP//AQAAAAAABABFAP//AQAAAAAABABGAP//AQAAAAAABABHAP//AQAAAAAABABIAP//AQAAAAAABABJAP//AQAAAAAABABKAP//AQAAAAAABABLAP//AQAAAAAABABMAP//AQAAAAAABABNAP//AQAAAAAABABOAP//AQAAAAAABABPAP//AQAAAAAABABQAP//AQAAAAAABABRAP//AQAAAAAABABSAP//AQAAAAAABABTAP//AQAAAAAABAA6AAAAAAAAAAAAAAA7AAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA9AAAAAAAAAAAAAAA+AAAAAAAAAAAAAAA/AAAAAAAAAAAAAABAAAAAAAAAAAAAAABBAAAAAAAAAAAAAABCAAAAAAAAAAAAAABDAAAAAAAAAAAAAABEAAAAAAAAAAAAAABFAAAAAAAAAAAAAABGAAAAAAAAAAAAAABHAAAAAAAAAAAAAABIAAAAAAAAAAAAAABJAAAAAAAAAAAAAABKAAAAAAAAAAAAAABLAAAAAAAAAAAAAABMAAAAAAAAAAAAAABNAAAAAAAAAAAAAABOAAAAAAAAAAAAAABPAAAAAAAAAAAAAABQAAAAAAAAAAAAAABRAAAAAAAAAAAAAABSAAAAAAAAAAAAAABTAAAAAAAAAAAAAABUAAAAAAAAAAAAAABVAAAAAAAAAAAAAABWAAAAAAAAAAAAAABXAAAAAAAAAAAAAABYAAAAAAAAAAAAAABZAAAAAAAAAAAAAABaAAAAAAAAAAAAAABbAAAAAAAAAAAAAABcAAAAAAAAAAAAAABdAAAAAAAAAAAAAABeAAAAAAAAAAAAAABfAAAAAAAAAAAAAABgAAAAAAAAAAAAAABhAAAAAAAAAAAAAABiAAAAAAAAAAAAAABjAAAAAAAAAAAAAABkAAAAAAAAAAAAAABlAAAAAAAAAAAAAABmAAAAAAAAAAAAAABnAAAAAAAAAAAAAABoAAAAAAAAAAAAAABpAAAAAAAAAAAAAABqAAAAAAAAAAAAAABrAAAAAAAAAAAAAABsAAAAAAAAAAAAAABtAAAAAAAAAAAAAABuAAAAAAAAAAAAAABvAAAAAAAAAAAAAABwAAAAAAAAAAAAAABxAAAAAAAAAAAAAAByAAAAAAAAAAAAAABzAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAB1AAAAAAAAAAAAAAB2AAAAAAAAAAAAAAB3AAAAAAAAAAAAAAB4AAAAAAAAAAAAAAB5AAAAAAAAAAAAAAB6AAAAAAAAAAAAAAB7AAAAAAAAAAAAAAB8AAAAAAAAAAAAAAB9AAAAAAAAAAAAAAB+AAAAAAAAAAAAAAB/AAAAAAAAAAAAAACAAAAAAAAAAAAAAACBAAAAAAAAAAAAAACCAAAAAAAAAAAAAACDAAAAAAAAAAAAAACEAAAAAAAAAAAAAACFAAAAAAAAAAAAAACGAAAAAAAAAAAAAACHAAAAAAAAAAAAAACIAAAAAAAAAAAAAACJAAAAAAAAAAAAAACKAAAAAAAAAAAAAACLAAAAAAAAAAAAAACMAAAAAAAAAAAAAACNAAAAAAAAAAAAAACOAAAAAAAAAAAAAACPAAAAAAAAAAAAAACQAAAAAAAAAAAAAACRAAAAAAAAAAAAAACSAAAAAAAAAAAAAACTAAAAAAAAAAAAAACUAAAAAAAAAAAAAACVAAAAAAAAAAAAAACWAAAAAAAAAAAAAACXAAAAAAAAAAAAAACYAAAAAAAAAAAAAACZAAAAAAAAAAAAAACaAAAAAAAAAAAAAACbAAAAAAAAAAAAAACcAAAAAAAAAAAAAACdAAAAAAAAAAAAAACeAAAAAAAAAAAAAACfAAAAAAAAAAAAAACgAAAAAAAAAAAAAAChAAAAAAAAAAAAAACiAAAAAAAAAAAAAACjAAAAAAAAAAAAAACkAAAAAAAAAAAAAAClAAAAAAAAAAAAAACmAAAAAAAAAAAAAACnAAAAAAAAAAAAAACoAAAAAAAAAAAAAACpAAAAAAAAAAAAAACqAAAAAAAAAAAAAACrAAAAAAAAAAAAAAA8APf/AAAAAAAAAAA9APf/AAAAAAAAAAA+APf/AAAAAAAAAAA8APj/AAAAAAAAAAA8APn/AAAAAAAAAAA8APr/AAAAAAAAAAA8APv/AAAAAAAAAAA8APz/AAAAAAAAAABUAP//AAAAAAAAAABUAPz/AAAAAAAAAABUAP3/AAAAAAAAAABUAP7/AAAAAAAAAABUAPv/AAAAAAAAAABUAPj/AAAAAAAAAABUAPn/AAAAAAAAAABUAPr/AAAAAAAAAABTAPf/AQAAAAAAAwBUAPf/AAAAAAAAAABJAPT/AAAAAAAAAABKAPT/AAAAAAAAAABFAPD/AAAAAAAAAABGAPD/AAAAAAAAAABHAPD/AAAAAAAAAABIAPD/AAAAAAAAAABJAPD/AAAAAAAAAABKAPD/AAAAAAAAAAA/APf/AAAAAAAAAABFAPn/AAAAAAAAAABGAPn/AAAAAAAAAABHAPn/AAAAAAAAAABIAPn/AAAAAAAAAABJAPn/AAAAAAAAAABKAPn/AAAAAAAAAABLAPn/AAAAAAAAAABMAPn/AAAAAAAAAABFAPj/AAAAAAAAAABFAPf/AAAAAAAAAABFAPb/AAAAAAAAAABFAPX/AAAAAAAAAABFAPT/AAAAAAAAAABNAPn/AAAAAAAAAABOAPn/AAAAAAAAAABIAPT/AAAAAAAAAABFAPP/AAAAAAAAAABFAPL/AAAAAAAAAABFAPH/AAAAAAAAAABSAPD/AAAAAAAAAABSAPT/AAAAAAAAAABTAPD/AAAAAAAAAABTAPT/AAAAAAAAAABTAPX/AQAAAAAAAwBTAPb/AQAAAAAAAwBUAPD/AAAAAAAAAABUAPT/AAAAAAAAAABUAPX/AAAAAAAAAABUAPb/AAAAAAAAAABLAPD/AAAAAAAAAABMAPD/AAAAAAAAAABNAPD/AAAAAAAAAABOAPD/AAAAAAAAAABPAPD/AAAAAAAAAABQAPD/AAAAAAAAAABRAPD/AAAAAAAAAABRAPT/AAAAAAAAAABQAPT/AAAAAAAAAABPAPT/AAAAAAAAAABOAPT/AAAAAAAAAABNAPT/AAAAAAAAAABMAPT/AAAAAAAAAABLAPT/AAAAAAAAAABKAPH/AQAAAAAAAgBLAPH/AQAAAAAAAgBPAPP/AQAAAAAABABQAPP/AQAAAAAABABEAPH/AQAAAAAAAwBEAPL/AQAAAAAAAwBEAPP/AQAAAAAAAwBEAPT/AQAAAAAAAwBEAPX/AQAAAAAAAwBEAPb/AQAAAAAAAwBEAPf/AQAAAAAAAwBVAPT/AAAAAAAAAABWAPT/AAAAAAAAAABXAPT/AAAAAAAAAABYAPT/AAAAAAAAAABZAPT/AAAAAAAAAABaAPT/AAAAAAAAAABbAPT/AAAAAAAAAABxAPn/AAAAAAAAAABxAPj/AAAAAAAAAABxAPf/AAAAAAAAAABxAPb/AAAAAAAAAABxAPX/AAAAAAAAAABxAPT/AAAAAAAAAABxAPP/AAAAAAAAAABxAPL/AAAAAAAAAABxAPH/AAAAAAAAAABcAPT/AAAAAAAAAABdAPT/AAAAAAAAAABeAPT/AAAAAAAAAABfAPT/AAAAAAAAAABgAPT/AAAAAAAAAABhAPT/AAAAAAAAAABiAPT/AAAAAAAAAABjAPT/AAAAAAAAAABkAPT/AAAAAAAAAABlAPT/AAAAAAAAAABmAPT/AAAAAAAAAABnAPT/AAAAAAAAAABoAPT/AAAAAAAAAABpAPT/AAAAAAAAAABqAPT/AAAAAAAAAABrAPT/AAAAAAAAAABsAPT/AAAAAAAAAABZAPn/AAAAAAAAAABaAPn/AAAAAAAAAABbAPn/AAAAAAAAAABcAPn/AAAAAAAAAABdAPn/AAAAAAAAAABeAPn/AAAAAAAAAABfAPn/AAAAAAAAAABgAPn/AAAAAAAAAABhAPn/AAAAAAAAAABiAPn/AAAAAAAAAABjAPn/AAAAAAAAAABkAPn/AAAAAAAAAABlAPn/AAAAAAAAAABmAPn/AAAAAAAAAABnAPn/AAAAAAAAAABoAPn/AAAAAAAAAABpAPn/AAAAAAAAAABqAPn/AAAAAAAAAABrAPn/AAAAAAAAAABsAPn/AAAAAAAAAABtAPn/AAAAAAAAAABuAPn/AAAAAAAAAABvAPn/AAAAAAAAAABwAPn/AAAAAAAAAAB6AP//AQAAAAAABAB7AP//AQAAAAAABAB8AP//AQAAAAAABAB9AP//AQAAAAAABAB+AP//AQAAAAAABAB/AP//AQAAAAAABACAAP//AQAAAAAABACBAP//AQAAAAAABACCAP//AQAAAAAABACDAP//AQAAAAAABACEAP//AQAAAAAABACFAP//AQAAAAAABACGAP//AQAAAAAABACHAP//AQAAAAAABACIAP//AQAAAAAABACJAP//AQAAAAAABACKAP//AQAAAAAABACLAP//AQAAAAAABACMAP//AQAAAAAABACNAP//AQAAAAAABACQAP//AQAAAAAABACRAP//AQAAAAAABACSAP//AQAAAAAABACTAP//AQAAAAAABACUAP//AQAAAAAABACVAP//AQAAAAAABACWAP//AQAAAAAABACXAP//AQAAAAAABACYAP//AQAAAAAABACZAP//AQAAAAAABACaAP//AQAAAAAABACbAP//AQAAAAAABACcAP//AQAAAAAABACdAP//AQAAAAAABACeAP//AQAAAAAABACfAP//AQAAAAAABACgAP//AQAAAAAABAChAP//AQAAAAAABACiAP//AQAAAAAABACjAP//AQAAAAAABACkAP//AQAAAAAABAClAP//AQAAAAAABACmAP//AQAAAAAABACnAP//AQAAAAAABACoAP//AQAAAAAABACpAP//AQAAAAAABACqAP//AQAAAAAABACrAP//AQAAAAAABACPAP//AQAAAAAABABxAPD/AAAAAAAAAAA8AP//AAAAAAAAAAA8AP7/AAAAAAAAAAA8AP3/AAAAAAAAAABVAPD/AAAAAAAAAABWAPD/AAAAAAAAAABXAPD/AAAAAAAAAABYAPD/AAAAAAAAAABZAPD/AAAAAAAAAABaAPD/AAAAAAAAAABbAPD/AAAAAAAAAABcAPD/AAAAAAAAAABdAPD/AAAAAAAAAABeAPD/AAAAAAAAAABfAPD/AAAAAAAAAABgAPD/AAAAAAAAAABhAPD/AAAAAAAAAABiAPD/AAAAAAAAAABjAPD/AAAAAAAAAABkAPD/AAAAAAAAAABlAPD/AAAAAAAAAABmAPD/AAAAAAAAAABnAPD/AAAAAAAAAABoAPD/AAAAAAAAAABpAPD/AAAAAAAAAABqAPD/AAAAAAAAAABrAPD/AAAAAAAAAABsAPD/AAAAAAAAAABtAPD/AAAAAAAAAABuAPD/AAAAAAAAAABvAPD/AAAAAAAAAABwAPD/AAAAAAAAAACOAP//AQAAAAAABACSAPr/AAAAAAAAAACSAPn/AAAAAAAAAACSAPj/AAAAAAAAAACSAPf/AAAAAAAAAACSAPb/AAAAAAAAAACSAPX/AAAAAAAAAACSAPT/AAAAAAAAAACSAPP/AAAAAAAAAACSAPL/AAAAAAAAAACSAPH/AAAAAAAAAACSAPD/AAAAAAAAAACSAO//AAAAAAAAAACSAO7/AAAAAAAAAACRAPr/AgAAAAAAAwCRAPn/AgAAAAAAAwCRAPj/AgAAAAAAAwCRAPf/AgAAAAAAAwCRAPb/AgAAAAAAAwCRAPX/AgAAAAAAAwCRAPT/AgAAAAAAAwCRAPP/AgAAAAAAAwCRAPL/AgAAAAAAAwCRAPH/AgAAAAAAAwCRAPD/AgAAAAAAAwCRAO//AgAAAAAAAwCRAO7/AgAAAAAAAwCRAO3/AgAAAAAAAwCTAO7/AAAAAAAAAACUAO7/AAAAAAAAAACVAO7/AAAAAAAAAACZAO7/AAAAAAAAAACaAO7/AAAAAAAAAACbAO7/AAAAAAAAAACcAO7/AAAAAAAAAACdAO7/AAAAAAAAAACsAAAAAAAAAAAAAACtAAAAAAAAAAAAAACuAAAAAAAAAAAAAACvAAAAAAAAAAAAAACwAAAAAAAAAAAAAACxAAAAAAAAAAAAAACyAAAAAAAAAAAAAACzAAAAAAAAAAAAAAC0AAAAAAAAAAAAAAC1AAAAAAAAAAAAAAC2AAAAAAAAAAAAAAC3AAAAAAAAAAAAAAC4AAAAAAAAAAAAAAC5AAAAAAAAAAAAAAC6AAAAAAAAAAAAAAC7AAAAAAAAAAAAAAC8AAAAAAAAAAAAAAC9AAAAAAAAAAAAAAC+AAAAAAAAAAAAAAC/AAAAAAAAAAAAAADAAAAAAAAAAAAAAADBAAAAAAAAAAAAAADCAAAAAAAAAAAAAADDAAAAAAAAAAAAAADEAAAAAAAAAAAAAADFAAAAAAAAAAAAAADGAAAAAAAAAAAAAADHAAAAAAAAAAAAAADIAAAAAAAAAAAAAADJAAAAAAAAAAAAAADKAAAAAAAAAAAAAADLAAAAAAAAAAAAAADMAAAAAAAAAAAAAADNAAAAAAAAAAAAAADOAAAAAAAAAAAAAADPAAAAAAAAAAAAAADQAAAAAAAAAAAAAADRAAAAAAAAAAAAAADSAAAAAAAAAAAAAADTAAAAAAAAAAAAAADUAAAAAAAAAAAAAADVAAAAAAAAAAAAAADWAAAAAAAAAAAAAADXAAAAAAAAAAAAAADYAAAAAAAAAAAAAADZAAAAAAAAAAAAAADaAAAAAAAAAAAAAADbAAAAAAAAAAAAAADcAAAAAAAAAAAAAADdAAAAAAAAAAAAAADeAAAAAAAAAAAAAADfAAAAAAAAAAAAAADgAAAAAAAAAAAAAADhAAAAAAAAAAAAAACsAP//AQAAAAAABACtAP//AQAAAAAABACuAP//AQAAAAAABACvAP//AQAAAAAABACwAP//AQAAAAAABACxAP//AQAAAAAABACyAP//AQAAAAAABACzAP//AQAAAAAABAC0AP//AQAAAAAABAC1AP//AQAAAAAABAC2AP//AQAAAAAABAC3AP//AQAAAAAABAC4AP//AQAAAAAABAC5AP//AQAAAAAABAC6AP//AQAAAAAABAC7AP//AQAAAAAABAC8AP//AQAAAAAABAC9AP//AQAAAAAABAC+AP//AQAAAAAABAC/AP//AQAAAAAABADAAP//AQAAAAAABADBAP//AQAAAAAABADCAP//AQAAAAAABADDAP//AQAAAAAABADEAP//AQAAAAAABADFAP//AQAAAAAABADGAP//AQAAAAAABADHAP//AQAAAAAABADIAP//AQAAAAAABADJAP//AQAAAAAABADKAP//AQAAAAAABADLAP//AQAAAAAABADMAP//AQAAAAAABADNAP//AQAAAAAABADOAP//AQAAAAAABADPAP//AQAAAAAABADQAP//AQAAAAAABADRAP//AQAAAAAABADSAP//AQAAAAAABADTAP//AQAAAAAABADUAP//AQAAAAAABADVAP//AQAAAAAABADWAP//AQAAAAAABADXAP//AQAAAAAABADYAP//AQAAAAAABADZAP//AQAAAAAABADaAP//AQAAAAAABADbAP//AQAAAAAABADcAP//AQAAAAAABADdAP//AQAAAAAABADeAP//AQAAAAAABADfAP//AQAAAAAABADgAP//AQAAAAAABADhAP//AQAAAAAABACjAO7/AAAAAAAAAACkAO7/AAAAAAAAAAClAO7/AAAAAAAAAACmAO7/AAAAAAAAAACnAO7/AAAAAAAAAACoAO7/AAAAAAAAAACpAO7/AAAAAAAAAACqAO7/AAAAAAAAAACvAO7/AAAAAAAAAACwAO7/AAAAAAAAAACxAO7/AAAAAAAAAACiAO7/AAAAAAAAAACiAO//AgAAAAAABACjAO//AgAAAAAABAClAPL/AAAAAAAAAACmAPL/AAAAAAAAAACnAPL/AAAAAAAAAACoAPL/AAAAAAAAAACpAPL/AAAAAAAAAACqAPL/AAAAAAAAAACrAPL/AAAAAAAAAAClAPP/AQAAAAAAAgCmAPP/AQAAAAAAAgCnAPP/AQAAAAAAAgCoAPP/AQAAAAAA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")
+tile_set = SubResource("TileSet_1sow4")
+
+[node name="save_point_0" parent="maps/map2" instance=ExtResource("22_o5wmi")]
+position = Vector2(80, -168)
+
+[node name="save_point_1" parent="maps/map2" instance=ExtResource("22_o5wmi")]
+position = Vector2(952, -24)
+
+[node name="save_point_3" parent="maps/map2" instance=ExtResource("22_o5wmi")]
+position = Vector2(2104, -288)
+
+[node name="save_point_2" parent="maps/map2" instance=ExtResource("22_o5wmi")]
+position = Vector2(3160, -127)
+
+[node name="teleport" parent="maps/map2" instance=ExtResource("24_u3jgo")]
+position = Vector2(3704, -1104)
+
+[node name="gravity" type="Node2D" parent="maps/map2"]
+position = Vector2(-960, -16)
+
+[node name="gravity" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(992, 0)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity2" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(992, -32)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity3" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(992, -64)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity4" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(992, -96)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity5" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(992, -128)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity6" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(1184, -128)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity7" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(1184, -160)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity8" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(1184, -192)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity9" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(1184, -224)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity21" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(1312, -224)
+
+[node name="gravity35" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(1344, -224)
+
+[node name="gravity14" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(1264, -96)
+
+[node name="gravity27" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(1232, -96)
+
+[node name="gravity28" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(1200, -96)
+
+[node name="gravity24" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(1296, -96)
+
+[node name="gravity25" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(1328, -96)
+
+[node name="gravity26" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(1360, -96)
+
+[node name="gravity29" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(1264, -64)
+
+[node name="gravity30" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(1232, -64)
+
+[node name="gravity31" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(1200, -64)
+
+[node name="gravity37" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(1168, -96)
+
+[node name="gravity38" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(1168, -64)
+
+[node name="gravity32" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(1296, -64)
+
+[node name="gravity33" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(1328, -64)
+
+[node name="gravity34" parent="maps/map2/gravity" instance=ExtResource("25_7ig1b")]
+position = Vector2(1360, -64)
+
+[node name="platform" type="Node2D" parent="maps/map2"]
+position = Vector2(-960, -16)
+
+[node name="move_platform" parent="maps/map2/platform" node_paths=PackedStringArray("target") instance=ExtResource("26_avxul")]
+position = Vector2(1104, -136)
+do_detect = true
+target = NodePath("target")
+
+[node name="target" type="Area2D" parent="maps/map2/platform/move_platform"]
+position = Vector2(0, 104)
+
+[node name="move_platform4" parent="maps/map2/platform" node_paths=PackedStringArray("target") instance=ExtResource("26_avxul")]
+position = Vector2(4200, -176)
+do_detect = true
+target = NodePath("target")
+
+[node name="target" type="Area2D" parent="maps/map2/platform/move_platform4"]
+position = Vector2(136, 0)
+
+[node name="platform" parent="maps/map2/platform" instance=ExtResource("27_35gsb")]
+position = Vector2(3960, -24)
+
+[node name="platform2" parent="maps/map2/platform" instance=ExtResource("27_35gsb")]
+position = Vector2(4120, -96)
+
+[node name="blink_platform" parent="maps/map2/platform" instance=ExtResource("28_hvg2a")]
+position = Vector2(3880, -48)
+
+[node name="unvisible_platform" parent="maps/map2/platform" instance=ExtResource("29_klp16")]
+position = Vector2(3880, -24)
+
+[node name="gravity1" type="Node2D" parent="maps/map2"]
+position = Vector2(-960, -16)
+
+[node name="gravity10" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1424, -208)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity11" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1456, -208)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity12" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1488, -208)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity13" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1520, -208)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity14" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1552, -208)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity15" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1584, -208)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity16" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1616, -208)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity17" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1648, -208)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity18" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1680, -208)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity19" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1712, -208)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity20" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1744, -208)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity21" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1776, -208)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity34" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1776, -176)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity35" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1744, -176)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity36" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1712, -176)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity37" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1680, -176)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity38" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1648, -176)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity39" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1616, -176)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity40" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1584, -176)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity41" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1552, -176)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity42" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1520, -176)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity43" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1488, -176)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity44" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1776, -144)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity45" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1744, -144)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity76" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1840, -144)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity77" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1808, -144)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity46" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1712, -144)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity47" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1680, -144)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity48" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1648, -144)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity49" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1616, -144)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity50" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1584, -144)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity51" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1552, -144)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity52" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1520, -144)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity53" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1488, -144)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity22" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1424, -240)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity23" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1456, -240)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity24" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1488, -240)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity25" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1520, -240)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity26" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1552, -240)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity27" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1584, -240)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity28" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1616, -240)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity29" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1648, -240)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity30" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1680, -240)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity31" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1712, -240)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity32" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1744, -240)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity33" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1776, -240)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity100" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1808, -240)
+gravity_point_center = Vector2(0, 1)
+gravity_direction = Vector2(0, 1)
+
+[node name="gravity101" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1840, -240)
+gravity_point_center = Vector2(0, 1)
+gravity_direction = Vector2(0, 1)
+
+[node name="gravity102" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1840, -208)
+gravity_point_center = Vector2(0, 1)
+gravity_direction = Vector2(0, 1)
+
+[node name="gravity124" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1840, -176)
+gravity_point_center = Vector2(0, 1)
+gravity_direction = Vector2(0, 1)
+
+[node name="gravity103" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1808, -208)
+gravity_point_center = Vector2(0, 1)
+gravity_direction = Vector2(0, 1)
+
+[node name="gravity123" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1808, -176)
+gravity_point_center = Vector2(0, 1)
+gravity_direction = Vector2(0, 1)
+
+[node name="gravity104" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1424, -176)
+gravity_point_center = Vector2(0, 1)
+gravity_direction = Vector2(0, 1)
+
+[node name="gravity105" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1456, -176)
+gravity_point_center = Vector2(0, 1)
+gravity_direction = Vector2(0, 1)
+
+[node name="gravity106" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1456, -144)
+gravity_point_center = Vector2(0, 1)
+gravity_direction = Vector2(0, 1)
+
+[node name="gravity107" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1424, -144)
+gravity_point_center = Vector2(0, 1)
+gravity_direction = Vector2(0, 1)
+
+[node name="gravity108" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1776, -112)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity109" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1744, -112)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity110" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1840, -112)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity111" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1808, -112)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity112" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1712, -112)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity113" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1680, -112)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity114" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1648, -112)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity115" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1616, -112)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity116" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1584, -112)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity117" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1552, -112)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity118" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1520, -112)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity119" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1488, -112)
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+
+[node name="gravity120" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1456, -112)
+gravity_point_center = Vector2(0, 1)
+gravity_direction = Vector2(0, 1)
+
+[node name="gravity121" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1424, -112)
+gravity_point_center = Vector2(0, 1)
+gravity_direction = Vector2(0, 1)
+
+[node name="gravity134" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1440, -80)
+gravity_point_center = Vector2(0, 1)
+gravity_direction = Vector2(0, 1)
+
+[node name="gravity135" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1408, -80)
+gravity_point_center = Vector2(0, 1)
+gravity_direction = Vector2(0, 1)
+
+[node name="gravity54" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1408, -16)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity55" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1440, -16)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity56" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1472, -16)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity57" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1504, -16)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity58" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1536, -16)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity59" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1568, -16)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity60" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1600, -16)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity61" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1632, -16)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity62" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1664, -16)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity63" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1696, -16)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity64" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1408, -48)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity65" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1440, -48)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity66" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1472, -48)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity67" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1504, -48)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity68" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1536, -48)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity69" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1568, -48)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity70" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1600, -48)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity71" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1632, -48)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity72" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1664, -48)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity73" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1696, -48)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity78" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1728, -48)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity79" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1760, -48)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity80" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1792, -48)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity81" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1824, -48)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity82" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1728, -16)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity83" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1760, -16)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity84" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1792, -16)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity85" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1824, -16)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity86" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1856, -48)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity88" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1472, -80)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity89" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1504, -80)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity90" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1536, -80)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity91" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1568, -80)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity92" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1600, -80)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity93" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1632, -80)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity94" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1664, -80)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity95" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1696, -80)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity96" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1728, -80)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity97" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1760, -80)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity98" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1792, -80)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity99" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1824, -80)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity122" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1856, -80)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity87" parent="maps/map2/gravity1" instance=ExtResource("25_7ig1b")]
+position = Vector2(1856, -16)
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="gravity2" type="Node2D" parent="maps/map2"]
+position = Vector2(-960, -16)
+
+[node name="gravity21" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4024, -64)
+
+[node name="gravity22" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4056, -64)
+
+[node name="gravity23" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4056, -32)
+
+[node name="gravity24" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4024, -32)
+
+[node name="gravity25" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4024, -96)
+
+[node name="gravity26" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4056, -96)
+
+[node name="gravity27" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4184, -64)
+
+[node name="gravity28" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4216, -64)
+
+[node name="gravity29" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4216, -32)
+
+[node name="gravity30" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4184, -32)
+
+[node name="gravity31" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4184, -96)
+
+[node name="gravity32" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4216, -96)
+
+[node name="gravity33" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4368, -64)
+
+[node name="gravity34" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4400, -64)
+
+[node name="gravity35" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4400, -32)
+
+[node name="gravity36" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4368, -32)
+
+[node name="gravity37" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4368, -96)
+
+[node name="gravity38" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4400, -96)
+
+[node name="gravity39" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4496, -64)
+
+[node name="gravity40" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4528, -64)
+
+[node name="gravity41" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4528, -32)
+
+[node name="gravity42" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4496, -32)
+
+[node name="gravity43" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4496, -96)
+
+[node name="gravity44" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4528, -96)
+
+[node name="gravity45" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4608, -128)
+
+[node name="gravity46" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4640, -128)
+
+[node name="gravity47" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4640, -96)
+
+[node name="gravity48" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4608, -96)
+
+[node name="gravity49" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4608, -160)
+
+[node name="gravity50" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4640, -160)
+
+[node name="gravity51" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4672, -128)
+
+[node name="gravity54" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4672, -96)
+
+[node name="gravity55" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4672, -160)
+
+[node name="gravity52" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4608, -288)
+
+[node name="gravity53" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4640, -288)
+
+[node name="gravity56" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4640, -256)
+
+[node name="gravity57" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4608, -256)
+
+[node name="gravity58" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4608, -320)
+
+[node name="gravity59" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4640, -320)
+
+[node name="gravity60" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4672, -288)
+
+[node name="gravity61" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4672, -256)
+
+[node name="gravity62" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4672, -320)
+
+[node name="gravity63" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4464, -416)
+
+[node name="gravity64" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4496, -416)
+
+[node name="gravity65" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4496, -384)
+
+[node name="gravity66" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4464, -384)
+
+[node name="gravity67" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4464, -448)
+
+[node name="gravity68" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4496, -448)
+
+[node name="gravity69" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4528, -416)
+
+[node name="gravity70" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4528, -384)
+
+[node name="gravity71" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4528, -448)
+
+[node name="gravity72" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4608, -544)
+
+[node name="gravity73" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4640, -544)
+
+[node name="gravity74" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4640, -512)
+
+[node name="gravity75" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4608, -512)
+
+[node name="gravity76" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4608, -576)
+
+[node name="gravity77" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4640, -576)
+
+[node name="gravity78" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4672, -544)
+
+[node name="gravity79" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4672, -512)
+
+[node name="gravity80" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4672, -576)
+
+[node name="gravity81" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4464, -672)
+
+[node name="gravity82" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4496, -672)
+
+[node name="gravity83" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4496, -640)
+
+[node name="gravity84" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4464, -640)
+
+[node name="gravity85" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4464, -704)
+
+[node name="gravity86" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4496, -704)
+
+[node name="gravity87" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4528, -672)
+
+[node name="gravity88" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4528, -640)
+
+[node name="gravity89" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4528, -704)
+
+[node name="gravity90" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4464, -768)
+
+[node name="gravity91" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4496, -768)
+
+[node name="gravity92" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4496, -736)
+
+[node name="gravity93" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4464, -736)
+
+[node name="gravity94" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4464, -800)
+
+[node name="gravity95" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4496, -800)
+
+[node name="gravity96" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4528, -768)
+
+[node name="gravity97" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4528, -736)
+
+[node name="gravity98" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4528, -800)
+
+[node name="gravity99" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4464, -864)
+
+[node name="gravity100" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4496, -864)
+
+[node name="gravity101" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4496, -832)
+
+[node name="gravity102" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4464, -832)
+
+[node name="gravity103" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4464, -896)
+
+[node name="gravity104" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4496, -896)
+
+[node name="gravity105" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4528, -864)
+
+[node name="gravity106" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4528, -832)
+
+[node name="gravity107" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4528, -896)
+
+[node name="gravity108" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4464, -960)
+
+[node name="gravity109" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4496, -960)
+
+[node name="gravity110" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4496, -928)
+
+[node name="gravity111" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4464, -928)
+
+[node name="gravity112" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4464, -992)
+
+[node name="gravity113" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4496, -992)
+
+[node name="gravity114" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4528, -960)
+
+[node name="gravity115" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4528, -928)
+
+[node name="gravity116" parent="maps/map2/gravity2" instance=ExtResource("25_7ig1b")]
+position = Vector2(4528, -992)
+
+[node name="destruct-04" type="Node2D" parent="maps/map2"]
+position = Vector2(1848, -224)
+rotation = 1.5708
+
+[node name="destruct-obj-01" parent="maps/map2/destruct-04" instance=ExtResource("23_lyvma")]
+position = Vector2(136, -73.5)
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-04"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map2/destruct-04/Trigger"]
+position = Vector2(136.5, -72)
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-03" type="Node2D" parent="maps/map2"]
+position = Vector2(1968, -8)
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-03" instance=ExtResource("23_lyvma")]
+position = Vector2(-456, -288)
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-03"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-03/Trigger"]
+position = Vector2(-455.5, -286.5)
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-05" type="Node2D" parent="maps/map2"]
+position = Vector2(2600, -248)
+rotation = 1.5708
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-05" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-05"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-05/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-26" type="Node2D" parent="maps/map2"]
+position = Vector2(1056, -64)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-26" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-26"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-26/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-30" type="Node2D" parent="maps/map2"]
+position = Vector2(1152, -88)
+rotation = 1.5708
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-30" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-30"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-30/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-40" type="Node2D" parent="maps/map2"]
+position = Vector2(1256, -144)
+rotation = 1.5708
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-40" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-40"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-40/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-53" type="Node2D" parent="maps/map2"]
+position = Vector2(1208, -208)
+rotation = 1.5708
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-53" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-53"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-53/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-61" type="Node2D" parent="maps/map2"]
+position = Vector2(1208, -208)
+rotation = 1.5708
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-61" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-61"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-61/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-60" type="Node2D" parent="maps/map2"]
+position = Vector2(1360, -272)
+rotation = 1.5708
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-60" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-60"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-60/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-27" type="Node2D" parent="maps/map2"]
+position = Vector2(1112, -64)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-27" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-27"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-27/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-31" type="Node2D" parent="maps/map2"]
+position = Vector2(1168, -64)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-31" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-31"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-31/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-28" type="Node2D" parent="maps/map2"]
+position = Vector2(1224, -64)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-28" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-28"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-28/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-29" type="Node2D" parent="maps/map2"]
+position = Vector2(1280, -64)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-29" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-29"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-29/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-33" type="Node2D" parent="maps/map2"]
+position = Vector2(1336, -64)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-33" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-33"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-33/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-34" type="Node2D" parent="maps/map2"]
+position = Vector2(1056, -120)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-34" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-34"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-34/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-36" type="Node2D" parent="maps/map2"]
+position = Vector2(1168, -120)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-36" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-36"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-36/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-37" type="Node2D" parent="maps/map2"]
+position = Vector2(1224, -120)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-37" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-37"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-37/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-38" type="Node2D" parent="maps/map2"]
+position = Vector2(1280, -120)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-38" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-38"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-38/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-39" type="Node2D" parent="maps/map2"]
+position = Vector2(1336, -120)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-39" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-39"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-39/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-41" type="Node2D" parent="maps/map2"]
+position = Vector2(1056, -176)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-41" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-41"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-41/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-42" type="Node2D" parent="maps/map2"]
+position = Vector2(1112, -176)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-42" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-42"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-42/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-44" type="Node2D" parent="maps/map2"]
+position = Vector2(1224, -176)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-44" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-44"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-44/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-45" type="Node2D" parent="maps/map2"]
+position = Vector2(1280, -176)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-45" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-45"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-45/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-46" type="Node2D" parent="maps/map2"]
+position = Vector2(1336, -176)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-46" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-46"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-46/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-48" type="Node2D" parent="maps/map2"]
+position = Vector2(1112, -240)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-48" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-48"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-48/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-49" type="Node2D" parent="maps/map2"]
+position = Vector2(1168, -240)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-49" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-49"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-49/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-50" type="Node2D" parent="maps/map2"]
+position = Vector2(1224, -240)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-50" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-50"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-50/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-51" type="Node2D" parent="maps/map2"]
+position = Vector2(1280, -240)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-51" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-51"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-51/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-52" type="Node2D" parent="maps/map2"]
+position = Vector2(1336, -240)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-52" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-52"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-52/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-54" type="Node2D" parent="maps/map2"]
+position = Vector2(1056, -312)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-54" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-54"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-54/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-55" type="Node2D" parent="maps/map2"]
+position = Vector2(1112, -312)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-55" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-55"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-55/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-56" type="Node2D" parent="maps/map2"]
+position = Vector2(1168, -312)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-56" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-56"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-56/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-57" type="Node2D" parent="maps/map2"]
+position = Vector2(1224, -312)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-57" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-57"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-57/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-58" type="Node2D" parent="maps/map2"]
+position = Vector2(1280, -312)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-58" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-58"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-58/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-59" type="Node2D" parent="maps/map2"]
+position = Vector2(1336, -312)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-59" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-59"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-59/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-32" type="Node2D" parent="maps/map2"]
+position = Vector2(1512, -64)
+metadata/_edit_group_ = true
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-32" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-32"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-32/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-22" type="Node2D" parent="maps/map2"]
+position = Vector2(2096, -64)
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-22" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-22"]
+collision_mask = 64
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-22/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-23" type="Node2D" parent="maps/map2"]
+position = Vector2(2216, -94)
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-23" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-23"]
+collision_mask = 64
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-23/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-24" type="Node2D" parent="maps/map2"]
+position = Vector2(2344, -72)
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-24" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-24"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-24/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-08" type="Node2D" parent="maps/map2"]
+position = Vector2(2632, -248)
+rotation = 1.5708
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-08" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-08"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-08/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-09" type="Node2D" parent="maps/map2"]
+position = Vector2(2664, -248)
+rotation = 1.5708
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-09" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-09"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-09/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-10" type="Node2D" parent="maps/map2"]
+position = Vector2(2696, -248)
+rotation = 1.5708
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-10" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-10"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-10/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-11" type="Node2D" parent="maps/map2"]
+position = Vector2(2728, -248)
+rotation = 1.5708
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-11" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-11"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-11/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-12" type="Node2D" parent="maps/map2"]
+position = Vector2(2760, -248)
+rotation = 1.5708
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-12" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-12"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-12/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-13" type="Node2D" parent="maps/map2"]
+position = Vector2(2792, -248)
+rotation = 1.5708
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-13" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-13"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-13/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-14" type="Node2D" parent="maps/map2"]
+position = Vector2(2824, -248)
+rotation = 1.5708
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-14" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-14"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-14/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-15" type="Node2D" parent="maps/map2"]
+position = Vector2(2856, -248)
+rotation = 1.5708
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-15" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-15"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-15/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-16" type="Node2D" parent="maps/map2"]
+position = Vector2(2888, -248)
+rotation = 1.5708
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-16" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-16"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-16/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-17" type="Node2D" parent="maps/map2"]
+position = Vector2(2920, -248)
+rotation = 1.5708
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-17" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-17"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-17/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-18" type="Node2D" parent="maps/map2"]
+position = Vector2(2952, -248)
+rotation = 1.5708
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-18" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-18"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-18/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-19" type="Node2D" parent="maps/map2"]
+position = Vector2(2984, -248)
+rotation = 1.5708
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-19" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-19"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-19/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-20" type="Node2D" parent="maps/map2"]
+position = Vector2(3016, -248)
+rotation = 1.5708
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-20" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-20"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-20/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="destruct-21" type="Node2D" parent="maps/map2"]
+position = Vector2(3048, -248)
+rotation = 1.5708
+
+[node name="destruct-obj-02" parent="maps/map2/destruct-21" instance=ExtResource("23_lyvma")]
+blocks_gravity_scale = 2.0
+
+[node name="Trigger" type="Area2D" parent="maps/map2/destruct-21"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/destruct-21/Trigger"]
+shape = SubResource("RectangleShape2D_omrw1")
+
+[node name="FallingBlockTgt8" parent="maps/map2" node_paths=PackedStringArray("target", "detection") instance=ExtResource("30_d1ceq")]
+position = Vector2(1512, -216)
+speed = 150.0
+invisible_before_launch = false
+target = NodePath("target")
+detection = NodePath("detection")
+acceleration = 100.0
+
+[node name="target" type="Area2D" parent="maps/map2/FallingBlockTgt8"]
+position = Vector2(0, 144)
+
+[node name="detection" type="Area2D" parent="maps/map2/FallingBlockTgt8"]
+collision_layer = 0
+collision_mask = 129
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/FallingBlockTgt8/detection"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_mux5l")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="maps/map2/FallingBlockTgt8"]
+tile_map_data = PackedByteArray("AAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAD+/wEAAgAAAAAAAQD//wEAAgAAAAAAAQAAAAEAAgAAAAAAAQABAAEAAgAAAAAAAQA=")
+tile_set = ExtResource("31_7mbra")
+
+[node name="FallingBlockTgt6" parent="maps/map2" node_paths=PackedStringArray("target", "detection") instance=ExtResource("30_d1ceq")]
+position = Vector2(2216, -272)
+speed = 150.0
+invisible_before_launch = false
+target = NodePath("target")
+detection = NodePath("detection")
+acceleration = 100.0
+
+[node name="target" type="Area2D" parent="maps/map2/FallingBlockTgt6"]
+position = Vector2(0, 184)
+
+[node name="detection" type="Area2D" parent="maps/map2/FallingBlockTgt6"]
+collision_layer = 0
+collision_mask = 129
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/FallingBlockTgt6/detection"]
+position = Vector2(0, 72)
+shape = SubResource("RectangleShape2D_mux5l")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="maps/map2/FallingBlockTgt6"]
+tile_map_data = PackedByteArray("AAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAD+/wEAAgAAAAAAAQD//wEAAgAAAAAAAQAAAAEAAgAAAAAAAQABAAEAAgAAAAAAAQA=")
+tile_set = ExtResource("31_7mbra")
+
+[node name="FallingBlockTgt7" parent="maps/map2" node_paths=PackedStringArray("target", "detection") instance=ExtResource("30_d1ceq")]
+position = Vector2(2344, -248)
+speed = 150.0
+invisible_before_launch = false
+target = NodePath("target")
+detection = NodePath("detection")
+acceleration = 100.0
+
+[node name="target" type="Area2D" parent="maps/map2/FallingBlockTgt7"]
+position = Vector2(0, 184)
+
+[node name="detection" type="Area2D" parent="maps/map2/FallingBlockTgt7"]
+collision_layer = 0
+collision_mask = 129
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/FallingBlockTgt7/detection"]
+position = Vector2(0, 72)
+shape = SubResource("RectangleShape2D_mux5l")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="maps/map2/FallingBlockTgt7"]
+tile_map_data = PackedByteArray("AAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAD+/wEAAgAAAAAAAQD//wEAAgAAAAAAAQAAAAEAAgAAAAAAAQABAAEAAgAAAAAAAQA=")
+tile_set = ExtResource("31_7mbra")
+
+[node name="FallingBlockTgt9" parent="maps/map2" node_paths=PackedStringArray("target", "detection") instance=ExtResource("30_d1ceq")]
+position = Vector2(2512, -240)
+speed = 150.0
+invisible_before_launch = false
+target = NodePath("target")
+detection = NodePath("detection")
+acceleration = 100.0
+
+[node name="target" type="Area2D" parent="maps/map2/FallingBlockTgt9"]
+position = Vector2(576, -8)
+
+[node name="detection" type="Area2D" parent="maps/map2/FallingBlockTgt9"]
+collision_mask = 129
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/FallingBlockTgt9/detection"]
+position = Vector2(-40, -8)
+shape = SubResource("RectangleShape2D_xk0f5")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="maps/map2/FallingBlockTgt9"]
+tile_map_data = PackedByteArray("AAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAACAP//AgAAAAAAAwACAP7/AgAAAAAAAwACAAAAAgAAAAAAAwD+//3/AgAAAAAABAD///3/AgAAAAAABAAAAP3/AgAAAAAABAABAP3/AgAAAAAABAD9/wAAAQAAAAAAAwD9////AQAAAAAAAwD9//7/AQAAAAAAAwD5//7/AQAAAAAAAwD5////AQAAAAAAAwD5/wAAAQAAAAAAAwD6//7/AQAAAAAAAwD6////AQAAAAAAAwD6/wAAAQAAAAAAAwD7//7/AQAAAAAAAwD7////AQAAAAAAAwD7/wAAAQAAAAAAAwD8//7/AQAAAAAAAwD8////AQAAAAAAAwD8/wAAAQAAAAAAAwA=")
+tile_set = ExtResource("31_7mbra")
+
+[node name="FallingBlockTgt10" parent="maps/map2" node_paths=PackedStringArray("target", "detection") instance=ExtResource("30_d1ceq")]
+position = Vector2(2512, -128)
+speed = 150.0
+invisible_before_launch = false
+target = NodePath("target")
+detection = NodePath("detection")
+acceleration = 100.0
+
+[node name="target" type="Area2D" parent="maps/map2/FallingBlockTgt10"]
+position = Vector2(576, -8)
+
+[node name="detection" type="Area2D" parent="maps/map2/FallingBlockTgt10"]
+collision_mask = 129
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="maps/map2/FallingBlockTgt10/detection"]
+position = Vector2(-40, -8)
+shape = SubResource("RectangleShape2D_xk0f5")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="maps/map2/FallingBlockTgt10"]
+tile_map_data = PackedByteArray("AAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAACAP//AgAAAAAAAwACAP7/AgAAAAAAAwACAAAAAgAAAAAAAwD+//3/AgAAAAAABAD///3/AgAAAAAABAAAAP3/AgAAAAAABAABAP3/AgAAAAAABAD9/wAAAQAAAAAAAwD9////AQAAAAAAAwD9//7/AQAAAAAAAwD8/wAAAQAAAAAAAwD8////AQAAAAAAAwD8//7/AQAAAAAAAwD7/wAAAQAAAAAAAwD7////AQAAAAAAAwD7//7/AQAAAAAAAwA=")
+tile_set = ExtResource("31_7mbra")
+
+[node name="FallingBlockTgt5" parent="maps/map2" node_paths=PackedStringArray("target", "detection") instance=ExtResource("30_d1ceq")]
+position = Vector2(2098, -258)
+collision_mask = 3
+speed = 150.0
+invisible_before_launch = false
+target = NodePath("target")
+detection = NodePath("detection")
+should_reset = false
+acceleration = 100.0
+
+[node name="target" type="Area2D" parent="maps/map2/FallingBlockTgt5"]
+position = Vector2(0, 696)
+
+[node name="detection" type="Area2D" parent="maps/map2/FallingBlockTgt5"]
+collision_layer = 0
+collision_mask = 129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map2/FallingBlockTgt5/detection"]
+position = Vector2(0, 69)
+shape = SubResource("RectangleShape2D_sdwis")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="maps/map2/FallingBlockTgt5"]
+tile_map_data = PackedByteArray("AAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAD+/wEAAgAAAAAAAQD//wEAAgAAAAAAAQAAAAEAAgAAAAAAAQABAAEAAgAAAAAAAQA=")
+tile_set = ExtResource("31_7mbra")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map2/FallingBlockTgt5"]
+position = Vector2(-0.35907, 20.5442)
+shape = SubResource("RectangleShape2D_dgl4p")
+
+[node name="tile-v2" type="TileMapLayer" parent="maps/map2"]
+tile_map_data = PackedByteArray("AAB4APz/AAACAAEAAAB5APz/AAACAAEAAAB6APz/AAACAAEAAAB7APz/AAACAAEAAAB8APz/AAACAAEAAAB9APz/AAACAAEAAAB0APz/AAADAAEAAAB1APz/AAADAAEAAAB2APz/AAADAAEAAAB3APz/AAADAAEAAACBAPz/AAAAAAAAAACCAPz/AAAAAAAAAACDAPz/AAAAAAAAAACEAPz/AAAAAAAAAACFAPz/AAAAAAAAAAB+APz/AAABAAAAAAB/APz/AAABAAAAAACAAPz/AAABAAAAAAB3APX/AAACAAAAAAB3APb/AAACAAAAAAB3APf/AAACAAAAAAB4APf/AAACAAAAAAB4APb/AAACAAAAAAB4APX/AAACAAAAAAB3APL/AAADAAAAAAB3APP/AAADAAAAAAB3APT/AAADAAAAAAB4APT/AAADAAAAAAB4APP/AAADAAAAAAB4APL/AAADAAAAAAB2APj/AAAAAAIAAAB3APj/AAAAAAIAAAB4APj/AAAAAAIAAAB5APj/AAAAAAIAAAB+APf/AAAAAAEAAAB+APj/AAAAAAEAAAB+APn/AAAAAAEAAAB+APr/AAAAAAEAAAB+APv/AAAAAAEAAAB/APf/AAAAAAEAAAB/APj/AAAAAAEAAAB/APn/AAAAAAEAAAB/APr/AAAAAAEAAAB/APv/AAAAAAEAAAA=")
+tile_set = SubResource("TileSet_ktcvm")
+
+[node name="camera_area" type="Area2D" parent="." groups=["camera_area"]]
+visible = false
+position = Vector2(328, -232)
+collision_mask = 129
+script = ExtResource("32_o5jts")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="camera_area"]
+position = Vector2(996.177, 110.286)
+scale = Vector2(3, 1)
+shape = SubResource("RectangleShape2D_22xq7")
+
+[node name="LimitShape2D" type="CollisionShape2D" parent="camera_area"]
+position = Vector2(995.997, 110.286)
+scale = Vector2(3, 1)
+shape = SubResource("RectangleShape2D_7w6oq")
+disabled = true
+debug_color = Color(0.866667, 0.282353, 0.552941, 0.419608)
+
+[node name="camera_area3" type="Area2D" parent="." groups=["camera_area"]]
+visible = false
+position = Vector2(328, -232)
+collision_mask = 129
+script = ExtResource("32_o5jts")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="camera_area3"]
+position = Vector2(3448, 59.5)
+shape = SubResource("RectangleShape2D_uw4hd")
+
+[node name="LimitShape2D" type="CollisionShape2D" parent="camera_area3"]
+position = Vector2(3448, 59.5)
+shape = SubResource("RectangleShape2D_6vbsu")
+disabled = true
+debug_color = Color(0.866667, 0.282353, 0.552941, 0.419608)
+
+[node name="camera_area2" type="Area2D" parent="." groups=["camera_area"]]
+visible = false
+position = Vector2(4024, -240)
+collision_mask = 129
+script = ExtResource("32_o5jts")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="camera_area2"]
+position = Vector2(3064, -576)
+shape = SubResource("RectangleShape2D_j4tf2")
+
+[node name="LimitShape2D" type="CollisionShape2D" parent="camera_area2"]
+position = Vector2(3064, -440)
+shape = SubResource("RectangleShape2D_wh8f5")
+disabled = true
+debug_color = Color(0.866667, 0.282353, 0.552941, 0.419608)
+
+[node name="Npc" parent="." node_paths=PackedStringArray("teleport") instance=ExtResource("32_ljlfb")]
+position = Vector2(589, -82)
+teleport = NodePath("../empty-teleport")
+
+[node name="empty-teleport" parent="." instance=ExtResource("33_whj8i")]
+position = Vector2(635, -77)
