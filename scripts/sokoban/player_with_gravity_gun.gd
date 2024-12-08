@@ -139,7 +139,10 @@ func _physics_process(delta: float) -> void:
 			velocity += gravity * delta
 			move_and_slide()
 		else:
-			velocity = Vector2.ZERO
+			var gravity = get_gravity()
+			velocity += gravity * delta
+			velocity.x = velocity.x * 0.95
+			move_and_slide()
 			animated_sprite_2d.play('idle')
 		return
 	var player_height = 16.0  # 角色高度为16像素

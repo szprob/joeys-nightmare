@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://berhy2v7l8ihk" path="res://scenes/enemy/boss1.tscn" id="7_d7kh0"]
 [ext_resource type="PackedScene" uid="uid://bn5no8n8sl8p8" path="res://scenes/modules/platforms/ferris_wheel.tscn" id="9_5q23d"]
 [ext_resource type="PackedScene" uid="uid://5ke66hnjv6ab" path="res://scenes/modules/traps/lazer.tscn" id="10_mf6cd"]
-[ext_resource type="PackedScene" uid="uid://bb0qpphy66mjy" path="res://scenes/modules/traps/fire_around_sth.tscn" id="11_lspfr"]
+[ext_resource type="PackedScene" uid="uid://dmq8ljo7go0bx" path="res://scenes/modules/traps/fire_around_sth.tscn" id="11_lspfr"]
 [ext_resource type="PackedScene" uid="uid://yan3jqnet7ud" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="11_vosd0"]
 [ext_resource type="PackedScene" uid="uid://b2a31xnvry6r1" path="res://scenes/player/npc_die.tscn" id="12_24vq6"]
 
