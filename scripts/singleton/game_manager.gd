@@ -25,11 +25,21 @@ var bgm_resources = {
 var dialogue_image_storage = {
 	"joey_normal": "res://assets/sprites/day/character/JOEY帅气版.png",
 	"joey_happy": "res://assets/sprites/day/character/joey帅气版2.png",
+	"doctor": "res://assets/sprites/day/character/doctor1.png",
 	"radio": "res://assets/sprites/day/enrich/收音机1.png",
 	"id_card": "res://assets/sprites/day/room/身份证.png",
-	"shoe": "res://assets/sprites/day/buttons/S.png",
+	"shoe": "res://assets/sprites/day/new_room/AJ.png",
 	"door": "res://assets/sprites/day/buttons/D.png",
-	"draw": "res://assets/sprites/day/buttons/D.png"
+	"draw": "res://assets/sprites/day/buttons/D.png",
+	"water_gun": "res://assets/sprites/day/room/gun.png",
+	"telephone": "res://assets/sprites/day/new_room/zhuoji.png",
+	"note1": "res://assets/sprites/day/enrich/note1.png",
+	"safe_close": "res://assets/sprites/day/enrich/safe1.png",
+	"safe_open1": "res://assets/sprites/day/enrich/safe2.png",
+	"safe_open2": "res://assets/sprites/day/enrich/safe3.png",
+	"room3_door_close": "res://assets/sprites/day/new_room/room3_door_close.png",
+	"room3_door_open": "res://assets/sprites/day/new_room/room3_door_open.png",
+	"macintosh": "res://assets/sprites/day/enrich/macintosh.png"
 }
 var game_state = {}
 var game_state_cache = {'can_detect_kill_zone': true, 'do_detect_teleport': true,'should_die': true,}
@@ -66,7 +76,17 @@ func init_default_state():
 		'laji': '',
 		'number_deaths': 0,
 		'doors_opened': [],
-		
+		# 0: 未放水 1: 放水中 2: 放完水
+		'tub_water_phase': 0,
+		'light1_visble': true,
+		'light2_visble': true,
+		'fire_extincted': false,
+		"is_room2_entered": false,
+		"water_gun_filled": false,
+		"left_door_opened": false,
+		"right_door_opened": false,
+		"all_light_off": false,
+		"room3_door_open": false,
 		'play_time_seconds': 0  # 添加游戏时间记录（秒）
 	}
 	game_state = game_state2.duplicate(true) # 深度复制默认状态
@@ -285,6 +305,30 @@ func set_day_phase(phase_number: int) -> void:
 func inc_day_phase() -> void:
 	game_state['day_phase'] += 1
 
+func get_tub_water_phase() -> int:
+	return game_state['tub_water_phase']
+	
+func inc_tub_water_phase() -> void:
+	game_state['tub_water_phase'] += 1
+	
+func enter_room2() -> void:
+	game_state['is_room2_entered'] = true
+
+func is_room2_entered() -> bool:
+	return game_state['is_room2_entered']
+
+func fill_water_gun() -> void:
+	game_state['water_gun_filled'] = true
+	
+func is_water_gun_filled() -> bool:
+	return game_state['water_gun_filled']
+	
+func open_left_door() -> void:
+	game_state['left_door_opened'] = true
+
+func is_left_door_opened() -> bool:
+	return game_state['left_door_opened']
+
 func start_dialogue() -> void:
 	game_state['is_day_player_chatting'] = true
 
@@ -294,12 +338,53 @@ func end_dialogue() -> void:
 func is_door_open() -> bool:
 	return game_state['is_door_open']
 
+func is_all_light_off() -> bool:
+	return game_state['all_light_off']
+
+func is_light1_visible() -> bool:
+	return game_state['light1_visble']
+	
+func is_light2_visible() -> bool:
+	return game_state['light2_visble']
+	
+func set_light_visble(visble_value: bool, index: int) -> void:
+	if index == 1:
+		set_light1_visble(visble_value)
+	else:
+		set_light2_visble(visble_value)
+
+func set_light1_visble(visble_value: bool) -> void:
+	game_state['light1_visble'] = visble_value
+	
+func set_light2_visble(visble_value: bool) -> void:
+	game_state['light2_visble'] = visble_value
+	
+func is_fire_extincted() -> bool:
+	return game_state['fire_extincted']
+	
+func extinct_fire() -> void:
+	game_state['fire_extincted'] = true
+
+func is_room2_cleared() -> bool:
+	return has_item("笔记1") and has_item("笔记2") and has_item("水枪") and game_state['all_light_off']
+
+func is_room3_door_open() -> bool:
+	return game_state['room3_door_open']
+
+func open_room3_door() -> void:
+	game_state['room3_door_open'] = true
+
 func switch_day_to_dream(scene_file_path: String) -> void:
 	game_state['target_scene'] = scene_file_path
 	game_state['teleport_type'] = "day2dream"
 	end_dialogue()
 	GameManager.save_game_state()
 	get_tree().change_scene_to_file("res://scenes/modules/checkpoints/transition.tscn")
+
+func enter_day_scene(scene_file_path: String) -> void:
+	end_dialogue()
+	GameManager.save_game_state()
+	get_tree().change_scene_to_file(scene_file_path)
 
 # 添加暂停相关的方法
 func _input(event: InputEvent) -> void:

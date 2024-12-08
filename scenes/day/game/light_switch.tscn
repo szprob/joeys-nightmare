@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1ahwfjvtlho3"]
+
+[ext_resource type="Script" path="res://scripts/day/light_area_2d.gd" id="1_i8mxn"]
+
+[node name="LightSwitch" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_i8mxn")

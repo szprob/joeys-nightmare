@@ -13,6 +13,7 @@ var is_got_gun = false
 @onready var action_finder: Area2D = $Direction/Finder
 @onready var finder_direction: Marker2D = $Direction
 @onready var introduction: Control = %Introduction
+@onready var inventory: Control = %Inventory
 
 func _ready() -> void:
 	if GameManager.get_day_phase() < 1:
@@ -89,7 +90,7 @@ func _on_dialog_finished() -> void:
 func _physics_process(delta: float) -> void:
 	if GameManager.get_day_phase() > 1 and is_got_gun == false:
 		is_got_gun = true
-	if not GameManager.is_chatting() and not Inventory.visible:
+	if not GameManager.is_chatting() and not inventory.visible:
 		handle_direction()
 		handle_move()
 	else :

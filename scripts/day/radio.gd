@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 func create_bubble() -> void:
 	# 首先获取当前文本并处理前缀
 	talking = true
+	SoundPlayer.play_sound("res://assets/sounds/day/old-radio-noise-46734.mp3")
 	var current_text = full_text
 	print("position", global_position)
 	var bubble_position = global_position + Vector2(-50, -20)

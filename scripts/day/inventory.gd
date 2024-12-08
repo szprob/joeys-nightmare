@@ -39,6 +39,8 @@ func _process(delta: float) -> void:
 
 	if not visible and Input.is_action_just_pressed("inventory") and not GameManager.is_chatting():
 		show()
+		item_list.select(0)
+		show_item_detail(0)
 		print("show inventory")
 		return
 
@@ -81,7 +83,38 @@ func hide_item_detail_panel():
 	detial_panel.hide()
 	item_title.text = ""
 
+func _unhandled_input(event: InputEvent) -> void:
+	if not visible:
+		return
+	if item_list.item_count < 1:
+		return
+	var current_index = 0
+	if item_list.get_selected_items().size() < 1:
+		current_index = 0
+	else:
+		current_index = item_list.get_selected_items()[0]
+	if Input.is_action_just_pressed("right"):
+		current_index += 1
+		if current_index >= item_list.get_item_count():
+			current_index = 0
+		item_list.select(current_index)
+	elif Input.is_action_just_pressed("left"):
+		current_index -= 1
+		if current_index < 0:
+			current_index = item_list.get_item_count() - 1
+		item_list.select(current_index)
+	show_item_detail(current_index)
+
 func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
+	detial_panel.show()
+	var item_name = item_list.get_item_text(index)
+	item_title.text = item_name
+	if not inventory_dict.has(item_name):
+		printerr("\"%s\"未定义，请在 inventory_meta.json 中进行定义。" % item_name)
+	item_detail.text = inventory_dict.get(item_name, {}).get('description', "\"%s\"未定义，请在背包索引文件中进行定义。撒的阿斯顿撒的阿斯顿撒的阿斯顿爱上阿斯顿爱上打算爱上爱上打算阿斯顿撒打算撒的爱上爱上撒的" % item_name)
+
+
+func show_item_detail(index: int) -> void:
 	detial_panel.show()
 	var item_name = item_list.get_item_text(index)
 	item_title.text = item_name

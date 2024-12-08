@@ -1,0 +1,27 @@
+~ door
+if GameManager.is_room3_door_open():
+	=> door_open
+else:
+	=> door_first_open
+
+~ door_first_open
+[#room3_door_close]: 要进门后的房间吗?
+- 是
+	do GameManager.open_room3_door()
+	do GameManager.enter_day_scene("res://scenes/day/room3/mac_room.tscn")
+	=> END
+- 否
+	=> END
+
+~ door_open
+[#room3_door_open]: 要进房间吗?
+- 是
+	do GameManager.enter_day_scene("res://scenes/day/room3/mac_room.tscn")
+	=> END
+- 否
+	=> END
+=> END
+
+~ macintosh
+[#macintosh]: 你通关了
+=> END
