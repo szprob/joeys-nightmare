@@ -18,6 +18,7 @@ else:
 	# Joey[#joey_happy]: 我就是最英勇的太空牛仔！[shake rate=20 level=10]泰酷辣![/shake]
 	- 是
 		Joey: 天好像还没亮，有点困了[wait=0.4][speed=0.3],去睡觉吧
+		set GameManager.game_state["skills"]["second_jump_enabled"] = true
 		do GameManager.set_day_phase(4)
 		=> END
 	- 否

@@ -69,7 +69,7 @@ func init_default_state():
 		'target_scene': 'res://scenes/dreams/bigworld/bigworld01.tscn',
 		'is_paused': false,
 		'skills': {
-			'second_jump_enabled': true
+			'second_jump_enabled': false
 		},
 		'boss':{'boos1':{'current_area_index':0}},
 		'npc_dialogue_list': [],
