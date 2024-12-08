@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=4 uid="uid://yukpdyc34t7m"]
 
-[ext_resource type="Texture2D" uid="uid://c7ddne28gxewo" path="res://assets/sprites/background/intro/brick_ultra.png" id="1_iaw7s"]
+[ext_resource type="Texture2D" uid="uid://o4smuqnhel41" path="res://assets/sprites/background/intro/brick_ultra.png" id="1_iaw7s"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_mnfc1"]
 [ext_resource type="PackedScene" uid="uid://burxykvkyw21f" path="res://scenes/modules/v2/falling_block_tgt.tscn" id="4_xmsyl"]
 [ext_resource type="TileSet" uid="uid://eahum84lpc4q" path="res://tiles/cave.tres" id="5_42tcg"]
@@ -110,6 +110,7 @@ target = NodePath("target")
 detection = NodePath("detection")
 should_reset = false
 acceleration = 100.0
+metadata/_edit_group_ = true
 
 [node name="target" type="Area2D" parent="FallingBlockTgt5"]
 position = Vector2(0, 696)

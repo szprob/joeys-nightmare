@@ -16,7 +16,10 @@ var dialogue_data: Dictionary = {
 	],
 	'die': [
 		"npc:快跑......"
-	]
+	],
+	'cave': [
+		"npc:来这边！"
+	],
 }
 
 # _ready 函数可以移除，因为我们直接在变量声明时初始化对话数据

@@ -59,7 +59,7 @@ func init_default_state():
 		'target_scene': 'res://scenes/dreams/bigworld/bigworld01.tscn',
 		'is_paused': false,
 		'skills': {
-			'second_jump_enabled': false
+			'second_jump_enabled': true
 		},
 		'boss':{'boos1':{'current_area_index':0}},
 		'npc_dialogue_list': [],
@@ -122,7 +122,7 @@ func setup_bgm_player() -> void:
 	bgm_player.bus = "Music" # 确保你的项目中有名为"Music"的音频总线
 	bgm_player.stream_paused = false
 	# 设置音量为原来的25%（-12分贝）
-	bgm_player.volume_db = -12
+	bgm_player.volume_db = 0
 	# 添加这一行来设置循环播放
 	bgm_player.finished.connect(func(): bgm_player.play())
 	add_child(bgm_player)
