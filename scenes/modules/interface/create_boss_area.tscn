@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://y6rr858c5hci" path="res://assets/sprites/enemy/chase/boss1/attack.png" id="3_ic3c3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n0mu0"]
-size = Vector2(69.5, 16)
+size = Vector2(88, 4)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gg53j"]
 atlas = ExtResource("3_ic3c3")
@@ -87,7 +87,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sa4i3")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
@@ -98,12 +98,12 @@ collision_mask = 128
 script = ExtResource("1_xhucc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(9, 3)
+position = Vector2(7.5, 3)
 shape = SubResource("RectangleShape2D_n0mu0")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_nbjrp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(161, -163)
+position = Vector2(138, -140)
 sprite_frames = SubResource("SpriteFrames_qoott")

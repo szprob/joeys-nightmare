@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var animated_sprites: Array[AnimatedSprite2D] = []
+@onready var detection: Area2D = $detection
 
 @export var mass = 1  # 物体质量
 @export var pivot_target: Area2D  # 枢轴点位置
@@ -22,7 +23,10 @@ var original_scale
 
 func _ready():
 	pivot_position = pivot_target.global_position
-	
+
+	# 获取检测区域节点
+	detection.body_entered.connect(_on_detection_body_entered)
+	detection.body_exited.connect(_on_detection_body_exited)
 	# 在_ready中初始化精灵数组并设置偏移原点
 	for i in range(1, 9):
 		var sprite_name = "AnimatedSprite2D" if i == 1 else "AnimatedSprite2D" + str(i)
