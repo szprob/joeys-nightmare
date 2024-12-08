@@ -142,7 +142,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			var gravity = get_gravity()
 			velocity += gravity * delta
-			velocity.x = velocity.x * 0.95
+			velocity.x = velocity.x * 0.5
 			move_and_slide()
 			animated_sprite_2d.play('idle')
 		return

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://2s3ufyd8iosj"]
+[gd_scene load_steps=37 format=3 uid="uid://b3fq58alqosq7"]
 
 [ext_resource type="Script" path="res://scripts/modules/platforms/swing_2.gd" id="1_qgpqi"]
 [ext_resource type="Texture2D" uid="uid://q1ucjxwxlmsd" path="res://assets/sprites/modules/deng2.png" id="2_38g41"]
