@@ -82,7 +82,7 @@ if not GameManager.is_left_door_opened():
 		- 是
 			do GameManager.open_left_door()
 			do GameManager.use_item('钥匙2')
-			do GameManager.set_day_phase(9)
+			do GameManager.set_day_phase(10)
 			=> END
 		- 否
 			=> END

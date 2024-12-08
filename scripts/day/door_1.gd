@@ -18,4 +18,8 @@ func _process(delta: float) -> void:
 		SoundPlayer.play_sound("res://assets/sounds/day/open-door-sound-247415.mp3")
 		frame = 0
 		play("open")
-		is_door_open = true
+
+
+func _on_animation_finished() -> void:
+	is_door_open = true
+	GameManager.enter_day_scene("res://scenes/day/room3/mac_room.tscn")
