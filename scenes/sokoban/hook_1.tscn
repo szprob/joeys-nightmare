@@ -1,12 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxdvjkmdm30bc"]
+[gd_scene load_steps=9 format=3 uid="uid://cxdvjkmdm30bc"]
 
 [ext_resource type="Script" path="res://scripts/sokoban/hook_1.gd" id="1_fflkm"]
+[ext_resource type="Texture2D" uid="uid://c84mcuaq11gxj" path="res://assets/sprites/background/v2/gouzhua.png" id="2_swecv"]
+[ext_resource type="Script" path="res://scripts/sokoban/hook_detect.gd" id="3_nwlrv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3qypd"]
 radius = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akpo3"]
+atlas = ExtResource("2_swecv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egmqx"]
+atlas = ExtResource("2_swecv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cynoi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akpo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egmqx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ibwcv"]
+radius = 150.0
 
 [node name="hook1" type="Area2D"]
 script = ExtResource("1_fflkm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3qypd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cynoi")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+script = ExtResource("3_nwlrv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_ibwcv")

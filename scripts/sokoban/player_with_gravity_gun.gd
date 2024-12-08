@@ -146,6 +146,8 @@ func _physics_process(delta: float) -> void:
 			move_and_slide()
 			animated_sprite_2d.play('idle')
 		return
+
+	update_hookable_areas_status()
 	var player_height = 16.0  # 角色高度为16像素
 	if is_jumping:
 		# 计算当前位置与起跳位置的距离(考虑重力方向)
@@ -674,6 +676,39 @@ func apply_force(collision_direction):
 	velocity += collision_direction
 
 # 添加这个新函数来查找最近的重力场
+func update_hookable_areas_status() -> void:
+	if hookable_areas.is_empty():
+		return
+		
+	var nearest = null
+	var shortest_distance = 200
+	
+	# 第一次遍历找出最近的可用钩爪点
+	for area in hookable_areas:
+		if not is_instance_valid(area):
+			continue
+			
+		var distance = global_position.distance_to(area.global_position)
+		if distance < shortest_distance:
+			# 进行视线检测
+			var space_state = get_world_2d().direct_space_state
+			var query = PhysicsRayQueryParameters2D.create(
+				global_position,
+				area.global_position
+			)
+			query.exclude = [self]
+			
+			var result = space_state.intersect_ray(query)
+			if not result:
+				shortest_distance = distance
+				nearest = area
+	
+	# 更新所有钩爪点的状态
+	for area in hookable_areas:
+		if is_instance_valid(area):
+			area.set_available(area == nearest)
+
+# 修改原有函数，只返回最近的钩爪点
 func find_nearest_hookable_area() -> Node2D:
 	if hookable_areas.is_empty():
 		return null
@@ -687,7 +722,6 @@ func find_nearest_hookable_area() -> Node2D:
 			
 		var distance = global_position.distance_to(area.global_position)
 		if distance < shortest_distance:
-			# 进行视线检测
 			var space_state = get_world_2d().direct_space_state
 			var query = PhysicsRayQueryParameters2D.create(
 				global_position,

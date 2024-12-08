@@ -40,3 +40,6 @@ after_image_scene = ExtResource("3_vlfig")
 
 [node name="hook1" parent="." instance=ExtResource("3_a3qsk")]
 position = Vector2(143, -10)
+
+[node name="hook2" parent="." instance=ExtResource("3_a3qsk")]
+position = Vector2(167, 25)
