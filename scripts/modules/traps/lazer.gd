@@ -39,12 +39,12 @@ func _ready() -> void:
 	line2d.default_color = Color(1.0, 0.0, 0.0, 1.0)
 
 	# 增强发光效果
-	var canvas_item_material = CanvasItemMaterial.new()
-	canvas_item_material.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
-	line2d.material = canvas_item_material
+	#var canvas_item_material = CanvasItemMaterial.new()
+	#canvas_item_material.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	#line2d.material = canvas_item_material
 	
 	# 添加额外的发光效果
-	line2d.set_meta("glow_enabled", true)
+	#line2d.set_meta("glow_enabled", true)
 
 
 func draw_kill_zone_shape() -> void:
@@ -103,4 +103,3 @@ func _process(delta: float) -> void:
 	
 	end_particles.global_position = end_pos
 	end_particles.emitting = true
-
