@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://btvsc8ha7ny73"]
+[gd_scene load_steps=2 format=3 uid="uid://cuj4lxr25tamp"]
 
 [ext_resource type="Script" path="res://scripts/sokoban/shadow.gd" id="1_dscb8"]
 
