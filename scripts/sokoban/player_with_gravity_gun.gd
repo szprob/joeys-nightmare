@@ -640,6 +640,7 @@ func hook(field: Node2D) -> void:
 	stuck_check_timer = 0.0
 	last_hook_position = global_position  # 记录初始位置
 	can_destroy = true
+	has_double_jumped = false
 
 func end_hook() -> void:
 	is_hooking = false

@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=4 uid="uid://boo28rhqy74j3"]
+
+[ext_resource type="Texture2D" uid="uid://c7ddne28gxewo" path="res://assets/sprites/background/intro/brick_ultra.png" id="1_koj2c"]
+[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_8aphm"]
+[ext_resource type="PackedScene" uid="uid://cxdvjkmdm30bc" path="res://scenes/sokoban/hook_1.tscn" id="3_a3qsk"]
+[ext_resource type="PackedScene" path="res://scenes/enemy/shadow.tscn" id="3_vlfig"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nkpgd"]
+texture = ExtResource("1_koj2c")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_gd4l3"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_nkpgd")
+
+[node name="TestHook" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAABAAQAAAAAAAMAAAACAAQAAAAAAAMAAAADAAQAAAAAAAMAAAAEAAQAAAAAAAMAAAAFAAQAAAAAAAMAAAAGAAQAAAAAAAMAAAAHAAQAAAAAAAMAAAAIAAQAAAAAAAMAAAAJAAQAAAAAAAMAAAAKAAQAAAAAAAMAAAALAAQAAAAAAAMAAAAMAAQAAAAAAAMAAAANAAQAAAAAAAMAAAAOAAQAAAAAAAMAAAAPAAQAAAAAAAMAAAAQAAQAAAAAAAMAAAARAAQAAAAAAAMAAAASAAQAAAAAAAMAAAA=")
+tile_set = SubResource("TileSet_gd4l3")
+
+[node name="player_with_gravity" parent="." instance=ExtResource("2_8aphm")]
+position = Vector2(76, 23)
+after_image_scene = ExtResource("3_vlfig")
+
+[node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
+
+[node name="hook1" parent="." instance=ExtResource("3_a3qsk")]
+position = Vector2(143, -10)

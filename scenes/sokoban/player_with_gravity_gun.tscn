@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/sokoban/player_with_gravity_gun.gd" id="1_1dle0"]
 [ext_resource type="Texture2D" uid="uid://lf0vhilxcpkr" path="res://assets/sprites/player/01 - Hobbit/joey假冒版/death.png" id="2_e3wbo"]
-[ext_resource type="PackedScene" uid="uid://btvsc8ha7ny73" path="res://scenes/sokoban/shadow.tscn" id="3_3y0ti"]
+[ext_resource type="PackedScene" uid="uid://cuj4lxr25tamp" path="res://scenes/sokoban/shadow.tscn" id="3_3y0ti"]
 [ext_resource type="Texture2D" uid="uid://d1l0wsmjpcrrs" path="res://assets/sprites/player/01 - Hobbit/joey假冒版/idle.png" id="3_66bvn"]
 [ext_resource type="Texture2D" uid="uid://13v5ninigqoq" path="res://assets/sprites/player/01 - Hobbit/joey假冒版/jump.png" id="4_vqoi1"]
 [ext_resource type="AudioStream" uid="uid://c8n5qm0wdo23u" path="res://assets/sounds/player/jump.wav" id="5_rl8ln"]
@@ -287,13 +287,14 @@ animations = [{
 size = Vector2(7, 13.75)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kl6ir"]
-radius = 100.0
+radius = 200.0
 
 [node name="player_with_gravity" type="CharacterBody2D" groups=["teleport_enable"]]
 z_index = 5
 collision_layer = 128
 collision_mask = 3
 script = ExtResource("1_1dle0")
+after_image_scene = ExtResource("3_3y0ti")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)
