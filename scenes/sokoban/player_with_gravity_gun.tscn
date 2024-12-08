@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://ojcm7cd2jskc"]
+[gd_scene load_steps=66 format=3 uid="uid://ojcm7cd2jskc"]
 
 [ext_resource type="Script" path="res://scripts/sokoban/player_with_gravity_gun.gd" id="1_1dle0"]
 [ext_resource type="Texture2D" uid="uid://lf0vhilxcpkr" path="res://assets/sprites/player/01 - Hobbit/joey假冒版/death.png" id="2_e3wbo"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://13v5ninigqoq" path="res://assets/sprites/player/01 - Hobbit/joey假冒版/jump.png" id="4_vqoi1"]
 [ext_resource type="AudioStream" uid="uid://c8n5qm0wdo23u" path="res://assets/sounds/player/jump.wav" id="5_rl8ln"]
 [ext_resource type="Texture2D" uid="uid://cir13b3bcqs3" path="res://assets/sprites/player/01 - Hobbit/joey假冒版/run.png" id="5_xwq57"]
+[ext_resource type="AudioStream" uid="uid://d3umqqph5otoe" path="res://assets/sounds/player/swing-whoosh-5-198498.mp3" id="9_fatud"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1hun"]
 atlas = ExtResource("3_yq4i5")
@@ -459,6 +460,7 @@ one_shot = true
 
 [node name="jump_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_rl8ln")
+volume_db = -5.0
 
 [node name="shadow" parent="." instance=ExtResource("3_3y0ti")]
 
@@ -466,5 +468,8 @@ stream = ExtResource("5_rl8ln")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HookableDetector"]
 shape = SubResource("CircleShape2D_kl6ir")
+
+[node name="hook_audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_fatud")
 
 [connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]

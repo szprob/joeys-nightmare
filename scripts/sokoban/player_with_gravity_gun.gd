@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var jump_audio: AudioStreamPlayer2D = $jump_audio
+@onready var hook_audio: AudioStreamPlayer2D = $hook_audio
 @export var mass: float = 1.0
 @export var second_jump_enabled = true
 @export var ammo_count = 1 # 子弹数量
@@ -567,6 +568,7 @@ func check_box_on_head() -> void:
 
 func set_gravity(new_gravity_direction: Vector2) -> void:
 	print('set gravity')
+	jump_audio.play()
 	var gravity_instance = gravity_scene.instantiate()
 	# gravity_instance.global_position = global_position
 	gravity_instance.position = Vector2.ZERO
@@ -644,7 +646,7 @@ func hook(field: Node2D) -> void:
 	last_hook_position = global_position  # 记录初始位置
 	can_destroy = true
 	has_double_jumped = false
-
+	hook_audio.play()
 func end_hook() -> void:
 	is_hooking = false
 	hook_target = null
