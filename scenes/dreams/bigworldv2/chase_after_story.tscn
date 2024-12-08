@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bc3luaoy48sp7" path="res://assets/sprites/background/multi3/bird.png" id="10_fdoxn"]
 [ext_resource type="Texture2D" uid="uid://gvyrlttwr2dn" path="res://assets/sprites/background/multi3/people.png" id="11_dk2a5"]
 [ext_resource type="Texture2D" uid="uid://c8ktpt687sgsd" path="res://assets/sprites/background/multi3/frontv2_1.png" id="12_i4qwl"]
-[ext_resource type="Texture2D" uid="uid://b04fk8bnvxnu4" path="res://assets/sprites/bricks/yun2.png" id="12_lq67s"]
+[ext_resource type="Texture2D" uid="uid://gjn74mcbcwcw" path="res://assets/sprites/bricks/yun2.png" id="12_lq67s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fsc12"]
 texture = ExtResource("12_lq67s")
@@ -25,7 +25,7 @@ texture = ExtResource("12_lq67s")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_fsc12")
 
-[node name="ChaseAfterStory" type="Node2D" node_paths=PackedStringArray("player", "npc", "camera", "subtitle_container", "subtitle_label")]
+[node name="ChaseAfterStory" type="Node2D" node_paths=PackedStringArray("player", "npc", "camera", "subtitle_container", "subtitle_label") groups=["scan_lines"]]
 z_index = 1
 script = ExtResource("1_e45pu")
 player = NodePath("PlayerInStory")
@@ -50,6 +50,7 @@ offset_bottom = -51.0
 text = "Playing subtitiles"
 
 [node name="empty-teleport" parent="." instance=ExtResource("5_6xfui")]
+visible = false
 
 [node name="NpcInStory" parent="." instance=ExtResource("6_diti3")]
 position = Vector2(119, 22)
