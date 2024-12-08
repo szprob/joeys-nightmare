@@ -1,4 +1,4 @@
-[gd_scene load_steps=293 format=4 uid="uid://c3bm4uor0vfjs"]
+[gd_scene load_steps=294 format=4 uid="uid://c3bm4uor0vfjs"]
 
 [ext_resource type="Script" path="res://scripts/dreams/castel.gd" id="1_jsqe7"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_i455q"]
@@ -228,6 +228,9 @@
 [ext_resource type="PackedScene" uid="uid://5ke66hnjv6ab" path="res://scenes/modules/traps/lazer.tscn" id="227_qjdvj"]
 [ext_resource type="PackedScene" uid="uid://kfdbq76ixwrq" path="res://scenes/modules/checkpoints/save_point.tscn" id="227_u11nh"]
 [ext_resource type="PackedScene" uid="uid://b2a31xnvry6r1" path="res://scenes/player/npc_die.tscn" id="228_uoegn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7evy"]
+size = Vector2(42, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qif0g"]
 animations = [{
@@ -1190,7 +1193,8 @@ teleport = NodePath("../empty-teleport")
 position = Vector2(43.2295, 3.00677)
 
 [node name="CollisionShape2D" parent="Npc/detection" index="0"]
-position = Vector2(-71.3932, -42.8602)
+position = Vector2(-83.7865, -23.2208)
+shape = SubResource("RectangleShape2D_h7evy")
 
 [node name="backgroud" type="Node2D" parent="."]
 visible = false
@@ -1444,7 +1448,7 @@ area2 = NodePath("Area2D2")
 metadata/_edit_group_ = true
 
 [node name="Area2D" type="Area2D" parent="map/Lazer"]
-position = Vector2(0, -56)
+position = Vector2(0, -40)
 
 [node name="Area2D2" type="Area2D" parent="map/Lazer"]
 position = Vector2(0, 64)
