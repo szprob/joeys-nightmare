@@ -537,20 +537,27 @@ func filp_player_sprite(direction):
 				animated_sprite_2d.flip_h = true
 
 func free_player_from_box(box: CharacterBody2D) -> void:
+	# var gravity_dir = get_gravity().normalized()
+	
+	# # 给箱子一个向上的力
+	# var push_force = -gravity_dir * Consts.SPEED * 0.5
+	# box.velocity = push_force
+	
+	# # 计算安全位置（将箱子推离玩家）
+	# var safe_distance = collision_shape_2d.shape.size.y + box.get_node("CollisionShape2D").shape.size.y
+	# var desired_box_pos = position - gravity_dir * safe_distance
+	
+	# box.global_position = box.global_position.lerp(desired_box_pos, 0.3)
+	
+	# velocity += gravity_dir * Consts.SPEED * 0.5
 	var gravity_dir = get_gravity().normalized()
 	
-	# 给箱子一个向上的力
-	var push_force = -gravity_dir * Consts.SPEED * 0.5
+	# 给箱子一个向上的推力，而不是直接改变位置
+	var push_force = -gravity_dir * Consts.SPEED * 0.8
 	box.velocity = push_force
 	
-	# 计算安全位置（将箱子推离玩家）
-	var safe_distance = collision_shape_2d.shape.size.y + box.get_node("CollisionShape2D").shape.size.y
-	var desired_box_pos = position - gravity_dir * safe_distance
-	
-	box.position = box.position.lerp(desired_box_pos, 0.3)
-	
+	# 给玩家一个向下的力，帮助分离
 	velocity += gravity_dir * Consts.SPEED * 0.5
-
 
 func check_box_on_head() -> void:
 	var space_state = get_world_2d().direct_space_state
