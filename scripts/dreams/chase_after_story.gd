@@ -8,7 +8,7 @@ extends Node2D
 @export var subtitle_label: Label
 
 var subtitles = [
-	{"time": 0, "text": " A A star studio game"},
+	{"time": 0, "text": "A* studio presents"},
 	{"time": 4, "text": "Team members"},
 	{"time": 6, "text": "Producer and Level Design: \n Hougang Zhao"},
 	{"time": 10, "text": "Programming: \n Ze song  Ziyi pan"},
@@ -57,4 +57,4 @@ func end_scene():
 	if npc.has_method("stop_auto_run"):
 		npc.stop_auto_run()
 	# 这里可以切换到下一个场景或触发其他事件
-	get_tree().change_scene_to_file("res://scenes/next_scene.tscn")
+	get_tree().change_scene_to_file("res://scenes/day/game/game.tscn")
