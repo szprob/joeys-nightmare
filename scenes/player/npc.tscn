@@ -126,6 +126,8 @@ flip_h = true
 stream = ExtResource("3_g2b3r")
 
 [node name="detection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
 position = Vector2(-94, 5)

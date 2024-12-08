@@ -39,7 +39,7 @@ const DialogueFile = preload("res://scenes/dreams/dialogue/dialogue.gd")
 const BallScene = preload("res://scenes/enemy/ball.tscn")
 
 # 添加新的变量
-@export var shoot_delay: float = 0.5
+@export var shoot_delay: float = 0.1
 @export var bubble_speed: float = 0.06
 @export var bubble_title: String = "die"
 @export var bubble_index: int = 0

@@ -17,6 +17,7 @@ var timer: Timer
 var disappear_timer: Timer
 var bubble_texts: Array = []
 var player : CharacterBody2D
+var do_detect: bool = true
 
 # 添加新的导入
 const PortalScene = preload("res://scenes/modules/checkpoints/empty-teleport.tscn")
@@ -66,7 +67,8 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D:
+	if body is CharacterBody2D and do_detect:
+		do_detect = false
 		timer.start()
 
 func _on_timer_timeout():
