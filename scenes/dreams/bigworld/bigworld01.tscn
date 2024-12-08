@@ -3150,7 +3150,6 @@ scale = Vector2(2.91664, 7.59298)
 
 [node name="box" parent="stage_up/stage_up2" instance=ExtResource("4_6n3j8")]
 position = Vector2(248, -696)
-collision_mask = 131
 
 [node name="gravity-8" parent="stage_up/stage_up2" instance=ExtResource("10_1fij6")]
 position = Vector2(144, -449)

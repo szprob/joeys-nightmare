@@ -22,6 +22,8 @@ func _on_actionable_body_entered(body: Node2D) -> void:
 			triggered = true
 			actionable.action()
 			GameManager.set_skill_enabled("second_jump_enabled", true)
+			GameManager.enter_room2()
+			SoundPlayer.play_sound("res://assets/sounds/day/telephone-ring.mp3", true)
 			queue_free()
 	else:
 		print(typeof(body))

@@ -11,9 +11,9 @@ if GameManager.get_day_phase() < 3:
 	=> END
 else:
 	Joey: 鞋上好像写了什么
-	鞋[#shoe]: SpaceX生产![wave amp=25 freq=5]2024最新科技重力鞋![/wave]
+	鞋[#shoe]: SpaceX x Air Jordan联名![wave amp=25 freq=5]2024最新科技重力AJ![/wave]
 		Designed By Donald Trump, Made in China 
-	鞋[#shoe]: 按两下跳跃键就能使用E使用.
+	鞋[#shoe]: 按两下跳跃键就能使用.
 	Joey[#joey_normal]: 虽然没看懂是什么意思,但是还是拿走吧?
 	# Joey[#joey_happy]: 我就是最英勇的太空牛仔！[shake rate=20 level=10]泰酷辣![/shake]
 	- 是
@@ -31,3 +31,48 @@ Joey[#joey_normal]: 一个普通的抽水马桶
 - 走开
 	Joey[#joey_normal]: 还是不要碰比较好
 => END
+
+~ bathtub
+if GameManager.get_tub_water_phase() == 0:
+	Joey[#joey_normal]: 一个普通的浴缸，要打开水龙头吗?
+	- 打开
+		do GameManager.inc_tub_water_phase()
+		=> END
+	- 算了
+		=> END
+elif GameManager.get_tub_water_phase() == 1:
+	=> END
+else:
+	if GameManager.has_item('水枪'):
+		Joey[#joey_normal]: 用浴缸的水装填水枪吧?
+		- 是
+			do GameManager.fill_water_gun()
+			do SoundPlayer.play_sound("res://assets/sounds/day/water-191999.mp3")
+			=> END
+		- 否
+		=> END
+	else:
+		装满水的浴缸[#watered_tub]: 浴缸已经装满了水
+		=> END
+		
+~ fire
+if GameManager.is_fire_extincted():
+	Joey[#joey_normal]: 火已经灭了
+	=> END
+else:
+	do SoundPlayer.play_sound("res://assets/sounds/day/fire_sound.mp3")
+	壁炉[#fire_normal]: 壁炉燃烧的火让人觉得有点温暖,恐惧感不那么强了
+	if GameManager.has_item('水枪'):
+		if GameManager.is_water_gun_filled():
+			Joey[#joey_normal]: 水枪好像可以把火灭了
+			- 灭火
+				do SoundPlayer.stop_sound()
+				do SoundPlayer.play_sound("res://assets/sounds/day/fire-extinguishing-212651.mp3")
+				do GameManager.extinct_fire()
+				=> END
+			- 算了
+				=> END
+		else:
+			Joey[#joey_normal]: 要是水枪有水说不定能把火灭了
+	do SoundPlayer.stop_sound()
+	=> END

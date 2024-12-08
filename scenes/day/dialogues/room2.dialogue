@@ -5,3 +5,109 @@ Joey: 找找这个房间有什么线索吧
 ~ table1
 : 一张普通的餐桌，桌上的菜有点微微发臭了
 => END
+
+~ water_gun
+if GameManager.get_day_phase() < 7:
+	Joey[#joey_normal]: 看起来像是一把水枪
+	Joey[#joey_normal]: [shake rate=20 level=10]电话好吵啊!![/shake]先去接电话吧
+else:
+	水枪[#water_gun]: Super强力水枪,无论什么[shake rate=20 level=10]火[/shake],都能给你灭掉!
+	Joey[#joey_normal]: 要拿走水枪吗?
+	- 是
+		do GameManager.add_item('水枪')
+		Joey[#joey_normal]: 里面好像没水了,不知道还有什么用
+		=> END
+	- 否
+		=> END
+=> END
+	
+~ diary
+if GameManager.get_day_phase() < 7:
+	Joey[#joey_normal]: 一本笔记,封面上写了[b]Therapy Notes[/b]
+	Joey[#joey_normal]: [shake rate=20 level=10]电话好吵啊!![/shake]先去接电话吧
+else:
+	Joey[#joey_normal]: 一本笔记,封面上写了[b]Therapy Notes[/b],要读读看吗?
+- 是
+=> END
+- 否
+=> END
+
+~ telephone
+if GameManager.get_day_phase() < 7:
+	do SoundPlayer.stop_sound()
+	do GameManager.set_day_phase(7)
+	电话[#telephone]: Joey,一切还顺利吗?在你入睡后收音机就断开了通讯
+	Joey[#joey_normal]: 还是你吗Miss T?
+	Miss T[#doctor]: 看来你已经接受了我的身份了,怎么样,不会又是被死神杀回来的吧?
+	- 我成功逃脱了
+		Miss T[#doctor]: 呵呵,那就好
+	- 是啊，我被砍麻了
+		Miss T[#doctor]: 看你得意的表情并不像你说的这样,我希望你不要对我有隐瞒,这样才能保证治疗的顺利
+	Miss T[#doctor]: 这次回来我想你也明白了,想要从这里顺利出去,少不了在梦境世界的线索
+	Miss T[#doctor]: 这个房间遗留了很多关于你的物件,先四处看看整理一下思路吧
+else:
+	do SoundPlayer.play_sound("res://assets/sounds/day/telephone-busy.mp3")
+	电话[#telephone]: 已经没有声音了
+	=> END
+
+~ telephone_options
+Miss T[#doctor]: 想想还有什么想问我的,没有的话可以挂断电话了,但是挂断后我可能暂时没办法联系到你了
+- 我现在应该去哪儿
+	Miss T[#doctor]: 先搜集一下这个房间可能的线索吧,搜集完可以打开背包看看
+	=> telephone_options
+- 所以你到底是谁
+	Miss T[#doctor]: 最好的找回记忆的方式就是自己想起来
+	Miss T[#doctor]: 或许你探索完这个房间后就会明白了
+	=> telephone_options
+- 挂断电话
+	Miss T[#doctor]: 祝你好运!
+	do SoundPlayer.play_sound("res://assets/sounds/day/telephone-busy.mp3")
+	# do GameManager.add_item('钥匙2')
+=> END
+
+~ note1
+笔记1[#note1]: 一页笔记,要拿走吗?
+- 是
+	do GameManager.add_item('笔记1')
+	Joey[#joey_normal]: 看背包确认一下吧
+	=> END
+- 否
+	=> END
+
+~ left_door
+if not GameManager.is_left_door_opened():
+	Joey[#joey_normal]: 门被锁住了
+	if GameManager.has_item('钥匙2'):
+		Joey[#joey_normal]: 这把钥匙好像可以打开门,要打开吗?
+		- 是
+			do GameManager.open_left_door()
+			do GameManager.use_item('钥匙2')
+			do GameManager.set_day_phase(9)
+			=> END
+		- 否
+			=> END
+else:
+	门[#door]: 门已经打开了
+=> END
+
+~ safe
+if GameManager.is_all_light_off():
+	if GameManager.has_item('笔记2'):
+		保险柜[#safe_open2]: 一个空的保险柜,已经没有东西在里面了
+	else:
+		Joey[#joey_normal]: 有一页笔记,拿走吧
+		do GameManager.add_item('笔记2')
+		: 得到笔记2
+	=> END
+else:
+	保险柜[#safe_close]: 熄灭所有的灯火,真相就会浮现
+	=> END
+
+~ safe_open
+Joey[#joey_normal]: 保险柜门好像打开了,下楼确认一下吧
+=> END
+
+~ key2
+Joey[#joey_normal]: 这是Miss T给我的钥匙吗?
+do GameManager.add_item('钥匙2')
+=> END

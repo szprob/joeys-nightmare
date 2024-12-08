@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b5t052kpld60e"]
+[gd_scene load_steps=30 format=3 uid="uid://b5t052kpld60e"]
 
 [ext_resource type="PackedScene" uid="uid://blydc865qnepa" path="res://scenes/player/player_day.tscn" id="1_3un87"]
 [ext_resource type="PackedScene" uid="uid://bmq25pi5e8wan" path="res://scenes/day/room1/room1.tscn" id="1_fv2j8"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cydw848ah3caw" path="res://scenes/day/room2/mirror.tscn" id="6_imkld"]
 [ext_resource type="Resource" uid="uid://6a0f0mm58veq" path="res://scenes/day/dialogues/openning.dialogue" id="7_oohak"]
 [ext_resource type="PackedScene" uid="uid://dodqd8727m8io" path="res://scenes/day/display_room/display_room.tscn" id="8_8db2n"]
+[ext_resource type="Texture2D" uid="uid://dmhgvk8s48fj2" path="res://assets/sprites/day/new_room/door1.png" id="8_hvk6s"]
+[ext_resource type="Script" path="res://scripts/day/left_door.gd" id="9_cfwog"]
 [ext_resource type="PackedScene" uid="uid://67xd1lwqas7a" path="res://scenes/day/introduction/introduction.tscn" id="9_rumt0"]
 [ext_resource type="PackedScene" uid="uid://c40qc8gq3f3g3" path="res://scenes/day/room3/room3.tscn" id="10_lkum6"]
 [ext_resource type="PackedScene" uid="uid://c8flj66fr2ymi" path="res://scenes/day/inventory/inventory.tscn" id="11_15jyv"]
@@ -247,6 +249,58 @@ _data = {
 "opening_animation": SubResource("Animation_oh7vr")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7deyp"]
+atlas = ExtResource("8_hvk6s")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyjfs"]
+atlas = ExtResource("8_hvk6s")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ihcs"]
+atlas = ExtResource("8_hvk6s")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhl2o"]
+atlas = ExtResource("8_hvk6s")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r6g2f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7deyp")
+}],
+"loop": false,
+"name": &"close",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyjfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ihcs")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhl2o")
+}],
+"loop": false,
+"name": &"opened",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7fet"]
+size = Vector2(5, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rg62n"]
+size = Vector2(4, 29)
+
 [node name="Game" type="Node2D"]
 
 [node name="Room1" parent="." instance=ExtResource("1_fv2j8")]
@@ -286,7 +340,7 @@ position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_rl6hv")
 
 [node name="Mirror" parent="Room2" node_paths=PackedStringArray("character") instance=ExtResource("6_imkld")]
-position = Vector2(391, 105)
+position = Vector2(333, 106)
 character = NodePath("../../PlayerDay")
 
 [node name="Room3" parent="." instance=ExtResource("10_lkum6")]
@@ -353,7 +407,28 @@ offset_bottom = -267.0
 scale = Vector2(0.5, 0.5)
 track_camera = NodePath("../../PlayerDay/Camera2D")
 
-[node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("11_15jyv")]
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("11_15jyv")]
+unique_name_in_owner = true
+
+[node name="LeftDoor2" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 433)
+sprite_frames = SubResource("SpriteFrames_r6g2f")
+animation = &"open"
+script = ExtResource("9_cfwog")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="LeftDoor2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftDoor2/StaticBody2D"]
+position = Vector2(12.5, -0.5)
+shape = SubResource("RectangleShape2D_q7fet")
+
+[node name="Actionable" parent="LeftDoor2" instance=ExtResource("4_epc0u")]
+dialogue_resource = ExtResource("5_m6frk")
+dialogue_start = "left_door"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftDoor2/Actionable"]
+position = Vector2(13, 0.5)
+shape = SubResource("RectangleShape2D_rg62n")
 
 [connection signal="body_entered" from="Room2/EnterAnimation/Actionable" to="Room2/EnterAnimation" method="_on_actionable_body_entered"]
 [connection signal="area_entered" from="PlayerDay/Direction/Finder" to="PlayerDay" method="_on_finder_area_entered"]

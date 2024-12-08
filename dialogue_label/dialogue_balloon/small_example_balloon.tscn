@@ -130,6 +130,7 @@ _data = {
 [node name="ExampleBalloon" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_ubsg3")
+next_action = &"select"
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true
@@ -184,7 +185,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue..."
-seconds_per_step = 0.06
+seconds_per_step = 0.01
 pause_at_characters = ".?!,"
 
 [node name="TextureRect" type="TextureRect" parent="Balloon/Panel"]
@@ -194,7 +195,7 @@ offset_top = -7.0
 offset_right = 65.0
 offset_bottom = 57.0
 texture = ExtResource("3_bdtls")
-stretch_mode = 6
+stretch_mode = 5
 
 [node name="Indicator" type="TextureRect" parent="Balloon/Panel"]
 layout_mode = 1
@@ -239,6 +240,7 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 2
 script = ExtResource("3_wukh8")
+next_action = &"select"
 
 [node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu"]
 layout_mode = 2

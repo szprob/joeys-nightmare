@@ -1,6 +1,7 @@
 extends Area2D
 
-@export var light_tile: TileMapLayer
+@export var light_sprite: Sprite2D
+@export var index: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,7 +13,9 @@ func _process(delta: float) -> void:
 	pass
 
 func action() -> void:
-	if light_tile.visible:
-		light_tile.hide()
+	SoundPlayer.play_sound("res://assets/sounds/day/light-switch-81967.mp3")
+	if light_sprite.visible:
+		light_sprite.hide()
 	else:
-		light_tile.show()
+		light_sprite.show()
+	GameManager.set_light_visble(light_sprite.visible, index)
