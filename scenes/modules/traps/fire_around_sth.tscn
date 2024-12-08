@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bb0qpphy66mjy"]
+[gd_scene load_steps=22 format=3 uid="uid://dmq8ljo7go0bx"]
 
 [ext_resource type="Script" path="res://scripts/modules/traps/fire_around_sth.gd" id="1_j627v"]
 [ext_resource type="Texture2D" uid="uid://c7xf3ln8bdag4" path="res://assets/sprites/traps/VFX_Fire_2.png" id="2_gyxbs"]
@@ -133,7 +133,7 @@ script = ExtResource("1_j627v")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jakt6")
 autoplay = "default"
-frame_progress = 0.441665
+frame_progress = 0.646061
 
 [node name="kill_zone" parent="." instance=ExtResource("3_jvvsf")]
 

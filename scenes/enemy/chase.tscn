@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cx3o8x8uyvvi2" path="res://assets/sprites/enemy/chase/boss1/idle.png" id="5_d42ib"]
 [ext_resource type="AudioStream" uid="uid://dsjbow3x6dnt" path="res://assets/sounds/enemy/GOREMisc_Flesh Sword Slash 03_PSE_SR-COM_V3FfX.wav" id="6_cb4cc"]
 [ext_resource type="AudioStream" uid="uid://f6dgr4mgs733" path="res://assets/sounds/enemy/GOREMisc_Flesh Sword Slash 02_PSE_SR-COM_LzdtX.wav" id="7_18cqj"]
-[ext_resource type="PackedScene" uid="uid://b3en2onoukpwt" path="res://scenes/enemy/shadow.tscn" id="9_7k6qq"]
+[ext_resource type="PackedScene" path="res://scenes/enemy/shadow.tscn" id="9_7k6qq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ja78p"]
 atlas = ExtResource("3_dci4n")
