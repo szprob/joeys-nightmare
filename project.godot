@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Consts="*res://scripts/singleton/consts.gd"
 GameManager="*res://scripts/singleton/game_manager.gd"
+Inventory="*res://scenes/day/inventory/inventory.tscn"
 SoundPlayer="*res://scenes/day/sound/SoundPlayer.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
