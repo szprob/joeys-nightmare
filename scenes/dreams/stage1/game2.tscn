@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=4 uid="uid://dc8gecknf0ea"]
+[gd_scene load_steps=13 format=4 uid="uid://dc8gecknf0ea"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_i8ht2"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="2_6wmt0"]
 [ext_resource type="PackedScene" uid="uid://bb0qpphy66mjy" path="res://scenes/modules/traps/fire_around_sth.tscn" id="5_vixsl"]
 [ext_resource type="PackedScene" uid="uid://be4tvkuckghc4" path="res://scenes/modules/platforms/swing.tscn" id="6_agnfp"]
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="6_b7ixv"]
+[ext_resource type="PackedScene" uid="uid://5ke66hnjv6ab" path="res://scenes/modules/traps/lazer.tscn" id="7_01urf"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="26_fn7sq"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8553"]
@@ -344,7 +345,7 @@ tile_map_data = PackedByteArray("AAD7/wAAAAAAAAEAAAD8/wAAAAAAAAAAAAD9/wAAAAAAAAA
 tile_set = SubResource("TileSet_rvt4p")
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("26_fn7sq")]
-position = Vector2(-1455.69, -34.0674)
+position = Vector2(-4173.98, 33.3135)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(0, -5)
@@ -363,3 +364,11 @@ position = Vector2(-11.7523, -99.1977)
 [node name="FireAroundSth" parent="." node_paths=PackedStringArray("around_sth") instance=ExtResource("5_vixsl")]
 position = Vector2(-1343, 30)
 around_sth = NodePath("../Swing")
+
+[node name="Lazer" parent="." instance=ExtResource("7_01urf")]
+
+[node name="Area2D" type="Area2D" parent="Lazer"]
+position = Vector2(-1728.48, -77.8101)
+
+[node name="Area2D2" type="Area2D" parent="Lazer"]
+position = Vector2(-1730.16, 20.9665)

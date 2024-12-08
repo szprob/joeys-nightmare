@@ -13,7 +13,7 @@ func _ready():
 	# 获取玩家节点
 	await get_tree().create_timer(0.1).timeout
 	player = get_tree().get_first_node_in_group("player")
-	player.set_can_move(true)
+	# player.set_can_move(true)
 	# camera = get_tree().get_first_node_in_group("camera") 
 	current_particles = death_particles_scene.instantiate()
 	current_particles.emitting = false
@@ -57,14 +57,21 @@ func _on_timer_timeout() -> void:
 
 
 func cleanup_dynamic_nodes() -> void:
-	# 假设你给所有动态添加的节点都加了一个组名
 	var dynamic_nodes = get_tree().get_nodes_in_group("dynamic")
 	for node in dynamic_nodes:
-		node.queue_free()
+		if node != current_particles:  # 避免清理当前使用的粒子系统
+			node.queue_free()
+
 
 
 
 func create_collision_effect(pos: Vector2):
+	# 检查粒子系统是否有效
+	if !is_instance_valid(current_particles):
+		current_particles = death_particles_scene.instantiate()
+		current_particles.emitting = false
+		add_child(current_particles)
+	
 	if current_particles:
 		current_particles.global_position = pos
 		current_particles.restart()

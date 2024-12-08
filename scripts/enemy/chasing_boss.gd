@@ -159,7 +159,7 @@ func _physics_process(delta: float) -> void:
 				animated_sprite.play("idle")
 			if state_timer >= idle_duration:
 				# if player.global_position.y > limit_top and player.global_position.y < limit_bottom:
-				if idx % 4 > 1:
+				if idx % 4 > 0:
 					change_state(State.DASH)
 				else:
 					change_state(State.ATT_DASH)
