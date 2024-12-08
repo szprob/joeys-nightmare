@@ -1,6 +1,6 @@
 [gd_scene load_steps=57 format=4 uid="uid://lw2yxxpp7ff3"]
 
-[ext_resource type="Script" path="res://scenes/dreams/bigworldv2/chase_fake.gd" id="1_rebj1"]
+[ext_resource type="Script" path="res://scripts/dreams/chase_fake.gd" id="1_rebj1"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_vg46d"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_87tsk"]
 [ext_resource type="Texture2D" uid="uid://c57fo0smy156u" path="res://assets/sprites/background/multi3/back.png" id="5_y3mqv"]
@@ -32,7 +32,7 @@
 [ext_resource type="TileSet" uid="uid://eahum84lpc4q" path="res://tiles/cave.tres" id="31_7mbra"]
 [ext_resource type="PackedScene" uid="uid://c5x12p3650b3l" path="res://scenes/player/npc.tscn" id="32_ljlfb"]
 [ext_resource type="Script" path="res://scripts/camera_area.gd" id="32_o5jts"]
-[ext_resource type="PackedScene" uid="uid://yan3jqnet7ud" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="33_whj8i"]
+[ext_resource type="PackedScene" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="33_whj8i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52wgx"]
 texture = ExtResource("11_ivpvr")
