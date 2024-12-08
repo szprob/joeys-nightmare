@@ -2,7 +2,7 @@ extends Area2D
 
 var death_particles_scene = preload("res://scenes/modules/ui/death_particles.tscn")
 var current_particles: GPUParticles2D = null
-var player 
+var player
 # var camera 
 
 @onready var timer: Timer = $Timer
@@ -24,16 +24,15 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	
 	if not body.is_in_group("player"):
-		return 
+		return
 	audio_player.play()
 	GameManager.die_requested.emit()
 	GameManager.game_state_cache['can_detect_kill_zone'] = false
 	GameManager.game_state['number_deaths'] += 1
-
-	player.set_can_move(false, 'death')
+	if player:
+		player.set_can_move(false, 'death')
 	GameManager.camera_shake_requested.emit(5, 0.2)
 
-	
 	
 	print('number_deaths : ', GameManager.game_state['number_deaths'])
 	# Engine.time_scale = 0.5
@@ -44,7 +43,6 @@ func _on_body_entered(body: Node2D) -> void:
 	timer.start()
 	
 	
-
 func _on_timer_timeout() -> void:
 	# Engine.time_scale = 1
 	GameManager.game_state_cache['can_detect_kill_zone'] = true
@@ -59,10 +57,8 @@ func _on_timer_timeout() -> void:
 func cleanup_dynamic_nodes() -> void:
 	var dynamic_nodes = get_tree().get_nodes_in_group("dynamic")
 	for node in dynamic_nodes:
-		if node != current_particles:  # 避免清理当前使用的粒子系统
+		if node != current_particles: # 避免清理当前使用的粒子系统
 			node.queue_free()
-
-
 
 
 func create_collision_effect(pos: Vector2):
