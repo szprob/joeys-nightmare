@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=4 uid="uid://yukpdyc34t7m"]
+
+[ext_resource type="Texture2D" uid="uid://c7ddne28gxewo" path="res://assets/sprites/background/intro/brick_ultra.png" id="1_iaw7s"]
+[ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_mnfc1"]
+[ext_resource type="PackedScene" uid="uid://burxykvkyw21f" path="res://scenes/modules/v2/falling_block_tgt.tscn" id="4_xmsyl"]
+[ext_resource type="TileSet" uid="uid://eahum84lpc4q" path="res://tiles/cave.tres" id="5_42tcg"]
+[ext_resource type="PackedScene" uid="uid://uameo0xhgfwd" path="res://scenes/sokoban/destruct_obj.tscn" id="6_68srp"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2u2fg"]
+texture = ExtResource("1_iaw7s")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mxlu6"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_2u2fg")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgpbi"]
+size = Vector2(64, 218)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x683w"]
+size = Vector2(63, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_28yg6"]
+size = Vector2(104, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anx5e"]
+size = Vector2(16, 16)
+
+[node name="TestDestructables" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAIAAAAAAAEAAAABAAIAAAAAAAEAAAACAAIAAAAAAAEAAAADAAIAAAAAAAEAAAAEAAIAAAAAAAEAAAAFAAIAAAAAAAEAAAAGAAIAAAAAAAEAAAAHAAIAAAAAAAEAAAAIAAIAAAAAAAEAAAAJAAIAAAAAAAEAAAAKAAIAAAAAAAEAAAALAAIAAAAAAAEAAAAMAAIAAAAAAAEAAAANAAIAAAAAAAEAAAAOAAIAAAAAAAEAAAAPAAIAAAAAAAEAAAAQAAIAAAAAAAEAAAARAAIAAAAAAAEAAAASAAIAAAAAAAEAAAATAAIAAAAAAAEAAAAUAAIAAAAAAAEAAAAVAAIAAAAAAAEAAAAWAAIAAAAAAAEAAAAXAAIAAAAAAAEAAAAYAAIAAAAAAAEAAAAZAAIAAAAAAAEAAAAaAAIAAAAAAAEAAAAbAAIAAAAAAAEAAAAcAAIAAAAAAAEAAAAdAAIAAAAAAAEAAAAeAAIAAAAAAAEAAAAfAAIAAAAAAAEAAAAgAAIAAAAAAAEAAAAAAP7/AAAAAAEAAAABAP7/AAAAAAEAAAACAP7/AAAAAAEAAAADAP7/AAAAAAEAAAAEAP7/AAAAAAEAAAAFAP7/AAAAAAEAAAAGAP7/AAAAAAEAAAAHAP7/AAAAAAEAAAAIAP7/AAAAAAEAAAAJAP7/AAAAAAEAAAAKAP7/AAAAAAEAAAALAP7/AAAAAAEAAAAMAP7/AAAAAAEAAAANAP7/AAAAAAEAAAAOAP7/AAAAAAEAAAAPAP7/AAAAAAEAAAAQAP7/AAAAAAEAAAA=")
+tile_set = SubResource("TileSet_mxlu6")
+
+[node name="player_with_gravity" parent="." instance=ExtResource("2_mnfc1")]
+position = Vector2(144.305, -490.247)
+collision_layer = 192
+
+[node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
+position = Vector2(1, 2)
+position_smoothing_enabled = true
+
+[node name="FallingBlockTgt5" parent="." node_paths=PackedStringArray("target", "detection") instance=ExtResource("4_xmsyl")]
+position = Vector2(138, -397)
+collision_layer = 65
+collision_mask = 3
+speed = 150.0
+invisible_before_launch = false
+target = NodePath("target")
+detection = NodePath("detection")
+should_reset = false
+acceleration = 100.0
+
+[node name="target" type="Area2D" parent="FallingBlockTgt5"]
+position = Vector2(0, 696)
+
+[node name="detection" type="Area2D" parent="FallingBlockTgt5"]
+collision_layer = 0
+collision_mask = 129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingBlockTgt5/detection"]
+position = Vector2(0, 69)
+shape = SubResource("RectangleShape2D_sgpbi")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="FallingBlockTgt5"]
+tile_map_data = PackedByteArray("AAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAD+/wEAAgAAAAAAAQD//wEAAgAAAAAAAQAAAAEAAgAAAAAAAQABAAEAAgAAAAAAAQA=")
+tile_set = ExtResource("5_42tcg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingBlockTgt5"]
+position = Vector2(-0.35907, 20.5442)
+shape = SubResource("RectangleShape2D_x683w")
+
+[node name="destructibles" type="Node2D" parent="."]
+
+[node name="destruct-02" type="Node2D" parent="destructibles"]
+position = Vector2(137, -225)
+
+[node name="destruct-obj-tiles" parent="destructibles/destruct-02" node_paths=PackedStringArray("node_to_explode") instance=ExtResource("6_68srp")]
+position = Vector2(-1, 27)
+node_to_explode = NodePath("../node-to-explode")
+
+[node name="Trigger" type="Area2D" parent="destructibles/destruct-02"]
+position = Vector2(-1, 64)
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="destructibles/destruct-02/Trigger"]
+position = Vector2(3, -64)
+shape = SubResource("RectangleShape2D_28yg6")
+
+[node name="node-to-explode" type="Area2D" parent="destructibles/destruct-02"]
+
+[node name="Sprite2D" type="Sprite2D" parent="destructibles/destruct-02/node-to-explode"]
+texture = ExtResource("1_iaw7s")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="destructibles/destruct-02/node-to-explode"]
+shape = SubResource("RectangleShape2D_anx5e")
