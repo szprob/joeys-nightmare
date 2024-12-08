@@ -13,6 +13,9 @@ var dialogue_data: Dictionary = {
 		"npc:明晚我们再见",
 		"npc:记得检查一下衣柜",
 		"npc:小时候的你很喜欢藏东西在哪儿"
+	],
+	'die': [
+		"npc:快跑......"
 	]
 }
 

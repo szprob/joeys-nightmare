@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2scf0mf7s0y1"]
+[gd_scene load_steps=3 format=3 uid="uid://b2scf0mf7s0y1"]
 
 [ext_resource type="Script" path="res://scripts/modules/kill_zone.gd" id="1_wmyar"]
+[ext_resource type="AudioStream" uid="uid://dgdm5viegtgma" path="res://assets/sounds/player/young-man-being-hurt-95628.mp3" id="2_rkrbi"]
 
 [node name="kill_zone" type="Area2D"]
 collision_layer = 0
@@ -9,6 +10,9 @@ script = ExtResource("1_wmyar")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_rkrbi")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
