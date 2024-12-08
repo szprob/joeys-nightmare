@@ -14,6 +14,9 @@ extends RigidBody2D
 @export var debug_mode: bool = true
 @export var trigger_path = '../Trigger'
 @export var trigger_node_name: String = "Trigger"
+@export var node_to_explode: Node2D
+# @export var tilemap_to_explode: TileMapLayer
+
 # var object = DestructObject.new()
 
 var explosion_delay_timer = 0
@@ -86,7 +89,9 @@ func _ready():
 	# 	print("My collision layer: ", collision_layer)
 	# 	print("My collision mask: ", collision_mask)
 	# 	print("Can detect static bodies: ", collision_mask & 1)
-	
+	# print('node_to_explode: ', node_to_explode.name)
+	print('self name: ', self.name)
+	# print('tilemap_to_explode: ', tilemap_to_explode.name)
 	var params = {
 		"blocks_gravity_scale": blocks_gravity_scale,
 		"blocks_impulse": blocks_impulse,
@@ -143,14 +148,22 @@ func _ready():
 		print("ERROR: The '%s' node must be a 'RigidBody2D'" % self.name)
 		object.can_detonate = false
 		return
-
-	for child in get_children():
+	print('node_to_explode', node_to_explode)
+	print('node_to_explode: ', node_to_explode.name)
+	## deal with if into a tilemap to explode
+	for child in node_to_explode.get_children():
 		if is_instance_of(child, Sprite2D):
 			object.sprite_name = child.name
+			var sprite_copy = child.duplicate()
+			add_child(sprite_copy)
+			child.queue_free()
 
 		if child is CollisionShape2D:
 			object.collision_name = child.name
-
+			var collision_copy = child.duplicate()
+			add_child(collision_copy)
+			child.queue_free()
+			
 	if not object.sprite_name and not object.collision_name:
 		print("ERROR: The 'RigidBody2D' (%s) must contain at least a 'Sprite' and a 'CollisionShape2D'." % self.name)
 		object.can_detonate = false
@@ -178,8 +191,9 @@ func _ready():
 	if debug_mode: print("--------------------------------")
 
 	# Use vframes and hframes to divide the sprite.
-	var sprite = get_node(object.sprite_name) as Sprite2D
-	
+	# var sprite = get_node(object.sprite_name) as Sprite2D
+	var sprite = get_node(object.sprite_name)
+	print('sprite ', sprite.name)
 	# 保存原始的 frame 设置
 	var original_frame = sprite.frame
 	
@@ -347,6 +361,10 @@ func _ready():
 	if explosion_detector:
 		print('detector collsion mask: ', explosion_detector.collision_mask)
 	add_to_group("destructible")
+
+	if node_to_explode is TileMap:
+		print('load explode tilemap succeed')
+
 func _physics_process(delta):
 	# if object.parent:
 	# 	print('object.parent: ', object.parent.name)
