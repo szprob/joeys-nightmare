@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dc8gecknf0ea"]
+[gd_scene load_steps=13 format=4 uid="uid://d3chygb6wr7cc"]
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_i8ht2"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="2_6wmt0"]
@@ -345,14 +345,7 @@ tile_map_data = PackedByteArray("AAD7/wAAAAAAAAEAAAD8/wAAAAAAAAAAAAD9/wAAAAAAAAA
 tile_set = SubResource("TileSet_rvt4p")
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("26_fn7sq")]
-position = Vector2(-4173.98, 33.3135)
-
-[node name="Camera2D" type="Camera2D" parent="player"]
-position = Vector2(0, -5)
-process_callback = 0
-limit_bottom = 150
-limit_smoothed = true
-position_smoothing_enabled = true
+position = Vector2(6877.01, 22.3036)
 
 [node name="Swing" parent="." node_paths=PackedStringArray("pivot_target") instance=ExtResource("6_agnfp")]
 position = Vector2(-1250, 27)
@@ -372,3 +365,10 @@ position = Vector2(-1728.48, -77.8101)
 
 [node name="Area2D2" type="Area2D" parent="Lazer"]
 position = Vector2(-1730.16, 20.9665)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-15008.3, -21.7936)
+process_callback = 0
+limit_bottom = 150
+limit_smoothed = true
+position_smoothing_enabled = true
