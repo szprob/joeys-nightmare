@@ -6,7 +6,7 @@ extends RigidBody2D
 @export var debris_max_time: float = 5
 @export var remove_debris: bool = false
 @export var collision_layers: int = 1
-@export var collision_masks: int = 7
+@export var collision_masks: int = 1
 @export var collision_one_way: bool = false
 @export var explosion_delay: bool = false
 @export var fake_explosions_group: String = "fake_explosion_particles"
@@ -108,7 +108,7 @@ func _ready():
 	explosion_detector = get_parent().get_node(trigger_node_name)
 	#explosion_detector = get_node(trigger_path)
 	if explosion_detector:
-		explosion_detector.collision_layer = 0
+		explosion_detector.set_collision_layer_value(0, true)
 		explosion_detector.set_collision_mask_value(7, true)
 		print('detector found')
 		explosion_detector.area_entered.connect(_on_trigger_entered)
@@ -424,7 +424,7 @@ func add_children(child_object):
 		var block = child_object.blocks[i]
 		# 确保碎片不会干扰主体的碰撞检测
 		block.contact_monitor = false
-		block.collision_layer = 7
+		block.set_collision_layer_value(0, true)
 		child_object.blocks_container.add_child(child_object.blocks[i], true)
 	# print('child_object: ', child_object)
 	# print('parent: ', child_object.parent.name)
@@ -470,14 +470,16 @@ func detonate():
 		var child_gravity_scale = blocks_gravity_scale
 		child.gravity_scale = child_gravity_scale
 
-		var child_scale = randf_range(0.7, 2)
+		var child_scale = randf_range(0.5, 1.5)
 		# var child_scale = 1
 		child.get_node(object.sprite_name).scale *= Vector2(child_scale, child_scale)
 		child.get_node(object.collision_name).scale *= Vector2(child_scale, child_scale)
 
 		# child.mass = child_scale
 
-		child.set_collision_layer(0 if randf() < 0.5 else object.collision_layers)
+		# child.set_collision_layer(0 if randf() < 0.5 else object.collision_layers)
+		child.set_collision_layer_value(0, true)
+		child.set_collision_layer_value(1, false)
 		child.set_collision_mask(0 if randf() < 0.5 else object.collision_masks)
 
 		child.z_index = 0 if randf() < 0.5 else -1
