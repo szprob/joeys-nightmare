@@ -8,7 +8,6 @@ else:
 [#room3_door_close]: 要进门后的房间吗?
 - 是
 	do GameManager.open_room3_door()
-	do GameManager.enter_day_scene("res://scenes/day/room3/mac_room.tscn")
 	=> END
 - 否
 	=> END
@@ -23,5 +22,5 @@ else:
 => END
 
 ~ macintosh
-[#macintosh]: 你通关了
+[#macintosh]: 恭喜你过关了,感谢你的游玩!
 => END

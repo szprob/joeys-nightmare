@@ -55,7 +55,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"open",
-"speed": 6.0
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpsrg"]
@@ -106,3 +106,5 @@ offset_right = 219.0
 offset_bottom = 94.0
 texture = ExtResource("5_5t41e")
 stretch_mode = 5
+
+[connection signal="animation_finished" from="Door1" to="Door1" method="_on_animation_finished"]
