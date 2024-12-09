@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://klra2rxa7l18"]
+[gd_scene load_steps=43 format=4 uid="uid://klra2rxa7l18"]
 
 [ext_resource type="Script" path="res://scripts/dreams/chase_fake.gd" id="1_ly2xj"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="2_bdtgd"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://c8q6wa4cofe21" path="res://scenes/modules/traps/falling_trap_tgt.tscn" id="20_v7k83"]
 [ext_resource type="PackedScene" uid="uid://kfdbq76ixwrq" path="res://scenes/modules/checkpoints/save_point.tscn" id="21_iiwa8"]
 [ext_resource type="PackedScene" uid="uid://cv3nrtrevxkyu" path="res://scenes/sokoban/gravity_1.tscn" id="23_ahxdv"]
+[ext_resource type="PackedScene" uid="uid://0j0hh5bs6yjc" path="res://scenes/modules/interface/chang_scene_area.tscn" id="26_h6gf3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52wgx"]
 texture = ExtResource("10_c8uxr")
@@ -399,3 +400,8 @@ position = Vector2(3064, -440)
 shape = SubResource("RectangleShape2D_wh8f5")
 disabled = true
 debug_color = Color(0.866667, 0.282353, 0.552941, 0.419608)
+
+[node name="ChangSceneArea" parent="." instance=ExtResource("26_h6gf3")]
+position = Vector2(1332, -170)
+next_scene_file_path = "res://scenes/day/game/game.tscn"
+teleport_type = "dream2day"

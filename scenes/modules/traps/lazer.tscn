@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/modules/traps/lazer.gd" id="1_u0wl7"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="2_bu3ay"]
-[ext_resource type="AudioStream" uid="uid://da1t834jjcv5v" path="res://assets/sounds/traps/glitch-lazer-232465.mp3" id="3_igmn0"]
+[ext_resource type="AudioStream" uid="uid://duw7jeuhgmwsj" path="res://assets/sounds/traps/glitch-lazer-232465.mp3" id="3_igmn0"]
 
 [node name="Lazer" type="Node2D"]
 script = ExtResource("1_u0wl7")

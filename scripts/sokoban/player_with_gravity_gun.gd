@@ -86,7 +86,7 @@ func _ready():
 
 	$HookableDetector.area_entered.connect(_on_hookable_area_entered)
 	$HookableDetector.area_exited.connect(_on_hookable_area_exited)
-
+	GameManager.game_state_cache['should_die'] = true
 	add_to_group("player")
 	set_can_move(true)
 

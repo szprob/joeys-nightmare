@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://13v5ninigqoq" path="res://assets/sprites/player/01 - Hobbit/joey假冒版/jump.png" id="4_vqoi1"]
 [ext_resource type="AudioStream" uid="uid://c8n5qm0wdo23u" path="res://assets/sounds/player/jump.wav" id="5_rl8ln"]
 [ext_resource type="Texture2D" uid="uid://cir13b3bcqs3" path="res://assets/sprites/player/01 - Hobbit/joey假冒版/run.png" id="5_xwq57"]
-[ext_resource type="AudioStream" uid="uid://vdrifq1nuemk" path="res://assets/sounds/player/swing-whoosh-5-198498.mp3" id="9_fatud"]
+[ext_resource type="AudioStream" uid="uid://3f0a4c4uapm6" path="res://assets/sounds/player/swing-whoosh-5-198498.mp3" id="9_fatud"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1hun"]
 atlas = ExtResource("3_yq4i5")
