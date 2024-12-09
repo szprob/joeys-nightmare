@@ -25,8 +25,8 @@ const BubbleScene = preload("res://scenes/modules/ui/bubble.tscn")
 const DialogueFile = preload("res://scenes/dreams/dialogue/dialogue.gd")
 
 # 添加新的变量
-@export var bubble_delay: float = 0.2
-@export var bubble_speed: float = 0.06
+@export var bubble_delay: float = 1.2
+@export var bubble_speed: float = 0.08
 @export var bubble_title: String = "stage1_begin"
 @export var bubble_index: int = 0
 @export var teleport: Node2D
@@ -55,7 +55,7 @@ func _ready() -> void:
 	add_child(timer)
 	timer.timeout.connect(_on_timer_timeout)
 	timer.one_shot = true
-	timer.wait_time = bubble_delay
+	timer.wait_time = 0.1
 	
 
 	disappear_timer = Timer.new()

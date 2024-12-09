@@ -36,7 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://b6pq8l7ym5nuh" path="res://scenes/modules/checkpoints/teleport.tscn" id="30_jtg7r"]
 [ext_resource type="Script" path="res://scripts/camera_area.gd" id="35_ix8v8"]
 [ext_resource type="PackedScene" uid="uid://c5x12p3650b3l" path="res://scenes/player/npc.tscn" id="36_nx2ii"]
-[ext_resource type="PackedScene" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="37_ij3kw"]
+[ext_resource type="PackedScene" uid="uid://yan3jqnet7ud" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="37_ij3kw"]
 [ext_resource type="PackedScene" uid="uid://5ke66hnjv6ab" path="res://scenes/modules/traps/lazer.tscn" id="37_xujqa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ogtr0"]
@@ -158,8 +158,11 @@ position = Vector2(-200.446, -283.095)
 position = Vector2(-240.446, -283.095)
 teleport = NodePath("../empty-teleport2")
 
+[node name="CollisionShape2D" parent="Npc/detection" index="0"]
+position = Vector2(-68.777, -50.2025)
+
 [node name="player_with_gravity" parent="." groups=["player"] instance=ExtResource("1_e7g7y")]
-position = Vector2(-336, -280)
+position = Vector2(-387, -282)
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
@@ -1010,3 +1013,5 @@ debug_color = Color(0.866667, 0.282353, 0.552941, 0.419608)
 [node name="empty-teleport" parent="." instance=ExtResource("37_ij3kw")]
 visible = false
 position = Vector2(-211, -279)
+
+[editable path="Npc"]

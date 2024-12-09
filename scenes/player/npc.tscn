@@ -107,7 +107,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpe17"]
-size = Vector2(42, 9)
+size = Vector2(92.446, 119.405)
 
 [node name="Npc" type="CharacterBody2D" groups=["teleport_enable"]]
 collision_layer = 0

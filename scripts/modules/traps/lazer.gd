@@ -119,11 +119,11 @@ func _process(delta: float) -> void:
 		
 		# 根据距离调整音量
 		if distance < 50:
-			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -10)
+			audio_player.volume_db = -10.0
 		elif distance < 300:
 			# 在200-400范围内线性插值音量，从-5db到-80db(静音)
 			var t = (distance - 50) / 250  # 归一化到0-1范围
 			var volume_db = lerp(-10.0, -80.0, t)
-			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), volume_db)
+			audio_player.volume_db = volume_db
 		else:
-			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -80.0)
+			audio_player.volume_db = -80.0
