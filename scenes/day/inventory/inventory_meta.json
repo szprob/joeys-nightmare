@@ -1,0 +1,37 @@
+[
+	{
+		"index": 0,
+		"name": "身份证",
+		"description": "一张身份证，上面写着Joey Belmont，是我的名字"
+	},
+	{
+		"index": 1,
+		"name": "重力AJ",
+		"description": "SpaceX x Air Jordan联名!2024最新科技重力AJ!\nDesigned By Donald\nTrump, Made in China\n按两下跳跃键就能使用."
+	},
+	{
+		"index": 2,
+		"name": "钥匙1",
+		"description": "应该能打开卧室的门"
+	},
+	{
+		"index": 3,
+		"name": "水枪",
+		"description": "Super强力水枪,无论什么火,都能给你灭掉!"
+	},
+	{
+		"index": 4,
+		"name": "笔记1",
+		"description": "我总是很害怕在夜晚入睡，因为恶梦总是困扰我，我将在12月23日那天拜访您，希望你能治好的我的病\n                             ——Joey"
+	},
+	{
+		"index": 5,
+		"name": "笔记2",
+		"description": "Joey的黑暗恐惧症越来越严重了，我希望能通过梦境疗法治疗好他\n                        ——医生Tracy"
+	},
+	{
+		"index": 6,
+		"name": "钥匙2",
+		"description": "应该能打开左侧的门"
+	}
+]
