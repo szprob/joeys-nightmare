@@ -366,7 +366,7 @@ func extinct_fire() -> void:
 	game_state['fire_extincted'] = true
 
 func is_room2_cleared() -> bool:
-	return has_item("笔记1") and has_item("笔记2") and has_item("水枪") and game_state['all_light_off']
+	return has_item("笔记1") and has_item("钩爪") and has_item("水枪") and game_state['all_light_off']
 
 func is_room3_door_open() -> bool:
 	return game_state['room3_door_open']
