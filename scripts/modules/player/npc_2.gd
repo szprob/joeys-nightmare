@@ -54,12 +54,12 @@ func _ready() -> void:
 	await get_tree().create_timer(0.1).timeout 
 	dialogue_file = DialogueFile.new()
 	# 检查对话文件是否在已完成列表中
-	if GameManager.game_state.has('npc_dialogue_list') and bubble_title in GameManager.game_state['npc_dialogue_list']:
-		print('该NPC对话已完成，将被移除: ', bubble_title)
-		if teleport:
-			teleport.queue_free()
-		queue_free()
-		return
+	# if GameManager.game_state.has('npc_dialogue_list') and bubble_title in GameManager.game_state['npc_dialogue_list']:
+	# 	print('该NPC对话已完成，将被移除: ', bubble_title)
+	# 	if teleport:
+	# 		teleport.queue_free()
+	# 	queue_free()
+	# 	return
 	
 	animated_sprite.visible = false
 	animated_sprite_2.visible = true
@@ -154,7 +154,7 @@ func _on_timer_timeout():
 	shoot_audio.play()
 	await get_tree().create_timer(0.5).timeout
 	ball_instance = BallScene.instantiate()
-	var offset = animated_sprite_2.global_position - Vector2(70, 0)
+	var offset = animated_sprite_2.global_position + Vector2(70, 0)
 	ball_instance.global_position = offset
 	ball_instance.set_target(self)
 	get_tree().current_scene.add_child(ball_instance)

@@ -49,9 +49,9 @@ func _ready() -> void:
 	#line2d.set_meta("glow_enabled", true)
 	player = get_tree().get_first_node_in_group("player")
 
-	# 设置音频为循环播放
-	audio_player.stream.loop = true
-	audio_player.play()
+	# # 设置音频为循环播放
+	# audio_player.stream.loop = true
+	# audio_player.play()
 
 
 func draw_kill_zone_shape() -> void:
@@ -113,17 +113,17 @@ func _process(delta: float) -> void:
 	end_particles.emitting = true
 
 	# 获取玩家节点
-	if player:
-		# 计算与玩家的距离
-		var distance = global_position.distance_to(player.global_position)
+	# if player:
+	# 	# 计算与玩家的距离
+	# 	var distance = global_position.distance_to(player.global_position)
 		
-		# 根据距离调整音量
-		if distance < 50:
-			audio_player.volume_db = -10.0
-		elif distance < 300:
-			# 在200-400范围内线性插值音量，从-5db到-80db(静音)
-			var t = (distance - 50) / 250  # 归一化到0-1范围
-			var volume_db = lerp(-10.0, -80.0, t)
-			audio_player.volume_db = volume_db
-		else:
-			audio_player.volume_db = -80.0
+		# # 根据距离调整音量
+		# if distance < 50:
+		# 	audio_player.volume_db = -10.0
+		# elif distance < 300:
+		# 	# 在200-400范围内线性插值音量，从-5db到-80db(静音)
+		# 	var t = (distance - 50) / 250  # 归一化到0-1范围
+		# 	var volume_db = lerp(-10.0, -80.0, t)
+		# 	audio_player.volume_db = volume_db
+		# else:
+		# 	audio_player.volume_db = -80.0

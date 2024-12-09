@@ -107,7 +107,7 @@ position = Vector2(0, -256)
 script = ExtResource("1_ttyrc")
 
 [node name="player_with_gravity" parent="." groups=["player"] instance=ExtResource("1_oqshb")]
-position = Vector2(589.485, -290.515)
+position = Vector2(5982.62, -2326.75)
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
@@ -427,9 +427,9 @@ pivot_target = NodePath("../target")
 rope_width = 1.0
 
 [node name="Swing5" parent="map" node_paths=PackedStringArray("pivot_target") instance=ExtResource("23_d0iu2")]
-position = Vector2(4599, -1764)
+position = Vector2(4599, -1765)
 pivot_target = NodePath("Area2D")
-next_scene_file_path = "res://scenes/day/game/game.tscn"
+next_scene_file_path = "res://scenes/dreams/bigworldv2/cave.tscn"
 
 [node name="Area2D" type="Area2D" parent="map/Swing5"]
 position = Vector2(0.108398, -221.862)
