@@ -291,14 +291,6 @@ animations = [{
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_08s4a")
-shoot_delay = null
-bubble_speed = null
-bubble_title = null
-bubble_index = null
-disappear_delay = null
-next_scene_file_path = null
-transition_scene = null
-teleport_type = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_spw7t")
