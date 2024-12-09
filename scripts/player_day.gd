@@ -16,6 +16,7 @@ var is_got_gun = false
 @onready var inventory: Control = %Inventory
 
 func _ready() -> void:
+	inventory.hide()
 	if GameManager.get_day_phase() < 1:
 		var anim_player := %AnimationPlayer as AnimationPlayer
 		anim_player.play("opening_animation")

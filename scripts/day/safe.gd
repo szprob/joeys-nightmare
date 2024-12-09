@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 func decide_frame() -> void:
 	is_open = GameManager.is_all_light_off()
 	if GameManager.is_all_light_off():
-		if GameManager.has_item("笔记2"):
+		if GameManager.has_item("钩爪"):
 			frame = 1
 		else:
 			frame = 0

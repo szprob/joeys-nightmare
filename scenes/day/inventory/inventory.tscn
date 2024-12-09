@@ -94,7 +94,10 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
 theme_override_styles/panel = SubResource("StyleBoxTexture_in1gc")
 max_columns = 4
+same_column_width = true
+fixed_column_width = 128
 icon_mode = 0
+fixed_icon_size = Vector2i(128, 128)
 
 [node name="ItemPanel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true

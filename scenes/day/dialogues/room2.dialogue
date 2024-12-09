@@ -92,12 +92,13 @@ else:
 
 ~ safe
 if GameManager.is_all_light_off():
-	if GameManager.has_item('笔记2'):
+	if GameManager.has_item('钩爪'):
 		保险柜[#safe_open2]: 一个空的保险柜,已经没有东西在里面了
 	else:
-		Joey[#joey_normal]: 有一页笔记,拿走吧
-		do GameManager.add_item('笔记2')
-		: 得到笔记2
+		Joey[#joey_normal]: 有什么东西在里面,拿走吧
+		do GameManager.add_item('钩爪')
+		: 得到钩爪
+		Joey[#joey_normal]: 好像探索的差不多了,没其他事情的话回梦里去吧
 	=> END
 else:
 	保险柜[#safe_close]: 熄灭所有的灯火,真相就会浮现

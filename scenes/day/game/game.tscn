@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cydw848ah3caw" path="res://scenes/day/room2/mirror.tscn" id="6_imkld"]
 [ext_resource type="Resource" uid="uid://6a0f0mm58veq" path="res://scenes/day/dialogues/openning.dialogue" id="7_oohak"]
 [ext_resource type="PackedScene" uid="uid://dodqd8727m8io" path="res://scenes/day/display_room/display_room.tscn" id="8_8db2n"]
-[ext_resource type="Texture2D" uid="uid://djxkq7gwjy0fj" path="res://assets/sprites/day/new_room/door1.png" id="8_hvk6s"]
+[ext_resource type="Texture2D" uid="uid://dmhgvk8s48fj2" path="res://assets/sprites/day/new_room/door1.png" id="8_hvk6s"]
 [ext_resource type="Script" path="res://scripts/day/left_door.gd" id="9_cfwog"]
 [ext_resource type="PackedScene" uid="uid://67xd1lwqas7a" path="res://scenes/day/introduction/introduction.tscn" id="9_rumt0"]
 [ext_resource type="PackedScene" uid="uid://c40qc8gq3f3g3" path="res://scenes/day/room3/room3.tscn" id="10_lkum6"]
