@@ -1,14 +1,11 @@
-[gd_scene load_steps=63 format=4 uid="uid://bl4teyqpcnntr"]
+[gd_scene load_steps=257 format=4 uid="uid://bl4teyqpcnntr"]
 
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="1_e7g7y"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="2_326va"]
 [ext_resource type="Texture2D" uid="uid://b5jfcv0uem5wb" path="res://assets/sprites/background/multi3/back2.png" id="3_bywe3"]
 [ext_resource type="Texture2D" uid="uid://7joprmnjucj5" path="res://assets/sprites/background/multi3/moon2.png" id="4_kh1ep"]
 [ext_resource type="Texture2D" uid="uid://bl1rxkn33ywhl" path="res://assets/sprites/background/multi3/cloud.png" id="5_xeiy2"]
-[ext_resource type="Texture2D" uid="uid://gvyrlttwr2dn" path="res://assets/sprites/background/multi3/people.png" id="7_jr474"]
-[ext_resource type="Texture2D" uid="uid://cc213l304x8tw" path="res://assets/sprites/map/med3.png" id="7_q14qe"]
 [ext_resource type="PackedScene" uid="uid://bi3000vv4vu3x" path="res://scenes/sokoban/gravity_tile/gravity_down.tscn" id="8_5eqv2"]
-[ext_resource type="Texture2D" uid="uid://c8ktpt687sgsd" path="res://assets/sprites/background/multi3/frontv2_1.png" id="8_6xflk"]
 [ext_resource type="PackedScene" uid="uid://cootft3ha6veu" path="res://scenes/sokoban/gravity_tile/gravity_left.tscn" id="9_cu7lw"]
 [ext_resource type="Texture2D" uid="uid://pv0iwkpm3tyv" path="res://assets/sprites/human/brick2.1.png" id="10_efx6i"]
 [ext_resource type="PackedScene" uid="uid://dlv4fqe1sg0dm" path="res://scenes/sokoban/gravity_tile/gravity_right.tscn" id="10_tpfo1"]
@@ -30,13 +27,767 @@
 [ext_resource type="PackedScene" uid="uid://b4l0s4mgeuqyq" path="res://scenes/modules/checkpoints/bi-teleport.tscn" id="23_hcf7t"]
 [ext_resource type="TileSet" uid="uid://eahum84lpc4q" path="res://tiles/cave.tres" id="24_d5of0"]
 [ext_resource type="PackedScene" uid="uid://cair83ouq2qd0" path="res://scenes/modules/checkpoints/target.tscn" id="24_qgt10"]
-[ext_resource type="PackedScene" uid="uid://pe8srikvnre3" path="res://scenes/modules/traps/fires/fires4.tscn" id="25_fwxyk"]
 [ext_resource type="PackedScene" uid="uid://ck4p24ug1b88b" path="res://scenes/sokoban/season-2-examples/qte_gravity_area.tscn" id="27_3o071"]
 [ext_resource type="PackedScene" uid="uid://b6pq8l7ym5nuh" path="res://scenes/modules/checkpoints/teleport.tscn" id="30_jtg7r"]
 [ext_resource type="Script" path="res://scripts/camera_area.gd" id="35_ix8v8"]
 [ext_resource type="PackedScene" uid="uid://c5x12p3650b3l" path="res://scenes/player/npc.tscn" id="36_nx2ii"]
 [ext_resource type="PackedScene" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="37_ij3kw"]
 [ext_resource type="PackedScene" uid="uid://5ke66hnjv6ab" path="res://scenes/modules/traps/lazer.tscn" id="37_xujqa"]
+[ext_resource type="Texture2D" uid="uid://rr6e8byuxj7k" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00000.png" id="38_qw7in"]
+[ext_resource type="Texture2D" uid="uid://bxlh4kap1kt6h" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00001.png" id="39_h6tlf"]
+[ext_resource type="Texture2D" uid="uid://dtopp0neevaoy" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00002.png" id="40_wn7fv"]
+[ext_resource type="Texture2D" uid="uid://bkt7secnq4hs" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00003.png" id="41_i7a2a"]
+[ext_resource type="Texture2D" uid="uid://bpnlv4cc0ffwj" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00004.png" id="42_m3qdu"]
+[ext_resource type="Texture2D" uid="uid://bjx1n87dhec20" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00005.png" id="43_hagus"]
+[ext_resource type="Texture2D" uid="uid://byr5udloisglk" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00006.png" id="44_ug8f3"]
+[ext_resource type="Texture2D" uid="uid://cq6horh8pku3j" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00007.png" id="45_ge3uv"]
+[ext_resource type="Texture2D" uid="uid://cdghxvif70q7h" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00008.png" id="46_gjkms"]
+[ext_resource type="Texture2D" uid="uid://doyicx475s40m" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00009.png" id="47_cws17"]
+[ext_resource type="Texture2D" uid="uid://taj547j014qi" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00010.png" id="48_mt3eu"]
+[ext_resource type="Texture2D" uid="uid://g6fq36p3ipi4" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00011.png" id="49_jbxdq"]
+[ext_resource type="Texture2D" uid="uid://4addunc756t" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00012.png" id="50_l3miv"]
+[ext_resource type="Texture2D" uid="uid://t5jrjv0xyn07" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00013.png" id="51_l3wap"]
+[ext_resource type="Texture2D" uid="uid://dgldhfaccvgeb" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00014.png" id="52_bi572"]
+[ext_resource type="Texture2D" uid="uid://bx0yvvmrqajkp" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00015.png" id="53_nup7d"]
+[ext_resource type="Texture2D" uid="uid://dnr7p3h1im0y" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00016.png" id="54_qu7cp"]
+[ext_resource type="Texture2D" uid="uid://ccyjygty6gxx6" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00017.png" id="55_chcqc"]
+[ext_resource type="Texture2D" uid="uid://d1f7xdcf7y35r" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00018.png" id="56_6hxot"]
+[ext_resource type="Texture2D" uid="uid://c74gj71qvnlfx" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00019.png" id="57_kcrjo"]
+[ext_resource type="Texture2D" uid="uid://d4hjckoqgln1v" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00020.png" id="58_uopfn"]
+[ext_resource type="Texture2D" uid="uid://2usobxu8e4pm" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00021.png" id="59_a6g3x"]
+[ext_resource type="Texture2D" uid="uid://cn486mdr4qaxr" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00022.png" id="60_qd6ve"]
+[ext_resource type="Texture2D" uid="uid://devpn5e2gfx36" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00023.png" id="61_g2ebc"]
+[ext_resource type="Texture2D" uid="uid://c0f7aogkdeva4" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00024.png" id="62_jjb7v"]
+[ext_resource type="Texture2D" uid="uid://bfdjwg2ifm06k" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00025.png" id="63_2mvxo"]
+[ext_resource type="Texture2D" uid="uid://dwubgxq8sj8js" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00026.png" id="64_dcoww"]
+[ext_resource type="Texture2D" uid="uid://c3r663x8wi0p" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00027.png" id="65_0rbaa"]
+[ext_resource type="Texture2D" uid="uid://cj3tv65bar27i" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00028.png" id="66_ykfkx"]
+[ext_resource type="Texture2D" uid="uid://biopwc74h6dxy" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00029.png" id="67_g3ncx"]
+[ext_resource type="Texture2D" uid="uid://c67qq3oh4ntmh" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00030.png" id="68_1qk0n"]
+[ext_resource type="Texture2D" uid="uid://dlqoijbh2ssao" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00031.png" id="69_kudgy"]
+[ext_resource type="Texture2D" uid="uid://d08fg0o4fw684" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00032.png" id="70_bt4he"]
+[ext_resource type="Texture2D" uid="uid://bg48r8hb4uxsa" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00033.png" id="71_uobf1"]
+[ext_resource type="Texture2D" uid="uid://doxnnsnjs6cu6" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00034.png" id="72_kn4hg"]
+[ext_resource type="Texture2D" uid="uid://d4cjxpgqlf8pb" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00035.png" id="73_5oa6d"]
+[ext_resource type="Texture2D" uid="uid://1n2k6fyfiw1a" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00036.png" id="74_mw7u2"]
+[ext_resource type="Texture2D" uid="uid://pbgxym0nqen3" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00037.png" id="75_38ogh"]
+[ext_resource type="Texture2D" uid="uid://4v307dygdk1m" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00038.png" id="76_xkq4r"]
+[ext_resource type="Texture2D" uid="uid://fmo5xelov0uo" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00039.png" id="77_w27y4"]
+[ext_resource type="Texture2D" uid="uid://bdg4hnm178aa2" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00040.png" id="78_itfg8"]
+[ext_resource type="Texture2D" uid="uid://d0thgq3aftmac" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00041.png" id="79_imsx1"]
+[ext_resource type="Texture2D" uid="uid://ccw1l6ofowq8m" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00042.png" id="80_wola0"]
+[ext_resource type="Texture2D" uid="uid://cnfbjchcne0jl" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00043.png" id="81_qbae5"]
+[ext_resource type="Texture2D" uid="uid://bsjkh2t8vaju1" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00044.png" id="82_n3mai"]
+[ext_resource type="Texture2D" uid="uid://brvggylf7wpp4" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00045.png" id="83_1eq8b"]
+[ext_resource type="Texture2D" uid="uid://hha0nr31fslj" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00046.png" id="84_mk5ke"]
+[ext_resource type="Texture2D" uid="uid://6oa7in5jv0iu" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00047.png" id="85_ihm03"]
+[ext_resource type="Texture2D" uid="uid://05s1qaxuktqf" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00048.png" id="86_rd84f"]
+[ext_resource type="Texture2D" uid="uid://cgxl58xhq3y43" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00049.png" id="87_0pn8j"]
+[ext_resource type="Texture2D" uid="uid://femry6e4rj83" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00050.png" id="88_k8sng"]
+[ext_resource type="Texture2D" uid="uid://dcuijqwx8x76y" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00051.png" id="89_acer2"]
+[ext_resource type="Texture2D" uid="uid://b01iedhfyc8ld" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00052.png" id="90_hylo4"]
+[ext_resource type="Texture2D" uid="uid://dr8ohtjludhkn" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00053.png" id="91_tgsea"]
+[ext_resource type="Texture2D" uid="uid://c2pathjglhit0" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00054.png" id="92_r2cmq"]
+[ext_resource type="Texture2D" uid="uid://dvwsabixu0rtw" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00055.png" id="93_5cbhp"]
+[ext_resource type="Texture2D" uid="uid://byf3njrcg5kls" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00056.png" id="94_jsu6q"]
+[ext_resource type="Texture2D" uid="uid://73vax1mwxj2a" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00057.png" id="95_2oao8"]
+[ext_resource type="Texture2D" uid="uid://bvmprqs060sso" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00058.png" id="96_j00hs"]
+[ext_resource type="Texture2D" uid="uid://dkoffshaeodsy" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00059.png" id="97_q7gc5"]
+[ext_resource type="Texture2D" uid="uid://crne4jqape6bs" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00060.png" id="98_5ql4v"]
+[ext_resource type="Texture2D" uid="uid://c8css8l22n5p6" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00061.png" id="99_8u012"]
+[ext_resource type="Texture2D" uid="uid://dycuema0ljt8x" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00062.png" id="100_m3jmw"]
+[ext_resource type="Texture2D" uid="uid://blq8i1cg8ilxq" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00063.png" id="101_ijfr2"]
+[ext_resource type="Texture2D" uid="uid://dm5r3lew60qtc" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00064.png" id="102_qphgs"]
+[ext_resource type="Texture2D" uid="uid://xahvad6g84r2" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00065.png" id="103_34oxu"]
+[ext_resource type="Texture2D" uid="uid://bx4eqbhwkta02" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00066.png" id="104_uaswm"]
+[ext_resource type="Texture2D" uid="uid://byn6vr8l53rk3" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00067.png" id="105_y8qi7"]
+[ext_resource type="Texture2D" uid="uid://bosjfmq2pg5rs" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00068.png" id="106_me00e"]
+[ext_resource type="Texture2D" uid="uid://c3cj51u8cemkv" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00069.png" id="107_j812i"]
+[ext_resource type="Texture2D" uid="uid://bdu8esvwj5uqx" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00070.png" id="108_3181p"]
+[ext_resource type="Texture2D" uid="uid://hou2ile3625v" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00071.png" id="109_bqu1o"]
+[ext_resource type="Texture2D" uid="uid://8b8xqo5qrsuy" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00072.png" id="110_wesf1"]
+[ext_resource type="Texture2D" uid="uid://b4mnkxb3s2dns" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00073.png" id="111_icrhv"]
+[ext_resource type="Texture2D" uid="uid://bhn0sui56cdhc" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00074.png" id="112_chdeb"]
+[ext_resource type="Texture2D" uid="uid://cqwqltvd3ea2f" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00075.png" id="113_288a4"]
+[ext_resource type="Texture2D" uid="uid://bdhujl3ckfykc" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00076.png" id="114_ekrej"]
+[ext_resource type="Texture2D" uid="uid://dt3caueyhj4ad" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00077.png" id="115_u54a6"]
+[ext_resource type="Texture2D" uid="uid://d4acoal1ndct5" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00078.png" id="116_vkms6"]
+[ext_resource type="Texture2D" uid="uid://dcpparnev54c7" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00079.png" id="117_7ltpk"]
+[ext_resource type="Texture2D" uid="uid://ciqoj0hnmq16j" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00080.png" id="118_vtii1"]
+[ext_resource type="Texture2D" uid="uid://ded221e5on1lo" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00081.png" id="119_wjcvk"]
+[ext_resource type="Texture2D" uid="uid://ctjk6xfokvjr1" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00082.png" id="120_6qdeu"]
+[ext_resource type="Texture2D" uid="uid://dk3vltmuok3jl" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00083.png" id="121_76468"]
+[ext_resource type="Texture2D" uid="uid://bbh41msxh671t" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00084.png" id="122_23xra"]
+[ext_resource type="Texture2D" uid="uid://bldgb8rs8qdcn" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00085.png" id="123_ijhcp"]
+[ext_resource type="Texture2D" uid="uid://bp4y3t4lhfber" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00086.png" id="124_dc0pg"]
+[ext_resource type="Texture2D" uid="uid://c5v14e1hf4dor" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00087.png" id="125_73cla"]
+[ext_resource type="Texture2D" uid="uid://bgtmqfbttjqvb" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00088.png" id="126_nu65y"]
+[ext_resource type="Texture2D" uid="uid://bisvduedtxola" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00089.png" id="127_atyje"]
+[ext_resource type="Texture2D" uid="uid://xxj5obgu228x" path="res://assets/sprites/background/castle2.png" id="128_h7pc4"]
+[ext_resource type="Texture2D" uid="uid://dywy7xil2ptr4" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00090.png" id="128_wix61"]
+[ext_resource type="Texture2D" uid="uid://btcj4wu4j7p1x" path="res://assets/sprites/background/rain/雨_00000.png" id="129_7jryo"]
+[ext_resource type="Texture2D" uid="uid://be8igxpgomuk0" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00091.png" id="129_oba0b"]
+[ext_resource type="Texture2D" uid="uid://bcb43kouolaq0" path="res://assets/sprites/background/rain/雨_00001.png" id="130_i3u5r"]
+[ext_resource type="Texture2D" uid="uid://rs4mxs6w50fu" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00092.png" id="130_xrb5p"]
+[ext_resource type="Texture2D" uid="uid://cnqvn55jbiqjh" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00093.png" id="131_7nclo"]
+[ext_resource type="Texture2D" uid="uid://br8wrgmoto6pw" path="res://assets/sprites/background/rain/雨_00002.png" id="131_8ryhf"]
+[ext_resource type="Texture2D" uid="uid://c1kfq8xqrud1o" path="res://assets/sprites/background/rain/雨_00003.png" id="132_7tenj"]
+[ext_resource type="Texture2D" uid="uid://c7abf87sdvqcy" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00094.png" id="132_av5fg"]
+[ext_resource type="Texture2D" uid="uid://c3h3laf2sin5r" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00095.png" id="133_3cox7"]
+[ext_resource type="Texture2D" uid="uid://bj3tvsux44xgk" path="res://assets/sprites/background/rain/雨_00004.png" id="133_ueere"]
+[ext_resource type="Texture2D" uid="uid://b0huasgao7cgx" path="res://assets/sprites/background/rain/雨_00005.png" id="134_2s8f6"]
+[ext_resource type="Texture2D" uid="uid://bxxavp11xb0bu" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00096.png" id="134_yk7dy"]
+[ext_resource type="Texture2D" uid="uid://bn6bvdujt23y" path="res://assets/sprites/background/rain/雨_00006.png" id="135_arctr"]
+[ext_resource type="Texture2D" uid="uid://dtenm03o1hswt" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00097.png" id="135_viq5k"]
+[ext_resource type="Texture2D" uid="uid://dsrjagmugaxm7" path="res://assets/sprites/background/rain/雨_00007.png" id="136_2kmbb"]
+[ext_resource type="Texture2D" uid="uid://bnbpq2opnshl0" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00098.png" id="136_ko0n7"]
+[ext_resource type="Texture2D" uid="uid://dcdqbai276mqr" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00099.png" id="137_8gx7d"]
+[ext_resource type="Texture2D" uid="uid://c2n54dh06lgor" path="res://assets/sprites/background/rain/雨_00008.png" id="137_xjn83"]
+[ext_resource type="Texture2D" uid="uid://ddie3o0da2rer" path="res://assets/sprites/background/rain/雨_00009.png" id="138_3622w"]
+[ext_resource type="Texture2D" uid="uid://dninngaxouf76" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00100.png" id="138_nsmmx"]
+[ext_resource type="Texture2D" uid="uid://dnenknkju8oak" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00101.png" id="139_3dtvx"]
+[ext_resource type="Texture2D" uid="uid://5hpi5wi317tk" path="res://assets/sprites/background/rain/雨_00010.png" id="139_3oohk"]
+[ext_resource type="Texture2D" uid="uid://cxogqfw526j82" path="res://assets/sprites/background/rain/雨_00011.png" id="140_0xdss"]
+[ext_resource type="Texture2D" uid="uid://dd4qevr2o7v8f" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00102.png" id="140_awi76"]
+[ext_resource type="Texture2D" uid="uid://b0pvqk2p7e3tg" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00103.png" id="141_l7ewa"]
+[ext_resource type="Texture2D" uid="uid://c1qjlu2lxjhws" path="res://assets/sprites/background/rain/雨_00012.png" id="141_sys2d"]
+[ext_resource type="Texture2D" uid="uid://frpcln3s0hep" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00104.png" id="142_lds7f"]
+[ext_resource type="Texture2D" uid="uid://vbboh8wthsy2" path="res://assets/sprites/background/rain/雨_00013.png" id="142_sn51e"]
+[ext_resource type="Texture2D" uid="uid://di1fn0baahv32" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00105.png" id="143_1dwbx"]
+[ext_resource type="Texture2D" uid="uid://bwe3xtfnc77g5" path="res://assets/sprites/background/rain/雨_00014.png" id="143_truye"]
+[ext_resource type="Texture2D" uid="uid://bcnt8sr5f5n4u" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00106.png" id="144_k5cfq"]
+[ext_resource type="Texture2D" uid="uid://dpq36eb2gbqmj" path="res://assets/sprites/background/rain/雨_00015.png" id="144_soi7b"]
+[ext_resource type="Texture2D" uid="uid://drvstxw7dwlid" path="res://assets/sprites/background/rain/雨_00016.png" id="145_ouale"]
+[ext_resource type="Texture2D" uid="uid://nnx5hsuxa3jh" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00107.png" id="145_slfcu"]
+[ext_resource type="Texture2D" uid="uid://kmst61xfex7o" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00108.png" id="146_0ipcq"]
+[ext_resource type="Texture2D" uid="uid://c4hb5e4a68ejv" path="res://assets/sprites/background/rain/雨_00017.png" id="146_05mlu"]
+[ext_resource type="Texture2D" uid="uid://dq1lasykeoj00" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00109.png" id="147_7kqpw"]
+[ext_resource type="Texture2D" uid="uid://b3nv7hivrapea" path="res://assets/sprites/background/rain/雨_00018.png" id="147_lvh58"]
+[ext_resource type="Texture2D" uid="uid://bgleanvxyuvrg" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00110.png" id="148_7ubnr"]
+[ext_resource type="Texture2D" uid="uid://p4akshqjwv28" path="res://assets/sprites/background/rain/雨_00019.png" id="148_x1ybs"]
+[ext_resource type="Texture2D" uid="uid://qimk7ufobtgx" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00111.png" id="149_ip36g"]
+[ext_resource type="Texture2D" uid="uid://cv2cs6qpq72sp" path="res://assets/sprites/background/rain/雨_00020.png" id="149_jkbu4"]
+[ext_resource type="Texture2D" uid="uid://boi45ra2ec3o0" path="res://assets/sprites/background/rain/雨_00021.png" id="150_m8p0c"]
+[ext_resource type="Texture2D" uid="uid://0mh3nnhwqyja" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00112.png" id="150_qp43k"]
+[ext_resource type="Texture2D" uid="uid://yjflhso305v8" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00113.png" id="151_3hwdv"]
+[ext_resource type="Texture2D" uid="uid://d1c1xxi23dmm4" path="res://assets/sprites/background/rain/雨_00022.png" id="151_r87it"]
+[ext_resource type="Texture2D" uid="uid://dudluj82j6ov" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00114.png" id="152_5ahwb"]
+[ext_resource type="Texture2D" uid="uid://pepjqmvsdlu5" path="res://assets/sprites/background/rain/雨_00023.png" id="152_8xe32"]
+[ext_resource type="Texture2D" uid="uid://c48ok2povnja0" path="res://assets/sprites/background/rain/雨_00024.png" id="153_7pku6"]
+[ext_resource type="Texture2D" uid="uid://dva3md0ijk2n5" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00115.png" id="153_r5dyo"]
+[ext_resource type="Texture2D" uid="uid://cerybkbfexri6" path="res://assets/sprites/background/rain/雨_00025.png" id="154_8voe6"]
+[ext_resource type="Texture2D" uid="uid://dah0lpy2kcedq" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00116.png" id="154_k28hd"]
+[ext_resource type="Texture2D" uid="uid://dtk7aepylbsnb" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00117.png" id="155_5klqs"]
+[ext_resource type="Texture2D" uid="uid://dhb54xpou4wvv" path="res://assets/sprites/background/rain/雨_00026.png" id="155_ux8ok"]
+[ext_resource type="Texture2D" uid="uid://bieg2cp1mqqb2" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00118.png" id="156_3bosb"]
+[ext_resource type="Texture2D" uid="uid://xi12bcjgq5rk" path="res://assets/sprites/background/rain/雨_00027.png" id="156_lk4sx"]
+[ext_resource type="Texture2D" uid="uid://b121cgbdfv7pc" path="res://assets/sprites/background/rain/雨_00028.png" id="157_3nm5h"]
+[ext_resource type="Texture2D" uid="uid://dsa1nwehbvn0a" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00119.png" id="157_6o5kq"]
+[ext_resource type="Texture2D" uid="uid://la4nfgkuctfc" path="res://assets/sprites/background/rain/雨_00029.png" id="158_depc0"]
+[ext_resource type="Texture2D" uid="uid://dkwi7p5yadkeg" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00120.png" id="158_oaybj"]
+[ext_resource type="Texture2D" uid="uid://ceucya0t8x4j7" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00121.png" id="159_ohbdg"]
+[ext_resource type="Texture2D" uid="uid://c74bhe8ukr5mo" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00122.png" id="160_5u3a2"]
+[ext_resource type="Texture2D" uid="uid://cij7x2k0l5qsc" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00123.png" id="161_1w4pk"]
+[ext_resource type="Texture2D" uid="uid://ctwxrgtq5vvpa" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00124.png" id="162_rkr5r"]
+[ext_resource type="Texture2D" uid="uid://ce61vbtlpq667" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00125.png" id="163_ctnl7"]
+[ext_resource type="Texture2D" uid="uid://cuhp77n41tdxi" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00126.png" id="164_uokh2"]
+[ext_resource type="Texture2D" uid="uid://b6gycqwa7kses" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00127.png" id="165_0efo6"]
+[ext_resource type="Texture2D" uid="uid://clrswvihhm4i1" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00128.png" id="166_e6rkb"]
+[ext_resource type="Texture2D" uid="uid://2optw4tdoqeh" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00129.png" id="167_beskn"]
+[ext_resource type="Texture2D" uid="uid://buvyo3wmmr70l" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00130.png" id="168_1fbog"]
+[ext_resource type="Texture2D" uid="uid://blh5rdw484xcv" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00131.png" id="169_b01nn"]
+[ext_resource type="Texture2D" uid="uid://b81fvp1udllbo" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00132.png" id="170_k1p83"]
+[ext_resource type="Texture2D" uid="uid://ctsckf2xlaeuq" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00133.png" id="171_epve2"]
+[ext_resource type="Texture2D" uid="uid://to87vlmuo8pp" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00134.png" id="172_ib0uv"]
+[ext_resource type="Texture2D" uid="uid://dpwg5ty1734il" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00135.png" id="173_jn0kr"]
+[ext_resource type="Texture2D" uid="uid://bre6mmn0ruhpk" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00136.png" id="174_plbpk"]
+[ext_resource type="Texture2D" uid="uid://pktr1cpqgct2" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00137.png" id="175_ymnxe"]
+[ext_resource type="Texture2D" uid="uid://b4h6ht6m6n8wk" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00138.png" id="176_yakbo"]
+[ext_resource type="Texture2D" uid="uid://dr2rv5uj3ycu0" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00139.png" id="177_yywjr"]
+[ext_resource type="Texture2D" uid="uid://do8rava43riey" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00140.png" id="178_m8djt"]
+[ext_resource type="Texture2D" uid="uid://bpwfa6irjsb5a" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00141.png" id="179_1jmey"]
+[ext_resource type="Texture2D" uid="uid://bonrkbpnv3efo" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00142.png" id="180_m28ut"]
+[ext_resource type="Texture2D" uid="uid://cw672asn0oo65" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00143.png" id="181_p31c2"]
+[ext_resource type="Texture2D" uid="uid://bq8i276f4xtir" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00144.png" id="182_pi3rc"]
+[ext_resource type="Texture2D" uid="uid://carbwg1d7a5x3" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00145.png" id="183_u6qao"]
+[ext_resource type="Texture2D" uid="uid://bf7pucjpcgsrn" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00146.png" id="184_86v30"]
+[ext_resource type="Texture2D" uid="uid://i62kj4s01aol" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00147.png" id="185_ya882"]
+[ext_resource type="Texture2D" uid="uid://cb37u7f7f8awf" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00148.png" id="186_ihtg6"]
+[ext_resource type="Texture2D" uid="uid://bc0mdfc83bm56" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00149.png" id="187_kldb5"]
+[ext_resource type="Texture2D" uid="uid://ddpw05gab0kb3" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00150.png" id="188_f77dy"]
+[ext_resource type="Texture2D" uid="uid://bod8a7y47pr5c" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00151.png" id="189_e3sb6"]
+[ext_resource type="Texture2D" uid="uid://ccd3adibglvuf" path="res://assets/sprites/background/frame_ _bg/frame_ _bg21_00152.png" id="190_615es"]
+[ext_resource type="Texture2D" uid="uid://dbjs644uj77br" path="res://assets/sprites/bricks/bricks.png" id="202_o1s00"]
+[ext_resource type="Texture2D" uid="uid://b1rsvyvwjomy0" path="res://assets/sprites/bricks/castle_tile.png" id="203_00iif"]
+[ext_resource type="Texture2D" uid="uid://c5pwxdcn2kmu3" path="res://assets/sprites/bricks/Castle brick 2.0.png" id="204_jhef8"]
+[ext_resource type="Texture2D" uid="uid://y31ytsaxifyx" path="res://assets/sprites/bricks/peristele1.png" id="205_1wriv"]
+[ext_resource type="Texture2D" uid="uid://ywatg6hp1uhj" path="res://assets/sprites/bricks/Brick_max1.0.png" id="206_sx4cm"]
+[ext_resource type="Texture2D" uid="uid://ba0ptvv2otjcy" path="res://assets/sprites/bricks/Castle brick 4.0.png" id="207_s4d7n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0nlfi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("129_7jryo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("130_i3u5r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_8ryhf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_7tenj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("133_ueere")
+}, {
+"duration": 1.0,
+"texture": ExtResource("134_2s8f6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("135_arctr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("136_2kmbb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("137_xjn83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("138_3622w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("139_3oohk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("140_0xdss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("141_sys2d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("142_sn51e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_truye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_soi7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("145_ouale")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_05mlu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_lvh58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("148_x1ybs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("149_jkbu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("150_m8p0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("151_r87it")
+}, {
+"duration": 1.0,
+"texture": ExtResource("152_8xe32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("153_7pku6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("154_8voe6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("155_ux8ok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("156_lk4sx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("157_3nm5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("158_depc0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pua8d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("38_qw7in")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_h6tlf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_wn7fv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_i7a2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_m3qdu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_hagus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_ug8f3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_ge3uv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_gjkms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_cws17")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_mt3eu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_jbxdq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_l3miv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_l3wap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_bi572")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_nup7d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_qu7cp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_chcqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_6hxot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_kcrjo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_uopfn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_a6g3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_qd6ve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_g2ebc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_jjb7v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_2mvxo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_dcoww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_0rbaa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_ykfkx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_g3ncx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_1qk0n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_kudgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_bt4he")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_uobf1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_kn4hg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_5oa6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_mw7u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_38ogh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_xkq4r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_w27y4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_itfg8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_imsx1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_wola0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_qbae5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_n3mai")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_1eq8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_mk5ke")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_ihm03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_rd84f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_0pn8j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_k8sng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_acer2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_hylo4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_tgsea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_r2cmq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_5cbhp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_jsu6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_2oao8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_j00hs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_q7gc5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_5ql4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_8u012")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_m3jmw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_ijfr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_qphgs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_34oxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_uaswm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_y8qi7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_me00e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_j812i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_3181p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_bqu1o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_wesf1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_icrhv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_chdeb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_288a4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_ekrej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_u54a6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_vkms6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_7ltpk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_vtii1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_wjcvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_6qdeu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_76468")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_23xra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_ijhcp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_dc0pg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_73cla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_nu65y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_atyje")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_wix61")
+}, {
+"duration": 1.0,
+"texture": ExtResource("129_oba0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("130_xrb5p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_7nclo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_av5fg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("133_3cox7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("134_yk7dy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("135_viq5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("136_ko0n7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("137_8gx7d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("138_nsmmx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("139_3dtvx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("140_awi76")
+}, {
+"duration": 1.0,
+"texture": ExtResource("141_l7ewa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("142_lds7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_1dwbx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_k5cfq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("145_slfcu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_0ipcq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_7kqpw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("148_7ubnr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("149_ip36g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("150_qp43k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("151_3hwdv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("152_5ahwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("153_r5dyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("154_k28hd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("155_5klqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("156_3bosb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("157_6o5kq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("158_oaybj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("159_ohbdg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("160_5u3a2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("161_1w4pk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("162_rkr5r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("163_ctnl7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("164_uokh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("165_0efo6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("166_e6rkb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("167_beskn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("168_1fbog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("169_b01nn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("170_k1p83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("171_epve2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("172_ib0uv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("173_jn0kr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("174_plbpk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("175_ymnxe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("176_yakbo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("177_yywjr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("178_m8djt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("179_1jmey")
+}, {
+"duration": 1.0,
+"texture": ExtResource("180_m28ut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("181_p31c2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("182_pi3rc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("183_u6qao")
+}, {
+"duration": 1.0,
+"texture": ExtResource("184_86v30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("185_ya882")
+}, {
+"duration": 1.0,
+"texture": ExtResource("186_ihtg6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("187_kldb5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("188_f77dy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("189_e3sb6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("190_615es")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ogtr0"]
 texture = ExtResource("10_efx6i")
@@ -66,12 +817,879 @@ scenes/4/scene = ExtResource("21_7gkxm")
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_p1dey"]
 scenes/1/scene = ExtResource("19_adirg")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j6f1r"]
+texture = ExtResource("202_o1s00")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ksfv"]
+texture = ExtResource("203_00iif")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2shut"]
+texture = ExtResource("204_jhef8")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:2/0 = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:2/0 = 0
+5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:3/0 = 0
+6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:3/0 = 0
+7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_it8be"]
+texture = ExtResource("205_1wriv")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+1:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+0:5/0 = 0
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:5/0 = 0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i6lqy"]
+texture = ExtResource("206_sx4cm")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:0/0 = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:0/0 = 0
+10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:0/0 = 0
+11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:0/0 = 0
+12:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:0/0 = 0
+13:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:0/0 = 0
+15:0/0 = 0
+16:0/0 = 0
+18:0/0 = 0
+18:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+19:0/0 = 0
+19:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+20:0/0 = 0
+20:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+23:0/0 = 0
+23:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+24:0/0 = 0
+24:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+25:0/0 = 0
+25:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:1/0 = 0
+9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:1/0 = 0
+10:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:1/0 = 0
+11:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:1/0 = 0
+12:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:1/0 = 0
+13:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:1/0 = 0
+15:1/0 = 0
+16:1/0 = 0
+17:1/0 = 0
+18:1/0 = 0
+18:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+19:1/0 = 0
+19:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+20:1/0 = 0
+20:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+23:1/0 = 0
+23:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+24:1/0 = 0
+24:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+25:1/0 = 0
+25:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:2/0 = 0
+9:2/0 = 0
+11:2/0 = 0
+11:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:2/0 = 0
+12:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:2/0 = 0
+13:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:2/0 = 0
+15:2/0 = 0
+16:2/0 = 0
+17:2/0 = 0
+18:2/0 = 0
+18:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+19:2/0 = 0
+19:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+20:2/0 = 0
+20:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+23:2/0 = 0
+23:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+24:2/0 = 0
+24:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+25:2/0 = 0
+25:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:3/0 = 0
+9:3/0 = 0
+11:3/0 = 0
+11:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:3/0 = 0
+12:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:3/0 = 0
+13:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:3/0 = 0
+15:3/0 = 0
+16:3/0 = 0
+17:3/0 = 0
+18:3/0 = 0
+18:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+19:3/0 = 0
+19:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+20:3/0 = 0
+20:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+21:3/0 = 0
+21:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+22:3/0 = 0
+22:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+23:3/0 = 0
+23:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+24:3/0 = 0
+24:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+25:3/0 = 0
+25:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+26:3/0 = 0
+26:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:4/0 = 0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:4/0 = 0
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:4/0 = 0
+9:4/0 = 0
+11:4/0 = 0
+11:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:4/0 = 0
+12:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:4/0 = 0
+13:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:4/0 = 0
+15:4/0 = 0
+16:4/0 = 0
+17:4/0 = 0
+18:4/0 = 0
+18:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+19:4/0 = 0
+19:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+20:4/0 = 0
+20:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+21:4/0 = 0
+21:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+22:4/0 = 0
+22:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+23:4/0 = 0
+23:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+24:4/0 = 0
+24:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+25:4/0 = 0
+25:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+26:4/0 = 0
+26:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:5/0 = 0
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:5/0 = 0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:5/0 = 0
+9:5/0 = 0
+11:5/0 = 0
+11:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:5/0 = 0
+12:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:5/0 = 0
+13:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:5/0 = 0
+15:5/0 = 0
+16:5/0 = 0
+17:5/0 = 0
+18:5/0 = 0
+4:6/0 = 0
+4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:6/0 = 0
+5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:6/0 = 0
+9:6/0 = 0
+11:6/0 = 0
+11:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:6/0 = 0
+12:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:6/0 = 0
+15:6/0 = 0
+16:6/0 = 0
+17:6/0 = 0
+18:6/0 = 0
+4:7/0 = 0
+4:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:7/0 = 0
+5:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:7/0 = 0
+7:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:7/0 = 0
+8:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:7/0 = 0
+9:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:7/0 = 0
+15:7/0 = 0
+16:7/0 = 0
+17:7/0 = 0
+18:7/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d1sm5"]
+texture = ExtResource("207_s4d7n")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:0/0 = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:0/0 = 0
+10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:0/0 = 0
+11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:0/0 = 0
+12:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:0/0 = 0
+13:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:0/0 = 0
+14:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+15:0/0 = 0
+15:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+16:0/0 = 0
+17:0/0 = 0
+18:0/0 = 0
+19:0/0 = 0
+20:0/0 = 0
+21:0/0 = 0
+22:0/0 = 0
+23:0/0 = 0
+24:0/0 = 0
+25:0/0 = 0
+26:0/0 = 0
+27:0/0 = 0
+28:0/0 = 0
+29:0/0 = 0
+30:0/0 = 0
+31:0/0 = 0
+32:0/0 = 0
+33:0/0 = 0
+34:0/0 = 0
+35:0/0 = 0
+36:0/0 = 0
+37:0/0 = 0
+38:0/0 = 0
+39:0/0 = 0
+40:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:1/0 = 0
+9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:1/0 = 0
+10:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:1/0 = 0
+11:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:1/0 = 0
+12:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:1/0 = 0
+13:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:1/0 = 0
+14:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+15:1/0 = 0
+15:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+16:1/0 = 0
+17:1/0 = 0
+18:1/0 = 0
+19:1/0 = 0
+20:1/0 = 0
+21:1/0 = 0
+22:1/0 = 0
+23:1/0 = 0
+24:1/0 = 0
+25:1/0 = 0
+26:1/0 = 0
+27:1/0 = 0
+28:1/0 = 0
+29:1/0 = 0
+30:1/0 = 0
+31:1/0 = 0
+32:1/0 = 0
+33:1/0 = 0
+34:1/0 = 0
+35:1/0 = 0
+36:1/0 = 0
+37:1/0 = 0
+38:1/0 = 0
+39:1/0 = 0
+40:1/0 = 0
+41:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+16:2/0 = 0
+17:2/0 = 0
+18:2/0 = 0
+19:2/0 = 0
+20:2/0 = 0
+21:2/0 = 0
+22:2/0 = 0
+23:2/0 = 0
+24:2/0 = 0
+25:2/0 = 0
+26:2/0 = 0
+27:2/0 = 0
+28:2/0 = 0
+29:2/0 = 0
+30:2/0 = 0
+31:2/0 = 0
+32:2/0 = 0
+33:2/0 = 0
+37:2/0 = 0
+38:2/0 = 0
+39:2/0 = 0
+40:2/0 = 0
+41:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+16:3/0 = 0
+17:3/0 = 0
+18:3/0 = 0
+19:3/0 = 0
+20:3/0 = 0
+22:3/0 = 0
+23:3/0 = 0
+24:3/0 = 0
+25:3/0 = 0
+26:3/0 = 0
+27:3/0 = 0
+28:3/0 = 0
+29:3/0 = 0
+30:3/0 = 0
+31:3/0 = 0
+32:3/0 = 0
+33:3/0 = 0
+37:3/0 = 0
+38:3/0 = 0
+39:3/0 = 0
+40:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+16:4/0 = 0
+17:4/0 = 0
+18:4/0 = 0
+19:4/0 = 0
+20:4/0 = 0
+21:4/0 = 0
+22:4/0 = 0
+23:4/0 = 0
+24:4/0 = 0
+25:4/0 = 0
+26:4/0 = 0
+28:4/0 = 0
+29:4/0 = 0
+30:4/0 = 0
+31:4/0 = 0
+32:4/0 = 0
+33:4/0 = 0
+37:4/0 = 0
+38:4/0 = 0
+39:4/0 = 0
+40:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+16:5/0 = 0
+17:5/0 = 0
+18:5/0 = 0
+18:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+19:5/0 = 0
+19:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+20:5/0 = 0
+20:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+21:5/0 = 0
+22:5/0 = 0
+23:5/0 = 0
+24:5/0 = 0
+25:5/0 = 0
+26:5/0 = 0
+27:5/0 = 0
+28:5/0 = 0
+29:5/0 = 0
+30:5/0 = 0
+37:5/0 = 0
+38:5/0 = 0
+39:5/0 = 0
+40:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+16:6/0 = 0
+17:6/0 = 0
+18:6/0 = 0
+18:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+19:6/0 = 0
+19:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+20:6/0 = 0
+20:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+21:6/0 = 0
+22:6/0 = 0
+23:6/0 = 0
+24:6/0 = 0
+25:6/0 = 0
+27:6/0 = 0
+28:6/0 = 0
+29:6/0 = 0
+30:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+7:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+16:7/0 = 0
+17:7/0 = 0
+18:7/0 = 0
+19:7/0 = 0
+20:7/0 = 0
+21:7/0 = 0
+22:7/0 = 0
+23:7/0 = 0
+24:7/0 = 0
+25:7/0 = 0
+27:7/0 = 0
+28:7/0 = 0
+29:7/0 = 0
+30:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+7:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+16:8/0 = 0
+17:8/0 = 0
+18:8/0 = 0
+19:8/0 = 0
+20:8/0 = 0
+21:8/0 = 0
+22:8/0 = 0
+23:8/0 = 0
+24:8/0 = 0
+25:8/0 = 0
+28:8/0 = 0
+29:8/0 = 0
+30:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+16:9/0 = 0
+17:9/0 = 0
+18:9/0 = 0
+18:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+19:9/0 = 0
+19:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+20:9/0 = 0
+20:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+21:9/0 = 0
+22:9/0 = 0
+23:9/0 = 0
+24:9/0 = 0
+25:9/0 = 0
+26:9/0 = 0
+28:9/0 = 0
+29:9/0 = 0
+30:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+16:10/0 = 0
+17:10/0 = 0
+18:10/0 = 0
+18:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+19:10/0 = 0
+19:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+20:10/0 = 0
+20:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+21:10/0 = 0
+22:10/0 = 0
+23:10/0 = 0
+24:10/0 = 0
+25:10/0 = 0
+26:10/0 = 0
+28:10/0 = 0
+29:10/0 = 0
+30:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+15:11/0 = 0
+17:11/0 = 0
+18:11/0 = 0
+19:11/0 = 0
+20:11/0 = 0
+21:11/0 = 0
+22:11/0 = 0
+23:11/0 = 0
+28:11/0 = 0
+29:11/0 = 0
+30:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+14:12/0 = 0
+17:12/0 = 0
+18:12/0 = 0
+19:12/0 = 0
+20:12/0 = 0
+28:12/0 = 0
+29:12/0 = 0
+30:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+14:13/0 = 0
+17:13/0 = 0
+18:13/0 = 0
+19:13/0 = 0
+20:13/0 = 0
+28:13/0 = 0
+29:13/0 = 0
+30:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+13:14/0 = 0
+14:14/0 = 0
+17:14/0 = 0
+18:14/0 = 0
+19:14/0 = 0
+20:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+12:15/0 = 0
+13:15/0 = 0
+14:15/0 = 0
+3:16/0 = 0
+4:16/0 = 0
+5:16/0 = 0
+3:17/0 = 0
+4:17/0 = 0
+5:17/0 = 0
+3:18/0 = 0
+4:18/0 = 0
+5:18/0 = 0
+3:19/0 = 0
+4:19/0 = 0
+5:19/0 = 0
+0:20/0 = 0
+1:20/0 = 0
+2:20/0 = 0
+3:20/0 = 0
+4:20/0 = 0
+5:20/0 = 0
+0:21/0 = 0
+1:21/0 = 0
+2:21/0 = 0
+3:21/0 = 0
+4:21/0 = 0
+5:21/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_rvt4p"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ogtr0")
 sources/2 = SubResource("TileSetScenesCollectionSource_ixvcl")
 sources/1 = SubResource("TileSetScenesCollectionSource_q5dgm")
 sources/3 = SubResource("TileSetScenesCollectionSource_p1dey")
+sources/4 = SubResource("TileSetAtlasSource_j6f1r")
+sources/5 = SubResource("TileSetAtlasSource_0ksfv")
+sources/6 = SubResource("TileSetAtlasSource_2shut")
+sources/7 = SubResource("TileSetAtlasSource_it8be")
+sources/8 = SubResource("TileSetAtlasSource_i6lqy")
+sources/9 = SubResource("TileSetAtlasSource_d1sm5")
 
 [sub_resource type="Curve2D" id="Curve2D_rtoo5"]
 _data = {
@@ -138,6 +1756,27 @@ size = Vector2(584, 270)
 
 [node name="Game" type="Node2D" groups=["scan_lines"]]
 
+[node name="rain" type="Node2D" parent="."]
+position = Vector2(-88, -32)
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="rain"]
+position = Vector2(-224, -376)
+sprite_frames = SubResource("SpriteFrames_0nlfi")
+autoplay = "default"
+frame_progress = 0.612108
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="rain"]
+position = Vector2(256, -376)
+sprite_frames = SubResource("SpriteFrames_0nlfi")
+autoplay = "default"
+frame_progress = 0.802302
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="rain"]
+position = Vector2(736, -376)
+sprite_frames = SubResource("SpriteFrames_0nlfi")
+autoplay = "default"
+frame_progress = 0.802302
+
 [node name="Camera2DRef" type="Camera2D" parent="."]
 z_index = 10
 position = Vector2(-224, -376)
@@ -173,81 +1812,68 @@ drag_left_margin = 0.1
 drag_right_margin = 0.1
 script = ExtResource("2_326va")
 
-[node name="backgroud" type="Node2D" parent="."]
+[node name="castleBackgroud" type="Node2D" parent="."]
 z_index = -2
 position = Vector2(80, 64)
 metadata/_edit_group_ = true
 
-[node name="back" type="Parallax2D" parent="backgroud"]
+[node name="back" type="Parallax2D" parent="castleBackgroud"]
 z_index = -1
 scroll_scale = Vector2(0, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="backgroud/back"]
+[node name="Sprite2D" type="Sprite2D" parent="castleBackgroud/back"]
 position = Vector2(-179.325, -91)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_bywe3")
 centered = false
 
-[node name="moon" type="Parallax2D" parent="backgroud"]
+[node name="moon" type="Parallax2D" parent="castleBackgroud"]
 z_index = -1
 scroll_scale = Vector2(0.05, 0)
 repeat_times = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="backgroud/moon"]
+[node name="Sprite2D" type="Sprite2D" parent="castleBackgroud/moon"]
 position = Vector2(-179, -45.22)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_kh1ep")
 centered = false
 
-[node name="cloud" type="Parallax2D" parent="backgroud"]
-visible = false
+[node name="cloud" type="Parallax2D" parent="castleBackgroud"]
 z_index = -1
 scroll_scale = Vector2(0.1, 0)
 repeat_size = Vector2(859.12, 0)
 autoscroll = Vector2(16, 0)
 repeat_times = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="backgroud/cloud"]
+[node name="Sprite2D" type="Sprite2D" parent="castleBackgroud/cloud"]
 position = Vector2(-8, -52.445)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_xeiy2")
 centered = false
 
-[node name="bird" type="Parallax2D" parent="backgroud"]
-z_index = -1
-scroll_scale = Vector2(0.15, 0)
-repeat_size = Vector2(768, 0)
-repeat_times = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="backgroud/bird"]
-position = Vector2(-68, -72)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("7_q14qe")
-centered = false
-
-[node name="people" type="Parallax2D" parent="backgroud"]
-visible = false
-z_index = -1
-scroll_scale = Vector2(0.2, 0)
-repeat_times = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="backgroud/people"]
-position = Vector2(-0.999992, -72)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("7_jr474")
-centered = false
-
-[node name="front" type="Parallax2D" parent="backgroud"]
-visible = false
+[node name="bird" type="Parallax2D" parent="castleBackgroud"]
 z_index = -1
 scroll_scale = Vector2(0.3, 0)
 scroll_offset = Vector2(-10, -8.19)
+repeat_size = Vector2(480, 0)
 repeat_times = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="backgroud/front"]
-position = Vector2(90, -40.545)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("8_6xflk")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="castleBackgroud/bird"]
+position = Vector2(250, 24.19)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_pua8d")
+autoplay = "default"
+
+[node name="castle" type="Parallax2D" parent="castleBackgroud"]
+z_index = -1
+scroll_scale = Vector2(0.2, 0)
+repeat_size = Vector2(538.23, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="castleBackgroud/castle"]
+position = Vector2(-32, -56)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("128_h7pc4")
 centered = false
 
 [node name="maps" type="Node2D" parent="."]
@@ -257,7 +1883,7 @@ position = Vector2(-464, -512)
 
 [node name="map" type="TileMapLayer" parent="maps/map1-1"]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAAAAAAAAAARABAAAAAAAAAAAAASABAAAAAAAAAAAAAYABAAAAAAAAAAAAAZABAAAAAAAAAAAAAaABAAAAAAAAAAAAAbABAAAAAAAAAAAAAcABAAAAAAAAAAAAAdABAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA0AAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAoAAAAAAAAAAAABAAsAAAAAAAAAAAABAAwAAAAAAAAAAAABAA0AAAAAAAAAAAABAA4AAAAAAAAAAAABAA8AAAAAAAAAAAADAA8AAAAAAAAAAAADAA4AAAAAAAAAAAACAA4AAAAAAAAAAAACAA0AAAAAAAAAAAACAAwAAAAAAAAAAAACAA8AAAAAAAAAAAADAA0AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAkAAAAAAAAAAAABAAgAAAAAAAAAAAACAAsAAgAAAAAAAwACAAoAAgAAAAAAAwACAAkAAgAAAAAAAwACAAgAAgAAAAAAAwABAAcAAgAAAAAAAwABAAYAAgAAAAAAAwADAAwAAgAAAAAAAwAAAAUAAgAAAAAABAASAA8AAAAAAAAAAAAXABAAAAAAAAAAAAAVABAAAAAAAAAAAAAWABAAAAAAAAAAAAARAA8AAAAAAAAAAAAEAA8AAAAAAAAAAAAFAA8AAAAAAAAAAAAGAA8AAAAAAAAAAAAHAA8AAAAAAAAAAAAIAA8AAAAAAAAAAAAJAA8AAAAAAAAAAAAKAA8AAAAAAAAAAAALAA8AAAAAAAAAAAAMAA8AAAAAAAAAAAANAA8AAAAAAAAAAAAOAA8AAAAAAAAAAAAPAA8AAAAAAAAAAAAQAA8AAAAAAAAAAAAVAA8AAAAAAAAAAAAWAA8AAAAAAAAAAAAXAA8AAAAAAAAAAAAYAA8AAAAAAAAAAAAZAA8AAAAAAAAAAAAaAA8AAAAAAAAAAAAbAA8AAAAAAAAAAAAcAA8AAAAAAAAAAAAbAAwAAAAAAAAAAAAbAA0AAAAAAAAAAAAbAA4AAAAAAAAAAAAcAA4AAAAAAAAAAAAcAA0AAAAAAAAAAAAcAAwAAAAAAAAAAAAgAAoAAAAAAAAAAAAhAAoAAAAAAAAAAAAiAAoAAAAAAAAAAAAjAAoAAAAAAAAAAAAgAAsAAAAAAAAAAAAhAAsAAAAAAAAAAAAiAAsAAAAAAAAAAAAjAAsAAAAAAAAAAAAdAA8AAAAAAAAAAAAeAA8AAAAAAAAAAAAfAA8AAAAAAAAAAAAgAA8AAAAAAAAAAAAhAA8AAAAAAAAAAAAiAA8AAAAAAAAAAAAjAA8AAAAAAAAAAAAmAA8AAAAAAAAAAAAeABAAAAAAAAAAAAAfABAAAAAAAAAAAAAgABAAAAAAAAAAAAAhABAAAAAAAAAAAAAiABAAAAAAAAAAAAAjABAAAAAAAAAAAAAmABAAAAAAAAAAAAAnABAAAAAAAAAAAAAnAA8AAAAAAAAAAAAoAA8AAAAAAAAAAAApAA8AAAAAAAAAAAAqAA8AAAAAAAAAAAArAA8AAAAAAAAAAAAsAA8AAAAAAAAAAAAtAA8AAAAAAAAAAAAuAA8AAAAAAAAAAAAvAA8AAAAAAAAAAAAwAA8AAAAAAAAAAAAxAA8AAAAAAAAAAAAyAA8AAAAAAAAAAAAoABAAAAAAAAAAAAApABAAAAAAAAAAAAAqABAAAAAAAAAAAAArABAAAAAAAAAAAAAsABAAAAAAAAAAAAAtABAAAAAAAAAAAAAuABAAAAAAAAAAAAAvABAAAAAAAAAAAAAwABAAAAAAAAAAAAAxABAAAAAAAAAAAAAyABAAAAAAAAAAAAAzABAAAAAAAAAAAAAkABAAAAAAAAAAAAAlABAAAAAAAAAAAAAkAA8AAAAAAAAAAAAlAA8AAAAAAAAAAAAkAA4AAgAAAAAABAAlAA4AAgAAAAAABAATABAAAAAAAAAAAAAUABAAAAAAAAAAAAAUAA8AAAAAAAAAAAATAA8AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA0AAAAAAAAAAAAdAAwAAAAAAAAAAAAeAA4AAgAAAAAABAAfAA4AAgAAAAAABAAgAA4AAgAAAAAABAAhAA4AAgAAAAAABAAiAA4AAgAAAAAABAAjAA4AAgAAAAAABAAzAA8AAAAAAAAAAAA0AA8AAAAAAAAAAAA0ABAAAAAAAAAAAAA1AA8AAAAAAAAAAAA1ABAAAAAAAAAAAAA2AA8AAAAAAAAAAAA2ABAAAAAAAAAAAAA3AA8AAAAAAAAAAAA3ABAAAAAAAAAAAAA4AA8AAAAAAAAAAAA4ABAAAAAAAAAAAABXAA8AAAAAAAAAAABXAA4AAAAAAAAAAABXAA0AAAAAAAAAAABXAAAAAAAAAAAAAABXAP//AAAAAAAAAABUAP//AAAAAAAAAABUAAAAAAAAAAAAAABVAP//AAAAAAAAAABVAAAAAAAAAAAAAABWAP//AAAAAAAAAABWAAAAAAAAAAAAAAA5AA8AAAAAAAAAAAA5ABAAAAAAAAAAAAA6AA8AAAAAAAAAAAA6ABAAAAAAAAAAAAA7AA8AAAAAAAAAAAA7ABAAAAAAAAAAAAA8AA8AAAAAAAAAAAA8ABAAAAAAAAAAAAA9AA8AAAAAAAAAAAA9ABAAAAAAAAAAAAA+AA8AAAAAAAAAAAA+ABAAAAAAAAAAAAA/AA8AAAAAAAAAAAA/ABAAAAAAAAAAAABAAA8AAAAAAAAAAABAABAAAAAAAAAAAABBAA8AAAAAAAAAAABBABAAAAAAAAAAAABCAA8AAAAAAAAAAABCABAAAAAAAAAAAABDAA8AAAAAAAAAAABDABAAAAAAAAAAAABEAA8AAAAAAAAAAABEABAAAAAAAAAAAABFAA8AAAAAAAAAAABFABAAAAAAAAAAAABGAA8AAAAAAAAAAABGABAAAAAAAAAAAABHAA8AAAAAAAAAAABHABAAAAAAAAAAAABIAA8AAAAAAAAAAABIABAAAAAAAAAAAABJAA8AAAAAAAAAAABJABAAAAAAAAAAAABKAA8AAAAAAAAAAABKABAAAAAAAAAAAABLAA8AAAAAAAAAAABLABAAAAAAAAAAAABMAA8AAAAAAAAAAABMABAAAAAAAAAAAABNAA8AAAAAAAAAAABNABAAAAAAAAAAAABOAA8AAAAAAAAAAABOABAAAAAAAAAAAABTAA8AAAAAAAAAAABTABAAAAAAAAAAAABUAA8AAAAAAAAAAABUABAAAAAAAAAAAABVAA8AAAAAAAAAAABVABAAAAAAAAAAAABWAA8AAAAAAAAAAABWABAAAAAAAAAAAABUAAcAAAAAAAAAAABUAAgAAAAAAAAAAABUAAkAAAAAAAAAAABUAAoAAAAAAAAAAABUAAsAAAAAAAAAAABVAAcAAAAAAAAAAABVAAgAAAAAAAAAAABVAAkAAAAAAAAAAABVAAoAAAAAAAAAAABVAAsAAAAAAAAAAABWAAcAAAAAAAAAAABWAAgAAAAAAAAAAABWAAkAAAAAAAAAAABWAAoAAAAAAAAAAABWAAsAAAAAAAAAAABVAAwAAAAAAAAAAABVAA0AAAAAAAAAAABVAA4AAAAAAAAAAABWAAwAAAAAAAAAAABWAA0AAAAAAAAAAABWAA4AAAAAAAAAAAAmAA4AAgAAAAAABAAnAA4AAgAAAAAABAAoAA4AAgAAAAAABAApAA4AAgAAAAAABAAqAA4AAgAAAAAABAArAA4AAgAAAAAABAA7AAsAAQAAAAAABAA7AAwAAQAAAAAABAA7AA4AAQAAAAAABAA8AAsAAQAAAAAABAA8AAwAAQAAAAAABAA8AA4AAQAAAAAABAA9AAsAAQAAAAAABAA9AAwAAQAAAAAABAA+AAsAAQAAAAAABAA/AAcAAAAAAAAAAAA/AAgAAAAAAAAAAAA/AAkAAAAAAAAAAAA/AAoAAAAAAAAAAAA/AAsAAAAAAAAAAABAAAcAAAAAAAAAAABAAAgAAAAAAAAAAABAAAkAAAAAAAAAAABAAAoAAAAAAAAAAABAAAsAAAAAAAAAAABHAP//AAAAAAAAAABHAAAAAAAAAAAAAABHAAoAAAAAAAAAAABHAAsAAAAAAAAAAABIAP//AAAAAAAAAABIAAAAAAAAAAAAAABIAAoAAAAAAAAAAABIAAsAAAAAAAAAAABIAAwAAQAAAAAABABJAP//AAAAAAAAAABJAAAAAAAAAAAAAABJAAoAAAAAAAAAAABJAAsAAAAAAAAAAABJAAwAAQAAAAAABABKAP//AAAAAAAAAABKAAAAAAAAAAAAAABKAAoAAAAAAAAAAABKAAsAAAAAAAAAAABKAAwAAQAAAAAABABLAP//AAAAAAAAAABLAAAAAAAAAAAAAABLAAoAAAAAAAAAAABLAAsAAAAAAAAAAABLAAwAAQAAAAAABABMAP//AAAAAAAAAABMAAAAAAAAAAAAAABMAAoAAAAAAAAAAABMAAsAAAAAAAAAAABNAP//AAAAAAAAAABNAAAAAAAAAAAAAABNAAoAAAAAAAAAAABNAAsAAAAAAAAAAABOAP//AAAAAAAAAABOAAAAAAAAAAAAAABPAP//AAAAAAAAAABPAAAAAAAAAAAAAABQAP//AAAAAAAAAABQAAAAAAAAAAAAAABRAP//AAAAAAAAAABRAAAAAAAAAAAAAABSAP//AAAAAAAAAABSAAAAAAAAAAAAAABTAP//AAAAAAAAAABTAAAAAAAAAAAAAAA6AA4AAgAAAAAABAA7AA0AAQAAAAAABAA8AA0AAQAAAAAABAA9AA0AAQAAAAAABAA9AA4AAQAAAAAABAA+AAwAAQAAAAAABAA+AA0AAQAAAAAABAA+AA4AAQAAAAAABAA/AAwAAAAAAAAAAAA/AA0AAAAAAAAAAAA/AA4AAAAAAAAAAABAAAwAAAAAAAAAAABAAA0AAAAAAAAAAABAAA4AAAAAAAAAAABYAP//AAAAAAAAAABYAAAAAAAAAAAAAABZAP//AAAAAAAAAABZAAAAAAAAAAAAAABaAP//AAAAAAAAAABaAAAAAAAAAAAAAABbAP//AAAAAAAAAABbAAAAAAAAAAAAAABcAP//AAAAAAAAAABcAAAAAAAAAAAAAABdAP//AAAAAAAAAABdAAAAAAAAAAAAAABeAP//AAAAAAAAAABeAAAAAAAAAAAAAABfAP//AAAAAAAAAABfAAAAAAAAAAAAAABgAP//AAAAAAAAAABgAAAAAAAAAAAAAABhAP//AAAAAAAAAABhAAAAAAAAAAAAAAAuAAoAAAAAAAAAAAAuAAsAAAAAAAAAAAAvAAoAAAAAAAAAAAAvAAsAAAAAAAAAAAAwAAoAAAAAAAAAAAAwAAsAAAAAAAAAAAAxAAoAAAAAAAAAAAAxAAsAAAAAAAAAAAAnAAsAAAAAAAAAAAAoAAsAAAAAAAAAAAApAAsAAAAAAAAAAAAqAAsAAAAAAAAAAAAnAAwAAAAAAAAAAAAoAAwAAAAAAAAAAAApAAwAAAAAAAAAAAAqAAwAAAAAAAAAAAA1AAoAAAAAAAAAAAA2AAoAAAAAAAAAAAA3AAoAAAAAAAAAAAA4AAoAAAAAAAAAAAA1AAkAAAAAAAAAAAA2AAkAAAAAAAAAAAA3AAkAAAAAAAAAAAA4AAkAAAAAAAAAAAAsAA4AAgAAAAAABAAtAA4AAgAAAAAABAAuAA4AAgAAAAAABAAvAA4AAgAAAAAABAAwAA4AAgAAAAAABAAxAA4AAgAAAAAABAAyAA4AAgAAAAAABAAzAA4AAgAAAAAABAA0AA4AAgAAAAAABAA1AA4AAgAAAAAABAA2AA4AAgAAAAAABAA3AA4AAgAAAAAABAA4AA4AAgAAAAAABAA5AA4AAgAAAAAABABEAP//AAAAAAAAAABEAAAAAAAAAAAAAABEAAoAAAAAAAAAAABEAAsAAAAAAAAAAABFAP//AAAAAAAAAABFAAAAAAAAAAAAAABFAAoAAAAAAAAAAABFAAsAAAAAAAAAAABGAP//AAAAAAAAAABGAAAAAAAAAAAAAABGAAoAAAAAAAAAAABGAAsAAAAAAAAAAAA/AAYAAAAAAAAAAABAAAYAAAAAAAAAAABTAA4AAAAAAAAAAABUAA4AAAAAAAAAAABTAA0AAgAAAAAABABUAA0AAgAAAAAABABHAAwAAQAAAAAABABMAAwAAQAAAAAABABGAAwAAQAAAAAABABIABEAAQAAAAAABABHABEAAQAAAAAABABKABEAAQAAAAAABABJABEAAQAAAAAABABLABEAAQAAAAAABABOAAoAAAAAAAAAAABTAAoAAAAAAAAAAABTAAsAAAAAAAAAAABMAAEAAAAAAAAAAABMAAIAAAAAAAAAAABMAAMAAAAAAAAAAABMAAQAAAAAAAAAAABMAAUAAAAAAAAAAABMAAYAAAAAAAAAAABMAAcAAAAAAAAAAABMAAgAAAAAAAAAAABMAAkAAAAAAAAAAABLAAkAAAAAAAAAAABLAAgAAAAAAAAAAABLAAcAAAAAAAAAAABLAAYAAAAAAAAAAABLAAUAAAAAAAAAAABLAAQAAAAAAAAAAABLAAMAAAAAAAAAAABLAAIAAAAAAAAAAABLAAEAAAAAAAAAAABEAAkAAgAAAAAABABFAAkAAgAAAAAABABGAAkAAgAAAAAABABHAAkAAgAAAAAABABIAAkAAgAAAAAABABJAAkAAgAAAAAABABKAAkAAgAAAAAABABEAP7/AgAAAAAABABFAP7/AgAAAAAABABGAP7/AgAAAAAABABHAP7/AgAAAAAABABWAAYAAAAAAAAAAABVAAYAAAAAAAAAAABUAAYAAAAAAAAAAABWAAUAAAAAAAAAAABVAAUAAAAAAAAAAABUAAUAAAAAAAAAAABOAAsAAAAAAAAAAABPAAoAAwAAAAAAAQBPAAsAAwAAAAAAAQBQAAoAAwAAAAAAAQBQAAsAAwAAAAAAAQBRAAoAAwAAAAAAAQBRAAsAAwAAAAAAAQBSAAoAAwAAAAAAAQBSAAsAAwAAAAAAAQBPABgAAwAAAAAAAQBQABgAAwAAAAAAAQBRABgAAwAAAAAAAQBSABgAAwAAAAAAAQBSABkAAwAAAAAAAQBSABoAAwAAAAAAAQBSABsAAwAAAAAAAQBSABwAAwAAAAAAAQBSAB0AAwAAAAAAAQBSAB4AAwAAAAAAAQBSAB8AAwAAAAAAAQBOAA4AAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAABABAABgABAAEAAAACABAABgABAAEAAAADABAABgABAAEAAAAEABAABgABAAEAAAAFABAABgABAAEAAAAGABAABgABAAEAAAAHABAABgABAAEAAAAIABAABgABAAEAAAAJABAABgABAAEAAAAKABAABgABAAEAAAALABAABgABAAEAAAAMABAABgABAAEAAAANABAABgABAAEAAAAOABAABgABAAEAAAAPABAABgABAAEAAAAQABAABgABAAEAAAARABAABgABAAEAAAASABAABgABAAEAAAAYABAABgABAAEAAAAZABAABgABAAEAAAAaABAABgABAAEAAAAbABAABgABAAEAAAAcABAABgABAAEAAAAdABAABgABAAEAAAAAAA4ACQAAAA8AAAAAAA0ACQAAAA4AAAAAAAwACQAAAA0AAAAAAAsACQAAAAwAAAAAAAoACQAAAAsAAAAAAAkACQAAAAoAAAABAAoACQABAAsAAAABAAsACQABAAwAAAABAAwACQABAA0AAAABAA0ACQABAA4AAAABAA4ACQABAA8AAAABAA8ABgABAAAAAAADAA8ABgABAAAAAAADAA4ACQADAA8AAAACAA4ACQACAA8AAAACAA0ACQACAA4AAAACAAwACQACAA0AAAACAA8ABgABAAAAAAADAA0ACQADAA4AAAAAAAgACQAcAA0AAAAAAAcACQAcAAwAAAAAAAYACQAcAAsAAAABAAkACQABAAoAAAABAAgACQAdAA0AAAASAA8ABgABAAAAAAAXABAABgABAAEAAAAVABAABgABAAEAAAAWABAABgABAAEAAAARAA8ABgABAAAAAAAEAA8ABgABAAAAAAAFAA8ABgABAAAAAAAGAA8ABgABAAAAAAAHAA8ABgABAAAAAAAIAA8ABgABAAAAAAAJAA8ABgABAAAAAAAKAA8ABgABAAAAAAALAA8ABgABAAAAAAAMAA8ABgABAAAAAAANAA8ABgABAAAAAAAOAA8ABgABAAAAAAAPAA8ABgABAAAAAAAQAA8ABgABAAAAAAAVAA8ABgABAAAAAAAWAA8ABgABAAAAAAAXAA8ABgABAAAAAAAYAA8ABgABAAAAAAAZAA8ABgABAAAAAAAaAA8ABgABAAAAAAAbAA8ABgABAAAAAAAcAA8ABgABAAAAAAAbAAwACQAcAAUAAAAbAA4ACQAcAAcAAAAcAA4ACQAdAAcAAAAcAA0ACQAdAAYAAAAcAAwACQAdAAUAAAAgAAoACAAHAAAAAAAhAAoACAAIAAAAAAAiAAoACAAMAAAAAAAjAAoACAANAAAAAAAgAAsACAAHAAEAAAAhAAsACAAIAAEAAAAiAAsACAAMAAEAAAAjAAsACAANAAEAAAAdAA8ABgABAAAAAAAeAA8ACQASAAUAAAAfAA8ACQATAAUAAAAgAA8ACQAUAAUAAAAhAA8ABgABAAAAAAAiAA8ABgABAAAAAAAjAA8ACQASAAUAAAAmAA8ACQASAAUAAAAeABAACQASAAYAAAAfABAACQATAAYAAAAgABAACQAUAAYAAAAhABAABgABAAEAAAAiABAABgABAAEAAAAjABAACQASAAYAAAAmABAACQASAAYAAAAnABAACQATAAYAAAAnAA8ACQATAAUAAAAoAA8ACQAUAAUAAAApAA8ABgABAAAAAAAqAA8ACQASAAUAAAArAA8ACQATAAUAAAAsAA8ACQASAAUAAAAtAA8ACQATAAUAAAAuAA8ACQAUAAUAAAAvAA8ABgABAAAAAAAwAA8ABgABAAAAAAAxAA8ACQASAAUAAAAyAA8ACQATAAUAAAAoABAACQAUAAYAAAApABAABgABAAEAAAAqABAACQASAAYAAAArABAACQATAAYAAAAsABAACQASAAYAAAAtABAACQATAAYAAAAuABAACQAUAAYAAAAvABAABgABAAEAAAAwABAABgABAAEAAAAxABAACQASAAYAAAAyABAACQATAAYAAAAzABAACQASAAYAAAAkABAACQATAAYAAAAlABAACQAUAAYAAAAkAA8ACQATAAUAAAAlAA8ACQAUAAUAAAAkAA4ACQATAAQAAAAlAA4ACQAUAAQAAAATABAABgABAAEAAAAUABAABgABAAEAAAAUAA8ABgABAAAAAAATAA8ABgABAAAAAAAeAA4ACQASAAQAAAAfAA4ACQATAAQAAAAgAA4ACQAUAAQAAAAhAA4ACAAIAAQAAAAiAA4ACAAJAAQAAAAjAA4ACQASAAQAAAAzAA8ACQASAAUAAAA0AA8ACQATAAUAAAA0ABAACQATAAYAAAA1AA8ACQAUAAUAAAA1ABAACQAUAAYAAAA2AA8ABgABAAAAAAA2ABAABgABAAEAAAA3AA8ABgABAAAAAAA3ABAABgABAAEAAAA4AA8ACQASAAUAAAA4ABAACQASAAYAAABXAA8ABAAAAAMAAABXAA4ABAAAAAMAAABXAA0AAAAAAAAAAABXAAAAAAAAAAAAAABXAP//AAAAAAAAAABUAP//AAAAAAAAAABUAAAAAAAAAAAAAABVAP//AAAAAAAAAABVAAAAAAAAAAAAAABWAP//AAAAAAAAAABWAAAAAAAAAAAAAAA5AA8ACQATAAUAAAA5ABAACQATAAYAAAA6AA8ACQAUAAUAAAA6ABAACQAUAAYAAAA7AA8ABgABAAAAAAA7ABAABgABAAEAAAA8AA8ABgABAAAAAAA8ABAABgABAAEAAAA9AA8ABgABAAAAAAA9ABAABgABAAEAAAA+AA8ABgABAAAAAAA+ABAABgABAAEAAAA/AA8ABgABAAAAAAA/ABAABgABAAEAAABAAA8ABgABAAAAAABAABAABgABAAEAAABBAA8ABgABAAAAAABBABAABgABAAEAAABCAA8ABgABAAAAAABCABAABgABAAEAAABDAA8ABgABAAAAAABDABAABgABAAEAAABEAA8ABgABAAAAAABEABAABgABAAEAAABFAA8ABgABAAAAAABFABAABgABAAEAAABGAA8ABgABAAAAAABGABAABgABAAEAAABHAA8ABgABAAAAAABHABAABgABAAEAAABIAA8ABgABAAAAAABIABAABgABAAEAAABJAA8ABgABAAAAAABJABAABgABAAEAAABKAA8ABgABAAAAAABKABAABgABAAEAAABLAA8ABgABAAAAAABLABAABgABAAEAAABMAA8ABgABAAAAAABMABAABgABAAEAAABNAA8ABgABAAAAAABNABAABgABAAEAAABOAA8ABgAEAAAAAABOABAABgAEAAEAAABTAA8ABAAAAAMAAABTABAAAAAAAAAAAABUAA8ABAAAAAMAAABUABAAAAAAAAAAAABVAA8ABAAAAAMAAABVABAAAAAAAAAAAABWAA8ABAAAAAMAAABWABAAAAAAAAAAAABUAAcAAAAAAAAAAABUAAgAAAAAAAAAAABUAAkAAAAAAAAAAABUAAoAAAAAAAAAAABUAAsAAAAAAAAAAABVAAcAAAAAAAAAAABVAAgAAAAAAAAAAABVAAkAAAAAAAAAAABVAAoAAAAAAAAAAABVAAsAAAAAAAAAAABWAAcAAAAAAAAAAABWAAgAAAAAAAAAAABWAAkAAAAAAAAAAABWAAoAAAAAAAAAAABWAAsAAAAAAAAAAABVAAwAAAAAAAAAAABVAA0AAAAAAAAAAABVAA4ABAAAAAMAAABWAAwAAAAAAAAAAABWAA0AAAAAAAAAAABWAA4ABAAAAAMAAAAmAA4ACQASAAQAAAAnAA4ACQATAAQAAAAoAA4ACQAUAAQAAAApAA4ACAAJAAMAAAAqAA4ACQASAAQAAAArAA4ACQATAAQAAAA7AAsAAQAAAAAABAA7AAwAAQAAAAAABAA7AA4AAQAAAAAABAA8AAsAAQAAAAAABAA8AAwAAQAAAAAABAA8AA4AAQAAAAAABAA9AAsAAQAAAAAABAA9AAwAAQAAAAAABAA+AAsAAQAAAAAABAA/AAcABAADAAEAAAA/AAgAAAAAAAAAAAA/AAkAAAAAAAAAAAA/AAoAAAAAAAAAAAA/AAsAAAAAAAAAAABAAAcABAADAAEAAABAAAgAAAAAAAAAAABAAAkAAAAAAAAAAABAAAoAAAAAAAAAAABAAAsAAAAAAAAAAABHAP//AAAAAAAAAABHAAAAAAAAAAAAAABHAAoAAAAAAAAAAABHAAsAAAAAAAAAAABIAP//AAAAAAAAAABIAAAAAAAAAAAAAABIAAoAAAAAAAAAAABIAAsAAAAAAAAAAABIAAwAAQAAAAAABABJAP//AAAAAAAAAABJAAAAAAAAAAAAAABJAAoAAAAAAAAAAABJAAsAAAAAAAAAAABJAAwAAQAAAAAABABKAP//AAAAAAAAAABKAAAAAAAAAAAAAABKAAoAAAAAAAAAAABKAAsAAAAAAAAAAABKAAwAAQAAAAAABABLAP//AAAAAAAAAABLAAAAAAAAAAAAAABLAAoAAAAAAAAAAABLAAsAAAAAAAAAAABLAAwAAQAAAAAABABMAP//AAAAAAAAAABMAAAAAAAAAAAAAABMAAoAAAAAAAAAAABMAAsAAAAAAAAAAABNAP//AAAAAAAAAABNAAAAAAAAAAAAAABNAAoAAAAAAAAAAABNAAsAAAAAAAAAAABOAP//AAAAAAAAAABOAAAAAAAAAAAAAABPAP//AAAAAAAAAABPAAAAAAAAAAAAAABQAP//AAAAAAAAAABQAAAAAAAAAAAAAABRAP//AAAAAAAAAABRAAAAAAAAAAAAAABSAP//AAAAAAAAAABSAAAAAAAAAAAAAABTAP//AAAAAAAAAABTAAAAAAAAAAAAAAA6AA4ACQAUAAQAAAA7AA0AAQAAAAAABAA8AA0AAQAAAAAABAA9AA0AAQAAAAAABAA9AA4AAQAAAAAABAA+AAwAAQAAAAAABAA+AA0AAQAAAAAABAA+AA4AAQAAAAAABAA/AAwAAAAAAAAAAAA/AA0AAAAAAAAAAAA/AA4AAAAAAAAAAABAAAwAAAAAAAAAAABAAA0AAAAAAAAAAABAAA4AAAAAAAAAAABYAP//AAAAAAAAAABYAAAAAAAAAAAAAABZAP//AAAAAAAAAABZAAAAAAAAAAAAAABaAP//AAAAAAAAAABaAAAAAAAAAAAAAABbAP//AAAAAAAAAABbAAAAAAAAAAAAAABcAP//AAAAAAAAAABcAAAAAAAAAAAAAABdAP//AAAAAAAAAABdAAAAAAAAAAAAAABeAP//AAAAAAAAAABeAAAAAAAAAAAAAABfAP//AAAAAAAAAABfAAAAAAAAAAAAAABgAP//AAAAAAAAAABgAAAAAAAAAAAAAABhAP//AAAAAAAAAABhAAAAAAAAAAAAAAAuAAoACAAHAAAAAAAuAAsACAAHAAEAAAAvAAoACAAIAAAAAAAvAAsACAAIAAEAAAAwAAoACAAMAAAAAAAwAAsACAAMAAEAAAAxAAoACAANAAAAAAAxAAsACAANAAEAAAAnAAsACAAHAAAAAAAoAAsACAAIAAAAAAApAAsACAAMAAAAAAAqAAsACAANAAAAAAAnAAwACAAHAAEAAAAoAAwACAAIAAEAAAApAAwACAAMAAEAAAAqAAwACAANAAEAAAA1AAoACAAHAAEAAAA2AAoACAAIAAEAAAA3AAoACAAMAAEAAAA4AAoACAANAAEAAAA1AAkACAAHAAAAAAA2AAkACAAIAAAAAAA3AAkACAAMAAAAAAA4AAkACAANAAAAAAAsAA4ACQASAAQAAAAtAA4ACQATAAQAAAAuAA4ACQAUAAQAAAAvAA4ACAAIAAQAAAAwAA4ACAAJAAQAAAAxAA4ACQASAAQAAAAyAA4ACQATAAQAAAAzAA4ACQASAAQAAAA0AA4ACQATAAQAAAA1AA4ACQAUAAQAAAA2AA4ACAAIAAUAAAA3AA4ACAAJAAUAAAA4AA4ACQASAAQAAAA5AA4ACQATAAQAAABEAP//AAAAAAAAAABEAAAAAAAAAAAAAABEAAoAAAAAAAAAAABEAAsAAAAAAAAAAABFAP//AAAAAAAAAABFAAAAAAAAAAAAAABFAAoAAAAAAAAAAABFAAsAAAAAAAAAAABGAP//AAAAAAAAAABGAAAAAAAAAAAAAABGAAoAAAAAAAAAAABGAAsAAAAAAAAAAAA/AAYABAADAAEAAABAAAYABAADAAEAAABTAA4ABAAAAAMAAABUAA4ABAAAAAMAAABTAA0AAgAAAAAABABUAA0AAgAAAAAABABHAAwAAQAAAAAABABMAAwAAQAAAAAABABGAAwAAQAAAAAABABIABEAAQAAAAAABABHABEAAQAAAAAABABKABEAAQAAAAAABABJABEAAQAAAAAABABLABEAAQAAAAAABABOAAoAAAAAAAAAAABTAAoAAAAAAAAAAABTAAsAAAAAAAAAAABMAAEAAAAAAAAAAABMAAIAAAAAAAAAAABMAAMAAAAAAAAAAABMAAQAAAAAAAAAAABMAAUAAAAAAAAAAABMAAYAAAAAAAAAAABMAAcAAAAAAAAAAABMAAgAAAAAAAAAAABMAAkAAAAAAAAAAABLAAkAAAAAAAAAAABLAAgAAAAAAAAAAABLAAcAAAAAAAAAAABLAAYAAAAAAAAAAABLAAUAAAAAAAAAAABLAAQAAAAAAAAAAABLAAMAAAAAAAAAAABLAAIAAAAAAAAAAABLAAEAAAAAAAAAAABEAAkAAgAAAAAABABFAAkAAgAAAAAABABGAAkAAgAAAAAABABHAAkAAgAAAAAABABIAAkAAgAAAAAABABJAAkAAgAAAAAABABKAAkAAgAAAAAABABEAP7/AgAAAAAABABFAP7/AgAAAAAABABGAP7/AgAAAAAABABHAP7/AgAAAAAABABWAAYAAAAAAAAAAABVAAYAAAAAAAAAAABUAAYAAAAAAAAAAABWAAUAAAAAAAAAAABVAAUAAAAAAAAAAABUAAUAAAAAAAAAAABOAAsAAAAAAAAAAABPAAoAAwAAAAAAAQBPAAsAAwAAAAAAAQBQAAoAAwAAAAAAAQBQAAsAAwAAAAAAAQBRAAoAAwAAAAAAAQBRAAsAAwAAAAAAAQBSAAoAAwAAAAAAAQBSAAsAAwAAAAAAAQBPABgAAwAAAAAAAQBQABgAAwAAAAAAAQBRABgAAwAAAAAAAQBSABgAAwAAAAAAAQBSABkAAwAAAAAAAQBSABoAAwAAAAAAAQBSABsAAwAAAAAAAQBSABwABAAAAAMAAABSAB0ABAAAAAMAAABSAB4ABAAAAAMAAABSAB8ABAAAAAMAAABOAA4ABAAAAAMAAAAAABAABgAAAAEAAAAAAA8ABgAAAAAAAAABAAcACQAdAAwAAAABAAYACQAdAAsAAAABAAUACQAdAAoAAAAAAAUACQAcAAoAAAACAAYACQAeAAsAAAACAAcACQAeAAwAAAACAAUACQAeAAoAAAADAAUACQAcAAoAAAADAAYACQAcAAsAAAADAAcACQAcAAwAAAACAAgACQAeAA0AAAADAAgACQAcAA0AAAACAAkACQACAAoAAAADAAkACQADAAoAAAACAAoACQACAAsAAAADAAoACQADAAsAAAACAAsACQACAAwAAAADAAsACQADAAwAAAADAAwACQADAA0AAAAhAAwACAAIAAIAAAAhAA0ACAAIAAMAAAAiAAwACAAJAAIAAAAiAA0ACAAJAAMAAAAvAAwACAAIAAIAAAAvAA0ACAAIAAMAAAAwAAwACAAJAAIAAAAwAA0ACAAJAAMAAAA2AAsACAAIAAIAAAA2AAwACAAIAAMAAAA2AA0ACAAIAAQAAAA3AAsACAAJAAIAAAA3AAwACAAJAAMAAAA3AA0ACAAJAAQAAAAoAA0ACAAIAAIAAAApAA0ACAAJAAIAAABFAAIACQAAAAoAAABFAAMACQAAAAsAAABFAAQACQAAAAwAAABFAAUACQAAAA0AAABFAAYACQAAAA4AAABFAAcACQAAAA8AAABGAAIACQABAAoAAABGAAMACQABAAsAAABGAAQACQABAAwAAABGAAUACQABAA0AAABGAAYACQABAA4AAABGAAcACQABAA8AAABHAAIACQACAAoAAABHAAMACQACAAsAAABHAAQACQACAAwAAABHAAUACQACAA0AAABHAAYACQACAA4AAABHAAcACQACAA8AAABIAAIACQADAAoAAABIAAMACQADAAsAAABIAAQACQADAAwAAABIAAUACQADAA0AAABIAAYACQADAA4AAABIAAcACQADAA8AAABJAAIACQAEAAoAAABJAAMACQAEAAsAAABJAAQACQAEAAwAAABJAAUACQAEAA0AAABJAAYACQAEAA4AAABJAAcACQAEAA8AAABKAAIACQAFAAoAAABKAAMACQAFAAsAAABKAAQACQAFAAwAAABKAAUACQAFAA0AAABKAAYACQAFAA4AAABKAAcACQAFAA8AAAAcAAsACQAdAAQAAAAaAAwACQAbAAUAAAAaAA0ACQAbAAYAAAAaAA4ACQAbAAcAAAAbAAsACQAcAAQAAAAbAA0ACQAcAAYAAAAEAAkACQAEAAoAAAAEAAoACQAEAAsAAAAEAAsACQAEAAwAAAAEAAwACQAEAA0AAAAEAA0ACQAEAA4AAAAEAA4ACQAEAA8AAAAFAAkACQAFAAoAAAAFAAoACQAFAAsAAAAFAAsACQAFAAwAAAAFAAwACQAFAA0AAAAFAA0ACQAFAA4AAAAFAA4ACQAFAA8AAAAHAAkACQAGAAoAAAAHAAoACQAGAAsAAAAHAAsACQAGAAwAAAAHAAwACQAGAA0AAAAHAA0ACQAGAA4AAAAHAA4ACQAGAA8AAAAIAAkACQAHAAoAAAAIAAoACQAHAAsAAAAIAAsACQAHAAwAAAAIAAwACQAHAA0AAAAIAA0ACQAHAA4AAAAIAA4ACQAHAA8AAAAJAAoACQAIAAsAAAAJAAsACQAIAAwAAAAJAAwACQAIAA0AAAAKAAkACQAJAAoAAAAKAAoACQAJAAsAAAALAAkACQAKAAoAAAALAAoACQAKAAsAAAAMAAkACQALAAoAAAAMAAoACQALAAsAAAANAAkACQAMAAoAAAANAAoACQAMAAsAAAANAAsACQAMAAwAAAANAAwACQAMAA0AAAANAA4ACQAMAA8AAAAOAAkACQANAAoAAAAOAAoACQANAAsAAAAOAAsACQANAAwAAAAOAAwACQANAA0AAAAOAA0ACQANAA4AAAAOAA4ACQANAA8AAAAPAAkACQAOAAoAAAAPAAoACQAOAAsAAAAPAAsACQAOAAwAAAAPAAwACQAOAA0AAAAPAA0ACQAOAA4AAAAPAA4ACQAOAA8AAAAJAAkACQAIAAoAAAAAAAMACQAcAAgAAAAAAAQACQAcAAkAAAABAAMACQAdAAgAAAABAAQACQAdAAkAAAACAAMACQAeAAgAAAACAAQACQAeAAkAAAADAAMACQAcAAgAAAADAAQACQAcAAkAAAAEAAMACQAdAAgAAAAEAAQACQAdAAkAAAAEAAUACQAdAAoAAAAEAAYACQAdAAsAAAAEAAcACQAdAAwAAAAEAAgACQAdAA0AAAAFAAMACQAeAAgAAAAFAAQACQAeAAkAAAAFAAUACQAeAAoAAAAFAAYACQAeAAsAAAAFAAcACQAeAAwAAAAFAAgACQAeAA0AAAAaAAUACQAlAAAAAAAaAAYACQAlAAEAAAAaAAcACQAlAAIAAAAaAAgACQAlAAMAAAAaAAkACQAlAAQAAAAaAAoACQAlAAUAAAAbAAUACQAmAAAAAAAbAAYACQAmAAEAAAAbAAcACQAmAAIAAAAbAAgACQAmAAMAAAAbAAkACQAmAAQAAAAbAAoACQAmAAUAAAAcAAUACQAnAAAAAAAcAAYACQAnAAEAAAAcAAcACQAnAAIAAAAcAAgACQAnAAMAAAAcAAkACQAnAAQAAAAcAAoACQAnAAUAAAAdAAUACQAoAAAAAAAdAAYACQAoAAEAAAAdAAcACQAoAAIAAAAdAAgACQAoAAMAAAAdAAkACQAoAAQAAAAdAAoACQAoAAUAAAAeAAYACQApAAEAAAAeAAcACQApAAIAAAATAAcACQAYAAQAAAATAAgACQAYAAUAAAATAAkACQAYAAYAAAATAAoACQAYAAcAAAATAAsACQAYAAgAAAATAAwACQAYAAkAAAATAA0ACQAYAAoAAAAUAAcACQAZAAQAAAAUAAgACQAZAAUAAAAUAAkACQAZAAYAAAAUAAoACQAZAAcAAAAUAAsACQAZAAgAAAAUAAwACQAZAAkAAAAUAA0ACQAZAAoAAAAVAAcACQAaAAQAAAAVAAgACQAaAAUAAAAVAAwACQAaAAkAAAAVAA0ACQAaAAoAAAAHAAQACQANAAUAAAAHAAUACQANAAYAAAAHAAYACQANAAcAAAAHAAcACQANAAgAAAAHAAgACQANAAkAAAAIAAQACQAOAAUAAAAIAAUACQAOAAYAAAAIAAYACQAOAAcAAAAIAAcACQAOAAgAAAAIAAgACQAOAAkAAAAOAAQACQAQAAYAAAAOAAUACQAQAAcAAAAOAAYACQAQAAgAAAAOAAcACQAQAAkAAAAOAAgACQAQAAoAAAAPAAQACQARAAYAAAAPAAUACQARAAcAAAAPAAYACQARAAgAAAAPAAcACQARAAkAAAAPAAgACQARAAoAAAASAAQACQAAAAgAAAASAAUACQAAAAkAAAATAAQACQABAAgAAAATAAUACQABAAkAAAAUAAQACQACAAgAAAAUAAUACQACAAkAAAAVAAQACQADAAgAAAAVAAUACQADAAkAAAAWAAQACQAEAAgAAAAWAAUACQAEAAkAAAAXAAQACQAFAAgAAAAXAAUACQAFAAkAAAAXAAkACQAAAAIAAAAXAAoACQAAAAMAAAAXAAsACQAAAAQAAAAXAAwACQAAAAUAAAAXAA0ACQAAAAYAAAAXAA4ACQAAAAcAAAAYAAkACQABAAIAAAAYAAoACQABAAMAAAAYAAsACQABAAQAAAAYAAwACQABAAUAAAAYAA0ACQABAAYAAAAYAA4ACQABAAcAAAAAAAEACQAMAAIAAAAAAAIACQAMAAMAAAABAAEACQANAAIAAAABAAIACQANAAMAAAACAAEACQAOAAIAAAACAAIACQAOAAMAAAADAAEACQAPAAIAAAADAAIACQAPAAMAAAAEAAEACQAQAAIAAAAEAAIACQAQAAMAAAAFAAEACQARAAIAAAAFAAIACQARAAMAAAAGAAEACQASAAIAAAAGAAIACQASAAMAAAAHAAEACQATAAIAAAAHAAIACQATAAMAAAAIAAEACQAUAAIAAAAIAAIACQAUAAMAAAAJAAMACQARAAsAAAAJAAQACQARAAwAAAAJAAUACQARAA0AAAAJAAYACQARAA4AAAAKAAMACQASAAsAAAAKAAQACQASAAwAAAAKAAUACQASAA0AAAAKAAYACQASAA4AAAALAAMACQATAAsAAAALAAQACQATAAwAAAALAAUACQATAA0AAAALAAYACQATAA4AAAAMAAMACQAUAAsAAAAMAAQACQAUAAwAAAAMAAUACQAUAA0AAAAMAAYACQAUAA4AAAAOAAEACQADAAUAAAAPAAEACQAEAAUAAAAPAAIACQAEAAYAAAAQAAEACQAFAAUAAAAQAAIACQAFAAYAAAARAAEACQAGAAUAAAAZAAAACQAHAAMAAAAZAAEACQAHAAQAAAAaAAAACQAIAAMAAAAaAAEACQAIAAQAAAAQAAMACQACAAYAAAAQAAQACQACAAcAAAAgAAcACQAAABQAAAAgAAgACQAAABUAAAAhAAcACQABABQAAAAhAAgACQABABUAAAAiAAcACQACABQAAAAiAAgACQACABUAAAAjAAMACQADABAAAAAjAAQACQADABEAAAAjAAUACQADABIAAAAjAAYACQADABMAAAAjAAcACQADABQAAAAjAAgACQADABUAAAAkAAMACQAEABAAAAAkAAQACQAEABEAAAAkAAUACQAEABIAAAAkAAYACQAEABMAAAAkAAcACQAEABQAAAAkAAgACQAEABUAAAAlAAMACQAFABAAAAAlAAQACQAFABEAAAAlAAUACQAFABIAAAAlAAYACQAFABMAAAAlAAcACQAFABQAAAAlAAgACQAFABUAAAA=")
 tile_set = SubResource("TileSet_rvt4p")
 
 [node name="Path2D" type="Path2D" parent="maps/map1-1"]
@@ -292,10 +1918,6 @@ rotates = false
 
 [node name="save_point_1" parent="maps/map1-1" instance=ExtResource("22_tqmij")]
 position = Vector2(1064, 232)
-
-[node name="Fires8" parent="maps/map1-1" instance=ExtResource("25_fwxyk")]
-position = Vector2(1120, 88)
-rotation_angular_velocity = 2.0
 
 [node name="fire" type="Node2D" parent="maps/map1-1"]
 
@@ -551,7 +2173,7 @@ acceleration = 100.0
 metadata/_edit_group_ = true
 
 [node name="target" type="Area2D" parent="maps/map1-3/FallingBlockTgt7"]
-position = Vector2(-9.43732, 433.642)
+position = Vector2(-9.43732, 401.642)
 
 [node name="detection" type="Area2D" parent="maps/map1-3/FallingBlockTgt7"]
 collision_layer = 0
@@ -595,10 +2217,10 @@ use_parent_material = true
 tile_set = SubResource("TileSet_rvt4p")
 
 [node name="qte_gravity_area4" parent="maps/map10" instance=ExtResource("27_3o071")]
-position = Vector2(424, 152)
+position = Vector2(432, 152)
 
 [node name="qte_gravity_area5" parent="maps/map10" instance=ExtResource("27_3o071")]
-position = Vector2(296, 88)
+position = Vector2(288, 88)
 
 [node name="qte_gravity_area6" parent="maps/map10" instance=ExtResource("27_3o071")]
 position = Vector2(47.5001, 16)
@@ -648,7 +2270,7 @@ position = Vector2(464, 0)
 
 [node name="map" type="TileMapLayer" parent="maps/map7"]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABAAAAAAAAAAAAAAABABAAAAAAAAAAAAACAAAAAAAAAAAAAAACABAAAAAAAAAAAAADAAAAAAAAAAAAAAADABAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEABAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFABAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGABAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHABAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIABAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJABAAAAAAAAAAAAAKAAAAAAAAAAAAAAAKABAAAAAAAAAAAAALAAAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPAAAAAAAAAAAAAAAPABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWAAAAAAAAAAAAAAAWABAAAAAAAAAAAAAXAAAAAAAAAAAAAAAXABAAAAAAAAAAAAAYAAAAAAAAAAAAAAAYABAAAAAAAAAAAAAZAAAAAAAAAAAAAAAZABAAAAAAAAAAAAAaAAAAAAAAAAAAAAAaABAAAAAAAAAAAAAbAAAAAAAAAAAAAAAbABAAAAAAAAAAAAAcAAAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdABAAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAALAAgAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAALAAkAAAAAAAAAAAALAAoAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAADAAsAAAAAAAAAAAADAAwAAAAAAAAAAAAEAAsAAAAAAAAAAAAEAAwAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAwAAAAAAAAAAAAHAAsAAAAAAAAAAAAHAAwAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAEAAAAAAAAAAAAMAAAAAQAAAAAABAAMAAEAAQAAAAAABAAMAAIAAQAAAAAABAAMAAMAAQAAAAAABAAMAAQAAQAAAAAABAAMAAUAAQAAAAAABAAMAAYAAQAAAAAABAAMAAcAAQAAAAAABAAMAAgAAQAAAAAABAAMAAkAAQAAAAAABAANAAAAAQAAAAAABAANAAEAAQAAAAAABAANAAIAAQAAAAAABAANAAMAAQAAAAAABAANAAQAAQAAAAAABAANAAUAAQAAAAAABAANAAYAAQAAAAAABAANAAcAAQAAAAAABAANAAgAAQAAAAAABAANAAkAAQAAAAAABAAOAAAAAQAAAAAABAAOAAEAAQAAAAAABAAOAAIAAQAAAAAABAAOAAMAAQAAAAAABAAOAAQAAQAAAAAABAAOAAUAAQAAAAAABAAOAAYAAQAAAAAABAAOAAcAAQAAAAAABAAOAAgAAQAAAAAABAAOAAkAAQAAAAAABAAdAA8AAAAAAAAAAAAPAAwAAAAAAAAAAAAPAAsAAAAAAAAAAAAMAAwAAAAAAAAAAAANAAwAAAAAAAAAAAAOAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAARAAwAAAAAAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAVAAwAAAAAAAAAAAAWAAwAAAAAAAAAAAAWAAsAAAAAAAAAAAAWAAoAAAAAAAAAAAAWAAkAAAAAAAAAAAAWAAgAAAAAAAAAAAAWAAcAAAAAAAAAAAAWAAYAAAAAAAAAAAAWAAUAAAAAAAAAAAAVAAUAAAAAAAAAAAAUAAUAAAAAAAAAAAATAAUAAAAAAAAAAAAMAAoAAQAAAAAABAANAAoAAQAAAAAABAAOAAoAAQAAAAAABAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAPAAcAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAADAAgAAQAAAAAAAgADAAkAAQAAAAAAAgADAAoAAQAAAAAAAgAEAAgAAQAAAAAAAgAEAAkAAQAAAAAAAgAEAAoAAQAAAAAAAgAFAAgAAQAAAAAAAgAFAAkAAQAAAAAAAgAFAAoAAQAAAAAAAgAGAAgAAQAAAAAAAgAGAAkAAQAAAAAAAgAGAAoAAQAAAAAAAgAHAAgAAQAAAAAAAgAHAAkAAQAAAAAAAgAHAAoAAQAAAAAAAgAIAAgAAQAAAAAAAgAIAAkAAQAAAAAAAgAIAAoAAQAAAAAAAgAJAAgAAQAAAAAAAgAJAAkAAQAAAAAAAgAJAAoAAQAAAAAAAgAKAAgAAQAAAAAAAgAKAAkAAQAAAAAAAgAKAAoAAQAAAAAAAgABAA0AAQAAAAAAAwABAA4AAQAAAAAAAwABAA8AAQAAAAAAAwACAA0AAQAAAAAAAwACAA4AAQAAAAAAAwACAA8AAQAAAAAAAwADAA0AAQAAAAAAAwADAA4AAQAAAAAAAwADAA8AAQAAAAAAAwAEAA0AAQAAAAAAAwAEAA4AAQAAAAAAAwAEAA8AAQAAAAAAAwAFAA0AAQAAAAAAAwAFAA4AAQAAAAAAAwAFAA8AAQAAAAAAAwAGAA0AAQAAAAAAAwAGAA4AAQAAAAAAAwAGAA8AAQAAAAAAAwAHAA0AAQAAAAAAAwAHAA4AAQAAAAAAAwAHAA8AAQAAAAAAAwAIAA0AAQAAAAAAAwAIAA4AAQAAAAAAAwAIAA8AAQAAAAAAAwAJAA0AAQAAAAAAAwAJAA4AAQAAAAAAAwAJAA8AAQAAAAAAAwAKAA0AAQAAAAAAAwAKAA4AAQAAAAAAAwAKAA8AAQAAAAAAAwALAA0AAQAAAAAAAwALAA4AAQAAAAAAAwALAA8AAQAAAAAAAwAMAA0AAQAAAAAAAwAMAA4AAQAAAAAAAwAMAA8AAQAAAAAAAwANAA0AAQAAAAAAAwANAA4AAQAAAAAAAwANAA8AAQAAAAAAAwAOAA0AAQAAAAAAAwAOAA4AAQAAAAAAAwAOAA8AAQAAAAAAAwAPAA0AAQAAAAAAAwAPAA4AAQAAAAAAAwAPAA8AAQAAAAAAAwAQAA0AAQAAAAAAAwAQAA4AAQAAAAAAAwAQAA8AAQAAAAAAAwARAA0AAQAAAAAAAwARAA4AAQAAAAAAAwARAA8AAQAAAAAAAwASAA0AAQAAAAAAAwASAA4AAQAAAAAAAwASAA8AAQAAAAAAAwATAA0AAQAAAAAAAwATAA4AAQAAAAAAAwATAA8AAQAAAAAAAwAUAA0AAQAAAAAAAwAUAA4AAQAAAAAAAwAUAA8AAQAAAAAAAwAVAA0AAQAAAAAAAwAVAA4AAQAAAAAAAwAVAA8AAQAAAAAAAwAWAA0AAQAAAAAAAwAWAA4AAQAAAAAAAwAWAA8AAQAAAAAAAwAPAAgAAAABAAAAAAAPAAkAAAABAAAAAAAPAAoAAAABAAAAAAAUAP7/AAAAAAAAAAAUAP//AAAAAAAAAAATAP//AAAAAAAAAAATAP7/AAAAAAAAAAASAP7/AAAAAAAAAAASAP//AAAAAAAAAAARAP//AAAAAAAAAAAQAP//AAAAAAAAAAAPAP//AAAAAAAAAAAPAP7/AAAAAAAAAAARAP7/AAAAAAAAAAAQAP7/AAAAAAAAAAAKAP//AAAAAAAAAAAKAP7/AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAADAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAAFAP7/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABAAAAAAAAAAAAAAABABAAAAAAAAAAAAACAAAAAAAAAAAAAAACABAAAAAAAAAAAAADAAAAAAAAAAAAAAADABAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEABAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFABAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGABAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHABAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIABAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJABAAAAAAAAAAAAAKAAAAAAAAAAAAAAAKABAAAAAAAAAAAAALAAAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPAAAAAAAAAAAAAAAPABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAARAAAAAAAAAAAAAAARABAAAAAAAAAAAAASAAAAAAAAAAAAAAASABAAAAAAAAAAAAATAAAAAAAAAAAAAAATABAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUABAAAAAAAAAAAAAVAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAWAAAAAAAAAAAAAAAWABAAAAAAAAAAAAAXAAAAAAAAAAAAAAAXABAAAAAAAAAAAAAYAAAAAAAAAAAAAAAYABAAAAAAAAAAAAAZAAAAAAAAAAAAAAAZABAAAAAAAAAAAAAaAAAAAAAAAAAAAAAaABAAAAAAAAAAAAAbAAAAAAAAAAAAAAAbABAAAAAAAAAAAAAcAAAAAAAAAAAAAAAcABAAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdABAAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAALAAgAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAALAAkAAAAAAAAAAAALAAoAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAADAAsAAAAAAAAAAAADAAwAAAAAAAAAAAAEAAsAAAAAAAAAAAAEAAwAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAwAAAAAAAAAAAAHAAsAAAAAAAAAAAAHAAwAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAEAAAAAAAAAAAAMAAAAAQAAAAAABAAMAAEAAQAAAAAABAAMAAIAAQAAAAAABAAMAAMAAQAAAAAABAAMAAQAAQAAAAAABAAMAAUAAQAAAAAABAAMAAYAAQAAAAAABAAMAAcAAQAAAAAABAAMAAgAAQAAAAAABAAMAAkAAQAAAAAABAANAAAAAQAAAAAABAANAAEAAQAAAAAABAANAAIAAQAAAAAABAANAAMAAQAAAAAABAANAAQAAQAAAAAABAANAAUAAQAAAAAABAANAAYAAQAAAAAABAANAAcAAQAAAAAABAANAAgAAQAAAAAABAANAAkAAQAAAAAABAAOAAAAAQAAAAAABAAOAAEAAQAAAAAABAAOAAIAAQAAAAAABAAOAAMAAQAAAAAABAAOAAQAAQAAAAAABAAOAAUAAQAAAAAABAAOAAYAAQAAAAAABAAOAAcAAQAAAAAABAAOAAgAAQAAAAAABAAOAAkAAQAAAAAABAAdAA8AAAAAAAAAAAAPAAwAAAAAAAAAAAAPAAsAAAAAAAAAAAAMAAwAAAAAAAAAAAANAAwAAAAAAAAAAAAOAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAARAAwAAAAAAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAVAAwAAAAAAAAAAAAWAAwAAAAAAAAAAAAWAAsAAAAAAAAAAAAWAAoAAAAAAAAAAAAWAAkAAAAAAAAAAAAWAAgAAAAAAAAAAAAWAAcAAAAAAAAAAAAWAAYAAAAAAAAAAAAWAAUAAAAAAAAAAAAVAAUAAAAAAAAAAAAUAAUAAAAAAAAAAAATAAUAAAAAAAAAAAAMAAoAAQAAAAAABAANAAoAAQAAAAAABAAOAAoAAQAAAAAABAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAPAAcAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAADAAgAAQAAAAAAAgADAAkAAQAAAAAAAgADAAoAAQAAAAAAAgAEAAgAAQAAAAAAAgAEAAkAAQAAAAAAAgAEAAoAAQAAAAAAAgAFAAgAAQAAAAAAAgAFAAkAAQAAAAAAAgAFAAoAAQAAAAAAAgAGAAgAAQAAAAAAAgAGAAkAAQAAAAAAAgAGAAoAAQAAAAAAAgAHAAgAAQAAAAAAAgAHAAkAAQAAAAAAAgAHAAoAAQAAAAAAAgAIAAgAAQAAAAAAAgAIAAkAAQAAAAAAAgAIAAoAAQAAAAAAAgAJAAgAAQAAAAAAAgAJAAkAAQAAAAAAAgAJAAoAAQAAAAAAAgAKAAgAAQAAAAAAAgAKAAkAAQAAAAAAAgAKAAoAAQAAAAAAAgABAA0AAQAAAAAAAwABAA4AAQAAAAAAAwABAA8AAQAAAAAAAwACAA0AAQAAAAAAAwACAA4AAQAAAAAAAwACAA8AAQAAAAAAAwADAA0AAQAAAAAAAwADAA4AAQAAAAAAAwADAA8AAQAAAAAAAwAEAA0AAQAAAAAAAwAEAA4AAQAAAAAAAwAEAA8AAQAAAAAAAwAFAA0AAQAAAAAAAwAFAA4AAQAAAAAAAwAFAA8AAQAAAAAAAwAGAA0AAQAAAAAAAwAGAA4AAQAAAAAAAwAGAA8AAQAAAAAAAwAHAA0AAQAAAAAAAwAHAA4AAQAAAAAAAwAHAA8AAQAAAAAAAwAIAA0AAQAAAAAAAwAIAA4AAQAAAAAAAwAIAA8AAQAAAAAAAwAJAA0AAQAAAAAAAwAJAA4AAQAAAAAAAwAJAA8AAQAAAAAAAwAKAA0AAQAAAAAAAwAKAA4AAQAAAAAAAwAKAA8AAQAAAAAAAwALAA0AAQAAAAAAAwALAA4AAQAAAAAAAwALAA8AAQAAAAAAAwAMAA0AAQAAAAAAAwAMAA4AAQAAAAAAAwAMAA8AAQAAAAAAAwANAA0AAQAAAAAAAwANAA4AAQAAAAAAAwANAA8AAQAAAAAAAwAOAA0AAQAAAAAAAwAOAA4AAQAAAAAAAwAOAA8AAQAAAAAAAwAPAA0AAQAAAAAAAwAPAA4AAQAAAAAAAwAPAA8AAQAAAAAAAwAQAA0AAQAAAAAAAwAQAA4AAQAAAAAAAwAQAA8AAQAAAAAAAwARAA0AAQAAAAAAAwARAA4AAQAAAAAAAwARAA8AAQAAAAAAAwASAA0AAQAAAAAAAwASAA4AAQAAAAAAAwASAA8AAQAAAAAAAwATAA0AAQAAAAAAAwATAA4AAQAAAAAAAwATAA8AAQAAAAAAAwAUAA0AAQAAAAAAAwAUAA4AAQAAAAAAAwAUAA8AAQAAAAAAAwAVAA0AAQAAAAAAAwAVAA4AAQAAAAAAAwAVAA8AAQAAAAAAAwAWAA0AAQAAAAAAAwAWAA4AAQAAAAAAAwAWAA8AAQAAAAAAAwAPAAgAAAABAAAAAAAPAAkAAAABAAAAAAAPAAoAAAABAAAAAAAUAP7/AAAAAAAAAAAUAP//AAAAAAAAAAATAP//AAAAAAAAAAATAP7/AAAAAAAAAAASAP7/AAAAAAAAAAASAP//AAAAAAAAAAARAP//AAAAAAAAAAAQAP//AAAAAAAAAAAPAP//AAAAAAAAAAAPAP7/AAAAAAAAAAARAP7/AAAAAAAAAAAQAP7/AAAAAAAAAAAKAP//AAAAAAAAAAAKAP7/AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAADAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAAFAP7/AAAAAAAAAAAPAP3/BAAAAAMAAAAQAP3/BAAAAAMAAAARAP3/BAAAAAMAAAASAP3/BAAAAAMAAAATAP3/BAAAAAMAAAAUAP3/BAAAAAMAAAAVAP//BAAAAAMAAAAWAP//BAAAAAMAAAAXAP//BAAAAAMAAAAPAPz/BAAAAAMAAAAQAPz/BAAAAAMAAAARAPz/BAAAAAMAAAASAPz/BAAAAAMAAAATAPz/BAAAAAMAAAAUAPz/BAAAAAMAAAAMAP//AQAAAAAABAANAP//AQAAAAAABAAOAP//AQAAAAAABAA=")
 tile_set = SubResource("TileSet_rvt4p")
 
 [node name="qte_gravity_area4" parent="maps/map7" instance=ExtResource("27_3o071")]
@@ -804,7 +2426,7 @@ metadata/_edit_group_ = true
 position = Vector2(357.796, 2.8284)
 
 [node name="Area2D2" type="Area2D" parent="maps/Lazer2"]
-position = Vector2(-64, 0)
+position = Vector2(-72.555, -1.854)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 232.0
@@ -939,217 +2561,143 @@ debug_color = Color(0.866667, 0.282353, 0.552941, 0.419608)
 visible = false
 position = Vector2(-211, -279)
 
-[connection signal="body_entered" from="maps/map1-1/map/BlockTrap" to="maps/map1-1/map/BlockTrap" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/BlockTrap" to="maps/map1-1/map/BlockTrap" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65853" to="maps/map1-1/map/@Area2D@65853" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65853" to="maps/map1-1/map/@Area2D@65853" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65854" to="maps/map1-1/map/@Area2D@65854" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65854" to="maps/map1-1/map/@Area2D@65854" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65855" to="maps/map1-1/map/@Area2D@65855" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65855" to="maps/map1-1/map/@Area2D@65855" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65856" to="maps/map1-1/map/@Area2D@65856" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65856" to="maps/map1-1/map/@Area2D@65856" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65857" to="maps/map1-1/map/@Area2D@65857" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65857" to="maps/map1-1/map/@Area2D@65857" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65858" to="maps/map1-1/map/@Area2D@65858" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65858" to="maps/map1-1/map/@Area2D@65858" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65859" to="maps/map1-1/map/@Area2D@65859" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65859" to="maps/map1-1/map/@Area2D@65859" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65860" to="maps/map1-1/map/@Area2D@65860" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65860" to="maps/map1-1/map/@Area2D@65860" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65861" to="maps/map1-1/map/@Area2D@65861" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65861" to="maps/map1-1/map/@Area2D@65861" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65862" to="maps/map1-1/map/@Area2D@65862" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65862" to="maps/map1-1/map/@Area2D@65862" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65863" to="maps/map1-1/map/@Area2D@65863" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65863" to="maps/map1-1/map/@Area2D@65863" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65864" to="maps/map1-1/map/@Area2D@65864" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65864" to="maps/map1-1/map/@Area2D@65864" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65865" to="maps/map1-1/map/@Area2D@65865" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65865" to="maps/map1-1/map/@Area2D@65865" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65866" to="maps/map1-1/map/@Area2D@65866" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65866" to="maps/map1-1/map/@Area2D@65866" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65867" to="maps/map1-1/map/@Area2D@65867" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65867" to="maps/map1-1/map/@Area2D@65867" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65868" to="maps/map1-1/map/@Area2D@65868" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65868" to="maps/map1-1/map/@Area2D@65868" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65869" to="maps/map1-1/map/@Area2D@65869" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65869" to="maps/map1-1/map/@Area2D@65869" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65870" to="maps/map1-1/map/@Area2D@65870" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65870" to="maps/map1-1/map/@Area2D@65870" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65871" to="maps/map1-1/map/@Area2D@65871" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65871" to="maps/map1-1/map/@Area2D@65871" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65872" to="maps/map1-1/map/@Area2D@65872" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65872" to="maps/map1-1/map/@Area2D@65872" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65873" to="maps/map1-1/map/@Area2D@65873" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65873" to="maps/map1-1/map/@Area2D@65873" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65886" to="maps/map1-1/map/@Area2D@65886" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65886" to="maps/map1-1/map/@Area2D@65886" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65894" to="maps/map1-1/map/@Area2D@65894" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65894" to="maps/map1-1/map/@Area2D@65894" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65895" to="maps/map1-1/map/@Area2D@65895" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65895" to="maps/map1-1/map/@Area2D@65895" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65896" to="maps/map1-1/map/@Area2D@65896" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65896" to="maps/map1-1/map/@Area2D@65896" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65897" to="maps/map1-1/map/@Area2D@65897" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65897" to="maps/map1-1/map/@Area2D@65897" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65898" to="maps/map1-1/map/@Area2D@65898" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65898" to="maps/map1-1/map/@Area2D@65898" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65899" to="maps/map1-1/map/@Area2D@65899" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65899" to="maps/map1-1/map/@Area2D@65899" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65900" to="maps/map1-1/map/@Area2D@65900" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65900" to="maps/map1-1/map/@Area2D@65900" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65901" to="maps/map1-1/map/@Area2D@65901" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65901" to="maps/map1-1/map/@Area2D@65901" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65902" to="maps/map1-1/map/@Area2D@65902" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65902" to="maps/map1-1/map/@Area2D@65902" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65903" to="maps/map1-1/map/@Area2D@65903" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65903" to="maps/map1-1/map/@Area2D@65903" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65904" to="maps/map1-1/map/@Area2D@65904" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65904" to="maps/map1-1/map/@Area2D@65904" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65905" to="maps/map1-1/map/@Area2D@65905" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65905" to="maps/map1-1/map/@Area2D@65905" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65906" to="maps/map1-1/map/@Area2D@65906" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65906" to="maps/map1-1/map/@Area2D@65906" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65907" to="maps/map1-1/map/@Area2D@65907" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65907" to="maps/map1-1/map/@Area2D@65907" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65908" to="maps/map1-1/map/@Area2D@65908" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65908" to="maps/map1-1/map/@Area2D@65908" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65909" to="maps/map1-1/map/@Area2D@65909" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65909" to="maps/map1-1/map/@Area2D@65909" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65918" to="maps/map1-1/map/@Area2D@65918" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65918" to="maps/map1-1/map/@Area2D@65918" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65919" to="maps/map1-1/map/@Area2D@65919" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65919" to="maps/map1-1/map/@Area2D@65919" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65920" to="maps/map1-1/map/@Area2D@65920" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65920" to="maps/map1-1/map/@Area2D@65920" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65921" to="maps/map1-1/map/@Area2D@65921" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65921" to="maps/map1-1/map/@Area2D@65921" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65922" to="maps/map1-1/map/@Area2D@65922" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65922" to="maps/map1-1/map/@Area2D@65922" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65923" to="maps/map1-1/map/@Area2D@65923" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65923" to="maps/map1-1/map/@Area2D@65923" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65924" to="maps/map1-1/map/@Area2D@65924" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65924" to="maps/map1-1/map/@Area2D@65924" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65925" to="maps/map1-1/map/@Area2D@65925" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65925" to="maps/map1-1/map/@Area2D@65925" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65926" to="maps/map1-1/map/@Area2D@65926" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65926" to="maps/map1-1/map/@Area2D@65926" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65927" to="maps/map1-1/map/@Area2D@65927" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65927" to="maps/map1-1/map/@Area2D@65927" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/map/@Area2D@65928" to="maps/map1-1/map/@Area2D@65928" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/map/@Area2D@65928" to="maps/map1-1/map/@Area2D@65928" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@56789" to="maps/map1-1/map/@Area2D@56789" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@56789" to="maps/map1-1/map/@Area2D@56789" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@56790" to="maps/map1-1/map/@Area2D@56790" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@56790" to="maps/map1-1/map/@Area2D@56790" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@56799" to="maps/map1-1/map/@Area2D@56799" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@56799" to="maps/map1-1/map/@Area2D@56799" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@56800" to="maps/map1-1/map/@Area2D@56800" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@56800" to="maps/map1-1/map/@Area2D@56800" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@56801" to="maps/map1-1/map/@Area2D@56801" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@56801" to="maps/map1-1/map/@Area2D@56801" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@56802" to="maps/map1-1/map/@Area2D@56802" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@56802" to="maps/map1-1/map/@Area2D@56802" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@56803" to="maps/map1-1/map/@Area2D@56803" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@56803" to="maps/map1-1/map/@Area2D@56803" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@56804" to="maps/map1-1/map/@Area2D@56804" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@56804" to="maps/map1-1/map/@Area2D@56804" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@56805" to="maps/map1-1/map/@Area2D@56805" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@56805" to="maps/map1-1/map/@Area2D@56805" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@56806" to="maps/map1-1/map/@Area2D@56806" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@56806" to="maps/map1-1/map/@Area2D@56806" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@56807" to="maps/map1-1/map/@Area2D@56807" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@56807" to="maps/map1-1/map/@Area2D@56807" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@56808" to="maps/map1-1/map/@Area2D@56808" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@56808" to="maps/map1-1/map/@Area2D@56808" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-1/map/@Area2D@56809" to="maps/map1-1/map/@Area2D@56809" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-1/map/@Area2D@56809" to="maps/map1-1/map/@Area2D@56809" method="_on_ready"]
 [connection signal="body_entered" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/BlockTrap" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/BlockTrap" method="_on_body_entered"]
 [connection signal="ready" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/BlockTrap" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/BlockTrap" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@65987" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@65987" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@65987" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@65987" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@65988" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@65988" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@65988" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@65988" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@65989" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@65989" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@65989" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@65989" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@26405" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@26405" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@26405" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@26405" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@26406" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@26406" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@26406" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@26406" method="_on_ready"]
+[connection signal="body_entered" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@26407" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@26407" method="_on_body_entered"]
+[connection signal="ready" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@26407" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@26407" method="_on_ready"]
 [connection signal="body_entered" from="maps/map9/map/BlockTrap" to="maps/map9/map/BlockTrap" method="_on_body_entered"]
 [connection signal="ready" from="maps/map9/map/BlockTrap" to="maps/map9/map/BlockTrap" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@66006" to="maps/map9/map/@Area2D@66006" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@66006" to="maps/map9/map/@Area2D@66006" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@66007" to="maps/map9/map/@Area2D@66007" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@66007" to="maps/map9/map/@Area2D@66007" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@66008" to="maps/map9/map/@Area2D@66008" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@66008" to="maps/map9/map/@Area2D@66008" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@66009" to="maps/map9/map/@Area2D@66009" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@66009" to="maps/map9/map/@Area2D@66009" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@66010" to="maps/map9/map/@Area2D@66010" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@66010" to="maps/map9/map/@Area2D@66010" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@66011" to="maps/map9/map/@Area2D@66011" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@66011" to="maps/map9/map/@Area2D@66011" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@66012" to="maps/map9/map/@Area2D@66012" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@66012" to="maps/map9/map/@Area2D@66012" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@66013" to="maps/map9/map/@Area2D@66013" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@66013" to="maps/map9/map/@Area2D@66013" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@66014" to="maps/map9/map/@Area2D@66014" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@66014" to="maps/map9/map/@Area2D@66014" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@66015" to="maps/map9/map/@Area2D@66015" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@66015" to="maps/map9/map/@Area2D@66015" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@66016" to="maps/map9/map/@Area2D@66016" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@66016" to="maps/map9/map/@Area2D@66016" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@66017" to="maps/map9/map/@Area2D@66017" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@66017" to="maps/map9/map/@Area2D@66017" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@66018" to="maps/map9/map/@Area2D@66018" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@66018" to="maps/map9/map/@Area2D@66018" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@66019" to="maps/map9/map/@Area2D@66019" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@66019" to="maps/map9/map/@Area2D@66019" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@66020" to="maps/map9/map/@Area2D@66020" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@66020" to="maps/map9/map/@Area2D@66020" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@66021" to="maps/map9/map/@Area2D@66021" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@66021" to="maps/map9/map/@Area2D@66021" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@66022" to="maps/map9/map/@Area2D@66022" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@66022" to="maps/map9/map/@Area2D@66022" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@66023" to="maps/map9/map/@Area2D@66023" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@66023" to="maps/map9/map/@Area2D@66023" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@66024" to="maps/map9/map/@Area2D@66024" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@66024" to="maps/map9/map/@Area2D@66024" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@56880" to="maps/map9/map/@Area2D@56880" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@56880" to="maps/map9/map/@Area2D@56880" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@56881" to="maps/map9/map/@Area2D@56881" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@56881" to="maps/map9/map/@Area2D@56881" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@56882" to="maps/map9/map/@Area2D@56882" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@56882" to="maps/map9/map/@Area2D@56882" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@56883" to="maps/map9/map/@Area2D@56883" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@56883" to="maps/map9/map/@Area2D@56883" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@56884" to="maps/map9/map/@Area2D@56884" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@56884" to="maps/map9/map/@Area2D@56884" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@56885" to="maps/map9/map/@Area2D@56885" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@56885" to="maps/map9/map/@Area2D@56885" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@56886" to="maps/map9/map/@Area2D@56886" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@56886" to="maps/map9/map/@Area2D@56886" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@56887" to="maps/map9/map/@Area2D@56887" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@56887" to="maps/map9/map/@Area2D@56887" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@56888" to="maps/map9/map/@Area2D@56888" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@56888" to="maps/map9/map/@Area2D@56888" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@56889" to="maps/map9/map/@Area2D@56889" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@56889" to="maps/map9/map/@Area2D@56889" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@56890" to="maps/map9/map/@Area2D@56890" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@56890" to="maps/map9/map/@Area2D@56890" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@56891" to="maps/map9/map/@Area2D@56891" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@56891" to="maps/map9/map/@Area2D@56891" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@56892" to="maps/map9/map/@Area2D@56892" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@56892" to="maps/map9/map/@Area2D@56892" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@56893" to="maps/map9/map/@Area2D@56893" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@56893" to="maps/map9/map/@Area2D@56893" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@56894" to="maps/map9/map/@Area2D@56894" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@56894" to="maps/map9/map/@Area2D@56894" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@56895" to="maps/map9/map/@Area2D@56895" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@56895" to="maps/map9/map/@Area2D@56895" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@56896" to="maps/map9/map/@Area2D@56896" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@56896" to="maps/map9/map/@Area2D@56896" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@56897" to="maps/map9/map/@Area2D@56897" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@56897" to="maps/map9/map/@Area2D@56897" method="_on_ready"]
+[connection signal="body_entered" from="maps/map9/map/@Area2D@56898" to="maps/map9/map/@Area2D@56898" method="_on_body_entered"]
+[connection signal="ready" from="maps/map9/map/@Area2D@56898" to="maps/map9/map/@Area2D@56898" method="_on_ready"]
 [connection signal="body_entered" from="maps/map8/map/BlockTrap" to="maps/map8/map/BlockTrap" method="_on_body_entered"]
 [connection signal="ready" from="maps/map8/map/BlockTrap" to="maps/map8/map/BlockTrap" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66038" to="maps/map8/map/@Area2D@66038" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66038" to="maps/map8/map/@Area2D@66038" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66039" to="maps/map8/map/@Area2D@66039" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66039" to="maps/map8/map/@Area2D@66039" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66040" to="maps/map8/map/@Area2D@66040" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66040" to="maps/map8/map/@Area2D@66040" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66041" to="maps/map8/map/@Area2D@66041" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66041" to="maps/map8/map/@Area2D@66041" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66042" to="maps/map8/map/@Area2D@66042" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66042" to="maps/map8/map/@Area2D@66042" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66043" to="maps/map8/map/@Area2D@66043" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66043" to="maps/map8/map/@Area2D@66043" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66044" to="maps/map8/map/@Area2D@66044" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66044" to="maps/map8/map/@Area2D@66044" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66045" to="maps/map8/map/@Area2D@66045" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66045" to="maps/map8/map/@Area2D@66045" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66046" to="maps/map8/map/@Area2D@66046" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66046" to="maps/map8/map/@Area2D@66046" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66047" to="maps/map8/map/@Area2D@66047" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66047" to="maps/map8/map/@Area2D@66047" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66048" to="maps/map8/map/@Area2D@66048" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66048" to="maps/map8/map/@Area2D@66048" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66049" to="maps/map8/map/@Area2D@66049" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66049" to="maps/map8/map/@Area2D@66049" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66050" to="maps/map8/map/@Area2D@66050" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66050" to="maps/map8/map/@Area2D@66050" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66051" to="maps/map8/map/@Area2D@66051" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66051" to="maps/map8/map/@Area2D@66051" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66052" to="maps/map8/map/@Area2D@66052" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66052" to="maps/map8/map/@Area2D@66052" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66055" to="maps/map8/map/@Area2D@66055" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66055" to="maps/map8/map/@Area2D@66055" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66056" to="maps/map8/map/@Area2D@66056" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66056" to="maps/map8/map/@Area2D@66056" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66057" to="maps/map8/map/@Area2D@66057" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66057" to="maps/map8/map/@Area2D@66057" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66058" to="maps/map8/map/@Area2D@66058" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66058" to="maps/map8/map/@Area2D@66058" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66059" to="maps/map8/map/@Area2D@66059" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66059" to="maps/map8/map/@Area2D@66059" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66060" to="maps/map8/map/@Area2D@66060" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66060" to="maps/map8/map/@Area2D@66060" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66061" to="maps/map8/map/@Area2D@66061" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66061" to="maps/map8/map/@Area2D@66061" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66104" to="maps/map8/map/@Area2D@66104" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66104" to="maps/map8/map/@Area2D@66104" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66105" to="maps/map8/map/@Area2D@66105" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66105" to="maps/map8/map/@Area2D@66105" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66106" to="maps/map8/map/@Area2D@66106" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66106" to="maps/map8/map/@Area2D@66106" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66107" to="maps/map8/map/@Area2D@66107" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66107" to="maps/map8/map/@Area2D@66107" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66108" to="maps/map8/map/@Area2D@66108" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66108" to="maps/map8/map/@Area2D@66108" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66109" to="maps/map8/map/@Area2D@66109" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66109" to="maps/map8/map/@Area2D@66109" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66110" to="maps/map8/map/@Area2D@66110" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66110" to="maps/map8/map/@Area2D@66110" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66111" to="maps/map8/map/@Area2D@66111" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66111" to="maps/map8/map/@Area2D@66111" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@66112" to="maps/map8/map/@Area2D@66112" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@66112" to="maps/map8/map/@Area2D@66112" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56912" to="maps/map8/map/@Area2D@56912" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56912" to="maps/map8/map/@Area2D@56912" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56913" to="maps/map8/map/@Area2D@56913" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56913" to="maps/map8/map/@Area2D@56913" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56914" to="maps/map8/map/@Area2D@56914" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56914" to="maps/map8/map/@Area2D@56914" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56915" to="maps/map8/map/@Area2D@56915" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56915" to="maps/map8/map/@Area2D@56915" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56916" to="maps/map8/map/@Area2D@56916" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56916" to="maps/map8/map/@Area2D@56916" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56917" to="maps/map8/map/@Area2D@56917" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56917" to="maps/map8/map/@Area2D@56917" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56918" to="maps/map8/map/@Area2D@56918" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56918" to="maps/map8/map/@Area2D@56918" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56919" to="maps/map8/map/@Area2D@56919" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56919" to="maps/map8/map/@Area2D@56919" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56920" to="maps/map8/map/@Area2D@56920" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56920" to="maps/map8/map/@Area2D@56920" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56921" to="maps/map8/map/@Area2D@56921" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56921" to="maps/map8/map/@Area2D@56921" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56922" to="maps/map8/map/@Area2D@56922" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56922" to="maps/map8/map/@Area2D@56922" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56923" to="maps/map8/map/@Area2D@56923" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56923" to="maps/map8/map/@Area2D@56923" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56924" to="maps/map8/map/@Area2D@56924" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56924" to="maps/map8/map/@Area2D@56924" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56925" to="maps/map8/map/@Area2D@56925" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56925" to="maps/map8/map/@Area2D@56925" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56926" to="maps/map8/map/@Area2D@56926" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56926" to="maps/map8/map/@Area2D@56926" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56929" to="maps/map8/map/@Area2D@56929" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56929" to="maps/map8/map/@Area2D@56929" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56930" to="maps/map8/map/@Area2D@56930" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56930" to="maps/map8/map/@Area2D@56930" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56931" to="maps/map8/map/@Area2D@56931" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56931" to="maps/map8/map/@Area2D@56931" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56932" to="maps/map8/map/@Area2D@56932" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56932" to="maps/map8/map/@Area2D@56932" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56933" to="maps/map8/map/@Area2D@56933" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56933" to="maps/map8/map/@Area2D@56933" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56934" to="maps/map8/map/@Area2D@56934" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56934" to="maps/map8/map/@Area2D@56934" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56935" to="maps/map8/map/@Area2D@56935" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56935" to="maps/map8/map/@Area2D@56935" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56978" to="maps/map8/map/@Area2D@56978" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56978" to="maps/map8/map/@Area2D@56978" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56979" to="maps/map8/map/@Area2D@56979" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56979" to="maps/map8/map/@Area2D@56979" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56980" to="maps/map8/map/@Area2D@56980" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56980" to="maps/map8/map/@Area2D@56980" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56981" to="maps/map8/map/@Area2D@56981" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56981" to="maps/map8/map/@Area2D@56981" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56982" to="maps/map8/map/@Area2D@56982" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56982" to="maps/map8/map/@Area2D@56982" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56983" to="maps/map8/map/@Area2D@56983" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56983" to="maps/map8/map/@Area2D@56983" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56984" to="maps/map8/map/@Area2D@56984" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56984" to="maps/map8/map/@Area2D@56984" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56985" to="maps/map8/map/@Area2D@56985" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56985" to="maps/map8/map/@Area2D@56985" method="_on_ready"]
+[connection signal="body_entered" from="maps/map8/map/@Area2D@56986" to="maps/map8/map/@Area2D@56986" method="_on_body_entered"]
+[connection signal="ready" from="maps/map8/map/@Area2D@56986" to="maps/map8/map/@Area2D@56986" method="_on_ready"]
 
 [editable path="Npc"]
