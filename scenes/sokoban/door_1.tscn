@@ -22,5 +22,6 @@ rotation = -1.57079
 shape = SubResource("RectangleShape2D_cyx6v")
 
 [node name="v2-1" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_yxf1j")
