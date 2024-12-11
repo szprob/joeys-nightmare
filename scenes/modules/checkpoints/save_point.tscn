@@ -34,7 +34,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_gu3vu")
 }],
 "loop": true,
-"name": &"default",
+"name": &"bak",
 "speed": 5.0
 }, {
 "frames": [{
@@ -45,7 +45,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_c3ei3")
 }],
 "loop": false,
-"name": &"old",
+"name": &"default",
 "speed": 1.0
 }]
 
@@ -58,8 +58,7 @@ script = ExtResource("1_qeoh3")
 shape = SubResource("RectangleShape2D_cergc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -4)
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_uskgs")
 
 [node name="Label" type="Label" parent="."]

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cv3nrtrevxkyu" path="res://scenes/sokoban/gravity_1.tscn" id="1_ttcld"]
 
 [node name="GravityLeft" type="Node2D"]
+z_index = 1
 
 [node name="gravity-1" parent="." instance=ExtResource("1_ttcld")]
 rotation = -1.5708
