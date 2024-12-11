@@ -30,7 +30,9 @@ func _notification(what: int) -> void:
 	item_list.clear()
 	for item_name in GameManager.get_items():
 		var index = item_list.add_item(item_name)
-		item_list.set_item_icon(index, load("res://icon.svg"))
+		var icon_path = inventory_dict[item_name]['icon']
+		print(icon_path)
+		item_list.set_item_icon(index, load(icon_path))
 
 
 func _process(delta: float) -> void:

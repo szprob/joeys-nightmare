@@ -346,7 +346,13 @@ func is_light1_visible() -> bool:
 	
 func is_light2_visible() -> bool:
 	return game_state['light2_visble']
-	
+
+func get_light_visble(index: int) -> bool:
+	if index == 1:
+		return is_light1_visible()
+	else:
+		return is_light2_visible()
+
 func set_light_visble(visble_value: bool, index: int) -> void:
 	if index == 1:
 		set_light1_visble(visble_value)
@@ -366,7 +372,7 @@ func extinct_fire() -> void:
 	game_state['fire_extincted'] = true
 
 func is_room2_cleared() -> bool:
-	return has_item("笔记1") and has_item("笔记2") and has_item("水枪") and game_state['all_light_off']
+	return has_item("笔记1") and has_item("钩爪") and has_item("水枪") and game_state['all_light_off']
 
 func is_room3_door_open() -> bool:
 	return game_state['room3_door_open']
@@ -385,6 +391,18 @@ func enter_day_scene(scene_file_path: String) -> void:
 	end_dialogue()
 	GameManager.save_game_state()
 	get_tree().change_scene_to_file(scene_file_path)
+	
+func back_to_room3() -> void:
+	end_dialogue()
+	GameManager.save_game_state()
+	var new_scene = load("res://scenes/day/game/game.tscn").instantiate()
+	get_tree().root.add_child(new_scene)
+	get_tree().current_scene.free()
+	get_tree().current_scene = new_scene
+	get_tree().change_scene_to_file(scene_file_path)
+	
+	var player = new_scene.get_node("PlayerDay")
+	player.position = Vector2(-243, 398)
 
 # 添加暂停相关的方法
 func _input(event: InputEvent) -> void:
