@@ -406,11 +406,3 @@ around_sth = NodePath("../Swing")
 
 [node name="Npc" parent="." instance=ExtResource("12_24vq6")]
 position = Vector2(-2188, -11)
-shoot_delay = 0.1
-bubble_speed = 0.06
-bubble_title = "die"
-bubble_index = 0
-disappear_delay = 1.5
-next_scene_file_path = ""
-transition_scene = "res://scenes/modules/checkpoints/transition.tscn"
-teleport_type = "dream2day"

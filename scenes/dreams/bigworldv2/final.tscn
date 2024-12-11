@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/dreams/castel.gd" id="1_sauck"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="2_bxau8"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="3_bgqdq"]
-[ext_resource type="PackedScene" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="4_aieq5"]
+[ext_resource type="PackedScene" uid="uid://yan3jqnet7ud" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="4_aieq5"]
 [ext_resource type="PackedScene" uid="uid://c5x12p3650b3l" path="res://scenes/player/npc.tscn" id="5_tdqwb"]
 [ext_resource type="Texture2D" uid="uid://7joprmnjucj5" path="res://assets/sprites/background/multi3/moon2.png" id="9_ydw1p"]
 [ext_resource type="Texture2D" uid="uid://bl1rxkn33ywhl" path="res://assets/sprites/background/multi3/cloud.png" id="10_bcud1"]

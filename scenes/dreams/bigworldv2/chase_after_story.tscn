@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/dreams/chase_after_story.gd" id="1_e45pu"]
 [ext_resource type="PackedScene" uid="uid://cwmufh2pjwfpk" path="res://scenes/player/player_in_story.tscn" id="3_s1gpd"]
-[ext_resource type="PackedScene" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="5_6xfui"]
+[ext_resource type="PackedScene" uid="uid://yan3jqnet7ud" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="5_6xfui"]
 [ext_resource type="PackedScene" uid="uid://cybrbhwavabl6" path="res://scenes/player/npc_in_story.tscn" id="6_diti3"]
 [ext_resource type="Texture2D" uid="uid://b5jfcv0uem5wb" path="res://assets/sprites/background/multi3/back2.png" id="7_0jo2e"]
 [ext_resource type="Texture2D" uid="uid://7joprmnjucj5" path="res://assets/sprites/background/multi3/moon2.png" id="8_x5s31"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bc3luaoy48sp7" path="res://assets/sprites/background/multi3/bird.png" id="10_fdoxn"]
 [ext_resource type="Texture2D" uid="uid://gvyrlttwr2dn" path="res://assets/sprites/background/multi3/people.png" id="11_dk2a5"]
 [ext_resource type="Texture2D" uid="uid://c8ktpt687sgsd" path="res://assets/sprites/background/multi3/frontv2_1.png" id="12_i4qwl"]
-[ext_resource type="Texture2D" uid="uid://gjn74mcbcwcw" path="res://assets/sprites/bricks/yun2.png" id="12_lq67s"]
+[ext_resource type="Texture2D" uid="uid://b66ibvoa4sgpy" path="res://assets/sprites/bricks/yun2.png" id="12_lq67s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fsc12"]
 texture = ExtResource("12_lq67s")

@@ -8,6 +8,9 @@ var player
 @onready var timer: Timer = $Timer
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
+@export var transition_scene: String = "res://scenes/modules/checkpoints/transition.tscn"  # 添加过渡场景路径
+
+
 func _ready():
 	# Engine.time_scale = 1
 	# 获取玩家节点
@@ -52,7 +55,8 @@ func _on_timer_timeout() -> void:
 	cleanup_dynamic_nodes()
 	if GameManager.game_state_cache['should_die']:
 		get_tree().change_scene_to_file(root_node.scene_file_path)
-
+	else:
+		get_tree().change_scene_to_file(transition_scene)
 
 func cleanup_dynamic_nodes() -> void:
 	var dynamic_nodes = get_tree().get_nodes_in_group("dynamic")
