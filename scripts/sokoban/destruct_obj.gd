@@ -90,7 +90,7 @@ func _ready():
 	# 	print("My collision mask: ", collision_mask)
 	# 	print("Can detect static bodies: ", collision_mask & 1)
 	# print('node_to_explode: ', node_to_explode.name)
-	print('self name: ', self.name)
+	# print('self name: ', self.name)
 	# print('tilemap_to_explode: ', tilemap_to_explode.name)
 	var params = {
 		"blocks_gravity_scale": blocks_gravity_scale,
@@ -108,7 +108,7 @@ func _ready():
 	explosion_detector = get_parent().get_node(trigger_node_name)
 	#explosion_detector = get_node(trigger_path)
 	if explosion_detector:
-		explosion_detector.set_collision_layer_value(0, true)
+		explosion_detector.set_collision_layer_value(1, false)
 		explosion_detector.set_collision_mask_value(7, true)
 		print('detector found')
 		explosion_detector.area_entered.connect(_on_trigger_entered)
@@ -148,8 +148,8 @@ func _ready():
 		print("ERROR: The '%s' node must be a 'RigidBody2D'" % self.name)
 		object.can_detonate = false
 		return
-	print('node_to_explode', node_to_explode)
-	print('node_to_explode: ', node_to_explode.name)
+	# print('node_to_explode', node_to_explode)
+	# print('node_to_explode: ', node_to_explode.name)
 	## deal with if into a tilemap to explode
 	for child in node_to_explode.get_children():
 		if is_instance_of(child, Sprite2D):
@@ -193,7 +193,7 @@ func _ready():
 	# Use vframes and hframes to divide the sprite.
 	# var sprite = get_node(object.sprite_name) as Sprite2D
 	var sprite = get_node(object.sprite_name)
-	print('sprite ', sprite.name)
+	# print('sprite ', sprite.name)
 	# 保存原始的 frame 设置
 	var original_frame = sprite.frame
 	
@@ -282,60 +282,53 @@ func _ready():
 	if debug_mode:
 		print("object's collision_position: ", object.collision_position)
 
-	# 创建每个块
+	# Defer the heavy block creation process
+	call_deferred("initialize_blocks")
+
+
+func initialize_blocks():
+	# Move block creation logic here
 	for n in range(object.vframes * object.hframes):
 		var duplicated_object = self.duplicate(8)
 		duplicated_object.name = self.name + "_block_" + str(n)
 		duplicated_object._initialization_complete = true
 		object.blocks.append(duplicated_object)
-
-		var shape = RectangleShape2D.new()
-		shape.extents = object.collision_extents
-		if debug_mode:
-			print('shape.extents: ', shape.extents)
-		# duplicated_object.freeze = true
-
-		# var this_sprite_node = duplicated_object.get_node(object.sprite_name) as Sprite2D
-		# # this_sprite_node.scale = sprite_node.scale
-		# this_sprite_node.vframes = object.vframes
-		# this_sprite_node.hframes = object.hframes
-		# this_sprite_node.frame = n
-		# duplicated_object.get_node(object.collision_name).shape = shape
-		# duplicated_object.get_node(object.collision_name).position = object.collision_position
-
-		object.blocks[n].freeze = true
-		object.blocks[n].get_node(object.sprite_name).vframes = object.vframes
-		object.blocks[n].get_node(object.sprite_name).hframes = object.hframes
-		object.blocks[n].get_node(object.sprite_name).frame = n
-		object.blocks[n].get_node(object.collision_name).shape = shape
-		object.blocks[n].get_node(object.collision_name).position = object.collision_position
-	
-
-		if object.collision_one_way:
-			object.blocks[n].get_node(object.collision_name).one_way_collision = true
-
-		if debug_mode:
-			# duplicated_object.modulate = Color(randf_range(0, 1), randf_range(0, 1), randf_range(0, 1), 0.9)
-			print('append object size:', duplicated_object.get_node(object.collision_name).shape.extents)
-
 		
-	# 初始化块索引
-	var block_index = 0
+		# Setup block properties
+		setup_block(duplicated_object, n)
+	
+	# Setup block positions
+	setup_block_positions()
+	
+	# Add blocks to scene
+	call_deferred("add_children", object)
+	_initialization_complete = true
 
-	# 设置每个块的位置
+func setup_block(duplicated_object: Node, n: int):
+	var shape = RectangleShape2D.new()
+	shape.extents = object.collision_extents
+	
+	object.blocks[n].freeze = true
+	object.blocks[n].get_node(object.sprite_name).vframes = object.vframes
+	object.blocks[n].get_node(object.sprite_name).hframes = object.hframes
+	object.blocks[n].get_node(object.sprite_name).frame = n
+	object.blocks[n].get_node(object.collision_name).shape = shape
+	object.blocks[n].get_node(object.collision_name).position = object.collision_position
+	
+	if object.collision_one_way:
+		object.blocks[n].get_node(object.collision_name).one_way_collision = true
+
+func setup_block_positions():
+	var block_index = 0
 	for x in range(object.vframes):
 		for y in range(object.hframes):
 			if block_index >= object.blocks.size():
-				break # 防止索引超出范围
+				break
 			var block = object.blocks[block_index]
 			block.position = Vector2(
 				y * (object.width / object.hframes) - object.offset.x + object.collision_extents.x + position.x,
 				x * (object.height / object.vframes) - object.offset.y + object.collision_extents.y + position.y
 			)
-
-			if debug_mode:
-				print("object[", block_index, "] position: ", block.position)
-
 			block_index += 1
 
 	if debug_mode:
@@ -381,6 +374,7 @@ func _physics_process(delta):
 
 	if object.can_detonate and object.detonate:
 		detonate()
+		explosion(delta)
 
 	if object.has_detonated:
 		# Add a delay of 'delta' before counting the blocks.
@@ -413,8 +407,8 @@ func _physics_process(delta):
 						current_parent.queue_free()
 
 #
-func _integrate_forces(state):
-	explosion(state.step)
+# func _integrate_forces(state):
+# 	explosion(state.step)
 #
 
 func add_children(child_object):
@@ -424,7 +418,7 @@ func add_children(child_object):
 		var block = child_object.blocks[i]
 		# 确保碎片不会干扰主体的碰撞检测
 		block.contact_monitor = false
-		block.set_collision_layer_value(0, true)
+		block.set_collision_layer_value(1, false)
 		child_object.blocks_container.add_child(child_object.blocks[i], true)
 	# print('child_object: ', child_object)
 	# print('parent: ', child_object.parent.name)
@@ -442,7 +436,7 @@ func detonate():
 	# if not is_instance_valid(object.parent):
 	# 	print("Warning: parent reference is invalid!")
 	# 	return
-	print('detonating ', self.name)
+	# print('detonating ', self.name)
 
 	object.can_detonate = false
 	object.has_detonated = true
@@ -478,7 +472,7 @@ func detonate():
 		# child.mass = child_scale
 
 		# child.set_collision_layer(0 if randf() < 0.5 else object.collision_layers)
-		child.set_collision_layer_value(0, true)
+		# child.set_collision_layer_value(1, false)
 		child.set_collision_layer_value(1, false)
 		child.set_collision_mask(0 if randf() < 0.5 else object.collision_masks)
 
@@ -585,14 +579,14 @@ func _on_trigger_entered(body: Node2D) -> void:
 	# print("Area detected body: ", body.name)
 		# print('body collision layer: ', body.tile_set.get_physics_layer_collision_layer()
 	if body.get("can_destroy") != null and body.can_destroy and object.can_detonate:
-		print('destoryed', self.name)
-		print("Triggering explosion from area detection by", body.name)
+		# print('destoryed', self.name)
+		# print("Triggering explosion from area detection by", body.name)
 		object.detonate = true
 	elif body.get_parent():
 		var parent = body.get_parent()
 		if parent.get("can_destroy") != null and parent.can_destroy and object.can_detonate:
-			print('destoryed', self.name)
-			print("Triggering explosion from area detection by", body.name)
+			# print('destoryed', self.name)
+			# print("Triggering explosion from area detection by", body.name)
 			object.detonate = true
 		else:
 			# print('not trigger destroy by ', body.name)
