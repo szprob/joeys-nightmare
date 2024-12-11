@@ -1,5 +1,6 @@
-[gd_scene load_steps=41 format=3 uid="uid://b67w4ct47vhpw"]
+[gd_scene load_steps=51 format=3 uid="uid://b67w4ct47vhpw"]
 
+[ext_resource type="Script" path="res://scenes/modules/trap_tile/trap_up.gd" id="1_tu8he"]
 [ext_resource type="Texture2D" uid="uid://ddd58o3kftlsy" path="res://assets/sprites/background/intro/毒/毒_00000.png" id="2_7blek"]
 [ext_resource type="Texture2D" uid="uid://bwfxekt16jbbl" path="res://assets/sprites/human/trap.png" id="2_bnjs0"]
 [ext_resource type="Texture2D" uid="uid://dkxtpdfp8ui1c" path="res://assets/sprites/background/intro/ci1.png" id="2_ovihv"]
@@ -34,7 +35,40 @@
 [ext_resource type="Texture2D" uid="uid://deq5vcwlgaqw" path="res://assets/sprites/background/intro/毒/毒_00027.png" id="29_ajk5h"]
 [ext_resource type="Texture2D" uid="uid://ddmbjxamfv5on" path="res://assets/sprites/background/intro/毒/毒_00028.png" id="30_q8ksq"]
 [ext_resource type="Texture2D" uid="uid://cgjqiqeqb782l" path="res://assets/sprites/background/intro/毒/毒_00029.png" id="31_14f7v"]
+[ext_resource type="Texture2D" uid="uid://cjj02yv2kwuor" path="res://assets/sprites/traps/du2.png" id="32_7vsda"]
 [ext_resource type="Texture2D" uid="uid://d2cuurcxa6phx" path="res://assets/sprites/background/intro/ci3.png" id="32_xc2le"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pu5fh"]
+atlas = ExtResource("32_7vsda")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvyb2"]
+atlas = ExtResource("32_7vsda")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emla8"]
+atlas = ExtResource("32_7vsda")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgec1"]
+atlas = ExtResource("32_7vsda")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3dkd"]
+atlas = ExtResource("32_7vsda")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dymk"]
+atlas = ExtResource("32_7vsda")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a5wj"]
+atlas = ExtResource("32_7vsda")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fndvu"]
+atlas = ExtResource("32_7vsda")
+region = Rect2(48, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s6xw1"]
 atlas = ExtResource("32_xc2le")
@@ -155,6 +189,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_pu5fh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvyb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emla8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgec1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3dkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dymk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5a5wj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fndvu")
+}],
+"loop": true,
+"name": &"poison2",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_s6xw1")
 }],
 "loop": true,
@@ -183,11 +246,13 @@ points = PackedVector2Array(-1, -14, -16, 15, 16, 15)
 
 [node name="BlockTrap" type="Area2D"]
 collision_mask = 128
+script = ExtResource("1_tu8he")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_8f63d")
-autoplay = "default"
+animation = &"poison2"
+autoplay = "poison2"
+frame_progress = 0.239193
 
 [node name="kill_zone" parent="." instance=ExtResource("3_emlkn")]
 scale = Vector2(0.5, 0.5)
