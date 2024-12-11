@@ -346,7 +346,13 @@ func is_light1_visible() -> bool:
 	
 func is_light2_visible() -> bool:
 	return game_state['light2_visble']
-	
+
+func get_light_visble(index: int) -> bool:
+	if index == 1:
+		return is_light1_visible()
+	else:
+		return is_light2_visible()
+
 func set_light_visble(visble_value: bool, index: int) -> void:
 	if index == 1:
 		set_light1_visble(visble_value)
@@ -385,6 +391,18 @@ func enter_day_scene(scene_file_path: String) -> void:
 	end_dialogue()
 	GameManager.save_game_state()
 	get_tree().change_scene_to_file(scene_file_path)
+	
+func back_to_room3() -> void:
+	end_dialogue()
+	GameManager.save_game_state()
+	var new_scene = load("res://scenes/day/game/game.tscn").instantiate()
+	get_tree().root.add_child(new_scene)
+	get_tree().current_scene.free()
+	get_tree().current_scene = new_scene
+	get_tree().change_scene_to_file(scene_file_path)
+	
+	var player = new_scene.get_node("PlayerDay")
+	player.position = Vector2(-243, 398)
 
 # 添加暂停相关的方法
 func _input(event: InputEvent) -> void:

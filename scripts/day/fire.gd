@@ -7,9 +7,9 @@ var extincted: bool = false
 func _ready() -> void:
 	if GameManager.is_fire_extincted():
 		fire_light.hide()
+		stop()
 		animation = "extinct"
 		frame = 1
-		stop()
 	else:
 		play("flame")
 

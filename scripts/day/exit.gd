@@ -13,6 +13,6 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if is_instance_of(body, CharacterBody2D):
-		GameManager.enter_day_scene("res://scenes/day/game/game.tscn")
+		GameManager.back_to_room3()
 	else:
 		print(typeof(body))

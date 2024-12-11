@@ -5,7 +5,7 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	light_sprite.visible = GameManager.get_light_visble(index)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
