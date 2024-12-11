@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var second_jump_enabled = true
 @export var ammo_count = 1 # 子弹数量
 @export var coyote_time: float = 0.2 # 离开平台边缘还能起跳的时间，为了更宽松的平台边缘的跳跃
+@onready var hook_line: Line2D = $HookLine # 钩爪线
 
 # run variables
 @export var acceleration_frames: int = 3 # 达到最高速需要的帧数
@@ -29,11 +30,12 @@ var can_destroy = false
 # hook variables
 var is_hooking = false
 var hook_target = null
-@export var hook_speed = 500.0 # 钩爪速度
+@export var hook_speed = 300.0 # 钩爪速度
 var hook_strength = 20.0 # 钩爪强度
 var hook_duration = 5  # 钩爪最大持续时间(秒)
 var hook_timer = 0.0    # 计时器
 var hookable_areas: Array = []
+var maintain_momentum_after_hook = false
 
 
 var player_state = 'idle' # 玩家状态(can move or not)
@@ -72,6 +74,11 @@ var last_hook_position: Vector2 = Vector2.ZERO
 var stuck_check_timer: float = 0.0
 var stuck_check_interval: float = 0.1  # 检查间隔时间
 var stuck_distance_threshold: float = 5.0  # 判定为卡住的距离阈值
+
+# 在类变量中添加
+var last_hooked_area = null  # 记录上一个钩爪点
+var hook_cooldown_timer = 0.0  # 钩爪冷却计时器
+var hook_cooldown_duration = 0.8  # 钩爪冷却时间(秒)
 
 func _ready():
 	await ready
@@ -147,6 +154,9 @@ func _physics_process(delta: float) -> void:
 			animated_sprite_2d.play('idle')
 		return
 
+	if hook_cooldown_timer > 0:
+		hook_cooldown_timer -= delta
+	
 	update_hookable_areas_status()
 	var player_height = 16.0  # 角色高度为16像素
 	if is_jumping:
@@ -186,7 +196,7 @@ func _physics_process(delta: float) -> void:
 		# 先应用重力
 		# velocity += gravity * delta
 		
-		# 然后限制重力方向上的速度分量
+		# 然后限制重力方向���的速度分量
 		var velocity_along_gravity = velocity.project(gravity_dir)
 		if velocity_along_gravity.length() > Consts.MAX_FALLING_SPEED:
 			# 将重力方向的速度限制在400
@@ -277,7 +287,7 @@ func _physics_process(delta: float) -> void:
 				print('coyote jump')
 			start_jump() # 正常跳跃
 		else:
-			jump_buffer_timer = Consts.JUMP_BUFFER_TIME # 记录跳跃键按下的时间以便缓冲
+			jump_buffer_timer = Consts.JUMP_BUFFER_TIME # 记录跳跃键按下的时间以缓冲
 	#
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -297,12 +307,19 @@ func _physics_process(delta: float) -> void:
 			hook(nearest_field)
 			hook_target = nearest_field
 	if is_hooking and is_instance_valid(hook_target):
+
+		hook_line.visible = true
+		hook_line.clear_points()
+		hook_line.add_point(Vector2.ZERO)
+		hook_line.add_point(hook_target.get_hook_position() - global_position)
 		hook_timer += delta
 		after_image_timer += delta
 
-		if after_image_timer >= after_image_interval:
-			spawn_after_image()
-			after_image_timer = 0.0
+		# 只有在准备时间结束后才执行钩爪移动逻辑
+		if hook_timer >= 0:
+			if after_image_timer >= after_image_interval:
+				spawn_after_image()
+				after_image_timer = 0.0
 
 		if hook_timer >= hook_duration:
 			end_hook()
@@ -311,34 +328,28 @@ func _physics_process(delta: float) -> void:
 		var hook_target_position = hook_target.get_hook_position()
 		var hook_direction = (hook_target_position - global_position).normalized()
 		var hook_distance = global_position.distance_to(hook_target_position)
-		
-		# 如果距离很近，结束钩爪状态
-		if hook_distance < 10:
-			end_hook()
-			return
 			
-		# 检查是否卡住
+			# 如果距离很近，结束钩爪状态
+		if hook_distance < 20:
+			end_hook()
+			
+		# 检查是卡住
 		stuck_check_timer += delta
 		if stuck_check_timer >= stuck_check_interval:
 			var moved_distance = global_position.distance_to(last_hook_position)
 			if moved_distance < stuck_distance_threshold:
-				# 如果在检查间隔内移动距离小于阈值，认为卡住了
 				end_hook()
 				return
-			# 更新位置和计时器
 			last_hook_position = global_position
 			stuck_check_timer = 0.0
 		
-				
 		# 计算钩爪力
 		var target_velocity = hook_direction * hook_speed
-		# 使用插值平滑过渡到目标速度
-		velocity = velocity.lerp(target_velocity, 0.8)
-		velocity += get_gravity() * delta * 1
-		
-		# 仍然应用重力，但减小影响
-		# var gravity = get_gravity() * delta * 0.3
-		# velocity += gravity	
+		velocity = target_velocity
+		velocity += get_gravity() * delta * 0.3
+	else:
+		hook_line.visible = false
+
 	# TODO: fix this on different gravity direction
 	# Flip sprite based on movement direction 
 	
@@ -396,7 +407,6 @@ func _physics_process(delta: float) -> void:
 		
 		
 	elif not direction and not is_hooking:
-
 		var speed_step = Consts.SPEED / deceleration_frames  # 每帧减少的速度
 		if abs(current_speed) <= speed_step:
 			current_speed = 0
@@ -407,7 +417,7 @@ func _physics_process(delta: float) -> void:
 			velocity.x = current_speed
 		else:
 			velocity.y = current_speed
-		
+	
 	# var collision_collider = move_and_collide(velocity * delta)
 	
 	# # 处理碰撞
@@ -430,6 +440,8 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
+		if not collider is TileMapLayer:
+			print("碰撞到: ", collider.name, " (", collider.get_class(), ")")
 		if collider is CharacterBody2D and collider.is_in_group('pushable'):
 			# print('push box')
 			# 获取碰撞法线
@@ -650,19 +662,25 @@ func handle_corner_correction() -> void:
 func hook(field: Node2D) -> void:
 	is_hooking = true
 	hook_target = field
-	hook_timer = 0.0
+	last_hooked_area = field  # 记录当前钩爪点
+	hook_cooldown_timer = hook_cooldown_duration  # 设置冷却时间
+	hook_timer = -0.1
 	stuck_check_timer = 0.0
-	last_hook_position = global_position  # 记录初始位置
+	last_hook_position = global_position
 	can_destroy = true
 	has_double_jumped = false
 	hook_audio.play()
+
+
 func end_hook() -> void:
 	is_hooking = false
 	hook_target = null
 	# can_move = true
 	# 保持一定的动量
 	velocity = velocity * 0.5
+	print('end hook velocity', velocity)
 	can_destroy = false
+	maintain_momentum_after_hook = true
 	# print('hook end')
 
 
@@ -695,9 +713,21 @@ func update_hookable_areas_status() -> void:
 		if not is_instance_valid(area):
 			continue
 			
+		# 跳过刚刚钩过的点(如果还在冷却时间内)
+		if area == last_hooked_area and hook_cooldown_timer > 0:
+			continue
+			
+		var to_area = (area.global_position - global_position).normalized()
 		var distance = global_position.distance_to(area.global_position)
+		
+		# 计算钩爪点在移动方向上的投影
+		var direction_score = to_area.dot(velocity.normalized())
+		
+		# 如果钩爪点在移动方向前方，给予额外优先级
+		if direction_score > 0:
+			distance *= 0.7  # 降低前方钩爪点的有效距离，提高其优先级
+		
 		if distance < shortest_distance:
-			# 进行视线检测
 			var space_state = get_world_2d().direct_space_state
 			var query = PhysicsRayQueryParameters2D.create(
 				global_position,
@@ -722,12 +752,26 @@ func find_nearest_hookable_area() -> Node2D:
 		
 	var nearest = null
 	var shortest_distance = 200
+	var movement_direction = velocity.normalized()
 	
 	for area in hookable_areas:
 		if not is_instance_valid(area):
 			continue
 			
+		# 跳过刚刚钩过的点(如果还在冷却时间内)
+		if area == last_hooked_area and hook_cooldown_timer > 0:
+			continue
+			
+		var to_area = (area.global_position - global_position).normalized()
 		var distance = global_position.distance_to(area.global_position)
+		
+		# 计算钩爪点在移动方向上的投影
+		var direction_score = to_area.dot(movement_direction)
+		
+		# 如果钩爪点在移动方向前方，给予额外优先级
+		if direction_score > 0:
+			distance *= 0.7  # 降低前方钩爪点的有效距离，提高其优先级
+		
 		if distance < shortest_distance:
 			var space_state = get_world_2d().direct_space_state
 			var query = PhysicsRayQueryParameters2D.create(
