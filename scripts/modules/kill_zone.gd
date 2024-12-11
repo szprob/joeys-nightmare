@@ -8,7 +8,7 @@ var player
 @onready var timer: Timer = $Timer
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
-@export var transition_scene: String = "res://scenes/modules/checkpoints/transition.tscn"  # 添加过渡场景路径
+@export var transition_scene: String = "res://scenes/modules/checkpoints/transition.tscn" # 添加过渡场景路径
 
 
 func _ready():
@@ -45,7 +45,30 @@ func _on_body_entered(body: Node2D) -> void:
 	create_collision_effect(body.global_position)
 	timer.start()
 	
+# FIXME: add death animation
+# func _on_timer_timeout() -> void:
+# 	# Reset game state before scene change
+# 	GameManager.game_state_cache['can_detect_kill_zone'] = true
 	
+# 	if is_instance_valid(player):
+# 		player.set_can_move(true)
+	
+# 	var root_node = get_tree().current_scene
+# 	var next_scene = root_node.scene_file_path if GameManager.game_state_cache['should_die'] else transition_scene
+	
+# 	# Scene loading logic
+# 	var loader = ResourceLoader.load_threaded_request(next_scene)
+	
+# 	# Wait for scene loading
+# 	while ResourceLoader.load_threaded_get_status(next_scene) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+# 		await get_tree().create_timer(0.1).timeout
+	
+# 	var scene = ResourceLoader.load_threaded_get(next_scene)
+# 	if scene:
+# 		GameManager.game_state_cache['can_detect_kill_zone'] = true
+# 		get_tree().change_scene_to_packed(scene)
+
+
 func _on_timer_timeout() -> void:
 	# Engine.time_scale = 1
 	GameManager.game_state_cache['can_detect_kill_zone'] = true
@@ -57,6 +80,7 @@ func _on_timer_timeout() -> void:
 		get_tree().change_scene_to_file(root_node.scene_file_path)
 	else:
 		get_tree().change_scene_to_file(transition_scene)
+
 
 func cleanup_dynamic_nodes() -> void:
 	var dynamic_nodes = get_tree().get_nodes_in_group("dynamic")

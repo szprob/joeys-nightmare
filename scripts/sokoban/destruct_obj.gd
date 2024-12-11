@@ -418,7 +418,7 @@ func add_children(child_object):
 		var block = child_object.blocks[i]
 		# 确保碎片不会干扰主体的碰撞检测
 		block.contact_monitor = false
-		block.set_collision_layer_value(1, false)
+		block.set_collision_layer_value(1, true)
 		child_object.blocks_container.add_child(child_object.blocks[i], true)
 	# print('child_object: ', child_object)
 	# print('parent: ', child_object.parent.name)
