@@ -8,7 +8,7 @@ var current_index = 0
 
 @onready var new_button: Button = $new
 @onready var load_button: Button = $load
-@onready var set_button: Button = $set
+@onready var ins_button: Button = $ins
 @onready var quit_button: Button = $quit
 @onready var logo: Sprite2D = $Sprite2D
 @onready var sfx_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -16,11 +16,11 @@ var current_index = 0
 func _ready():
 	GameManager.setup_bgm_player()
 	GameManager.play_bgm("bgm")
-	buttons = [new_button, load_button, set_button, quit_button]
+	buttons = [new_button, load_button, ins_button, quit_button]
 
 	new_button.pressed.connect(_on_new_pressed)
 	load_button.pressed.connect(_on_load_pressed)
-	set_button.pressed.connect(_on_set_pressed)
+	ins_button.pressed.connect(_on_ins_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
 	
 	# 为每个按钮添加焦点效果
@@ -67,9 +67,9 @@ func _on_quit_pressed() -> void:
 	get_tree().quit()
 
 
-func _on_set_pressed() -> void:
+func _on_ins_pressed() -> void:
 	play_sfx()
-	get_tree().change_scene_to_file("res://scenes/main/settings.tscn")
+	get_tree().change_scene_to_file("res://scenes/main/ins.tscn")
 
 # 添加这些新函数
 func _on_button_focus(button: Button) -> void:

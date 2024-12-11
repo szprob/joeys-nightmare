@@ -36,13 +36,14 @@ offset_bottom = 165.0
 theme_override_font_sizes/font_size = 48
 text = "LOAD"
 
-[node name="set" type="Button" parent="."]
+[node name="ins" type="Button" parent="."]
 offset_left = -700.0
 offset_top = 180.0
 offset_right = -471.0
 offset_bottom = 255.0
 theme_override_font_sizes/font_size = 48
-text = "SETTINGS"
+text = "INSTRUCTIONS
+"
 
 [node name="quit" type="Button" parent="."]
 offset_left = -700.0
