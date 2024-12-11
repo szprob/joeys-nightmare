@@ -101,7 +101,7 @@ position = Vector2(240, 134)
 scale = Vector2(0.99, 1.05)
 sprite_frames = SubResource("SpriteFrames_30acw")
 autoplay = "default"
-frame_progress = 0.537781
+frame_progress = 0.297148
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." groups=["scan_lines"]]
 stream = ExtResource("22_ku5hw")
