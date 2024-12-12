@@ -320,6 +320,8 @@ func _physics_process(delta: float) -> void:
 			if after_image_timer >= after_image_interval:
 				spawn_after_image()
 				after_image_timer = 0.0
+		else:
+			velocity = Vector2.ZERO # 钩爪准备时间静止一下
 
 		if hook_timer >= hook_duration:
 			end_hook()
