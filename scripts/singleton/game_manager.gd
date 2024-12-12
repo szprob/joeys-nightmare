@@ -17,9 +17,10 @@ signal die_requested()
 
 # 在文件开头添加 BGM 资源预加载
 var bgm_resources = {
-	"bgm": preload("res://assets/music/Drone Ambient Background by Infraction [No Copyright Music] _ Calm.mp3"),
-	'intro': preload("res://assets/music/intro.wav"),
-	'chase': preload("res://assets/music/chase.wav"),
+	"bgm": preload("res://assets/music/main Nightmare Prelude.mp3"),
+	'intro': preload("res://assets/music/intro1.wav"),
+	'chase': preload("res://assets/music/chase0.wav"),
+	'church': preload("res://assets/music/church0.wav"),
 	'end': preload("res://assets/music/True Self Dream.mp3"),
 
 }
