@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cxdvjkmdm30bc"]
 
 [ext_resource type="Script" path="res://scripts/sokoban/hook_1.gd" id="1_fflkm"]
-[ext_resource type="Texture2D" uid="uid://ckcn8fei1pv72" path="res://assets/sprites/background/v2/gouzhua.png" id="2_swecv"]
+[ext_resource type="Texture2D" uid="uid://c84mcuaq11gxj" path="res://assets/sprites/background/v2/gouzhua.png" id="2_swecv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3qypd"]
 radius = 1.0
@@ -29,6 +29,8 @@ animations = [{
 }]
 
 [node name="hook1" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_fflkm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
