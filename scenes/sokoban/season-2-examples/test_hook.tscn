@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c7ddne28gxewo" path="res://assets/sprites/background/intro/brick_ultra.png" id="1_koj2c"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="2_8aphm"]
 [ext_resource type="PackedScene" uid="uid://cxdvjkmdm30bc" path="res://scenes/sokoban/hook_1.tscn" id="3_a3qsk"]
-[ext_resource type="PackedScene" uid="uid://l3rjqvwackcn" path="res://scenes/enemy/shadow.tscn" id="3_vlfig"]
+[ext_resource type="PackedScene" uid="uid://b3en2onoukpwt" path="res://scenes/enemy/shadow.tscn" id="3_vlfig"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nkpgd"]
 texture = ExtResource("1_koj2c")
@@ -33,7 +33,7 @@ tile_map_data = PackedByteArray("AAABAAQAAAAAAAMAAAACAAQAAAAAAAMAAAADAAQAAAAAAAM
 tile_set = SubResource("TileSet_gd4l3")
 
 [node name="player_with_gravity" parent="." instance=ExtResource("2_8aphm")]
-position = Vector2(76, 23)
+position = Vector2(80, 23)
 after_image_scene = ExtResource("3_vlfig")
 
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity"]
