@@ -18,6 +18,9 @@ signal die_requested()
 # 在文件开头添加 BGM 资源预加载
 var bgm_resources = {
 	"bgm": preload("res://assets/music/Drone Ambient Background by Infraction [No Copyright Music] _ Calm.mp3"),
+	'intro': preload("res://assets/music/intro.wav"),
+	'chase': preload("res://assets/music/chase.wav"),
+	'end': preload("res://assets/music/True Self Dream.mp3"),
 
 }
 
@@ -142,7 +145,7 @@ func setup_bgm_player() -> void:
 	bgm_player.bus = "Music" # 确保你的项目中有名为"Music"的音频总线
 	bgm_player.stream_paused = false
 	# 设置音量为原来的25%（-12分贝）
-	bgm_player.volume_db = 0
+	bgm_player.volume_db = -8
 	# 添加这一行来设置循环播放
 	bgm_player.finished.connect(func(): bgm_player.play())
 	add_child(bgm_player)
