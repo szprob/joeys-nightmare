@@ -100,7 +100,7 @@ func _ready():
 
 func respawn():
 	# 直接重新加载场景,不做其他处理
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file(GameManager.game_state['last_scene_path'])
 
 # 开始跳跃的函数
 func start_jump() -> void:
