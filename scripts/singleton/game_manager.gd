@@ -22,7 +22,7 @@ var bgm_resources = {
 	'chase': preload("res://assets/music/chase0.wav"),
 	'church': preload("res://assets/music/church0.wav"),
 	'end': preload("res://assets/music/True Self Dream.mp3"),
-
+	'boss': preload("res://assets/music/boss2.wav"),
 }
 
 
