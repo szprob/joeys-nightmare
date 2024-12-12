@@ -45,7 +45,10 @@ var dialogue_image_storage = {
 	"macintosh": "res://assets/sprites/day/enrich/macintosh.png"
 }
 var game_state = {}
-var game_state_cache = {'can_detect_kill_zone': true, 'do_detect_teleport': true,'should_die': true,}
+var game_state_cache = {'can_detect_kill_zone': true, 
+	'do_detect_teleport': true,
+	'should_die': true,
+	'bmg_set':false}
 
 func init_default_state():
 	var game_state2 = {
@@ -149,6 +152,7 @@ func setup_bgm_player() -> void:
 	# 添加这一行来设置循环播放
 	bgm_player.finished.connect(func(): bgm_player.play())
 	add_child(bgm_player)
+	game_state_cache['bmg_set'] = true
 	
 # 修改 play_bgm 函数，支持通过名称播放 BGM
 func play_bgm(bgm_name: String) -> void:

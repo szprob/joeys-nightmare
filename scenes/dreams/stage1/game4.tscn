@@ -372,5 +372,3 @@ position = Vector2(-1628, -63)
 [node name="ChangSceneArea" parent="." instance=ExtResource("7_276oq")]
 position = Vector2(-1324, -98)
 next_scene_file_path = "res://scenes/dreams/stage1/game2.tscn"
-teleport_type = "day2dream"
-time_scale = 5.0

@@ -1,5 +1,6 @@
-[gd_scene load_steps=284 format=4 uid="uid://klra2rxa7l18"]
+[gd_scene load_steps=285 format=4 uid="uid://klra2rxa7l18"]
 
+[ext_resource type="Script" path="res://scenes/dreams/bigworldv2/chase_fake.gd" id="1_o0txs"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="2_bdtgd"]
 [ext_resource type="PackedScene" uid="uid://ojcm7cd2jskc" path="res://scenes/sokoban/player_with_gravity_gun.tscn" id="3_78qcn"]
 [ext_resource type="Texture2D" uid="uid://c57fo0smy156u" path="res://assets/sprites/background/multi3/back.png" id="4_b1oyl"]
@@ -30,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://duav47asvc1d6" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0005_bg.png" id="19_ijld3"]
 [ext_resource type="PackedScene" uid="uid://ck4p24ug1b88b" path="res://scenes/sokoban/season-2-examples/qte_gravity_area.tscn" id="19_m23k6"]
 [ext_resource type="PackedScene" uid="uid://dt5ajotyxww1c" path="res://scenes/sokoban/destruct_02.tscn" id="20_4mjgg"]
-[ext_resource type="Texture2D" uid="uid://bbo7hy4x5xnxk" path="res://assets/sprites/bricks/Castle brick 7.0.png" id="20_o7lso"]
+[ext_resource type="Texture2D" uid="uid://32x25v2j2221" path="res://assets/sprites/bricks/Castle brick 7.0.png" id="20_o7lso"]
 [ext_resource type="Script" path="res://scripts/camera_area.gd" id="20_pw5sm"]
 [ext_resource type="Texture2D" uid="uid://bpsovu60agkll" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0006_bg.png" id="20_utib7"]
 [ext_resource type="PackedScene" uid="uid://c8q6wa4cofe21" path="res://scenes/modules/traps/falling_trap_tgt.tscn" id="20_v7k83"]
@@ -1677,6 +1678,7 @@ size = Vector2(480, 1103)
 size = Vector2(480, 832)
 
 [node name="Chase" type="Node2D" groups=["scan_lines"]]
+script = ExtResource("1_o0txs")
 
 [node name="player_with_gravity" parent="." groups=["player"] instance=ExtResource("3_78qcn")]
 position = Vector2(504.501, -96.2523)
