@@ -2,6 +2,6 @@
 
 [ext_resource type="Script" path="res://scripts/sokoban/destruct_obj.gd" id="1_bbo7f"]
 
-[node name="destruct-obj" type="RigidBody2D"]
+[node name="destruct-obj" type="RigidBody2D" groups=["dynamic"]]
 script = ExtResource("1_bbo7f")
 debug_mode = false
