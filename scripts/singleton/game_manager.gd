@@ -431,6 +431,7 @@ func _input(event: InputEvent) -> void:
 				print("当前场景不允许暂停")
 
 		if Input.is_action_just_pressed("reload"):
+			print("reload")
 			get_tree().change_scene_to_file(GameManager.game_state['last_scene_path'])
 
 
