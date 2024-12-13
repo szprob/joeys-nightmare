@@ -420,6 +420,7 @@ func add_children(child_object):
 		block.contact_monitor = false
 		block.set_collision_layer_value(1, true)
 		child_object.blocks_container.add_child(child_object.blocks[i], true)
+		child_object.blocks[i].add_to_group("dynamic")
 	# print('child_object: ', child_object)
 	# print('parent: ', child_object.parent.name)
 	if debug_mode:
