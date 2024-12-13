@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://duav47asvc1d6" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0005_bg.png" id="19_ijld3"]
 [ext_resource type="PackedScene" uid="uid://ck4p24ug1b88b" path="res://scenes/sokoban/season-2-examples/qte_gravity_area.tscn" id="19_m23k6"]
 [ext_resource type="PackedScene" uid="uid://dt5ajotyxww1c" path="res://scenes/sokoban/destruct_02.tscn" id="20_4mjgg"]
-[ext_resource type="Texture2D" uid="uid://bbo7hy4x5xnxk" path="res://assets/sprites/bricks/Castle brick 7.0.png" id="20_o7lso"]
+[ext_resource type="Texture2D" uid="uid://32x25v2j2221" path="res://assets/sprites/bricks/Castle brick 7.0.png" id="20_o7lso"]
 [ext_resource type="Script" path="res://scripts/camera_area.gd" id="20_pw5sm"]
 [ext_resource type="Texture2D" uid="uid://bpsovu60agkll" path="res://assets/sprites/background/cave2/bear1_frames_rmbg/frame_0006_bg.png" id="20_utib7"]
 [ext_resource type="PackedScene" uid="uid://c8q6wa4cofe21" path="res://scenes/modules/traps/falling_trap_tgt.tscn" id="20_v7k83"]

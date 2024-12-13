@@ -98,10 +98,6 @@ func _ready():
 	set_can_move(true)
 
 
-func respawn():
-	# 直接重新加载场景,不做其他处理
-	get_tree().change_scene_to_file(GameManager.game_state['last_scene_path'])
-
 # 开始跳跃的函数
 func start_jump() -> void:
 	# logging
@@ -167,18 +163,6 @@ func _physics_process(delta: float) -> void:
 		#print('height_diff', height_diff)
 		#print("当前跳跃高度: %.2f 个角色高度" % height_in_player_units)
 
-	# if jump_buffer_timer > 0:
-	# 	print('jump buffer timer', jump_buffer_timer)
-	# if Input.is_action_just_pressed('jump'):
-		# print('jump pressed')
-	# 在函数开始时就检查 can_move
-
-
-		
-	if Input.is_action_just_pressed("reload"):
-		respawn()
-
-	# Add the gravity.
 	
 	# print('is on terrain', is_on_terrain())
 	if not is_on_terrain():

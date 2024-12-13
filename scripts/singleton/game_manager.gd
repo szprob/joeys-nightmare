@@ -49,7 +49,8 @@ var game_state = {}
 var game_state_cache = {'can_detect_kill_zone': true, 
 	'do_detect_teleport': true,
 	'should_die': true,
-	'bmg_set':false}
+	'bmg_set':false,
+	'inventory_visible': false}
 
 func init_default_state():
 	var game_state2 = {
@@ -423,13 +424,15 @@ func back_to_room3() -> void:
 func _input(event: InputEvent) -> void:
 	# 确保只在按键事件时调用 is_action_just_pressed
 	if event is InputEventKey and event.is_pressed():
-		if Input.is_action_just_pressed("esc"):
-			if is_chatting() :
-				return 
+		if Input.is_action_just_pressed("esc") and not game_state['inventory_visible'] and not is_chatting():
 			if not get_tree().current_scene.is_in_group("no_pause"):
 				toggle_pause_menu()
 			else:
 				print("当前场景不允许暂停")
+
+		if Input.is_action_just_pressed("reload"):
+			get_tree().change_scene_to_file(GameManager.game_state['last_scene_path'])
+
 
 func toggle_pause_menu() -> void:
 	if not game_state.has("is_paused"):
