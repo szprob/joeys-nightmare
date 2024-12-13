@@ -110,11 +110,11 @@ func _ready():
 	if explosion_detector:
 		explosion_detector.set_collision_layer_value(1, false)
 		explosion_detector.set_collision_mask_value(7, true)
-		print('detector found')
+		# print('detector found')
 		explosion_detector.area_entered.connect(_on_trigger_entered)
 		explosion_detector.body_entered.connect(_on_trigger_entered)
-		print('connected explosion_detector', explosion_detector.name)
-		print('detector collision_mask: ', explosion_detector.collision_mask)
+		# print('connected explosion_detector', explosion_detector.name)
+		# print('detector collision_mask: ', explosion_detector.collision_mask)
 
 	# 连接区域进入信号
 	
@@ -351,8 +351,8 @@ func setup_block_positions():
 	max_contacts_reported = 4 # Set this according to your needs
 	# body_entered.connect(_on_body_entered)
 #
-	if explosion_detector:
-		print('detector collsion mask: ', explosion_detector.collision_mask)
+	# if explosion_detector:
+	# 	print('detector collsion mask: ', explosion_detector.collision_mask)
 	add_to_group("destructible")
 
 	if node_to_explode is TileMap:
