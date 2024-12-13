@@ -2264,8 +2264,11 @@ texture = ExtResource("197_1f1n3")
 25:5/0 = 0
 25:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -0.117851, -0.235701, 0.235703, -1.88562, 8, -8, 8)
 27:5/0 = 0
+27:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 28:5/0 = 0
+28:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:5/0 = 0
+29:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:5/0 = 0
 31:5/0 = 0
 32:5/0 = 0
@@ -2301,8 +2304,11 @@ texture = ExtResource("197_1f1n3")
 24:6/0 = 0
 25:6/0 = 0
 27:6/0 = 0
+27:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 28:6/0 = 0
+28:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:6/0 = 0
+29:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:6/0 = 0
 31:6/0 = 0
 32:6/0 = 0
@@ -2332,8 +2338,11 @@ texture = ExtResource("197_1f1n3")
 24:7/0 = 0
 25:7/0 = 0
 27:7/0 = 0
+27:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 28:7/0 = 0
+28:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:7/0 = 0
+29:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:7/0 = 0
 0:8/0 = 0
 0:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -2657,12 +2666,19 @@ texture = ExtResource("193_hw4bh")
 7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:0/0 = 0
 9:0/0 = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:0/0 = 0
+10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:0/0 = 0
+11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 12:0/0 = 0
+12:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 13:0/0 = 0
+13:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:0/0 = 0
+14:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:0/0 = 0
+15:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 16:0/0 = 0
 17:0/0 = 0
 18:0/0 = 0
@@ -2712,12 +2728,19 @@ texture = ExtResource("193_hw4bh")
 7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:1/0 = 0
 9:1/0 = 0
+9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:1/0 = 0
+10:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:1/0 = 0
+11:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 12:1/0 = 0
+12:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 13:1/0 = 0
+13:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:1/0 = 0
+14:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:1/0 = 0
+15:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 16:1/0 = 0
 17:1/0 = 0
 18:1/0 = 0
@@ -2855,7 +2878,9 @@ texture = ExtResource("193_hw4bh")
 22:4/0 = 0
 23:4/0 = 0
 28:4/0 = 0
+28:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:4/0 = 0
+29:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:4/0 = 0
 31:4/0 = 0
 32:4/0 = 0
@@ -2890,8 +2915,11 @@ texture = ExtResource("193_hw4bh")
 24:5/0 = 0
 25:5/0 = 0
 27:5/0 = 0
+27:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 28:5/0 = 0
+28:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:5/0 = 0
+29:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:5/0 = 0
 31:5/0 = 0
 32:5/0 = 0
@@ -2920,8 +2948,11 @@ texture = ExtResource("193_hw4bh")
 24:6/0 = 0
 25:6/0 = 0
 27:6/0 = 0
+27:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 28:6/0 = 0
+28:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:6/0 = 0
+29:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:6/0 = 0
 31:6/0 = 0
 32:6/0 = 0
@@ -2944,8 +2975,11 @@ texture = ExtResource("193_hw4bh")
 24:7/0 = 0
 25:7/0 = 0
 27:7/0 = 0
+27:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 28:7/0 = 0
+28:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:7/0 = 0
+29:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:7/0 = 0
 0:8/0 = 0
 0:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -3272,13 +3306,21 @@ texture = ExtResource("193_hw4bh")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w157a"]
 texture = ExtResource("200_h6o1d")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:0/0 = 0
 9:0/0 = 0
 9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -3326,13 +3368,21 @@ texture = ExtResource("200_h6o1d")
 58:0/0 = 0
 59:0/0 = 0
 0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:1/0 = 0
 9:1/0 = 0
 9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -3386,6 +3436,7 @@ texture = ExtResource("200_h6o1d")
 4:2/0 = 0
 5:2/0 = 0
 6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:2/0 = 0
 8:2/0 = 0
 9:2/0 = 0
@@ -3424,6 +3475,7 @@ texture = ExtResource("200_h6o1d")
 4:3/0 = 0
 5:3/0 = 0
 6:3/0 = 0
+6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:3/0 = 0
 8:3/0 = 0
 9:3/0 = 0
@@ -3462,6 +3514,7 @@ texture = ExtResource("200_h6o1d")
 4:4/0 = 0
 5:4/0 = 0
 6:4/0 = 0
+6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:4/0 = 0
 8:4/0 = 0
 9:4/0 = 0
@@ -3471,8 +3524,11 @@ texture = ExtResource("200_h6o1d")
 13:4/0 = 0
 14:4/0 = 0
 15:4/0 = 0
+15:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 16:4/0 = 0
+16:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 17:4/0 = 0
+17:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 18:4/0 = 0
 19:4/0 = 0
 20:4/0 = 0
@@ -3480,7 +3536,9 @@ texture = ExtResource("200_h6o1d")
 22:4/0 = 0
 23:4/0 = 0
 28:4/0 = 0
+28:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:4/0 = 0
+29:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:4/0 = 0
 31:4/0 = 0
 32:4/0 = 0
@@ -3501,8 +3559,11 @@ texture = ExtResource("200_h6o1d")
 13:5/0 = 0
 14:5/0 = 0
 15:5/0 = 0
+15:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 16:5/0 = 0
+16:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 17:5/0 = 0
+17:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 18:5/0 = 0
 19:5/0 = 0
 20:5/0 = 0
@@ -3512,8 +3573,11 @@ texture = ExtResource("200_h6o1d")
 24:5/0 = 0
 25:5/0 = 0
 27:5/0 = 0
+27:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 28:5/0 = 0
+28:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:5/0 = 0
+29:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:5/0 = 0
 31:5/0 = 0
 32:5/0 = 0
@@ -3542,8 +3606,11 @@ texture = ExtResource("200_h6o1d")
 24:6/0 = 0
 25:6/0 = 0
 27:6/0 = 0
+27:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 28:6/0 = 0
+28:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:6/0 = 0
+29:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:6/0 = 0
 31:6/0 = 0
 32:6/0 = 0
@@ -3566,8 +3633,11 @@ texture = ExtResource("200_h6o1d")
 24:7/0 = 0
 25:7/0 = 0
 27:7/0 = 0
+27:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 28:7/0 = 0
+28:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:7/0 = 0
+29:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:7/0 = 0
 0:8/0 = 0
 1:8/0 = 0
@@ -3718,8 +3788,11 @@ texture = ExtResource("200_h6o1d")
 26:15/0 = 0
 27:15/0 = 0
 28:15/0 = 0
+28:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:15/0 = 0
+29:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:15/0 = 0
+30:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 32:15/0 = 0
 33:15/0 = 0
 34:15/0 = 0
@@ -3733,8 +3806,11 @@ texture = ExtResource("200_h6o1d")
 26:16/0 = 0
 27:16/0 = 0
 28:16/0 = 0
+28:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:16/0 = 0
+29:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:16/0 = 0
+30:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 32:16/0 = 0
 33:16/0 = 0
 34:16/0 = 0
@@ -3748,8 +3824,11 @@ texture = ExtResource("200_h6o1d")
 26:17/0 = 0
 27:17/0 = 0
 28:17/0 = 0
+28:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:17/0 = 0
+29:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:17/0 = 0
+30:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 32:17/0 = 0
 33:17/0 = 0
 34:17/0 = 0
@@ -3763,8 +3842,11 @@ texture = ExtResource("200_h6o1d")
 26:18/0 = 0
 27:18/0 = 0
 28:18/0 = 0
+28:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:18/0 = 0
+29:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:18/0 = 0
+30:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 32:18/0 = 0
 33:18/0 = 0
 34:18/0 = 0
@@ -3783,8 +3865,11 @@ texture = ExtResource("200_h6o1d")
 16:19/0 = 0
 17:19/0 = 0
 28:19/0 = 0
+28:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:19/0 = 0
+29:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:19/0 = 0
+30:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 32:19/0 = 0
 33:19/0 = 0
 34:19/0 = 0
@@ -3809,8 +3894,11 @@ texture = ExtResource("200_h6o1d")
 17:20/0 = 0
 17:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 28:20/0 = 0
+28:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:20/0 = 0
+29:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:20/0 = 0
+30:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 32:20/0 = 0
 33:20/0 = 0
 34:20/0 = 0
@@ -3835,8 +3923,11 @@ texture = ExtResource("200_h6o1d")
 17:21/0 = 0
 17:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 28:21/0 = 0
+28:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:21/0 = 0
+29:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:21/0 = 0
+30:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 32:21/0 = 0
 33:21/0 = 0
 34:21/0 = 0
@@ -3851,8 +3942,11 @@ texture = ExtResource("200_h6o1d")
 7:22/0 = 0
 8:22/0 = 0
 28:22/0 = 0
+28:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:22/0 = 0
+29:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:22/0 = 0
+30:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 32:22/0 = 0
 33:22/0 = 0
 34:22/0 = 0
@@ -3867,8 +3961,11 @@ texture = ExtResource("200_h6o1d")
 7:23/0 = 0
 8:23/0 = 0
 28:23/0 = 0
+28:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:23/0 = 0
+29:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:23/0 = 0
+30:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 32:23/0 = 0
 33:23/0 = 0
 34:23/0 = 0
@@ -3880,8 +3977,11 @@ texture = ExtResource("200_h6o1d")
 7:24/0 = 0
 8:24/0 = 0
 28:24/0 = 0
+28:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 29:24/0 = 0
+29:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 30:24/0 = 0
+30:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 32:24/0 = 0
 33:24/0 = 0
 34:24/0 = 0
@@ -7908,186 +8008,5 @@ debug_color = Color(0.866667, 0.282353, 0.552941, 0.419608)
 [node name="empty-teleport" parent="." instance=ExtResource("37_ij3kw")]
 visible = false
 position = Vector2(-211, -279)
-
-[connection signal="body_entered" from="maps/map1-1/block/BlockTrap" to="maps/map1-1/block/BlockTrap" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/block/BlockTrap" to="maps/map1-1/block/BlockTrap" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/block/@Area2D@21155" to="maps/map1-1/block/@Area2D@21155" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/block/@Area2D@21155" to="maps/map1-1/block/@Area2D@21155" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/block/@Area2D@21156" to="maps/map1-1/block/@Area2D@21156" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/block/@Area2D@21156" to="maps/map1-1/block/@Area2D@21156" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/block/@Area2D@21157" to="maps/map1-1/block/@Area2D@21157" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/block/@Area2D@21157" to="maps/map1-1/block/@Area2D@21157" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/BlockTrap" to="maps/map1-1/trap/BlockTrap" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/BlockTrap" to="maps/map1-1/trap/BlockTrap" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21172" to="maps/map1-1/trap/@Area2D@21172" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21172" to="maps/map1-1/trap/@Area2D@21172" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21173" to="maps/map1-1/trap/@Area2D@21173" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21173" to="maps/map1-1/trap/@Area2D@21173" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21174" to="maps/map1-1/trap/@Area2D@21174" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21174" to="maps/map1-1/trap/@Area2D@21174" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21175" to="maps/map1-1/trap/@Area2D@21175" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21175" to="maps/map1-1/trap/@Area2D@21175" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21176" to="maps/map1-1/trap/@Area2D@21176" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21176" to="maps/map1-1/trap/@Area2D@21176" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21177" to="maps/map1-1/trap/@Area2D@21177" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21177" to="maps/map1-1/trap/@Area2D@21177" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21178" to="maps/map1-1/trap/@Area2D@21178" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21178" to="maps/map1-1/trap/@Area2D@21178" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21179" to="maps/map1-1/trap/@Area2D@21179" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21179" to="maps/map1-1/trap/@Area2D@21179" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21180" to="maps/map1-1/trap/@Area2D@21180" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21180" to="maps/map1-1/trap/@Area2D@21180" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21181" to="maps/map1-1/trap/@Area2D@21181" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21181" to="maps/map1-1/trap/@Area2D@21181" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21182" to="maps/map1-1/trap/@Area2D@21182" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21182" to="maps/map1-1/trap/@Area2D@21182" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21183" to="maps/map1-1/trap/@Area2D@21183" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21183" to="maps/map1-1/trap/@Area2D@21183" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21184" to="maps/map1-1/trap/@Area2D@21184" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21184" to="maps/map1-1/trap/@Area2D@21184" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21185" to="maps/map1-1/trap/@Area2D@21185" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21185" to="maps/map1-1/trap/@Area2D@21185" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21186" to="maps/map1-1/trap/@Area2D@21186" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21186" to="maps/map1-1/trap/@Area2D@21186" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21187" to="maps/map1-1/trap/@Area2D@21187" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21187" to="maps/map1-1/trap/@Area2D@21187" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21188" to="maps/map1-1/trap/@Area2D@21188" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21188" to="maps/map1-1/trap/@Area2D@21188" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21189" to="maps/map1-1/trap/@Area2D@21189" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21189" to="maps/map1-1/trap/@Area2D@21189" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21190" to="maps/map1-1/trap/@Area2D@21190" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21190" to="maps/map1-1/trap/@Area2D@21190" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21191" to="maps/map1-1/trap/@Area2D@21191" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21191" to="maps/map1-1/trap/@Area2D@21191" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21192" to="maps/map1-1/trap/@Area2D@21192" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21192" to="maps/map1-1/trap/@Area2D@21192" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21193" to="maps/map1-1/trap/@Area2D@21193" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21193" to="maps/map1-1/trap/@Area2D@21193" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21194" to="maps/map1-1/trap/@Area2D@21194" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21194" to="maps/map1-1/trap/@Area2D@21194" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21195" to="maps/map1-1/trap/@Area2D@21195" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21195" to="maps/map1-1/trap/@Area2D@21195" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21196" to="maps/map1-1/trap/@Area2D@21196" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21196" to="maps/map1-1/trap/@Area2D@21196" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21197" to="maps/map1-1/trap/@Area2D@21197" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21197" to="maps/map1-1/trap/@Area2D@21197" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21198" to="maps/map1-1/trap/@Area2D@21198" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21198" to="maps/map1-1/trap/@Area2D@21198" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21199" to="maps/map1-1/trap/@Area2D@21199" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21199" to="maps/map1-1/trap/@Area2D@21199" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-1/trap/@Area2D@21200" to="maps/map1-1/trap/@Area2D@21200" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-1/trap/@Area2D@21200" to="maps/map1-1/trap/@Area2D@21200" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/BlockTrap" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/BlockTrap" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/BlockTrap" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/BlockTrap" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@21264" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@21264" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@21264" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@21264" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@21265" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@21265" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@21265" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@21265" method="_on_ready"]
-[connection signal="body_entered" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@21266" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@21266" method="_on_body_entered"]
-[connection signal="ready" from="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@21266" to="maps/map1-3/FallingBlockTgt7/TileMapLayer/@Area2D@21266" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/BlockTrap" to="maps/map9/map/BlockTrap" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/BlockTrap" to="maps/map9/map/BlockTrap" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@21283" to="maps/map9/map/@Area2D@21283" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@21283" to="maps/map9/map/@Area2D@21283" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@21284" to="maps/map9/map/@Area2D@21284" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@21284" to="maps/map9/map/@Area2D@21284" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@21285" to="maps/map9/map/@Area2D@21285" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@21285" to="maps/map9/map/@Area2D@21285" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@21286" to="maps/map9/map/@Area2D@21286" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@21286" to="maps/map9/map/@Area2D@21286" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@21287" to="maps/map9/map/@Area2D@21287" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@21287" to="maps/map9/map/@Area2D@21287" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@21288" to="maps/map9/map/@Area2D@21288" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@21288" to="maps/map9/map/@Area2D@21288" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@21289" to="maps/map9/map/@Area2D@21289" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@21289" to="maps/map9/map/@Area2D@21289" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@21290" to="maps/map9/map/@Area2D@21290" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@21290" to="maps/map9/map/@Area2D@21290" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@21291" to="maps/map9/map/@Area2D@21291" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@21291" to="maps/map9/map/@Area2D@21291" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@21292" to="maps/map9/map/@Area2D@21292" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@21292" to="maps/map9/map/@Area2D@21292" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@21293" to="maps/map9/map/@Area2D@21293" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@21293" to="maps/map9/map/@Area2D@21293" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@21294" to="maps/map9/map/@Area2D@21294" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@21294" to="maps/map9/map/@Area2D@21294" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@21295" to="maps/map9/map/@Area2D@21295" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@21295" to="maps/map9/map/@Area2D@21295" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@21296" to="maps/map9/map/@Area2D@21296" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@21296" to="maps/map9/map/@Area2D@21296" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@21297" to="maps/map9/map/@Area2D@21297" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@21297" to="maps/map9/map/@Area2D@21297" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@21298" to="maps/map9/map/@Area2D@21298" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@21298" to="maps/map9/map/@Area2D@21298" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@21299" to="maps/map9/map/@Area2D@21299" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@21299" to="maps/map9/map/@Area2D@21299" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@21300" to="maps/map9/map/@Area2D@21300" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@21300" to="maps/map9/map/@Area2D@21300" method="_on_ready"]
-[connection signal="body_entered" from="maps/map9/map/@Area2D@21301" to="maps/map9/map/@Area2D@21301" method="_on_body_entered"]
-[connection signal="ready" from="maps/map9/map/@Area2D@21301" to="maps/map9/map/@Area2D@21301" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/BlockTrap" to="maps/map8/map/BlockTrap" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/BlockTrap" to="maps/map8/map/BlockTrap" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21315" to="maps/map8/map/@Area2D@21315" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21315" to="maps/map8/map/@Area2D@21315" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21316" to="maps/map8/map/@Area2D@21316" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21316" to="maps/map8/map/@Area2D@21316" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21317" to="maps/map8/map/@Area2D@21317" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21317" to="maps/map8/map/@Area2D@21317" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21318" to="maps/map8/map/@Area2D@21318" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21318" to="maps/map8/map/@Area2D@21318" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21319" to="maps/map8/map/@Area2D@21319" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21319" to="maps/map8/map/@Area2D@21319" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21320" to="maps/map8/map/@Area2D@21320" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21320" to="maps/map8/map/@Area2D@21320" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21321" to="maps/map8/map/@Area2D@21321" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21321" to="maps/map8/map/@Area2D@21321" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21322" to="maps/map8/map/@Area2D@21322" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21322" to="maps/map8/map/@Area2D@21322" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21323" to="maps/map8/map/@Area2D@21323" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21323" to="maps/map8/map/@Area2D@21323" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21324" to="maps/map8/map/@Area2D@21324" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21324" to="maps/map8/map/@Area2D@21324" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21325" to="maps/map8/map/@Area2D@21325" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21325" to="maps/map8/map/@Area2D@21325" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21326" to="maps/map8/map/@Area2D@21326" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21326" to="maps/map8/map/@Area2D@21326" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21327" to="maps/map8/map/@Area2D@21327" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21327" to="maps/map8/map/@Area2D@21327" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21328" to="maps/map8/map/@Area2D@21328" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21328" to="maps/map8/map/@Area2D@21328" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21329" to="maps/map8/map/@Area2D@21329" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21329" to="maps/map8/map/@Area2D@21329" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21332" to="maps/map8/map/@Area2D@21332" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21332" to="maps/map8/map/@Area2D@21332" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21333" to="maps/map8/map/@Area2D@21333" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21333" to="maps/map8/map/@Area2D@21333" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21334" to="maps/map8/map/@Area2D@21334" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21334" to="maps/map8/map/@Area2D@21334" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21335" to="maps/map8/map/@Area2D@21335" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21335" to="maps/map8/map/@Area2D@21335" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21336" to="maps/map8/map/@Area2D@21336" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21336" to="maps/map8/map/@Area2D@21336" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21337" to="maps/map8/map/@Area2D@21337" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21337" to="maps/map8/map/@Area2D@21337" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21338" to="maps/map8/map/@Area2D@21338" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21338" to="maps/map8/map/@Area2D@21338" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21381" to="maps/map8/map/@Area2D@21381" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21381" to="maps/map8/map/@Area2D@21381" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21382" to="maps/map8/map/@Area2D@21382" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21382" to="maps/map8/map/@Area2D@21382" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21383" to="maps/map8/map/@Area2D@21383" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21383" to="maps/map8/map/@Area2D@21383" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21384" to="maps/map8/map/@Area2D@21384" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21384" to="maps/map8/map/@Area2D@21384" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21385" to="maps/map8/map/@Area2D@21385" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21385" to="maps/map8/map/@Area2D@21385" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21386" to="maps/map8/map/@Area2D@21386" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21386" to="maps/map8/map/@Area2D@21386" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21387" to="maps/map8/map/@Area2D@21387" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21387" to="maps/map8/map/@Area2D@21387" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21388" to="maps/map8/map/@Area2D@21388" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21388" to="maps/map8/map/@Area2D@21388" method="_on_ready"]
-[connection signal="body_entered" from="maps/map8/map/@Area2D@21389" to="maps/map8/map/@Area2D@21389" method="_on_body_entered"]
-[connection signal="ready" from="maps/map8/map/@Area2D@21389" to="maps/map8/map/@Area2D@21389" method="_on_ready"]
 
 [editable path="Npc"]
