@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv83uxykgxy7q"]
+
+[ext_resource type="Texture2D" uid="uid://cktkw65r17gna" path="res://assets/sprites/bricks/Castle brick 9.0.png" id="1_71b1d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nm7p7"]
+size = Vector2(20, 10)
+
+[node name="Knight" type="StaticBody2D"]
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_71b1d")
+region_enabled = true
+region_rect = Rect2(48, 256, 48, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_nm7p7")
+one_way_collision = true
