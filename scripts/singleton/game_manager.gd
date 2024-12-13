@@ -424,7 +424,7 @@ func back_to_room3() -> void:
 func _input(event: InputEvent) -> void:
 	# 确保只在按键事件时调用 is_action_just_pressed
 	if event is InputEventKey and event.is_pressed():
-		if Input.is_action_just_pressed("esc") and not game_state['inventory_visible'] and not is_chatting():
+		if Input.is_action_just_pressed("esc") and not game_state_cache['inventory_visible'] and not is_chatting():
 			if not get_tree().current_scene.is_in_group("no_pause"):
 				toggle_pause_menu()
 			else:
@@ -435,7 +435,7 @@ func _input(event: InputEvent) -> void:
 			get_tree().change_scene_to_file(GameManager.game_state['last_scene_path'])
 
 
-func toggle_pause_menu() -> void:
+func toggle_pause_menu() -> void  :
 	if not game_state.has("is_paused"):
 		game_state["is_paused"] = false
 		

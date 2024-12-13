@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var bounce_force = 400 # 弹跳力度
 @export var push_strength = 100
-@export var mass = 1
+@export var mass = 3
 var is_stomped = false
 
 func _ready():

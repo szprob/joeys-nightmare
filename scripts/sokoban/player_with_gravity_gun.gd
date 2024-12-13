@@ -40,14 +40,14 @@ var maintain_momentum_after_hook = false
 
 var player_state = 'idle' # 玩家状态(can move or not)
 var has_double_jumped = false
-var second_jump_gravity_timer: float = 0.2
-var second_jump_gravity_value: float = 1
+var second_jump_gravity_timer: float = 0.1
+var second_jump_gravity_value: float = 2
 var has_released_jump: bool = false
 var facing_direction = 1
 var can_move = true
 var jump_buffer_timer: float = 0.0 # 记录跳跃键按下的时间
 var jump_hold_time: float = 0.0 # 记录跳跃键按住的时间
-var is_jumping: bool = false # 标记是否正在跳跃
+var is_jumping: int = 0 # 标记是否正在跳跃
 var default_pos = Vector2(0, 0)
 var respawn_pos = Vector2(0, 0)
 var coyote_timer: float = 0.0
@@ -119,7 +119,7 @@ func start_jump() -> void:
 	
 	jump_hold_time = 0.0
 	jump_acceleration_counter = 0
-	is_jumping = true
+	is_jumping = 1
 	if jump_audio and jump_audio.stream:
 		jump_audio.play()
 
@@ -155,12 +155,12 @@ func _physics_process(delta: float) -> void:
 	
 	update_hookable_areas_status()
 	var player_height = 16.0  # 角色高度为16像素
-	if is_jumping:
-		# 计算当前位置与起跳位置的距离(考虑重力方向)
-		var gravity_dir = get_gravity().normalized()
-		var height_diff = (jump_start_position - global_position).project(-gravity_dir).length()
-		var height_in_player_units = height_diff / player_height
-		#print('height_diff', height_diff)
+	# if is_jumping == 1:
+	# 	# 计算当前位置与起跳位置的距离(考虑重力方向)
+	# 	var gravity_dir = get_gravity().normalized()
+	# 	var height_diff = (jump_start_position - global_position).project(-gravity_dir).length()
+	# 	var height_in_player_units = height_diff / player_height
+	# 	#print('height_diff', height_diff)
 		#print("当前跳跃高度: %.2f 个角色高度" % height_in_player_units)
 
 	
@@ -198,7 +198,7 @@ func _physics_process(delta: float) -> void:
 
 		# 如果玩家正在跳跃并且继续按住跳跃键，增加跳跃高度
 
-		if is_jumping and Input.is_action_pressed('jump'):
+		if is_jumping == 1 and Input.is_action_pressed('jump'):
 			jump_hold_time += delta
 			var velocity_projection = velocity.project(gravity_dir).length()
 			
@@ -212,7 +212,7 @@ func _physics_process(delta: float) -> void:
 				# 持续按住跳跃键时保持向上的力
 				velocity -= gravity_dir * (Consts.MAX_JUMP_VELOCITY * -0.6) * delta
 			else:
-				is_jumping = false
+				is_jumping = 0
 				# 只在开始下落后的短时间内应用加倍重力
 				if velocity.dot(gravity_dir) > 0:  # 检查是否在下落
 					if fall_multiplier_timer < fall_multiplier_duration:
@@ -224,7 +224,7 @@ func _physics_process(delta: float) -> void:
 					fall_multiplier_timer = 0.0  # 重置计时器
 					velocity += gravity * delta
 		else:
-			is_jumping = false
+			is_jumping = 0
 			# 只在开始下落后的短时间内应用加倍重力
 			if velocity.dot(gravity_dir) > 0:  # 检查是否在下落
 				if fall_multiplier_timer < fall_multiplier_duration:
@@ -236,18 +236,19 @@ func _physics_process(delta: float) -> void:
 				fall_multiplier_timer = 0.0  # 重置计时器
 				velocity += gravity * delta
 		# 二段跳
-		
+		# print('velocity', velocity)
 		# print('has released jump2: ', has_released_jump)
-		if not has_double_jumped and has_released_jump and Input.is_action_just_pressed('jump') and can_second_jump() and coyote_timer <= 0:
+		if not has_double_jumped and has_released_jump and Input.is_action_just_pressed('jump') and can_second_jump() and coyote_timer <= 0 and is_jumping == 0:
 		# if second_jump_enabled and has_released_jump: # 筋斗云
+			is_jumping = 2
 			has_double_jumped = true
 			gravity_dir = get_gravity().normalized()
-			if velocity_along_gravity.dot(gravity_dir) > 0:	
-				velocity_along_gravity = velocity.project(gravity_dir)
-				var velocity_perpendicular = velocity - velocity_along_gravity
-				velocity = velocity_perpendicular + (velocity_along_gravity * -0.1)
+			# if velocity_along_gravity.dot(gravity_dir) > 0:	
+			velocity_along_gravity = velocity.project(gravity_dir)
+			var velocity_perpendicular = velocity - velocity_along_gravity
+			velocity = velocity_perpendicular + Vector2(0, -30)
+			# print('velocity', velocity)
 			set_gravity(Vector2(0, -second_jump_gravity_value))
-			# second_jump_enabled = false
 
 	else:
 		# Reset flags when touching ground
@@ -260,7 +261,7 @@ func _physics_process(delta: float) -> void:
 			print('reset jump buffer timer')
 			jump_buffer_timer = 0
 
-	if is_jumping:
+	if is_jumping == 1 :
 		was_on_ground = false
 		coyote_timer = 0
 	# Handle jump input with buffering
@@ -426,8 +427,8 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
-		if not collider is TileMapLayer:
-			print("碰撞到: ", collider.name, " (", collider.get_class(), ")")
+		# if not collider is TileMapLayer:
+		# 	print("碰撞到: ", collider.name, " (", collider.get_class(), ")")
 		if collider is CharacterBody2D and collider.is_in_group('pushable'):
 			# print('push box')
 			# 获取碰撞法线
@@ -574,17 +575,18 @@ func check_box_on_head() -> void:
 		free_player_from_box(result.collider)
 
 func set_gravity(new_gravity_direction: Vector2) -> void:
-	print('set gravity')
+	# print('set gravity')
 	jump_audio.play()
 	var gravity_instance = gravity_scene.instantiate()
 	# gravity_instance.global_position = global_position
 	gravity_instance.position = Vector2.ZERO
 	gravity_instance.scale = Vector2(1, 1)
 	gravity_instance.gravity_direction = new_gravity_direction
+	gravity_instance.set_priority(100)
 	# gravity_instance.top_level = true
 	# 将重力场作为玩家的子节点，这样它会自动跟随玩家移动
 	add_child(gravity_instance)
-	
+	# add_child(gravity_instance, true, Node.INTERNAL_MODE_BACK)
 	# 创建一个计时器来控制重力场的生命周期
 	var timer = get_tree().create_timer(second_jump_gravity_timer)
 	
@@ -664,9 +666,10 @@ func end_hook() -> void:
 	# can_move = true
 	# 保持一定的动量
 	velocity = velocity * 0.5
-	print('end hook velocity', velocity)
+	# print('end hook velocity', velocity)
 	can_destroy = false
 	maintain_momentum_after_hook = true
+	has_double_jumped = false
 	# print('hook end')
 
 
