@@ -301,7 +301,8 @@ func initialize_blocks():
 	setup_block_positions()
 	
 	# Add blocks to scene
-	call_deferred("add_children", object)
+	# call_deferred("add_children", object)
+	add_children(object)
 	_initialization_complete = true
 
 func setup_block(duplicated_object: Node, n: int):
@@ -421,6 +422,7 @@ func add_children(child_object):
 		block.set_collision_layer_value(1, true)
 		child_object.blocks_container.add_child(child_object.blocks[i], true)
 		child_object.blocks[i].add_to_group("dynamic")
+		# child_object.blocks[i] = null
 	# print('child_object: ', child_object)
 	# print('parent: ', child_object.parent.name)
 	if debug_mode:
@@ -430,6 +432,8 @@ func add_children(child_object):
 	# Move the self element faaaar away, instead of removing it,
 	# so we can still use the script and its functions.
 	self.position = Vector2(-999999, -999999)
+	# self.queue_free()
+	# child_object.blocks.clear()
 
 # #
 func detonate():
@@ -546,6 +550,8 @@ func _on_debris_timer_timeout():
 				randf_range(0.0, 1.0)
 			)
 			tween.tween_callback(child.queue_free)
+	
+	self.queue_free()
 
 #
 #func _on_opacity_tween_completed(obj, _key):
@@ -634,3 +640,11 @@ func debug_print_object() -> void:
 	print("- Debris max time:", object.debris_max_time)
 	print("- Remove debris:", object.remove_debris)
 	print("======================\n")
+
+
+func _exit_tree():
+	if object.blocks_container:
+		object.blocks_container.queue_free()
+	for block in object.blocks:
+		if block:
+			block.queue_free()
