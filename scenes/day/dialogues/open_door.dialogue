@@ -8,7 +8,7 @@ else:
 	elif !GameManager.game_state['has_slept']:
 		橱柜[#draw]: 一个普通的橱柜
 	else:
-		Joey: 刚才的梦中也出现了这个橱柜，再仔细调查看看吧
+		Joey: 隐约感觉到这个柜子里有钥匙,再仔细找找吧
 		Joey: [shake rate=20 level=10]角落里有把钥匙![/shake]
 		Joey: 去看看能不能把门打开吧
 		: 获得钥匙

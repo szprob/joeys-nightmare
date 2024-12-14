@@ -10,15 +10,17 @@ func _ready() -> void:
 		frame = 5
 	else:
 		frame = 0
+	print("door status: ", frame, ", ", is_door_open, ", ", GameManager.is_room3_door_open())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if GameManager.is_room3_door_open() and not is_door_open:
-		SoundPlayer.play_sound("res://assets/sounds/day/open-door-sound-247415.mp3")
-		frame = 0
-		play("open")
+	pass
 
+func open_door() -> void:
+	SoundPlayer.play_sound("res://assets/sounds/day/open-door-sound-247415.mp3")
+	frame = 0
+	play("open")
 
 func _on_animation_finished() -> void:
 	is_door_open = true

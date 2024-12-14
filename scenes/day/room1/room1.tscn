@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=4 uid="uid://bmq25pi5e8wan"]
+[gd_scene load_steps=119 format=4 uid="uid://bmq25pi5e8wan"]
 
 [ext_resource type="Texture2D" uid="uid://dapevi3u1jt0p" path="res://assets/sprites/day/room/TopDownHouse_FloorsAndWalls.png" id="1_h0361"]
 [ext_resource type="Texture2D" uid="uid://crnm18qdhogs2" path="res://assets/sprites/day/new_room/16x16-ALL_ASSETS-floor-walls.png" id="1_ii4xy"]
@@ -18,8 +18,10 @@
 [ext_resource type="Script" path="res://scenes/day/room1/id_card.gd" id="13_w5kc4"]
 [ext_resource type="Shader" path="res://scenes/day/room1/blink.gdshader" id="14_3xj6h"]
 [ext_resource type="FontFile" uid="uid://5btxwrwd804s" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="18_uwswc"]
+[ext_resource type="Texture2D" uid="uid://d3fptsmb5tase" path="res://assets/sprites/day/buttons/Space-Key.png" id="20_n0a8y"]
 [ext_resource type="AudioStream" uid="uid://cnvum410tmlnh" path="res://assets/sounds/interface/door.wav" id="20_p5g06"]
 [ext_resource type="Texture2D" uid="uid://bvjbslqiojovb" path="res://assets/sprites/day/enrich/收音机1.png" id="21_a55nh"]
+[ext_resource type="Texture2D" uid="uid://b403dypm5h5en" path="res://assets/sprites/day/buttons/A_Animation.png" id="21_ul8ej"]
 [ext_resource type="Resource" uid="uid://6a0f0mm58veq" path="res://scenes/day/dialogues/openning.dialogue" id="22_7iggc"]
 [ext_resource type="Script" path="res://scripts/day/radio.gd" id="22_64xqc"]
 [ext_resource type="Script" path="res://scripts/day/toilet.gd" id="24_c2bjv"]
@@ -31,6 +33,11 @@
 [ext_resource type="Script" path="res://scripts/day/fire.gd" id="28_l1a8d"]
 [ext_resource type="Script" path="res://scripts/day/bathtub.gd" id="29_qwob2"]
 [ext_resource type="Script" path="res://scripts/day/light_check.gd" id="30_k16f0"]
+[ext_resource type="Texture2D" uid="uid://vrlugfe5jgsx" path="res://assets/sprites/day/enrich/key_01c.png" id="34_1obj0"]
+[ext_resource type="Script" path="res://scripts/day/key_2.gd" id="35_4hjhs"]
+[ext_resource type="Resource" uid="uid://bvjxsl5w8bm2m" path="res://scenes/day/dialogues/room2.dialogue" id="36_nynnn"]
+[ext_resource type="Texture2D" uid="uid://k0ists8ua2dh" path="res://assets/sprites/day/enrich/key_01a.png" id="37_fgm00"]
+[ext_resource type="Script" path="res://scripts/day/key_1.gd" id="38_ko7xr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o0br6"]
 texture = ExtResource("1_ii4xy")
@@ -7652,6 +7659,64 @@ font_size = 33
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w2w1"]
+atlas = ExtResource("20_n0a8y")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufdjv"]
+atlas = ExtResource("20_n0a8y")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e2efq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8w2w1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufdjv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk1i6"]
+atlas = ExtResource("21_ul8ej")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2bjt"]
+atlas = ExtResource("21_ul8ej")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyeid"]
+atlas = ExtResource("21_ul8ej")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhr4w"]
+atlas = ExtResource("21_ul8ej")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_scbdx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk1i6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2bjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyeid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhr4w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bfn3l"]
 size = Vector2(18.7505, 14.0629)
 
@@ -7662,6 +7727,60 @@ radius = 12.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mlpaj"]
 radius = 8.0
+
+[sub_resource type="Animation" id="Animation_1jje2"]
+resource_name = "blink"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.470588, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.5, 5)
+}
+
+[sub_resource type="Animation" id="Animation_amqoj"]
+length = 5.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.470588, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.5, 5)
+}
+
+[sub_resource type="Animation" id="Animation_5xdlt"]
+resource_name = "fire_blink"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.588235, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.23333, 2.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6aa4w"]
+_data = {
+"RESET": SubResource("Animation_amqoj"),
+"blink": SubResource("Animation_1jje2"),
+"fire_blink": SubResource("Animation_5xdlt")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4v1qy"]
 radius = 7.0
@@ -7830,6 +7949,70 @@ height = 47.9865
 radius = 10.9997
 height = 47.9987
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sq5a3"]
+radius = 18.7577
+height = 75.0308
+
+[sub_resource type="Animation" id="Animation_v0k7l"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.392157, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(110, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_jcnxi"]
+resource_name = "blink"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.392157, -0.25, 0, 0.25, 0, 0.784314, -0.25, 0, 0.25, 0, 0.392157, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(110, -0.25, 0, 0.25, 0, 102, -0.25, 0, 0.25, 0, 110, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7spri"]
+_data = {
+"RESET": SubResource("Animation_v0k7l"),
+"blink": SubResource("Animation_jcnxi")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1aj4"]
+size = Vector2(41, 24)
+
 [node name="Room1" type="Node2D"]
 
 [node name="wall_things" type="TileMapLayer" parent="."]
@@ -7843,12 +8026,12 @@ tile_set = SubResource("TileSet_ayk0p")
 
 [node name="furniture_front" type="TileMapLayer" parent="."]
 z_index = 2
-tile_map_data = PackedByteArray("AAABAA0AAAANAAAAAAABAA4AAAANAAEAAAABAA8AAAANAAIAAAAIAA4AAAAGAAQAAAAIAA8AAAAGAAUAAAAJAA4AAAAHAAQAAAAJAA8AAAAHAAUAAAAGAA4AAAACAAsAAAAGAA8AAAACAAwAAAAHAA4AAAADAAsAAAAHAA8AAAADAAwAAAAPAAsAAAAKAAQAAAAQAAsAAAALAAQAAAARAAsAAAAMAAQAAAAWAAsAAAAJABwAAAAWAAwAAAAJAB0AAAAXAAsAAAAKABwAAAAXAAwAAAAKAB0AAAAYAAsAAAALABwAAAAYAAwAAAALAB0AAAAaAAsAAAAJABwAAAAaAAwAAAAJAB0AAAAbAAsAAAAKABwAAAAbAAwAAAAKAB0AAAAcAAsAAAALABwAAAAcAAwAAAALAB0AAAAcAA4AAAAIABwAAAAcAA8AAAAIAB4AAAA=")
+tile_map_data = PackedByteArray("AAABAA0AAAANAAAAAAABAA4AAAANAAEAAAABAA8AAAANAAIAAAAIAA4AAAAGAAQAAAAIAA8AAAAGAAUAAAAJAA4AAAAHAAQAAAAJAA8AAAAHAAUAAAAGAA4AAAACAAsAAAAGAA8AAAACAAwAAAAHAA4AAAADAAsAAAAHAA8AAAADAAwAAAAPAAsAAAAKAAQAAAAQAAsAAAALAAQAAAARAAsAAAAMAAQAAAAWAAsAAAAJABwAAAAWAAwAAAAJAB0AAAAXAAsAAAAKABwAAAAXAAwAAAAKAB0AAAAbAAsAAAAKABwAAAAbAAwAAAAKAB0AAAAcAAsAAAALABwAAAAcAAwAAAALAB0AAAAcAA4AAAAIABwAAAAcAA8AAAAIAB4AAAAYAAwAAAALAB0AAAAYAAsAAAALABwAAAA=")
 tile_set = SubResource("TileSet_4scm4")
 
 [node name="furniture_back" type="TileMapLayer" parent="."]
 z_index = 1
-tile_map_data = PackedByteArray("AAAGAAUAAQALABQAAAAGAAYAAQALABUAAAAGAAcAAQALABYAAAAGAAgAAQALABcAAAAHAAUAAQAMABQAAAAHAAYAAQAMABUAAAAHAAcAAQAMABYAAAAHAAgAAQAMABcAAAAIAAUAAQANABQAAAAIAAYAAQANABUAAAAIAAcAAQANABYAAAAIAAgAAQANABcAAAAJAAUAAQAOABQAAAAJAAYAAQAOABUAAAAJAAcAAQAOABYAAAAJAAgAAQAOABcAAAACAAgAAQAEABQAAAACAAkAAQAEABUAAAACAAoAAQAEABYAAAACAAsAAQAEABcAAAADAAgAAQAFABQAAAADAAkAAQAFABUAAAADAAoAAQAFABYAAAADAAsAAQAFABcAAAAEAAgAAQAGABQAAAAEAAkAAQAGABUAAAAEAAoAAQAGABYAAAAEAAsAAQAGABcAAAAFAAgAAQAHABQAAAAFAAkAAQAHABUAAAAFAAoAAQAHABYAAAAFAAsAAQAHABcAAAAYAAYAAQAJABkAAAAYAAcAAQAJABoAAAAYAAgAAQAJABsAAAAZAAYAAQAKABkAAAAZAAcAAQAKABoAAAAZAAgAAQAKABsAAAAaAAYAAQALABkAAAAaAAcAAQALABoAAAAaAAgAAQALABsAAAAXAAcAAQAMABoAAAAXAAgAAQAMABsAAAAPAAwAAQAKAAUAAAAQAAwAAQALAAUAAAARAAwAAQAMAAUAAAAWAA0AAQAJAB4AAAAXAA0AAQAKAB4AAAAYAA0AAQALAB4AAAAaAA0AAQAJAB4AAAAbAA0AAQAKAB4AAAAcAA0AAQALAB4AAAAbAAYAAQALAAAAAAAbAAcAAQALAAEAAAAbAAgAAQALAAIAAAAcAAYAAQAMAAAAAAAcAAcAAQAMAAEAAAAcAAgAAQAMAAIAAAAUAAcAAQAIAAQAAAAUAAgAAQAIAAUAAAANAAcAAQAAAAsAAAANAAgAAQAAAAwAAAAOAAcAAQABAAsAAAAOAAgAAQABAAwAAAA=")
+tile_map_data = PackedByteArray("AAAGAAUAAQALABQAAAAGAAYAAQALABUAAAAGAAcAAQALABYAAAAGAAgAAQALABcAAAAHAAUAAQAMABQAAAAHAAYAAQAMABUAAAAHAAcAAQAMABYAAAAHAAgAAQAMABcAAAAIAAUAAQANABQAAAAIAAYAAQANABUAAAAIAAcAAQANABYAAAAIAAgAAQANABcAAAAJAAUAAQAOABQAAAAJAAYAAQAOABUAAAAJAAcAAQAOABYAAAAJAAgAAQAOABcAAAACAAgAAQAEABQAAAACAAkAAQAEABUAAAACAAoAAQAEABYAAAACAAsAAQAEABcAAAADAAgAAQAFABQAAAADAAkAAQAFABUAAAADAAoAAQAFABYAAAADAAsAAQAFABcAAAAEAAgAAQAGABQAAAAEAAkAAQAGABUAAAAEAAoAAQAGABYAAAAEAAsAAQAGABcAAAAFAAgAAQAHABQAAAAFAAkAAQAHABUAAAAFAAoAAQAHABYAAAAFAAsAAQAHABcAAAAYAAYAAQAJABkAAAAYAAcAAQAJABoAAAAYAAgAAQAJABsAAAAZAAYAAQAKABkAAAAZAAcAAQAKABoAAAAZAAgAAQAKABsAAAAaAAYAAQALABkAAAAaAAcAAQALABoAAAAaAAgAAQALABsAAAAXAAcAAQAMABoAAAAXAAgAAQAMABsAAAAPAAwAAQAKAAUAAAAQAAwAAQALAAUAAAARAAwAAQAMAAUAAAAWAA0AAQAJAB4AAAAXAA0AAQAKAB4AAAAYAA0AAQALAB4AAAAbAA0AAQAKAB4AAAAcAA0AAQALAB4AAAAbAAYAAQALAAAAAAAbAAcAAQALAAEAAAAbAAgAAQALAAIAAAAcAAYAAQAMAAAAAAAcAAcAAQAMAAEAAAAcAAgAAQAMAAIAAAAUAAcAAQAIAAQAAAAUAAgAAQAIAAUAAAANAAcAAQAAAAsAAAANAAgAAQAAAAwAAAAOAAcAAQABAAsAAAAOAAgAAQABAAwAAAA=")
 tile_set = SubResource("TileSet_vda0e")
 
 [node name="wall" type="TileMapLayer" parent="."]
@@ -7950,9 +8133,9 @@ anchor_left = 0.5
 anchor_top = -0.854
 anchor_right = 0.5
 anchor_bottom = -0.854
-offset_left = -81.4549
+offset_left = -81.4672
 offset_top = -30.324
-offset_right = 5.54454
+offset_right = 5.53229
 offset_bottom = 134.676
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(2.40654e-07, 0.288411, 0.254277, 1)
@@ -7968,14 +8151,30 @@ libraries = {
 autoplay = "hint"
 
 [node name="GuideText" type="Label" parent="身份证/Outline"]
-z_index = 1
-offset_left = -246.319
-offset_top = -340.478
-offset_right = -31.3185
-offset_bottom = -291.478
+z_index = -1
+offset_left = 3.0
+offset_top = -340.0
+offset_right = 28.0
+offset_bottom = -291.0
 scale = Vector2(2.35885, 3.36792)
-text = "Press E"
+text = "/"
 label_settings = SubResource("LabelSettings_4nbe0")
+
+[node name="Space" type="AnimatedSprite2D" parent="身份证/Outline"]
+z_index = -1
+position = Vector2(169.5, -303.906)
+scale = Vector2(3.22013, 4.82143)
+sprite_frames = SubResource("SpriteFrames_e2efq")
+autoplay = "default"
+frame_progress = 0.676493
+
+[node name="BButton" type="AnimatedSprite2D" parent="身份证/Outline"]
+z_index = -1
+position = Vector2(-56.2298, -303.906)
+scale = Vector2(7.23659, 11.4614)
+sprite_frames = SubResource("SpriteFrames_scbdx")
+autoplay = "default"
+frame_progress = 0.674905
 
 [node name="Actionable" parent="身份证" instance=ExtResource("6_x4b8a")]
 dialogue_resource = ExtResource("11_fcr2e")
@@ -8034,6 +8233,12 @@ shape = SubResource("CapsuleShape2D_mlpaj")
 position = Vector2(21, 219)
 texture = ExtResource("26_x3ghb")
 
+[node name="Light1AnimationPlayer" type="AnimationPlayer" parent="Light1"]
+libraries = {
+"": SubResource("AnimationLibrary_6aa4w")
+}
+autoplay = "blink"
+
 [node name="Lamp2" type="Sprite2D" parent="."]
 
 [node name="LightSwitch" parent="Lamp2" node_paths=PackedStringArray("light_sprite") instance=ExtResource("26_88n72")]
@@ -8048,16 +8253,28 @@ shape = SubResource("CapsuleShape2D_4v1qy")
 position = Vector2(446, 104)
 texture = ExtResource("26_x3ghb")
 
+[node name="Light2AnimationPlayer" type="AnimationPlayer" parent="Light2"]
+libraries = {
+"": SubResource("AnimationLibrary_6aa4w")
+}
+autoplay = "blink"
+
 [node name="Fire" type="AnimatedSprite2D" parent="."]
 position = Vector2(281, 117)
 sprite_frames = SubResource("SpriteFrames_016y2")
-animation = &"extinct"
+animation = &"flame"
 autoplay = "flame"
 script = ExtResource("28_l1a8d")
 
 [node name="FireLight" type="Sprite2D" parent="Fire"]
 position = Vector2(-1, 2)
 texture = ExtResource("26_x3ghb")
+
+[node name="FireAnimationPlayer" type="AnimationPlayer" parent="Fire/FireLight"]
+libraries = {
+"": SubResource("AnimationLibrary_6aa4w")
+}
+autoplay = "fire_blink"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Fire"]
 
@@ -8097,6 +8314,49 @@ shape = SubResource("CapsuleShape2D_2rwpv")
 
 [node name="LightCheck" type="Node2D" parent="."]
 script = ExtResource("30_k16f0")
+
+[node name="Key2" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(144, 229)
+rotation = -1.56519
+scale = Vector2(0.373152, 0.373152)
+texture = ExtResource("34_1obj0")
+script = ExtResource("35_4hjhs")
+
+[node name="Actionable" parent="Key2" instance=ExtResource("6_x4b8a")]
+dialogue_resource = ExtResource("36_nynnn")
+dialogue_start = "key2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Key2/Actionable"]
+rotation = 1.5775
+shape = SubResource("CapsuleShape2D_sq5a3")
+
+[node name="Key1" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+z_index = 2
+position = Vector2(128, 110)
+rotation = -2.01538
+scale = Vector2(0.45317, 0.45317)
+texture = ExtResource("37_fgm00")
+script = ExtResource("38_ko7xr")
+
+[node name="Key1Animation" type="AnimationPlayer" parent="Key1"]
+libraries = {
+"": SubResource("AnimationLibrary_7spri")
+}
+autoplay = "blink"
+
+[node name="WaterMirror" type="Sprite2D" parent="."]
+position = Vector2(413, 118)
+
+[node name="Actionable" parent="WaterMirror" instance=ExtResource("6_x4b8a")]
+dialogue_resource = ExtResource("11_fcr2e")
+dialogue_start = "water_mirror"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterMirror/Actionable"]
+z_index = 1
+position = Vector2(-4.5, 7)
+shape = SubResource("RectangleShape2D_i1aj4")
 
 [connection signal="animation_finished" from="Fire" to="Fire" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Bathtub" to="Bathtub" method="_on_animation_finished"]

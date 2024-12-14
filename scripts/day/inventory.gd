@@ -38,16 +38,22 @@ func _notification(what: int) -> void:
 func _process(delta: float) -> void:
 	if is_instance_valid(get_tree().current_scene) and not get_tree().current_scene.tree_entered.is_connected(hide):
 		get_tree().current_scene.tree_entered.connect(hide)
-
+	if is_instance_valid(get_tree().current_scene):
+		var scene_path = get_tree().current_scene.scene_file_path
+		if not scene_path.begins_with("res://scenes/day"):
+			return
 	if not visible and Input.is_action_just_pressed("inventory") and not GameManager.is_chatting():
 		show()
-		item_list.select(0)
-		show_item_detail(0)
+		GameManager.set_inventory_visible(visible)
+		if item_list.item_count > 0:
+			item_list.select(0)
+			show_item_detail(0)
 		print("show inventory")
 		return
 
-	if visible and (Input.is_action_just_pressed("inventory")):
+	if visible and (Input.is_action_just_pressed("inventory") or Input.is_action_just_pressed("esc")):
 		hide()
+		GameManager.set_inventory_visible(visible)
 		hide_item_detail_panel()
 		print("hide inventory")
 		return
@@ -95,15 +101,38 @@ func _unhandled_input(event: InputEvent) -> void:
 		current_index = 0
 	else:
 		current_index = item_list.get_selected_items()[0]
+	var row = current_index / item_list.max_columns
 	if Input.is_action_just_pressed("right"):
 		current_index += 1
 		if current_index >= item_list.get_item_count():
-			current_index = 0
+			current_index = row * item_list.max_columns
+		else:
+			var new_row = current_index / item_list.max_columns
+			if new_row != row:
+				current_index = row * item_list.max_columns
 		item_list.select(current_index)
 	elif Input.is_action_just_pressed("left"):
 		current_index -= 1
 		if current_index < 0:
-			current_index = item_list.get_item_count() - 1
+			current_index = min(row * item_list.max_columns + item_list.max_columns - 1, item_list.get_item_count() - 1)
+		else:
+			var new_row = current_index / item_list.max_columns
+			if new_row != row:
+				current_index = min(row * item_list.max_columns + item_list.max_columns - 1, item_list.get_item_count() - 1)
+		item_list.select(current_index)
+	elif Input.is_action_just_pressed("up"):
+		current_index -= item_list.max_columns
+		if current_index < 0:
+			var max_row = (item_list.get_item_count() - 1) / item_list.max_columns
+			var mod = (current_index + item_list.max_columns) % item_list.max_columns
+			current_index = max_row * item_list.max_columns + mod
+			if current_index > item_list.get_item_count() - 1:
+				current_index = (max_row - 1) * item_list.max_columns + mod
+		item_list.select(current_index)
+	elif Input.is_action_just_pressed("down"):
+		current_index += item_list.max_columns
+		if current_index >= item_list.get_item_count():
+			current_index = (current_index - item_list.max_columns) % item_list.max_columns
 		item_list.select(current_index)
 	show_item_detail(current_index)
 
