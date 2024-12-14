@@ -58,6 +58,6 @@ func finish_camera_pan() -> void:
 	tween.tween_callback(func():
 		intro_camera.enabled = false
 		player_camera.enabled = true
-	).set_delay(2) # 可以调整延迟时间
+	).set_delay(0.5) # 可以调整延迟时间
 
 	get_tree().paused = false
