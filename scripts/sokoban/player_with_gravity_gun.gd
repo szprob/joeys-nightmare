@@ -95,6 +95,7 @@ func _ready():
 	$HookableDetector.area_exited.connect(_on_hookable_area_exited)
 	GameManager.game_state_cache['should_die'] = true
 	add_to_group("player")
+	jump_audio.volume_db = -12
 	set_can_move(true)
 
 

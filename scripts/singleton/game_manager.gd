@@ -173,8 +173,7 @@ func play_bgm(bgm_name: String) -> void:
 		bgm_player.play()
 
 func pause_bgm() -> void:
-	if bgm_player:
-		bgm_player.stream_paused = true
+	bgm_player.stop()
 		
 func stop_bgm() -> void:
 	bgm_player.stop()

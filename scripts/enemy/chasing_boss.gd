@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var idle_duration: float = 0.3
 @export var dash_speed: float = 200.0
 @export var player: Node2D
-@export var time_enable_attack_collision: float = 0.8
+@export var time_enable_attack_collision: float = 0.9
 @export var limit_y_offset_top: int = 50
 @export var limit_y_offset_bottom: int = 5
 @export var can_destroy: bool = true

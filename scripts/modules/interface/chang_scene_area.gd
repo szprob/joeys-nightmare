@@ -27,5 +27,5 @@ func _on_body_entered(body: Node2D) -> void:
 	GameManager.game_state_cache['should_die'] = false
 	GameManager.game_state['target_scene'] = next_scene_file_path
 	GameManager.game_state['teleport_type'] = teleport_type
-	await get_tree().create_timer(0.1).timeout
-	player.set_can_move(false,'idle')
+	# await get_tree().create_timer(0.1).timeout
+	# player.set_can_move(false,'idle')

@@ -71,4 +71,5 @@ offset_left = -23.3333
 offset_top = 120.0
 offset_right = 16.6667
 offset_bottom = 187.0
+scale = Vector2(1.00179, 1)
 theme_override_font_sizes/font_size = 48
