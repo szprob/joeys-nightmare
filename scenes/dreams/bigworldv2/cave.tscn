@@ -223,7 +223,7 @@
 [ext_resource type="PackedScene" uid="uid://dt5ajotyxww1c" path="res://scenes/sokoban/destruct_02.tscn" id="220_kyrx0"]
 [ext_resource type="PackedScene" uid="uid://c5x12p3650b3l" path="res://scenes/player/npc.tscn" id="224_mg4np"]
 [ext_resource type="PackedScene" uid="uid://cxdvjkmdm30bc" path="res://scenes/sokoban/hook_1.tscn" id="225_6ymta"]
-[ext_resource type="PackedScene" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="225_b6nyg"]
+[ext_resource type="PackedScene" uid="uid://yan3jqnet7ud" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="225_b6nyg"]
 [ext_resource type="PackedScene" uid="uid://5ke66hnjv6ab" path="res://scenes/modules/traps/lazer.tscn" id="227_qjdvj"]
 [ext_resource type="PackedScene" uid="uid://kfdbq76ixwrq" path="res://scenes/modules/checkpoints/save_point.tscn" id="227_u11nh"]
 [ext_resource type="PackedScene" uid="uid://b2a31xnvry6r1" path="res://scenes/player/npc_die.tscn" id="228_uoegn"]

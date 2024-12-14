@@ -21,6 +21,10 @@ var current_subtitle = 0
 var scene_timer = 0.0
 
 func _ready():
+
+	if not GameManager.game_state_cache['bmg_set']:
+		GameManager.setup_bgm_player()
+	GameManager.play_bgm('run')
 	# 开始自动奔跑
 	player.start_auto_run()
 	npc.start_auto_run()

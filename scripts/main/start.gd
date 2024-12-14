@@ -13,6 +13,8 @@ var current_index = 0
 @onready var quit_button: Button = $quit
 @onready var logo: Sprite2D = $Sprite2D
 @onready var sfx_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var label: Label = $Label
+
 
 func _ready():
 	GameManager.setup_bgm_player()
@@ -30,6 +32,12 @@ func _ready():
 		button.focus_entered.connect(func(): _on_button_focus(button))
 		button.focus_exited.connect(func(): _on_button_unfocus(button))
 	buttons[current_index].grab_focus()
+
+	if GameManager.game_state['finish']:
+		label.text = "你的通关验证码是："+generate_string(10, 1024)
+		label.visible = true
+	else:
+		label.visible = false
 	
 func play_sfx():
 	if sfx_player:
@@ -102,3 +110,58 @@ func _on_button_unfocus(button: Button) -> void:
 	
 	# 移除边框
 	button.remove_theme_stylebox_override("focus")
+
+
+func sum(arr: Array) -> int:
+	var total = 0
+	for num in arr:
+		total += num
+	return total
+
+func generate_string(length: int, target_sum: int) -> String:
+	var characters = "abcdefghijklmnopqrstuvwxyz"
+	var result = []
+	var remaining_sum = target_sum
+	
+	# 为前n-1个位置生成随机字符
+	for i in range(length - 1):
+		# 计算剩余位置所需的最小和最大可能值
+		var positions_left = length - i
+		var min_possible = positions_left * "a".to_ascii_buffer()[0]  # 所有剩余位置都是'a'
+		var max_possible = positions_left * "z".to_ascii_buffer()[0]  # 所有剩余位置都是'z'
+		
+		# 计算当前位置可以使用的字符范围
+		var min_current = max(("a".to_ascii_buffer()[0]), remaining_sum - max_possible + "z".to_ascii_buffer()[0])
+		var max_current = min(("z".to_ascii_buffer()[0]), remaining_sum - min_possible + "a".to_ascii_buffer()[0])
+		
+		# 在可用范围内随机选择一个ASCII值
+		var target_ascii = randi() % (max_current - min_current + 1) + min_current
+		
+		# 找到最接近这个ASCII值的可用字符
+		var chosen_char = "a"
+		var min_diff = 999
+		for c in characters:
+			var diff = abs(c.to_ascii_buffer()[0] - target_ascii)
+			if diff < min_diff:
+				min_diff = diff
+				chosen_char = c
+        
+		result.append(chosen_char)
+		remaining_sum -= chosen_char.to_ascii_buffer()[0]
+    
+	# 最后一个位置用于平衡总和
+	var last_ascii = remaining_sum
+	var last_char = "a"
+	var min_diff = 999
+	for c in characters:
+		var diff = abs(c.to_ascii_buffer()[0] - last_ascii)
+		if diff < min_diff:
+			min_diff = diff
+			last_char = c
+    
+	result.append(last_char)
+    
+	# 随机打乱结果
+	result.shuffle()
+    
+	return "".join(PackedStringArray(result))

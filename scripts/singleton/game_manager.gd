@@ -20,9 +20,10 @@ var bgm_resources = {
 	"bgm": preload("res://assets/music/main Nightmare Prelude.mp3"),
 	'intro': preload("res://assets/music/intro1.wav"),
 	'chase': preload("res://assets/music/chase0.wav"),
-	'church': preload("res://assets/music/church0.wav"),
+	'church': preload("res://assets/music/Karl Richter - Toccata and Fugue in D minor, BWV 565Fugue.mp3"),
 	'end': preload("res://assets/music/True Self Dream.mp3"),
 	'boss': preload("res://assets/music/boss2.wav"),
+	'run': preload("res://assets/music/Chasing Shadows.mp3"),
 }
 
 
@@ -95,7 +96,8 @@ func init_default_state():
 		"right_door_opened": false,
 		"all_light_off": false,
 		"room3_door_open": false,
-		'play_time_seconds': 0  # 添加游戏时间记录（秒）
+		'play_time_seconds': 0,  # 添加游戏时间记录（秒）
+		'finish': false,
 	}
 	game_state = game_state2.duplicate(true) # 深度复制默认状态
 
@@ -174,9 +176,6 @@ func pause_bgm() -> void:
 	if bgm_player:
 		bgm_player.stream_paused = true
 		
-
-
-
 func stop_bgm() -> void:
 	bgm_player.stop()
 

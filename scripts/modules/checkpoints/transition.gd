@@ -11,8 +11,6 @@ func _ready():
 	GameManager.pause_bgm()
 	teleport_type = GameManager.game_state['teleport_type']
 	target_scene = GameManager.game_state['target_scene']
-	print(teleport_type)
-	print(target_scene)
 
 	if teleport_type == 'day2dream':
 		animation_player.play()
