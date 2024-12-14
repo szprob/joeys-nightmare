@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # 添加计时器和目标位置变量
 @export var state_timer: float = 0.0
-@export var init_wait_time: float = 6
+@export var init_wait_time: float = 1.5
 @export var idle_duration: float = 0.3
 @export var dash_speed: float = 200.0
 @export var player: Node2D
