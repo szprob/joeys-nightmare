@@ -12,7 +12,9 @@ enum State {
 	DIE,
 	IDLE,
 	SHOOT,
-	STUN
+	STUN,
+	CHANGE,
+	ACHANGE,
 }
 
 var state = State.IDLE
@@ -21,7 +23,6 @@ var target_position = Vector2.ZERO
 var next_position = Vector2.ZERO
 var do_detect=true # 是否检测碰撞
 var velocity = Vector2.ZERO  # 声明 velocity 变量
-var origin_scale_x
 var timer  # 射击之后创建ball的时间
 var can_move_timer
 var dash_direction
@@ -36,7 +37,9 @@ var is_init: bool = false
 @export var can_move_time = 0.5
 @export var dash_speed: float = 400.0
 @export var do_attack:bool = true
-
+@export var next_scene_file_path: String = "res://scenes/day/game/game.tscn"
+@export var transition_scene: String = "res://scenes/modules/checkpoints/transition.tscn"  # 添加过渡场景路径
+@export var teleport_type: String = "dream2day"
 # 残影
 @export var after_image_scene: PackedScene
 @export var after_image_interval: float = 0.1
@@ -59,7 +62,6 @@ func _ready():
 	global_position = areas[current_area_index].global_position
 
 	body_entered.connect(on_body_entered)
-	origin_scale_x = scale.x
 	
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	timer = Timer.new()
@@ -72,7 +74,6 @@ func _ready():
 	add_child(can_move_timer)
 	can_move_timer.timeout.connect(_on_can_move_timeout)
 
-	origin_scale_x = 1
 	sign_scale_x = 1
 	is_init = true
 	change_state(State.IDLE)
@@ -131,22 +132,30 @@ func handle_dash_state(delta):
 		velocity = dash_direction * dash_speed
 
 	global_position += velocity * delta
-	spawn_after_image(delta)
+	rotation = dash_direction.angle()
 	if global_position.distance_to(next_position) < 10:
 		global_position = next_position
-		change_state(State.IDLE)
+		change_state(State.ACHANGE)
 
 func change_face_direction_and_position(pos):
 	dash_direction = (pos - global_position).normalized()
 
 
-	if sign(dash_direction.x) != sign(sign_scale_x):
-		scale.x = -scale.x
-		sign_scale_x = -sign_scale_x
+	if sign(dash_direction.x) >0 :
+		animated_sprite.flip_h = false
+		sign_scale_x = 1
+	else:
+		animated_sprite.flip_h = true
+		sign_scale_x = -1
+	
+	if state == State.DASH:
+		animated_sprite.flip_h = false
+		sign_scale_x = 1
 
 
 
 func change_state(new_state):
+	rotation = 0
 	state = new_state
 	idle_timer = 0 
 	do_detect = (new_state in [State.IDLE, State.SHOOT])
@@ -160,10 +169,15 @@ func change_state(new_state):
 			animated_sprite.play("shoot")
 			audio_player.play()
 			timer.start()
-		State.DASH:
+		State.CHANGE:
 			if current_area_index + 1 >= areas.size():
 				change_state(State.DIE)
 				return
+			animated_sprite.play("change")
+		State.ACHANGE:
+			change_face_direction_and_position(player.global_position)
+			animated_sprite.play_backwards("change")
+		State.DASH:
 			current_area_index += 1
 			next_position = areas[current_area_index].global_position
 			change_face_direction_and_position(next_position)
@@ -191,13 +205,20 @@ func on_body_entered(body):
 
 
 func _on_animation_finished():
-	match animated_sprite.animation:
-		"stun":
-			change_state(State.DASH)
-		"shoot":
+	match state:
+		State.STUN:
+			change_state(State.CHANGE)
+		State.SHOOT:
 			change_state(State.IDLE)
-		"die":
-			queue_free()
+		State.CHANGE:
+			change_state(State.DASH)
+		State.ACHANGE:
+			change_state(State.IDLE)
+		State.DIE:
+			GameManager.game_state['target_scene'] = next_scene_file_path
+			GameManager.game_state['teleport_type'] = teleport_type
+			await get_tree().create_timer(1).timeout
+			get_tree().change_scene_to_file(transition_scene)
 
 func create_collision_effect(pos: Vector2):
 	if current_particles:

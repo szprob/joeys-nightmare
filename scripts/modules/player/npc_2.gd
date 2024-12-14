@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var detection_area: Area2D = $detection
 @onready var teleport: Node2D = $teleport
 @onready var teleport2: Node2D = $teleport2
+@onready var label: Label = $Label
 
 enum NPCState {
 	IDLE,
@@ -40,8 +41,6 @@ const BallScene = preload("res://scenes/enemy/ball.tscn")
 
 # 添加新的变量
 @export var shoot_delay: float = 0.1
-@export var bubble_speed: float = 0.06
-@export var bubble_title: String = "die"
 @export var bubble_index: int = 0
 @export var disappear_delay: float = 1.5
 @export var next_scene_file_path: String = ""
@@ -60,12 +59,11 @@ func _ready() -> void:
 	# 		teleport.queue_free()
 	# 	queue_free()
 	# 	return
-	
+	label.visible = false
 	animated_sprite.visible = false
 	animated_sprite_2.visible = true
 
 	detection_area.body_entered.connect(_on_body_entered)
-	bubble_texts = dialogue_file.dialogue_data[bubble_title]
 	player = get_tree().get_first_node_in_group("player")
 
 	# teleport = PortalScene.instantiate()
@@ -150,6 +148,10 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_timer_timeout():
 	if player and player.has_method("set_can_move"):
 		player.set_can_move(false,'idle')
+	create_bubble("befor_die",0.1)
+	# label.visible = true
+	await get_tree().create_timer(1).timeout
+	# label.visible = false
 	animated_sprite_2.play("shoot")
 	shoot_audio.play()
 	await get_tree().create_timer(0.5).timeout
@@ -175,8 +177,9 @@ func _on_timer_timeout():
 	await get_tree().create_timer(0.5).timeout
 	teleport2.visible = false
 	await get_tree().create_timer(1).timeout
-	create_bubble()
-
+	create_bubble("die",0.5)
+	await get_tree().create_timer(3).timeout
+	change_scene()
 # 说话结束
 func _on_timer7_timeout() -> void:
 	GameManager.game_state['target_scene'] = next_scene_file_path
@@ -185,8 +188,9 @@ func _on_timer7_timeout() -> void:
 	get_tree().change_scene_to_file(transition_scene)
 
 
-func create_bubble() -> void:
+func create_bubble(bubble_title,bubble_speed) -> void:
 	# 首先获取当前文本并处理前缀
+	bubble_texts = dialogue_file.dialogue_data[bubble_title]
 	var current_text = bubble_texts[bubble_index]
 	var bubble_position = global_position + Vector2(-48, -53)  # 默认NPC位置
 	
@@ -203,24 +207,24 @@ func create_bubble() -> void:
 	bubble_instance.z_index = 101
 	bubble_instance.visible = true
 	# bubble_instance.text_speed = 0.5
-	bubble_instance.text_speed = 0.5
+	bubble_instance.text_speed = bubble_speed
 	bubble_instance.global_position = bubble_position
 	bubble_instance.tree_exited.connect(_on_bubble_destroyed)
 
 	get_parent().add_child(bubble_instance)
 
 func _on_bubble_destroyed() -> void:
-	bubble_index += 1
-	if bubble_index < bubble_texts.size():
-		create_bubble()
-	else:
-		print('npc save dialogue')
-		GameManager.game_state['npc_dialogue_list'].append(bubble_title)
-		GameManager.save_game_state()
-		print('npc create portal')
-		var tween = create_tween()
-		tween.set_ease(Tween.EASE_IN)
-		tween.set_trans(Tween.TRANS_CUBIC)
-		tween.tween_property(fade_overlay, "color:a", 1.0, 3)
-		await tween.finished
-		timer7.start()
+	await get_tree().create_timer(0.1).timeout
+# 	bubble_index += 1
+# 	if bubble_index < bubble_texts.size():
+# 		create_bubble()
+# 	else:
+# 		return 
+
+func change_scene() -> void:
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(fade_overlay, "color:a", 1.0, 3)
+	await tween.finished
+	timer7.start()

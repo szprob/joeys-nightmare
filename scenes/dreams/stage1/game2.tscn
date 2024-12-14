@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/dreams/level1/game.gd" id="1_i8ht2"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="2_6wmt0"]
-[ext_resource type="PackedScene" uid="uid://bb0qpphy66mjy" path="res://scenes/modules/traps/fire_around_sth.tscn" id="5_vixsl"]
+[ext_resource type="PackedScene" uid="uid://dmq8ljo7go0bx" path="res://scenes/modules/traps/fire_around_sth.tscn" id="5_vixsl"]
 [ext_resource type="PackedScene" uid="uid://be4tvkuckghc4" path="res://scenes/modules/platforms/swing.tscn" id="6_agnfp"]
 [ext_resource type="Texture2D" uid="uid://cf552hfprnyf8" path="res://assets/sprites/world_tileset.png" id="6_b7ixv"]
 [ext_resource type="PackedScene" uid="uid://5ke66hnjv6ab" path="res://scenes/modules/traps/lazer.tscn" id="7_01urf"]

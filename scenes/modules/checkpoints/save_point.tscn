@@ -1,10 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://kfdbq76ixwrq"]
+[gd_scene load_steps=19 format=3 uid="uid://kfdbq76ixwrq"]
 
 [ext_resource type="Script" path="res://scripts/modules/checkpoints/save_point.gd" id="1_qeoh3"]
 [ext_resource type="Texture2D" uid="uid://djlitwmkmviun" path="res://assets/sprites/human/lamp.png" id="2_bador"]
 [ext_resource type="AudioStream" uid="uid://tb42whn5javk" path="res://assets/sounds/checkpoints/load.wav" id="3_ffag6"]
 [ext_resource type="Texture2D" uid="uid://dc3rowlo1my4s" path="res://assets/sprites/background/intro/light1.png" id="3_utb07"]
-[ext_resource type="Texture2D" uid="uid://ch8g3edsj6xrl" path="res://assets/sprites/v2/lamp.png" id="4_ix8he"]
+[ext_resource type="Texture2D" uid="uid://b24j208mopwtw" path="res://assets/sprites/v2/lamp.png" id="4_ix8he"]
+[ext_resource type="Texture2D" uid="uid://lsasgxej2ns8" path="res://assets/sprites/modules/save/deng0000.png" id="5_sdwl7"]
+[ext_resource type="Texture2D" uid="uid://dq3j3thy4pev" path="res://assets/sprites/modules/save/deng0001.png" id="6_ch8kv"]
+[ext_resource type="Texture2D" uid="uid://28rima8eu1b1" path="res://assets/sprites/modules/save/deng0002.png" id="7_tcr4c"]
+[ext_resource type="Texture2D" uid="uid://c110b2iwf3lwi" path="res://assets/sprites/modules/save/deng0003.png" id="8_l6pfq"]
+[ext_resource type="Texture2D" uid="uid://duqdh4pcjwfkf" path="res://assets/sprites/modules/save/deng0004.png" id="9_n1s4k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cergc"]
 size = Vector2(15.625, 44)
@@ -67,6 +72,26 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_sdwl7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ch8kv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tcr4c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_l6pfq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_n1s4k")
+}],
+"loop": true,
+"name": &"open",
+"speed": 12.0
 }]
 
 [node name="save_point" type="Area2D"]
@@ -81,6 +106,8 @@ shape = SubResource("RectangleShape2D_cergc")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_uskgs")
+animation = &"open"
+frame_progress = 0.181731
 
 [node name="Label" type="Label" parent="."]
 offset_left = -16.0
