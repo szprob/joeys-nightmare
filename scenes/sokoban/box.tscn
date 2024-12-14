@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/sokoban/basic_box.gd" id="1_mcoht"]
 [ext_resource type="Texture2D" uid="uid://btgd8wdsdtvdg" path="res://assets/sprites/wario/Game Boy Advance - Wario Land 4 - Crescent Moon Village.png" id="2_2t4gm"]
 [ext_resource type="Texture2D" uid="uid://cnv7kbgqqddl3" path="res://assets/sprites/background/intro/box1.png" id="3_oqtn4"]
-[ext_resource type="Texture2D" uid="uid://eq17cjlinca2" path="res://assets/sprites/bricks/Castle brick 8.0.png" id="4_f7g1g"]
+[ext_resource type="Texture2D" uid="uid://dhq0ubu5ta7tv" path="res://assets/sprites/bricks/Castle brick 8.0.png" id="4_f7g1g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwdh7"]
 size = Vector2(30, 30)

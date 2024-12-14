@@ -7,6 +7,7 @@ enum Way { IN, OUT }
 @export var teleport_cooldown_time: float = 0.8
 @export var teleport_time: float = 0.1
 @export var way: Way = Way.IN
+@export var keep_end_vec: bool = true
 # 添加配对传送门的引用
 @export var paired_portal: Area2D
 @export var target: Area2D
@@ -116,6 +117,8 @@ func _on_timer2_timeout() -> void:
 			offset = Vector2(32, 0)
 			
 		current_body.global_position = target_pos + offset
+		if not keep_end_vec:
+			current_body.velocity = Vector2.ZERO
 		
 		# 设置冷却状态为false（不能传送）
 		cooldown_states[current_body] = false
