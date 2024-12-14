@@ -6,6 +6,8 @@ extends Node2D
 @export var camera: Camera2D
 @export var subtitle_container: Control
 @export var subtitle_label: Label
+@export var transition_scene: String = "res://scenes/modules/checkpoints/transition.tscn" # 添加过渡场景路径
+
 
 var subtitles = [
 	{"time": 0, "text": "A* studio presents"},
@@ -61,4 +63,6 @@ func end_scene():
 	if npc.has_method("stop_auto_run"):
 		npc.stop_auto_run()
 	# 这里可以切换到下一个场景或触发其他事件
-	get_tree().change_scene_to_file("res://scenes/day/game/game.tscn")
+	GameManager.game_state['target_scene'] = "res://scenes/day/game/game.tscn"
+	GameManager.game_state['teleport_type'] = 'dream2day'
+	get_tree().change_scene_to_file(transition_scene)
