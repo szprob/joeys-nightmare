@@ -6,6 +6,15 @@ const grid_size = 16
 
 func _ready() -> void:
 	GameManager.camera_shake_requested.connect(_on_camera_shake_requested)
+	# Set position smoothing to false initially
+	position_smoothing_enabled = false
+	
+	# Create a timer to enable smoothing after 1 second
+	var timer = get_tree().create_timer(1.0)
+	timer.timeout.connect(_enable_smoothing)
+
+func _enable_smoothing() -> void:
+	position_smoothing_enabled = true
 
 func _on_camera_shake_requested(strength: float, duration: float) -> void:
 	shake_camera(strength, duration)
