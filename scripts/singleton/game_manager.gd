@@ -29,7 +29,7 @@ var bgm_resources = {
 var dialogue_image_storage = {
 	"joey_normal": "res://assets/sprites/day/character/JOEY帅气版.png",
 	"joey_happy": "res://assets/sprites/day/character/joey帅气版2.png",
-	"doctor": "res://assets/sprites/day/character/doctor1.png",
+	"doctor": "res://assets/sprites/day/character/642.png",
 	"radio": "res://assets/sprites/day/enrich/收音机1.png",
 	"id_card": "res://assets/sprites/day/room/身份证.png",
 	"shoe": "res://assets/sprites/day/new_room/AJ.png",
@@ -88,6 +88,7 @@ func init_default_state():
 		'tub_water_phase': 0,
 		'light1_visble': true,
 		'light2_visble': true,
+		'light3_visble': true,
 		'fire_extincted': false,
 		"is_room2_entered": false,
 		"water_gun_filled": false,
@@ -362,24 +363,34 @@ func is_light1_visible() -> bool:
 	
 func is_light2_visible() -> bool:
 	return game_state['light2_visble']
+	
+func is_light3_visible() -> bool:
+	return game_state['light3_visble']
 
 func get_light_visble(index: int) -> bool:
 	if index == 1:
 		return is_light1_visible()
-	else:
+	elif index == 2:
 		return is_light2_visible()
+	else:
+		return is_light3_visible()
 
 func set_light_visble(visble_value: bool, index: int) -> void:
 	if index == 1:
 		set_light1_visble(visble_value)
-	else:
+	elif index == 2:
 		set_light2_visble(visble_value)
+	else:
+		set_light3_visble(visble_value)
 
 func set_light1_visble(visble_value: bool) -> void:
 	game_state['light1_visble'] = visble_value
 	
 func set_light2_visble(visble_value: bool) -> void:
 	game_state['light2_visble'] = visble_value
+	
+func set_light3_visble(visble_value: bool) -> void:
+	game_state['light3_visble'] = visble_value
 	
 func is_fire_extincted() -> bool:
 	return game_state['fire_extincted']
@@ -394,6 +405,9 @@ func is_room3_door_open() -> bool:
 	return game_state['room3_door_open']
 
 func open_room3_door() -> void:
+	print(get_tree().current_scene.name)
+	var door_node = get_node("/root/Game/Room3/Door1") as AnimatedSprite2D
+	door_node.open_door()
 	game_state['room3_door_open'] = true
 
 func switch_day_to_dream(scene_file_path: String) -> void:

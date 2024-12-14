@@ -11,7 +11,8 @@ if GameManager.get_day_phase() == 4:
 	- 是
 		set GameManager.game_state['has_slept'] = true
 		do GameManager.set_day_phase(5)
-		do GameManager.switch_day_to_dream("res://scenes/dreams/bigworldv2/chase_real.tscn")
+		# do GameManager.switch_day_to_dream("res://scenes/dreams/bigworldv2/chase_real.tscn")
+		do GameManager.switch_day_to_dream("res://scenes/dreams/stage1/game.tscn")
 		=> END
 	- 否
 		=> END
@@ -22,7 +23,8 @@ if GameManager.get_day_phase() == 7:
 	if GameManager.is_room2_cleared():
 		Joey[#joey_normal]: 看起来已经没什么线索了,回去吧
 		do GameManager.set_day_phase(8)
-		do GameManager.switch_day_to_dream("res://scenes/dreams/bigworldv2/castel.tscn")
+		# do GameManager.switch_day_to_dream("res://scenes/dreams/bigworldv2/castel.tscn")
+		do GameManager.switch_day_to_dream("res://scenes/dreams/stage1/game.tscn")
 		=> END
 	else:
 		Joey[#joey_normal]: 再看看还有什么线索吧
@@ -30,5 +32,6 @@ if GameManager.get_day_phase() == 7:
 if GameManager.get_day_phase() == 8:
 	Joey[#joey_normal]: 不要犹豫了,赶紧回去吧!
 	do GameManager.set_day_phase(9)
-	do GameManager.switch_day_to_dream("res://scenes/dreams/bigworldv2/final.tscn")
+	# do GameManager.switch_day_to_dream("res://scenes/dreams/bigworldv2/final.tscn")
+	do GameManager.switch_day_to_dream("res://scenes/dreams/stage1/game.tscn")
 	=> END

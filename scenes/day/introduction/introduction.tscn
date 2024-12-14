@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/day/introduction.gd" id="1_dpbxb"]
 [ext_resource type="Texture2D" uid="uid://cg8ajw84tn5cj" path="res://assets/sprites/day/buttons/I.png" id="2_fi6ol"]
-[ext_resource type="Texture2D" uid="uid://ydvf3jt0ukwn" path="res://assets/sprites/day/buttons/E.png" id="3_7htsm"]
-[ext_resource type="Texture2D" uid="uid://bx2bflxt4x4xh" path="res://assets/sprites/day/buttons/Y.png" id="3_d0fpx"]
-[ext_resource type="Texture2D" uid="uid://bk3uq48pwyqwv" path="res://assets/sprites/day/buttons/B.png" id="5_622n4"]
+[ext_resource type="Texture2D" uid="uid://divsh7r2o44af" path="res://assets/sprites/day/buttons/Select.png" id="3_2x75v"]
+[ext_resource type="Texture2D" uid="uid://ded6khmuk830f" path="res://assets/sprites/day/buttons/SPACE.png" id="4_jh1x2"]
+[ext_resource type="Texture2D" uid="uid://bheu1pddj8g45" path="res://assets/sprites/day/buttons/A_Button.png" id="5_45vmr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fmss1"]
 outline_size = 2
@@ -52,7 +52,7 @@ offset_left = -24.0
 offset_top = -1.0
 offset_right = -1.0
 offset_bottom = 22.0
-texture = ExtResource("3_d0fpx")
+texture = ExtResource("3_2x75v")
 
 [node name="Label" type="Label" parent="PackIntro"]
 layout_mode = 0
@@ -74,14 +74,16 @@ label_settings = SubResource("LabelSettings_6ut2n")
 
 [node name="CheckIcon" type="TextureRect" parent="CheckIntro"]
 layout_mode = 0
-offset_left = -60.0
-offset_top = -2.0
-offset_right = 68.0
-offset_bottom = 126.0
+offset_left = -85.0
+offset_top = -15.0
+offset_right = 168.0
+offset_bottom = 238.0
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_7htsm")
+texture = ExtResource("4_jh1x2")
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="CheckIntro"]
+layout_mode = 0
 offset_left = -34.0
 offset_top = -7.0
 offset_right = 6.0
@@ -90,8 +92,8 @@ text = "/"
 label_settings = SubResource("LabelSettings_txb4i")
 
 [node name="XboxCheckIcon" type="TextureRect" parent="CheckIntro"]
-offset_left = -24.0
-offset_top = -1.0
-offset_right = -1.0
+layout_mode = 0
+offset_left = -25.0
+offset_top = -3.0
 offset_bottom = 22.0
-texture = ExtResource("5_622n4")
+texture = ExtResource("5_45vmr")
