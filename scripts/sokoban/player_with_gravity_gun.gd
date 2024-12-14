@@ -129,6 +129,7 @@ func set_can_move(value: bool,state='idle') -> void:
 	
 
 func _physics_process(delta: float) -> void:
+
 	if not can_move:
 		if player_state == 'death':
 			animated_sprite_2d.play('death')
@@ -670,6 +671,9 @@ func end_hook() -> void:
 	can_destroy = false
 	maintain_momentum_after_hook = true
 	has_double_jumped = false
+	is_jumping = 0
+	coyote_timer = 0
+	has_released_jump = true
 	# print('hook end')
 
 
