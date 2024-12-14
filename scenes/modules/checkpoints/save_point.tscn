@@ -1,15 +1,18 @@
-[gd_scene load_steps=19 format=3 uid="uid://kfdbq76ixwrq"]
+[gd_scene load_steps=22 format=3 uid="uid://kfdbq76ixwrq"]
 
 [ext_resource type="Script" path="res://scripts/modules/checkpoints/save_point.gd" id="1_qeoh3"]
 [ext_resource type="Texture2D" uid="uid://djlitwmkmviun" path="res://assets/sprites/human/lamp.png" id="2_bador"]
 [ext_resource type="AudioStream" uid="uid://tb42whn5javk" path="res://assets/sounds/checkpoints/load.wav" id="3_ffag6"]
 [ext_resource type="Texture2D" uid="uid://dc3rowlo1my4s" path="res://assets/sprites/background/intro/light1.png" id="3_utb07"]
+[ext_resource type="Texture2D" uid="uid://dj2dfhg18gm5x" path="res://assets/sprites/modules/save/deng1.png" id="4_7vtrv"]
 [ext_resource type="Texture2D" uid="uid://b24j208mopwtw" path="res://assets/sprites/v2/lamp.png" id="4_ix8he"]
-[ext_resource type="Texture2D" uid="uid://lsasgxej2ns8" path="res://assets/sprites/modules/save/deng0000.png" id="5_sdwl7"]
-[ext_resource type="Texture2D" uid="uid://dq3j3thy4pev" path="res://assets/sprites/modules/save/deng0001.png" id="6_ch8kv"]
-[ext_resource type="Texture2D" uid="uid://28rima8eu1b1" path="res://assets/sprites/modules/save/deng0002.png" id="7_tcr4c"]
-[ext_resource type="Texture2D" uid="uid://c110b2iwf3lwi" path="res://assets/sprites/modules/save/deng0003.png" id="8_l6pfq"]
-[ext_resource type="Texture2D" uid="uid://duqdh4pcjwfkf" path="res://assets/sprites/modules/save/deng0004.png" id="9_n1s4k"]
+[ext_resource type="Texture2D" uid="uid://8or288ntp30q" path="res://assets/sprites/modules/save/未标题-330000.png" id="6_ja7ef"]
+[ext_resource type="Texture2D" uid="uid://c8fa323qw08l0" path="res://assets/sprites/modules/save/未标题-330001.png" id="7_du6de"]
+[ext_resource type="Texture2D" uid="uid://djxng1chnwj2s" path="res://assets/sprites/modules/save/未标题-330002.png" id="8_tjda4"]
+[ext_resource type="Texture2D" uid="uid://c0aumlqj8g6i3" path="res://assets/sprites/modules/save/未标题-330003.png" id="9_ekt7k"]
+[ext_resource type="Texture2D" uid="uid://dr2qgxosyd4x2" path="res://assets/sprites/modules/save/未标题-330004.png" id="10_8q2y3"]
+[ext_resource type="Texture2D" uid="uid://par7mcsy7pa5" path="res://assets/sprites/modules/save/未标题-330005.png" id="11_2yhdf"]
+[ext_resource type="Texture2D" uid="uid://cm8yew12c2y4a" path="res://assets/sprites/modules/save/未标题-330006.png" id="12_sk5bv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cergc"]
 size = Vector2(15.625, 44)
@@ -64,6 +67,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("4_7vtrv")
+}],
+"loop": true,
+"name": &"close",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_6aq20")
 }, {
 "duration": 1.0,
@@ -75,23 +86,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_sdwl7")
+"texture": ExtResource("6_ja7ef")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_ch8kv")
+"texture": ExtResource("7_du6de")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_tcr4c")
+"texture": ExtResource("8_tjda4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_l6pfq")
+"texture": ExtResource("9_ekt7k")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_n1s4k")
+"texture": ExtResource("10_8q2y3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2yhdf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_sk5bv")
 }],
 "loop": true,
 "name": &"open",
-"speed": 12.0
+"speed": 2.0
 }]
 
 [node name="save_point" type="Area2D"]
@@ -107,7 +124,8 @@ shape = SubResource("RectangleShape2D_cergc")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_uskgs")
 animation = &"open"
-frame_progress = 0.181731
+autoplay = "close"
+frame_progress = 0.737423
 
 [node name="Label" type="Label" parent="."]
 offset_left = -16.0

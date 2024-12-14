@@ -19,7 +19,7 @@ func _ready() -> void:
 	saved_timer.wait_time = saved_time
 	add_child(saved_timer)
 	saved_timer.timeout.connect(_on_saved_timer_timeout)
-	animated_sprite_2d.frame = 0
+	animated_sprite_2d.play("close")
 
 
 func _on_body_entered(body: CharacterBody2D) -> void:
@@ -30,7 +30,7 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 		if sfx_player:
 			sfx_player.play()
 		has_been_activated = true
-		animated_sprite_2d.frame = 1
+		animated_sprite_2d.play("open")
 		var current_scene_path = get_tree().current_scene.scene_file_path
 		GameManager.game_state['last_scene_path'] = current_scene_path
 		GameManager.game_state['current_respawn_point_x'] = global_position.x
