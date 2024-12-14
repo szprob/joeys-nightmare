@@ -31,8 +31,10 @@ var is_init: bool = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var collision_shape2: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
+@export var can_destroy: bool = false
 @export var idle_time = 2 
 @export var can_move_time = 0.5
 @export var dash_speed: float = 400.0
@@ -57,6 +59,7 @@ func _ready():
 		if child is Area2D:
 			areas.append(child)
 	
+	collision_shape2.disabled = true
 	# 加载当前区域
 	current_area_index = GameManager.game_state['boss']['boos1']['current_area_index']
 	global_position = areas[current_area_index].global_position
@@ -158,7 +161,9 @@ func change_state(new_state):
 	rotation = 0
 	state = new_state
 	idle_timer = 0 
+	collision_shape2.disabled = true
 	do_detect = (new_state in [State.IDLE, State.SHOOT])
+	can_destroy = false
 
 	match new_state:
 		State.IDLE:
@@ -178,6 +183,8 @@ func change_state(new_state):
 			change_face_direction_and_position(player.global_position)
 			animated_sprite.play_backwards("change")
 		State.DASH:
+			can_destroy = true
+			collision_shape2.disabled = false
 			current_area_index += 1
 			next_position = areas[current_area_index].global_position
 			change_face_direction_and_position(next_position)
