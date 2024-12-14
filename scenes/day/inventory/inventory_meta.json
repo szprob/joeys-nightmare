@@ -15,7 +15,7 @@
 		"index": 2,
 		"name": "钥匙1",
 		"description": "应该能打开卧室的门",
-		"icon": "res://assets/sprites/day/enrich/key_01c.png"
+		"icon": "res://assets/sprites/day/enrich/key_01a.png"
 	},
 	{
 		"index": 3,
@@ -32,13 +32,13 @@
 	{
 		"index": 5,
 		"name": "钩爪",
-		"description": "灵活自如!只要有钩环就可以轻松离地!按Q使用",
-		"icon": "res://assets/sprites/day/enrich/gouzhua.png"
+		"description": "灵活自如!只要有钩环就可以轻松离地!按Q使用，还可以刷新重力AJ的跳跃功能",
+		"icon": "res://assets/sprites/day/enrich/zhua2.png"
 	},
 	{
 		"index": 6,
 		"name": "钥匙2",
 		"description": "应该能打开左侧的门",
-		"icon": "res://assets/sprites/day/enrich/key_01d.png"
+		"icon": "res://assets/sprites/day/enrich/key_01c.png"
 	}
 ]

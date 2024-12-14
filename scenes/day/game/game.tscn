@@ -344,7 +344,7 @@ position = Vector2(333, 106)
 character = NodePath("../../PlayerDay")
 
 [node name="Room3" parent="." instance=ExtResource("10_lkum6")]
-position = Vector2(-480, 272)
+position = Vector2(-480, 270)
 
 [node name="DisplayRoom" parent="." instance=ExtResource("8_8db2n")]
 position = Vector2(480, 272)
@@ -356,9 +356,6 @@ position = Vector2(120, 146)
 scale = Vector2(0.75, 0.75)
 dialog_resource = ExtResource("7_oohak")
 dialog_start = "title"
-
-[node name="AnimatedSprite2D" parent="PlayerDay" index="1"]
-animation = &"idle_back"
 
 [node name="Finder" parent="PlayerDay/Direction" index="0"]
 scale = Vector2(1.37784, 1.37784)

@@ -77,3 +77,7 @@ else:
 			Joey[#joey_normal]: 要是水枪有水说不定能把火灭了
 	do SoundPlayer.stop_sound()
 	=> END
+
+~ water_mirror
+Joey[#joey_normal]: 一个普通的水池.(试着拧了拧龙头，似乎放不出水了)
+=> END
