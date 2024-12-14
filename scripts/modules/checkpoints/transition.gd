@@ -8,7 +8,7 @@ var next_scene_resource: Resource
 
 func _ready():
 	await ready
-	GameManager.pause_bgm()
+	GameManager.stop_bgm()
 	teleport_type = GameManager.game_state['teleport_type']
 	target_scene = GameManager.game_state['target_scene']
 

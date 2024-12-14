@@ -172,11 +172,10 @@ func play_bgm(bgm_name: String) -> void:
 		bgm_player.stream = stream
 		bgm_player.play()
 
-func pause_bgm() -> void:
-	bgm_player.stop()
 		
 func stop_bgm() -> void:
-	bgm_player.stop()
+	if bgm_player:
+		bgm_player.stop()
 
 func set_bgm_volume(volume: float) -> void:
 	game_state['settings']['bgm_volume'] = volume

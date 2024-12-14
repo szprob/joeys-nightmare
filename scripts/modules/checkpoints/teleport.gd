@@ -2,7 +2,7 @@ extends Area2D
 
 enum TeleportType {DAY2DREAM,DREAM2DAY,DREAM2DREAM} 
 
-@export var teleport_time: float = 0.2
+@export var teleport_time: float = 0.9
 @export var target_scene: String = "res://scenes/day/game/game.tscn"
 @export var teleport_type: TeleportType = TeleportType.DREAM2DAY
 @export var transition_scene: String = "res://scenes/modules/checkpoints/transition.tscn"  # 添加过渡场景路径
@@ -32,6 +32,7 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 	if body is CharacterBody2D and GameManager.game_state_cache['do_detect_teleport']:
 		GameManager.game_state_cache['do_detect_teleport'] = false
 		timer.start()
+		audio_player.play()
 	
 
 func _on_timer_timeout():
