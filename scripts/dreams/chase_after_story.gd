@@ -7,6 +7,8 @@ extends Node2D
 @export var subtitle_container: Control
 @export var subtitle_label: Label
 @export var camera_path: Path2D
+@export var title: Sprite2D
+
 var camera_pan_started = false
 
 var subtitles = [
@@ -17,8 +19,7 @@ var subtitles = [
 	{"time": 14, "text": "Art: \n Xiao Cao  Wei Chen"},
 	{"time": 18, "text": "Day Levels: \n YuChen Huang"},
 	{"time": 22, "text": "Special Thanks: \n Friends and Family of GI Team"},
-	{"time": 28, "text": ""},
-	{"time": 32, "text": "Joey's Nightmare"}
+	{"time": 28, "text": ""}
 ]
 
 var current_subtitle = 0
@@ -38,6 +39,8 @@ func _ready():
 	subtitle_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 
 func _process(delta):
+	if title:
+		title.visible = false
 	scene_timer += delta
 	
 	if camera:
@@ -56,11 +59,13 @@ func _process(delta):
 			subtitle_label.text = subtitles[current_subtitle]["text"]
 			current_subtitle += 1
 	
-	# 场景结束条件（例如：10秒后）
+	# 场景结束条件（例如：10秒后） 26
 	if scene_timer >= 26.0 and not camera_pan_started:
 		start_camera_pan()
 		camera_pan_started = true
 		# end_scene()
+	if scene_timer >= 32.0 and title:
+		title.visible = true
 
 func end_scene():
 	player.stop_auto_run()

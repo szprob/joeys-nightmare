@@ -1,8 +1,9 @@
-[gd_scene load_steps=69 format=4 uid="uid://6rq0dekcssec"]
+[gd_scene load_steps=71 format=4 uid="uid://6rq0dekcssec"]
 
 [ext_resource type="Script" path="res://scripts/dreams/chase_after_story.gd" id="1_e45pu"]
 [ext_resource type="PackedScene" uid="uid://cwmufh2pjwfpk" path="res://scenes/player/player_in_story.tscn" id="3_s1gpd"]
 [ext_resource type="PackedScene" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="5_6xfui"]
+[ext_resource type="FontFile" uid="uid://dvlu6bavl0eg7" path="res://assets/fonts/PixelOperator8.ttf" id="5_xic86"]
 [ext_resource type="PackedScene" uid="uid://cybrbhwavabl6" path="res://scenes/player/npc_in_story.tscn" id="6_diti3"]
 [ext_resource type="Texture2D" uid="uid://b5jfcv0uem5wb" path="res://assets/sprites/background/multi3/back2.png" id="7_0jo2e"]
 [ext_resource type="Texture2D" uid="uid://7joprmnjucj5" path="res://assets/sprites/background/multi3/moon2.png" id="8_x5s31"]
@@ -17,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dwon3ombh26jc" path="res://assets/sprites/enemy/achase/Attack.png" id="15_d22ja"]
 [ext_resource type="Texture2D" uid="uid://dilhc6i5slfd3" path="res://assets/sprites/enemy/achase/Get hit.png" id="16_iwq77"]
 [ext_resource type="Texture2D" uid="uid://63xlx2jpyebd" path="res://assets/sprites/background/castel/chengbao.png" id="17_3knih"]
+[ext_resource type="Texture2D" uid="uid://ctjqdxx31422o" path="res://assets/fonts/title.png" id="19_mygd4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fsc12"]
 texture = ExtResource("12_lq67s")
@@ -33,9 +35,9 @@ sources/0 = SubResource("TileSetAtlasSource_fsc12")
 
 [sub_resource type="Curve2D" id="Curve2D_dfg7q"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 2501, -42, 0, 0, 0, 0, 2854, -38, 0, 0, 0, 0, 3519, -413)
+"points": PackedVector2Array(0, 0, 0, 0, 2854, -38, 0, 0, 0, 0, 3519, -413)
 }
-point_count = 3
+point_count = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r6nbh"]
 atlas = ExtResource("12_gc3cu")
@@ -394,7 +396,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="ChaseAfterStory" type="Node2D" node_paths=PackedStringArray("player", "npc", "camera", "subtitle_container", "subtitle_label", "camera_path") groups=["scan_lines"]]
+[node name="ChaseAfterStory" type="Node2D" node_paths=PackedStringArray("player", "npc", "camera", "subtitle_container", "subtitle_label", "camera_path", "title") groups=["scan_lines"]]
 z_index = 1
 script = ExtResource("1_e45pu")
 player = NodePath("PlayerInStory")
@@ -403,6 +405,7 @@ camera = NodePath("PlayerInStory/Camera2D")
 subtitle_container = NodePath("SubtitleLayer/SubtitileContainer")
 subtitle_label = NodePath("SubtitleLayer/SubtitileContainer/SubtitleLabel")
 camera_path = NodePath("Path2D")
+title = NodePath("titile")
 
 [node name="PlayerInStory" parent="." instance=ExtResource("3_s1gpd")]
 position = Vector2(73, 29)
@@ -455,6 +458,8 @@ offset_left = 42.0
 offset_top = -22.0
 offset_right = 173.0
 offset_bottom = 1.0
+theme_override_fonts/font = ExtResource("5_xic86")
+theme_override_font_sizes/font_size = 12
 text = "Press [Space]  [K]"
 
 [node name="backgroud" type="Node2D" parent="."]
@@ -631,3 +636,9 @@ position = Vector2(90, -40.545)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("12_i4qwl")
 centered = false
+
+[node name="titile" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(3394, -416)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("19_mygd4")
