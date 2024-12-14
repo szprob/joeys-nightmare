@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=4 uid="uid://bmq25pi5e8wan"]
+[gd_scene load_steps=105 format=4 uid="uid://bmq25pi5e8wan"]
 
 [ext_resource type="Texture2D" uid="uid://dapevi3u1jt0p" path="res://assets/sprites/day/room/TopDownHouse_FloorsAndWalls.png" id="1_h0361"]
 [ext_resource type="Texture2D" uid="uid://crnm18qdhogs2" path="res://assets/sprites/day/new_room/16x16-ALL_ASSETS-floor-walls.png" id="1_ii4xy"]
@@ -19,7 +19,9 @@
 [ext_resource type="Shader" path="res://scenes/day/room1/blink.gdshader" id="14_3xj6h"]
 [ext_resource type="FontFile" uid="uid://5btxwrwd804s" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="18_uwswc"]
 [ext_resource type="AudioStream" uid="uid://cnvum410tmlnh" path="res://assets/sounds/interface/door.wav" id="20_p5g06"]
+[ext_resource type="Texture2D" uid="uid://bb61dtx8d0c8d" path="res://assets/sprites/day/buttons/E-Key.png" id="21_6kkmq"]
 [ext_resource type="Texture2D" uid="uid://bvjbslqiojovb" path="res://assets/sprites/day/enrich/收音机1.png" id="21_a55nh"]
+[ext_resource type="Texture2D" uid="uid://50ts0nb4lhfc" path="res://assets/sprites/day/buttons/B_Animation.png" id="21_q42v4"]
 [ext_resource type="Resource" uid="uid://6a0f0mm58veq" path="res://scenes/day/dialogues/openning.dialogue" id="22_7iggc"]
 [ext_resource type="Script" path="res://scripts/day/radio.gd" id="22_64xqc"]
 [ext_resource type="Script" path="res://scripts/day/toilet.gd" id="24_c2bjv"]
@@ -7652,6 +7654,64 @@ font_size = 33
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_shvw7"]
+atlas = ExtResource("21_6kkmq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qd6hk"]
+atlas = ExtResource("21_6kkmq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e2efq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shvw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qd6hk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tae2k"]
+atlas = ExtResource("21_q42v4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3imkt"]
+atlas = ExtResource("21_q42v4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c35i"]
+atlas = ExtResource("21_q42v4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34xpm"]
+atlas = ExtResource("21_q42v4")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_scbdx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tae2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3imkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c35i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34xpm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bfn3l"]
 size = Vector2(18.7505, 14.0629)
 
@@ -7843,12 +7903,12 @@ tile_set = SubResource("TileSet_ayk0p")
 
 [node name="furniture_front" type="TileMapLayer" parent="."]
 z_index = 2
-tile_map_data = PackedByteArray("AAABAA0AAAANAAAAAAABAA4AAAANAAEAAAABAA8AAAANAAIAAAAIAA4AAAAGAAQAAAAIAA8AAAAGAAUAAAAJAA4AAAAHAAQAAAAJAA8AAAAHAAUAAAAGAA4AAAACAAsAAAAGAA8AAAACAAwAAAAHAA4AAAADAAsAAAAHAA8AAAADAAwAAAAPAAsAAAAKAAQAAAAQAAsAAAALAAQAAAARAAsAAAAMAAQAAAAWAAsAAAAJABwAAAAWAAwAAAAJAB0AAAAXAAsAAAAKABwAAAAXAAwAAAAKAB0AAAAYAAsAAAALABwAAAAYAAwAAAALAB0AAAAaAAsAAAAJABwAAAAaAAwAAAAJAB0AAAAbAAsAAAAKABwAAAAbAAwAAAAKAB0AAAAcAAsAAAALABwAAAAcAAwAAAALAB0AAAAcAA4AAAAIABwAAAAcAA8AAAAIAB4AAAA=")
+tile_map_data = PackedByteArray("AAABAA0AAAANAAAAAAABAA4AAAANAAEAAAABAA8AAAANAAIAAAAIAA4AAAAGAAQAAAAIAA8AAAAGAAUAAAAJAA4AAAAHAAQAAAAJAA8AAAAHAAUAAAAGAA4AAAACAAsAAAAGAA8AAAACAAwAAAAHAA4AAAADAAsAAAAHAA8AAAADAAwAAAAPAAsAAAAKAAQAAAAQAAsAAAALAAQAAAARAAsAAAAMAAQAAAAWAAsAAAAJABwAAAAWAAwAAAAJAB0AAAAXAAsAAAAKABwAAAAXAAwAAAAKAB0AAAAbAAsAAAAKABwAAAAbAAwAAAAKAB0AAAAcAAsAAAALABwAAAAcAAwAAAALAB0AAAAcAA4AAAAIABwAAAAcAA8AAAAIAB4AAAAYAAwAAAALAB0AAAAYAAsAAAALABwAAAA=")
 tile_set = SubResource("TileSet_4scm4")
 
 [node name="furniture_back" type="TileMapLayer" parent="."]
 z_index = 1
-tile_map_data = PackedByteArray("AAAGAAUAAQALABQAAAAGAAYAAQALABUAAAAGAAcAAQALABYAAAAGAAgAAQALABcAAAAHAAUAAQAMABQAAAAHAAYAAQAMABUAAAAHAAcAAQAMABYAAAAHAAgAAQAMABcAAAAIAAUAAQANABQAAAAIAAYAAQANABUAAAAIAAcAAQANABYAAAAIAAgAAQANABcAAAAJAAUAAQAOABQAAAAJAAYAAQAOABUAAAAJAAcAAQAOABYAAAAJAAgAAQAOABcAAAACAAgAAQAEABQAAAACAAkAAQAEABUAAAACAAoAAQAEABYAAAACAAsAAQAEABcAAAADAAgAAQAFABQAAAADAAkAAQAFABUAAAADAAoAAQAFABYAAAADAAsAAQAFABcAAAAEAAgAAQAGABQAAAAEAAkAAQAGABUAAAAEAAoAAQAGABYAAAAEAAsAAQAGABcAAAAFAAgAAQAHABQAAAAFAAkAAQAHABUAAAAFAAoAAQAHABYAAAAFAAsAAQAHABcAAAAYAAYAAQAJABkAAAAYAAcAAQAJABoAAAAYAAgAAQAJABsAAAAZAAYAAQAKABkAAAAZAAcAAQAKABoAAAAZAAgAAQAKABsAAAAaAAYAAQALABkAAAAaAAcAAQALABoAAAAaAAgAAQALABsAAAAXAAcAAQAMABoAAAAXAAgAAQAMABsAAAAPAAwAAQAKAAUAAAAQAAwAAQALAAUAAAARAAwAAQAMAAUAAAAWAA0AAQAJAB4AAAAXAA0AAQAKAB4AAAAYAA0AAQALAB4AAAAaAA0AAQAJAB4AAAAbAA0AAQAKAB4AAAAcAA0AAQALAB4AAAAbAAYAAQALAAAAAAAbAAcAAQALAAEAAAAbAAgAAQALAAIAAAAcAAYAAQAMAAAAAAAcAAcAAQAMAAEAAAAcAAgAAQAMAAIAAAAUAAcAAQAIAAQAAAAUAAgAAQAIAAUAAAANAAcAAQAAAAsAAAANAAgAAQAAAAwAAAAOAAcAAQABAAsAAAAOAAgAAQABAAwAAAA=")
+tile_map_data = PackedByteArray("AAAGAAUAAQALABQAAAAGAAYAAQALABUAAAAGAAcAAQALABYAAAAGAAgAAQALABcAAAAHAAUAAQAMABQAAAAHAAYAAQAMABUAAAAHAAcAAQAMABYAAAAHAAgAAQAMABcAAAAIAAUAAQANABQAAAAIAAYAAQANABUAAAAIAAcAAQANABYAAAAIAAgAAQANABcAAAAJAAUAAQAOABQAAAAJAAYAAQAOABUAAAAJAAcAAQAOABYAAAAJAAgAAQAOABcAAAACAAgAAQAEABQAAAACAAkAAQAEABUAAAACAAoAAQAEABYAAAACAAsAAQAEABcAAAADAAgAAQAFABQAAAADAAkAAQAFABUAAAADAAoAAQAFABYAAAADAAsAAQAFABcAAAAEAAgAAQAGABQAAAAEAAkAAQAGABUAAAAEAAoAAQAGABYAAAAEAAsAAQAGABcAAAAFAAgAAQAHABQAAAAFAAkAAQAHABUAAAAFAAoAAQAHABYAAAAFAAsAAQAHABcAAAAYAAYAAQAJABkAAAAYAAcAAQAJABoAAAAYAAgAAQAJABsAAAAZAAYAAQAKABkAAAAZAAcAAQAKABoAAAAZAAgAAQAKABsAAAAaAAYAAQALABkAAAAaAAcAAQALABoAAAAaAAgAAQALABsAAAAXAAcAAQAMABoAAAAXAAgAAQAMABsAAAAPAAwAAQAKAAUAAAAQAAwAAQALAAUAAAARAAwAAQAMAAUAAAAWAA0AAQAJAB4AAAAXAA0AAQAKAB4AAAAYAA0AAQALAB4AAAAbAA0AAQAKAB4AAAAcAA0AAQALAB4AAAAbAAYAAQALAAAAAAAbAAcAAQALAAEAAAAbAAgAAQALAAIAAAAcAAYAAQAMAAAAAAAcAAcAAQAMAAEAAAAcAAgAAQAMAAIAAAAUAAcAAQAIAAQAAAAUAAgAAQAIAAUAAAANAAcAAQAAAAsAAAANAAgAAQAAAAwAAAAOAAcAAQABAAsAAAAOAAgAAQABAAwAAAA=")
 tile_set = SubResource("TileSet_vda0e")
 
 [node name="wall" type="TileMapLayer" parent="."]
@@ -7950,9 +8010,9 @@ anchor_left = 0.5
 anchor_top = -0.854
 anchor_right = 0.5
 anchor_bottom = -0.854
-offset_left = -81.4549
+offset_left = -81.4577
 offset_top = -30.324
-offset_right = 5.54454
+offset_right = 5.54176
 offset_bottom = 134.676
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(2.40654e-07, 0.288411, 0.254277, 1)
@@ -7968,14 +8028,30 @@ libraries = {
 autoplay = "hint"
 
 [node name="GuideText" type="Label" parent="身份证/Outline"]
-z_index = 1
-offset_left = -246.319
-offset_top = -340.478
-offset_right = -31.3185
-offset_bottom = -291.478
+z_index = -1
+offset_left = 3.0
+offset_top = -340.0
+offset_right = 28.0
+offset_bottom = -291.0
 scale = Vector2(2.35885, 3.36792)
-text = "Press E"
+text = "/"
 label_settings = SubResource("LabelSettings_4nbe0")
+
+[node name="EKey" type="AnimatedSprite2D" parent="身份证/Outline"]
+z_index = -1
+position = Vector2(121.978, -303.906)
+scale = Vector2(3.22013, 4.82143)
+sprite_frames = SubResource("SpriteFrames_e2efq")
+autoplay = "default"
+frame_progress = 0.00935396
+
+[node name="BButton" type="AnimatedSprite2D" parent="身份证/Outline"]
+z_index = -1
+position = Vector2(-56.2298, -303.906)
+scale = Vector2(7.23659, 11.4614)
+sprite_frames = SubResource("SpriteFrames_scbdx")
+autoplay = "default"
+frame_progress = 0.929458
 
 [node name="Actionable" parent="身份证" instance=ExtResource("6_x4b8a")]
 dialogue_resource = ExtResource("11_fcr2e")

@@ -434,6 +434,9 @@ func _input(event: InputEvent) -> void:
 			print("reload")
 			get_tree().change_scene_to_file(GameManager.game_state['last_scene_path'])
 
+func set_inventory_visible(value: bool) -> void:
+	game_state_cache['inventory_visible'] = value
+
 
 func toggle_pause_menu() -> void  :
 	if not game_state.has("is_paused"):

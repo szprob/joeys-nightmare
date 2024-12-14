@@ -1,10 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://67xd1lwqas7a"]
+[gd_scene load_steps=9 format=3 uid="uid://67xd1lwqas7a"]
 
 [ext_resource type="Script" path="res://scripts/day/introduction.gd" id="1_dpbxb"]
 [ext_resource type="Texture2D" uid="uid://cg8ajw84tn5cj" path="res://assets/sprites/day/buttons/I.png" id="2_fi6ol"]
 [ext_resource type="Texture2D" uid="uid://ydvf3jt0ukwn" path="res://assets/sprites/day/buttons/E.png" id="3_7htsm"]
+[ext_resource type="Texture2D" uid="uid://bx2bflxt4x4xh" path="res://assets/sprites/day/buttons/Y.png" id="3_d0fpx"]
+[ext_resource type="Texture2D" uid="uid://bk3uq48pwyqwv" path="res://assets/sprites/day/buttons/B.png" id="5_622n4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fmss1"]
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_txb4i"]
+font_size = 24
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
@@ -32,27 +39,59 @@ label_settings = SubResource("LabelSettings_fmss1")
 
 [node name="PackIcon" type="TextureRect" parent="PackIntro"]
 layout_mode = 0
-offset_left = -26.0
+offset_left = -60.0
 offset_top = -2.0
-offset_right = 102.0
+offset_right = 68.0
 offset_bottom = 126.0
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_fi6ol")
 
+[node name="XboxPackIcon" type="TextureRect" parent="PackIntro"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = -1.0
+offset_right = -1.0
+offset_bottom = 22.0
+texture = ExtResource("3_d0fpx")
+
+[node name="Label" type="Label" parent="PackIntro"]
+layout_mode = 0
+offset_left = -34.0
+offset_top = -7.0
+offset_right = 6.0
+offset_bottom = 27.0
+text = "/"
+label_settings = SubResource("LabelSettings_txb4i")
+
 [node name="CheckIntro" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1776.0
+offset_left = 1750.0
 offset_top = 1050.0
-offset_right = 1840.0
+offset_right = 1814.0
 offset_bottom = 1095.0
 text = "调查"
 label_settings = SubResource("LabelSettings_6ut2n")
 
 [node name="CheckIcon" type="TextureRect" parent="CheckIntro"]
 layout_mode = 0
-offset_left = -26.0
+offset_left = -60.0
 offset_top = -2.0
-offset_right = 102.0
+offset_right = 68.0
 offset_bottom = 126.0
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_7htsm")
+
+[node name="Label" type="Label" parent="CheckIntro"]
+offset_left = -34.0
+offset_top = -7.0
+offset_right = 6.0
+offset_bottom = 27.0
+text = "/"
+label_settings = SubResource("LabelSettings_txb4i")
+
+[node name="XboxCheckIcon" type="TextureRect" parent="CheckIntro"]
+offset_left = -24.0
+offset_top = -1.0
+offset_right = -1.0
+offset_bottom = 22.0
+texture = ExtResource("5_622n4")

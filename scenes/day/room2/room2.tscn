@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://c087iu7sj1ib2" path="res://assets/sprites/day/enrich/telephone_bubble.png" id="14_kqenj"]
 [ext_resource type="Texture2D" uid="uid://c7pvs5yjchet" path="res://assets/sprites/day/enrich/note1.png" id="14_qmy32"]
 [ext_resource type="Script" path="res://scripts/day/safe.gd" id="16_klnae"]
-[ext_resource type="Texture2D" uid="uid://bahqs556vm8kp" path="res://assets/sprites/day/enrich/safe_new.png" id="19_efe8k"]
+[ext_resource type="Texture2D" uid="uid://dw3f2lcqtu6oi" path="res://assets/sprites/day/enrich/safe_final.png" id="19_tkbiv"]
 [ext_resource type="Texture2D" uid="uid://vrlugfe5jgsx" path="res://assets/sprites/day/enrich/key_01c.png" id="21_2kxtc"]
 [ext_resource type="Script" path="res://scripts/day/key_2.gd" id="22_u2vom"]
 
@@ -6700,8 +6700,8 @@ shape = SubResource("RectangleShape2D_xg4qp")
 
 [node name="笔记1" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(153, 119)
-scale = Vector2(0.217391, 0.217391)
+position = Vector2(103, 117)
+scale = Vector2(0.173913, 0.173913)
 texture = ExtResource("14_qmy32")
 script = ExtResource("14_13j01")
 
@@ -6741,7 +6741,7 @@ libraries = {
 
 [node name="Safe" type="Sprite2D" parent="."]
 position = Vector2(395, 129)
-texture = ExtResource("19_efe8k")
+texture = ExtResource("19_tkbiv")
 hframes = 3
 frame = 2
 script = ExtResource("16_klnae")
