@@ -33,6 +33,8 @@ size = Vector2(25, 11)
 position = Vector2(247, 45)
 collision_mask = 129
 script = ExtResource("1_dcxri")
+doors = null
+max_hearing_distance = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gvey7")

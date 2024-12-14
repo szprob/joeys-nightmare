@@ -267,7 +267,8 @@ shape = SubResource("CapsuleShape2D_k0oe3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_tfwbf")
-animation = &"idle_front"
+animation = &"idle_back"
+autoplay = "idle_back"
 
 [node name="Direction" type="Marker2D" parent="."]
 position = Vector2(0, 16)

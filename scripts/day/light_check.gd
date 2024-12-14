@@ -7,8 +7,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#print(GameManager.is_light3_visible())
 	if GameManager.is_all_light_off():
 		return
-	if GameManager.is_light1_visible() or GameManager.is_light2_visible() or !GameManager.is_fire_extincted():
+	if GameManager.is_light1_visible() or GameManager.is_light2_visible() or GameManager.is_light3_visible() or !GameManager.is_fire_extincted():
 		return
 	GameManager.game_state['all_light_off'] = true

@@ -326,3 +326,11 @@ position = Vector2(-6, 3)
 
 [node name="teleport2" parent="." instance=ExtResource("7_lmxhe")]
 position = Vector2(-39, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -14.0
+offset_top = -54.0
+offset_right = 26.0
+offset_bottom = -31.0
+theme_override_font_sizes/font_size = 20
+text = "快 跑 ! ! ! !"

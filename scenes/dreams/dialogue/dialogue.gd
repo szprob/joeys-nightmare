@@ -14,8 +14,11 @@ var dialogue_data: Dictionary = {
 		"npc:记得检查一下衣柜",
 		"npc:小时候的你很喜欢藏东西在哪儿"
 	],
+	'befor_die': [
+		"npc:快跑!!!!"
+	],
 	'die': [
-		"npc:快跑......"
+		"npc:活下去....."
 	],
 	'cave': [
 		"npc:来这边！"

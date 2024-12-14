@@ -1,27 +1,75 @@
-[gd_scene load_steps=5 format=3 uid="uid://8gajxily3trj"]
+[gd_scene load_steps=16 format=3 uid="uid://8gajxily3trj"]
 
 [ext_resource type="Script" path="res://scripts/sokoban/door_1.gd" id="1_o7cmv"]
-[ext_resource type="Texture2D" uid="uid://bolosay51ijuk" path="res://assets/sprites/human/door.png" id="2_clbkq"]
-[ext_resource type="Texture2D" uid="uid://103xnlx8whou" path="res://assets/sprites/background/intro/pillar1.png" id="3_yxf1j"]
+[ext_resource type="Texture2D" uid="uid://biqpbfrh66rdc" path="res://assets/sprites/modules/door/men0000.png" id="3_4kgla"]
+[ext_resource type="Texture2D" uid="uid://18evrebsy2ix" path="res://assets/sprites/modules/door/men0001.png" id="4_ud6dv"]
+[ext_resource type="Texture2D" uid="uid://d2nt80ws5ubj6" path="res://assets/sprites/modules/door/men0002.png" id="5_85xa4"]
+[ext_resource type="Texture2D" uid="uid://ecuo7vfrjlms" path="res://assets/sprites/modules/door/men0003.png" id="6_ly5me"]
+[ext_resource type="Texture2D" uid="uid://d2rrfx66y0a6r" path="res://assets/sprites/modules/door/men0004.png" id="7_ja1rj"]
+[ext_resource type="Texture2D" uid="uid://bd5sebultqrip" path="res://assets/sprites/modules/door/men0005.png" id="8_1cp6t"]
+[ext_resource type="Texture2D" uid="uid://kutgeo00dlw1" path="res://assets/sprites/modules/door/men0006.png" id="9_4c2m0"]
+[ext_resource type="Texture2D" uid="uid://d4cb2uyagui1a" path="res://assets/sprites/modules/door/men0007.png" id="10_q0fxu"]
+[ext_resource type="Texture2D" uid="uid://2mu17h3ymr36" path="res://assets/sprites/modules/door/men0008.png" id="11_la4jm"]
+[ext_resource type="Texture2D" uid="uid://tykr3nhhkbh6" path="res://assets/sprites/modules/door/men0009.png" id="12_dfdei"]
+[ext_resource type="Texture2D" uid="uid://gna84fuqxhfc" path="res://assets/sprites/modules/door/men0010.png" id="13_ui10d"]
+[ext_resource type="AudioStream" uid="uid://cnvum410tmlnh" path="res://assets/sounds/interface/door.wav" id="14_2oj17"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyx6v"]
 size = Vector2(46, 8.99986)
 
-[node name="door-1" type="StaticBody2D"]
-collision_mask = 129
-script = ExtResource("1_o7cmv")
+[sub_resource type="SpriteFrames" id="SpriteFrames_da6ws"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4kgla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ud6dv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_85xa4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ly5me")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ja1rj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1cp6t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4c2m0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_q0fxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_la4jm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_dfdei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ui10d")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_clbkq")
-region_enabled = true
-region_rect = Rect2(0, 0, 16, 48)
+[node name="door-1" type="StaticBody2D"]
+collision_mask = 128
+script = ExtResource("1_o7cmv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.499928, -1.19209e-05)
 rotation = -1.57079
 shape = SubResource("RectangleShape2D_cyx6v")
 
-[node name="v2-1" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_yxf1j")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-20, 0)
+sprite_frames = SubResource("SpriteFrames_da6ws")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_2oj17")
