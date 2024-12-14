@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://8gajxily3trj"]
+[gd_scene load_steps=16 format=3 uid="uid://8gajxily3trj"]
 
 [ext_resource type="Script" path="res://scripts/sokoban/door_1.gd" id="1_o7cmv"]
 [ext_resource type="Texture2D" uid="uid://biqpbfrh66rdc" path="res://assets/sprites/modules/door/men0000.png" id="3_4kgla"]
-[ext_resource type="Texture2D" uid="uid://103xnlx8whou" path="res://assets/sprites/background/intro/pillar1.png" id="3_yxf1j"]
 [ext_resource type="Texture2D" uid="uid://18evrebsy2ix" path="res://assets/sprites/modules/door/men0001.png" id="4_ud6dv"]
 [ext_resource type="Texture2D" uid="uid://d2nt80ws5ubj6" path="res://assets/sprites/modules/door/men0002.png" id="5_85xa4"]
 [ext_resource type="Texture2D" uid="uid://ecuo7vfrjlms" path="res://assets/sprites/modules/door/men0003.png" id="6_ly5me"]
@@ -60,7 +59,6 @@ animations = [{
 }]
 
 [node name="door-1" type="StaticBody2D"]
-collision_layer = 0
 collision_mask = 128
 script = ExtResource("1_o7cmv")
 
@@ -68,11 +66,6 @@ script = ExtResource("1_o7cmv")
 position = Vector2(0.499928, -1.19209e-05)
 rotation = -1.57079
 shape = SubResource("RectangleShape2D_cyx6v")
-
-[node name="v2-1" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_yxf1j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-20, 0)

@@ -10,7 +10,7 @@ func open():
 	if not is_open:
 		print('open door')
 		is_open=true
-		collision_shape.disabled=true
+		self.set_collision_layer(0)
 		animated_sprite.play()
 		audio_player.play()
 
@@ -18,6 +18,6 @@ func close():
 	if is_open:
 		print('close door')
 		is_open=false
-		collision_shape.disabled=false
+		self.set_collision_layer(1)
 		animated_sprite.play_backwards()
 		audio_player.play()
