@@ -145,10 +145,10 @@ func generate_string(length: int, target_sum: int) -> String:
 			if diff < min_diff:
 				min_diff = diff
 				chosen_char = c
-        
+		
 		result.append(chosen_char)
 		remaining_sum -= chosen_char.to_ascii_buffer()[0]
-    
+	
 	# 最后一个位置用于平衡总和
 	var last_ascii = remaining_sum
 	var last_char = "a"
@@ -158,10 +158,10 @@ func generate_string(length: int, target_sum: int) -> String:
 		if diff < min_diff:
 			min_diff = diff
 			last_char = c
-    
+	
 	result.append(last_char)
-    
+	
 	# 随机打乱结果
 	result.shuffle()
-    
+	
 	return "".join(PackedStringArray(result))
