@@ -72,14 +72,6 @@ sprite_frames = SubResource("SpriteFrames_s3wi2")
 autoplay = "default"
 frame_progress = 0.512197
 
-[node name="Label" type="Label" parent="."]
-offset_left = -97.5
-offset_top = -82.5
-offset_right = 111.5
-offset_bottom = -46.5
-theme_override_font_sizes/font_size = 26
-text = "Press E to enter"
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_cbcyq")
 
