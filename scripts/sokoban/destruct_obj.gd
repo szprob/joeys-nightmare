@@ -218,9 +218,12 @@ func _ready():
 	# print('optimal_h_blocks: ', optimal_h_blocks)
 	# print('optimal_v_blocks: ', optimal_v_blocks)
 	# # 确保分割数量是偶数
-	optimal_h_blocks = optimal_h_blocks - (optimal_h_blocks % 2)
-	optimal_v_blocks = optimal_v_blocks - (optimal_v_blocks % 2)
-	
+	optimal_h_blocks = floor(optimal_h_blocks / 2.0) * 2
+	optimal_v_blocks = floor(optimal_v_blocks / 2.0) * 2
+
+	# 确保至少有2x2的分割
+	optimal_h_blocks = max(2, optimal_h_blocks)
+	optimal_v_blocks = max(2, optimal_v_blocks)
 	# # 设置分割
 	# sprite.frame = 0
 	# sprite.vframes = optimal_v_blocks
