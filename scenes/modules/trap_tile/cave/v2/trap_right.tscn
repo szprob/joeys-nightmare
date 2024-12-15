@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://coseeskw1r3hx"]
+
+[ext_resource type="Texture2D" uid="uid://c37o5na4fi670" path="res://assets/sprites/cave/Burrow6.0.png" id="1_4coai"]
+[ext_resource type="Texture2D" uid="uid://bwfxekt16jbbl" path="res://assets/sprites/human/trap.png" id="2_2e8bk"]
+[ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_dmsk5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgnui"]
+atlas = ExtResource("1_4coai")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oy23u"]
+atlas = ExtResource("1_4coai")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8f63d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgnui")
+}],
+"loop": true,
+"name": &"cave",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oy23u")
+}],
+"loop": true,
+"name": &"cave-2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2e8bk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_18lyn"]
+points = PackedVector2Array(-1, -14, -16, 15, 16, 15)
+
+[node name="BlockTrap" type="Area2D"]
+collision_mask = 128
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8f63d")
+animation = &"cave-2"
+autoplay = "cave-2"
+
+[node name="kill_zone" parent="." instance=ExtResource("3_dmsk5")]
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
+rotation = 1.5708
+scale = Vector2(0.8, 0.8)
+shape = SubResource("ConvexPolygonShape2D_18lyn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="ready" from="." to="." method="_on_ready"]

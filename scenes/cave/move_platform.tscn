@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://hhhn0o2n65ys"]
+
+[ext_resource type="Script" path="res://scripts/modules/platforms/move_platform.gd" id="1_evxus"]
+[ext_resource type="Texture2D" uid="uid://cmbxyp4glv8m7" path="res://assets/sprites/human/platform2.png" id="2_fam8r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aii1e"]
+size = Vector2(29, 7.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwlgc"]
+size = Vector2(40.5, 5)
+
+[node name="move_platform" type="AnimatableBody2D"]
+collision_layer = 2
+script = ExtResource("1_evxus")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 1)
+texture = ExtResource("2_fam8r")
+region_enabled = true
+region_rect = Rect2(0, 1, 31, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(3, 1)
+shape = SubResource("RectangleShape2D_aii1e")
+one_way_collision = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="detection" type="Area2D" parent="."]
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+position = Vector2(-0.5, -4)
+scale = Vector2(2, 1)
+shape = SubResource("RectangleShape2D_cwlgc")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="detection" to="." method="_on_detection_body_exited"]
