@@ -1118,7 +1118,7 @@ centered = false
 
 [node name="bird2" type="Parallax2D" parent="backgroud"]
 z_index = -1
-scroll_scale = Vector2(0.15, 0)
+scroll_scale = Vector2(0.03, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="backgroud/bird2"]
 position = Vector2(256, 152)
