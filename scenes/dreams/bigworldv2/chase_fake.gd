@@ -2,6 +2,7 @@ extends Node2D
 
 @export var intro_camera: Camera2D # 专门用于开场动画的相机
 @export var player_camera: Camera2D # 假设这是角色相机的路径
+@onready var monster = $Monster
 var is_camera_panning := false
 var start_position: Vector2
 var target_position: Vector2
@@ -22,6 +23,7 @@ func _ready() -> void:
 		start_camera_pan()
 		intro_played = true
 	else:
+		monster.init_wait_time = 1.5
 		player_camera.enabled = true
 		intro_camera.enabled = false
 
