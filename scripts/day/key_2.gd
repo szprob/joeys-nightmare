@@ -3,7 +3,7 @@ extends Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if GameManager.get_day_phase() != 9:
+	if GameManager.get_day_phase() != 8:
 		queue_free()
 
 
