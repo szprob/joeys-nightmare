@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dt5ajotyxww1c"]
 
 [ext_resource type="PackedScene" uid="uid://uameo0xhgfwd" path="res://scenes/sokoban/destruct_obj.tscn" id="1_paxae"]
-[ext_resource type="Texture2D" uid="uid://d2fjkav1x6a2i" path="res://assets/sprites/bricks/Castle brick 8.0.png" id="2_2gcwc"]
+[ext_resource type="Texture2D" uid="uid://dgop2tcnkecbm" path="res://assets/sprites/bricks/Castle brick 15.0.png" id="2_xiai7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_28yg6"]
 size = Vector2(16, 16)
@@ -23,9 +23,9 @@ shape = SubResource("RectangleShape2D_28yg6")
 [node name="node-to-explode" type="Area2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="node-to-explode"]
-texture = ExtResource("2_2gcwc")
+texture = ExtResource("2_xiai7")
 region_enabled = true
-region_rect = Rect2(224, 32, 16, 16)
+region_rect = Rect2(736, 80, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="node-to-explode"]
 shape = SubResource("RectangleShape2D_anx5e")

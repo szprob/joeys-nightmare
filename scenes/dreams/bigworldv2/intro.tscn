@@ -7365,6 +7365,7 @@ position = Vector2(616, -8)
 
 [node name="kill_zone" parent="maps" instance=ExtResource("214_r2cob")]
 position = Vector2(-464, -304)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="maps/kill_zone"]
 rotation = 1.5708
