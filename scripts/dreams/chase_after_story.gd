@@ -123,4 +123,3 @@ func start_camera_pan():
 	tween.tween_property(path_follow, "progress_ratio", 1.0, 5.0).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_interval(2.0)
 	tween.tween_callback(end_scene)
-

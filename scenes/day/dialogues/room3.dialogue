@@ -22,5 +22,42 @@ else:
 => END
 
 ~ macintosh
-[#macintosh]: 恭喜你过关了,感谢你的游玩!
+[#macintosh]: 确认您的身份
+- Joey
+	=> tracy_final
+- root
+	do SoundPlayer.play_sound("res://assets/sounds/day/mac-iix-16-bit-45958.mp3")
+	do GameManager.show_hello()
+=> END
+
+~ tracy_final
+if GameManager.get_day_phase() < 9:
+	=> tracy_answer
+elif GameManager.get_day_phase() == 9:
+	=> tracy_finish
+else:
+	[#macintosh]: 404 Not Found
+=> END
+
+~ tracy_answer
+[#macintosh]: ...Connecting...
+Miss T[#doctor]: Joey,能听到吗?
+Joey[#joey_normal]: 能...
+Miss T[#doctor]: 我为她的遭遇感到遗憾,不过你有能力为她报仇
+Joey[#joey_normal]: 请你马上告诉我!
+Miss T[#doctor]: 在这之前我想问你,你有没有想过她是谁,你为什么会担心她
+Joey[#joey_normal]: 我并不知道,但是我总觉得她很熟悉,会给我安全感,就像你给我的感觉一样
+Miss T[#doctor]: 也许在这场战斗之后你就会知道了
+Miss T[#doctor]: 战胜她的方法其实很简单. 不知道你有没有疑问,
+	为什么当你关掉灯光熄灭炉火你还是能看清周围
+Miss T[#doctor]: 因为在这个世界,你自己就是光源. 你能看见周围的一切并不是因为一盏简单的夜灯
+Miss T[#doctor]: 当光明照向黑暗,黑暗便不复存在了
+Joey[#joey_normal]: 所以你的意思是?
+Miss T[#doctor]: 只需要触碰到她,就能对她造成伤害,就这么简单
+Miss T[#doctor]: 时间差不多了,快去吧,你能将那个世界从黑暗拯救出来
+do GameManager.set_day_phase(9)
+=> END
+
+~ tracy_finish
+Miss T[#doctor]: [[快去吧,我相信你能打败她|你一定可以战胜她的]]
 => END

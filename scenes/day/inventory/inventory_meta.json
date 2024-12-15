@@ -25,8 +25,8 @@
 	},
 	{
 		"index": 4,
-		"name": "笔记1",
-		"description": "我总是很害怕在夜晚入睡，因为恶梦总是困扰我，我将在12月23日那天拜访您，希望你能治好的我的病\n                             ——Joey",
+		"name": "信",
+		"description": "Tracy医生，我想我已经准备好接受梦境疗法了，我将在12月23日晚10点到，希望在我醒来的时候能与你共享晚餐\n                             ——Joey",
 		"icon": "res://assets/sprites/day/enrich/note1.png"
 	},
 	{
@@ -40,5 +40,11 @@
 		"name": "钥匙2",
 		"description": "应该能打开左侧的门",
 		"icon": "res://assets/sprites/day/enrich/key_01c.png"
+	},
+	{
+		"index": 7,
+		"name": "留言",
+		"description": "Miss T的留下的信,去一楼东侧的房间吧",
+		"icon": "res://assets/sprites/day/enrich/信封1.png"
 	}
 ]

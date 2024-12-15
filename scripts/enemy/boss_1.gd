@@ -123,7 +123,7 @@ func handle_idle_state(delta):
 # shoot
 func _on_timer_timeout() -> void:
 	var ball_instance = ball.instantiate()
-	var offset = Vector2(70, 0) if player.global_position.x > global_position.x else Vector2(-70, 0)
+	var offset = Vector2(60, 0) if sign_scale_x == 1 else Vector2(-60, 0)
 	ball_instance.global_position = global_position + offset
 	ball_instance.set_target(player)
 	get_tree().current_scene.add_child(ball_instance)
@@ -169,9 +169,10 @@ func change_state(new_state):
 	collision_shape2.disabled = true
 	do_detect = (new_state in [State.IDLE, State.SHOOT])
 	can_destroy = false
-
+	
 	match new_state:
 		State.IDLE:
+			GameManager.game_state['boss']['boos1']['current_area_index'] = current_area_index
 			change_face_direction_and_position(player.global_position)
 			animated_sprite.play("idle")
 		State.SHOOT:
@@ -209,7 +210,7 @@ func on_body_entered(body):
 		# 给玩家一个反向作用力
 		if body.has_method("apply_force"):
 			var collision_direction = (body.global_position - global_position).normalized()
-			body.apply_force(collision_direction * 200)
+			body.apply_force(collision_direction * 1000)
 			body.set_can_move(false,'jump')
 			can_move_timer.start(can_move_time)
 		change_state(State.STUN)

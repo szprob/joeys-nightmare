@@ -44,7 +44,11 @@ var dialogue_image_storage = {
 	"safe_open2": "res://assets/sprites/day/enrich/safe3.png",
 	"room3_door_close": "res://assets/sprites/day/new_room/room3_door_close.png",
 	"room3_door_open": "res://assets/sprites/day/new_room/room3_door_open.png",
-	"macintosh": "res://assets/sprites/day/enrich/macintosh.png"
+	"macintosh": "res://assets/sprites/day/enrich/macintosh.png",
+	"tracy": "res://assets/sprites/day/character/结局女主.png",
+	"tracy_smile": "res://assets/sprites/day/character/tracy_smile.png",
+	"diary": "res://assets/sprites/day/enrich/日记本1.png",
+	"message": "res://assets/sprites/day/enrich/信封1.png"
 }
 var game_state = {}
 var game_state_cache = {'can_detect_kill_zone': true, 
@@ -396,7 +400,7 @@ func extinct_fire() -> void:
 	game_state['fire_extincted'] = true
 
 func is_room2_cleared() -> bool:
-	return has_item("笔记1") and has_item("钩爪") and has_item("水枪") and game_state['all_light_off']
+	return has_item("信") and has_item("钩爪") and has_item("水枪") and game_state['all_light_off']
 
 func is_room3_door_open() -> bool:
 	return game_state['room3_door_open']
@@ -430,6 +434,10 @@ func back_to_room3() -> void:
 	
 	var player = new_scene.get_node("PlayerDay")
 	player.position = Vector2(-243, 398)
+
+func show_hello() -> void:
+	var hello_animation = get_node("/root/MacRoom/Hello/HelloAnimation") as AnimationPlayer
+	hello_animation.play("appear")
 
 # 添加暂停相关的方法
 func _input(event: InputEvent) -> void:

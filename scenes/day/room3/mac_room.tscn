@@ -1,14 +1,15 @@
-[gd_scene load_steps=16 format=4 uid="uid://2i5ekhpkw4l5"]
+[gd_scene load_steps=20 format=4 uid="uid://2i5ekhpkw4l5"]
 
 [ext_resource type="TileSet" uid="uid://t4y6n2r0b5hr" path="res://tiles/walls.tres" id="1_gvj0k"]
 [ext_resource type="PackedScene" uid="uid://blydc865qnepa" path="res://scenes/player/player_day.tscn" id="2_b37l8"]
 [ext_resource type="Texture2D" uid="uid://bhbjbeod2a7jv" path="res://assets/sprites/day/new_room/16x16-ALL_ASSETS-furniture.png" id="3_70hyj"]
 [ext_resource type="TileSet" uid="uid://d1hhd27n3lam5" path="res://tiles/light.tres" id="4_65gpb"]
-[ext_resource type="Texture2D" uid="uid://deri7mgcu0fvx" path="res://assets/sprites/day/enrich/macintosh.png" id="5_75owg"]
+[ext_resource type="Texture2D" uid="uid://brsi30x1b2ip5" path="res://assets/sprites/day/enrich/macintosh.png" id="5_75owg"]
 [ext_resource type="PackedScene" uid="uid://byljde6sgcfrv" path="res://scenes/player/actionable.tscn" id="6_l7sf2"]
-[ext_resource type="Resource" uid="uid://c32rhwo7hykyo" path="res://scenes/day/dialogues/room3.dialogue" id="7_cwav1"]
+[ext_resource type="Resource" uid="uid://dnjrm5vbow33l" path="res://scenes/day/dialogues/room3.dialogue" id="7_cwav1"]
 [ext_resource type="PackedScene" uid="uid://c8flj66fr2ymi" path="res://scenes/day/inventory/inventory.tscn" id="8_278uw"]
 [ext_resource type="Script" path="res://scripts/day/exit.gd" id="9_ck8jg"]
+[ext_resource type="Texture2D" uid="uid://7yy7nupkosm7" path="res://assets/sprites/day/enrich/macintosh_hello.png" id="10_ymq7r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_whfio"]
 texture = ExtResource("3_70hyj")
@@ -1240,6 +1241,41 @@ height = 41.6
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21q73"]
 size = Vector2(47, 21)
 
+[sub_resource type="Animation" id="Animation_bdxpv"]
+resource_name = "appear"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="Animation" id="Animation_wn04c"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_77xia"]
+_data = {
+"RESET": SubResource("Animation_wn04c"),
+"appear": SubResource("Animation_bdxpv")
+}
+
 [node name="MacRoom" type="Node2D"]
 
 [node name="wall" type="TileMapLayer" parent="."]
@@ -1289,5 +1325,20 @@ script = ExtResource("9_ck8jg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
 position = Vector2(249, 262.5)
 shape = SubResource("RectangleShape2D_21q73")
+
+[node name="Hello" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 3
+offset_left = 108.0
+offset_top = -15.0
+offset_right = 1508.0
+offset_bottom = 1029.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_ymq7r")
+
+[node name="HelloAnimation" type="AnimationPlayer" parent="Hello"]
+libraries = {
+"": SubResource("AnimationLibrary_77xia")
+}
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
