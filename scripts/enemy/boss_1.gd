@@ -67,7 +67,7 @@ func _ready():
 	# can_destroy = false
 	# 加载当前区域
 	current_area_index = GameManager.game_state['boss']['boos1']['current_area_index']
-	global_position = areas[current_area_index].global_position
+	global_position = pos_list[current_area_index]
 
 	body_entered.connect(on_body_entered)
 	
