@@ -1,9 +1,8 @@
-[gd_scene load_steps=71 format=4 uid="uid://6rq0dekcssec"]
+[gd_scene load_steps=70 format=4 uid="uid://6rq0dekcssec"]
 
 [ext_resource type="Script" path="res://scripts/dreams/chase_after_story.gd" id="1_e45pu"]
 [ext_resource type="PackedScene" uid="uid://cwmufh2pjwfpk" path="res://scenes/player/player_in_story.tscn" id="3_s1gpd"]
 [ext_resource type="PackedScene" path="res://scenes/modules/checkpoints/empty-teleport.tscn" id="5_6xfui"]
-[ext_resource type="FontFile" uid="uid://dvlu6bavl0eg7" path="res://assets/fonts/PixelOperator8.ttf" id="5_xic86"]
 [ext_resource type="PackedScene" uid="uid://cybrbhwavabl6" path="res://scenes/player/npc_in_story.tscn" id="6_diti3"]
 [ext_resource type="Texture2D" uid="uid://b5jfcv0uem5wb" path="res://assets/sprites/background/multi3/back2.png" id="7_0jo2e"]
 [ext_resource type="Texture2D" uid="uid://7joprmnjucj5" path="res://assets/sprites/background/multi3/moon2.png" id="8_x5s31"]
@@ -458,7 +457,6 @@ offset_left = 42.0
 offset_top = -22.0
 offset_right = 173.0
 offset_bottom = 1.0
-theme_override_fonts/font = ExtResource("5_xic86")
 theme_override_font_sizes/font_size = 12
 text = "Press [Space]  [K]"
 
