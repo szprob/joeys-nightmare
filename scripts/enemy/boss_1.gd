@@ -2,6 +2,7 @@ extends Area2D
 
 var player
 var areas: Array[Area2D] = []
+var pos_list: Array[Vector2] = []
 var current_area_index
 var ball 
 var particles_scene
@@ -58,8 +59,11 @@ func _ready():
 	for child in get_children():
 		if child is Area2D:
 			areas.append(child)
-	
+	pos_list = []
+	for area in areas:
+		pos_list.append(area.global_position)
 	collision_shape2.disabled = true
+	# can_destroy = false
 	# 加载当前区域
 	current_area_index = GameManager.game_state['boss']['boos1']['current_area_index']
 	global_position = areas[current_area_index].global_position
@@ -175,7 +179,7 @@ func change_state(new_state):
 			audio_player.play()
 			timer.start()
 		State.CHANGE:
-			if current_area_index + 1 >= areas.size():
+			if current_area_index + 1 >= pos_list.size():
 				change_state(State.DIE)
 				return
 			animated_sprite.play("change")
@@ -186,7 +190,7 @@ func change_state(new_state):
 			can_destroy = true
 			collision_shape2.disabled = false
 			current_area_index += 1
-			next_position = areas[current_area_index].global_position
+			next_position = pos_list[current_area_index]
 			change_face_direction_and_position(next_position)
 			animated_sprite.play("dash")
 		State.STUN:

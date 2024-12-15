@@ -371,15 +371,14 @@ rotation_angular_velocity = 1.0
 
 [node name="Boss1" parent="." instance=ExtResource("7_d7kh0")]
 position = Vector2(-1602, -52)
-do_attack = false
-
-[node name="Area2D" type="Area2D" parent="Boss1"]
-position = Vector2(-94.7754, 2.08257)
 
 [node name="Area2D2" type="Area2D" parent="Boss1"]
-position = Vector2(-184.208, 5.41966)
+position = Vector2(-94.7754, 2.08257)
 
 [node name="Area2D3" type="Area2D" parent="Boss1"]
+position = Vector2(-184.208, 5.41966)
+
+[node name="Area2D4" type="Area2D" parent="Boss1"]
 position = Vector2(-293.97, 12.3095)
 
 [node name="FerrisWheel" parent="." instance=ExtResource("9_5q23d")]
