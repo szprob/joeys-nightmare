@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://berhy2v7l8ihk"]
+[gd_scene load_steps=71 format=3 uid="uid://berhy2v7l8ihk"]
 
 [ext_resource type="Script" path="res://scripts/enemy/boss_1.gd" id="1_edpoa"]
 [ext_resource type="Texture2D" uid="uid://dbcf5sd2a6eub" path="res://assets/sprites/enemy/achase/Death.png" id="3_kw3th"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://vkun8paa4fyo" path="res://assets/sprites/enemy/achase/change/Get hit0008.png" id="11_wtgte"]
 [ext_resource type="Texture2D" uid="uid://dgrkwsgqfp787" path="res://assets/sprites/enemy/achase/change/Get hit0009.png" id="12_qeohf"]
 [ext_resource type="Texture2D" uid="uid://djmjvefc6qxfd" path="res://assets/sprites/enemy/achase/Projectile/Moving.png" id="13_ormg8"]
+[ext_resource type="AudioStream" uid="uid://dwy27phsanvvi" path="res://assets/sounds/explosion.wav" id="19_tpicr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t2h6"]
 atlas = ExtResource("13_ormg8")
@@ -452,3 +453,6 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 13.0769)
 shape = SubResource("RectangleShape2D_m0yc1")
+
+[node name="coll_audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_tpicr")

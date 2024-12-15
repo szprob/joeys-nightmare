@@ -34,6 +34,7 @@ var is_init: bool = false
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var collision_shape2: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var coll_audio: AudioStreamPlayer2D = $coll_audio
 
 @export var can_destroy: bool = false
 @export var idle_time = 2 
@@ -213,6 +214,7 @@ func on_body_entered(body):
 			can_move_timer.start(can_move_time)
 		change_state(State.STUN)
 		create_collision_effect(body.global_position)
+		coll_audio.play()
 
 
 func _on_animation_finished():
