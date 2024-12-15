@@ -15,11 +15,11 @@ var camera_pan_started = false
 var subtitles = [
 	{"time": 0, "text": "A* studio presents"},
 	{"time": 4, "text": "Team members"},
-	{"time": 6, "text": "Producer and Level Design: \n Hougang Zhao"},
-	{"time": 10, "text": "Programming: \n Ze song  Ziyi pan"},
-	{"time": 14, "text": "Art: \n Xiao Cao  Wei Chen"},
-	{"time": 18, "text": "Day Levels: \n YuChen Huang"},
-	{"time": 22, "text": "Special Thanks: \n Friends and Family of GI Team"},
+	{"time": 6, "text": "Producer and Level Design \n Zhao Hougang"},
+	{"time": 10, "text": "Programming \n Sone ze  Pan Ziyi"},
+	{"time": 14, "text": "Art \n Cao Xiao  Tang Chenwei"},
+	{"time": 18, "text": "Day Levels \n Huang Yuchen"},
+	{"time": 22, "text": "Special Thanks \n Friends and Family of GI Team"},
 	{"time": 28, "text": ""}
 ]
 
