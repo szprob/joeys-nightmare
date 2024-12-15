@@ -48,7 +48,7 @@ func start_camera_pan() -> void:
 	is_camera_panning = true
 	pan_timer = 0.0
 	start_position = Vector2(1300, player_camera.global_position.y * 2 + 24) # 起始位置
-	target_position = Vector2(player_camera.global_position.x, player_camera.global_position.y * 2 + 24) # 目标位置
+	target_position = Vector2(player_camera.global_position.x+128, player_camera.global_position.y * 2 + 24) # 目标位置
 	intro_camera.position = start_position
 	get_tree().paused = true
 

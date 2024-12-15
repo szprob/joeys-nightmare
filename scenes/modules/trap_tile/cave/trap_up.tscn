@@ -1,7 +1,7 @@
 [gd_scene load_steps=71 format=3 uid="uid://cojjk73smiu5h"]
 
 [ext_resource type="Script" path="res://scenes/modules/trap_tile/trap_up.gd" id="1_byb22"]
-[ext_resource type="Texture2D" uid="uid://c37o5na4fi670" path="res://assets/sprites/cave/Burrow6.0.png" id="2_e2kn6"]
+[ext_resource type="Texture2D" uid="uid://qswj5lesvayj" path="res://assets/sprites/cave/Burrow6.0.png" id="2_e2kn6"]
 [ext_resource type="Texture2D" uid="uid://bwfxekt16jbbl" path="res://assets/sprites/human/trap.png" id="2_k8wsb"]
 [ext_resource type="Texture2D" uid="uid://ddd58o3kftlsy" path="res://assets/sprites/background/intro/毒/毒_00000.png" id="3_eu7jv"]
 [ext_resource type="Texture2D" uid="uid://hnn66ujlr7et" path="res://assets/sprites/background/intro/毒/毒_00001.png" id="4_rttut"]
@@ -33,11 +33,11 @@
 [ext_resource type="Texture2D" uid="uid://deq5vcwlgaqw" path="res://assets/sprites/background/intro/毒/毒_00027.png" id="30_i716g"]
 [ext_resource type="Texture2D" uid="uid://ddmbjxamfv5on" path="res://assets/sprites/background/intro/毒/毒_00028.png" id="31_ay1iy"]
 [ext_resource type="Texture2D" uid="uid://cgjqiqeqb782l" path="res://assets/sprites/background/intro/毒/毒_00029.png" id="32_6tni2"]
-[ext_resource type="Texture2D" uid="uid://nrojby8da2tw" path="res://assets/sprites/traps/du2.png" id="33_ttwxs"]
+[ext_resource type="Texture2D" uid="uid://cjj02yv2kwuor" path="res://assets/sprites/traps/du2.png" id="33_ttwxs"]
 [ext_resource type="Texture2D" uid="uid://d2cuurcxa6phx" path="res://assets/sprites/background/intro/ci3.png" id="34_5vcjn"]
-[ext_resource type="Texture2D" uid="uid://qmkaa6pmuxjs" path="res://assets/sprites/traps/du2-red.png" id="34_wmhmk"]
+[ext_resource type="Texture2D" uid="uid://df2kmlnjttdb2" path="res://assets/sprites/traps/du2-red.png" id="34_wmhmk"]
 [ext_resource type="Texture2D" uid="uid://dkxtpdfp8ui1c" path="res://assets/sprites/background/intro/ci1.png" id="35_cd2pd"]
-[ext_resource type="Texture2D" uid="uid://d332d6e5komi" path="res://assets/sprites/traps/du2-red-2.png" id="35_dpqwf"]
+[ext_resource type="Texture2D" uid="uid://csrfv8fv4ov31" path="res://assets/sprites/traps/du2-red-2.png" id="35_dpqwf"]
 [ext_resource type="Texture2D" uid="uid://cke7s7ttdvrfj" path="res://assets/sprites/background/intro/ci2.png" id="36_n0jar"]
 [ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="37_enm2h"]
 
@@ -387,6 +387,7 @@ script = ExtResource("1_byb22")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.74978, 0.74978, 0.74978, 1)
+position = Vector2(0, 8)
 sprite_frames = SubResource("SpriteFrames_8f63d")
 animation = &"poison2"
 autoplay = "poison2"

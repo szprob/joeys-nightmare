@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://ba1d8gv48nkth"]
+
+[ext_resource type="Script" path="res://scenes/modules/trap_tile/trap_up.gd" id="1_y4410"]
+[ext_resource type="Texture2D" uid="uid://q82gtmebjgb3" path="res://assets/sprites/bricks/Castle brick 16.0.png" id="2_oduyr"]
+[ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="40_7jji6"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_18lyn"]
+points = PackedVector2Array(-1, -14, -16, 15, 16, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4xal"]
+size = Vector2(17, 17)
+
+[node name="BlockTrap" type="Area2D"]
+position = Vector2(0, -8)
+collision_mask = 128
+script = ExtResource("1_y4410")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_oduyr")
+region_enabled = true
+region_rect = Rect2(304, 64, 16, 32)
+
+[node name="kill_zone" parent="." instance=ExtResource("40_7jji6")]
+position = Vector2(0, -8)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("ConvexPolygonShape2D_18lyn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_v4xal")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="ready" from="." to="." method="_on_ready"]

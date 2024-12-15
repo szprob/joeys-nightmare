@@ -25,7 +25,7 @@ shape = SubResource("RectangleShape2D_28yg6")
 [node name="Sprite2D" type="Sprite2D" parent="node-to-explode"]
 texture = ExtResource("2_xiai7")
 region_enabled = true
-region_rect = Rect2(736, 80, 16, 16)
+region_rect = Rect2(128, 176, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="node-to-explode"]
 shape = SubResource("RectangleShape2D_anx5e")
