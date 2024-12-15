@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://ojcm7cd2jskc"]
+[gd_scene load_steps=67 format=3 uid="uid://ojcm7cd2jskc"]
 
 [ext_resource type="Script" path="res://scripts/sokoban/player_with_gravity_gun.gd" id="1_1dle0"]
 [ext_resource type="Texture2D" uid="uid://lf0vhilxcpkr" path="res://assets/sprites/player/01 - Hobbit/joey假冒版/death.png" id="2_e3wbo"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://c8n5qm0wdo23u" path="res://assets/sounds/player/jump.wav" id="5_rl8ln"]
 [ext_resource type="Texture2D" uid="uid://cir13b3bcqs3" path="res://assets/sprites/player/01 - Hobbit/joey假冒版/run.png" id="5_xwq57"]
 [ext_resource type="AudioStream" uid="uid://dvwm4agtlwa4v" path="res://assets/sounds/player/swing-whoosh-5-198498.mp3" id="9_fatud"]
+[ext_resource type="Texture2D" uid="uid://b3ymbxf3gqkdr" path="res://assets/sprites/v2/jiguang-2.png" id="10_pphje"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1hun"]
 atlas = ExtResource("3_yq4i5")
@@ -477,6 +478,9 @@ stream = ExtResource("9_fatud")
 
 [node name="HookLine" type="Line2D" parent="."]
 z_index = -1
-width = 4.0
+points = PackedVector2Array(571, -32, 591, -16)
+width = 3.0
+texture = ExtResource("10_pphje")
+texture_mode = 1
 
 [connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]
