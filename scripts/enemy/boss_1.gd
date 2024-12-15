@@ -210,7 +210,7 @@ func on_body_entered(body):
 		# 给玩家一个反向作用力
 		if body.has_method("apply_force"):
 			var collision_direction = (body.global_position - global_position).normalized()
-			body.apply_force(collision_direction * 200)
+			body.apply_force(collision_direction * 1000)
 			body.set_can_move(false,'jump')
 			can_move_timer.start(can_move_time)
 		change_state(State.STUN)
