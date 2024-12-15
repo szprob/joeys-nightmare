@@ -169,9 +169,10 @@ func change_state(new_state):
 	collision_shape2.disabled = true
 	do_detect = (new_state in [State.IDLE, State.SHOOT])
 	can_destroy = false
-
+	
 	match new_state:
 		State.IDLE:
+			GameManager.game_state['boss']['boos1']['current_area_index'] = current_area_index
 			change_face_direction_and_position(player.global_position)
 			animated_sprite.play("idle")
 		State.SHOOT:
