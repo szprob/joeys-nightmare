@@ -123,7 +123,7 @@ func handle_idle_state(delta):
 # shoot
 func _on_timer_timeout() -> void:
 	var ball_instance = ball.instantiate()
-	var offset = Vector2(60, 0) if sign_scale_x == 1 else Vector2(-60, 0)
+	var offset = Vector2(50, 0) if sign_scale_x == 1 else Vector2(-50, 0)
 	ball_instance.global_position = global_position + offset
 	ball_instance.set_target(player)
 	get_tree().current_scene.add_child(ball_instance)
