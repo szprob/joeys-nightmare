@@ -13,6 +13,7 @@ func _physics_process(delta):
 	velocity += get_gravity() * delta / mass
 	move_and_slide()
 
+
 func stomp(impulse: Vector2, delta: float):
 	is_stomped = true
 	

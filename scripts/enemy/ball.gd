@@ -42,9 +42,10 @@ func _process(delta: float) -> void:
 func explode():
 	audio_stream_player.play(0.7)
 	animated_sprite.play("explode")
+	kill_zone_collision.disabled = true
 	await animated_sprite.animation_finished
 	visible = false
-	kill_zone_collision.disabled = true
+	
 	
 
 func set_target(target: Node2D):
