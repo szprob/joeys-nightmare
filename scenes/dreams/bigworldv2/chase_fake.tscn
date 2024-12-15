@@ -648,7 +648,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 20.0
+"speed": 15.0
 }]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52wgx"]
@@ -2169,7 +2169,6 @@ position = Vector2(400, -72)
 [node name="Camera2D" type="Camera2D" parent="player_with_gravity" groups=["camera"]]
 position = Vector2(3.05176e-05, 0)
 process_callback = 0
-limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_left_margin = 0.1
@@ -2226,7 +2225,7 @@ scroll_scale = Vector2(0.15, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="backgroud/bird"]
 position = Vector2(256, 152)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_3igbi")
 autoplay = "default"
 
@@ -2456,7 +2455,7 @@ next_scene_file_path = "res://scenes/day/game/game.tscn"
 teleport_type = "dream2day"
 
 [node name="beginning_camera" type="Camera2D" parent="."]
-position = Vector2(397, -38)
+position = Vector2(400, -40)
 position_smoothing_enabled = true
 
 [node name="kill_zone" parent="." instance=ExtResource("229_hjy5n")]
