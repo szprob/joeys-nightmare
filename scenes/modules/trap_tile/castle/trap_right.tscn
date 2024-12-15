@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3nlnqf7vv1ol"]
+
+[ext_resource type="Texture2D" uid="uid://qswj5lesvayj" path="res://assets/sprites/cave/Burrow6.0.png" id="1_i22uj"]
+[ext_resource type="Texture2D" uid="uid://bwfxekt16jbbl" path="res://assets/sprites/human/trap.png" id="2_lq65l"]
+[ext_resource type="PackedScene" uid="uid://b2scf0mf7s0y1" path="res://scenes/modules/kill_zone.tscn" id="3_2xk4g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgnui"]
+atlas = ExtResource("1_i22uj")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8f63d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgnui")
+}],
+"loop": true,
+"name": &"cave",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lq65l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_18lyn"]
+points = PackedVector2Array(-1, -14, -16, 15, 16, 15)
+
+[node name="BlockTrap" type="Area2D"]
+collision_mask = 128
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8f63d")
+animation = &"cave"
+
+[node name="kill_zone" parent="." instance=ExtResource("3_2xk4g")]
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
+rotation = 1.5708
+scale = Vector2(0.8, 0.8)
+shape = SubResource("ConvexPolygonShape2D_18lyn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="ready" from="." to="." method="_on_ready"]
