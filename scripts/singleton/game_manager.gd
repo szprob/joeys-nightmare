@@ -23,7 +23,8 @@ var bgm_resources = {
 	'church': preload("res://assets/music/Karl Richter - Toccata and Fugue in D minor, BWV 565Fugue.mp3"),
 	'end': preload("res://assets/music/True Self Dream.mp3"),
 	'boss': preload("res://assets/music/boss2.wav"),
-	'run': preload("res://assets/music/Chasing Shadows.mp3"),
+	# 'run': preload("res://assets/music/Chasing Shadows.mp3"),	
+	'run': preload("res://assets/music/run-dragon-back.mp3"),
 }
 
 
@@ -51,10 +52,10 @@ var dialogue_image_storage = {
 	"message": "res://assets/sprites/day/enrich/信封1.png"
 }
 var game_state = {}
-var game_state_cache = {'can_detect_kill_zone': true, 
+var game_state_cache = {'can_detect_kill_zone': true,
 	'do_detect_teleport': true,
 	'should_die': true,
-	'bmg_set':false,
+	'bmg_set': false,
 	'inventory_visible': false}
 
 func init_default_state():
@@ -84,7 +85,7 @@ func init_default_state():
 		'skills': {
 			'second_jump_enabled': false
 		},
-		'boss':{'boos1':{'current_area_index':0}},
+		'boss': {'boos1': {'current_area_index': 0}},
 		'npc_dialogue_list': [],
 		'laji': '',
 		'number_deaths': 0,
@@ -101,7 +102,7 @@ func init_default_state():
 		"right_door_opened": false,
 		"all_light_off": false,
 		"room3_door_open": false,
-		'play_time_seconds': 0,  # 添加游戏时间记录（秒）
+		'play_time_seconds': 0, # 添加游戏时间记录（秒）
 		'finish': false,
 	}
 	game_state = game_state2.duplicate(true) # 深度复制默认状态
@@ -123,7 +124,7 @@ func add_item(item_name: StringName) -> void:
 	print("获得物品： ", item_name)
 	game_state['inventory'].append(item_name)
 	print("当前物品栏： ", game_state['inventory'])
-	print("是否包含物品[" , item_name, "]: ", has_item(item_name))
+	print("是否包含物品[", item_name, "]: ", has_item(item_name))
 
 func use_item(item_name: StringName) -> void:
 	game_state['inventory'].erase(item_name)
@@ -457,7 +458,7 @@ func set_inventory_visible(value: bool) -> void:
 	game_state_cache['inventory_visible'] = value
 
 
-func toggle_pause_menu() -> void  :
+func toggle_pause_menu() -> void:
 	if not game_state.has("is_paused"):
 		game_state["is_paused"] = false
 		
@@ -515,7 +516,7 @@ func read_txt_to_list(file_path: String) -> Array:
 
 # 添加计时器回调函数
 func _on_play_time_timer_timeout() -> void:
-	if not game_state['is_paused']:  # 暂停时不计时
+	if not game_state['is_paused']: # 暂停时不计时
 		game_state['play_time_seconds'] += 1
 
 # 添加获取格式化时间的函数
