@@ -262,10 +262,15 @@ script = ExtResource("1_r343s")
 texture = ExtResource("1_pi885")
 
 [node name="Mask" type="PointLight2D" parent="."]
+light_mask = 32
+visibility_layer = 32
 blend_mode = 2
+range_item_cull_mask = 32
 texture = ExtResource("3_ysmse")
 
 [node name="Refelection_Animated" type="AnimatedSprite2D" parent="."]
+light_mask = 32
+visibility_layer = 32
 material = SubResource("CanvasItemMaterial_x4wa0")
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_aehm0")

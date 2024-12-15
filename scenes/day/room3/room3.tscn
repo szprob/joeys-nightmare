@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://scripts/day/room_3.gd" id="1_5pkuw"]
 [ext_resource type="Texture2D" uid="uid://jax6ijn0o3i3" path="res://assets/sprites/day/new_room/1.png" id="2_1fs00"]
 [ext_resource type="Script" path="res://scripts/day/door_1.gd" id="4_2rac8"]
-[ext_resource type="Texture2D" uid="uid://ceck23wynxbm" path="res://assets/sprites/day/enrich/apple.png" id="5_5t41e"]
+[ext_resource type="Texture2D" uid="uid://ip5y673uaiqx" path="res://assets/sprites/day/enrich/apple.png" id="5_5t41e"]
 [ext_resource type="PackedScene" uid="uid://byljde6sgcfrv" path="res://scenes/player/actionable.tscn" id="5_ra1x0"]
-[ext_resource type="Resource" uid="uid://c32rhwo7hykyo" path="res://scenes/day/dialogues/room3.dialogue" id="6_qf1wu"]
+[ext_resource type="Resource" uid="uid://dnjrm5vbow33l" path="res://scenes/day/dialogues/room3.dialogue" id="6_qf1wu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hfwrs"]
 atlas = ExtResource("2_1fs00")
