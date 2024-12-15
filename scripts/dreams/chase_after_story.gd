@@ -19,7 +19,7 @@ var subtitles = [
 	{"time": 10, "text": "Programming \n Song ze  Pan Ziyi"},
 	{"time": 14, "text": "Art \n Cao Xiao  Tang Chenwei"},
 	{"time": 18, "text": "Day Levels \n Huang Yuchen"},
-	{"time": 22, "text": "Special Thanks \n Friends and Family of GI Team"},
+	{"time": 24, "text": "Special Thanks \n Friends and Family of GI Team"},
 	{"time": 28, "text": ""}
 ]
 

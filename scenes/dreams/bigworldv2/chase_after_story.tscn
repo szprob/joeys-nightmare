@@ -1,4 +1,4 @@
-[gd_scene load_steps=223 format=4 uid="uid://6rq0dekcssec"]
+[gd_scene load_steps=224 format=4 uid="uid://6rq0dekcssec"]
 
 [ext_resource type="Script" path="res://scripts/dreams/chase_after_story.gd" id="1_e45pu"]
 [ext_resource type="PackedScene" uid="uid://cwmufh2pjwfpk" path="res://scenes/player/player_in_story.tscn" id="3_s1gpd"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://7joprmnjucj5" path="res://assets/sprites/background/multi3/moon2.png" id="8_x5s31"]
 [ext_resource type="Texture2D" uid="uid://bl1rxkn33ywhl" path="res://assets/sprites/background/multi3/cloud.png" id="9_iycjs"]
 [ext_resource type="Texture2D" uid="uid://2edmv6d77j2e" path="res://assets/sprites/background/frame_ _bg22/frame_ _bg22_00000.png" id="10_b43ro"]
+[ext_resource type="Texture2D" uid="uid://bc3luaoy48sp7" path="res://assets/sprites/background/multi3/bird.png" id="10_fdoxn"]
 [ext_resource type="Texture2D" uid="uid://j2ksglqbeff7" path="res://assets/sprites/background/frame_ _bg22/frame_ _bg22_00001.png" id="11_1ggty"]
 [ext_resource type="Texture2D" uid="uid://gvyrlttwr2dn" path="res://assets/sprites/background/multi3/people.png" id="11_dk2a5"]
 [ext_resource type="Texture2D" uid="uid://bwj6yst7tjl4e" path="res://assets/sprites/enemy/achase/Jump.png" id="12_gc3cu"]
@@ -1072,11 +1073,11 @@ text = "subtitles here"
 
 [node name="SubtitleLabel" type="Label" parent="SubtitleLayer/SubtitileContainer"]
 layout_mode = 0
-offset_left = 42.0
+offset_left = 46.0
 offset_top = -22.0
-offset_right = 173.0
+offset_right = 177.0
 offset_bottom = 1.0
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 text = "Press [Space]  [K]"
 
 [node name="backgroud" type="Node2D" parent="."]
@@ -1117,6 +1118,7 @@ texture = ExtResource("11_dk2a5")
 centered = false
 
 [node name="bird2" type="Parallax2D" parent="backgroud"]
+visible = false
 z_index = -1
 scroll_scale = Vector2(0.03, 0)
 
@@ -1150,6 +1152,18 @@ repeat_times = 3
 position = Vector2(90, -40.545)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("12_i4qwl")
+centered = false
+
+[node name="bird" type="Parallax2D" parent="backgroud"]
+z_index = -1
+scroll_scale = Vector2(0.03, 0)
+repeat_size = Vector2(768, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="backgroud/bird"]
+position = Vector2(-68, -72)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("10_fdoxn")
 centered = false
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
