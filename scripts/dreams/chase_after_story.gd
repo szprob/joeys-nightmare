@@ -73,7 +73,9 @@ func end_scene():
 	if npc.has_method("stop_auto_run"):
 		npc.stop_auto_run()
 	# 这里可以切换到下一个场景或触发其他事件
-	get_tree().change_scene_to_file("res://scenes/day/game/game.tscn")
+	GameManager.game_state['target_scene'] = "res://scenes/day/game/game.tscn"
+	GameManager.game_state['teleport_type'] = 'dream2day'
+	get_tree().change_scene_to_file("res://scenes/modules/checkpoints/transition.tscn")
 
 func start_camera_pan():
 	print('camera start pos: ', camera.global_position)

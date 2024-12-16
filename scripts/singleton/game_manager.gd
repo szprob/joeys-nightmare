@@ -184,6 +184,7 @@ func stop_bgm() -> void:
 	if bgm_player:
 		bgm_player.stop()
 		bgm_player.queue_free()
+		game_state_cache['bmg_set'] = false
 
 func set_bgm_volume(volume: float) -> void:
 	game_state['settings']['bgm_volume'] = volume

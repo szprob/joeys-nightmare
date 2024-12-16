@@ -17,8 +17,9 @@ var current_index = 0
 
 
 func _ready():
-	GameManager.setup_bgm_player()
-	GameManager.play_bgm("bgm")
+	if not GameManager.game_state_cache['bmg_set']:
+		GameManager.setup_bgm_player()
+		GameManager.play_bgm('bgm')
 	buttons = [new_button, load_button, ins_button, staff_button, quit_button]
 
 	new_button.pressed.connect(_on_new_pressed)

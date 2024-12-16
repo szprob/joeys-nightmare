@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/sokoban/basic_button.gd" id="1_dcxri"]
 [ext_resource type="Texture2D" uid="uid://b5ivgq13ksjri" path="res://assets/sprites/human/button2.png" id="2_2we12"]
 [ext_resource type="AudioStream" uid="uid://bg01uylk64iae" path="res://assets/sounds/interface/button.wav" id="3_5ikra"]
-[ext_resource type="Texture2D" uid="uid://bs5w8k8sihym7" path="res://assets/sprites/v2/anniu4.png" id="3_m33vg"]
+[ext_resource type="Texture2D" uid="uid://c4mhy2xyydp5b" path="res://assets/sprites/v2/anniu4.png" id="3_m33vg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wclvy"]
 atlas = ExtResource("2_2we12")
