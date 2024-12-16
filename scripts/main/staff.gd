@@ -32,5 +32,6 @@ func _physics_process(delta):
 		title.global_position.y -= scroll_speed * delta
 
 
-	if end_time > 75:
+	if end_time > 64:
 		get_tree().change_scene_to_file("res://scenes/main/start.tscn")
+		SoundPlayer.stop_sound()
