@@ -38,7 +38,7 @@ func _ready():
 		if GameManager.game_state_cache['code'] != '':
 			label.text = GameManager.game_state_cache['code']
 		else:
-			label.text = generate_string(10, 1024)
+			label.text = generate_string(10, 1028)
 			GameManager.game_state_cache['code'] = label.text
 		label.visible = true
 	else:
