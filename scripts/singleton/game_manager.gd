@@ -293,7 +293,8 @@ func load_game_state():
 			init_default_state()
 		file.close()
 		_skill_cache.clear()
-		game_state['target_scene'] = game_state['last_scene_path']
+		if game_state['last_scene_path'] != '':
+			game_state['target_scene'] = game_state['last_scene_path']
 	else:
 		init_default_state()
 
