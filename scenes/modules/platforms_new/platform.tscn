@@ -1,19 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://bvruyxf2kytoc"]
 
-[ext_resource type="Texture2D" uid="uid://cmbxyp4glv8m7" path="res://assets/sprites/human/platform2.png" id="1_7gna5"]
+[ext_resource type="Texture2D" uid="uid://q82gtmebjgb3" path="res://assets/sprites/bricks/Castle brick 16.0.png" id="1_756mh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbayo"]
-size = Vector2(29, 7.875)
+size = Vector2(29, 8)
 
 [node name="platform" type="AnimatableBody2D"]
 collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_7gna5")
+texture = ExtResource("1_756mh")
 region_enabled = true
-region_rect = Rect2(0, 1, 31, 15)
+region_rect = Rect2(672, 16, 48, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(0, 1.93)
 shape = SubResource("RectangleShape2D_mbayo")
 one_way_collision = true

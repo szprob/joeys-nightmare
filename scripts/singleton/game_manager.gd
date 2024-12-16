@@ -445,7 +445,7 @@ func show_hello() -> void:
 # 添加暂停相关的方法
 func _input(event: InputEvent) -> void:
 	# 确保只在按键事件时调用 is_action_just_pressed
-	if event is InputEventKey and event.is_pressed():
+	if event.is_pressed():
 		if Input.is_action_just_pressed("esc") and not game_state_cache['inventory_visible'] and not is_chatting():
 			if not get_tree().current_scene.is_in_group("no_pause"):
 				toggle_pause_menu()

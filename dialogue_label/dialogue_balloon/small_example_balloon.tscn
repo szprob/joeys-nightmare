@@ -131,7 +131,7 @@ _data = {
 layer = 100
 script = ExtResource("1_ubsg3")
 next_action = &"main_scene_select"
-skip_action = &"esc"
+skip_action = &"hook"
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true
