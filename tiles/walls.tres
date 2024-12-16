@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=7 format=3 uid="uid://t4y6n2r0b5hr"]
 
 [ext_resource type="Texture2D" uid="uid://crnm18qdhogs2" path="res://assets/sprites/day/new_room/16x16-ALL_ASSETS-floor-walls.png" id="1_5nbb7"]
-[ext_resource type="Texture2D" uid="uid://dkmu33ntuj4qg" path="res://assets/sprites/day/christmas_room/16x16CHRISTMAS-Assets.png" id="2_6w4gs"]
+[ext_resource type="Texture2D" uid="uid://1bg2hqrmokib" path="res://assets/sprites/day/christmas_room/16x16CHRISTMAS-Assets.png" id="2_6w4gs"]
 [ext_resource type="Texture2D" uid="uid://c3dhjn7tgxp81" path="res://assets/sprites/day/enrich/楼梯1.png" id="2_xpyos"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1adpo"]
