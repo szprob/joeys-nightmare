@@ -20,10 +20,12 @@ var bgm_resources = {
 	"bgm": preload("res://assets/music/main Nightmare Prelude.mp3"),
 	'intro': preload("res://assets/music/intro1.wav"),
 	'chase': preload("res://assets/music/chase0.wav"),
+	'cave': preload("res://assets/music/cave.mp3"),
 	'church': preload("res://assets/music/Karl Richter - Toccata and Fugue in D minor, BWV 565Fugue.mp3"),
 	'end': preload("res://assets/music/True Self Dream.mp3"),
 	'boss': preload("res://assets/music/boss2.wav"),
-	'run': preload("res://assets/music/Chasing Shadows.mp3"),
+	# 'run': preload("res://assets/music/Chasing Shadows.mp3"),	
+	'run': preload("res://assets/music/run-dragon-back.mp3"),
 }
 
 
@@ -44,14 +46,19 @@ var dialogue_image_storage = {
 	"safe_open2": "res://assets/sprites/day/enrich/safe3.png",
 	"room3_door_close": "res://assets/sprites/day/new_room/room3_door_close.png",
 	"room3_door_open": "res://assets/sprites/day/new_room/room3_door_open.png",
-	"macintosh": "res://assets/sprites/day/enrich/macintosh.png"
+	"macintosh": "res://assets/sprites/day/enrich/macintosh.png",
+	"tracy": "res://assets/sprites/day/character/结局女主.png",
+	"tracy_smile": "res://assets/sprites/day/character/tracy_smile.png",
+	"diary": "res://assets/sprites/day/enrich/日记本1.png",
+	"message": "res://assets/sprites/day/enrich/信封1.png"
 }
 var game_state = {}
-var game_state_cache = {'can_detect_kill_zone': true, 
+var game_state_cache = {'can_detect_kill_zone': true,
 	'do_detect_teleport': true,
 	'should_die': true,
-	'bmg_set':false,
-	'inventory_visible': false}
+	'bmg_set': false,
+	'inventory_visible': false,
+	'code': ''}
 
 func init_default_state():
 	var game_state2 = {
@@ -80,7 +87,7 @@ func init_default_state():
 		'skills': {
 			'second_jump_enabled': false
 		},
-		'boss':{'boos1':{'current_area_index':0}},
+		'boss': {'boos1': {'current_area_index': 0}},
 		'npc_dialogue_list': [],
 		'laji': '',
 		'number_deaths': 0,
@@ -97,7 +104,7 @@ func init_default_state():
 		"right_door_opened": false,
 		"all_light_off": false,
 		"room3_door_open": false,
-		'play_time_seconds': 0,  # 添加游戏时间记录（秒）
+		'play_time_seconds': 0, # 添加游戏时间记录（秒）
 		'finish': false,
 	}
 	game_state = game_state2.duplicate(true) # 深度复制默认状态
@@ -119,7 +126,7 @@ func add_item(item_name: StringName) -> void:
 	print("获得物品： ", item_name)
 	game_state['inventory'].append(item_name)
 	print("当前物品栏： ", game_state['inventory'])
-	print("是否包含物品[" , item_name, "]: ", has_item(item_name))
+	print("是否包含物品[", item_name, "]: ", has_item(item_name))
 
 func use_item(item_name: StringName) -> void:
 	game_state['inventory'].erase(item_name)
@@ -177,6 +184,8 @@ func play_bgm(bgm_name: String) -> void:
 func stop_bgm() -> void:
 	if bgm_player:
 		bgm_player.stop()
+		bgm_player.queue_free()
+		game_state_cache['bmg_set'] = false
 
 func set_bgm_volume(volume: float) -> void:
 	game_state['settings']['bgm_volume'] = volume
@@ -396,7 +405,7 @@ func extinct_fire() -> void:
 	game_state['fire_extincted'] = true
 
 func is_room2_cleared() -> bool:
-	return has_item("笔记1") and has_item("钩爪") and has_item("水枪") and game_state['all_light_off']
+	return has_item("信") and has_item("钩爪") and has_item("水枪") and game_state['all_light_off']
 
 func is_room3_door_open() -> bool:
 	return game_state['room3_door_open']
@@ -431,25 +440,31 @@ func back_to_room3() -> void:
 	var player = new_scene.get_node("PlayerDay")
 	player.position = Vector2(-243, 398)
 
+func show_hello() -> void:
+	var hello_animation = get_node("/root/MacRoom/Hello/HelloAnimation") as AnimationPlayer
+	hello_animation.play("appear")
+
 # 添加暂停相关的方法
 func _input(event: InputEvent) -> void:
 	# 确保只在按键事件时调用 is_action_just_pressed
-	if event is InputEventKey and event.is_pressed():
+	if event.is_pressed():
 		if Input.is_action_just_pressed("esc") and not game_state_cache['inventory_visible'] and not is_chatting():
 			if not get_tree().current_scene.is_in_group("no_pause"):
 				toggle_pause_menu()
 			else:
 				print("当前场景不允许暂停")
-
-		if Input.is_action_just_pressed("reload"):
-			print("reload")
-			get_tree().change_scene_to_file(GameManager.game_state['last_scene_path'])
+		
+		var current_file_name = get_tree().current_scene.scene_file_path
+		if 'day' not in current_file_name and 'transition' not in current_file_name:
+			if Input.is_action_just_pressed("reload"):
+				print("reload")
+				get_tree().change_scene_to_file(GameManager.game_state['last_scene_path'])
 
 func set_inventory_visible(value: bool) -> void:
 	game_state_cache['inventory_visible'] = value
 
 
-func toggle_pause_menu() -> void  :
+func toggle_pause_menu() -> void:
 	if not game_state.has("is_paused"):
 		game_state["is_paused"] = false
 		
@@ -507,7 +522,7 @@ func read_txt_to_list(file_path: String) -> Array:
 
 # 添加计时器回调函数
 func _on_play_time_timer_timeout() -> void:
-	if not game_state['is_paused']:  # 暂停时不计时
+	if not game_state['is_paused']: # 暂停时不计时
 		game_state['play_time_seconds'] += 1
 
 # 添加获取格式化时间的函数

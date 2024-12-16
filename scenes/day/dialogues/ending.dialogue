@@ -1,0 +1,21 @@
+~ finish
+Joey[#joey_normal]: 看起来一切都结束了
+Joey[#joey_normal]: 桌上好像有张纸条,先去看看吧
+=> END
+
+~ message
+[#message]: Joey,很高兴你能战胜黑暗,或许你迎接真相的时候了
+[#message]: 楼下东侧的门已经打开了,去吧
+	                                 -- Miss T
+do GameManager.add_item("留言")
+=> END
+
+~ ending
+Tracy[#tracy]: 醒过来了吗Joey?
+Tracy[#tracy_smile]: 你看起来好多了
+Tracy[#tracy_smile]: 起来走走吧,你睡了好久呢
+Tracy[#tracy]: 梦里的世界精彩吗?可以给我讲讲发生了什么事
+Tracy[#tracy]: 你现在[wait=1.5]还害怕做噩梦吗?[wait=5] 
+set GameManager.game_state['finish'] = true
+do get_tree().change_scene_to_file("res://scenes/main/staff.tscn")
+=> END

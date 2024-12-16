@@ -2,6 +2,7 @@ extends Node2D
 
 @export var intro_camera: Camera2D # 专门用于开场动画的相机
 @export var player_camera: Camera2D # 假设这是角色相机的路径
+@onready var monster = $Monster
 var is_camera_panning := false
 var start_position: Vector2
 var target_position: Vector2
@@ -11,6 +12,7 @@ var pan_timer := 0.0
 static var intro_played := false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GameManager.game_state_cache['should_die'] = true
 	if not GameManager.game_state_cache['bmg_set']:
 		GameManager.setup_bgm_player()
 	GameManager.play_bgm('chase')
@@ -22,6 +24,7 @@ func _ready() -> void:
 		start_camera_pan()
 		intro_played = true
 	else:
+		monster.init_wait_time = 1.5
 		player_camera.enabled = true
 		intro_camera.enabled = false
 
@@ -46,7 +49,7 @@ func start_camera_pan() -> void:
 	is_camera_panning = true
 	pan_timer = 0.0
 	start_position = Vector2(1300, player_camera.global_position.y * 2 + 24) # 起始位置
-	target_position = Vector2(player_camera.global_position.x, player_camera.global_position.y * 2 + 24) # 目标位置
+	target_position = Vector2(player_camera.global_position.x+128, player_camera.global_position.y * 2 + 24) # 目标位置
 	intro_camera.position = start_position
 	get_tree().paused = true
 

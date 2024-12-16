@@ -17,8 +17,9 @@ var current_index = 0
 
 
 func _ready():
-	GameManager.setup_bgm_player()
-	GameManager.play_bgm("bgm")
+	if not GameManager.game_state_cache['bmg_set']:
+		GameManager.setup_bgm_player()
+		GameManager.play_bgm('bgm')
 	buttons = [new_button, load_button, ins_button, staff_button, quit_button]
 
 	new_button.pressed.connect(_on_new_pressed)
@@ -34,7 +35,11 @@ func _ready():
 	buttons[current_index].grab_focus()
 
 	if GameManager.game_state['finish']:
-		label.text = "你的通关验证码是："+generate_string(10, 1024)
+		if GameManager.game_state_cache['code'] != '':
+			label.text = GameManager.game_state_cache['code']
+		else:
+			label.text = generate_string(10, 1028)
+			GameManager.game_state_cache['code'] = label.text
 		label.visible = true
 	else:
 		label.visible = false

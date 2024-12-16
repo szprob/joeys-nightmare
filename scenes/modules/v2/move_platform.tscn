@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cac6ttrfh7gj"]
+
+[ext_resource type="Script" path="res://scripts/modules/platforms/move_platform.gd" id="1_gjjyb"]
+[ext_resource type="Texture2D" uid="uid://q82gtmebjgb3" path="res://assets/sprites/bricks/Castle brick 16.0.png" id="2_kwi0e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aii1e"]
+size = Vector2(16, 7.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwlgc"]
+size = Vector2(24, 14.5)
+
+[node name="move_platform" type="AnimatableBody2D"]
+collision_layer = 2
+script = ExtResource("1_gjjyb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_kwi0e")
+region_enabled = true
+region_rect = Rect2(720, 96, 48, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5.72)
+scale = Vector2(3, 1)
+shape = SubResource("RectangleShape2D_aii1e")
+one_way_collision = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="detection" type="Area2D" parent="."]
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+position = Vector2(0, -8.75)
+scale = Vector2(2, 1)
+shape = SubResource("RectangleShape2D_cwlgc")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="detection" to="." method="_on_detection_body_exited"]

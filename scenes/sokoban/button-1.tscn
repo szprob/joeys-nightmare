@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpqr3oauheogh"]
+[gd_scene load_steps=11 format=3 uid="uid://cpqr3oauheogh"]
 
 [ext_resource type="Script" path="res://scripts/sokoban/basic_button.gd" id="1_dcxri"]
 [ext_resource type="Texture2D" uid="uid://b5ivgq13ksjri" path="res://assets/sprites/human/button2.png" id="2_2we12"]
 [ext_resource type="AudioStream" uid="uid://bg01uylk64iae" path="res://assets/sounds/interface/button.wav" id="3_5ikra"]
+[ext_resource type="Texture2D" uid="uid://c4mhy2xyydp5b" path="res://assets/sprites/v2/anniu4.png" id="3_m33vg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wclvy"]
 atlas = ExtResource("2_2we12")
@@ -11,6 +12,14 @@ region = Rect2(0, 0, 32, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_03nbj"]
 atlas = ExtResource("2_2we12")
 region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1m37m"]
+atlas = ExtResource("3_m33vg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fc314"]
+atlas = ExtResource("3_m33vg")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gvey7"]
 animations = [{
@@ -22,6 +31,17 @@ animations = [{
 "texture": SubResource("AtlasTexture_03nbj")
 }],
 "loop": true,
+"name": &"bak",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1m37m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fc314")
+}],
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }]
@@ -30,6 +50,7 @@ animations = [{
 size = Vector2(25, 11)
 
 [node name="button-1" type="Area2D"]
+z_index = -1
 position = Vector2(247, 45)
 collision_mask = 129
 script = ExtResource("1_dcxri")
@@ -37,8 +58,9 @@ doors = null
 max_hearing_distance = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -5)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_gvey7")
-frame_progress = 0.291725
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0.5)

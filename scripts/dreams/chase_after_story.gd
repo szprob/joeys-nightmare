@@ -15,11 +15,11 @@ var camera_pan_started = false
 var subtitles = [
 	{"time": 0, "text": "A* studio presents"},
 	{"time": 4, "text": "Team members"},
-	{"time": 6, "text": "Producer and Level Design: \n Hougang Zhao"},
-	{"time": 10, "text": "Programming: \n Ze song  Ziyi pan"},
-	{"time": 14, "text": "Art: \n Xiao Cao  Wei Chen"},
-	{"time": 18, "text": "Day Levels: \n YuChen Huang"},
-	{"time": 22, "text": "Special Thanks: \n Friends and Family of GI Team"},
+	{"time": 6, "text": "Producer and Level Design \n Zhao Hougang"},
+	{"time": 10, "text": "Programming \n Song ze  Pan Ziyi"},
+	{"time": 14, "text": "Art \n Cao Xiao  Tang Chenwei"},
+	{"time": 18, "text": "Day Levels \n Huang Yuchen"},
+	{"time": 24, "text": "Special Thanks \n Friends and Family of GI Team"},
 	{"time": 28, "text": ""}
 ]
 
@@ -73,7 +73,9 @@ func end_scene():
 	if npc.has_method("stop_auto_run"):
 		npc.stop_auto_run()
 	# 这里可以切换到下一个场景或触发其他事件
-	get_tree().change_scene_to_file("res://scenes/day/game/game.tscn")
+	GameManager.game_state['target_scene'] = "res://scenes/day/game/game.tscn"
+	GameManager.game_state['teleport_type'] = 'dream2day'
+	get_tree().change_scene_to_file("res://scenes/modules/checkpoints/transition.tscn")
 
 func start_camera_pan():
 	print('camera start pos: ', camera.global_position)
@@ -123,4 +125,3 @@ func start_camera_pan():
 	tween.tween_property(path_follow, "progress_ratio", 1.0, 5.0).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_interval(2.0)
 	tween.tween_callback(end_scene)
-

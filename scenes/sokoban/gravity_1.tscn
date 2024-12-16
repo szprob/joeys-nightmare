@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://cv3nrtrevxkyu"]
+[gd_scene load_steps=85 format=3 uid="uid://cv3nrtrevxkyu"]
 
 [ext_resource type="Script" path="res://scripts/sokoban/gravity_1.gd" id="1_h3l67"]
 [ext_resource type="Texture2D" uid="uid://bh2yvy6nvv85u" path="res://assets/sprites/human/arrow2.png" id="2_536f8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c7nfrpt4t5x5k" path="res://assets/sprites/human/arrow5.png" id="6_2478i"]
 [ext_resource type="Texture2D" uid="uid://5ohg2kyga1tp" path="res://assets/sprites/human/arrow6.png" id="7_65rpk"]
 [ext_resource type="Texture2D" uid="uid://dfkey2rejyd5n" path="res://assets/sprites/human/arrow8.png" id="8_5lg44"]
+[ext_resource type="Texture2D" uid="uid://3bl28omm4iqy" path="res://assets/sprites/v2/zhongli.png" id="9_yakcf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3pmf"]
 size = Vector2(32, 32)
@@ -268,6 +269,42 @@ region = Rect2(64, 96, 32, 32)
 atlas = ExtResource("8_5lg44")
 region = Rect2(96, 96, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjk3a"]
+atlas = ExtResource("9_yakcf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogdcx"]
+atlas = ExtResource("9_yakcf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xng1o"]
+atlas = ExtResource("9_yakcf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ky7ec"]
+atlas = ExtResource("9_yakcf")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25sdj"]
+atlas = ExtResource("9_yakcf")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdrb1"]
+atlas = ExtResource("9_yakcf")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8jmj"]
+atlas = ExtResource("9_yakcf")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lm6bv"]
+atlas = ExtResource("9_yakcf")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfs2v"]
+atlas = ExtResource("9_yakcf")
+region = Rect2(0, 32, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_csio3"]
 animations = [{
 "frames": [{
@@ -496,6 +533,38 @@ animations = [{
 "loop": true,
 "name": &"new_animation_4",
 "speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjk3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogdcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xng1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ky7ec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25sdj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdrb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8jmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lm6bv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfs2v")
+}],
+"loop": true,
+"name": &"new_animation_5",
+"speed": 5.0
 }]
 
 [node name="gravity-1" type="Area2D"]
@@ -514,4 +583,4 @@ shape = SubResource("RectangleShape2D_u3pmf")
 sprite_frames = SubResource("SpriteFrames_csio3")
 animation = &"new_animation_4"
 autoplay = "new_animation_4"
-frame_progress = 0.861278
+frame_progress = 0.750585
