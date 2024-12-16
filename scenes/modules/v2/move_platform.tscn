@@ -7,7 +7,7 @@
 size = Vector2(16, 7.875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwlgc"]
-size = Vector2(24, 5)
+size = Vector2(24, 14.5)
 
 [node name="move_platform" type="AnimatableBody2D"]
 collision_layer = 2
@@ -32,7 +32,7 @@ one_shot = true
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
-position = Vector2(0, -4)
+position = Vector2(0, -8.75)
 scale = Vector2(2, 1)
 shape = SubResource("RectangleShape2D_cwlgc")
 

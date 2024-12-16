@@ -4,6 +4,7 @@ extends Control
 @onready var label: Label = $Label
 @onready var label2: Label = $Label2
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var title: Sprite2D = $Sprite2D3
 
 @export var scroll_speed = 20.0
 
@@ -23,10 +24,13 @@ func _physics_process(delta):
 		SoundPlayer.stop_sound()
 		play_sfx()
 		get_tree().change_scene_to_file("res://scenes/main/start.tscn")
-	
-	if end_time > 20.0:
-		get_tree().change_scene_to_file("res://scenes/main/start.tscn")
+		
+	if end_time < 54.5:
+		label.global_position.y -= scroll_speed * delta
+		sprite.global_position.y -= scroll_speed * delta
+		label2.global_position.y -= scroll_speed * delta
+		title.global_position.y -= scroll_speed * delta
 
-	label.global_position.y -= scroll_speed * delta
-	sprite.global_position.y -= scroll_speed * delta
-	label2.global_position.y -= scroll_speed * delta
+
+	if end_time > 75:
+		get_tree().change_scene_to_file("res://scenes/main/start.tscn")
