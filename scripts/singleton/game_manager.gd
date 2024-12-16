@@ -82,7 +82,7 @@ func init_default_state():
 		'inventory': [],
 		'teleport_type': 'day2dream',
 		'has_slept': false,
-		'target_scene': 'res://scenes/dreams/bigworld/bigworld01.tscn',
+		'target_scene': 'res://scenes/dreams/bigworldv2/intro.tscn',
 		'is_paused': false,
 		'skills': {
 			'second_jump_enabled': false
@@ -293,6 +293,7 @@ func load_game_state():
 			init_default_state()
 		file.close()
 		_skill_cache.clear()
+		game_state['target_scene'] = game_state['last_scene_path']
 	else:
 		init_default_state()
 
