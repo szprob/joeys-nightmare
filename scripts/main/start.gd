@@ -35,7 +35,11 @@ func _ready():
 	buttons[current_index].grab_focus()
 
 	if GameManager.game_state['finish']:
-		label.text = generate_string(10, 1024)
+		if GameManager.game_state_cache['code'] != '':
+			label.text = GameManager.game_state_cache['code']
+		else:
+			label.text = generate_string(10, 1024)
+			GameManager.game_state_cache['code'] = label.text
 		label.visible = true
 	else:
 		label.visible = false

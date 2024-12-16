@@ -57,7 +57,8 @@ var game_state_cache = {'can_detect_kill_zone': true,
 	'do_detect_teleport': true,
 	'should_die': true,
 	'bmg_set': false,
-	'inventory_visible': false}
+	'inventory_visible': false,
+	'code': ''}
 
 func init_default_state():
 	var game_state2 = {
