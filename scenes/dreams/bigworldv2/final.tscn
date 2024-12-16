@@ -1,4 +1,4 @@
-[gd_scene load_steps=182 format=4 uid="uid://puc6xu2va2gi"]
+[gd_scene load_steps=181 format=4 uid="uid://puc6xu2va2gi"]
 
 [ext_resource type="Script" path="res://scenes/dreams/bigworldv2/final.gd" id="1_57xsg"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="2_bxau8"]
@@ -169,7 +169,6 @@
 [ext_resource type="PackedScene" uid="uid://dlv4fqe1sg0dm" path="res://scenes/sokoban/gravity_tile/gravity_right.tscn" id="214_jpml3"]
 [ext_resource type="PackedScene" uid="uid://bh3778qpcat7y" path="res://scenes/sokoban/gravity_tile/gravity_up.tscn" id="215_3kdgd"]
 [ext_resource type="PackedScene" uid="uid://cxdvjkmdm30bc" path="res://scenes/sokoban/hook_1.tscn" id="223_ogivf"]
-[ext_resource type="PackedScene" uid="uid://5ke66hnjv6ab" path="res://scenes/modules/traps/lazer.tscn" id="224_mfucd"]
 [ext_resource type="Script" path="res://scripts/camera_area.gd" id="226_amsy8"]
 [ext_resource type="PackedScene" uid="uid://berhy2v7l8ihk" path="res://scenes/enemy/boss1.tscn" id="228_k8cfy"]
 
@@ -1509,71 +1508,6 @@ collision_mask = 128
 position = Vector2(0, 62)
 shape = SubResource("RectangleShape2D_d0hr5")
 
-[node name="Lazer" parent="." node_paths=PackedStringArray("area1", "area2") instance=ExtResource("224_mfucd")]
-position = Vector2(120, 208)
-area1 = NodePath("Area2D")
-area2 = NodePath("Area2D2")
-is_blink = true
-metadata/_edit_group_ = true
-
-[node name="Area2D" type="Area2D" parent="Lazer"]
-position = Vector2(0, 104)
-
-[node name="Area2D2" type="Area2D" parent="Lazer"]
-position = Vector2(0, -40)
-
-[node name="Lazer2" parent="." node_paths=PackedStringArray("area1", "area2") instance=ExtResource("224_mfucd")]
-position = Vector2(544, 40)
-area1 = NodePath("Area2D")
-area2 = NodePath("Area2D2")
-is_blink = true
-metadata/_edit_group_ = true
-
-[node name="Area2D" type="Area2D" parent="Lazer2"]
-position = Vector2(0, 104)
-
-[node name="Area2D2" type="Area2D" parent="Lazer2"]
-position = Vector2(0, -40)
-
-[node name="Lazer3" parent="." node_paths=PackedStringArray("area1", "area2") instance=ExtResource("224_mfucd")]
-position = Vector2(1776, 168)
-area1 = NodePath("Area2D")
-area2 = NodePath("Area2D2")
-is_blink = true
-metadata/_edit_group_ = true
-
-[node name="Area2D" type="Area2D" parent="Lazer3"]
-position = Vector2(0, 104)
-
-[node name="Area2D2" type="Area2D" parent="Lazer3"]
-position = Vector2(0, -40)
-
-[node name="Lazer4" parent="." node_paths=PackedStringArray("area1", "area2") instance=ExtResource("224_mfucd")]
-position = Vector2(1776, 168)
-area1 = NodePath("Area2D")
-area2 = NodePath("Area2D2")
-is_blink = true
-metadata/_edit_group_ = true
-
-[node name="Area2D" type="Area2D" parent="Lazer4"]
-position = Vector2(0, 104)
-
-[node name="Area2D2" type="Area2D" parent="Lazer4"]
-position = Vector2(0, -40)
-
-[node name="Lazer5" parent="." node_paths=PackedStringArray("area1", "area2") instance=ExtResource("224_mfucd")]
-position = Vector2(2272, 16)
-area1 = NodePath("Area2D")
-area2 = NodePath("Area2D2")
-is_blink = true
-metadata/_edit_group_ = true
-
-[node name="Area2D" type="Area2D" parent="Lazer5"]
-position = Vector2(0, 104)
-
-[node name="Area2D2" type="Area2D" parent="Lazer5"]
-position = Vector2(0, -40)
-
 [node name="bound_left" type="Area2D" parent="."]
 position = Vector2(8, 224)
 collision_layer = 0
@@ -1665,7 +1599,7 @@ centered = false
 position = Vector2(512, 64)
 
 [node name="hook20" parent="." instance=ExtResource("223_ogivf")]
-position = Vector2(2153, 104.5)
+position = Vector2(2232, 64)
 
 [node name="hook16" parent="." instance=ExtResource("223_ogivf")]
 position = Vector2(768, 64)
