@@ -67,10 +67,10 @@ text = "QUIT"
 stream = ExtResource("5_mr72s")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -23.3333
-offset_top = 120.0
-offset_right = 16.6667
-offset_bottom = 187.0
+offset_left = 343.333
+offset_top = 373.333
+offset_right = 383.333
+offset_bottom = 440.333
 scale = Vector2(1.00179, 1)
 theme_override_font_sizes/font_size = 48
 

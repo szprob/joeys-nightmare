@@ -35,7 +35,7 @@ func _ready():
 	buttons[current_index].grab_focus()
 
 	if GameManager.game_state['finish']:
-		label.text = "你的通关验证码是："+generate_string(10, 1024)
+		label.text = generate_string(10, 1024)
 		label.visible = true
 	else:
 		label.visible = false
