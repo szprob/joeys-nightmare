@@ -20,6 +20,7 @@ var bgm_resources = {
 	"bgm": preload("res://assets/music/main Nightmare Prelude.mp3"),
 	'intro': preload("res://assets/music/intro1.wav"),
 	'chase': preload("res://assets/music/chase0.wav"),
+	'cave': preload("res://assets/music/cave.mp3"),
 	'church': preload("res://assets/music/Karl Richter - Toccata and Fugue in D minor, BWV 565Fugue.mp3"),
 	'end': preload("res://assets/music/True Self Dream.mp3"),
 	'boss': preload("res://assets/music/boss2.wav"),
@@ -182,6 +183,7 @@ func play_bgm(bgm_name: String) -> void:
 func stop_bgm() -> void:
 	if bgm_player:
 		bgm_player.stop()
+		bgm_player.queue_free()
 
 func set_bgm_volume(volume: float) -> void:
 	game_state['settings']['bgm_volume'] = volume
