@@ -461,7 +461,7 @@ func _input(event: InputEvent) -> void:
 			var current_file_name = get_tree().current_scene.scene_file_path
 			if 'day' not in current_file_name and 'transition' not in current_file_name:
 				print("reload")
-				get_tree().change_scene_to_file(GameManager.game_state['last_scene_path'])
+				get_tree().change_scene_to_file(current_file_name)
 
 func set_inventory_visible(value: bool) -> void:
 	game_state_cache['inventory_visible'] = value
