@@ -43,7 +43,7 @@ _data = {
 "new_animation": SubResource("Animation_mchrf")
 }
 
-[node name="Transition" type="Node2D" groups=["scan_lines"]]
+[node name="Transition" type="Node2D" groups=["no_pause", "scan_lines"]]
 position = Vector2(236, 152)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_1k3n3")
