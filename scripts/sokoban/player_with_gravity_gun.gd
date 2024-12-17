@@ -54,7 +54,6 @@ var coyote_timer: float = 0.0
 var was_on_ground: bool = false
 var current_speed: float = 0.0
 var jump_acceleration_counter: int = 0
-var is_init = false
 var active_gravity_gun_fields: Array = []
 
 var gravity_scene = preload("res://scenes/sokoban/gravity_1.tscn")
@@ -131,8 +130,6 @@ func set_can_move(value: bool,state='idle') -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	if not is_init:
-		return
 	if not can_move:
 		if player_state == 'death':
 			animated_sprite_2d.play('death')
