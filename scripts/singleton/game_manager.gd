@@ -457,11 +457,6 @@ func _input(event: InputEvent) -> void:
 				print("当前场景不允许暂停")
 		
 
-		if Input.is_action_just_pressed("reload"):
-			var current_file_name = get_tree().current_scene.scene_file_path
-			if 'day' not in current_file_name and 'transition' not in current_file_name:
-				print("reload")
-				get_tree().change_scene_to_file(current_file_name)
 
 func set_inventory_visible(value: bool) -> void:
 	game_state_cache['inventory_visible'] = value

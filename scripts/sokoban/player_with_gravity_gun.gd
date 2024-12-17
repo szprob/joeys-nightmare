@@ -153,9 +153,17 @@ func _physics_process(delta: float) -> void:
 			animated_sprite_2d.play('idle')
 		return
 
+
+	if Input.is_action_just_pressed("reload"):
+		print("reload")
+		get_tree().change_scene_to_file(get_tree().current_scene.scene_file_path)
+
 	if hook_cooldown_timer > 0:
 		hook_cooldown_timer -= delta
 	
+
+
+
 	update_hookable_areas_status()
 	var player_height = 16.0  # 角色高度为16像素
 	# if is_jumping == 1:
