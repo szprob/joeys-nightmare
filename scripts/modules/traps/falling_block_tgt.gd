@@ -26,6 +26,7 @@ var original_pos: Vector2
 var tween: Tween
 var is_alerted: bool = false
 var current_speed: float = 0.0            # Current speed that will change over time
+var audio_player = null
 
 @onready var falling_trap: Area2D = $"."
 @onready var timer: Timer = $Timer
@@ -40,6 +41,10 @@ func _ready() -> void:
 	detection.body_entered.connect(_on_detection_body_entered)
 	current_speed = initial_speed  # Initialize current_speed
 	
+	for child in get_children():
+		if child is AudioStreamPlayer2D:
+			audio_player = child
+
 	# 开始持续的闲置抖动
 	start_idle_shake()
 	
@@ -70,6 +75,8 @@ func _physics_process(delta):
 		global_position += fly_direction * current_speed * delta
 		
 		if global_position.distance_to(final_position) < 5:
+			if audio_player:
+				audio_player.play()
 			global_position = final_position
 			is_flying_forward = false
 			GameManager.camera_shake_requested.emit(30.0, 0.2)
