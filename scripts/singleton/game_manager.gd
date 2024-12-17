@@ -456,9 +456,10 @@ func _input(event: InputEvent) -> void:
 			else:
 				print("当前场景不允许暂停")
 		
-		var current_file_name = get_tree().current_scene.scene_file_path
-		if 'day' not in current_file_name and 'transition' not in current_file_name:
-			if Input.is_action_just_pressed("reload"):
+
+		if Input.is_action_just_pressed("reload"):
+			var current_file_name = get_tree().current_scene.scene_file_path
+			if 'day' not in current_file_name and 'transition' not in current_file_name:
 				print("reload")
 				get_tree().change_scene_to_file(GameManager.game_state['last_scene_path'])
 
