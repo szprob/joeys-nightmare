@@ -2865,7 +2865,7 @@ position = Vector2(-0.35907, 20.5442)
 shape = SubResource("RectangleShape2D_hca5m")
 
 [node name="FallingBlockTgt11" parent="map" node_paths=PackedStringArray("target", "detection") instance=ExtResource("125_bq8st")]
-position = Vector2(456, 1280)
+position = Vector2(456, 1264)
 collision_layer = 65
 collision_mask = 3
 speed = 150.0
@@ -2876,7 +2876,7 @@ acceleration = 100.0
 metadata/_edit_group_ = true
 
 [node name="target" type="Area2D" parent="map/FallingBlockTgt11"]
-position = Vector2(0, 176)
+position = Vector2(0, 160)
 
 [node name="detection" type="Area2D" parent="map/FallingBlockTgt11"]
 collision_layer = 0
