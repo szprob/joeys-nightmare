@@ -81,7 +81,8 @@ var hook_cooldown_timer = 0.0  # 钩爪冷却计时器
 var hook_cooldown_duration = 0.8  # 钩爪冷却时间(秒)
 
 func _ready():
-	is_init = false
+	set_can_move(false)
+	await get_tree().create_timer(0.5).timeout
 	GameManager.load_game_state()
 	print('game state', GameManager.game_state)
 	# 只在初始加载时设置位置,而不是reload
@@ -98,7 +99,6 @@ func _ready():
 	jump_audio.volume_db = -8
 	hook_audio.volume_db = 4
 	set_can_move(true)
-	is_init = true
 
 # 开始跳跃的函数
 func start_jump() -> void:
