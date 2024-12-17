@@ -54,7 +54,7 @@ var coyote_timer: float = 0.0
 var was_on_ground: bool = false
 var current_speed: float = 0.0
 var jump_acceleration_counter: int = 0
-
+var is_init = false
 var active_gravity_gun_fields: Array = []
 
 var gravity_scene = preload("res://scenes/sokoban/gravity_1.tscn")
@@ -81,7 +81,7 @@ var hook_cooldown_timer = 0.0  # 钩爪冷却计时器
 var hook_cooldown_duration = 0.8  # 钩爪冷却时间(秒)
 
 func _ready():
-	await ready
+	is_init = false
 	GameManager.load_game_state()
 	print('game state', GameManager.game_state)
 	# 只在初始加载时设置位置,而不是reload
@@ -98,7 +98,7 @@ func _ready():
 	jump_audio.volume_db = -8
 	hook_audio.volume_db = 4
 	set_can_move(true)
-
+	is_init = true
 
 # 开始跳跃的函数
 func start_jump() -> void:
@@ -131,7 +131,8 @@ func set_can_move(value: bool,state='idle') -> void:
 	
 
 func _physics_process(delta: float) -> void:
-
+	if not is_init:
+		return
 	if not can_move:
 		if player_state == 'death':
 			animated_sprite_2d.play('death')
