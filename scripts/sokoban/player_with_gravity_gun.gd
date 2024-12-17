@@ -157,6 +157,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("reload"):
 		print("reload")
 		get_tree().change_scene_to_file(get_tree().current_scene.scene_file_path)
+		return
 
 	if hook_cooldown_timer > 0:
 		hook_cooldown_timer -= delta
