@@ -81,7 +81,7 @@ var hook_cooldown_duration = 0.8  # 钩爪冷却时间(秒)
 
 func _ready():
 	set_can_move(false)
-	await get_tree().create_timer(0.5).timeout
+	
 	GameManager.load_game_state()
 	print('game state', GameManager.game_state)
 	# 只在初始加载时设置位置,而不是reload
@@ -91,6 +91,7 @@ func _ready():
 			respawn_pos = Vector2(GameManager.game_state['current_respawn_point_x'], GameManager.game_state['current_respawn_point_y'])
 			global_position = respawn_pos
 
+	await get_tree().create_timer(0.5).timeout
 	$HookableDetector.area_entered.connect(_on_hookable_area_entered)
 	$HookableDetector.area_exited.connect(_on_hookable_area_exited)
 	GameManager.game_state_cache['should_die'] = true
