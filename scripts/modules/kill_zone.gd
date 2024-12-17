@@ -72,10 +72,11 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_timer_timeout() -> void:
 	# Engine.time_scale = 1
 	GameManager.game_state_cache['can_detect_kill_zone'] = true
-	player.set_can_move(true)
+	
 	# var root_node = get_tree().get_root()
 	var root_node = get_tree().current_scene
 	cleanup_dynamic_nodes()
+	player.set_can_move(true)
 	if GameManager.game_state_cache['should_die']:
 		get_tree().change_scene_to_file(root_node.scene_file_path)
 	else:
