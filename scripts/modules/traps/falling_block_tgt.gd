@@ -76,7 +76,7 @@ func _physics_process(delta):
 		
 		if global_position.distance_to(final_position) < 5:
 			if audio_player:
-				audio_player.play()
+				audio_player.play(0.5)
 			global_position = final_position
 			is_flying_forward = false
 			GameManager.camera_shake_requested.emit(30.0, 0.2)
