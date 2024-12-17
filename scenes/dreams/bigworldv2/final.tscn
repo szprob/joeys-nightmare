@@ -1,4 +1,4 @@
-[gd_scene load_steps=182 format=4 uid="uid://puc6xu2va2gi"]
+[gd_scene load_steps=181 format=4 uid="uid://puc6xu2va2gi"]
 
 [ext_resource type="Script" path="res://scenes/dreams/bigworldv2/final.gd" id="1_57xsg"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="2_bxau8"]
@@ -163,7 +163,6 @@
 [ext_resource type="Texture2D" uid="uid://dpaq3lw1vv2rm" path="res://assets/sprites/background/frame_ _bg22/frame_ _bg22_00150.png" id="170_ek1ui"]
 [ext_resource type="Texture2D" uid="uid://dg4an5msfxkap" path="res://assets/sprites/background/frame_ _bg22/frame_ _bg22_00151.png" id="171_6ok3n"]
 [ext_resource type="Texture2D" uid="uid://cqchwssh1rk7l" path="res://assets/sprites/background/frame_ _bg22/frame_ _bg22_00152.png" id="172_colh4"]
-[ext_resource type="PackedScene" uid="uid://kfdbq76ixwrq" path="res://scenes/modules/checkpoints/save_point.tscn" id="172_d8t7f"]
 [ext_resource type="Texture2D" uid="uid://bl1rxkn33ywhl" path="res://assets/sprites/background/multi3/cloud.png" id="173_osbb0"]
 [ext_resource type="PackedScene" uid="uid://bi3000vv4vu3x" path="res://scenes/sokoban/gravity_tile/gravity_down.tscn" id="212_r4sj5"]
 [ext_resource type="PackedScene" uid="uid://cootft3ha6veu" path="res://scenes/sokoban/gravity_tile/gravity_left.tscn" id="213_m86mc"]
@@ -1613,6 +1612,3 @@ position = Vector2(1280, 64)
 
 [node name="hook19" parent="." instance=ExtResource("223_ogivf")]
 position = Vector2(1544, 64)
-
-[node name="save_point_1" parent="." instance=ExtResource("172_d8t7f")]
-position = Vector2(224, 248)
