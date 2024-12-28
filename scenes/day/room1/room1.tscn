@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=4 uid="uid://bmq25pi5e8wan"]
+[gd_scene load_steps=156 format=4 uid="uid://bmq25pi5e8wan"]
 
 [ext_resource type="Texture2D" uid="uid://dapevi3u1jt0p" path="res://assets/sprites/day/room/TopDownHouse_FloorsAndWalls.png" id="1_h0361"]
 [ext_resource type="Texture2D" uid="uid://crnm18qdhogs2" path="res://assets/sprites/day/new_room/16x16-ALL_ASSETS-floor-walls.png" id="1_ii4xy"]
@@ -13,35 +13,58 @@
 [ext_resource type="Texture2D" uid="uid://78w4owvufdht" path="res://icon.svg" id="9_twcge"]
 [ext_resource type="Script" path="res://scenes/day/room1/gun_2d.gd" id="10_uojay"]
 [ext_resource type="Resource" uid="uid://cdvfsg22mr26p" path="res://scenes/day/dialogues/pick_up_gun.dialogue" id="11_fcr2e"]
-[ext_resource type="Texture2D" uid="uid://ce01f3blssdc2" path="res://assets/sprites/day/new_room/AJ.png" id="11_y73wk"]
+[ext_resource type="Texture2D" uid="uid://b3f3lpn8gql5k" path="res://assets/sprites/day/new_room/AJ.png" id="11_y73wk"]
 [ext_resource type="Resource" uid="uid://8vbxyi40kkjc" path="res://scenes/day/dialogues/entrance_check.dialogue" id="12_s1yr7"]
 [ext_resource type="Script" path="res://scenes/day/room1/id_card.gd" id="13_w5kc4"]
 [ext_resource type="Shader" path="res://scenes/day/room1/blink.gdshader" id="14_3xj6h"]
 [ext_resource type="FontFile" uid="uid://5btxwrwd804s" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="18_uwswc"]
-[ext_resource type="Texture2D" uid="uid://c14wrq8juds7y" path="res://assets/sprites/day/buttons/Space-Key.png" id="20_n0a8y"]
+[ext_resource type="Texture2D" uid="uid://cxnyb58r5w5ec" path="res://assets/sprites/day/buttons/Space-Key.png" id="20_n0a8y"]
 [ext_resource type="AudioStream" uid="uid://cnvum410tmlnh" path="res://assets/sounds/interface/door.wav" id="20_p5g06"]
 [ext_resource type="Texture2D" uid="uid://bvjbslqiojovb" path="res://assets/sprites/day/enrich/收音机1.png" id="21_a55nh"]
-[ext_resource type="Texture2D" uid="uid://jqn5fiog2i1n" path="res://assets/sprites/day/buttons/A_Animation.png" id="21_ul8ej"]
+[ext_resource type="Texture2D" uid="uid://buh21cwdnt77g" path="res://assets/sprites/day/buttons/A_Animation.png" id="21_ul8ej"]
 [ext_resource type="Resource" uid="uid://6a0f0mm58veq" path="res://scenes/day/dialogues/openning.dialogue" id="22_7iggc"]
 [ext_resource type="Script" path="res://scripts/day/radio.gd" id="22_64xqc"]
-[ext_resource type="Script" path="res://scripts/day/toilet.gd" id="24_c2bjv"]
-[ext_resource type="AudioStream" uid="uid://bxlqpxm1ncpvc" path="res://assets/sounds/day/toilet-flushing-7059.mp3" id="25_a47fk"]
 [ext_resource type="PackedScene" uid="uid://b1ahwfjvtlho3" path="res://scenes/day/game/light_switch.tscn" id="26_88n72"]
-[ext_resource type="Texture2D" uid="uid://mvpp14qrmbru" path="res://assets/sprites/day/new_room/light.png" id="26_x3ghb"]
-[ext_resource type="Texture2D" uid="uid://bvr8mvlqispb6" path="res://assets/sprites/day/new_room/bilu.png" id="27_5chvr"]
-[ext_resource type="Texture2D" uid="uid://cvtyye66vf42q" path="res://assets/sprites/day/new_room/yugang.png" id="28_8qfxm"]
+[ext_resource type="Texture2D" uid="uid://rvf28rqjwayo" path="res://assets/sprites/day/new_room/light.png" id="26_x3ghb"]
+[ext_resource type="Texture2D" uid="uid://clgexihtvftqj" path="res://assets/sprites/day/new_room/bilu.png" id="27_5chvr"]
+[ext_resource type="Texture2D" uid="uid://ds576mtdnn7ck" path="res://assets/sprites/day/new_room/yugang.png" id="28_8qfxm"]
 [ext_resource type="Script" path="res://scripts/day/fire.gd" id="28_l1a8d"]
 [ext_resource type="Script" path="res://scripts/day/bathtub.gd" id="29_qwob2"]
 [ext_resource type="Script" path="res://scripts/day/light_check.gd" id="30_k16f0"]
-[ext_resource type="Texture2D" uid="uid://tgc78g0ripor" path="res://assets/sprites/day/enrich/key_01c.png" id="34_1obj0"]
+[ext_resource type="Texture2D" uid="uid://biyjor6wsbrbl" path="res://assets/sprites/day/enrich/key_01c.png" id="34_1obj0"]
 [ext_resource type="Script" path="res://scripts/day/key_2.gd" id="35_4hjhs"]
 [ext_resource type="Resource" uid="uid://bvjxsl5w8bm2m" path="res://scenes/day/dialogues/room2.dialogue" id="36_nynnn"]
-[ext_resource type="Texture2D" uid="uid://tucl7gtu4n20" path="res://assets/sprites/day/enrich/key_01a.png" id="37_fgm00"]
+[ext_resource type="Texture2D" uid="uid://b4rqbq1cc3xlk" path="res://assets/sprites/day/enrich/key_01a.png" id="37_fgm00"]
 [ext_resource type="Script" path="res://scripts/day/key_1.gd" id="38_ko7xr"]
 [ext_resource type="Texture2D" uid="uid://be6l1cxa2h5wf" path="res://assets/sprites/day/enrich/信封1.png" id="39_rsc32"]
 [ext_resource type="Script" path="res://scripts/day/message.gd" id="40_82fst"]
-[ext_resource type="Resource" uid="uid://cmh20w4q4scr4" path="res://scenes/day/dialogues/ending.dialogue" id="40_yttlb"]
+[ext_resource type="Resource" uid="uid://bqweettpr7x4g" path="res://scenes/day/dialogues/ending.dialogue" id="40_yttlb"]
+[ext_resource type="Script" path="res://scripts/day/punch.gd" id="42_88c1g"]
 [ext_resource type="Script" path="res://scripts/day/boss_clear.gd" id="42_idicp"]
+[ext_resource type="Texture2D" uid="uid://bl6sagj7j3mcc" path="res://assets/sprites/linkage/联名3.png" id="43_is7os"]
+[ext_resource type="Texture2D" uid="uid://bvjv7pe28oaty" path="res://assets/sprites/linkage/toilet/matong0021.png" id="45_aw1y3"]
+[ext_resource type="Texture2D" uid="uid://bl6sgtqu8rihg" path="res://assets/sprites/linkage/toilet/matong0000.png" id="46_nt1wc"]
+[ext_resource type="Texture2D" uid="uid://b74txkmxv1yqd" path="res://assets/sprites/linkage/toilet/matong0001.png" id="47_l4mph"]
+[ext_resource type="Texture2D" uid="uid://cuyre0oxu85mo" path="res://assets/sprites/linkage/toilet/matong0002.png" id="48_v7wu5"]
+[ext_resource type="Texture2D" uid="uid://daq7lg71sihoa" path="res://assets/sprites/linkage/toilet/matong0003.png" id="49_p1doq"]
+[ext_resource type="Texture2D" uid="uid://de2csejj873q" path="res://assets/sprites/linkage/toilet/matong0004.png" id="50_etvm3"]
+[ext_resource type="Texture2D" uid="uid://dndpfqoaxdyau" path="res://assets/sprites/linkage/toilet/matong0005.png" id="51_gotg7"]
+[ext_resource type="Texture2D" uid="uid://b575bimmxe3q4" path="res://assets/sprites/linkage/toilet/matong0006.png" id="52_efr4d"]
+[ext_resource type="Texture2D" uid="uid://cvv72txqujdxs" path="res://assets/sprites/linkage/toilet/matong0007.png" id="53_1yrq2"]
+[ext_resource type="Texture2D" uid="uid://dhjohbaa3muc6" path="res://assets/sprites/linkage/toilet/matong0008.png" id="54_xlnc8"]
+[ext_resource type="Texture2D" uid="uid://bumxx4iqqahrv" path="res://assets/sprites/linkage/toilet/matong0009.png" id="55_e51vr"]
+[ext_resource type="Texture2D" uid="uid://brdjqfflqsh0d" path="res://assets/sprites/linkage/toilet/matong0010.png" id="56_tau6u"]
+[ext_resource type="Texture2D" uid="uid://bwywb3iut3nki" path="res://assets/sprites/linkage/toilet/matong0011.png" id="57_s3g4h"]
+[ext_resource type="Texture2D" uid="uid://c4ctrppqdkmpp" path="res://assets/sprites/linkage/toilet/matong0012.png" id="58_vak8j"]
+[ext_resource type="Texture2D" uid="uid://b14qko015jsxm" path="res://assets/sprites/linkage/toilet/matong0013.png" id="59_ow2bb"]
+[ext_resource type="Texture2D" uid="uid://ckrym7rsmvyh6" path="res://assets/sprites/linkage/toilet/matong0014.png" id="60_qwkqw"]
+[ext_resource type="Texture2D" uid="uid://dibavorg7b2kb" path="res://assets/sprites/linkage/toilet/matong0015.png" id="61_3lcft"]
+[ext_resource type="Texture2D" uid="uid://boca4n0cxdpg3" path="res://assets/sprites/linkage/toilet/matong0016.png" id="62_u4lvv"]
+[ext_resource type="Texture2D" uid="uid://dd7qs5d44imo6" path="res://assets/sprites/linkage/toilet/matong0017.png" id="63_rfwl1"]
+[ext_resource type="Texture2D" uid="uid://cwaa3uvwnc1wf" path="res://assets/sprites/linkage/toilet/matong0018.png" id="64_0e8k1"]
+[ext_resource type="Texture2D" uid="uid://cbsrrmoh0u8rl" path="res://assets/sprites/linkage/toilet/matong0019.png" id="65_njnco"]
+[ext_resource type="Texture2D" uid="uid://b1bkurnnltlr7" path="res://assets/sprites/linkage/toilet/matong0020.png" id="66_m7xp7"]
+[ext_resource type="Script" path="res://scripts/day/bbg.gd" id="67_k6aku"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o0br6"]
 texture = ExtResource("1_ii4xy")
@@ -7727,8 +7750,6 @@ size = Vector2(18.7505, 14.0629)
 [sub_resource type="CircleShape2D" id="CircleShape2D_4cmrs"]
 radius = 12.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ihgwn"]
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mlpaj"]
 radius = 8.0
 
@@ -8031,6 +8052,154 @@ size = Vector2(41, 24)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_saian"]
 size = Vector2(52, 35)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pipxt"]
+height = 42.5
+
+[sub_resource type="Animation" id="Animation_nf7lp"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(113, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_mo365"]
+resource_name = "punched"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(113, -0.25, 0, 0.25, 0, 109, -0.25, 0, 0.25, 0, 107, -0.25, 0, 0.25, 0, 102, -0.25, 0, 0.25, 0, 107.5, -0.25, 0, 0.25, 0, 113, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.12516, -0.25, 0, 0.25, 0, -0.184037, -0.25, 0, 0.25, 0, 0.22362, -0.25, 0, 0.25, 0, -0.328198, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_syrv4"]
+_data = {
+"RESET": SubResource("Animation_nf7lp"),
+"punched": SubResource("Animation_mo365")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4rhui"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("45_aw1y3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_nt1wc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_l4mph")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_v7wu5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_p1doq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_etvm3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_gotg7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_efr4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_1yrq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_xlnc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_e51vr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_tau6u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_s3g4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_vak8j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_vak8j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_vak8j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_ow2bb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_qwkqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_3lcft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_u4lvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_rfwl1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_0e8k1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_njnco")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_m7xp7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_aw1y3")
+}],
+"loop": false,
+"name": &"trigger",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_glgjh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a8sqr"]
+radius = 8.0
+height = 23.9995
+
 [node name="Room1" type="Node2D"]
 
 [node name="wall_things" type="TileMapLayer" parent="."]
@@ -8044,12 +8213,12 @@ tile_set = SubResource("TileSet_ayk0p")
 
 [node name="furniture_front" type="TileMapLayer" parent="."]
 z_index = 2
-tile_map_data = PackedByteArray("AAABAA0AAAANAAAAAAABAA4AAAANAAEAAAABAA8AAAANAAIAAAAIAA4AAAAGAAQAAAAIAA8AAAAGAAUAAAAJAA4AAAAHAAQAAAAJAA8AAAAHAAUAAAAGAA4AAAACAAsAAAAGAA8AAAACAAwAAAAHAA4AAAADAAsAAAAHAA8AAAADAAwAAAAPAAsAAAAKAAQAAAAQAAsAAAALAAQAAAARAAsAAAAMAAQAAAAWAAsAAAAJABwAAAAWAAwAAAAJAB0AAAAXAAsAAAAKABwAAAAXAAwAAAAKAB0AAAAbAAsAAAAKABwAAAAbAAwAAAAKAB0AAAAcAAsAAAALABwAAAAcAAwAAAALAB0AAAAcAA4AAAAIABwAAAAcAA8AAAAIAB4AAAAYAAwAAAALAB0AAAAYAAsAAAALABwAAAA=")
+tile_map_data = PackedByteArray("AAABAA0AAAANAAAAAAABAA4AAAANAAEAAAABAA8AAAANAAIAAAAIAA4AAAAGAAQAAAAIAA8AAAAGAAUAAAAJAA4AAAAHAAQAAAAJAA8AAAAHAAUAAAAGAA4AAAACAAsAAAAGAA8AAAACAAwAAAAHAA4AAAADAAsAAAAHAA8AAAADAAwAAAAPAAsAAAAKAAQAAAAQAAsAAAALAAQAAAARAAsAAAAMAAQAAAAWAAsAAAAJABwAAAAWAAwAAAAJAB0AAAAXAAsAAAAKABwAAAAXAAwAAAAKAB0AAAAbAAsAAAAKABwAAAAbAAwAAAAKAB0AAAAcAAsAAAALABwAAAAcAAwAAAALAB0AAAAYAAwAAAALAB0AAAAYAAsAAAALABwAAAA=")
 tile_set = SubResource("TileSet_4scm4")
 
 [node name="furniture_back" type="TileMapLayer" parent="."]
 z_index = 1
-tile_map_data = PackedByteArray("AAAGAAUAAQALABQAAAAGAAYAAQALABUAAAAGAAcAAQALABYAAAAGAAgAAQALABcAAAAHAAUAAQAMABQAAAAHAAYAAQAMABUAAAAHAAcAAQAMABYAAAAHAAgAAQAMABcAAAAIAAUAAQANABQAAAAIAAYAAQANABUAAAAIAAcAAQANABYAAAAIAAgAAQANABcAAAAJAAUAAQAOABQAAAAJAAYAAQAOABUAAAAJAAcAAQAOABYAAAAJAAgAAQAOABcAAAACAAgAAQAEABQAAAACAAkAAQAEABUAAAACAAoAAQAEABYAAAACAAsAAQAEABcAAAADAAgAAQAFABQAAAADAAkAAQAFABUAAAADAAoAAQAFABYAAAADAAsAAQAFABcAAAAEAAgAAQAGABQAAAAEAAkAAQAGABUAAAAEAAoAAQAGABYAAAAEAAsAAQAGABcAAAAFAAgAAQAHABQAAAAFAAkAAQAHABUAAAAFAAoAAQAHABYAAAAFAAsAAQAHABcAAAAYAAYAAQAJABkAAAAYAAcAAQAJABoAAAAYAAgAAQAJABsAAAAZAAYAAQAKABkAAAAZAAcAAQAKABoAAAAZAAgAAQAKABsAAAAaAAYAAQALABkAAAAaAAcAAQALABoAAAAaAAgAAQALABsAAAAXAAcAAQAMABoAAAAXAAgAAQAMABsAAAAPAAwAAQAKAAUAAAAQAAwAAQALAAUAAAARAAwAAQAMAAUAAAAWAA0AAQAJAB4AAAAXAA0AAQAKAB4AAAAYAA0AAQALAB4AAAAbAA0AAQAKAB4AAAAcAA0AAQALAB4AAAAbAAYAAQALAAAAAAAbAAcAAQALAAEAAAAbAAgAAQALAAIAAAAcAAYAAQAMAAAAAAAcAAcAAQAMAAEAAAAcAAgAAQAMAAIAAAAUAAcAAQAIAAQAAAAUAAgAAQAIAAUAAAANAAcAAQAAAAsAAAANAAgAAQAAAAwAAAAOAAcAAQABAAsAAAAOAAgAAQABAAwAAAA=")
+tile_map_data = PackedByteArray("AAAGAAUAAQALABQAAAAGAAYAAQALABUAAAAGAAcAAQALABYAAAAGAAgAAQALABcAAAAHAAUAAQAMABQAAAAHAAYAAQAMABUAAAAHAAcAAQAMABYAAAAHAAgAAQAMABcAAAAIAAUAAQANABQAAAAIAAYAAQANABUAAAAIAAcAAQANABYAAAAIAAgAAQANABcAAAAJAAUAAQAOABQAAAAJAAYAAQAOABUAAAAJAAcAAQAOABYAAAAJAAgAAQAOABcAAAACAAgAAQAEABQAAAACAAkAAQAEABUAAAACAAoAAQAEABYAAAACAAsAAQAEABcAAAADAAgAAQAFABQAAAADAAkAAQAFABUAAAADAAoAAQAFABYAAAADAAsAAQAFABcAAAAEAAgAAQAGABQAAAAEAAkAAQAGABUAAAAEAAoAAQAGABYAAAAEAAsAAQAGABcAAAAFAAgAAQAHABQAAAAFAAkAAQAHABUAAAAFAAoAAQAHABYAAAAFAAsAAQAHABcAAAAYAAYAAQAJABkAAAAYAAcAAQAJABoAAAAYAAgAAQAJABsAAAAZAAYAAQAKABkAAAAZAAcAAQAKABoAAAAZAAgAAQAKABsAAAAaAAYAAQALABkAAAAaAAcAAQALABoAAAAaAAgAAQALABsAAAAXAAcAAQAMABoAAAAXAAgAAQAMABsAAAAPAAwAAQAKAAUAAAAQAAwAAQALAAUAAAARAAwAAQAMAAUAAAAWAA0AAQAJAB4AAAAXAA0AAQAKAB4AAAAYAA0AAQALAB4AAAAbAA0AAQAKAB4AAAAcAA0AAQALAB4AAAAbAAYAAQALAAAAAAAbAAcAAQALAAEAAAAbAAgAAQALAAIAAAAcAAYAAQAMAAAAAAAcAAcAAQAMAAEAAAAcAAgAAQAMAAIAAAAUAAcAAQAIAAQAAAAUAAgAAQAIAAUAAAA=")
 tile_set = SubResource("TileSet_vda0e")
 
 [node name="wall" type="TileMapLayer" parent="."]
@@ -8151,9 +8320,9 @@ anchor_left = 0.5
 anchor_top = -0.854
 anchor_right = 0.5
 anchor_bottom = -0.854
-offset_left = -81.4581
+offset_left = -81.4671
 offset_top = -30.324
-offset_right = 5.54134
+offset_right = 5.5323
 offset_bottom = 134.676
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(2.40654e-07, 0.288411, 0.254277, 1)
@@ -8221,20 +8390,6 @@ offset_left = -19.0
 offset_top = -24.0
 offset_right = 21.0
 offset_bottom = -1.0
-
-[node name="Toilet" type="Sprite2D" parent="."]
-position = Vector2(454, 244)
-script = ExtResource("24_c2bjv")
-
-[node name="Actionable" parent="Toilet" instance=ExtResource("6_x4b8a")]
-dialogue_resource = ExtResource("11_fcr2e")
-dialogue_start = "toilet"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Toilet/Actionable"]
-shape = SubResource("CircleShape2D_ihgwn")
-
-[node name="toilet_audio" type="AudioStreamPlayer2D" parent="Toilet"]
-stream = ExtResource("25_a47fk")
 
 [node name="Lamp1" type="Sprite2D" parent="."]
 position = Vector2(41, 233)
@@ -8419,6 +8574,48 @@ script = ExtResource("42_idicp")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossClear"]
 position = Vector2(16, 7.5)
 shape = SubResource("RectangleShape2D_saian")
+
+[node name="Punch" type="Sprite2D" parent="."]
+position = Vector2(218, 113)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("43_is7os")
+
+[node name="PunchArea" type="Area2D" parent="Punch" node_paths=PackedStringArray("animation")]
+collision_layer = 16
+script = ExtResource("42_88c1g")
+animation = NodePath("../PunchAnimation")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Punch/PunchArea"]
+shape = SubResource("CapsuleShape2D_pipxt")
+
+[node name="PunchAnimation" type="AnimationPlayer" parent="Punch"]
+libraries = {
+"": SubResource("AnimationLibrary_syrv4")
+}
+
+[node name="BBG" type="AnimatedSprite2D" parent="."]
+z_index = 2
+position = Vector2(447, 232)
+sprite_frames = SubResource("SpriteFrames_4rhui")
+animation = &"trigger"
+frame = 24
+frame_progress = 1.0
+script = ExtResource("67_k6aku")
+
+[node name="Actionable" parent="BBG" instance=ExtResource("6_x4b8a")]
+dialogue_resource = ExtResource("11_fcr2e")
+dialogue_start = "toilet"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BBG/Actionable"]
+position = Vector2(5, 12)
+shape = SubResource("CircleShape2D_glgjh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BBG"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BBG/StaticBody2D"]
+position = Vector2(4, 14)
+rotation = -1.57783
+shape = SubResource("CapsuleShape2D_a8sqr")
 
 [connection signal="animation_finished" from="Fire" to="Fire" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Bathtub" to="Bathtub" method="_on_animation_finished"]

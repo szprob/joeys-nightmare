@@ -50,7 +50,8 @@ var dialogue_image_storage = {
 	"tracy": "res://assets/sprites/day/character/结局女主.png",
 	"tracy_smile": "res://assets/sprites/day/character/tracy_smile.png",
 	"diary": "res://assets/sprites/day/enrich/日记本1.png",
-	"message": "res://assets/sprites/day/enrich/信封1.png"
+	"message": "res://assets/sprites/day/enrich/信封1.png",
+	"kelly": "res://assets/sprites/linkage/联动3.png"
 }
 var game_state = {}
 var game_state_cache = {'can_detect_kill_zone': true,
@@ -106,6 +107,7 @@ func init_default_state():
 		"room3_door_open": false,
 		'play_time_seconds': 0, # 添加游戏时间记录（秒）
 		'finish': false,
+		'is_kelly_show': false
 	}
 	game_state = game_state2.duplicate(true) # 深度复制默认状态
 
@@ -417,6 +419,11 @@ func open_room3_door() -> void:
 	var door_node = get_node("/root/Game/Room3/Door1") as AnimatedSprite2D
 	door_node.open_door()
 	game_state['room3_door_open'] = true
+	
+func trigger_bbg_toilet() -> void:
+	print(get_tree().current_scene.name)
+	var bbg_node = get_node("/root/Game/Room1/BBG") as AnimatedSprite2D
+	bbg_node.trigger_animation()
 
 func switch_day_to_dream(scene_file_path: String) -> void:
 	game_state['target_scene'] = scene_file_path
@@ -445,6 +452,12 @@ func back_to_room3() -> void:
 func show_hello() -> void:
 	var hello_animation = get_node("/root/MacRoom/Hello/HelloAnimation") as AnimationPlayer
 	hello_animation.play("appear")
+	
+func show_tv_kelly() -> void:
+	game_state['is_kelly_show'] = true
+	print(get_tree().current_scene.name)
+	var tv_node = get_node("/root/Game/Room2/TV") as AnimatedSprite2D
+	tv_node.show_kelly()
 
 # 添加暂停相关的方法
 func _input(event: InputEvent) -> void:
