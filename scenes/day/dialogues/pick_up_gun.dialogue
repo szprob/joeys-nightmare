@@ -26,9 +26,10 @@ else:
 	=> END
 	
 ~ toilet
-Joey[#joey_normal]: 一个普通的抽水马桶
+Joey[#joey_normal]: 一个普通的抽水马桶,马桶上好像写了三个字母[b]BBG[/b]
 - 按下冲水
 	do SoundPlayer.play_sound("res://assets/sounds/day/toilet-flushing-7059.mp3")
+	do GameManager.trigger_bbg_toilet()
 - 走开
 	Joey[#joey_normal]: 还是不要碰比较好
 => END

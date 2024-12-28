@@ -1,0 +1,40 @@
+~ this_is_a_node_title
+Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
+Nathan: Here are some choices.
+- First one
+	Nathan: You picked the first one.
+- Second one
+	Nathan: You picked the second one.
+- Start again => this_is_a_node_title
+- End the conversation => END
+Nathan: For more information see the online documentation.
+=> END
+
+~ planet
+Joey[#joey_happy]: 这不是我玩过的mini game[b]她和她的星球[/b]吗!![shake rate=20 level=10]好美的挂画![/shake]
+=> END
+
+~ punch
+Joey[#joey_normal]: Punch
+=> END
+
+~ kelly
+if GameManager.game_state['is_kelly_show']:
+	=> kelly_show
+else:
+	=> kelly_not_show
+=> END
+
+~ kelly_show
+Joey[#joey_normal]: 画面下方飘着一行小字: [b]Run Kelly Run[/b]
+=> END
+
+~ kelly_not_show
+do SoundPlayer.play_sound("res://assets/sounds/day/tv-static-7019.mp3", true)
+Joey[#joey_normal]: 电视机放不出画面,要怎么办?
+- 拍一下
+	do GameManager.show_tv_kelly()
+- 不管它
+	Joey[#joey_normal]: 万一跳出来个贞子就不好了
+do SoundPlayer.stop_sound()
+=> END

@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://cuvs1inu1bmr"]
+[gd_scene load_steps=91 format=4 uid="uid://cuvs1inu1bmr"]
 
 [ext_resource type="Texture2D" uid="uid://crnm18qdhogs2" path="res://assets/sprites/day/new_room/16x16-ALL_ASSETS-floor-walls.png" id="1_be34u"]
 [ext_resource type="Texture2D" uid="uid://bhbjbeod2a7jv" path="res://assets/sprites/day/new_room/16x16-ALL_ASSETS-furniture.png" id="2_w3a7a"]
@@ -13,19 +13,37 @@
 [ext_resource type="Texture2D" uid="uid://exwbhkdgn54v" path="res://assets/sprites/day/room/gun.png" id="11_5on44"]
 [ext_resource type="Texture2D" uid="uid://ct7uil7kfihig" path="res://assets/sprites/day/enrich/日记本1.png" id="12_56wa2"]
 [ext_resource type="Script" path="res://scripts/day/water_gun.gd" id="12_ng8dp"]
-[ext_resource type="Texture2D" uid="uid://d3liokvqxbk7v" path="res://assets/sprites/day/new_room/zhuoji.png" id="13_mwbh7"]
+[ext_resource type="Texture2D" uid="uid://ccxfwkrx0mt4m" path="res://assets/sprites/day/new_room/zhuoji.png" id="13_mwbh7"]
 [ext_resource type="Script" path="res://scripts/day/note1.gd" id="14_13j01"]
 [ext_resource type="Script" path="res://scripts/day/telephone.gd" id="14_81oek"]
-[ext_resource type="Texture2D" uid="uid://cy2o4ieec4dcp" path="res://assets/sprites/day/enrich/telephone_bubble.png" id="14_kqenj"]
-[ext_resource type="Texture2D" uid="uid://dr7mketyla1r5" path="res://assets/sprites/day/enrich/note1.png" id="14_qmy32"]
+[ext_resource type="Texture2D" uid="uid://chfvligu05spd" path="res://assets/sprites/day/enrich/telephone_bubble.png" id="14_kqenj"]
+[ext_resource type="Texture2D" uid="uid://crigiom6e06m1" path="res://assets/sprites/day/enrich/note1.png" id="14_qmy32"]
 [ext_resource type="Script" path="res://scripts/day/safe.gd" id="16_klnae"]
-[ext_resource type="Texture2D" uid="uid://dyx8prax0hqrm" path="res://assets/sprites/day/enrich/safe_final.png" id="19_tkbiv"]
-[ext_resource type="Texture2D" uid="uid://tgc78g0ripor" path="res://assets/sprites/day/enrich/key_01c.png" id="21_2kxtc"]
+[ext_resource type="Texture2D" uid="uid://bppt7gwcosec6" path="res://assets/sprites/day/enrich/safe_final.png" id="19_tkbiv"]
+[ext_resource type="Texture2D" uid="uid://biyjor6wsbrbl" path="res://assets/sprites/day/enrich/key_01c.png" id="21_2kxtc"]
 [ext_resource type="Script" path="res://scripts/day/key_2.gd" id="22_u2vom"]
 [ext_resource type="PackedScene" uid="uid://b1ahwfjvtlho3" path="res://scenes/day/game/light_switch.tscn" id="23_cjmy0"]
-[ext_resource type="Texture2D" uid="uid://mvpp14qrmbru" path="res://assets/sprites/day/new_room/light.png" id="24_v8hky"]
-[ext_resource type="Texture2D" uid="uid://5aise3no1by7" path="res://assets/sprites/day/new_room/right_wall.png" id="25_e84vr"]
+[ext_resource type="Texture2D" uid="uid://rvf28rqjwayo" path="res://assets/sprites/day/new_room/light.png" id="24_v8hky"]
+[ext_resource type="Texture2D" uid="uid://idc4021afy7y" path="res://assets/sprites/day/new_room/right_wall.png" id="25_e84vr"]
 [ext_resource type="Script" path="res://scripts/day/right_wall.gd" id="26_mdhnc"]
+[ext_resource type="Texture2D" uid="uid://d0caksv71pfb4" path="res://assets/sprites/linkage/联名2.png" id="27_anmkm"]
+[ext_resource type="Resource" uid="uid://701ruh3b5tc" path="res://scenes/day/dialogues/linkage.dialogue" id="28_ve6wa"]
+[ext_resource type="Texture2D" uid="uid://brxkxavqr7xsh" path="res://assets/sprites/linkage/联动3.png" id="29_ilu11"]
+[ext_resource type="Texture2D" uid="uid://cuv1xgk40sld6" path="res://assets/sprites/linkage/tv/TVGlitchEffect_01.png" id="30_v41go"]
+[ext_resource type="Texture2D" uid="uid://biwv3a4rmrwkc" path="res://assets/sprites/linkage/tv/TVGlitchEffect_02.png" id="31_u2cx4"]
+[ext_resource type="Texture2D" uid="uid://dp47rfmtvtmmp" path="res://assets/sprites/linkage/tv/TVGlitchEffect_03.png" id="32_grs63"]
+[ext_resource type="Texture2D" uid="uid://dw27cnor6v6yh" path="res://assets/sprites/linkage/tv/TVGlitchEffect_04.png" id="33_2ny1g"]
+[ext_resource type="Texture2D" uid="uid://b2iui45wrvxng" path="res://assets/sprites/linkage/tv/TVGlitchEffect_05.png" id="34_ghar4"]
+[ext_resource type="Texture2D" uid="uid://dp0kppfsrwst5" path="res://assets/sprites/linkage/tv/TVGlitchEffect_06.png" id="35_p65jp"]
+[ext_resource type="Texture2D" uid="uid://pkg7bbvki8j8" path="res://assets/sprites/linkage/tv/TVGlitchEffect_07.png" id="36_21dus"]
+[ext_resource type="Texture2D" uid="uid://b3gawbxo3uc8t" path="res://assets/sprites/linkage/tv/TVGlitchEffect_08.png" id="37_xnxd3"]
+[ext_resource type="Texture2D" uid="uid://b8bn4udqonu8j" path="res://assets/sprites/linkage/tv/TVGlitchEffect_09.png" id="38_teipy"]
+[ext_resource type="Texture2D" uid="uid://60r8wmjjgdrg" path="res://assets/sprites/linkage/tv/TVGlitchEffect_10.png" id="39_6uhxh"]
+[ext_resource type="Texture2D" uid="uid://bcu7bbykg5j5i" path="res://assets/sprites/linkage/tv/TVGlitchEffect_11.png" id="40_a0u0u"]
+[ext_resource type="Texture2D" uid="uid://bvcpn7rffv7m0" path="res://assets/sprites/linkage/tv/TVGlitchEffect_12.png" id="41_xg7tg"]
+[ext_resource type="Texture2D" uid="uid://bjouxo8o3w3mq" path="res://assets/sprites/linkage/tv/TVGlitchEffect_13.png" id="42_2nkxj"]
+[ext_resource type="Texture2D" uid="uid://bt62ht13en14c" path="res://assets/sprites/linkage/tv/TV_Mask.png" id="42_niqs3"]
+[ext_resource type="Script" path="res://scripts/day/television.gd" id="42_u2n0x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dcet3"]
 texture = ExtResource("2_w3a7a")
@@ -6693,11 +6711,67 @@ fill_to = Vector2(0.792735, 0.111111)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_31yab"]
 size = Vector2(16, 32.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aslt5"]
+size = Vector2(47, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nsbvb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_v41go")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_u2cx4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_grs63")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_2ny1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_ghar4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_p65jp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_21dus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_xnxd3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_teipy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_6uhxh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_a0u0u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_xg7tg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_2nkxj")
+}],
+"loop": true,
+"name": &"running",
+"speed": 6.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3p33p"]
+light_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlcq0"]
+size = Vector2(28.9474, 39.1053)
+
 [node name="Room2" type="Node2D"]
 
 [node name="furniture_back" type="TileMapLayer" parent="."]
 z_index = 1
-tile_map_data = PackedByteArray("AAABAAYAAAACACAAAAABAAcAAAACACEAAAABAAgAAAACACIAAAACAAYAAAADACAAAAACAAcAAAADACEAAAACAAgAAAADACIAAAADAAYAAAAEACAAAAADAAcAAAAEACEAAAADAAgAAAAEACIAAAAEAAYAAAAFACAAAAAEAAcAAAAFACEAAAAEAAgAAAAFACIAAAAFAAYAAAAGACAAAAAFAAcAAAAGACEAAAAFAAgAAAAGACIAAAAGAAYAAAAHACAAAAAGAAcAAAAHACEAAAAGAAgAAAAHACIAAAAHAAYAAAAGACMAAAAHAAcAAAAGACQAAAAHAAgAAAAGACUAAAAIAAcAAAAHACQAAAAIAAgAAAAHACUAAAAJAAcAAAAIACQAAAAJAAgAAAAIACUAAAAKAAUAAAASACAAAAAKAAYAAAASACEAAAAKAAcAAAASACIAAAAKAAgAAAASACMAAAALAAUAAAATACAAAAALAAYAAAATACEAAAALAAcAAAATACIAAAALAAgAAAATACMAAAAMAAUAAAAUACAAAAAMAAYAAAAUACEAAAAMAAcAAAAUACIAAAAMAAgAAAAUACMAAAAXAA0AAAAEAAcAAAAXAA4AAAAEAAgAAAAYAA0AAAAFAAcAAAAYAA4AAAAFAAgAAAAZAA0AAAAGAAcAAAAZAA4AAAAGAAgAAAAaAA0AAAAHAAcAAAAaAA4AAAAHAAgAAAAGAA0AAAALACUAAAAHAA0AAAAMACUAAAAIAA0AAAANACUAAAAJAA0AAAAOACUAAAAKAA0AAAARACUAAAAFAA0AAAARACUAABAcAAkAAAAVAAUAAAARAAcAAAAGAAQAAAARAAgAAAAGAAUAAAASAAcAAAAHAAQAAAASAAgAAAAHAAUAAAA=")
+tile_map_data = PackedByteArray("AAABAAYAAAACACAAAAABAAcAAAACACEAAAABAAgAAAACACIAAAACAAYAAAADACAAAAACAAcAAAADACEAAAACAAgAAAADACIAAAADAAYAAAAEACAAAAADAAcAAAAEACEAAAADAAgAAAAEACIAAAAEAAYAAAAFACAAAAAEAAcAAAAFACEAAAAEAAgAAAAFACIAAAAFAAYAAAAGACAAAAAFAAcAAAAGACEAAAAFAAgAAAAGACIAAAAGAAYAAAAHACAAAAAGAAcAAAAHACEAAAAGAAgAAAAHACIAAAAHAAYAAAAGACMAAAAHAAcAAAAGACQAAAAHAAgAAAAGACUAAAAIAAcAAAAHACQAAAAIAAgAAAAHACUAAAAJAAcAAAAIACQAAAAJAAgAAAAIACUAAAAKAAUAAAASACAAAAAKAAYAAAASACEAAAAKAAcAAAASACIAAAAKAAgAAAASACMAAAALAAUAAAATACAAAAALAAYAAAATACEAAAALAAcAAAATACIAAAALAAgAAAATACMAAAAMAAUAAAAUACAAAAAMAAYAAAAUACEAAAAMAAcAAAAUACIAAAAMAAgAAAAUACMAAAAXAA0AAAAEAAcAAAAXAA4AAAAEAAgAAAAYAA0AAAAFAAcAAAAYAA4AAAAFAAgAAAAZAA0AAAAGAAcAAAAZAA4AAAAGAAgAAAAaAA0AAAAHAAcAAAAaAA4AAAAHAAgAAAAGAA0AAAALACUAAAAHAA0AAAAMACUAAAAIAA0AAAANACUAAAAJAA0AAAAOACUAAAAKAA0AAAARACUAAAAFAA0AAAARACUAABAcAAkAAAAVAAUAAAARAAcAAAAGAAQAAAARAAgAAAAGAAUAAAASAAcAAAAHAAQAAAASAAgAAAAHAAUAAAAaAAcAAAAGAAQAAAAaAAgAAAAGAAUAAAAbAAcAAAAHAAQAAAAbAAgAAAAHAAUAAAA=")
 tile_set = SubResource("TileSet_l2imh")
 
 [node name="furniture_front" type="TileMapLayer" parent="."]
@@ -6707,7 +6781,7 @@ tile_set = SubResource("TileSet_cunto")
 
 [node name="war_things" type="TileMapLayer" parent="."]
 z_index = 1
-tile_map_data = PackedByteArray("AAAQAAMAAQAOAAEAAAAQAAQAAQAOAAIAAAARAAMAAQAPAAEAAAARAAQAAQAPAAIAAAASAAMAAQAQAAEAAAASAAQAAQAQAAIAAAAaAAIAAQAFAAAAAAAaAAMAAQAFAAEAAAAaAAQAAQAFAAIAAAAbAAIAAQAGAAAAAAAbAAMAAQAGAAEAAAAbAAQAAQAGAAIAAAAVAAIAAQAFAAAAAAAVAAMAAQAFAAEAAAAVAAQAAQAFAAIAAAAWAAIAAQAGAAAAAAAWAAMAAQAGAAEAAAAWAAQAAQAGAAIAAAAGAAMAAgABAAEAAAAGAAQAAgABAAIAAAAHAAMAAgACAAEAAAAHAAQAAgACAAIAAAA=")
+tile_map_data = PackedByteArray("AAAQAAMAAQAOAAEAAAAQAAQAAQAOAAIAAAARAAMAAQAPAAEAAAARAAQAAQAPAAIAAAASAAMAAQAQAAEAAAASAAQAAQAQAAIAAAAaAAIAAQAFAAAAAAAaAAMAAQAFAAEAAAAaAAQAAQAFAAIAAAAbAAIAAQAGAAAAAAAbAAMAAQAGAAEAAAAbAAQAAQAGAAIAAAAVAAIAAQAFAAAAAAAVAAMAAQAFAAEAAAAVAAQAAQAFAAIAAAAWAAIAAQAGAAAAAAAWAAMAAQAGAAEAAAAWAAQAAQAGAAIAAAA=")
 tile_set = SubResource("TileSet_tuxte")
 
 [node name="carp" type="TileMapLayer" parent="."]
@@ -6888,3 +6962,46 @@ script = ExtResource("26_mdhnc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall/StaticBody2D"]
 position = Vector2(-1, -0.25)
 shape = SubResource("RectangleShape2D_31yab")
+
+[node name="Planet" type="Sprite2D" parent="."]
+position = Vector2(134, 54)
+texture = ExtResource("27_anmkm")
+
+[node name="Actionable" parent="Planet" instance=ExtResource("9_2kxc4")]
+dialogue_resource = ExtResource("28_ve6wa")
+dialogue_start = "planet"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planet/Actionable"]
+position = Vector2(2, 54.5)
+shape = SubResource("RectangleShape2D_aslt5")
+
+[node name="TV" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(432, 101)
+scale = Vector2(1.05556, 1.05556)
+sprite_frames = SubResource("SpriteFrames_nsbvb")
+animation = &"running"
+autoplay = "running"
+frame_progress = 0.164594
+script = ExtResource("42_u2n0x")
+
+[node name="PointLight2D" type="PointLight2D" parent="TV"]
+position = Vector2(9.53674e-06, 0)
+blend_mode = 2
+texture = ExtResource("42_niqs3")
+
+[node name="Kelly" type="Sprite2D" parent="TV"]
+visible = false
+z_index = 1
+material = SubResource("CanvasItemMaterial_3p33p")
+position = Vector2(-3.16748, 3.16788)
+scale = Vector2(0.243624, 0.243624)
+texture = ExtResource("29_ilu11")
+
+[node name="Actionable" parent="TV" instance=ExtResource("9_2kxc4")]
+dialogue_resource = ExtResource("28_ve6wa")
+dialogue_start = "kelly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TV/Actionable"]
+position = Vector2(-3.05176e-05, 13.6052)
+shape = SubResource("RectangleShape2D_xlcq0")

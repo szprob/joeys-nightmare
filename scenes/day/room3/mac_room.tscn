@@ -4,12 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://blydc865qnepa" path="res://scenes/player/player_day.tscn" id="2_b37l8"]
 [ext_resource type="Texture2D" uid="uid://bhbjbeod2a7jv" path="res://assets/sprites/day/new_room/16x16-ALL_ASSETS-furniture.png" id="3_70hyj"]
 [ext_resource type="TileSet" uid="uid://d1hhd27n3lam5" path="res://tiles/light.tres" id="4_65gpb"]
-[ext_resource type="Texture2D" uid="uid://brsi30x1b2ip5" path="res://assets/sprites/day/enrich/macintosh.png" id="5_75owg"]
+[ext_resource type="Texture2D" uid="uid://d16mqli3unw0y" path="res://assets/sprites/day/enrich/macintosh.png" id="5_75owg"]
 [ext_resource type="PackedScene" uid="uid://byljde6sgcfrv" path="res://scenes/player/actionable.tscn" id="6_l7sf2"]
-[ext_resource type="Resource" uid="uid://dnjrm5vbow33l" path="res://scenes/day/dialogues/room3.dialogue" id="7_cwav1"]
+[ext_resource type="Resource" uid="uid://dfv1ofsbcwfuj" path="res://scenes/day/dialogues/room3.dialogue" id="7_cwav1"]
 [ext_resource type="PackedScene" uid="uid://c8flj66fr2ymi" path="res://scenes/day/inventory/inventory.tscn" id="8_278uw"]
 [ext_resource type="Script" path="res://scripts/day/exit.gd" id="9_ck8jg"]
-[ext_resource type="Texture2D" uid="uid://7yy7nupkosm7" path="res://assets/sprites/day/enrich/macintosh_hello.png" id="10_ymq7r"]
+[ext_resource type="Texture2D" uid="uid://dkpjj78drcxtn" path="res://assets/sprites/day/enrich/macintosh_hello.png" id="10_ymq7r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_whfio"]
 texture = ExtResource("3_70hyj")
